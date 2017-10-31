@@ -1,3 +1,3 @@
 FROM node:8-alpine
-RUN addgroup -S sanjeevpandit && adduser -S -g sanjeevpandit sanjeevpandit
-USER sanjeevpandit
+RUN addgroup -S sanjeev && adduser -S -g sanjeev sanjeev
+USER sanjeev
