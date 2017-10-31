@@ -1,0 +1,31 @@
+{
+  "name": "sports-backend",
+  "version": "1.0.0",
+  "description": "Backend system for sports",
+  "main": "index.js",
+  "author": "Sanjeev Kumar Pandit <binarysanjeev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run build && npm run watch",
+    "build": "npm run build-ts && npm run tslint",
+    "build-ts": "tsc",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,green.bold\" \"npm run watch-ts\" \"npm run serve\"",
+    "watch-ts": "tsc -w",
+    "serve": "nodemon dist/server.js",
+    "tslint": "tslint -c tslint.json -p tsconfig.json"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.16.7",
+    "@types/dotenv": "^4.0.2",
+    "@types/express": "^4.0.39",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.12.1",
+    "tslint": "^5.8.0",
+    "typescript": "^2.5.3"
+  }
+}
