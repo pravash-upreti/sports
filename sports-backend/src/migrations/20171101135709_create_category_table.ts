@@ -1,11 +1,10 @@
 import * as Knex from 'knex';
 
 exports.up = async function (knex: Knex) {
-  return knex.schema.createTable('players', (table: Knex.CreateTableBuilder) => {
+  return knex.schema.createTable('category', (table: Knex.CreateTableBuilder) => {
     table.increments('id').primary();
 
-    table.string('full_name', 255).notNullable();
-    table.string('gender', 1).notNullable();
+    table.string('desc', 100).notNullable();
 
     table.dateTime('created_at').defaultTo(knex.fn.now());
     table.dateTime('updated_at').defaultTo(knex.fn.now());
@@ -13,5 +12,5 @@ exports.up = async function (knex: Knex) {
 };
 
 exports.down = async function (knex: Knex) {
-  return knex.schema.dropTable('players');
+    return knex.schema.dropTable('category');
 };
