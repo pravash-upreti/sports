@@ -1,0 +1,17 @@
+import * as Knex from 'knex';
+
+exports.up = async function (knex: Knex) {
+  return knex.schema.createTable('players', (table: Knex.CreateTableBuilder) => {
+    table.increments('id').primary();
+
+    table.string('full_name', 255).notNullable();
+    table.string('gender', 1).notNullable();
+
+    table.dateTime('created_at').defaultTo(knex.fn.now());
+    table.dateTime('updated_at').defaultTo(knex.fn.now());
+  });
+};
+
+exports.down = async function (knex: Knex) {
+  return knex.schema.dropTable('players');
+};

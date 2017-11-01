@@ -6,15 +6,15 @@ services:
       - '../sports-backend:/home/sports/projects/sports/sports-backend'
       - '../sports-frontend:/home/sports/projects/sports/sports-frontend'
     ports:
-     - '3000:3000'
-     - '5000:5000'
+      - '3000:3000'
+      - '5000:5000'
     command: sh -c 'cd /home/sports/projects/sports/sports-backend && npm start'
   postgres:
     image: postgres:10-alpine
     restart: always
     environment:
-      - POSTGRES_DB='sports'
-      - POSTGRES_USER='sports'
-      - POSTGRES_PASSWORD='sports'
+      POSTGRES_DB: sports
+      POSTGRES_USER: sports
+      POSTGRES_PASSWORD: sports
     ports:
       - '5432:5432'
