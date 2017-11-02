@@ -11,8 +11,8 @@ export let getPlayers = async (req: Request, res: Response) => {
     const players = await PlayerService.getAllPlayers();
 
     res.json(players);
-  } catch (error) {
-    res.json(error);
+  } catch (ex) {
+    res.json(ex);
   }
 };
 
@@ -25,7 +25,7 @@ export let addPlayer = async (req: Request, res: Response) => {
     const player = await PlayerService.addPlayer(req.body);
 
     res.json(player);
-  } catch (error) {
-    res.json(error);
+  } catch (ex) {
+    res.json(ex);
   }
 };

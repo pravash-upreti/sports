@@ -7,5 +7,3 @@ class Player extends BookShelf.Model<Player> {
 }
 
 export default Player;
-
-
