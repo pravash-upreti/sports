@@ -13,6 +13,19 @@
     "@types/express" "*"
     "@types/node" "*"
 
+"@types/bookshelf@^0.9.6":
+  version "0.9.6"
+  resolved "https://registry.yarnpkg.com/@types/bookshelf/-/bookshelf-0.9.6.tgz#0305fba1759cb9a4bbc3963cffb169224ae0d3ea"
+  dependencies:
+    "@types/bluebird" "*"
+    "@types/create-error" "*"
+    "@types/knex" "*"
+    "@types/lodash" "*"
+
+"@types/create-error@*":
+  version "0.3.30"
+  resolved "https://registry.yarnpkg.com/@types/create-error/-/create-error-0.3.30.tgz#dc692a2b0a5d70d85dbf01fef2f6d41232255df3"
+
 "@types/dotenv@^4.0.2":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@types/dotenv/-/dotenv-4.0.2.tgz#f2983f0afe9fd7f6eb8aef515a4d77f4cbaa0597"
@@ -33,12 +46,16 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
-"@types/knex@^0.0.64":
+"@types/knex@*", "@types/knex@^0.0.64":
   version "0.0.64"
   resolved "https://registry.yarnpkg.com/@types/knex/-/knex-0.0.64.tgz#919d91cec9ddb9e9c44794425068a256b4a72b7b"
   dependencies:
     "@types/bluebird" "*"
     "@types/node" "*"
+
+"@types/lodash@*":
+  version "4.14.80"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.80.tgz#a6b8b7900e6a7dcbc2e90d9b6dfbe3f6a7f69951"
 
 "@types/mime@*":
   version "2.0.0"
@@ -181,7 +198,7 @@ babel-code-frame@^6.22.0:
     esutils "^2.0.2"
     js-tokens "^3.0.2"
 
-babel-runtime@^6.11.6:
+babel-runtime@^6.11.6, babel-runtime@^6.6.1:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -208,7 +225,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^3.4.6:
+bluebird@^3.4.3, bluebird@^3.4.6:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
 
@@ -226,6 +243,18 @@ body-parser@1.18.2, body-parser@^1.18.2:
     qs "6.5.1"
     raw-body "2.3.2"
     type-is "~1.6.15"
+
+bookshelf@^0.10.4:
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/bookshelf/-/bookshelf-0.10.4.tgz#fe06984456740417aba13d0d76c7b065d1f1774d"
+  dependencies:
+    babel-runtime "^6.6.1"
+    bluebird "^3.4.3"
+    chalk "^1.0.0"
+    create-error "~0.3.1"
+    inflection "^1.5.1"
+    inherits "~2.0.1"
+    lodash "^4.13.1"
 
 boom@2.x.x:
   version "2.10.1"
@@ -424,6 +453,10 @@ create-error-class@^3.0.0:
   resolved "https://registry.yarnpkg.com/create-error-class/-/create-error-class-3.0.2.tgz#06be7abef947a3f14a30fd610671d401bca8b7b6"
   dependencies:
     capture-stack-trace "^1.0.0"
+
+create-error@~0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/create-error/-/create-error-0.3.1.tgz#69810245a629e654432bf04377360003a5351a23"
 
 cross-spawn@^5.0.1:
   version "5.1.0"
@@ -917,6 +950,10 @@ imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
 
+inflection@^1.5.1:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/inflection/-/inflection-1.12.0.tgz#a200935656d6f5f6bc4dc7502e1aecb703228416"
+
 inflight@^1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/inflight/-/inflight-1.0.6.tgz#49bd6331d7d02d0c09bc910a1075ba8165b56df9"
@@ -1223,7 +1260,7 @@ lodash.restparam@^3.0.0:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
 
-lodash@^4.5.1, lodash@^4.6.0:
+lodash@^4.13.1, lodash@^4.5.1, lodash@^4.6.0:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
