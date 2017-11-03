@@ -4,12 +4,17 @@ import HTTP_STATUS_CONSTANTS from '../utils/http_status';
 
 import validate from '../utils/validate';
 import validationSchema from '../filters/tournament';
-import * as TournamentController from '../controllers/tournament';
 
 const router: Router = Router();
 
-router.get('/', TournamentController.getTournaments);
+router.post('/', (req: Request, res: Response, next: NextFunction) => {
+  const result = validate(req.body, validationSchema);
 
-router.post('/', TournamentController.addTournament);
+  if (result.isValid) {
+    next();
+  }
+
+  res.status(HTTP_STATUS_CONSTANTS.BAD_REQUEST).json(result.value);
+});
 
 export default router;

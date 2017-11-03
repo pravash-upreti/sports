@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 
+import HTTP_STATUS_CONSTANTS from '../utils/http_status';
+
 import * as TournamentService from '../services/tournament';
 
 /**
@@ -26,6 +28,6 @@ export let addTournament = async (req: Request, res: Response) => {
 
     res.json(tournament);
   } catch (ex) {
-    res.json(ex);
+    res.status(HTTP_STATUS_CONSTANTS.BAD_REQUEST).json(ex);
   }
 };

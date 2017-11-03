@@ -1,9 +1,9 @@
-import * as path from 'path';
 import * as dotenv from 'dotenv';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
 import routes from './routes';
+import middlewares from './middlewares';
 
 dotenv.config({
   path: '.env'
@@ -16,6 +16,7 @@ app.set('port', port);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/', middlewares);
 app.use('/', routes);
 
 app.listen(app.get('port'), () => {

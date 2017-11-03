@@ -1,4 +1,4 @@
-import * as Knex from "knex";
+import * as Knex from 'knex';
 
 exports.up = async (knex: Knex) => {
   return knex.schema.createTable('tt_match_game', (table: Knex.CreateTableBuilder) => {
