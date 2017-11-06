@@ -31,4 +31,3 @@ export let addMatch = async (req: Request, res: Response) => {
     res.json(ex);
   }
 };
-

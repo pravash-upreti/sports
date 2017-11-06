@@ -10,13 +10,13 @@ export default (data: any, schema: Joi.SchemaLike): any => {
 
   if (error) {
     return {
-      'isValid': false,
-      'value': error.details[0]
+      isValid: false,
+      value: error.details[0]
     };
   }
 
   return {
-    'isValid': true,
-    'value': value
+    isValid: true,
+    value: value
   };
 };
