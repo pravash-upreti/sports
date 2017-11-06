@@ -20,10 +20,12 @@
   },
   "lint-staged": {
     "gitDir": "../",
-    "*.{ts, js}": [
-      "npm run lint-fix",
-      "git add"
-    ]
+    "linters": {
+      "*.{ts, js}": [
+        "lint-fix",
+        "git add"
+      ]
+    }
   },
   "dependencies": {
     "body-parser": "^1.18.2",
