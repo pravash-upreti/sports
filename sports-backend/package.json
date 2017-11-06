@@ -18,7 +18,7 @@
     "rollback": "knex migrate:rollback"
   },
   "lint-staged": {
-    "{*.ts, *.js}": ["lint --fix", "git add"]
+    "*.{ts, js}": ["lint --fix", "git add"]
   },
   "dependencies": {
     "body-parser": "^1.18.2",
