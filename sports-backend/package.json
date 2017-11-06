@@ -6,6 +6,7 @@
   "author": "Sanjeev Kumar Pandit <binarysanjeev@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "precommit": "lint-staged",
     "start": "npm run build && npm run watch",
     "build": "npm run build-ts && npm run tslint",
     "build-ts": "tsc",
@@ -18,7 +19,11 @@
     "rollback": "knex migrate:rollback"
   },
   "lint-staged": {
-    "*.{ts, js}": ["lint --fix", "git add"]
+    "gitDir": "../",
+    "*.{ts, js}": [
+      "npm run lint-fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "body-parser": "^1.18.2",
