@@ -1,6 +1,6 @@
 import * as Knex from 'knex';
 
-exports.up = async function(knex: Knex) {
+exports.up = async (knex: Knex) => {
 return knex.schema.createTable('tournament_category', (table: Knex.CreateTableBuilder) => {
     table.increments('id').primary();
 
@@ -12,6 +12,6 @@ return knex.schema.createTable('tournament_category', (table: Knex.CreateTableBu
 });
 };
 
-exports.down = async function(knex: Knex) {
+exports.down = async (knex: Knex) => {
   return knex.schema.dropTable('tournament_category');
 };

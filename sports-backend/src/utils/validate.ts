@@ -17,6 +17,6 @@ export default (data: any, schema: Joi.SchemaLike): any => {
 
   return {
     isValid: true,
-    value: value
+    value
   };
 };
