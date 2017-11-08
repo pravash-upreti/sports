@@ -1,9 +1,21 @@
-import Tournament from '../models/tournament';
+import * as TournamentDao from '../daos/tournament';
 
-export let getAllTournaments = async () => {
-  return Tournament.fetchAll();
+export const getTournament = async (tournamentId: number) => {
+  return TournamentDao.findOne(tournamentId);
 };
 
-export let addTournament = (data: any) => {
-  return new Tournament(data).save();
+export let getAllTournaments = async () => {
+  return TournamentDao.fetchAll();
+};
+
+export let addTournament = async (data: any) => {
+  return TournamentDao.addTournament(data);
+};
+
+export let getTournamentCategories = async (tournamentId: number) => {
+  return TournamentDao.getTournamentCategories(tournamentId);
+};
+
+export let addTournamentCategory = async (tournamentId: number, data: any) => {
+  return TournamentDao.addTournamentCategory(tournamentId, data.category_id);
 };

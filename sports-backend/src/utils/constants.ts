@@ -7,5 +7,6 @@ export default {
     ROUND: 'round',
     TT_MATCH: 'tt_match',
     TT_MATCH_GAME: 'tt_match_game',
+    TOURNAMENT_CATEGORY: 'tournament_category'
   }
 };
