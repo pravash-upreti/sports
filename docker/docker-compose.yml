@@ -17,4 +17,8 @@ services:
       POSTGRES_USER: sports
       POSTGRES_PASSWORD: sports
     ports:
-      - '5432:5432'
+      - '5444:5432'
+    volumes:
+      - lf_sports_data:/var/lib/postgresql/data
+volumes:
+  lf_sports_data:
