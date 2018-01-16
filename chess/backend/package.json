@@ -7,5 +7,29 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.18.2",
+    "bookshelf": "0.12.1",
+    "dotenv": "4.0.0",
+    "express": "4.16.2",
+    "joi": "13.1.0",
+    "knex": "0.14.2",
+    "pg": "7.4.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "1.16.8",
+    "@types/bookshelf": "0.9.7",
+    "@types/dotenv": "4.0.2",
+    "@types/express": "4.11.0",
+    "@types/joi": "13.0.5",
+    "@types/knex": "0.14.0",
+    "concurrently": "3.5.1",
+    "husky": "0.14.3",
+    "nodemon": "1.14.11",
+    "ts-node": "4.1.0",
+    "tslint": "5.9.1",
+    "tslint-config-leapfrog": "1.0.0",
+    "typescript": "2.6.2"
+  }
 }
