@@ -1,15 +1,19 @@
 version: '3'
 services:
   chess_api:
-    image: "node:8-alpine"
+    image: 'node:8-alpine'
+    volumes:
+      - '../backend/:/home/chess/projects/backend/'
+    working_dir: /home/chess/projects/backend/
     ports:
-     - "5000:5000"
+     - '5000:5000'
+    command: sh -c 'npm start'
   chess_db:
-    image: "postgres:10-alpine"
+    image: 'postgres:10-alpine'
     restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-chess}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-chess}
       POSTGRES_DB: ${POSTGRES_DB:-chess}
     ports:
-      - "5444:5432"
+      - '5444:5432'
