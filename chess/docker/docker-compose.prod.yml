@@ -4,11 +4,11 @@ services:
     image: 'node:8-alpine'
     restart: always
     volumes:
-      - '../backend/:/home/chess/projects/backend/'
+      - '../backend/dist:/home/chess/projects/backend/'
     working_dir: /home/chess/projects/backend/
+    command: sh -c 'NODE_ENV=production node server.js'
     ports:
       - '5000:5000'
-    command: sh -c 'npm start'
   chess_db_migrate:
     image: 'node:8-alpine'
     volumes:
@@ -34,8 +34,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-chess}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-chess}
       POSTGRES_DB: ${POSTGRES_DB:-chess}
-    ports:
-      - '5444:5432'
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
