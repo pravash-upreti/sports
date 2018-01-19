@@ -8,13 +8,13 @@ services:
     working_dir: /home/chess/projects/backend/
     ports:
       - '5000:5000'
-    command: sh -c 'npm start'
+    command: sh -c 'yarn start'
   chess_db_migrate:
     image: 'node:8-alpine'
     volumes:
       - '../backend/:/home/chess/projects/backend/'
     working_dir: /home/chess/projects/backend/
-    command: sh -c 'npm run migrate'
+    command: sh -c 'yarn migrate'
     depends_on:
       chess_db:
         condition: service_healthy
@@ -23,7 +23,7 @@ services:
     volumes:
       - '../backend/:/home/chess/projects/backend/'
     working_dir: /home/chess/projects/backend/
-    command: sh -c 'npm run rollback'
+    command: sh -c 'yarn rollback'
     depends_on:
       chess_db:
         condition: service_healthy
