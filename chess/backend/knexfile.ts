@@ -47,7 +47,7 @@ module.exports = {
   test: {
     client: process.env.DB_CLIENT,
     connection: {
-      port: process.env.TEST_DB_PORT,
+      port: process.env.DB_PORT,
       database: process.env.TEST_DB_NAME,
       user: process.env.TEST_DB_USERNAME,
       password: process.env.TEST_DB_PASSWORD
