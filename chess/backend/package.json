@@ -44,7 +44,9 @@
     "joi": "13.1.0",
     "knex": "0.14.2",
     "morgan": "^1.9.0",
-    "pg": "7.4.1"
+    "pg": "7.4.1",
+    "winston": "^2.4.0",
+    "winston-daily-rotate-file": "^1.7.2"
   },
   "devDependencies": {
     "@types/body-parser": "1.16.8",
@@ -56,6 +58,7 @@
     "@types/joi": "13.0.5",
     "@types/knex": "0.14.0",
     "@types/morgan": "^1.7.35",
+    "@types/winston": "^2.3.7",
     "concurrently": "3.5.1",
     "husky": "0.14.3",
     "lint-staged": "6.0.0",

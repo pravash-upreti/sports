@@ -6,10 +6,11 @@ import * as bodyParser from 'body-parser';
 
 import routes from './routes';
 import config from './config/app';
+import logger from './utils/logger';
 import notFoundHandler from './middlewares/notFoundHandler';
 import genericErrorHandler from './middlewares/genericErrorHandler';
 
-const { name, version, port } = config;
+const { name, version, host, port } = config;
 const app: express.Application = express();
 
 app.locals.name = name;
@@ -26,6 +27,8 @@ app.use('/api', routes);
 app.use(genericErrorHandler);
 app.use(notFoundHandler);
 
-app.listen(port);
+app.listen(parseInt(port, 10), host, () => {
+  logger.info(`Server started at http://${host}:${port}`);
+});
 
 export default app;

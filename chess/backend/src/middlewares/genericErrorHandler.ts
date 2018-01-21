@@ -1,6 +1,8 @@
 import * as HttpStatus from 'http-status-codes';
 import { Request, Response, NextFunction } from 'express';
 
+import logger from '../utils/logger';
+
 /**
  * Generic error response middleware for internal server errors.
  *
@@ -11,6 +13,8 @@ import { Request, Response, NextFunction } from 'express';
  * @returns void
  */
 export default function genericErrorHandler(err: any, req: Request, res: Response, next: NextFunction): void {
+  logger.error(err);
+
   // Joi Validation errors
   if (err.isJoi) {
     res.status(err.output.statusCode).json({
