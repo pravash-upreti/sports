@@ -20,13 +20,13 @@
     "make:migration": "knex migrate:make",
     "lint": "tslint -c tslint.json -p tsconfig.json 'src/**/*.{ts}'",
     "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json 'src/**/*.{ts}'",
-    "prettify": "prettier --single-quote --parser typescript --print-width 120 --write \"src/**/*.{ts}\""
+    "prettify": "prettier --single-quote --parser typescript --print-width 120 --write 'src/**/*.{ts,js}'"
   },
   "lint-staged": {
     "linters": {
       "*.{ts, js}": [
-        "tslint --fix -c tslint.json -p tsconfig.json ",
-        "prettier --single-quote --parser typescript --print-width 120 --write './**/*.{ts}'",
+        "tslint --fix -c tslint.json -p tsconfig.json",
+        "prettier --single-quote --parser typescript --print-width 120 --write './**/*.{ts,js}'",
         "git add"
       ]
     }
