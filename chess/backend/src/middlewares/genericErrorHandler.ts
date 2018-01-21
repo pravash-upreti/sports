@@ -1,5 +1,5 @@
 import * as HttpStatus from 'http-status-codes';
-import { Errback, Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 
 /**
  * Generic error response middleware for internal server errors.

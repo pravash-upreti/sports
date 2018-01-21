@@ -3197,6 +3197,10 @@ tslint-config-leapfrog@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/tslint-config-leapfrog/-/tslint-config-leapfrog-1.0.0.tgz#57d957320791a1a408ff0d85086aaa0d0cef7de2"
 
+tslint-config-prettier@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.6.0.tgz#fec1ee8fb07e8f033c63fed6b135af997f31962a"
+
 tslint@5.9.1:
   version "5.9.1"
   resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.9.1.tgz#1255f87a3ff57eb0b0e1f0e610a8b4748046c9ae"

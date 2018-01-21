@@ -18,8 +18,8 @@
     "rollback": "knex migrate:rollback",
     "make:seeder": "knex seed:make",
     "make:migration": "knex migrate:make",
-    "lint": "tslint -c tslint.json -p tsconfig.json 'src/**/*.{ts}'",
-    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json 'src/**/*.{ts}'",
+    "lint": "tslint -c tslint.json -p tsconfig.json 'src/**/*.{ts,js}'",
+    "lint:fix": "tslint --fix -c tslint.json -p tsconfig.json 'src/**/*.{ts,js}'",
     "prettify": "prettier --single-quote --parser typescript --print-width 120 --write 'src/**/*.{ts,js}'"
   },
   "lint-staged": {
@@ -65,6 +65,7 @@
     "ts-node": "4.1.0",
     "tslint": "5.9.1",
     "tslint-config-leapfrog": "1.0.0",
+    "tslint-config-prettier": "^1.6.0",
     "typescript": "2.6.2"
   }
 }
