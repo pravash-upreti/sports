@@ -9,6 +9,7 @@ module.exports = {
     client: process.env.DB_CLIENT,
     connection: {
       host: process.env.DB_HOST,
+      port: process.env.DB_PORT,
       database: process.env.DB_NAME,
       user: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD
@@ -30,6 +31,7 @@ module.exports = {
   production: {
     client: process.env.DB_CLIENT,
     connection: {
+      port: process.env.DB_PORT,
       database: process.env.DB_NAME,
       user: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD
@@ -46,6 +48,7 @@ module.exports = {
   test: {
     client: process.env.DB_CLIENT,
     connection: {
+      port: process.env.DB_PORT,
       database: process.env.TEST_DB_NAME,
       user: process.env.TEST_DB_USERNAME,
       password: process.env.TEST_DB_PASSWORD
