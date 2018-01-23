@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
+import * as HttpStatus from 'http-status-codes';
 
-export const index = (req: Request, res: Response) => {
-  return res.json({
-    message: 'Test successful'
+export function index(req: Request, res: Response) {
+  res.status(HttpStatus.OK).json({
+    name: req.app.locals.name,
+    version: req.app.locals.version
   });
-};
+}

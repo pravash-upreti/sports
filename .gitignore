@@ -1,7 +1,19 @@
+# IntelliJ IDE
 .idea
+
+# Visual Studio Code
 .vscode
 
+# Build directory
 dist
+
+# Dependency directories
 node_modules
 
+# Dotenv configuration
 .env
+
+# Logs
+logs
+*.log
+npm-debug.log*
