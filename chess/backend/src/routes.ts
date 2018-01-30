@@ -7,6 +7,8 @@ const router: Router = Router();
 
 router.get('/', homeController.index);
 
+// Tournaments
+router.get('/tournaments', tournamentController.getAll);
 router.get('/tournaments/:id', tournamentController.get);
 
 export default router;
