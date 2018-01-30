@@ -8,17 +8,17 @@ export function up(knex: Knex) {
       .integer('player_1_id')
       .notNullable()
       .unsigned()
-      .references('tournament_category_player.id');
+      .references('player.id');
     table
       .integer('player_2_id')
       .notNullable()
       .unsigned()
-      .references('tournament_category_player.id');
+      .references('player.id');
     table
       .integer('winner_player_id')
       .notNullable()
       .unsigned()
-      .references('tournament_category_player.id');
+      .references('player.id');
     table.string('won_by', 100).nullable();
     table.dateTime('date').nullable();
     table

@@ -1,14 +1,14 @@
 import * as Knex from 'knex';
 
 export function up(knex: Knex) {
-  return knex.schema.createTable('tournament_category_player', (table: Knex.CreateTableBuilder) => {
+  return knex.schema.createTable('tournament_player', (table: Knex.CreateTableBuilder) => {
     table.increments('id').primary();
 
     table
-      .integer('tournament_category_id')
+      .integer('tournament_id')
       .notNullable()
       .unsigned()
-      .references('tournament_category.id');
+      .references('tournament.id');
     table
       .integer('player_id')
       .notNullable()

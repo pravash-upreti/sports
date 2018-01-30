@@ -5,7 +5,6 @@ export function up(knex: Knex) {
     table.increments('id').primary();
 
     table.string('full_name', 255).notNullable();
-    table.string('gender', 1).notNullable();
     table.string('profile_photo', 255).notNullable();
 
     table.timestamps(true, true);
