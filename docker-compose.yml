@@ -17,6 +17,7 @@ services:
     command: sh -c 'yarn'
   chess_db_migrate:
     image: 'node:8-alpine'
+    restart: 'no'
     volumes:
       - './chess/backend/:/home/chess/backend/'
     working_dir: /home/chess/backend/
@@ -26,6 +27,7 @@ services:
         condition: service_healthy
   chess_db_rollback:
     image: 'node:8-alpine'
+    restart: 'no'
     volumes:
       - './chess/backend/:/home/chess/backend/'
     working_dir: /home/chess/backend/
