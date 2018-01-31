@@ -9,6 +9,8 @@ router.get('/', homeController.index);
 
 // Tournaments
 router.get('/tournaments', tournamentController.getAll);
+router.post('/tournaments', tournamentController.create);
+
 router.get('/tournaments/:id', tournamentController.get);
 
 export default router;

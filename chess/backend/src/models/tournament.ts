@@ -2,9 +2,8 @@ import { TABLES } from './../utils/constants';
 import BookShelf from '../config/bookshelf';
 
 class Tournament extends BookShelf.Model<Tournament> {
-  getTableName() {
-    return TABLES.TOURNAMENT;
-  }
+  tableName: 'tournament';
+  hasTimestamps: true;
 }
 
 export default Tournament;
