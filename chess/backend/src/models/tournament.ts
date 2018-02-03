@@ -2,8 +2,13 @@ import { TABLES } from './../utils/constants';
 import BookShelf from '../config/bookshelf';
 
 class Tournament extends BookShelf.Model<Tournament> {
-  tableName: 'tournament';
-  hasTimestamps: true;
+  get tableName() {
+    return TABLES.TOURNAMENT;
+  }
+
+  timestamp() {
+    return true;
+  }
 }
 
 export default Tournament;

@@ -11,7 +11,7 @@ import Tournament from '../models/tournament';
  */
 export async function findById(id: number) {
   try {
-    const tournament: Tournament = await new Tournament().where({ id }).fetch();
+    const tournament: Tournament = await new Tournament({ id }).fetch();
 
     return tournament;
   } catch (error) {
