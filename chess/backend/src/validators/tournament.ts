@@ -4,6 +4,13 @@ import { Request, Response, NextFunction } from 'express';
 
 import * as tournamentSchemas from '../filters/tournament';
 
+/**
+ * Validate tournament post object.
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
 export let validateTournamentSchema = (req: Request, res: Response, next: NextFunction) => {
   const result = validate(req.body, tournamentSchemas.tournamentSchema);
 
