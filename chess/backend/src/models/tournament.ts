@@ -1,5 +1,5 @@
-import { TABLES } from './../utils/constants';
 import BookShelf from '../config/bookshelf';
+import { TABLES } from './../utils/constants';
 
 class Tournament extends BookShelf.Model<Tournament> {
   get tableName() {

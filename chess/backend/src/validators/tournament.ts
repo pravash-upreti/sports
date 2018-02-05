@@ -11,7 +11,7 @@ import * as tournamentSchemas from '../filters/tournament';
  * @param res
  * @param next
  */
-export let validateTournamentSchema = (req: Request, res: Response, next: NextFunction) => {
+export function validateTournamentSchema(req: Request, res: Response, next: NextFunction) {
   const result = validate(req.body, tournamentSchemas.tournamentSchema);
 
   if (result.error) {
@@ -19,4 +19,4 @@ export let validateTournamentSchema = (req: Request, res: Response, next: NextFu
   }
 
   next();
-};
+}
