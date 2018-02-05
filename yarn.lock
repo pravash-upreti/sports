@@ -2,6 +2,3 @@
 # yarn lockfile v1
 
 
-"@types/joi@13.0.5":
-  version "13.0.5"
-  resolved "https://registry.yarnpkg.com/@types/joi/-/joi-13.0.5.tgz#50829402204e8fec8ee287eeb37d79fbff34913c"
