@@ -38,6 +38,13 @@ module.exports = {
         }),
       },
       {
+        test: /\.s[ac]ss$/,
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader', 'sass-loader'],
+            fallback: 'style-loader'
+        })
+      },
+      {
         test: /\.(png|jpg|gif)$/,
         use: [
           'file-loader',
