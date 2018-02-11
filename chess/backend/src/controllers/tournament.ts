@@ -20,7 +20,7 @@ export async function get(req: Request, res: Response, next: NextFunction) {
       data: tournament
     });
   } catch (error) {
-    next();
+    next(error);
   }
 }
 
@@ -40,7 +40,7 @@ export async function getAll(req: Request, res: Response, next: NextFunction) {
       data: tournaments
     });
   } catch (error) {
-    next();
+    next(error);
   }
 }
 
@@ -60,6 +60,6 @@ export async function create(req: Request, res: Response, next: NextFunction) {
       data: tournament
     });
   } catch (error) {
-    next();
+    next(error);
   }
 }

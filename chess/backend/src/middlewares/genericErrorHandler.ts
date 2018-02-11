@@ -29,6 +29,8 @@ export default function genericErrorHandler(err: any, req: Request, res: Respons
           };
         })
     });
+
+    return;
   }
 
   if (err.isBoom) {
@@ -38,6 +40,19 @@ export default function genericErrorHandler(err: any, req: Request, res: Respons
         message: err.output.payload.message || err.output.payload.error
       }
     });
+
+    return;
+  }
+
+  if (err.isCustom) {
+    res.status(err.statusCode).json({
+      error: {
+        code: err.statusCode,
+        message: err.message || err.error
+      }
+    });
+
+    return;
   }
 
   res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({

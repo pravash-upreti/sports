@@ -1,6 +1,8 @@
 import { Collection } from 'bookshelf';
 
 import Tournament from '../models/tournament';
+import NotFoundError from '../errors/NotFoundError';
+import NoRowUpdatedError from '../errors/NotFoundError';
 
 /**
  * Find tournament by ID.
@@ -8,14 +10,14 @@ import Tournament from '../models/tournament';
  * @export
  * @param {number} id
  * @returns {Tournament}
- * @throws {Tournament.NotFoundError|error}
+ * @throws {NotFoundError|error}
  */
 export async function findById(id: number) {
   try {
     const tournament: Tournament = await new Tournament({ id }).fetch();
 
     if (!tournament) {
-      throw Tournament.NotFoundError;
+      throw new NotFoundError('Tournament not found.');
     }
 
     return tournament;
@@ -47,14 +49,14 @@ export async function getAll() {
  * @export
  * @param {object} params
  * @returns {Tournanent}
- * @throws {Tournament.NotFoundError|error}
+ * @throws {NoRowUpdatedError|error}
  */
 export async function create(params: object) {
   try {
     const tournament: Tournament = await new Tournament(params).save();
 
     if (!tournament) {
-      throw Tournament.NoRowsUpdatedError;
+      throw new NoRowUpdatedError('Unable to create a new tournament.');
     }
 
     return tournament;
