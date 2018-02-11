@@ -1,22 +1,27 @@
-import { Request, Response } from 'express';
 import * as HttpStatus from 'http-status-codes';
+import { Request, Response, NextFunction } from 'express';
 
 import * as TournamentService from '../services/tournament';
 
 /**
- * Get tournament by ID
+ * Get tournament by ID.
  *
  * @export
  * @param {Request} req
  * @param {Response} res
+ * @param {NextFunction} next
  */
-export async function get(req: Request, res: Response) {
-  const tournamentId = req.params.id;
-  const tournament = await TournamentService.findById(tournamentId);
+export async function get(req: Request, res: Response, next: NextFunction) {
+  try {
+    const tournamentId = req.params.id;
+    const tournament = await TournamentService.findById(tournamentId);
 
-  res.status(HttpStatus.OK).json({
-    data: tournament
-  });
+    res.status(HttpStatus.OK).json({
+      data: tournament
+    });
+  } catch (error) {
+    next();
+  }
 }
 
 /**
@@ -25,13 +30,18 @@ export async function get(req: Request, res: Response) {
  * @export
  * @param {Request} req
  * @param {Response} res
+ * @param {NextFunction} next
  */
-export async function getAll(req: Request, res: Response) {
-  const tournaments = await TournamentService.getAll();
+export async function getAll(req: Request, res: Response, next: NextFunction) {
+  try {
+    const tournaments = await TournamentService.getAll();
 
-  res.status(HttpStatus.OK).json({
-    data: tournaments
-  });
+    res.status(HttpStatus.OK).json({
+      data: tournaments
+    });
+  } catch (error) {
+    next();
+  }
 }
 
 /**
@@ -40,11 +50,16 @@ export async function getAll(req: Request, res: Response) {
  * @export
  * @param {Request} req
  * @param {Response} res
+ * @param {NextFunction} next
  */
-export async function create(req: Request, res: Response) {
-  const tournament = await TournamentService.create(req.body);
+export async function create(req: Request, res: Response, next: NextFunction) {
+  try {
+    const tournament = await TournamentService.create(req.body);
 
-  res.status(HttpStatus.OK).json({
-    data: tournament
-  });
+    res.status(HttpStatus.OK).json({
+      data: tournament
+    });
+  } catch (error) {
+    next();
+  }
 }
