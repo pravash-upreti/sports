@@ -1,10 +1,10 @@
 import Error from './Error';
 
 /**
- * @class CustomError
+ * @class ChessError
  * @extends {Error}
  */
-class CustomError extends Error {
+class ChessError extends Error {
   message: string;
 
   isCustom: boolean;
@@ -20,4 +20,4 @@ class CustomError extends Error {
   }
 }
 
-export default CustomError;
+export default ChessError;

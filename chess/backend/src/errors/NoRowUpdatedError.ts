@@ -1,12 +1,12 @@
 import * as HttpStatus from 'http-status-codes';
 
-import CustomError from './CustomError';
+import ChessError from './ChessError';
 
 /**
  * @class NoRowUpdatedError
- * @extends {CustomError}
+ * @extends {ChessError}
  */
-class NoRowUpdatedError extends CustomError {
+class NoRowUpdatedError extends ChessError {
   message: string;
 
   constructor(message: string) {
