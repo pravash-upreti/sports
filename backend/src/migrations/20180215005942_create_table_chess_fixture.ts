@@ -1,25 +1,25 @@
 import * as Knex from 'knex';
 
 export function up(knex: Knex) {
-  return knex.schema.createTable('fixture', table => {
+  return knex.schema.createTable('chess_fixture', table => {
     table.increments('id').primary();
 
     table
-      .integer('player_1_id')
+      .integer('team_1_id')
       .unsigned()
-      .references('player.id')
+      .references('team.id')
       .nullable();
 
     table
-      .integer('player_2_id')
+      .integer('team_2_id')
       .unsigned()
-      .references('player.id')
+      .references('team.id')
       .nullable();
 
     table
-      .integer('winner_player_id')
+      .integer('winner_team_id')
       .unsigned()
-      .references('player.id')
+      .references('team.id')
       .nullable();
 
     table
@@ -31,7 +31,7 @@ export function up(knex: Knex) {
     table
       .integer('winning_method_id')
       .unsigned()
-      .references('winning_method.id')
+      .references('chess_winning_method.id')
       .nullable();
 
     table
@@ -41,9 +41,9 @@ export function up(knex: Knex) {
       .notNullable();
 
     table
-      .integer('tournament_id')
+      .integer('tournament_category_id')
       .unsigned()
-      .references('tournament.id')
+      .references('tournament_category.id')
       .notNullable();
 
     table.date('fixture_date').notNullable();
@@ -53,5 +53,5 @@ export function up(knex: Knex) {
 }
 
 export function down(knex: Knex) {
-  return knex.schema.dropTable('fixture');
+  return knex.schema.dropTable('chess_fixture');
 }
