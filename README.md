@@ -22,26 +22,28 @@ LF Sports Management Website Development
 * Run the following command to install the npm packages:
 
   ```bash
-  docker-compose up sports_web_yarn chess_api_yarn
+  docker-compose up sports_web_yarn sports_api_yarn
   ```
 
 * Run the following command to run the latest database migration:
 
   ```bash
-  docker-compose up chess_db_migrate
+  docker-compose up sports_db_migrate
   ```
 
 * Run the following command to rollback the database migration:
 
   ```bash
-  docker-compose up chess_db_rollback
+  docker-compose up sports_db_rollback
   ```
 
 * Run the following command:
 
   ```bash
-  docker-compose up
+  docker-compose up sports_api sports_web
   ```
+
+  _**Note:** Running the command `docker-compose up` will also execute migration and rollback commands. Be careful :smile:_
 
 * Run the mentioned app ports in browser or terminal.
 
