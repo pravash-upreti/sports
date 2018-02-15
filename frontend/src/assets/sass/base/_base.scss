@@ -35,11 +35,6 @@ a{
 	text-decoration: none;
 	transition: color .2s;
 }
-a, span, strong {
-	&:after{
-		@extend %clearfix-none;
-	}
-}
 ul,ol{
 	list-style: none;
 }
