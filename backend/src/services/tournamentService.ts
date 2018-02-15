@@ -71,7 +71,7 @@ export async function create(params: object) {
  * @export
  * @param {number} id
  * @param {object} params
- * @returns {Tournament}
+ * @returns {object}
  * @throws {NotFoundError|NoRowUpdatedError|error}
  */
 export async function update(id: number, params: object) {
@@ -88,7 +88,9 @@ export async function update(id: number, params: object) {
       throw new NoRowUpdatedError('Unable to update the tournament info.');
     }
 
-    return updatedTournament;
+    return {
+      'message': 'Tournament updated successfully.'
+    };
   } catch (error) {
     throw error;
   }
