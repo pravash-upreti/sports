@@ -11,7 +11,11 @@ const paths = {
 
 // Webpack configuration
 module.exports = {
-  entry: path.join(paths.JS, 'index.js'),
+  entry: [
+    'webpack-dev-server/client?http://0.0.0.0:8080',
+    'webpack/hot/only-dev-server',
+    path.join(paths.JS, 'index.js')
+  ],
   output: {
     path: paths.DIST,
     filename: 'index.bundle.js',
