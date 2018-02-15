@@ -101,7 +101,7 @@ export async function update(id: number, params: object) {
  *
  * @export
  * @param {number} id
- * @returns {Tournament}
+ * @returns {object}
  * @throws {NotFoundError|NoRowUpdatedError|error}
  */
 export async function remove(id: number) {
@@ -118,7 +118,9 @@ export async function remove(id: number) {
       throw new NoRowUpdatedError('Unable to create a new tournament.');
     }
 
-    return deletedTournament;
+    return {
+      'message': 'Tournament deleted successfully.'
+    };
   } catch (error) {
     throw error;
   }
