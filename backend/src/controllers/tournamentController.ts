@@ -84,3 +84,24 @@ export async function update(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 }
+
+/**
+ * Delete or remove a new tournament.
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+export async function remove(req: Request, res: Response, next: NextFunction) {
+  try {
+    const tournamentId = req.params.id;
+    const tournament = await TournamentService.remove(tournamentId);
+
+    res.status(HttpStatus.OK).json({
+      data: tournament
+    });
+  } catch (error) {
+    next(error);
+  }
+}

@@ -93,3 +93,31 @@ export async function update(id: number, params: object) {
     throw error;
   }
 }
+
+/**
+ * Delete or remove a tournament.
+ *
+ * @export
+ * @param {number} id
+ * @returns {Tournament}
+ * @throws {NotFoundError|NoRowUpdatedError|error}
+ */
+export async function remove(id: number) {
+  try {
+    const tournament: Tournament = await findById(id);
+
+    if (!tournament) {
+      throw new NotFoundError('Tournament not found.');
+    }
+
+    const deletedTournament = await tournament.destroy();
+
+    if (!deletedTournament) {
+      throw new NoRowUpdatedError('Unable to create a new tournament.');
+    }
+
+    return deletedTournament;
+  } catch (error) {
+    throw error;
+  }
+}
