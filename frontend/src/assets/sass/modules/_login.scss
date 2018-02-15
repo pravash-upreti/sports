@@ -1,0 +1,91 @@
+$container-width: 720px;
+$input-width: 94%;
+$button-width: 100%;
+$input-font-size: $default-font-size;
+$button-font-size: $input-font-size + 4px;
+$input-border-width: 2px;
+$border-radius: 4px;
+
+$input-padding: 14px 20px;
+$button-padding: 10px 0;
+
+$leapfrog-green: darken($green, 15%);
+$submit-button-color: $leapfrog-green;
+$input-border-color: #e2dede;
+
+$input-border-style: solid;
+
+$input-border: $input-border-width $input-border-style $input-border-color; 
+
+%center-content {
+  text-align: center;
+}
+
+%container {
+  max-width: $container-width;
+  margin: 0 auto;
+}
+
+%login-container-content{
+  width: 50%;
+  margin: 0 auto;
+}
+
+// .login-outer-container {
+//   @extend %container;
+//   display: table;
+//   position: absolute;
+//   height: 100%;
+//   width: 100%;
+// }
+
+.login-inner-container {
+  @extend %center-content;
+  @extend %container;
+  margin-top: 20px;
+  // display: table-cell;
+  // vertical-align: middle;
+}
+
+.login-header {
+  @extend %login-container-content;
+  a {
+    img{
+      display: inline-block;
+      margin: auto;
+    }
+  }
+}
+
+%form-elements {
+  outline: none;
+  border: none;
+}
+
+.login-form {
+  @extend %login-container-content;
+  .input-group {
+    border: $input-border;
+    border-radius: $border-radius;
+  }
+  input {
+    @extend %form-elements;
+    width: $input-width;
+    display: inline-block;
+    font-size: $input-font-size;
+    padding: $input-padding;
+    &[type="email"] {
+      border-bottom: $input-border;      
+    }
+  }
+  button {
+    @extend %form-elements;
+    width: $button-width;
+    background-color: $submit-button-color;
+    color: $white;
+    font-size: $button-font-size;
+    margin-top: 20px;
+    padding: $button-padding;
+    border-radius: $border-radius;
+  }
+}
