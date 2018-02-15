@@ -63,3 +63,24 @@ export async function create(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 }
+
+/**
+ * Update a tournament information.
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+export async function update(req: Request, res: Response, next: NextFunction) {
+  try {
+    const tournamentId = req.params.id;
+    const tournament = await TournamentService.update(tournamentId, req.body);
+
+    res.status(HttpStatus.OK).json({
+      data: tournament
+    });
+  } catch (error) {
+    next(error);
+  }
+}

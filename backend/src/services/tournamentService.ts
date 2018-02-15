@@ -64,3 +64,32 @@ export async function create(params: object) {
     throw error;
   }
 }
+
+/**
+ * Update a tournament information.
+ *
+ * @export
+ * @param {number} id
+ * @param {object} params
+ * @returns {Tournament}
+ * @throws {NotFoundError|NoRowUpdatedError|error}
+ */
+export async function update(id: number, params: object) {
+  try {
+    const tournament: Tournament = await findById(id);
+
+    if (!tournament) {
+      throw new NotFoundError('Tournament not found.');
+    }
+
+    const updatedTournament = await tournament.save(params, { patch: true });
+
+    if (!updatedTournament) {
+      throw new NoRowUpdatedError('Unable to update the tournament info.');
+    }
+
+    return updatedTournament;
+  } catch (error) {
+    throw error;
+  }
+}
