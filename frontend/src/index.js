@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
 import React, { Component } from 'react';
-import MainComponent from './component/index';
+import MainComponent from './components/index';
 
 import '../public/css/style.css';
 

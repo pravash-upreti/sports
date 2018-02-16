@@ -4,9 +4,9 @@ import { Router, Route, Switch } from 'react-router';
 import HomePage from './user/HomePage';
 import LoginPage from './auth/LoginPage';
 
-import * as routes from '../constant/routes';
+import * as routes from '../constants/routes';
 
-import history from '../util/routerHistory';
+import history from '../utils/routerHistory';
 
 class Routes extends React.Component {
   render() {
@@ -14,7 +14,7 @@ class Routes extends React.Component {
       <Router history={history}>
         <Switch>
           <Route exact path={routes.ROOT} component={HomePage} />
-          <Route path="/home" component={HomePage} />
+          <Route exact path="/home" component={HomePage} />
           <Route exact path={routes.LOGIN} component={LoginPage} />          
         </Switch>
       </Router>
