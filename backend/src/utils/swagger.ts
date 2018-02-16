@@ -1,4 +1,5 @@
 // exception : For this package, always extract in this way
+import * as path from 'path';
 import swaggerJSDoc = require('swagger-jsdoc');
 
 /**
@@ -6,11 +7,11 @@ import swaggerJSDoc = require('swagger-jsdoc');
  */
 const definition = {
   info: {
-    title: "SPORTS",
-    version: "1.0.0",
-    description: "Sports Leapfrog"
+    title: process.env.APP_NAME,
+    version: process.env.APP_VERSION,
+    description: process.env.APP_DESCRIPTION
   },
-  host: `0.0.0.0:5000`,
+  host: `${process.env.APP_HOST}:${process.env.APP_PORT}`,
   basePath: '/api'
 };
 
@@ -22,7 +23,9 @@ const options = {
   swaggerDefinition: definition,
   // path to the API docs
   apis: [
-    __dirname + '/routes/routes.js'
+    path.join(__dirname, '/../../src/docs/*.js'),
+    path.join(__dirname, '/../../src/docs/*.yml'),
+    path.join(__dirname, '/../../src/docs/*.yaml')
   ]
 };
 

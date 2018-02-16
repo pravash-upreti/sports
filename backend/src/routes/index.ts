@@ -8,8 +8,8 @@ const router: Router = Router();
 
 router.get('/', (req, res) => {
   res.json({
-    app: req.app.locals.name,
-    apiVersion: req.app.locals.version
+    title: process.env.APP_NAME,
+    version: process.env.APP_VERSION,
   });
 });
 

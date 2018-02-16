@@ -1,7 +1,7 @@
 {
   "name": "sports-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "API for sports",
   "main": "index.js",
   "author": "",
   "license": "ISC",

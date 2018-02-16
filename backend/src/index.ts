@@ -1,10 +1,10 @@
 import * as cors from 'cors';
+import * as path from 'path';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
-import path = require('path');
 import routes from './routes';
 import config from './config/app';
 import logger from './utils/logger';
