@@ -18,6 +18,7 @@ module.exports = {
   output: {
     path: paths.DIST,
     filename: 'index.bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -61,6 +62,7 @@ module.exports = {
   // Dev server configuration
   // Now it uses our "src" folder as a starting point
   devServer: {
+    historyApiFallback: true,
     contentBase: paths.SRC,
   },
 };
