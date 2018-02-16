@@ -1,0 +1,17 @@
+swagger: "2.0"
+info:
+  title: Simple API overview
+  version: v2
+paths:
+  /:
+    get:
+      summary: Display basic information
+      description: Displays app name and version
+      produces:
+        - application/json
+      tags:
+        - Paths
+      responses:
+        200:
+          description: Working Perfect
+
