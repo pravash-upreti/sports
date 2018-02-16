@@ -1,4 +1,5 @@
 import * as cors from 'cors';
+import * as path from 'path';
 import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import * as express from 'express';
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', middlewares);
 app.use('/', routes);
+app.use(express.static(path.join(__dirname, '/../public')));
 
 app.use(genericErrorHandler);
 app.use(notFoundHandler);

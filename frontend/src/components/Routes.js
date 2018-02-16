@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router';
 
-import HomePage from './user/HomePage';
-import LoginPage from './auth/LoginPage';
+import Home from './user/';
+import Login from './auth/';
 
 import * as routes from '../constants/routes';
 
@@ -12,9 +12,9 @@ const Routes = () => {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path={routes.ROOT} component={HomePage} />
-        <Route exact path="/home" component={HomePage} />
-        <Route exact path={routes.LOGIN} component={LoginPage} />
+        <Route exact path={routes.ROOT} component={Home} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path={routes.LOGIN} component={Login} />
       </Switch>
     </Router>
   );

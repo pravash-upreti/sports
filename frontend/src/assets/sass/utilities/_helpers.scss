@@ -1,0 +1,22 @@
+// ==========================================================================
+// Helpers
+// Helpers classes such as object classes used for floating an element left and right,
+// text alignments etc. are included here.
+// Simple helper classes are generally referred using class selectors and their css properties
+// will have an !important property attached to it, so that a helper class cannot be overwritten.
+// Placeholders can also be included in the helper partial for these purposes.
+// ==========================================================================
+
+
+//vertical centering helpers
+
+%vertical-center-outer {
+  display: table;
+  position: absolute;
+}
+
+%vertical-center-inner {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
