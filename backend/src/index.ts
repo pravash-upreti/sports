@@ -4,6 +4,7 @@ import * as morgan from 'morgan';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
+import path = require('path');
 import routes from './routes';
 import config from './config/app';
 import logger from './utils/logger';
@@ -25,10 +26,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', middlewares);
 app.use('/', routes);
+app.use(express.static(path.join(__dirname, '/../public')));
 
 app.use(genericErrorHandler);
 app.use(notFoundHandler);
-app.use(express.static(__dirname + '/../public'));
 
 app.listen(parseInt(port, 10), host, () => {
   logger.info(`Server started at http://${host}:${port}`);

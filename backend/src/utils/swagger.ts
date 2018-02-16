@@ -6,9 +6,9 @@ import swaggerJSDoc = require('swagger-jsdoc');
  */
 const definition = {
   info: {
-    title: "process.env.APP_NAME",
-    version: "process.env.APP_VERSION",
-    description: "process.env.APP_DESCRIPTION"
+    title: "SPORTS",
+    version: "1.0.0",
+    description: "Sports Leapfrog"
   },
   host: `0.0.0.0:5000`,
   basePath: '/api'
