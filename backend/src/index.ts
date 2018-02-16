@@ -3,7 +3,6 @@ import * as helmet from 'helmet';
 import * as morgan from 'morgan';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import path from 'path';
 
 import routes from './routes';
 import config from './config/app';
