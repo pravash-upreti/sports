@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import '../public/css/style.css';
 import './assets/sass/style.scss';
 
-import logo from '../public/images/logo-transparent.png';
+import logo from '../public/images/sports-logo.png';
 
 export default class Hello extends Component {
   render() {

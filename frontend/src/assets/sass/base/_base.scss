@@ -22,12 +22,14 @@
 // Base Code
 html, body{
 	font-size: 100%;
+	padding: 0;
 }
 body{
 	-webkit-font-smoothing: antialiased;
 	color: $color-text;
 	font-family: $font-family--primary;
 	text-rendering: optimizeLegibility;
+	background-color: $default-page-background-color;
 }
 a{
 	outline: none;
