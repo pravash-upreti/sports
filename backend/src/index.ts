@@ -28,6 +28,7 @@ app.use('/', routes);
 
 app.use(genericErrorHandler);
 app.use(notFoundHandler);
+app.use(express.static(__dirname + '/../public'));
 
 app.listen(parseInt(port, 10), host, () => {
   logger.info(`Server started at http://${host}:${port}`);
