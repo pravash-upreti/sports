@@ -8,18 +8,16 @@ import * as routes from '../constants/routes';
 
 import history from '../utils/routerHistory';
 
-class Routes extends React.Component {
-  render() {
-    return (
-      <Router history={history}>
-        <Switch>
-          <Route exact path={routes.ROOT} component={HomePage} />
-          <Route exact path="/home" component={HomePage} />
-          <Route exact path={routes.LOGIN} component={LoginPage} />          
-        </Switch>
-      </Router>
-    );
-  }
+const Routes = () => {
+  return (
+    <Router history={history}>
+      <Switch>
+        <Route exact path={routes.ROOT} component={HomePage} />
+        <Route exact path="/home" component={HomePage} />
+        <Route exact path={routes.LOGIN} component={LoginPage} />
+      </Switch>
+    </Router>
+  );
 };
 
 export default Routes;
