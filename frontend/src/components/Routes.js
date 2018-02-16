@@ -13,7 +13,6 @@ const Routes = () => {
     <Router history={history}>
       <Switch>
         <Route exact path={routes.ROOT} component={Home} />
-        <Route exact path="/home" component={Home} />
         <Route exact path={routes.LOGIN} component={Login} />
       </Switch>
     </Router>

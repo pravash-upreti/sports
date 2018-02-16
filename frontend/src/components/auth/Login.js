@@ -8,13 +8,13 @@ const Login = (props) => {
       <div className="login-inner-container">
         <div className="login-header">
           <a href="#">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt=" Sports logo" />
           </a>
         </div>
         <form className="login-form">
           <div className="input-group">
             <input type="email" placeholder="EMAIL" name="email" required={true} />
-            <input type="password" placeholder="PASSWORD" name="psw" required={true} />
+            <input type="password" placeholder="PASSWORD" name="password" required={true} />
           </div>
           <button type="submit">SIGN IN</button>
         </form>
