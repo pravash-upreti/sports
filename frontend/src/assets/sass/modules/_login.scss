@@ -1,20 +1,12 @@
-.main-container {
-  @extend %container;
-}
-
 .login-outer-container {
-  @extend %container;  
-  margin: 0 auto;
-  display: table;
-  position: absolute; 
+  @extend %container;
+  @extend %vertical-center-outer;
+  margin: 0 auto; 
 }
 
 .login-inner-container {
+  @extend %vertical-center-inner;
   @extend %center-content;
-  @extend %container;
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
 }
 
 .login-header {
@@ -37,12 +29,10 @@
     border: $input-border;
     border-radius: $login-border-radius;
     border-color: $input-border-color;
-    // height: 124px;
     padding: 1px;
     input {
       @extend %login-form-elements;
       width: $input-width;
-      // height: 50%;
       display: inline-block;
       font-size: $input-font-size;
       font-family: $login-font-family;
@@ -70,6 +60,5 @@
     margin-top: 26px;
     padding: $button-padding;
     border-radius: $login-border-radius;
-    // height: 66px;
   }
 }
