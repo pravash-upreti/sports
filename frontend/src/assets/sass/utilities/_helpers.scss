@@ -20,3 +20,13 @@
   vertical-align: middle;
   text-align: center;
 }
+
+%round-element {
+  border-radius: 50%;
+}
+
+%inline-after {
+  &::after {// override global clearfix
+      display: inline;
+  }
+}
