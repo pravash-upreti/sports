@@ -14,7 +14,7 @@ import * as TournamentService from '../services/tournamentService';
 export async function get(req: Request, res: Response, next: NextFunction) {
   try {
     const tournamentId = req.params.id;
-    const tournament = await TournamentService.findById(tournamentId);
+    const tournament = await TournamentService.get(tournamentId);
 
     res.status(HttpStatus.OK).json({
       data: tournament
