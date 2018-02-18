@@ -14,11 +14,9 @@ import * as TournamentService from '../services/tournamentService';
 export async function get(req: Request, res: Response, next: NextFunction) {
   try {
     const tournamentId = req.params.id;
-    const tournament = await TournamentService.get(tournamentId);
+    const response = await TournamentService.get(tournamentId);
 
-    res.status(HttpStatus.OK).json({
-      data: tournament
-    });
+    res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }
@@ -34,11 +32,9 @@ export async function get(req: Request, res: Response, next: NextFunction) {
  */
 export async function getAll(req: Request, res: Response, next: NextFunction) {
   try {
-    const tournaments = await TournamentService.getAll();
+    const response = await TournamentService.getAll();
 
-    res.status(HttpStatus.OK).json({
-      data: tournaments
-    });
+    res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }
@@ -54,11 +50,9 @@ export async function getAll(req: Request, res: Response, next: NextFunction) {
  */
 export async function create(req: Request, res: Response, next: NextFunction) {
   try {
-    const tournament = await TournamentService.create(req.body);
+    const response = await TournamentService.create(req.body);
 
-    res.status(HttpStatus.OK).json({
-      data: tournament
-    });
+    res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }
@@ -75,11 +69,9 @@ export async function create(req: Request, res: Response, next: NextFunction) {
 export async function update(req: Request, res: Response, next: NextFunction) {
   try {
     const tournamentId = req.params.id;
-    const tournament = await TournamentService.update(tournamentId, req.body);
+    const response = await TournamentService.update(tournamentId, req.body);
 
-    res.status(HttpStatus.OK).json({
-      data: tournament
-    });
+    res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }
@@ -96,11 +88,9 @@ export async function update(req: Request, res: Response, next: NextFunction) {
 export async function remove(req: Request, res: Response, next: NextFunction) {
   try {
     const tournamentId = req.params.id;
-    const tournament = await TournamentService.remove(tournamentId);
+    const response = await TournamentService.remove(tournamentId);
 
-    res.status(HttpStatus.OK).json({
-      data: tournament
-    });
+    res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }

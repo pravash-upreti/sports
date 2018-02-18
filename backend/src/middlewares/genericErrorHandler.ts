@@ -19,7 +19,7 @@ export default function genericErrorHandler(err: any, req: Request, res: Respons
   if (err.isJoi) {
     res.status(err.output.statusCode).json({
       code: HttpStatus.BAD_REQUEST,
-      message: HttpStatus.getStatusText(HttpStatus.BAD_REQUEST),
+      status: HttpStatus.getStatusText(HttpStatus.BAD_REQUEST),
       details:
         err.details &&
         err.details.map((error: any) => {
@@ -37,6 +37,7 @@ export default function genericErrorHandler(err: any, req: Request, res: Respons
     res.status(err.output.statusCode).json({
       error: {
         code: err.output.statusCode,
+        status: HttpStatus.getStatusText(err.output.statusCode),
         message: err.output.payload.message || err.output.payload.error
       }
     });
@@ -48,7 +49,8 @@ export default function genericErrorHandler(err: any, req: Request, res: Respons
     res.status(err.statusCode).json({
       error: {
         code: err.statusCode,
-        message: err.message || err.error
+        message: err.message || err.error,
+        status: HttpStatus.getStatusText(err.statusCode)
       }
     });
 
@@ -58,6 +60,7 @@ export default function genericErrorHandler(err: any, req: Request, res: Respons
   res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
     error: {
       code: HttpStatus.INTERNAL_SERVER_ERROR,
+      status: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR),
       message: HttpStatus.getStatusText(HttpStatus.INTERNAL_SERVER_ERROR)
     }
   });
