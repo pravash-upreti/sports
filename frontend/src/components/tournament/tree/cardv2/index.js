@@ -6,7 +6,7 @@ import MatchTime from './MatchTime';
 const Card = (props) => {
   return (
     <div className="card">
-      <MatchTime />
+      <MatchTime {...props.matchTime}/>
       <Player {...props.playerUp} />
       <Player {...props.playerDown} />
     </div>

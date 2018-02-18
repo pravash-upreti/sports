@@ -1,16 +1,9 @@
 import React from 'react';
 
-import LayerHeader from './LayerHeader';
 import PlayoffRow from './PlayoffRow';
+import LayerHeader from './LayerHeader';
 
-const getRowsFromFixtures = (fixtures, pairPerRow) => {
-  const numRows = Math.ceil(fixtures.length / pairPerRow);
-  const rowArr = [];
-  for(let i = 0; i < numRows; i++) {
-    rowArr[i] = fixtures.slice(i * pairPerRow, (i+1) * pairPerRow);
-  }
-  return rowArr;
-}
+import getRowsFromFixtures from '../../../../utils/tournament/getRowsFromFixtures';
 
 const Playoff = (props) => {
   let playoffRows = getRowsFromFixtures(props.fixtures, (props.imgPerRow / 2));

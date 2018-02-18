@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Photo from '../cardv2/Photo';
 
 const Winner = (props) => {

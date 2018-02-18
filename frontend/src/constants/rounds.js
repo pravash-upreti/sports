@@ -12,6 +12,10 @@ export const FINAL = {
   numMatches: 1,
   fixtures: [
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -29,6 +33,10 @@ export const SEMI_FINAL = {
   numMatches: 2,
   fixtures: [
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -39,6 +47,10 @@ export const SEMI_FINAL = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -56,6 +68,10 @@ export const QUARTER_FINAL = {
   numMatches: 4,
   fixtures: [
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -66,6 +82,10 @@ export const QUARTER_FINAL = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -76,6 +96,10 @@ export const QUARTER_FINAL = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -86,6 +110,10 @@ export const QUARTER_FINAL = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -103,6 +131,10 @@ export const ROUND_OF_SIXTEEN = {
   numMatches: 8,
   fixtures: [
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -113,6 +145,10 @@ export const ROUND_OF_SIXTEEN = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -123,6 +159,10 @@ export const ROUND_OF_SIXTEEN = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -133,6 +173,10 @@ export const ROUND_OF_SIXTEEN = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -143,6 +187,10 @@ export const ROUND_OF_SIXTEEN = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -153,6 +201,10 @@ export const ROUND_OF_SIXTEEN = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -163,6 +215,10 @@ export const ROUND_OF_SIXTEEN = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -173,6 +229,10 @@ export const ROUND_OF_SIXTEEN = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -192,6 +252,10 @@ export const PLAYOFFS = {
   imgPerRow: 12,
   fixtures: [
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -202,6 +266,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -212,6 +280,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -222,6 +294,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -232,6 +308,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -242,6 +322,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -252,6 +336,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -262,6 +350,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -272,6 +364,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -282,6 +378,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -292,6 +392,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -302,6 +406,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -312,6 +420,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -322,6 +434,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -332,6 +448,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -342,6 +462,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -352,6 +476,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -362,6 +490,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -372,6 +504,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -382,6 +518,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -392,6 +532,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -402,6 +546,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -412,6 +560,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg
@@ -422,6 +574,10 @@ export const PLAYOFFS = {
       }
     },
     {
+      matchTime: {
+        day: 'FEB 23',
+        time: '11:30 AM',
+      },
       playerUp: {
         name: 'SAGUN',
         img: playerUpImg

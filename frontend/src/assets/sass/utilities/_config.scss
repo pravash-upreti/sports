@@ -138,6 +138,18 @@ $submit-button-color: #2ECC71;
 // tournament-tree config
 $tree-font-family: "Montserrat";
 
+$tree-outer-width: 1920px;
+$tree-outer-height: 2560px;
+$tree-outer-padding-top: 116px;
+$tree-outer-padding-left: 260px;
+$tree-outer-padding-right: 260px;
+$tree-outer-padding-bottom: 98px;
+$tree-background-color: #F7F6F5;
+
+$tree-inner-width: 1402px;
+$tree-inner-height: 2346px;
+$tree-inner-child-left-margin: -20px;
+
 // tournament-tree card config
 $card-width: 228px;
 $card-height: 178px;
@@ -180,3 +192,16 @@ $layer-title-line-height: 18px;
 $layer-title-font-size: 18px;
 $layer-title-vertical-padding: ($layer-header-height - $layer-title-line-height) / 2;
 $layer-title-horizontal-padding: 24px;
+
+// layer heights
+$winner-container-height: 338px;
+
+$final-container-height: 314px;
+
+$semi-final-container-height: 306px;
+
+$quarter-final-container-height: 322px;
+
+$round-of-sixteen-container-height: 540px;
+
+$playoff-container-height: 526px;

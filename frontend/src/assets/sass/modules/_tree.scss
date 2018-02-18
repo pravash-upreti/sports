@@ -1,26 +1,3 @@
-$tree-background-color: #F7F6F5;
-$tree-outer-width: 1920px;
-$tree-outer-height: 2560px;
-$tree-outer-padding-top: 116px;
-$tree-outer-padding-bottom: 98px;
-$tree-outer-padding-left: 260px;
-$tree-outer-padding-right: 260px;
-
-$tree-inner-width: 1402px;
-$tree-inner-height: 2346px;
-
-$winner-container-height: 338px;
-
-$final-container-height: 314px;
-
-$semi-final-container-height: 306px;
-
-$quarter-final-container-height: 322px;
-
-$round-of-sixteen-container-height: 540px;
-
-$playoff-container-height: 526px;
-
 .tree-outer-container {
   background-color: $tree-background-color;
   width: $tree-outer-width;
@@ -33,7 +10,7 @@ $playoff-container-height: 526px;
   width: $tree-inner-width;
   height: $tree-inner-height;
   & > div:not(.playoff-container) {
-    margin-left: -20px;
+    margin-left: $tree-inner-child-left-margin;
   }
 }
 
@@ -165,7 +142,7 @@ $playoff-container-height: 526px;
     .photo-container-medium {
       @extend %inline-after;
       display: inline-block;
-      margin: 0 19px;
+      margin: 0 18px;
     }
   }
 }
