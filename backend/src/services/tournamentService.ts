@@ -1,5 +1,7 @@
 import { Collection } from 'bookshelf';
 
+import { tournamentMessages } from '../constants/messages';
+
 import Tournament from '../models/tournament';
 import NotFoundError from '../errors/NotFoundError';
 import NoRowUpdatedError from '../errors/NotFoundError';
@@ -12,12 +14,33 @@ import NoRowUpdatedError from '../errors/NotFoundError';
  * @returns {Tournament}
  * @throws {NotFoundError|error}
  */
-export async function findById(id: number) {
+async function findById(id: number) {
   try {
     const tournament: Tournament = await new Tournament({ id }).fetch();
 
     if (!tournament) {
-      throw new NotFoundError('Tournament not found.');
+      throw new NotFoundError(tournamentMessages.notFound);
+    }
+
+    return tournament;
+  } catch (error) {
+    throw error;
+  }
+}
+
+/** Fetch a tournament information.
+ *
+ * @export
+ * @param {number} id
+ * @returns {Tournament}
+ * @throws {NotFoundError|error}
+ */
+export async function get(id: number) {
+  try {
+    const tournament: Tournament = await new Tournament({ id }).fetch();
+
+    if (!tournament) {
+      throw new NotFoundError(tournamentMessages.notFound);
     }
 
     return tournament;
@@ -56,10 +79,12 @@ export async function create(params: object) {
     const tournament: Tournament = await new Tournament(params).save();
 
     if (!tournament) {
-      throw new NoRowUpdatedError('Unable to create a new tournament.');
+      throw new NoRowUpdatedError(tournamentMessages.unableToCreate);
     }
 
-    return tournament;
+    return {
+      message: tournamentMessages.created
+    };
   } catch (error) {
     throw error;
   }
@@ -79,17 +104,17 @@ export async function update(id: number, params: object) {
     const tournament: Tournament = await findById(id);
 
     if (!tournament) {
-      throw new NotFoundError('Tournament not found.');
+      throw new NotFoundError(tournamentMessages.notFound);
     }
 
     const updatedTournament = await tournament.save(params, { patch: true });
 
     if (!updatedTournament) {
-      throw new NoRowUpdatedError('Unable to update the tournament info.');
+      throw new NoRowUpdatedError(tournamentMessages.unableToUpdate);
     }
 
     return {
-      'message': 'Tournament updated successfully.'
+      message: tournamentMessages.updated
     };
   } catch (error) {
     throw error;
@@ -109,17 +134,17 @@ export async function remove(id: number) {
     const tournament: Tournament = await findById(id);
 
     if (!tournament) {
-      throw new NotFoundError('Tournament not found.');
+      throw new NotFoundError(tournamentMessages.notFound);
     }
 
     const deletedTournament = await tournament.destroy();
 
     if (!deletedTournament) {
-      throw new NoRowUpdatedError('Unable to create a new tournament.');
+      throw new NoRowUpdatedError(tournamentMessages.unableToRemove);
     }
 
     return {
-      'message': 'Tournament deleted successfully.'
+      message: tournamentMessages.removed
     };
   } catch (error) {
     throw error;
