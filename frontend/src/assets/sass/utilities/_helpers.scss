@@ -31,8 +31,15 @@
   }
 }
 
-%center-content {
+%center-text-content {
   text-align: center;
+}
+
+%center-all-content {
+  * {
+    margin: 0 auto;
+    text-align: center;
+  }
 }
 
 %container {

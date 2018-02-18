@@ -6,7 +6,7 @@
 
 .login-inner-container {
   @extend %vertical-center-inner;
-  @extend %center-content;
+  @extend %center-text-content;
 }
 
 .login-header {
@@ -49,7 +49,7 @@
   }
   button {
     @extend %login-form-elements;
-    @extend %center-content;
+    @extend %center-text-content;
     width: $button-width;
     background-color: $submit-button-color;
     color: $white;

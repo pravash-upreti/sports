@@ -37,7 +37,7 @@
   font-size: $player-font-size;
   color: $player-color;
   line-height: $player-line-height;
-  .photo-container {
+  .photo-container-small {
     float: left;
     margin: $photo-container-vertical-margin 0;
     margin-left: $photo-container-left-margin; 
@@ -57,16 +57,14 @@
   @include player-side(right);
 }
 
-.photo-container {
-  @extend %round-element;
-  width: $photo-container-width;
-  text-align: center;
-  padding: 2px;
-  background: $photo-container-background-color;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.2);
-  img {
-    @extend %round-element;
-    display: inline-block;
-    margin: auto;
-  }
+.photo-container-small {
+  @include photo-container(small);
+}
+
+.photo-container-medium {
+  @include photo-container(medium);
+}
+
+.photo-container-large {
+  @include photo-container(large);
 }

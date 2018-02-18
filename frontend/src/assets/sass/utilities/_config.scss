@@ -102,12 +102,18 @@ $color-link: $blue;
 //Background Color
 $default-page-background-color: #F7F6F5;
 
+// some font weights
+$Bold: 700;
+$Semibold: 600;
+$Medium: 500;
+$Regular: 400;
+
 // login page config
 
 //Login form
 $login-border-radius: 3px;
 $login-font-family: "Montserrat";
-$login-font-weight: 600;
+$login-font-weight: $Semibold;
 
 //Form inputs
 $input-width: 100%;
@@ -129,7 +135,10 @@ $submit-button-color: #2ECC71;
 
 // tournament config
 
-// tournament card config
+// tournament-tree config
+$tree-font-family: "Montserrat";
+
+// tournament-tree card config
 $card-width: 228px;
 $card-height: 178px;
 $card-border-radius: 3px;
@@ -148,16 +157,26 @@ $player-width: 100%;
 $player-border-width: 1px;
 $player-height: (($card-height - $date-time-height) / 2) - $player-border-width;
 $player-font-family: "Montserrat";
-$player-font-weight: 400;
+$player-font-weight: $Regular;
 $player-font-size: 18px;
 $player-line-height: 22px;
 $player-color: #333333;
 
-$photo-container-width: 50px;
-$photo-container-height: 50px;
-$photo-container-vertical-margin: ($player-height - $photo-container-height) / 2;
-$photo-container-left-margin: -($photo-container-width / 2);
+$photo-container-small-width: 52px;
+$photo-container-medium-width: 82px;
+$photo-container-large-width: 142px;
 $photo-container-background-color: $white;
+$photo-container-left-margin: -($photo-container-small-width / 2);
+$photo-container-vertical-margin: ($player-height - $photo-container-small-width) / 2;
 
 $player-name-width: 186px;
 $player-name-vertical-padding: ($player-height - $player-line-height) / 2;
+
+// tree layers config
+
+// layer header config
+$layer-header-height: 42px;
+$layer-title-line-height: 18px;
+$layer-title-font-size: 18px;
+$layer-title-vertical-padding: ($layer-header-height - $layer-title-line-height) / 2;
+$layer-title-horizontal-padding: 24px;

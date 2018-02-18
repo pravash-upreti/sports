@@ -1,0 +1,78 @@
+$tree-outer-width: 1920px;
+$tree-outer-height: 2560px;
+$tree-outer-padding-top: 116px;
+$tree-outer-padding-bottom: 98px;
+$tree-outer-padding-left: 260px;
+$tree-outer-padding-right: 260px;
+
+$tree-inner-width: 1402px;
+$tree-inner-height: 2346px;
+
+.tree-outer-container {
+  background: red;
+  width: $tree-outer-width;
+  height: $tree-outer-height;
+  padding: $tree-outer-padding-top $tree-outer-padding-right $tree-outer-padding-bottom $tree-outer-padding-left;
+}
+
+.tree-inner-container {
+  background: blue;
+  width: $tree-inner-width;
+  height: $tree-inner-height;
+}
+
+.layer-header-container {
+  @extend %center-all-content;
+  // @extend %center-text-content;
+  font-family: $tree-font-family;
+  background: $white;
+  width: 100%;
+  height: $layer-header-height;
+  position: relative;
+  .layer-header-upper {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    height: 50%;
+  }
+  .layer-title {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    @include transform(translateX(-50%) translateY(-50%));
+    margin: 0 auto;
+    font-size: $layer-title-font-size;
+    line-height: $layer-title-line-height;
+    font-weight: $Regular;
+    color: #828282;
+    background-color: red;
+    height: 100%;
+    padding: $layer-title-vertical-padding $layer-title-horizontal-padding;
+  }
+}
+
+.winner-container {
+  @extend %center-all-content;
+  width: 100%;
+  background: yellow;
+  text-align: center;
+  font-family: $tree-font-family;
+  .winner-name {
+    font-size: 30px;
+    line-height: 36px;
+    font-weight: $Bold;
+    color: #333333;
+    text-align: center;
+  }
+  .winner-title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: $Regular;
+    color: #333333;
+    text-align: center;
+  }
+}
+
+.final-container {
+  @extend %center-all-content;
+}
