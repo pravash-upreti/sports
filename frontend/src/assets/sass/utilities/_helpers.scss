@@ -30,3 +30,25 @@
       display: inline;
   }
 }
+
+%center-content {
+  text-align: center;
+}
+
+%container {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+// login page helpers
+%login-container-content{
+  width: 425px;
+  margin: 0 auto;
+}
+
+%login-form-elements {
+  outline: none;
+  border: none;
+}

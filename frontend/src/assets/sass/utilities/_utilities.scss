@@ -2,3 +2,19 @@
 // Utilities
 // Define functions and mixins at this partial.
 // ==========================================================================
+
+// tournament card utilities
+@mixin player-side($side: left) {
+  float: $side;
+  width: 50%;
+  .photo-container {
+    float: $side;
+  }
+  p {
+    @if $side==left {
+      float: right;      
+    } @else {
+      float: left;
+    }
+  }
+}

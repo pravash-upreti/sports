@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import Card from './cardv2/index';
 
@@ -17,9 +17,11 @@ const Tree = (props) => {
     }
   };
   return (
-    <Fragment>
-      <Card {...players}/>
-    </Fragment>
+    <div className="tree-container">
+      <div className="main-container">
+        <Card {...players}/>      
+      </div>
+    </div>
   )
 }
 
