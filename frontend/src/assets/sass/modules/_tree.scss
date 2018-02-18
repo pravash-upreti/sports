@@ -10,10 +10,15 @@ $tree-inner-width: 1402px;
 $tree-inner-height: 2346px;
 
 $winner-container-height: 338px;
+
 $final-container-height: 314px;
+
 $semi-final-container-height: 306px;
+
 $quarter-final-container-height: 322px;
+
 $round-of-sixteen-container-height: 540px;
+
 $playoff-container-height: 526px;
 
 .tree-outer-container {
@@ -27,11 +32,13 @@ $playoff-container-height: 526px;
 .tree-inner-container {
   width: $tree-inner-width;
   height: $tree-inner-height;
+  & > div:not(.playoff-container) {
+    margin-left: -20px;
+  }
 }
 
 .layer-header-container {
   @extend %center-all-content;
-  // @extend %center-text-content;
   font-family: $tree-font-family;
   background: $tree-background-color;
   width: 100%;
@@ -68,6 +75,7 @@ $playoff-container-height: 526px;
   text-align: center;
   font-family: $tree-font-family;
   .winner-name {
+    margin-top: 14px;
     font-size: 30px;
     line-height: 36px;
     font-weight: $Bold;
@@ -139,6 +147,7 @@ $playoff-container-height: 526px;
 
 .playoff-row {
   width: 100%;
+  margin-left: 0;
   margin-top: 36px;
   div:first-child{
     div:first-child {
