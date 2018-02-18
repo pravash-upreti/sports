@@ -23,6 +23,7 @@
 html, body{
 	font-size: 100%;
 }
+
 body{
 	-webkit-font-smoothing: antialiased;
 	color: $color-text;
@@ -30,28 +31,35 @@ body{
 	text-rendering: optimizeLegibility;
 	background-color: $default-page-background-color;
 }
+
 a{
 	outline: none;
 	color: $color-link;
 	text-decoration: none;
 	transition: color .2s;
 }
+
 ul,ol{
 	list-style: none;
 }
+
 h1,h2,h3,h4,h5,h6{
 	font-family: $font-family--primary;
 	margin: 0;
 }
+
 h1{
 	font-size: $head1-font-size;
 }
+
 h2{
 	font-size: $head2-font-size;
 }
+
 h3{
 	font-size: $head3-font-size;
 }
+
 img{
 	max-width: 100%;
 	vertical-align: top;
