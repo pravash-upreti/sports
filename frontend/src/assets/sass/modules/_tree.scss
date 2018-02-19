@@ -9,9 +9,6 @@
 .tree-inner-container {
   width: $tree-inner-width;
   height: $tree-inner-height;
-  & > div:not(.playoff-container) {
-    margin-left: $tree-inner-child-left-margin;
-  }
 }
 
 .layer-header-container {
