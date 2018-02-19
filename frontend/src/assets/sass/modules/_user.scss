@@ -1,0 +1,39 @@
+.user-left-container {
+    @extend %content-left;
+    width: 550px;
+}
+
+.user-top-left-container {
+    margin: 20px 0px;
+}
+
+.user-title-container {
+    text-align: center;
+    font-family: "Montserrat";
+}
+
+.title {
+    padding: 20px 0px;
+    color: #4F4F4F;
+    font-style: "regular";
+    font-size: 39px;
+    line-height: 38px;
+}
+
+.user-bottomLeft-container {
+    margin: 20px 0px;
+}
+
+.user-right-container {
+    @extend %content-right;
+    padding: 20px;
+    width: 550px;
+}
+
+.date {
+    color: #2ECC71;
+    font-style: "semi-bold";
+    font-size: 36px;
+    line-height: 35px;
+    padding: 20px 0px;
+}

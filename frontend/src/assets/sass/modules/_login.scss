@@ -1,7 +1,7 @@
 .login-outer-container {
   @extend %container;
   @extend %vertical-center-outer;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .login-inner-container {
@@ -40,7 +40,7 @@
       line-height: $input-line-height;
       padding: $input-padding;
       &[type="email"] {
-        border-bottom: $input-border;      
+        border-bottom: $input-border;
       }
       &::placeholder {
         color: $input-place-holder-color;

@@ -6,17 +6,14 @@
 // will have an !important property attached to it, so that a helper class cannot be overwritten.
 // Placeholders can also be included in the helper partial for these purposes.
 // ==========================================================================
-
-
 //vertical centering helpers
-
 %vertical-center-outer {
-  display: table;
-  position: absolute;
+    display: table;
+    position: absolute;
 }
 
 %vertical-center-inner {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
 }

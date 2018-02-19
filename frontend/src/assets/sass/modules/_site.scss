@@ -23,6 +23,17 @@ $button-line-height: 29px;
 $button-padding: 10px 0;
 $submit-button-color: #2ECC71;
 
+//Logo
+$logo-text-separation-border-color: #E5E5E5;
+$logo-text-separation-border-style: solid;
+
+//Header
+$header-line-height: 27px;
+$header-font-size: 22px;
+$header-color: #737373;
+$header-width: 100px;
+$header-padding: 10px;
+
 //placeholder classes
 %center-content {
   text-align: center;
@@ -35,7 +46,7 @@ $submit-button-color: #2ECC71;
   height: 100%;
 }
 
-%login-container-content{
+%login-container-content {
   width: 425px;
   margin: 0 auto;
 }
@@ -43,4 +54,30 @@ $submit-button-color: #2ECC71;
 %login-form-elements {
   outline: none;
   border: none;
+}
+
+%header-container {
+  margin: 0 auto; // text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+%logo {
+  display: inline-block;
+  margin: auto;
+  width: 272px;
+  height: 100%;
+}
+
+%header-container-content {
+  width: 500px;
+  margin: 0 auto;
+}
+
+%content-left {
+  float: left;
+}
+
+%content-right {
+  float: right;
 }
