@@ -1,8 +1,9 @@
 import React from 'react';
 
 import LayerHeader from './LayerHeader';
-import PlayerPhoto from '../cardv2/PlayerPhoto';
+import PlayerPhoto from '../treeCard/PlayerPhoto';
 
+// Todo: Remove this function when data is dynamic
 const getImagesFromFixtures = (fixtures) => {
   let imgArr = [];
   fixtures && fixtures.map((fixture) => {
