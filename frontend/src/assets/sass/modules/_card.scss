@@ -1,45 +1,47 @@
 .card {
   width: $card-width;
   height: $card-height;
+  display: inline-block;
+  box-shadow: $card-shadow;
   border-radius: $card-border-radius;
   background-color: $card-background-color;
-  box-shadow: $card-shadow;
-  display: inline-block;
 }
 
 .date-time-container {
+  text-align: center;
   width: $date-time-width;
   height: $date-time-height;
-  background-color: $date-time-background-color;
-  text-align: center;
   font-size: $date-time-font-size;
   line-height: $date-time-line-height;
-  padding: $date-time-vertical-padding 0;
-  border-radius: $card-border-radius $card-border-radius;
   font-family: $date-time-font-family;
+  padding: $date-time-vertical-padding 0;
+  background-color: $date-time-background-color;
+  border-radius: $card-border-radius $card-border-radius;
 
   .day {
     @extend %inline-after;
+
     font-weight: 700;
     color: #737373;
   }
 
   .time {
     @extend %inline-after;
+    
     font-weight: 500;
     color: #828282;
   }
 }
 
 .player {
-  border-top: $player-border-width solid #E8E8E8;    
   width: $player-width;
+  color: $player-color;
   height: $player-height;
+  font-size: $player-font-size;
   font-family: $player-font-family;
   font-weight: $player-font-weight;
-  font-size: $player-font-size;
-  color: $player-color;
   line-height: $player-line-height;
+  border-top: $player-border-width solid #E8E8E8;    
 
   .photo-container-small {
     float: left;
@@ -47,9 +49,9 @@
   }
   
   .player-name {
-    padding: $player-name-vertical-padding 0px;
-    width: $player-name-width;
     float: right;
+    width: $player-name-width;
+    padding: $player-name-vertical-padding 0px;
   }
 }
 

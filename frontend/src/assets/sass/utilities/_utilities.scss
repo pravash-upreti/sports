@@ -5,17 +5,17 @@
 
 // general mixins
 @mixin transform($transformations: none) {
-  -webkit-transform: $transformations;
-  -moz-transform: $transformations;
+  transform: $transformations;
   -o-transform: $transformations;
   -ms-transform: $transformations;
-  transform: $transformations;
+  -moz-transform: $transformations;
+  -webkit-transform: $transformations;
 }
 
 // tournament card utilities
 @mixin player-side($side: left) {
-  float: $side;
   width: 50%;
+  float: $side;
 
   .photo-container {
     float: $side;
@@ -45,12 +45,13 @@
   }
 
   text-align: center;
-  background: $photo-container-background-color;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.2);
+  background: $photo-container-background-color;
   
   img {
     @extend %round-element;
-    display: inline-block;
+    
     margin: auto;
+    display: inline-block;
   }
 }

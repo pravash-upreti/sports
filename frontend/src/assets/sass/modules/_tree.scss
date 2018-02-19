@@ -1,9 +1,9 @@
 .tree-outer-container {
-  background-color: $tree-background-color;
+  margin: 0 auto;
   width: $tree-outer-width;
   height: $tree-outer-height;
+  background-color: $tree-background-color;
   padding: $tree-outer-padding-top $tree-outer-padding-right $tree-outer-padding-bottom $tree-outer-padding-left;
-  margin: 0 auto;
 }
 
 .tree-inner-container {
@@ -13,66 +13,69 @@
 
 .layer-header-container {
   @extend %center-all-content;
+
+  width: 100%;
+  position: relative;
+  height: $layer-header-height;
   font-family: $tree-font-family;
   background: $tree-background-color;
-  width: 100%;
-  height: $layer-header-height;
-  position: relative;
 
   .layer-header-upper {
-    width: 1260px;
-    border: none;
-    border-bottom: 1px solid #E0E0E0;
     height: 50%;
+    border: none;
+    width: 1260px;
+    border-bottom: 1px solid #E0E0E0;
   }
 
   .layer-title {
-    position: absolute;
-    left: 50%;
-    top: 50%;
     @include transform(translateX(-50%) translateY(-50%));
+
+    top: 50%;
+    left: 50%;
+    height: 100%;
     margin: 0 auto;
+    color: #828282;
+    position: absolute;
+    font-weight: $regular;
+    background-color: inherit;
     font-size: $layer-title-font-size;
     line-height: $layer-title-line-height;
-    font-weight: $Regular;
-    color: #828282;
-    background-color: inherit;
-    height: 100%;
     padding: $layer-title-vertical-padding $layer-title-horizontal-padding;
   }
 }
 
 .winner-container {
-  @extend %center-all-content;
   width: 100%;
-  height: $winner-container-height;
   padding-top: 58px;
-  padding-bottom: 66px;
   text-align: center;
+  padding-bottom: 66px;
+  @extend %center-all-content;
+  height: $winner-container-height;
   font-family: $tree-font-family;
 
   .winner-name {
-    margin-top: 14px;
     font-size: 30px;
-    line-height: 36px;
-    font-weight: $Bold;
     color: #333333;
+    margin-top: 14px;
+    line-height: 36px;
+    font-weight: $bold;
     text-align: center;
   }
 
   .winner-title {
     font-size: 20px;
-    line-height: 24px;
-    font-weight: $Regular;
     color: #333333;
+    line-height: 24px;
     text-align: center;
+    font-weight: $regular;
   }
 }
 
 .final-container {
   @extend %center-all-content;
-  height: $final-container-height;
+
   padding-bottom: 44px;
+  height: $final-container-height;
   
   .layer-header-container {
     margin-bottom: 46px;
@@ -81,8 +84,9 @@
 
 .semi-final-container {
   @extend %center-all-content;
-  height: $semi-final-container-height;
+
   padding-bottom: 56px;
+  height: $semi-final-container-height;
   
   .card {
     margin: 0 40px;
@@ -95,8 +99,9 @@
 
 .quarter-final-container {
   @extend %center-all-content;
-  height: $quarter-final-container-height;
+
   padding-bottom: 56px;
+  height: $quarter-final-container-height;
   
   .card {
     margin: 0 40px;
@@ -108,9 +113,9 @@
 }
 
 .round-of-sixteen-container {
+  padding-bottom: 18px;
   @extend %center-all-content;
   height: $round-of-sixteen-container-height;
-  padding-bottom: 18px;
 
   .card {
     margin: 0 40px;
@@ -124,6 +129,7 @@
 
 .playoff-container {
   @extend %center-all-content;
+  
   height: $playoff-container-height;
 
   .layer-header-container {

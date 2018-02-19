@@ -5,7 +5,7 @@ import Winner from './layers/Winner';
 import Playoff from './layers/Playoff';
 
 import {
-WINNER, FINAL, SEMI_FINAL, QUARTER_FINAL, ROUND_OF_SIXTEEN, PLAYOFFS
+  WINNER, FINAL, SEMI_FINAL, QUARTER_FINAL, ROUND_OF_SIXTEEN, PLAYOFFS
 } from '../../../constants/rounds';
 
 const Tree = (props) => {

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import PlayerPhoto from '../treeCard/PlayerPhoto';
-
 import { IMAGE_SIZES } from '../../../../constants/constants';
+
+import PlayerPhoto from '../treeCard/PlayerPhoto';
 
 const Winner = (props) => {
   const { img, name, title } = props;
