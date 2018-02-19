@@ -1,3 +1,3 @@
-import Dates from './date';
+import Dates from './Dates';
 
 export default Dates;

@@ -1,13 +1,25 @@
 .time-container {
-    position: absolute;
-    left: 222px;
-    height: 40px;
-    width: 66px;
-    margin: 5px 0px;
-    background-color: #FBFBFB;
-    font-family: "Montserrat";
-    font-weight: "bold";
-    font-size: 16px;
-    line-height: 20px;
-    padding: 10px;
+  position: absolute;
+  left: 222px;
+  height: 40px;
+  width: 66px;
+  margin: 5px 0px;
+  background-color: #FBFBFB;
+  font-family: "Montserrat";
+  font-weight: "bold";
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  padding: 10px;
 }
+
+@media only screen and (min-width: 1367px) {
+  .time-container {
+    left: 320px;
+    height: 60px;
+    width: 120px;
+    margin: 12px 0px;
+    padding: 20px;
+  }
+}
+

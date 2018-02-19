@@ -1,7 +1,6 @@
 .player-main-container{
   width: 244px;
   position: relative;
-  // float: left;
 }
 
 .player-image-container {
@@ -31,4 +30,26 @@
   position: absolute;
   float: right;
   left: 22px;
+}
+
+@media only screen and (min-width: 1367px) {
+  .player-main-container {
+    width: 320px;
+  }
+
+  .player-image-container {
+    img {
+      height: 82px;
+      width: 82px;
+      border-width: 5px;
+    }
+  }
+
+  .player-name-container {
+    height: 60px;
+    width: 280px;
+    padding: 16px;
+    margin: 12px 0px;
+    left: 40px;
+  }
 }

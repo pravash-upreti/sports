@@ -1,3 +1,3 @@
-import Fixture from './fixture';
+import Fixture from './Fixture';
 
 export default Fixture;

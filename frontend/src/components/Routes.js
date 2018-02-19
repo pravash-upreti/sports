@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router';
 
-import User from './user/';
-import Login from './auth/';
+import User from './user';
+import Login from './auth';
 
 import * as routes from '../constants/routes';
 
