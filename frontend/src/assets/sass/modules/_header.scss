@@ -17,9 +17,9 @@
 
 .tournament-description-container {
     float: left;
-    line-height: $header-line-height;
-    font-size: $header-font-size;
-    color: $header-color;
     width: $header-width;
+    color: $header-color;
     padding: $header-padding;
+    font-size: $header-font-size;
+    line-height: $header-line-height;
 }

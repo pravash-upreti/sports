@@ -1,44 +1,48 @@
 .login-outer-container {
   @extend %container;
   @extend %vertical-center-outer;
+
   margin: 0 auto;
 }
 
 .login-inner-container {
-  @extend %vertical-center-inner;
   @extend %center-content;
+  @extend %vertical-center-inner;
 }
 
 .login-header {
   @extend %login-container-content;
-  margin-bottom: 52px;
+
   height: 82px;
+  margin-bottom: 52px;
   a {
     img{
-      display: inline-block;
       margin: auto;
       width: 272px;
       height: 100%;
+      display: inline-block;
     }
   }
 }
 
 .login-form {
   @extend %login-container-content;
+
   .input-group {
-    border: $input-border;
-    border-radius: $login-border-radius;
-    border-color: $input-border-color;
     padding: 1px;
+    border: $input-border;
+    border-color: $input-border-color;
+    border-radius: $login-border-radius;
     input {
       @extend %login-form-elements;
+
       width: $input-width;
       display: inline-block;
+      padding: $input-padding;
       font-size: $input-font-size;
       font-family: $login-font-family;
       font-weight: $login-font-weight;
       line-height: $input-line-height;
-      padding: $input-padding;
       &[type="email"] {
         border-bottom: $input-border;
       }
@@ -48,17 +52,18 @@
     }
   }
   button {
-    @extend %login-form-elements;
     @extend %center-content;
-    width: $button-width;
-    background-color: $submit-button-color;
+    @extend %login-form-elements;
+
     color: $white;
+    margin-top: 26px;
+    width: $button-width;
+    padding: $button-padding;
+    font-size: $button-font-size;
     font-family: $login-font-family;
     font-weight: $login-font-weight;
-    font-size: $button-font-size;
     line-height: $button-line-height;
-    margin-top: 26px;
-    padding: $button-padding;
     border-radius: $login-border-radius;
+    background-color: $submit-button-color;
   }
 }

@@ -1,16 +1,16 @@
 .time-container {
-  position: absolute;
+  width: 66px;
   left: 222px;
   height: 40px;
-  width: 66px;
+  padding: 10px;
   margin: 5px 0px;
-  background-color: #FBFBFB;
-  font-family: "Montserrat";
-  font-weight: "bold";
   font-size: 16px;
   line-height: 20px;
+  position: absolute;
   text-align: center;
-  padding: 10px;
+  font-weight: "bold";
+  font-family: "Montserrat";
+  background-color: #FBFBFB;
 }
 
 @media only screen and (min-width: 1367px) {
@@ -18,8 +18,8 @@
     left: 320px;
     height: 60px;
     width: 120px;
-    margin: 12px 0px;
     padding: 20px;
+    margin: 12px 0px;
   }
 }
 

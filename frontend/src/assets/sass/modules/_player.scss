@@ -4,32 +4,32 @@
 }
 
 .player-image-container {
-  position: absolute;
   z-index: 1;
+  position: absolute;
   img {
-    border-radius: 50%;
-    height: 50px;
     width: 50px;
-    border-color: #FFFFFF;
+    height: 50px;
     border-width: 2px;
+    border-radius: 50%;
     border-style: solid;
+    border-color: #FFFFFF;
   }
 }
 
 .player-name-container {
+  left: 22px;
   height: 40px;
   width: 200px;
-  background: #FFFFFF;
-  font-size: 22px;
-  line-height: 28px;
+  float: right;
   padding: 6px;
+  font-size: 22px;
   margin: 5px 0px;
-  font-family: "Montserrat";
-  font-weight: "semi-bold";
+  line-height: 28px;
   text-align: right;
   position: absolute;
-  float: right;
-  left: 22px;
+  background: #FFFFFF;
+  font-weight: "semi-bold";
+  font-family: "Montserrat";
 }
 
 @media only screen and (min-width: 1367px) {
@@ -39,17 +39,17 @@
 
   .player-image-container {
     img {
-      height: 82px;
       width: 82px;
+      height: 82px;
       border-width: 5px;
     }
   }
 
   .player-name-container {
+    left: 40px;
     height: 60px;
     width: 280px;
     padding: 16px;
     margin: 12px 0px;
-    left: 40px;
   }
 }
