@@ -16,7 +16,46 @@
 }
 
 %vertical-center-inner {
+  text-align: center;
   display: table-cell;
   vertical-align: middle;
+}
+
+%round-element {
+  border-radius: 50%;
+}
+
+%inline-after {
+  &::after {// override global clearfix
+      display: inline;
+  }
+}
+
+%center-text-content {
   text-align: center;
+}
+
+%center-all-content {
+  * {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+%container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+// login page helpers
+%login-container-content {
+  width: 425px;
+  margin: 0 auto;
+}
+
+%login-form-elements {
+  border: none;
+  outline: none;
 }

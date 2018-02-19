@@ -64,3 +64,10 @@ services:
       - './frontend/:/home/sports/frontend/'
     working_dir: /home/sports/frontend/
     command: sh -c 'yarn'
+
+  sports_web_scss_rebuild:
+    image: 'node:8-alpine'
+    volumes:
+      - './frontend/:/home/sports/frontend/'
+    working_dir: /home/sports/frontend/
+    command: sh -c 'npm rebuild node-sass --force'

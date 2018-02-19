@@ -7,12 +7,13 @@
 $domain-name: "www.domain-name.com";
 
 //Text
-$base__font-size: 16px;
 $base__line: 24px;
+$base__font-size: 16px;
 
 //Font Stacks
 
-//$font-url--google : abc;
+// import site font
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
 
 // $typefaces
 // Configuration of webfonts imports.
@@ -30,8 +31,8 @@ $base__line: 24px;
 //);
 
 $font-family-sans-fallback: 'Arial', sans-serif;
-$font-family-sans: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', $font-family-sans-fallback;
 $font-family-serif: 'Georgia', 'Cambria', 'Times New Roman', 'Times', serif;
+$font-family-sans: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', $font-family-sans-fallback;
 $font-family-monospace: 'Inconsolata', 'Menlo', 'Consolas', 'Bitstream Vera Sans Mono', 'Courier', monospace;
 $font-family--primary : $font-family-sans;
 $font-family--secondary : $font-family-sans;
@@ -39,16 +40,16 @@ $font-family--secondary : $font-family-sans;
 //Colors
 $white: #fff;
 $black: #000;
-$gray: #c7c7c7;
 $red: #D24D57;
+$gray: #c7c7c7;
 $blue: #3A539B;
-$yellow: #F7CA18;
 $green: #36D7B7;
+$yellow: #F7CA18;
 
 //Message Colors
-$error: lighten($red,5%) !default;
-$success: $green !default;
 $edit: $yellow !default;
+$success: $green !default;
+$error: lighten($red,5%) !default;
 
 //Breakpoints
 $sm-device: 768px;
@@ -57,10 +58,10 @@ $lg-device: 1200px;
 
 //UI Colors
 $ui-colors: (
-	default: $blue,
-	success: $success,
 	error: $error,
-	warning: $edit
+	warning: $edit,
+	default: $blue,
+	success: $success
 );
 
 //Color Palette
@@ -70,6 +71,7 @@ $palettes: (
 	  dark: darken($gray,20%),
 	  light: lighten($gray,20%)
 	),
+
 	blue-shades: (
 		base: $blue,
 	  dark: darken($blue,20%),
@@ -80,26 +82,121 @@ $palettes: (
 
 //Font size variables
 $default-font-size: $base__font-size - 2px;
-$small-font-size: $default-font-size - 2px;
 $lg-font-size: $default-font-size + 2px;
+$small-font-size: $default-font-size - 2px;
 
 //Heading font size vairables
-$heading-line-height: 28px !default;
 $head1-font-size: 26px !default;
+$heading-line-height: 28px !default;
 $head2-font-size: $head1-font-size - 4px !default;
 $head3-font-size: $head1-font-size - 8px !default;
 
 //Color Usage
+$color-link: $blue;
+$color-text: $black;
+$border-color: $gray;
+$accent-color: $gray;
 $primary-color: $white;
 $secondary-color: $black;
-$accent-color: $gray;
 $shadow-color: rgba($black, .2);
-$border-color: $gray;
-$color-text: $black;
-$color-link: $blue;
 
 //Background Color
 $default-page-background-color: #F7F6F5;
 
-//Path to Assets
-$path--rel: "../images";
+// some font weights
+$bold: 700;
+$medium: 500;
+$regular: 400;
+$semibold: 600;
+
+// login page config
+
+//Login form
+$login-border-radius: 3px;
+$login-font-weight: $semibold;
+$login-font-family: "Montserrat";
+
+//Form inputs
+$input-width: 100%;
+$input-font-size: 18px;
+$input-line-height: 22px;
+$input-border-width: 1px;
+$input-padding: 14px 20px;
+$input-border-style: solid;
+$input-border-color: #E0E0E0;
+$input-place-holder-color: #E0E0E0;
+$input-border: $input-border-width $input-border-style $input-border-color;
+
+//Form button
+$button-width: 100%;
+$button-font-size: 24px;
+$button-padding: 10px 0;
+$button-line-height: 29px;
+$submit-button-color: #2ECC71;
+
+// tournament config
+
+// tournament-tree config
+$tree-font-family: "Montserrat";
+
+$tree-outer-width: 1920px;
+$tree-outer-height: 2560px;
+$tree-outer-padding-top: 116px;
+$tree-outer-padding-left: 260px;
+$tree-outer-padding-right: 260px;
+$tree-outer-padding-bottom: 98px;
+$tree-background-color: #F7F6F5;
+
+$tree-inner-width: 1402px;
+$tree-inner-height: 2346px;
+
+// tournament-tree card config
+$card-width: 228px;
+$card-height: 178px;
+$card-border-radius: 3px;
+$card-background-color: #FBFBFB;
+$card-shadow: 0px 16px 26px rgba(0, 0, 0, 0.1);
+
+$date-time-width: 100%;
+$date-time-height: 38px;
+$date-time-font-size: 16px;
+$date-time-line-height: 20px;
+$date-time-font-family: "Montserrat";
+$date-time-background-color: #FBFBFB;
+$date-time-vertical-padding: ($date-time-height - $date-time-line-height) / 2;
+
+$player-width: 100%;
+$player-font-size: 18px;
+$player-color: #333333;
+$player-border-width: 1px;
+$player-line-height: 22px;
+$player-font-weight: $regular;
+$player-font-family: "Montserrat";
+$player-height: (($card-height - $date-time-height) / 2) - $player-border-width;
+
+$photo-container-small-width: 52px;
+$photo-container-medium-width: 82px;
+$photo-container-large-width: 142px;
+$photo-container-background-color: $white;
+$photo-container-left-margin: -($photo-container-small-width / 2);
+$photo-container-vertical-margin: ($player-height - $photo-container-small-width) / 2;
+
+$player-name-width: 186px;
+$player-name-vertical-padding: ($player-height - $player-line-height) / 2;
+
+// tree layers config
+
+// layer header config
+$layer-header-height: 42px;
+$layer-title-font-size: 18px;
+$layer-title-line-height: 18px;
+$layer-title-horizontal-padding: 24px;
+$layer-title-vertical-padding: ($layer-header-height - $layer-title-line-height) / 2;
+
+// layer heights
+$final-container-height: 314px;
+$winner-container-height: 338px;
+$playoff-container-height: 526px;
+$semi-final-container-height: 306px;
+$quarter-final-container-height: 322px;
+$round-of-sixteen-container-height: 540px;
