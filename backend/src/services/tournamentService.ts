@@ -154,7 +154,6 @@ export async function remove(id: number) {
 /**
  * Find tournament by ID.
  *
- * @export
  * @param {number} id
  * @returns {Tournament}
  * @throws {NotFoundError|error}
