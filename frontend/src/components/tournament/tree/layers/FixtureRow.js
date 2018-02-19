@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Card from '../treeCard/index';
+import Card from '../treeCard';
 
 const FixtureRow = (props) => {
   const { fixtures } = props;
