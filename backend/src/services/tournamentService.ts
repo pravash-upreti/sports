@@ -1,32 +1,11 @@
 import { Collection } from 'bookshelf';
+import * as HttpStatus from 'http-status-codes';
 
 import { tournamentMessages } from '../constants/messages';
 
 import Tournament from '../models/tournament';
 import NotFoundError from '../errors/NotFoundError';
 import NoRowUpdatedError from '../errors/NotFoundError';
-
-/**
- * Find tournament by ID.
- *
- * @export
- * @param {number} id
- * @returns {Tournament}
- * @throws {NotFoundError|error}
- */
-async function findById(id: number) {
-  try {
-    const tournament: Tournament = await new Tournament({ id }).fetch();
-
-    if (!tournament) {
-      throw new NotFoundError(tournamentMessages.notFound);
-    }
-
-    return tournament;
-  } catch (error) {
-    throw error;
-  }
-}
 
 /** Fetch a tournament information.
  *
@@ -43,7 +22,12 @@ export async function get(id: number) {
       throw new NotFoundError(tournamentMessages.notFound);
     }
 
-    return tournament;
+    return {
+      data: tournament,
+      code: HttpStatus.OK,
+      message: tournamentMessages.fetched,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
   } catch (error) {
     throw error;
   }
@@ -60,7 +44,12 @@ export async function getAll() {
   try {
     const tournamentsList: Collection<Tournament> = await new Tournament().fetchAll();
 
-    return tournamentsList;
+    return {
+      code: HttpStatus.OK,
+      data: tournamentsList,
+      message: tournamentMessages.fetched,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
   } catch (error) {
     throw error;
   }
@@ -83,7 +72,10 @@ export async function create(params: object) {
     }
 
     return {
-      message: tournamentMessages.created
+      data: tournament,
+      code: HttpStatus.CREATED,
+      message: tournamentMessages.created,
+      status: HttpStatus.getStatusText(HttpStatus.CREATED)
     };
   } catch (error) {
     throw error;
@@ -114,7 +106,10 @@ export async function update(id: number, params: object) {
     }
 
     return {
-      message: tournamentMessages.updated
+      code: HttpStatus.OK,
+      data: updatedTournament,
+      message: tournamentMessages.updated,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
     throw error;
@@ -144,8 +139,34 @@ export async function remove(id: number) {
     }
 
     return {
-      message: tournamentMessages.removed
+      data: {
+        id
+      },
+      code: HttpStatus.OK,
+      message: tournamentMessages.removed,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
     };
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Find tournament by ID.
+ *
+ * @param {number} id
+ * @returns {Tournament}
+ * @throws {NotFoundError|error}
+ */
+async function findById(id: number) {
+  try {
+    const tournament: Tournament = await new Tournament({ id }).fetch();
+
+    if (!tournament) {
+      throw new NotFoundError(tournamentMessages.notFound);
+    }
+
+    return tournament;
   } catch (error) {
     throw error;
   }
