@@ -20,9 +20,11 @@ const Playoff = (props) => {
     <div className="playoff-container">
       <LayerHeader title={layerTitle} />
       <div className="playoff-images-container">
-        {images && images.map((imgSource, index) => (
-          <PlayerPhoto key={String(index)} size="medium" img={imgSource} />
-        ))}
+        {
+          images && images.map((imgSource, index) => (
+            <PlayerPhoto key={String(index)} size="medium" img={imgSource} />
+          ))
+        }
       </div>
     </div>
   );

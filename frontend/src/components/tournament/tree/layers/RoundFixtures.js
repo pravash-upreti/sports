@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 import FixtureRow from './FixtureRow';
 
-import { MAX_CARDS_PER_ROW } from '../../../../constants/tree';
+import { MAX_CARDS_PER_ROW } from '../../../../constants/constants';
 
 const RoundFixtures = (props) => {
   const { fixtures } = props;

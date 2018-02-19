@@ -1,1 +1,0 @@
-export const MAX_CARDS_PER_ROW = 4;
