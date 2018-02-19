@@ -1,21 +1,29 @@
 import React from 'react';
 
-import PlayoffRow from './PlayoffRow';
 import LayerHeader from './LayerHeader';
+import PlayerPhoto from '../cardv2/PlayerPhoto';
 
-import getRowsFromFixtures from '../../../../utils/tournament/getRowsFromFixtures';
+const getImagesFromFixtures = (fixtures) => {
+  let imgArr = [];
+  fixtures && fixtures.map((fixture) => {
+    imgArr.push(fixture.playerUp.img, fixture.playerDown.img);
+  });
+
+  return imgArr;
+}
 
 const Playoff = (props) => {
-  let playoffRows = getRowsFromFixtures(props.fixtures, (props.imgPerRow / 2));
+  const { fixtures, layerTitle } = props;
+  const images = getImagesFromFixtures(fixtures);
+
   return (
     <div className="playoff-container">
-      <LayerHeader title={props.layerTitle} />
-      
-      {
-        playoffRows.map((row, item) => {
-          return <PlayoffRow key={String(item)} matches={row} />
-        })
-      }
+      <LayerHeader title={layerTitle} />
+      <div className="playoff-images-container">
+        {images && images.map((imgSource, index) => (
+          <PlayerPhoto key={String(index)} size="medium" img={imgSource} />
+        ))}
+      </div>
     </div>
   );
 };

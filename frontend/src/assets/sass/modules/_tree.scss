@@ -18,12 +18,14 @@
   width: 100%;
   height: $layer-header-height;
   position: relative;
+
   .layer-header-upper {
     width: 1260px;
     border: none;
     border-bottom: 1px solid #E0E0E0;
     height: 50%;
   }
+
   .layer-title {
     position: absolute;
     left: 50%;
@@ -48,6 +50,7 @@
   padding-bottom: 66px;
   text-align: center;
   font-family: $tree-font-family;
+
   .winner-name {
     margin-top: 14px;
     font-size: 30px;
@@ -56,6 +59,7 @@
     color: #333333;
     text-align: center;
   }
+
   .winner-title {
     font-size: 20px;
     line-height: 24px;
@@ -68,78 +72,71 @@
 .final-container {
   @extend %center-all-content;
   height: $final-container-height;
+  padding-bottom: 44px;
+  
   .layer-header-container {
     margin-bottom: 46px;
   }
-  padding-bottom: 44px;
 }
 
 .semi-final-container {
   @extend %center-all-content;
   height: $semi-final-container-height;
+  padding-bottom: 56px;
+  
   .card {
     margin: 0 40px;
   }
+
   .layer-header-container {
     margin-bottom: 26px;
   }
-  padding-bottom: 56px;
 }
 
 .quarter-final-container {
   @extend %center-all-content;
   height: $quarter-final-container-height;
+  padding-bottom: 56px;
+  
   .card {
     margin: 0 40px;
   }
+
   .layer-header-container {
     margin-bottom: 42px;
   }
-  padding-bottom: 56px;
 }
 
 .round-of-sixteen-container {
   @extend %center-all-content;
   height: $round-of-sixteen-container-height;
+  padding-bottom: 18px;
+
   .card {
     margin: 0 40px;
     margin-bottom: 38px;
   }
+
   .layer-header-container {
     margin-bottom: 42px;
   }
-  padding-bottom: 18px;
 }
 
 .playoff-container {
   @extend %center-all-content;
   height: $playoff-container-height;
+
   .layer-header-container {
     margin-bottom: 12px;
   }
-}
 
-.playoff-row {
-  width: 100%;
-  margin-left: 0;
-  margin-top: 36px;
-  div:first-child{
-    div:first-child {
-      margin-left: 0;
-    }
-  }
-  div:last-child{
-    div:last-child {
-      margin-right: 0;
-    }
-  }
-  .playoff-pair {
-    // width: 205px;
-    display: inline-block;
+  .playoff-images-container {
+    width: 100%;
+    
     .photo-container-medium {
       @extend %inline-after;
       display: inline-block;
-      margin: 0 18px;
+      margin: 36px 16px 0 16px;
     }
   }
 }

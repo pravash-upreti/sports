@@ -4,11 +4,13 @@ import Player from './Player';
 import MatchTime from './MatchTime';
 
 const Card = (props) => {
+  const { matchTime, playerUp, playerDown } = props;
+  
   return (
     <div className="card">
-      <MatchTime {...props.matchTime}/>
-      <Player {...props.playerUp} />
-      <Player {...props.playerDown} />
+      <MatchTime {...matchTime}/>
+      <Player {...playerUp} />
+      <Player {...playerDown} />
     </div>
   );
 };

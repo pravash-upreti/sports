@@ -1,12 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
-import Photo from './Photo';
+import PlayerPhoto from './PlayerPhoto';
 
 const Player = (props) => {
+  const { name, img } = props;
+  
   return (
     <div className="player">
-      <div className="player-name">{props.name}</div>
-      <Photo img={props.img} size={"small"}/>
+      <div className="player-name">{name}</div>
+      <PlayerPhoto img={img} size={"small"}/>
     </div>
   );
 }

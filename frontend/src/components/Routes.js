@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router';
 
 import Home from './user/';
 import Login from './auth/';
-import Tree from './tournament/tree/index';
+import Tree from './tournament/tree/';
 
 import * as routes from '../constants/routes';
 

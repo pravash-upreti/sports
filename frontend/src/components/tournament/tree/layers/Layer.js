@@ -4,10 +4,12 @@ import LayerHeader from './LayerHeader';
 import RoundFixtures from './RoundFixtures';
 
 const Final = (props) => {
+  const { layerTitle, fixtures, containerClass } = props;
+
   return (
-    <div className="final-container">
-      <LayerHeader title={props.layerTitle}/>
-      <RoundFixtures numCards={props.numCards} fixtures={props.fixtures} />
+    <div className={containerClass}>
+      <LayerHeader title={layerTitle} />
+      <RoundFixtures fixtures={fixtures} />
     </div>
   );
 };

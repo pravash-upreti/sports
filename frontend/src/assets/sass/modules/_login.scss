@@ -13,6 +13,7 @@
   @extend %login-container-content;
   margin-bottom: 52px;
   height: 82px;
+
   a {
     img{
       display: inline-block;
@@ -25,11 +26,13 @@
 
 .login-form {
   @extend %login-container-content;
+
   .input-group {
     border: $input-border;
     border-radius: $login-border-radius;
     border-color: $input-border-color;
     padding: 1px;
+
     input {
       @extend %login-form-elements;
       width: $input-width;
@@ -39,9 +42,11 @@
       font-weight: $login-font-weight;
       line-height: $input-line-height;
       padding: $input-padding;
+
       &[type="email"] {
         border-bottom: $input-border;      
       }
+      
       &::placeholder {
         color: $input-place-holder-color;
       }

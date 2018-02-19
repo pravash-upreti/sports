@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import Card from '../cardv2/index';
+import FixtureRow from './FixtureRow';
+
+import { MAX_CARDS_PER_ROW } from '../../../../constants/tree';
 
 const RoundFixtures = (props) => {
+  const { fixtures } = props;
+
   return (
-    <div className="card-container">
-      {
-        props.fixtures.map((fixture, index) => {
-          return <Card  key={String(index)} {...fixture} />
-        })
-      }
-    </div>
+    (fixtures.length > MAX_CARDS_PER_ROW) ? (
+      <Fragment>
+        <RoundFixtures fixtures={fixtures.slice(0, MAX_CARDS_PER_ROW)} />
+        <RoundFixtures fixtures={fixtures.slice(MAX_CARDS_PER_ROW)} />
+      </Fragment>
+     ) : (
+      <FixtureRow fixtures={fixtures} />
+     )
   );
 };
 

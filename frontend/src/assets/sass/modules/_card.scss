@@ -17,11 +17,13 @@
   padding: $date-time-vertical-padding 0;
   border-radius: $card-border-radius $card-border-radius;
   font-family: $date-time-font-family;
+
   .day {
     @extend %inline-after;
     font-weight: 700;
     color: #737373;
   }
+
   .time {
     @extend %inline-after;
     font-weight: 500;
@@ -38,11 +40,12 @@
   font-size: $player-font-size;
   color: $player-color;
   line-height: $player-line-height;
+
   .photo-container-small {
     float: left;
-    margin: $photo-container-vertical-margin 0;
-    margin-left: $photo-container-left-margin; 
+    margin: $photo-container-vertical-margin 0 $photo-container-vertical-margin $photo-container-left-margin;
   }
+  
   .player-name {
     padding: $player-name-vertical-padding 0px;
     width: $player-name-width;

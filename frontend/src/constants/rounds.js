@@ -1,5 +1,5 @@
-import playerUpImg from '../../public/assets/images/player-image.jpg';
-import playerDownImg from '../../public/assets/images/player-image.jpg';
+import playerUpImg from '../../public/assets/images/dummy-image.jpg';
+import playerDownImg from '../../public/assets/images/dummy-image.jpg';
 
 export const WINNER = {
   name: 'SAGUN',
@@ -243,13 +243,10 @@ export const ROUND_OF_SIXTEEN = {
       }
     }
   ]
-
 };
 
 export const PLAYOFFS = {
   title: 'PLAYOFFS',
-  // numMatches: 16,
-  imgPerRow: 12,
   fixtures: [
     {
       matchTime: {

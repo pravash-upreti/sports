@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const MatchTime = ({day = 'FEB 23', time = '11:30 AM'}) => {
   return (
