@@ -1,0 +1,148 @@
+.tree-outer-container {
+  margin: 0 auto;
+  width: $tree-outer-width;
+  height: $tree-outer-height;
+  background-color: $tree-background-color;
+  padding: $tree-outer-padding-top $tree-outer-padding-right $tree-outer-padding-bottom $tree-outer-padding-left;
+}
+
+.tree-inner-container {
+  width: $tree-inner-width;
+  height: $tree-inner-height;
+}
+
+.layer-header-container {
+  @extend %center-all-content;
+
+  width: 100%;
+  position: relative;
+  height: $layer-header-height;
+  font-family: $tree-font-family;
+  background: $tree-background-color;
+
+  .layer-header-upper {
+    height: 50%;
+    border: none;
+    width: 1260px;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .layer-title {
+    @include transform(translateX(-50%) translateY(-50%));
+
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    margin: 0 auto;
+    color: #828282;
+    position: absolute;
+    font-weight: $regular;
+    background-color: inherit;
+    font-size: $layer-title-font-size;
+    line-height: $layer-title-line-height;
+    padding: $layer-title-vertical-padding $layer-title-horizontal-padding;
+  }
+}
+
+.winner-container {
+  width: 100%;
+  padding-top: 58px;
+  text-align: center;
+  padding-bottom: 66px;
+  @extend %center-all-content;
+  height: $winner-container-height;
+  font-family: $tree-font-family;
+
+  .winner-name {
+    font-size: 30px;
+    color: #333333;
+    margin-top: 14px;
+    line-height: 36px;
+    font-weight: $bold;
+    text-align: center;
+  }
+
+  .winner-title {
+    font-size: 20px;
+    color: #333333;
+    line-height: 24px;
+    text-align: center;
+    font-weight: $regular;
+  }
+}
+
+.final-container {
+  @extend %center-all-content;
+
+  padding-bottom: 44px;
+  height: $final-container-height;
+  
+  .layer-header-container {
+    margin-bottom: 46px;
+  }
+}
+
+.semi-final-container {
+  @extend %center-all-content;
+
+  padding-bottom: 56px;
+  height: $semi-final-container-height;
+  
+  .card {
+    margin: 0 40px;
+  }
+
+  .layer-header-container {
+    margin-bottom: 26px;
+  }
+}
+
+.quarter-final-container {
+  @extend %center-all-content;
+
+  padding-bottom: 56px;
+  height: $quarter-final-container-height;
+  
+  .card {
+    margin: 0 40px;
+  }
+
+  .layer-header-container {
+    margin-bottom: 42px;
+  }
+}
+
+.round-of-sixteen-container {
+  padding-bottom: 18px;
+  @extend %center-all-content;
+  height: $round-of-sixteen-container-height;
+
+  .card {
+    margin: 0 40px;
+    margin-bottom: 38px;
+  }
+
+  .layer-header-container {
+    margin-bottom: 42px;
+  }
+}
+
+.playoff-container {
+  @extend %center-all-content;
+  
+  height: $playoff-container-height;
+
+  .layer-header-container {
+    margin-bottom: 12px;
+  }
+
+  .playoff-images-container {
+    width: 100%;
+    
+    .photo-container-medium {
+      @extend %inline-after;
+      display: inline-block;
+      margin: 36px 16px 0 16px;
+    }
+  }
+}

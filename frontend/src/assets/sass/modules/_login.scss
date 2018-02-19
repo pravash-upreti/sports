@@ -6,7 +6,7 @@
 }
 
 .login-inner-container {
-  @extend %center-content;
+  @extend %center-text-content;
   @extend %vertical-center-inner;
 }
 
@@ -15,6 +15,7 @@
 
   height: 82px;
   margin-bottom: 52px;
+
   a {
     img{
       margin: auto;
@@ -33,6 +34,7 @@
     border: $input-border;
     border-color: $input-border-color;
     border-radius: $login-border-radius;
+
     input {
       @extend %login-form-elements;
 
@@ -43,17 +45,19 @@
       font-family: $login-font-family;
       font-weight: $login-font-weight;
       line-height: $input-line-height;
+
       &[type="email"] {
         border-bottom: $input-border;
       }
+
       &::placeholder {
         color: $input-place-holder-color;
       }
     }
   }
   button {
-    @extend %center-content;
     @extend %login-form-elements;
+    @extend %center-text-content;
 
     color: $white;
     margin-top: 26px;

@@ -4,9 +4,8 @@ import React, { Component } from 'react';
 import Routes from './components/Routes';
 
 import './assets/sass/style.scss';
-import '../public/assets/css/style.css';
 
-export default class Hello extends Component {
+export default class Main extends Component {
   render() {
     return (
       <Routes />
@@ -14,4 +13,4 @@ export default class Hello extends Component {
   }
 }
 
-render(<Hello />, document.getElementById('app'));
+render(<Main />, document.getElementById('app'));

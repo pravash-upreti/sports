@@ -8,67 +8,59 @@
 // ==========================================================================
 // Reset CSS
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    &:after {
-        // Global Clearfixing
-        clear: both;
-        content: "";
-        display: block;
-    }
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	&:after {// Global Clearfixing
+		clear: both;
+		content: "";
+		display: block;
+	}
 }
 
 // Base Code
-html,
-body {
-    font-size: 100%;
-    padding: 0;
+html, body {
+	font-size: 100%;
 }
 
 body {
-    -webkit-font-smoothing: antialiased;
-    color: $color-text;
-    font-family: $font-family--primary;
-    text-rendering: optimizeLegibility;
-    background-color: $default-page-background-color;
+	color: $color-text;
+	font-family: $font-family--primary;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	background-color: $default-page-background-color;
 }
 
 a {
-    outline: none;
-    color: $color-link;
-    text-decoration: none;
-    transition: color .2s;
+	outline: none;
+	color: $color-link;
+	text-decoration: none;
+	transition: color .2s;
 }
 
-ul,
-ol {
-    list-style: none;
+ul, ol {
+	list-style: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: $font-family--primary;
-    margin: 0;
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: $font-family--primary;
 }
 
 h1 {
-    font-size: $head1-font-size;
+	font-size: $head1-font-size;
 }
 
 h2 {
-    font-size: $head2-font-size;
+	font-size: $head2-font-size;
 }
 
 h3 {
-    font-size: $head3-font-size;
+	font-size: $head3-font-size;
 }
 
 img {
-    max-width: 100%;
-    vertical-align: top;
+	max-width: 100%;
+	vertical-align: top;
 }
