@@ -4,7 +4,6 @@
 // the folder to its respective manifest partial. Then all manifest partial will be imported to the
 // style.scss file.
 // ==========================================================================
-
 @import 'site';
 @import 'login';
 @import 'header';
@@ -12,3 +11,5 @@
 @import 'time';
 @import 'fixture';
 @import 'user';
+@import 'title';
+@import 'date';
