@@ -12,4 +12,5 @@ const Fixture = (props) => {
     </div>
   );
 };
+
 export default Fixture;
