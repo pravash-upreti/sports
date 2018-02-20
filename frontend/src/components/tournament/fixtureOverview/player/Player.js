@@ -1,6 +1,6 @@
 import React from 'react';
 
-import image from '../../../public/assets/images/image.jpg';
+import image from '../../../../../public/assets/images/image.jpg';
 
 const Player = (props) => {
   return (

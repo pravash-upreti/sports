@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Fixture from '../fixture';
-import Dates from '../commons/date';
-import Title from '../commons/title';
-import Header from '../commons/header';
+import Dates from '../../commons/dates';
+import Title from '../../commons/title';
+import FixtureCard from './fixtureCard';
+import Header from '../../commons/header';
 
-const User = (props) => {
+const FixtureOverview = (props) => {
   return (
   <div className="user-outer-container">
     <Header/>
@@ -13,26 +13,26 @@ const User = (props) => {
       <div className="user-left-container">
         <div className="user-top-left-container">
           <Title/>
-          <Fixture/>
-          <Fixture/>
-          <Fixture/>
+          <FixtureCard/>
+          <FixtureCard/>
+          <FixtureCard/>
         </div>
         <div className="user-bottom-left-container">
           <Title/>
-          <Fixture/>
+          <FixtureCard/>
         </div>
       </div>
       <div className="user-right-container">
         <Title/>
         <Dates/>
-        <Fixture/>
-        <Fixture/>
-        <Fixture/>
-        <Fixture/>
+        <FixtureCard/>
+        <FixtureCard/>
+        <FixtureCard/>
+        <FixtureCard/>
       </div>
     </div>
   </div>
   );
 };
 
-export default User;
+export default FixtureOverview;
