@@ -8,3 +8,14 @@ export const tournamentMessages = {
   unableToUpdate: 'Unable to update the tournament.',
   unableToCreate: 'Unable to create a new tournament.'
 };
+
+export const userMessages = {
+  notFound: 'User not found.',
+  updated: 'User updated successfully.',
+  removed: 'User deleted successfully.',
+  fetched: 'User(s) fetched successfully.',
+  created: 'New user created successfully.',
+  unableToRemove: 'Unable to remove the user.',
+  unableToUpdate: 'Unable to update the user.',
+  unableToCreate: 'Unable to create a new user.'
+};
