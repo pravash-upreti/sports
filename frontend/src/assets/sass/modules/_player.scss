@@ -1,0 +1,56 @@
+.player-main-container{
+  width: 244px;
+  position: relative;
+}
+
+.player-image-container {
+  z-index: 1;
+  position: absolute;
+  
+  img {
+    width: 50px;
+    height: 50px;
+    border-width: 2px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #FFFFFF;
+  }
+}
+
+.player-name-container {
+  left: 22px;
+  height: 40px;
+  width: 200px;
+  float: right;
+  padding: 6px;
+  font-size: 22px;
+  margin: 5px 0px;
+  line-height: 28px;
+  text-align: right;
+  position: absolute;
+  background: #FFFFFF;
+  font-weight: "semi-bold";
+  font-family: "Montserrat";
+}
+
+@media only screen and (min-width: 1367px) {
+  .player-main-container {
+    width: 320px;
+  }
+
+  .player-image-container {
+    img {
+      width: 82px;
+      height: 82px;
+      border-width: 5px;
+    }
+  }
+
+  .player-name-container {
+    left: 40px;
+    height: 60px;
+    width: 280px;
+    padding: 16px;
+    margin: 12px 0px;
+  }
+}
