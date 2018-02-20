@@ -1,8 +1,13 @@
 import { Collection } from 'bookshelf';
 import * as HttpStatus from 'http-status-codes';
 
+import { userMessages } from '../constants/messages';
+
+import LoginData from '../domain/LoginData';
+
 import User from '../models/user';
 import UserRole from '../models/userRole';
+import UnAuthorizedError from '../errors/UnAuthorizedError';
 
 /**
  * Retch list of all users
@@ -11,13 +16,19 @@ import UserRole from '../models/userRole';
  * @returns {Collection<Tournament>}
  * @throws {error}
  */
-export async function handleLogin() {
+export async function handleLogin(loginData: LoginData) {
   try {
-    return {
-      code: HttpStatus.OK,
-      data: 'you requested login',
-      status: HttpStatus.getStatusText(HttpStatus.OK)
-    };
+    const email = loginData.email;
+    const password = loginData.password;
+    const user = await new User({email}).fetch();
+    if (password === user.attributes.password) {
+      return {
+        code: HttpStatus.OK,
+        data: user,
+        status: HttpStatus.getStatusText(HttpStatus.OK)
+      };
+    }
+    throw new UnAuthorizedError(userMessages.unAuthorized);
   } catch(error) {
     throw(error);
   }

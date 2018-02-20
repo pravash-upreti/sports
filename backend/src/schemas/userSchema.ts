@@ -10,5 +10,6 @@ export const userSchema = Joi.object()
     password: Joi.string()
       .min(4)
       .max(100)
-      .required()
+      .required(),
+    role_id: Joi.number()
   });

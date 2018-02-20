@@ -24,6 +24,15 @@ export async function create(req: Request, res: Response, next: NextFunction) {
     const response = await UserService.create(req.body);
     res.status(response.code).json(response);
   } catch (error) {
-    throw(error);
+    next(error);
+  }
+}
+
+export async function createRole(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await UserService.createRole(req.body);
+    res.status(response.code).json(response);
+  } catch (error) {
+    next(error);
   }
 }

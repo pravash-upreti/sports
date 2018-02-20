@@ -17,5 +17,6 @@ export const userMessages = {
   created: 'New user created successfully.',
   unableToRemove: 'Unable to remove the user.',
   unableToUpdate: 'Unable to update the user.',
-  unableToCreate: 'Unable to create a new user.'
+  unableToCreate: 'Unable to create a new user.',
+  unAuthorized: 'User email or password is invalid'
 };

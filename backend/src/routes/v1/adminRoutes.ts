@@ -4,8 +4,8 @@ import * as adminController from '../../controllers/adminController';
 
 const router: Router = Router();
 
-// Tournaments
-router.get('/', adminController.getAll);
+// admin routes
+router.get('/', adminController.getAllUsers);
 router.post('/login', adminController.handleLogin);
 
 

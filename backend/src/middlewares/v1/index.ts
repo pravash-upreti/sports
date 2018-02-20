@@ -1,13 +1,18 @@
 import { Router } from 'express';
 
+import userMiddlewares from './userMiddlewares';
+import adminMiddlewares from './adminMiddlewares';
+import tournamentMiddlewares from './tournamentMiddlewares';
+
 const router: Router = Router();
 
-import tournamentMiddlewares from './tournamentMiddlewares';
-import adminMiddlewares from './adminMiddlewares';
+// Load user middlewares
+router.use('/users', userMiddlewares);
+
+// Load admin middlewares
+router.use('/admin', adminMiddlewares);
 
 // Load tournament middlewares
 router.use('/tournaments', tournamentMiddlewares);
-
-router.use('/admin', adminMiddlewares);
 
 export default router;

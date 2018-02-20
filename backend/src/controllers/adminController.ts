@@ -10,7 +10,7 @@ import * as AdminService from '../services/adminService';
  * @param {Response} res 
  * @param {NextFunction} next
  */
-export async function getAll(req: Request, res: Response, next: NextFunction) {
+export async function getAllUsers(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await AdminService.getAll();
     res.send(response);
@@ -29,11 +29,9 @@ export async function getAll(req: Request, res: Response, next: NextFunction) {
  */
 export async function handleLogin(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await AdminService.handleLogin();
+    const response = await AdminService.handleLogin(req.body);
     res.send(response);
   } catch (error) {
     next(error);
   }
 }
-
-
