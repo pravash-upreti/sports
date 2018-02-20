@@ -2,7 +2,6 @@ import React from 'react';
 
 import image from '../../../public/assets/images/image.jpg';
 
-
 const Player = (props) => {
   return (
     <div className="player-main-container">

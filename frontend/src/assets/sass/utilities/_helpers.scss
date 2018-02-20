@@ -6,7 +6,7 @@
 // will have an !important property attached to it, so that a helper class cannot be overwritten.
 // Placeholders can also be included in the helper partial for these purposes.
 // ==========================================================================
-//vertical centering helpers
+// Vertical centering helpers
 %vertical-center-outer {
   display: table;
   position: absolute;
@@ -24,7 +24,7 @@
 
 %inline-after {
   &::after {
-    // override global clearfix
+    // Override global clearfix
     display: inline;
   }
 }
@@ -47,7 +47,7 @@
   text-align: center;
 }
 
-// login page helpers
+// Login page helpers
 %login-container-content {
   width: 425px;
   margin: 0 auto;
@@ -101,7 +101,7 @@
   float: right;
 }
 
-// login page helpers
+// Login page helpers
 %login-container-content {
   width: 425px;
   margin: 0 auto;

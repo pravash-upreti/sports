@@ -8,7 +8,7 @@ const Header = (props) => {
       <div className="header-content-container">
         <div className="logo-container">
           <a href = "#">
-          <img src={logo} alt="Sports logo"/>
+            <img src={logo} alt="Sports logo"/>
           </a>
         </div>
         <div className="tournament-description-container">

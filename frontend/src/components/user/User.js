@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Header from '../commons/header';
-import Title from '../commons/title';
-import Dates from '../commons/date';
 import Fixture from '../fixture';
+import Dates from '../commons/date';
+import Title from '../commons/title';
+import Header from '../commons/header';
 
 const User = (props) => {
   return (

@@ -6,9 +6,11 @@
 
 .player-mirror {
   @extend %content-right;
+
   .player-image-container{
     right: 0px;
   }
+
   .player-name-container{
     text-align: left;
   }

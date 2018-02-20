@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Player from '../player';
 import Time from '../time';
+import Player from '../player';
 
 const Fixture = (props) => {
   return(
