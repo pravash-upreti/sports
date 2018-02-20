@@ -3,7 +3,7 @@ import { Router, Route, Switch } from 'react-router';
 
 import Login from './auth';
 import Tree from './tournament/tree';
-import User from './tournament/fixtureOverview';
+import FixtureOverview from './tournament/fixtureOverview';
 
 import * as routes from '../constants/routes';
 
@@ -13,9 +13,9 @@ const Routes = () => {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path={routes.ROOT} component={User} />
         <Route exact path={routes.LOGIN} component={Login} />
         <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
+        <Route exact path={routes.TOURNAMENT_FIXTURE_OVERVIEW} component={FixtureOverview} />
       </Switch>
     </Router>
   );

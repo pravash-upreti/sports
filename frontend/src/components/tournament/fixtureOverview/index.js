@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Dates from '../../commons/dates';
-import FixtureCard from './fixture-card';
 import Title from '../../commons/title';
+import FixtureCard from './fixture-card';
 import Header from '../../commons/header';
 
-const User = (props) => {
+const FixtureOverview = (props) => {
   return (
   <div className="user-outer-container">
     <Header/>
@@ -35,4 +35,4 @@ const User = (props) => {
   );
 };
 
-export default User;
+export default FixtureOverview;
