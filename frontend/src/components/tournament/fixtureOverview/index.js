@@ -2,7 +2,7 @@ import React from 'react';
 
 import Dates from '../../commons/dates';
 import Title from '../../commons/title';
-import FixtureCard from './fixture-card';
+import FixtureCard from './fixtureCard';
 import Header from '../../commons/header';
 
 const FixtureOverview = (props) => {
