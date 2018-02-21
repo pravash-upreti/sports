@@ -7,6 +7,7 @@ import { tokenMessages } from '../constants/messages';
 import { tokenErrorNames } from '../constants/errors';
 
 import * as jwt from '../utils/jwt';
+import * as tokenService from '../services/tokenService';
 
 /**
  * Validate access token of the user.
@@ -55,6 +56,10 @@ export function validateRefreshToken(req: Request, res: Response, next: NextFunc
     if (error.name === tokenErrorNames.jwtError) {
       next(new ForbiddenError(tokenMessages.invalidToken));
     } else if (error.name === tokenErrorNames.tokenExpiredError) {
+      const token = String(req.headers.refresh).replace('Bearer ', '');
+
+      // Todo: May need some way to properly catch error in following tokenService
+      tokenService.removeRefreshToken(token);
       next(new ForbiddenError(tokenMessages.refreshTokenExpired));
     } else {
       next(error);
