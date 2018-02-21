@@ -1,6 +1,8 @@
 import * as HttpStatus from 'http-status-codes';
 
 import LoginData from '../domain/LoginData';
+import EncryptionData from '../domain/EncryptionData';
+
 import { userMessages } from '../constants/messages';
 import { tokenMessages } from '../constants/messages';
 
@@ -54,7 +56,7 @@ export async function handleLogin(loginData: LoginData) {
  * @returns {string}
  * @throws {error}
  */
-export async function refreshAccessToken(userInfo: any) {
+export async function refreshAccessToken(userInfo: EncryptionData) {
   try {
     // check if refresh token is still in database(i.e. user hasn't logged out)
     const fetchedRefreshToken = await tokenService.getRefreshTokenByUserId(userInfo.userId);
