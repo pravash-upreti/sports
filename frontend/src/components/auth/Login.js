@@ -8,7 +8,7 @@ const Login = (props) => {
       <div className="login-inner-container">
         <div className="login-header">
           <a href="#">
-            <img src={logo} alt=" Sports logo" />
+            <img src={logo} alt="Sports logo" />
           </a>
         </div>
         <form className="login-form">

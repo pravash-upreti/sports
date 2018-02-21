@@ -1,0 +1,30 @@
+.fixture-container {
+    width: 508px;
+    padding: 40px 0px;
+    position: relative;
+}
+
+.player-mirror {
+  @extend %content-right;
+
+  .player-image-container{
+    right: 0px;
+  }
+
+  .player-name-container{
+    text-align: left;
+  }
+}
+
+@media only screen and (min-width: 1367px) {
+  .fixture-container {
+    width: 720px;
+    padding-bottom: 120px;
+  }
+
+  .player-mirror {
+    .player-image-container {
+      right: -40px;
+    }
+  }
+}

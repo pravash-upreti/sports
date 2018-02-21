@@ -6,10 +6,7 @@
 // will have an !important property attached to it, so that a helper class cannot be overwritten.
 // Placeholders can also be included in the helper partial for these purposes.
 // ==========================================================================
-
-
-//vertical centering helpers
-
+// Vertical centering helpers
 %vertical-center-outer {
   display: table;
   position: absolute;
@@ -26,8 +23,9 @@
 }
 
 %inline-after {
-  &::after {// override global clearfix
-      display: inline;
+  &::after {
+    // Override global clearfix
+    display: inline;
   }
 }
 
@@ -49,7 +47,61 @@
   text-align: center;
 }
 
-// login page helpers
+// Login page helpers
+%login-container-content {
+  width: 425px;
+  margin: 0 auto;
+}
+
+%login-form-elements {
+  border: none;
+  outline: none;
+}
+
+%container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+%login-container-content {
+  width: 425px;
+  margin: 0 auto;
+}
+
+%login-form-elements {
+  border: none;
+  outline: none;
+}
+
+%header-container {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+%logo {
+  margin: auto;
+  width: 272px;
+  height: 100%;
+  display: inline-block;
+}
+
+%header-container-content {
+  width: 500px;
+  margin: 0 auto;
+}
+
+%content-left {
+  float: left;
+}
+
+%content-right {
+  float: right;
+}
+
+// Login page helpers
 %login-container-content {
   width: 425px;
   margin: 0 auto;

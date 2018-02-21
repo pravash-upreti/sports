@@ -6,13 +6,12 @@
 // This defines the default styling for how that element should look.
 // Changes in style other than default should be overwritten using other partials.
 // ==========================================================================
-
 // Reset CSS
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	
+
 	&:after {// Global Clearfixing
 		clear: both;
 		content: "";

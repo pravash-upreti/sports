@@ -47,9 +47,9 @@
       line-height: $input-line-height;
 
       &[type="email"] {
-        border-bottom: $input-border;      
+        border-bottom: $input-border;
       }
-      
+
       &::placeholder {
         color: $input-place-holder-color;
       }

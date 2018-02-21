@@ -51,7 +51,7 @@ services:
       timeout: 10s
       retries: 3
   sports_web:
-    image: 'node:8-alpine'
+    image: 'node:8'
     volumes:
       - './frontend/:/home/sports/frontend/'
     working_dir: /home/sports/frontend/
@@ -59,14 +59,14 @@ services:
       - '${WEB_PORT:-3000}:8080'
     command: sh -c 'yarn start'
   sports_web_yarn:
-    image: 'node:8-alpine'
+    image: 'node:8'
     volumes:
       - './frontend/:/home/sports/frontend/'
     working_dir: /home/sports/frontend/
     command: sh -c 'yarn'
 
   sports_web_scss_rebuild:
-    image: 'node:8-alpine'
+    image: 'node:8'
     volumes:
       - './frontend/:/home/sports/frontend/'
     working_dir: /home/sports/frontend/
