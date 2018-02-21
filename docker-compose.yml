@@ -36,6 +36,15 @@ services:
     depends_on:
       sports_db:
         condition: service_healthy
+  sports_db_seed:
+    image: 'node:8-alpine'
+    volumes:
+      - './backend/:/home/sports/backend/'
+    working_dir: /home/sports/backend/
+    command: sh -c 'yarn seed'
+    depends_on:
+      sports_db:
+        condition: service_healthy
   sports_db:
     image: 'postgres:10-alpine'
     restart: always
