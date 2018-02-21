@@ -1,43 +1,73 @@
 export const USER_ROLES = {
   ADMIN: {
     id: 1,
-    desc: 'Admin'
+    desc: 'admin'
   },
   USER: {
     id: 2,
-    desc: 'User'
+    desc: 'user'
   }
 };
 
 export const ROUNDS = {
   FINAL: {
     id: 1,
-    name: 'Finale',
-    desc: 'Grand Finale'
+    name: 'finale',
+    desc: 'grand finale'
   },
   SEMI_FINAL: {
     id: 2,
-    name: 'Semi Final',
-    desc: 'Semi Final'
+    name: 'semi final',
+    desc: 'semi final'
   },
   QUARTER_FINAL: {
     id: 3,
-    name: 'Quarter Final',
-    desc: 'Quarter Final'
+    name: 'quarter final',
+    desc: 'quarter final'
   },
   PRE_QUARTER_FINAL: {
     id: 4,
-    name: 'Pre-Quarter Final',
-    desc: 'Pre-Quarter Final/Round of 16'
+    name: 'pre-quarter final',
+    desc: 'pre-quarter final/round of 16'
   },
   ROUND_OF_32: {
     id: 5,
-    name: 'Round of 32',
-    desc: 'Round of 32'
+    name: 'round of 32',
+    desc: 'round of 32'
   },
   PLAY_OFFS: {
     id: 6,
-    name: 'Play Off(s)',
-    desc: 'Play Off(s)'
+    name: 'play off(s)',
+    desc: 'play off(s)'
+  }
+};
+
+export const CHESS_WINNING_METHODS = {
+  CHECKMATE: {
+    id: 1,
+    desc: 'checkmate'
+  },
+  TIME: {
+    id: 2,
+    desc: 'time'
+  }
+};
+
+export const FIXTURE_STATUSES = {
+  PLAYED: {
+    id: 1,
+    desc: 'played'
+  },
+  CANCELLED: {
+    id: 2,
+    desc: 'cancelled'
+  },
+  TBD: {
+    id: 3,
+    desc: 'tbd'
+  },
+  FORFEITED: {
+    id: 4,
+    desc: 'forfeited'
   }
 };
