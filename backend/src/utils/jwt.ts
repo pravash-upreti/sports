@@ -3,7 +3,7 @@ import * as jwbt from 'jsonwebtoken';
 
 dotenv.config();
 
-const TOKEN_EXPIRATION_PERIOD = Number(process.env.TOKEN_EXPIRATION_PERIOD) || 3600; // expiration period in secods
+const TOKEN_EXPIRATION_PERIOD = Number(process.env.TOKEN_EXPIRATION_PERIOD) || 3600; // expiration period in seconds
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "my private key so don't look";
 
 export function generateAccessToken(data: any) {

@@ -7,8 +7,9 @@ import { userMessages } from '../constants/messages';
 import User from '../models/user';
 import UserRole from '../models/userRole';
 import NoRowUpdatedError from '../errors/NoRowUpdatedError';
+
 /**
- * Retch list of all users
+ * Fetch list of all users
  *
  * @export
  * @returns {Collection<Tournament>}
@@ -18,6 +19,7 @@ export async function getAll() {
   try {
     const userList: Collection<any> = await User.fetchAll();
     const userRole: Collection<UserRole> = await new UserRole().fetchAll();
+
     return {
       code: HttpStatus.OK,
       data: { userList, userRole },
@@ -35,11 +37,12 @@ export async function getAll() {
  * @export
  * @param {object} params
  * @returns {User}
- *
+ * @throws {error}
  */
 export async function create(params: NewUserData) {
   try {
     const newUser = await new User(params).save();
+
     if (!newUser) {
       throw new NoRowUpdatedError(userMessages.unableToCreate);
     }
@@ -61,11 +64,12 @@ export async function create(params: NewUserData) {
  * @export
  * @param {object} params
  * @returns {UserRole}
- *
+ * @throws {error}
  */
 export async function createRole(params: NewUserData) {
   try {
     const newUserRole = await new UserRole(params).save();
+
     if (!newUserRole) {
       throw new NoRowUpdatedError(userMessages.unableToCreate);
     }

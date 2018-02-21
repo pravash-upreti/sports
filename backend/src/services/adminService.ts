@@ -24,10 +24,9 @@ export async function handleLogin(loginData: LoginData) {
   try {
     const email = loginData.email;
     const password = loginData.password;
-
     const user = await new User({ email }).fetch();
 
-    if (user && password === user.attributes.password) {
+    if (user && user.attributes && password === user.attributes.password) {
       const userId = user.attributes.id;
       const tokens = jwt.generateTokens({ email, password, userId });
 
@@ -58,9 +57,9 @@ export async function handleLogin(loginData: LoginData) {
 export async function refreshAccessToken(userInfo: any) {
   try {
     // check if refresh token is still in database(i.e. user hasn't logged out)
-    const checkResponse = await tokenService.getRefreshTokenByUserId(userInfo.userId);
+    const fetchedRefreshToken = await tokenService.getRefreshTokenByUserId(userInfo.userId);
 
-    if (checkResponse) {
+    if (fetchedRefreshToken) {
       const newAccessToken = jwt.generateAccessToken(userInfo);
 
       return {
@@ -89,16 +88,17 @@ export async function handleLogout(refreshToken: string) {
   try {
     refreshToken = refreshToken.replace('Bearer ', '');
 
-    const response = await tokenService.removeRefreshToken(refreshToken);
+    const removedToken = await tokenService.removeRefreshToken(refreshToken);
 
-    if (response) {
+    if (removedToken) {
       return {
+        data: {},
         code: HttpStatus.OK,
         message: userMessages.loggedOut,
-        data: {},
         status: HttpStatus.getStatusText(HttpStatus.OK)
       };
     }
+
     throw new ForbiddenError(tokenMessages.invalidToken);
   } catch (error) {
     throw error;

@@ -42,12 +42,12 @@ export function removeRefreshToken(token: string) {
   return new RefreshToken()
     .where({ token })
     .fetch()
-    .then(rfsToken => {
-      if (!rfsToken) {
-        return rfsToken;
+    .then(refreshToken => {
+      if (!refreshToken) {
+        return refreshToken;
       }
 
-      return rfsToken.destroy();
+      return refreshToken.destroy();
     });
 }
 
