@@ -11,6 +11,8 @@ export const tournamentMessages = {
 
 export const userMessages = {
   notFound: 'User not found.',
+  loggedIn: 'Successfully logged in',
+  loggedOut: 'Successfully logged out',
   updated: 'User updated successfully.',
   removed: 'User deleted successfully.',
   fetched: 'User(s) fetched successfully.',
@@ -25,6 +27,8 @@ export const userMessages = {
 export const tokenMessages = {
   unAuthorized: 'Your token is invalid',
   incorrectUser: 'This is token of another user',
-  refreshTokenExpired: 'Refresh token expired. Login again',
-  accessTokenExpired: 'Access token expired. Refresh your access token.'
+  tokenRefreshed: 'Access token successfully refreshed',
+  refreshTokenExpired: 'Refresh token expired. Log in again',
+  accessTokenExpired: 'Access token expired. Refresh your access token.',
+  refreshTokenNoLongerValid: 'Your refresh token is no longer valid. Please log in again'
 };

@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import UnAuthorizedError from '../errors/UnAuthorizedError';
 import ForbiddenError from '../errors/ForbiddenError';
+import UnAuthorizedError from '../errors/UnAuthorizedError';
 
 import { tokenMessages } from '../constants/messages';
 
@@ -18,7 +18,6 @@ export function validateAccessToken(req: Request, res: Response, next: NextFunct
     } else {
       next();
     }
-    // res.send(validationResult);
   } catch (error) {
     if (error.name === 'JsonWebTokenError') {
       next(new UnAuthorizedError(tokenMessages.unAuthorized));
@@ -34,8 +33,9 @@ export function validateRefreshToken(req: Request, res: Response, next: NextFunc
   try {
     let token: string = String(req.headers.refresh);
     token = token.replace('Bearer ', '');
-    const validationResult = jwt.verifyToken(String(token));
+    const validationResult: any = jwt.verifyToken(String(token));
     if (validationResult) {
+      res.locals.userInfo = validationResult.encryptedData;
       next();
     } else {
       next();

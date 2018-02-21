@@ -19,6 +19,14 @@ export async function getAll(req: Request, res: Response, next: NextFunction) {
   }
 }
 
+/**
+ * Create a new user.
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export async function create(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await UserService.create(req.body);
@@ -28,6 +36,14 @@ export async function create(req: Request, res: Response, next: NextFunction) {
   }
 }
 
+/**
+ * Create a new user role.
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 export async function createRole(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await UserService.createRole(req.body);

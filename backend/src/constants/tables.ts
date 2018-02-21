@@ -1,5 +1,6 @@
 export const TABLES = {
-  TOURNAMENT: 'tournament',
   USER: 'user',
-  USER_ROLE: 'user_role'
+  USER_ROLE: 'user_role',
+  TOURNAMENT: 'tournament',
+  REFRESH_TOKEN: 'refresh_token'
 };

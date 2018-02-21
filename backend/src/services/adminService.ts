@@ -1,24 +1,24 @@
 import { Collection } from 'bookshelf';
 import * as HttpStatus from 'http-status-codes';
 
+import LoginData from '../domain/LoginData';
 import { userMessages } from '../constants/messages';
 import { tokenMessages } from '../constants/messages';
 
-import LoginData from '../domain/LoginData';
-
 import * as jwt from '../utils/jwt';
-
-import ForbiddenError from '../errors/ForbiddenError';
-import UnAuthorizedError from '../errors/UnAuthorizedError';
 
 import User from '../models/user';
 import UserRole from '../models/userRole';
+import ForbiddenError from '../errors/ForbiddenError';
+import UnAuthorizedError from '../errors/UnAuthorizedError';
+
+import * as tokenService from './tokenService';
 
 /**
  * Retch list of all users
  *
  * @export
- * @returns {string}
+ * @returns {[Collection<User>, Collection<UserRole>]}
  * @throws {error}
  */
 export async function getAllUsers() {
@@ -29,6 +29,7 @@ export async function getAllUsers() {
     return {
       code: HttpStatus.OK,
       data: { userList, userRole },
+      message: userMessages.fetched,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
@@ -37,27 +38,30 @@ export async function getAllUsers() {
 }
 
 /**
- * Retch list of all users
+ * Create tokens for valid user login and store refresh token in database
  *
  * @export
- * @returns {Collection<Tournament>}
+ * @param {LoginData} loginData
+ * @returns {object}
  * @throws {error}
  */
 export async function handleLogin(loginData: LoginData) {
   try {
     const email = loginData.email;
     const password = loginData.password;
+
     const user = await new User({ email }).fetch();
 
     if (user && password === user.attributes.password) {
       const userId = user.attributes.id;
       const tokens = jwt.generateTokens({ email, password, userId });
 
+      await tokenService.addRefreshToken(tokens.refreshToken, userId);
+
       return {
+        data: { tokens },
         code: HttpStatus.OK,
-        data: {
-          tokens
-        },
+        message: userMessages.loggedIn,
         status: HttpStatus.getStatusText(HttpStatus.OK)
       };
     }
@@ -68,26 +72,60 @@ export async function handleLogin(loginData: LoginData) {
   }
 }
 
-export async function refreshAccessToken(token: string) {
+/**
+ * Generate new access token for valid refresh token
+ *
+ * @export
+ * @param {string} token
+ * @returns {string}
+ * @throws {error}
+ */
+export async function refreshAccessToken(userInfo: any) {
   try {
-    token = token.replace('Bearer ', '');
-    const validationResult: any = jwt.verifyToken(token);
-    const newAccessToken = jwt.generateAccessToken(validationResult.encryptedData);
+    // check if refresh token is still in database(i.e. user hasn't logged out)
+    const checkResponse = await tokenService.getRefreshTokenByUserId(userInfo.userId);
 
-    return {
-      code: HttpStatus.OK,
-      data: {
-        newAccessToken
-      },
-      status: HttpStatus.getStatusText(HttpStatus.OK)
-    };
-  } catch (error) {
-    if (error.name === 'JsonWebTokenError') {
-      throw new ForbiddenError(tokenMessages.unAuthorized);
-    } else if (error.name === 'TokenExpiredError') {
-      throw new ForbiddenError(tokenMessages.refreshTokenExpired);
-    } else {
-      throw error;
+    if (checkResponse) {
+      const newAccessToken = jwt.generateAccessToken(userInfo);
+
+      return {
+        code: HttpStatus.OK,
+        data: { newAccessToken },
+        message: tokenMessages.tokenRefreshed,
+        status: HttpStatus.getStatusText(HttpStatus.OK)
+      };
     }
+
+    throw new ForbiddenError(tokenMessages.refreshTokenNoLongerValid);
+  } catch (error) {
+    throw error;
+  }
+}
+
+/**
+ * Remove refresh token of the user if it exists and respond accordingly.
+ *
+ * @export
+ * @param {string} refreshToken
+ * @returns {object}
+ * @throws {error}
+ */
+export async function handleLogout(refreshToken: string) {
+  try {
+    refreshToken = refreshToken.replace('Bearer ', '');
+
+    const response = await tokenService.removeRefreshToken(refreshToken);
+
+    if (response) {
+      return {
+        code: HttpStatus.OK,
+        message: userMessages.loggedOut,
+        data: {},
+        status: HttpStatus.getStatusText(HttpStatus.OK)
+      };
+    }
+    throw new ForbiddenError(tokenMessages.refreshTokenNoLongerValid);
+  } catch (error) {
+    throw error;
   }
 }

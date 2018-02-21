@@ -2,13 +2,11 @@ import { Collection } from 'bookshelf';
 import * as HttpStatus from 'http-status-codes';
 
 import NewUserData from '../domain/NewUserData';
-
 import { userMessages } from '../constants/messages';
 
 import User from '../models/user';
 import UserRole from '../models/userRole';
 import NoRowUpdatedError from '../errors/NoRowUpdatedError';
-
 /**
  * Retch list of all users
  *
