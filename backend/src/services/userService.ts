@@ -11,7 +11,7 @@ import NoRowUpdatedError from '../errors/NoRowUpdatedError';
 
 /**
  * Retch list of all users
- * 
+ *
  * @export
  * @returns {Collection<Tournament>}
  * @throws {error}
@@ -23,20 +23,21 @@ export async function getAll() {
     return {
       code: HttpStatus.OK,
       data: { userList, userRole },
+      message: userMessages.fetched,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
-    throw (error);
+    throw error;
   }
 }
 
 /**
  * Create a new user.
- * 
+ *
  * @export
  * @param {object} params
  * @returns {User}
- * 
+ *
  */
 export async function create(params: NewUserData) {
   try {
@@ -51,19 +52,18 @@ export async function create(params: NewUserData) {
       message: userMessages.created,
       status: HttpStatus.getStatusText(HttpStatus.CREATED)
     };
-
   } catch (error) {
-    throw (error);
+    throw error;
   }
 }
 
 /**
  * Create a new user_role.
- * 
+ *
  * @export
  * @param {object} params
  * @returns {UserRole}
- * 
+ *
  */
 export async function createRole(params: NewUserData) {
   try {
@@ -78,8 +78,7 @@ export async function createRole(params: NewUserData) {
       message: userMessages.created,
       status: HttpStatus.getStatusText(HttpStatus.CREATED)
     };
-
   } catch (error) {
-    throw (error);
+    throw error;
   }
 }

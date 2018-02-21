@@ -18,5 +18,13 @@ export const userMessages = {
   unableToRemove: 'Unable to remove the user.',
   unableToUpdate: 'Unable to update the user.',
   unableToCreate: 'Unable to create a new user.',
-  unAuthorized: 'User email or password is invalid'
+  unAuthorized: 'User email or password is invalid',
+  createdRole: 'New user role created successfully'
+};
+
+export const tokenMessages = {
+  unAuthorized: 'Your token is invalid',
+  incorrectUser: 'This is token of another user',
+  refreshTokenExpired: 'Refresh token expired. Login again',
+  accessTokenExpired: 'Access token expired. Refresh your access token.'
 };
