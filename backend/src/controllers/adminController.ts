@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 import * as AdminService from '../services/adminService';
+import * as UserService from '../services/userService';
 
 /**
  * Get list of all users.
@@ -12,7 +13,8 @@ import * as AdminService from '../services/adminService';
  */
 export async function getAllUsers(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await AdminService.getAllUsers();
+    const response = await UserService.getAll();
+
     res.status(response.code).json(response);
   } catch (error) {
     next(error);
@@ -30,6 +32,7 @@ export async function getAllUsers(req: Request, res: Response, next: NextFunctio
 export async function refreshAccessToken(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await AdminService.refreshAccessToken(res.locals.userInfo);
+
     res.status(response.code).json(response);
   } catch (error) {
     next(error);
@@ -47,6 +50,7 @@ export async function refreshAccessToken(req: Request, res: Response, next: Next
 export async function handleLogin(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await AdminService.handleLogin(req.body);
+
     res.status(response.code).json(response);
   } catch (error) {
     next(error);
@@ -64,6 +68,7 @@ export async function handleLogin(req: Request, res: Response, next: NextFunctio
 export async function handleLogout(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await AdminService.handleLogout(String(req.headers.refresh));
+
     res.status(response.code).json(response);
   } catch (error) {
     next(error);

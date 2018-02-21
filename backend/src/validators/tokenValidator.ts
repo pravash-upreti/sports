@@ -20,7 +20,7 @@ export function validateAccessToken(req: Request, res: Response, next: NextFunct
     }
   } catch (error) {
     if (error.name === 'JsonWebTokenError') {
-      next(new UnAuthorizedError(tokenMessages.unAuthorized));
+      next(new UnAuthorizedError(tokenMessages.invalidToken));
     } else if (error.name === 'TokenExpiredError') {
       next(new UnAuthorizedError(tokenMessages.accessTokenExpired));
     } else {
@@ -42,7 +42,7 @@ export function validateRefreshToken(req: Request, res: Response, next: NextFunc
     }
   } catch (error) {
     if (error.name === 'JsonWebTokenError') {
-      next(new ForbiddenError(tokenMessages.unAuthorized));
+      next(new ForbiddenError(tokenMessages.invalidToken));
     } else if (error.name === 'TokenExpiredError') {
       next(new ForbiddenError(tokenMessages.refreshTokenExpired));
     } else {

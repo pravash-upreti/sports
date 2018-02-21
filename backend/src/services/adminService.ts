@@ -1,4 +1,3 @@
-import { Collection } from 'bookshelf';
 import * as HttpStatus from 'http-status-codes';
 
 import LoginData from '../domain/LoginData';
@@ -8,34 +7,10 @@ import { tokenMessages } from '../constants/messages';
 import * as jwt from '../utils/jwt';
 
 import User from '../models/user';
-import UserRole from '../models/userRole';
 import ForbiddenError from '../errors/ForbiddenError';
 import UnAuthorizedError from '../errors/UnAuthorizedError';
 
 import * as tokenService from './tokenService';
-
-/**
- * Retch list of all users
- *
- * @export
- * @returns {[Collection<User>, Collection<UserRole>]}
- * @throws {error}
- */
-export async function getAllUsers() {
-  try {
-    const userList: Collection<User> = await new User().fetchAll();
-    const userRole: Collection<UserRole> = await new UserRole().fetchAll();
-
-    return {
-      code: HttpStatus.OK,
-      data: { userList, userRole },
-      message: userMessages.fetched,
-      status: HttpStatus.getStatusText(HttpStatus.OK)
-    };
-  } catch (error) {
-    throw error;
-  }
-}
 
 /**
  * Create tokens for valid user login and store refresh token in database
@@ -66,7 +41,7 @@ export async function handleLogin(loginData: LoginData) {
       };
     }
 
-    throw new UnAuthorizedError(userMessages.unAuthorized);
+    throw new UnAuthorizedError(userMessages.invalidUserInfo);
   } catch (error) {
     throw error;
   }
@@ -96,7 +71,7 @@ export async function refreshAccessToken(userInfo: any) {
       };
     }
 
-    throw new ForbiddenError(tokenMessages.refreshTokenNoLongerValid);
+    throw new ForbiddenError(tokenMessages.invalidToken);
   } catch (error) {
     throw error;
   }
@@ -124,7 +99,7 @@ export async function handleLogout(refreshToken: string) {
         status: HttpStatus.getStatusText(HttpStatus.OK)
       };
     }
-    throw new ForbiddenError(tokenMessages.refreshTokenNoLongerValid);
+    throw new ForbiddenError(tokenMessages.invalidToken);
   } catch (error) {
     throw error;
   }
