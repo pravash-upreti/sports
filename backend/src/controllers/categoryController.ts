@@ -55,3 +55,21 @@ export async function get(req : Request, res : Response, next : NextFunction) {
     next(error);
   }
 }
+
+/**
+ * Update a category details.
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+export async function update(req : Request, res : Response, next : NextFunction) {
+  try {
+    const response = await CategoryService.update(req.params.id, req.body);
+
+    res.status(response.code).json(response);
+  } catch (error) {
+    next(error);
+  }
+};

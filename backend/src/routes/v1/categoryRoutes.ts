@@ -8,5 +8,6 @@ const router:Router = Router();
 router.get('/:id', CategoryController.get);
 router.get('/', CategoryController.getAll);
 router.post('/', CategoryController.create);
+router.put('/:id', CategoryController.update);
 
 export default router;
