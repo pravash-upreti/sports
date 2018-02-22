@@ -1,3 +1,4 @@
+import { Collection } from 'bookshelf';
 import * as HttpStatus from 'http-status-codes';
 
 import { categoryMessages } from '../constants/messages';
@@ -35,3 +36,25 @@ export async function create(params:object) {
     throw error;
   }
 };
+
+/**
+ * Fetch all categories.
+ *
+ * @export
+ * @returns {object}
+ * @throws {error}
+ */
+export async function getAll() {
+  try {
+    const categories: Collection<Category> = await new Category().fetchAll();
+
+    return {
+      data: categories,
+      code: HttpStatus.OK,
+      message: categoryMessages.fetched,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
+  } catch (error) {
+    throw(error);
+  }
+}
