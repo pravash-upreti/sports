@@ -1,9 +1,10 @@
 {
   "watch": [
     "src/**/*.ts",
+    "src/**/*.yml",
     ".env"
   ],
-  "ext": "ts,js,.env",
+  "ext": "ts,js,yml,yaml,.env,",
   "verbose": false,
   "exec": "ts-node dist/index.js"
 }
