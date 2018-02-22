@@ -1,9 +1,9 @@
 import BookShelf from '../config/bookshelf';
 import { TABLES } from '../constants/tables';
 
-class Tournament extends BookShelf.Model<Tournament> {
+class ChessFixture extends BookShelf.Model<ChessFixture> {
   get tableName() {
-    return TABLES.TOURNAMENT;
+    return TABLES.CHESS_FIXTURE;
   }
 
   timestamp() {
@@ -11,4 +11,4 @@ class Tournament extends BookShelf.Model<Tournament> {
   }
 }
 
-export default Tournament;
+export default ChessFixture;
