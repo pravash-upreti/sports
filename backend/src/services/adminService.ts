@@ -59,7 +59,7 @@ export async function handleLogin(loginData: LoginData) {
 export async function refreshAccessToken(userInfo: EncryptionData, token: string) {
   try {
     // check if refresh token is still in database(i.e. user hasn't logged out)
-    const fetchedRefreshToken = await tokenService.getRefreshToken(token);
+    const fetchedRefreshToken = await tokenService.getRefreshTokenByValue(token);
 
     if (fetchedRefreshToken) {
       const newAccessToken = jwt.generateAccessToken(userInfo);

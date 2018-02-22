@@ -52,12 +52,12 @@ export function removeRefreshToken(token: string) {
 }
 
 /**
- * Fetch refresh token by userId.
+ * Fetch refresh token by token string.
  *
  * @export
  * @param {number} userId
  * @returns {RefreshToken}
  */
-export function getRefreshToken(token: string) {
+export function getRefreshTokenByValue(token: string) {
   return new RefreshToken({ token }).fetch();
 }
