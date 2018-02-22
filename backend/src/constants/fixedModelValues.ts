@@ -1,44 +1,44 @@
 export const USER_ROLES = {
   ADMIN: {
     id: 1,
-    desc: 'admin'
+    desc: 'Admin'
   },
   USER: {
     id: 2,
-    desc: 'user'
+    desc: 'User'
   }
 };
 
 export const ROUNDS = {
   FINAL: {
     id: 1,
-    name: 'finale',
-    desc: 'grand finale'
+    name: 'Finale',
+    desc: 'Grand Finale'
   },
   SEMI_FINAL: {
     id: 2,
-    name: 'semi final',
-    desc: 'semi final'
+    name: 'Semi Final',
+    desc: 'Semi Final'
   },
   QUARTER_FINAL: {
     id: 3,
-    name: 'quarter final',
-    desc: 'quarter final'
+    name: 'Quarter Final',
+    desc: 'Quarter Final'
   },
   PRE_QUARTER_FINAL: {
     id: 4,
-    name: 'pre-quarter final',
-    desc: 'pre-quarter final/round of 16'
+    name: 'Pre-Quarter Final',
+    desc: 'Pre-Quarter Final (Round of 16)'
   },
   ROUND_OF_32: {
     id: 5,
-    name: 'round of 32',
-    desc: 'round of 32'
+    name: 'Round of 32',
+    desc: 'Round of 32'
   },
   PLAY_OFFS: {
     id: 6,
-    name: 'play off(s)',
-    desc: 'play off(s)'
+    name: 'Play Off(s)',
+    desc: 'Play Off(s)'
   }
 };
 
@@ -56,18 +56,18 @@ export const CHESS_WINNING_METHODS = {
 export const FIXTURE_STATUSES = {
   PLAYED: {
     id: 1,
-    desc: 'played'
+    desc: 'Played'
   },
   CANCELLED: {
     id: 2,
-    desc: 'cancelled'
+    desc: 'Cancelled'
   },
   TBD: {
     id: 3,
-    desc: 'tbd'
+    desc: 'TBD'
   },
   FORFEITED: {
     id: 4,
-    desc: 'forfeited'
+    desc: 'Forfeited'
   }
 };
