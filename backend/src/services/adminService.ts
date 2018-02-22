@@ -92,16 +92,16 @@ export async function handleLogout(refreshToken: string) {
 
     const removedToken = await tokenService.removeRefreshToken(refreshToken);
 
-    if (removedToken) {
-      return {
-        data: {},
-        code: HttpStatus.OK,
-        message: userMessages.loggedOut,
-        status: HttpStatus.getStatusText(HttpStatus.OK)
-      };
+    if (!removedToken) {
+      throw new ForbiddenError(tokenMessages.invalidToken);
     }
 
-    throw new ForbiddenError(tokenMessages.invalidToken);
+    return {
+      data: {},
+      code: HttpStatus.OK,
+      message: userMessages.loggedOut,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
   } catch (error) {
     throw error;
   }

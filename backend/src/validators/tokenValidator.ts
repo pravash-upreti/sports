@@ -58,7 +58,7 @@ export function validateRefreshToken(req: Request, res: Response, next: NextFunc
     } else if (error.name === tokenErrorNames.tokenExpiredError) {
       const token = String(req.headers.refresh).replace('Bearer ', '');
 
-      // Todo: May need some way to properly catch error in following tokenService
+      // TODO: May need some way to properly catch error in following tokenService
       tokenService.removeRefreshToken(token);
 
       next(new ForbiddenError(tokenMessages.refreshTokenExpired));

@@ -5,16 +5,12 @@ export function up(knex: Knex) {
     table
       .string('email', 100)
       .notNullable()
-      .unique()
-      .alter();
+      .unique();
   });
 }
 
 export function down(knex: Knex) {
   return knex.schema.table('user', table => {
-    table
-      .string('email', 100)
-      .notNullable()
-      .alter();
+    table.dropColumn('email');
   });
 }
