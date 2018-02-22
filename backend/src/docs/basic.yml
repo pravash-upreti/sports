@@ -10,7 +10,7 @@ paths:
       produces:
         - application/json
       tags:
-        - Paths
+        - Basic
       responses:
         200:
           description: Working Perfect

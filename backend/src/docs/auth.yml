@@ -12,27 +12,6 @@ definitions:
       roleId:
         description: Role id of the user
         type: number
-  UserInfo:
-    title: UserInfo
-    type: object
-    properties:
-      id:
-        type: integer
-        description: Unique identifier representing a specific user
-      createdAt:
-        type: string
-        format: date-time
-        description: User creation date-time
-      updatedAt:
-        type: string
-        format: date-time
-        description: User update date-time
-      email:
-        type: string
-        description: Email address of the user
-      password:
-        type: string
-        description: Login password of the user
   Tokens:
     title: Tokens
     type: object
@@ -171,7 +150,6 @@ paths:
         - name: refresh
           description: Refresh token to be used to get new access token
           in: header
-          required: true
           type: string
       responses:
         200:
