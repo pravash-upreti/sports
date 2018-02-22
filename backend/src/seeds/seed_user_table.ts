@@ -12,8 +12,8 @@ export function seed(knex: Knex) {
           {
             id: USERS.ADMIN.id,
             email: USERS.ADMIN.email,
-            password: USERS.ADMIN.password,
             role_id: USERS.ADMIN.roleId,
+            password: USERS.ADMIN.password,
             is_active: USERS.ADMIN.isActive
           }
         ])
