@@ -3,6 +3,11 @@ import * as Knex from 'knex';
 import { TABLES } from '../constants/tables';
 import { FIXTURE_STATUSES } from '../constants/fixedModelValues';
 
+/**
+ * @export
+ * @param {Knex} knex
+ * @returns
+ */
 export function seed(knex: Knex) {
   return knex(TABLES.FIXTURE_STATUS)
     .del()

@@ -3,6 +3,11 @@ import * as Knex from 'knex';
 import { TABLES } from '../constants/tables';
 import { CHESS_WINNING_METHODS } from '../constants/fixedModelValues';
 
+/**
+ * @export
+ * @param {Knex} knex
+ * @returns
+ */
 export function seed(knex: Knex) {
   return knex(TABLES.CHESS_WINNING_METHOD)
     .del()
