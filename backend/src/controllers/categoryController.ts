@@ -73,3 +73,21 @@ export async function update(req : Request, res : Response, next : NextFunction)
     next(error);
   }
 };
+
+/**
+ * Remove or delete a category.
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+export async function remove(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await CategoryService.remove(req.params.id);
+
+    res.status(response.code).json(response);
+  } catch (error) {
+    next(error);
+  }
+}

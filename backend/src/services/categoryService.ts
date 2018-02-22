@@ -113,6 +113,36 @@ export async function update(id: number, params:object) {
   }
 };
 
+/**
+ * Remove or delete a category.
+ *
+ * @export
+ * @param {number} id
+ * @returns {object}
+ * @throws {NoRowUpdatedError|error}
+ */
+export async function remove(id: number) {
+  try {
+    const category: Category = await findById(id);
+
+    const deletedTournament = await category.destroy();
+
+    if (!deletedTournament) {
+      throw new NoRowUpdatedError(categoryMessages.unableToRemove);
+    }
+
+    return {
+      data: {
+        id
+      },
+      code: HttpStatus.OK,
+      message: categoryMessages.removed,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
+  } catch (error) {
+    throw(error);
+  }
+}
 
 /**
  * Find a category by ID.

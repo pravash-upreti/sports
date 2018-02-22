@@ -16,6 +16,8 @@ export function validateTournamentSchema(req: Request, res: Response, next: Next
 
   if (result.error) {
     res.status(HttpStatus.BAD_REQUEST).json(result.error);
+
+    return;
   }
 
   next();

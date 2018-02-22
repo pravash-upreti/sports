@@ -19,6 +19,8 @@ export function validateURLParams(req: Request, res: Response, next: NextFunctio
         message: 'Id must be a number.'
       }
     });
+
+    return;
   }
 
   next();
