@@ -8,6 +8,7 @@ export const TABLES = {
   TOURNAMENT: 'tournament',
   TEAM_PLAYER: 'team_player',
   CHESS_FIXTURE: 'chess_fixture',
+  REFRESH_TOKEN: 'refresh_token',
   FIXTURE_STATUS: 'fixture_status',
   TOURNAMENT_CATEGORY: 'tournament_category',
   CHESS_WINNING_METHOD: 'chess_winning_method'

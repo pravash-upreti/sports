@@ -1,16 +1,16 @@
 swagger: "2.0"
 info:
-  title: Simple API overview
-  version: v2
+  title: Sports API overview
+  version: 1.0.0
 paths:
-  /:
+  /v1:
     get:
       summary: Display basic information
       description: Displays app name and version
       produces:
         - application/json
       tags:
-        - Paths
+        - Basic
       responses:
         200:
           description: Working Perfect

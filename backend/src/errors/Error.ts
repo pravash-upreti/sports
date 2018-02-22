@@ -5,7 +5,6 @@
  * @extends {Error}
  */
 class Error {
-
   /**
    * Error message to be thrown.
    *
