@@ -26,8 +26,8 @@ export const userMessages = {
 
 export const tokenMessages = {
   invalidToken: 'Your token is invalid',
-  unAuthorized: 'You are not authorized to perform this action',
   tokenRefreshed: 'Access token successfully refreshed',
   refreshTokenExpired: 'Refresh token expired. Log in again',
+  unAuthorized: 'You are not authorized to perform this action',
   accessTokenExpired: 'Access token expired. Refresh your access token.'
 };

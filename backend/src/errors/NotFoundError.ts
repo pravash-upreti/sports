@@ -7,7 +7,6 @@ import Error from './Error';
  * @extends {Error}
  */
 class NotFoundError extends Error {
-
   /**
    * Error message to be thrown.
    *

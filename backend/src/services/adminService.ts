@@ -56,10 +56,10 @@ export async function handleLogin(loginData: LoginData) {
  * @returns {string}
  * @throws {error}
  */
-export async function refreshAccessToken(userInfo: EncryptionData) {
+export async function refreshAccessToken(userInfo: EncryptionData, token: string) {
   try {
     // check if refresh token is still in database(i.e. user hasn't logged out)
-    const fetchedRefreshToken = await tokenService.getRefreshTokenByUserId(userInfo.userId);
+    const fetchedRefreshToken = await tokenService.getRefreshToken(token);
 
     if (fetchedRefreshToken) {
       const newAccessToken = jwt.generateAccessToken(userInfo);

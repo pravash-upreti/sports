@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
-import * as AdminService from '../services/adminService';
 import * as UserService from '../services/userService';
+import * as AdminService from '../services/adminService';
 
 /**
  * Get list of all users.
@@ -31,7 +31,8 @@ export async function getAllUsers(req: Request, res: Response, next: NextFunctio
  */
 export async function refreshAccessToken(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await AdminService.refreshAccessToken(res.locals.userInfo);
+    const token = String(req.headers.refresh).replace('Bearer ', '');
+    const response = await AdminService.refreshAccessToken(res.locals.userInfo, token);
 
     res.status(response.code).json(response);
   } catch (error) {

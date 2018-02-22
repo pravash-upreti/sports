@@ -60,6 +60,7 @@ export function validateRefreshToken(req: Request, res: Response, next: NextFunc
 
       // Todo: May need some way to properly catch error in following tokenService
       tokenService.removeRefreshToken(token);
+
       next(new ForbiddenError(tokenMessages.refreshTokenExpired));
     } else {
       next(error);

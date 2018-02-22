@@ -9,11 +9,11 @@ import RefreshToken from '../models/refreshToken';
  * @returns {RefreshToken}
  */
 export function addRefreshToken(token: string, userId: number) {
-  return new RefreshToken({ user_id: userId }).fetch().then((refsToken: RefreshToken) => {
-    let doPatch = false;
+  return new RefreshToken({ user_id: userId }).fetch().then((refreshToken: RefreshToken) => {
+    let shouldPatch = false;
 
-    if (refsToken) {
-      doPatch = true; // If token already exists do an update not an insert.
+    if (refreshToken) {
+      shouldPatch = true; // If token already exists do an update not an insert.
     }
 
     return new RefreshToken()
@@ -24,10 +24,10 @@ export function addRefreshToken(token: string, userId: number) {
           user_id: userId
         },
         {
-          patch: doPatch
+          patch: shouldPatch
         }
       )
-      .then((rfrsToken: RefreshToken) => rfrsToken.refresh());
+      .then((newRefreshToken: RefreshToken) => newRefreshToken.refresh());
   });
 }
 
@@ -58,6 +58,6 @@ export function removeRefreshToken(token: string) {
  * @param {number} userId
  * @returns {RefreshToken}
  */
-export function getRefreshTokenByUserId(userId: number) {
-  return new RefreshToken({ user_id: userId }).fetch();
+export function getRefreshToken(token: string) {
+  return new RefreshToken({ token }).fetch();
 }
