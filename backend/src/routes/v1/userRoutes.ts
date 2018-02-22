@@ -7,5 +7,6 @@ const router: Router = Router();
 // Tournaments
 router.get('/', userController.getAll);
 router.post('/', userController.create);
-router.post('/roles', userController.createRole)
+router.post('/roles', userController.createRole);
+
 export default router;

@@ -5,8 +5,8 @@ import EncryptionData from '../domain/EncryptionData';
 
 dotenv.config();
 
+const PRIVATE_KEY = String(process.env.PRIVATE_KEY);
 const TOKEN_EXPIRATION_PERIOD = Number(process.env.TOKEN_EXPIRATION_PERIOD) || 3600; // expiration period in seconds
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "my private key so don't look";
 
 export function generateAccessToken(data: EncryptionData) {
   return jwbt.sign({ encryptedData: data }, PRIVATE_KEY, { expiresIn: TOKEN_EXPIRATION_PERIOD });
