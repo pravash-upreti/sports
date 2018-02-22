@@ -20,8 +20,18 @@ export const userMessages = {
   unableToRemove: 'Unable to remove the user.',
   unableToUpdate: 'Unable to update the user.',
   unableToCreate: 'Unable to create a new user.',
-  invalidUserInfo: 'Invalid user email or password.',
-  createdRole: 'New user role created successfully.'
+  invalidUserInfo: 'Invalid user email or password.'
+};
+
+export const userRoleMessages = {
+  notFound: 'UserRole not found.',
+  updated: 'UserRole updated successfully.',
+  removed: 'UserRole deleted successfully.',
+  fetched: 'UserRole(s) fetched successfully.',
+  created: 'New userRole created successfully.',
+  unableToRemove: 'Unable to remove the userRole.',
+  unableToUpdate: 'Unable to update the userRole.',
+  unableToCreate: 'Unable to create a new userRole.'
 };
 
 export const tokenMessages = {

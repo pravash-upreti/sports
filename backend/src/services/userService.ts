@@ -57,30 +57,3 @@ export async function create(params: NewUserData) {
     throw error;
   }
 }
-
-/**
- * Create a new user_role.
- *
- * @export
- * @param {object} params
- * @returns {UserRole}
- * @throws {error}
- */
-export async function createRole(params: NewUserData) {
-  try {
-    const newUserRole = await new UserRole(params).save();
-
-    if (!newUserRole) {
-      throw new NoRowUpdatedError(userMessages.unableToCreate);
-    }
-
-    return {
-      data: newUserRole,
-      code: HttpStatus.CREATED,
-      message: userMessages.created,
-      status: HttpStatus.getStatusText(HttpStatus.CREATED)
-    };
-  } catch (error) {
-    throw error;
-  }
-}
