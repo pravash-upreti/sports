@@ -22,7 +22,7 @@ import * as tokenService from './tokenService';
  * @returns {object}
  * @throws {error}
  */
-export async function handleLogin(loginData: LoginData) {
+export async function login(loginData: LoginData) {
   try {
     const email = loginData.email;
     const password = loginData.password;
@@ -86,7 +86,7 @@ export async function refreshAccessToken(userInfo: EncryptionData, token: string
  * @returns {object}
  * @throws {error}
  */
-export async function handleLogout(refreshToken: string) {
+export async function logout(refreshToken: string) {
   try {
     refreshToken = refreshToken.replace('Bearer ', '');
 

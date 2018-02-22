@@ -29,9 +29,9 @@ export async function refreshAccessToken(req: Request, res: Response, next: Next
  * @param {Response} res
  * @param {NextFunction} next
  */
-export async function handleLogin(req: Request, res: Response, next: NextFunction) {
+export async function login(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await AuthService.handleLogin(req.body);
+    const response = await AuthService.login(req.body);
 
     res.status(response.code).json(response);
   } catch (error) {
@@ -47,9 +47,9 @@ export async function handleLogin(req: Request, res: Response, next: NextFunctio
  * @param {Response} res
  * @param {NextFunction} next
  */
-export async function handleLogout(req: Request, res: Response, next: NextFunction) {
+export async function logout(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await AuthService.handleLogout(String(req.headers.refresh));
+    const response = await AuthService.logout(String(req.headers.refresh));
 
     res.status(response.code).json(response);
   } catch (error) {

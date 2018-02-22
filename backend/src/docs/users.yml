@@ -1,0 +1,18 @@
+paths:
+  /v1/users:
+    get:
+      summary: Display list of users
+      description: Displays list of user information in database
+      produces:
+        - application/json
+      tags:
+        - Users
+      responses:
+        200:
+          description: An array of users
+          schema:
+            title: Users
+            type: array
+            items:
+              $ref: '#/definitions/User'
+

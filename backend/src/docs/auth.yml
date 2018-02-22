@@ -1,0 +1,101 @@
+definitions:
+  LoginParams:
+    title: LoginParams
+    type: object
+    properties:
+      email:
+        type: string
+        description: login email of user
+      password:
+        type: string
+        description: password of the user
+      roleId:
+        description: role id of the user
+        type: number
+  UserInfo:
+    title: UserInfo
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Unique identifier representing a specific user
+      createdAt:
+        type: string
+        format: date-time
+        description: user creation date-time
+      updatedAt:
+        type: string
+        format: date-time
+        description: user update date-time
+      email:
+        type: string
+        description: email address of the user
+      password:
+        type: string
+        description: login password of the user
+  Tokens:
+    title: Tokens
+    type: object
+    properties:
+      accessToken:
+        type: string
+        description: access token to be used by user for authentication
+      refreshToken:
+        type: string
+        description: refresh token to be used for refreshing access token when it expires
+  LoginResponse:
+    title: LoginResponse
+    type: object
+    properties:
+      data:
+        title: LoginResponseData
+        type: object
+        properties:
+          tokens:
+            $ref: '#/definitions/Tokens'
+      code:
+        type: number
+        description: response code
+      message:
+        type: string
+        description: login result message
+      status:
+        type: string
+        description: response status message
+
+paths:
+  /v1/auth/login:
+    post:
+      summary: Facilitate user login
+      description: Returns tokens if login-info is valid
+      produces:
+        - application/json
+      tags:
+        - Auth
+      parameters:
+        - name: LoginParams
+          description: POST params for login
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/LoginParams'
+      responses:
+        200:
+          description: loginResponse object
+          schema:
+            $ref: '#/definitions/LoginResponse'
+  /v1/auth/refresh:
+    get:
+      summary: Refresh token of logged in user
+      description: Returns new access token for a valid refresh token
+      produces:
+        - application/json
+      tags: 
+        - Auth
+      parameters:
+        - name: refresh
+          description: refresh token to be used to get new access token
+          in: header
+          required: true
+          type: string
+

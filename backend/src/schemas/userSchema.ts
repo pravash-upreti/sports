@@ -11,5 +11,5 @@ export const userSchema = Joi.object()
       .min(4)
       .max(100)
       .required(),
-    role_id: Joi.number()
+    roleId: Joi.number()
   });
