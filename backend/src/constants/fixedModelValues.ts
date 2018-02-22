@@ -28,7 +28,7 @@ export const ROUNDS = {
   PRE_QUARTER_FINAL: {
     id: 4,
     name: 'Pre-Quarter Final',
-    desc: 'Pre-Quarter Final/Round of 16'
+    desc: 'Pre-Quarter Final (Round of 16)'
   },
   ROUND_OF_32: {
     id: 5,
@@ -39,5 +39,35 @@ export const ROUNDS = {
     id: 6,
     name: 'Play Off(s)',
     desc: 'Play Off(s)'
+  }
+};
+
+export const CHESS_WINNING_METHODS = {
+  CHECKMATE: {
+    id: 1,
+    desc: 'Checkmate'
+  },
+  TIME: {
+    id: 2,
+    desc: 'Time'
+  }
+};
+
+export const FIXTURE_STATUSES = {
+  PLAYED: {
+    id: 1,
+    desc: 'Played'
+  },
+  CANCELLED: {
+    id: 2,
+    desc: 'Cancelled'
+  },
+  TBD: {
+    id: 3,
+    desc: 'TBD'
+  },
+  FORFEITED: {
+    id: 4,
+    desc: 'Forfeited'
   }
 };
