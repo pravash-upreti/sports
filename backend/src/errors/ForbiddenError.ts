@@ -3,29 +3,29 @@ import * as HttpStatus from 'http-status-codes';
 import Error from './Error';
 
 /**
- * @class NotFoundError
+ * @class UnAuthorizedError
  * @extends {Error}
  */
-class NotFoundError extends Error {
+class ForbiddenError extends Error {
   /**
    * Error message to be thrown.
    *
    * @type {string}
-   * @memberof NotFoundError
+   * @memberof ForbiddenError
    */
   message: string;
 
   /**
-   * Creates an instance of NotFoundError.
+   * Creates an instance of ForbiddenError.
    *
    * @param {string} message
-   * @memberof NotFoundError
+   * @memberof ForbiddenError
    */
   constructor(message: string) {
-    super(message, HttpStatus.NOT_FOUND);
+    super(message, HttpStatus.FORBIDDEN);
 
     this.message = message;
   }
 }
 
-export default NotFoundError;
+export default ForbiddenError;

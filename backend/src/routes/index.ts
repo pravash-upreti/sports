@@ -6,13 +6,6 @@ import * as apiController from '../controllers/apiController';
 
 const router: Router = Router();
 
-router.get('/', (req, res) => {
-  res.json({
-    title: process.env.APP_NAME,
-    version: process.env.APP_VERSION,
-  });
-});
-
 // Swagger docs
 router.get('/swagger.json', apiController.getAPIList);
 

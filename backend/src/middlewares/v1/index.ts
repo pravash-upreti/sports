@@ -1,8 +1,20 @@
 import { Router } from 'express';
 
+import userMiddlewares from './userMiddlewares';
+import authMiddlewares from './authMiddlewares';
+import userRoleMiddlewares from './userRoleMiddlewares';
+import tournamentMiddlewares from './tournamentMiddlewares';
+
 const router: Router = Router();
 
-import tournamentMiddlewares from './tournamentMiddlewares';
+// Load auth middlewares
+router.use('/auth', authMiddlewares);
+
+// Load user middlewares
+router.use('/users', userMiddlewares);
+
+// Load userRole middlewares
+router.use('/userRoles', userRoleMiddlewares);
 
 // Load tournament middlewares
 router.use('/tournaments', tournamentMiddlewares);
