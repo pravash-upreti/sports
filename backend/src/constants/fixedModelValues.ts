@@ -12,7 +12,7 @@ export const USER_ROLES = {
 export const USERS = {
   ADMIN: {
     id: 1,
-    roleId: 1,
+    roleId: USER_ROLES.ADMIN.id,
     isActive: true,
     email: 'test@test.com',
     password: 'sports@!@#'

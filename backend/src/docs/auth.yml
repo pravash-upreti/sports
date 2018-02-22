@@ -5,12 +5,12 @@ definitions:
     properties:
       email:
         type: string
-        description: login email of user
+        description: Login email of user
       password:
         type: string
-        description: password of the user
+        description: Password of the user
       roleId:
-        description: role id of the user
+        description: Role id of the user
         type: number
   UserInfo:
     title: UserInfo
@@ -22,27 +22,27 @@ definitions:
       createdAt:
         type: string
         format: date-time
-        description: user creation date-time
+        description: User creation date-time
       updatedAt:
         type: string
         format: date-time
-        description: user update date-time
+        description: User update date-time
       email:
         type: string
-        description: email address of the user
+        description: Email address of the user
       password:
         type: string
-        description: login password of the user
+        description: Login password of the user
   Tokens:
     title: Tokens
     type: object
     properties:
       accessToken:
         type: string
-        description: access token to be used by user for authentication
+        description: Access token to be used by user for authentication
       refreshToken:
         type: string
-        description: refresh token to be used for refreshing access token when it expires
+        description: Refresh token to be used for refreshing access token when it expires
   LoginResponse:
     title: LoginResponse
     type: object
@@ -55,13 +55,79 @@ definitions:
             $ref: '#/definitions/Tokens'
       code:
         type: number
-        description: response code
+        description: Response code
       message:
         type: string
-        description: login result message
+        description: Login result message
       status:
         type: string
-        description: response status message
+        description: Response status text
+  RefreshResponse:
+    title: RefreshResponse
+    type: object
+    properties:
+      data:
+        title: RefreshResponseData
+        type: object
+        properties:
+          newAccessToken:
+            type: string
+            description: New access token for authentication
+      code:
+        type: number
+        description: Response code
+      message:
+        type: string
+        description: Refersh result message
+      status:
+        type: string
+        description: Response status text
+  LogoutResponse:
+    title: LogoutResponse
+    type: object
+    properties:
+      data:
+        type: object
+        description: empty object
+      code:
+        type: number
+        description: Response code
+      message:
+        type: string
+        description: logout result message
+      status:
+        type: string
+        description: Response status text
+  Error:
+    title: Error
+    type: object
+    properties:
+      error:
+        title: error
+        type: object
+        properties:
+          code:
+            type: number
+            description: Http error code
+          status:
+            type: string
+            description: Http status text
+          message:
+            type: string
+            description: Error message
+  ServerError:
+    title: ServerError
+    allOf:
+      - $ref: '#/definitions/Error'
+  ForbiddenError:
+    title: ForbiddenError
+    allOf:
+      - $ref: '#/definitions/Error'
+  UnAuthorizedError:
+    title: UnAuthorizedError
+    allOf:
+      - $ref: '#/definitions/Error'
+
 
 paths:
   /v1/auth/login:
@@ -81,9 +147,18 @@ paths:
             $ref: '#/definitions/LoginParams'
       responses:
         200:
-          description: loginResponse object
+          description: LoginResponse object
           schema:
             $ref: '#/definitions/LoginResponse'
+        401:
+          description: Authorization Error
+          schema:
+            $ref: '#/definitions/UnAuthorizedError'
+        500:
+          description: Server error
+          schema:
+            $ref: '#/definitions/ServerError'
+
   /v1/auth/refresh:
     get:
       summary: Refresh token of logged in user
@@ -94,8 +169,50 @@ paths:
         - Auth
       parameters:
         - name: refresh
-          description: refresh token to be used to get new access token
+          description: Refresh token to be used to get new access token
           in: header
           required: true
           type: string
+      responses:
+        200:
+          description: RefreshResponse object
+          schema:
+            $ref: '#/definitions/RefreshResponse'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ForbiddenError'
+        500:
+          description: Server error
+          schema:
+            $ref: '#/definitions/ServerError'
+  
+  /v1/auth/logout:
+    post:
+      summary: Handle logout request
+      description: Removes refresh token of the user from database
+      produces:
+        - application/json
+      tags:
+        - Auth
+      parameters:
+        - name: refresh
+          description: Refresh token to be used to log out the user
+          in: header
+          required: true
+          type: string
+      responses:
+        200:
+          description: LogoutResponse object
+          schema:
+            $ref: '#/definitions/LogoutResponse'
+        403:
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ForbiddenError'
+        500:
+          description: Server error
+          schema:
+            $ref: '#/definitions/ServerError'
+
 

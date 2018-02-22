@@ -12,7 +12,6 @@ import { userRoleSchema } from '../schemas/userRoleSchema';
  * @param res
  * @param next
  */
-
 export function validateUserRoleSchema(req: Request, res: Response, next: NextFunction) {
   const result = validate(req.body, userRoleSchema);
 
