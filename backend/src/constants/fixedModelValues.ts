@@ -45,11 +45,11 @@ export const ROUNDS = {
 export const CHESS_WINNING_METHODS = {
   CHECKMATE: {
     id: 1,
-    desc: 'checkmate'
+    desc: 'Checkmate'
   },
   TIME: {
     id: 2,
-    desc: 'time'
+    desc: 'Time'
   }
 };
 
