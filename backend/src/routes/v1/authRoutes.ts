@@ -4,7 +4,7 @@ import * as authController from '../../controllers/authController';
 
 const router: Router = Router();
 
-// auth routes
+// authentication management routes
 router.get('/refresh', authController.refreshAccessToken);
 router.post('/login', authController.handleLogin);
 router.post('/logout', authController.handleLogout);

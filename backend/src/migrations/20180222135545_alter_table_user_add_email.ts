@@ -5,7 +5,8 @@ export function up(knex: Knex) {
     table
       .string('email', 100)
       .notNullable()
-      .unique();
+      .unique()
+      .alter();
   });
 }
 
