@@ -24,8 +24,10 @@ router.use('/users', userRoutes);
 // Load userRole routes
 router.use('/userRoles', userRoleRoutes);
 
-// Load tournament routes
+// Load category routes
 router.use('/categories', categoryRoutes);
+
+// Load tournament routes
 router.use('/tournaments', tournamentRoutes);
 
 export default router;

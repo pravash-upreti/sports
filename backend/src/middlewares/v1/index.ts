@@ -17,8 +17,10 @@ router.use('/users', userMiddlewares);
 // Load userRole middlewares
 router.use('/userRoles', userRoleMiddlewares);
 
-// Load tournament middlewares
+// Load category middlewares
 router.use('/categories', categoriesMiddlewares);
+
+// Load tournament middlewares
 router.use('/tournaments', tournamentMiddlewares);
 
 export default router;
