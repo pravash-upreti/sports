@@ -37,3 +37,21 @@ export async function getAll(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 }
+
+/**
+ * Get a category details.
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+export async function get(req : Request, res : Response, next : NextFunction) {
+  try {
+    const response = await CategoryService.get(req.params.id);
+
+    res.status(response.code).json(response);
+  } catch (error) {
+    next(error);
+  }
+}

@@ -4,6 +4,7 @@ import * as HttpStatus from 'http-status-codes';
 import { categoryMessages } from '../constants/messages';
 
 import Category from '../models/category';
+import NotFoundError from '../errors/NotFoundError';
 import NoRowUpdatedError from '../errors/NoRowUpdatedError';
 
 /**
@@ -50,6 +51,33 @@ export async function getAll() {
 
     return {
       data: categories,
+      code: HttpStatus.OK,
+      message: categoryMessages.fetched,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
+  } catch (error) {
+    throw(error);
+  }
+}
+
+/**
+ * Fetch details of a category.
+ *
+ * @export
+ * @param {number} id
+ * @returns {object}
+ * @throws {error}
+ */
+export async function get(id: number) {
+  try {
+    const category: Category = await new Category({ id }).fetch();
+
+    if (!category) {
+      throw new NotFoundError(categoryMessages.notFound);
+    }
+
+    return {
+      data: category,
       code: HttpStatus.OK,
       message: categoryMessages.fetched,
       status: HttpStatus.getStatusText(HttpStatus.OK)
