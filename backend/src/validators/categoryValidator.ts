@@ -15,9 +15,7 @@ export function validateCategorySchema(req: Request, res: Response, next: NextFu
   const result = validate(req.body, categorySchemas.categorySchema);
 
   if (result.error) {
-    res.status(HttpStatus.BAD_REQUEST).json(result.error);
-
-    return;
+    return res.status(HttpStatus.BAD_REQUEST).json(result.error);
   }
 
   next();
