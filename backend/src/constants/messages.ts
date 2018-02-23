@@ -41,3 +41,14 @@ export const tokenMessages = {
   unAuthorized: 'You are not authorized to perform this action.',
   accessTokenExpired: 'Access token expired. Refresh your access token.'
 };
+
+export const categoryMessages = {
+  notFound: 'Category not found.',
+  updated: 'Category updated successfully.',
+  removed: 'Category deleted successfully.',
+  fetched: 'Category(s) fetched successfully.',
+  created: 'New category created successfully.',
+  unableToRemove: 'Unable to remove the category.',
+  unableToUpdate: 'Unable to update the category.',
+  unableToCreate: 'Unable to create a new category.'
+};

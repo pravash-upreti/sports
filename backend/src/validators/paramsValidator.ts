@@ -13,7 +13,7 @@ export function validateURLParams(req: Request, res: Response, next: NextFunctio
   const params = req.params;
 
   if (isNaN(params.id)) {
-    res.status(HttpStatus.BAD_REQUEST).json({
+    return res.status(HttpStatus.BAD_REQUEST).json({
       error: {
         code: HttpStatus.BAD_REQUEST,
         message: 'Id must be a number.'

@@ -2,17 +2,17 @@ import { validate } from 'joi';
 import * as HttpStatus from 'http-status-codes';
 import { Request, Response, NextFunction } from 'express';
 
-import * as userSchemas from '../schemas/userSchema';
+import * as categorySchemas from '../schemas/categorySchema';
 
 /**
- * Validate user post object.
+ * Validate a category post or put object.
  *
  * @param req
  * @param res
  * @param next
  */
-export function validateUserSchema(req: Request, res: Response, next: NextFunction) {
-  const result = validate(req.body, userSchemas.userSchema);
+export function validateCategorySchema(req: Request, res: Response, next: NextFunction) {
+  const result = validate(req.body, categorySchemas.categorySchema);
 
   if (result.error) {
     return res.status(HttpStatus.BAD_REQUEST).json(result.error);
