@@ -51,5 +51,4 @@ export const categoryMessages = {
   unableToRemove: 'Unable to remove the category.',
   unableToUpdate: 'Unable to update the category.',
   unableToCreate: 'Unable to create a new category.'
-}
-
+};

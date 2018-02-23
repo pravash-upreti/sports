@@ -39,7 +39,7 @@ export async function getAll(req: Request, res: Response, next: NextFunction) {
 }
 
 /**
- * Get a category details.
+ * Get a category detail.
  *
  * @export
  * @param {Request} req
@@ -57,7 +57,7 @@ export async function get(req : Request, res : Response, next : NextFunction) {
 }
 
 /**
- * Update a category details.
+ * Update a category detail.
  *
  * @export
  * @param {Request} req

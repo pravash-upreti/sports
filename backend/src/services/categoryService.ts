@@ -17,22 +17,18 @@ import NoRowUpdatedError from '../errors/NoRowUpdatedError';
  */
 export async function create(params: object) {
   try {
-    try {
-      const category: Category = await new Category(params).save();
+    const category: Category = await new Category(params).save();
 
-      if (!category) {
-        throw new NoRowUpdatedError(categoryMessages.unableToCreate);
-      }
-
-      return {
-        data: category,
-        code: HttpStatus.CREATED,
-        message: categoryMessages.created,
-        status: HttpStatus.getStatusText(HttpStatus.CREATED)
-      };
-    } catch (error) {
-      throw error;
+    if (!category) {
+      throw new NoRowUpdatedError(categoryMessages.unableToCreate);
     }
+
+    return {
+      data: category,
+      code: HttpStatus.CREATED,
+      message: categoryMessages.created,
+      status: HttpStatus.getStatusText(HttpStatus.CREATED)
+    };
   } catch (error) {
     throw error;
   }
@@ -58,7 +54,7 @@ export async function getAll() {
   } catch (error) {
     throw(error);
   }
-}
+};
 
 /**
  * Fetch details of a category.
@@ -81,7 +77,7 @@ export async function get(id: number) {
   } catch (error) {
     throw(error);
   }
-}
+};
 
 /**
  * Update a category details.
@@ -142,7 +138,7 @@ export async function remove(id: number) {
   } catch (error) {
     throw(error);
   }
-}
+};
 
 /**
  * Find a category by ID.
@@ -163,4 +159,4 @@ async function findById(id: number) {
   } catch (error) {
     throw error;
   }
-}
+};
