@@ -1,7 +1,7 @@
-import { createBrowserHistory } from 'history';
+import createBrowserHistory from 'history/createBrowserHistory';
 
 export default createBrowserHistory({
-  forceRefresh: true,
+  forceRefresh: false,
   getUserConfirmation: (message, callback) => {
     window.alert('Session has expired. Please login.');
     
