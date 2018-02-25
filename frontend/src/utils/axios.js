@@ -4,7 +4,7 @@ import { BASE_URL } from '../constants/apiUrls';
 
 import refreshAccessToken from '../services/authServices/refreshAccessToken';
 
-let axiosInstance = axios.create({
+const axiosInstance = axios.create({
   baseURL: BASE_URL
 });
 
@@ -34,23 +34,24 @@ export function refreshAndRepeat(lastRequestConfig) {
     });
 }
 
-export function addInterceptor(localLogout) {
+export function addInterceptor(localLogout, getAuthenticationStatus) {
   axiosInstance.interceptors.response.use(
     (response) => response,
     (error) => {
       if (error.response.status === 401) {
+        if (!getAuthenticationStatus()) {
+          throw error.response.data;
+        }
+
         let lastRequestConfig = error.response.config;
 
         return refreshAndRepeat(lastRequestConfig);
       } else if (error.response.status === 403) {
-        console.log('forcing logout');
         localLogout();
-        
+
         return null;
       } else {
-        console.log('error caught in interceptor', error.response);
-        
-        return error.response;
+        throw error.response.data;
       }
     });
 }

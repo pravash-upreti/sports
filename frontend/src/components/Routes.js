@@ -19,7 +19,7 @@ import FixtureOverview from './tournament/fixtureOverview';
 
 let sportSessionDetails;
 
-if(localStorage.sportSessionDetails) {
+if (localStorage.sportSessionDetails) {
   sportSessionDetails = JSON.parse(localStorage.sportSessionDetails);
 } else {
   sportSessionDetails = {
@@ -72,20 +72,23 @@ export default compose(
       localLogout: () => {
         props.setAuthentication(false);
         localStorage.removeItem('sportSessionDetails');
-      }
+      }     
     };
   }),
   withHandlers({
     handleLogout: (props) => (e) => {
       logout()
-        .then((response) => {
-          props.localLogout();
-        });
+      .then((response) => {
+        props.localLogout();
+      });
+    },
+    getAuthenticationStatus: (props) => (e) => {
+      return props.isAuthenticated;
     }
   }),
   lifecycle({
     componentDidMount() {
-      addInterceptor(this.props.localLogout);
+      addInterceptor(this.props.localLogout, this.props.getAuthenticationStatus);
     }
   })
 )(Routes);
