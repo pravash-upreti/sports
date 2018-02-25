@@ -4,7 +4,7 @@ import Card from '../treeCard';
 
 const FixtureRow = (props) => {
   const { fixtures } = props;
-  
+
   return (
     <div className="card-container">
       {
