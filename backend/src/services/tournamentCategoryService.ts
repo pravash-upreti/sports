@@ -104,6 +104,41 @@ export async function update(id: number, params: TournamentCategoryInterface) {
 }
 
 /**
+ * Remove or delete a link between tournament and category.
+ *
+ * @export
+ * @param {number} id
+ * @returns
+ * @throws
+ */
+export async function remove(id: number) {
+  try {
+    const tournamentCategory: TournamentCategory = await new TournamentCategory({ id }).fetch();
+
+    if (!tournamentCategory) {
+      throw new NotFoundError(tournamentCategoryMessages.notFound);
+    }
+
+    const removedTournamentCategory = await tournamentCategory.destroy();
+
+    if (!removedTournamentCategory) {
+      throw new NoRowUpdatedError(tournamentCategoryMessages.unableToRemove);
+    }
+
+    return {
+      code: HttpStatus.OK,
+      data: {
+        id
+      },
+      message: tournamentCategoryMessages.removed,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
+  } catch (error) {
+    throw(error);
+  }
+}
+
+/**
  * Fetch all categories of a tournament.
  *
  * @export

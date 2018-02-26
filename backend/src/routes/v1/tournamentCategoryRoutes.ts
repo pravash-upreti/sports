@@ -7,6 +7,8 @@ import * as tournamentCategoryController from '../../controllers/tournamentCateg
 const router: Router = Router();
 
 // Tournament category routes
+router.delete('/:id', urlParamsValidator.validateURLParams, tournamentCategoryController.remove);
+
 router.post('/', tournamentCategoryValidator.validateTournamentCategorySchema, tournamentCategoryController.create);
 
 router.get('/:tournamentId', urlParamsValidator.validateURLParams, tournamentCategoryController.getCategoriesByTournament);
