@@ -6,7 +6,11 @@ import AddButton from "./buttons/AddButton";
 import TournamentList from "./tournamentList";
 
 function Admin(props) {
-  const { tournament } = props;
+  const {
+    tournament
+  } = props;
+
+  console.log(props);
 
   return (
     <div className="admin-main-container">
@@ -22,19 +26,29 @@ function Admin(props) {
         handleChangeFinishDate={props.handleChangeFinishDate}
       />
       <div className="admin-panel-container">
-        <TournamentList tournament={tournament} />
+        <TournamentList
+          id={props.id}
+          title={props.title}
+          startDate={props.startDate}
+          finishDate={props.finishDate}
+          tournament={props.tournament}
+          isEditable={props.isEditable}
+          handleEditClick={props.handleEditClick}
+          updateTournament={props.updateTournament}
+          handleChangeTitle={props.handleChangeTitle}
+          handleChangeStartDate={props.handleChangeStartDate}
+          handleChangeFinishDate={props.handleChangeFinishDate}
+        />
       </div>
     </div>
   );
 }
 
 const enhance = compose(
-  withState("tournament", "updateTournament", []),
-  withState("title", "updateTitle", ""),
-  withState("startDate", "updateStartDate", ""),
-  withState("finishDate", "updateFinishDate", ""),
+  withState("tournaments", "updateTournament", []),
+  withState("isEditable", "toggleIsEditable", false),
   lifecycle({
-    componentDidMount(){
+    componentDidMount() {
       axios
         .get("http://0.0.0.0:5000/api/v1/tournaments")
         .then(res => {
@@ -56,6 +70,9 @@ const enhance = compose(
     handleChangeFinishDate: ({ updateFinishDate }) => e => {
       const finishDate = e.target.value;
       updateFinishDate(finishDate);
+    },
+    handleEditClick: ({ toggleIsEditable }) => () => {
+      toggleIsEditable(isEditable => !isEditable)
     }
   })
 );
