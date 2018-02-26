@@ -16,7 +16,7 @@ import getAuthDetails from '../utils/getAuthDetails';
 
 import logout from '../services/authServices/logout';
 
-import RedirectIfNotAuthenticated from './hocs/redirectIfNotAuthenticated';
+import PrivateRoute from './hocs/PrivateRoute';
 
 import Login from './auth';
 import Test from './admin/Test';
@@ -62,7 +62,7 @@ const Routes = (props) => {
           } />
           <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
           <Route exact path={routes.TOURNAMENT_FIXTURE_OVERVIEW} component={FixtureOverview} />
-          <RedirectIfNotAuthenticated
+          <PrivateRoute
             Component={Test}
             showToaster={showToaster}
             isAuthenticated={isAuthenticated}

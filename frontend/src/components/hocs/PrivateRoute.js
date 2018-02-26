@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router';
 
 import * as routes from '../../constants/routes';
 
-const RedirectIfNotAuthenticated = (props) => {
+const PrivateRoute = (props) => {
   const { path, Component, showToaster, isAuthenticated } = props;
 
   return (
@@ -28,4 +28,4 @@ const RedirectIfNotAuthenticated = (props) => {
   )
 };
 
-export default RedirectIfNotAuthenticated;
+export default PrivateRoute;
