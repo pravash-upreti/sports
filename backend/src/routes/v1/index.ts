@@ -7,6 +7,7 @@ import playerRoutes from './playerRoutes';
 import userRoleRoutes from './userRoleRoutes';
 import categoryRoutes from './categoryRoutes';
 import tournamentRoutes from './tournamentRoutes';
+import teamPlayerRoutes from './teamPlayerRoutes';
 import tournamentCateogryRoutes from './tournamentCategoryRoutes';
 
 const router: Router = Router();
@@ -38,6 +39,9 @@ router.use('/categories', categoryRoutes);
 
 // Load tournament routes
 router.use('/tournaments', tournamentRoutes);
+
+// Load team-player routes
+router.use('/team-players', teamPlayerRoutes);
 
 // Load tournament category routes
 router.use('/tournament-categories', tournamentCateogryRoutes);
