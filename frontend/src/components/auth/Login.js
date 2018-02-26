@@ -30,9 +30,6 @@ const Login = props => {
             <img src={logo} alt="Sports logo" />
           </a>
         </div>
-        {shouldShowLoginError ? (
-          <p className="login-error">{errorMessage}</p>
-        ) : null}
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
             <input
@@ -53,18 +50,6 @@ const Login = props => {
           <button type="submit">SIGN IN</button>
         </form>
       </div>
-      <form className="login-form">
-        <div className="input-group">
-          <input type="email" placeholder="EMAIL" name="email" required />
-          <input
-            type="password"
-            placeholder="PASSWORD"
-            name="password"
-            required
-          />
-        </div>
-        <button type="submit">SIGN IN</button>
-      </form>
     </div>
   );
 };

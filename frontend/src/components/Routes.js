@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { Router, Route, Switch, Redirect } from 'react-router';
+import { Router, Route, Switch } from 'react-router';
 import {
   compose,
   withState,
