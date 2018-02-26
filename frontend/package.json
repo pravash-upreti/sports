@@ -9,7 +9,8 @@
     "start": "webpack-dev-server --host 0.0.0.0 --port 8080",
     "precommit": "lint-staged",
     "lint": "eslint src test",
-    "lint:fix": "eslint src test --fix"
+    "lint:fix": "eslint src test --fix",
+    "build:production": "webpack --config webpack.config.prod.js"
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]

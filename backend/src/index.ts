@@ -8,11 +8,11 @@ import * as bodyParser from 'body-parser';
 import routes from './routes';
 import config from './config/app';
 import logger from './utils/logger';
-import middlewares from './middlewares';
 import notFoundHandler from './middlewares/notFoundHandler';
 import genericErrorHandler from './middlewares/genericErrorHandler';
 
 const { name, version, host, port } = config;
+
 const app: express.Application = express();
 
 app.locals.name = name;
@@ -24,7 +24,6 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use('/', middlewares);
 app.use('/', routes);
 app.use(express.static(path.join(__dirname, '/../public')));
 

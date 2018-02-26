@@ -5,9 +5,11 @@ import swaggerSpec from '../utils/swagger';
 /**
  * Get API docs
  *
- * @param req
- * @param res
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @returns
  */
 export function getAPIList(req: Request, res: Response) {
-  res.send(swaggerSpec);
+  return res.send(swaggerSpec);
 }
