@@ -7,8 +7,10 @@ import * as tournamentCategoryController from '../../controllers/tournamentCateg
 const router: Router = Router();
 
 // Tournament category routes
-router.get('/:id', urlParamsValidator.validateURLParams, tournamentCategoryController.getCategoriesByTournament);
-
 router.post('/', tournamentCategoryValidator.validateTournamentCategorySchema, tournamentCategoryController.create);
+
+router.get('/:tournamentId', urlParamsValidator.validateURLParams, tournamentCategoryController.getCategoriesByTournament);
+
+router.put('/:id', urlParamsValidator.validateURLParams, tournamentCategoryValidator.validateTournamentCategorySchema, tournamentCategoryController.update);
 
 export default router;

@@ -38,7 +38,7 @@ export async function create(params: TournamentCategoryInterface) {
       throw new NotFoundError(categoryMessages.notFound);
     }
 
-    const tournamentCategory = await new TournamentCategory(params).save();
+    const tournamentCategory: TournamentCategory = await new TournamentCategory(params).save();
 
     if (!tournamentCategory) {
       throw new NoRowUpdatedError(tournamentCategoryMessages.unableToCreate);
@@ -54,6 +54,54 @@ export async function create(params: TournamentCategoryInterface) {
     throw error;
   }
 };
+
+/**
+ * Update existing links of tournament and categories.
+ *
+ * @export
+ * @param {number} id
+ * @param {TournamentCategoryInterface} params
+ * @returns
+ * @throws
+ */
+export async function update(id: number, params: TournamentCategoryInterface) {
+  try {
+    // Check if the tournament exists
+    const tournament = await new Tournament({id: params.tournament_id}).fetch();
+
+    if (!tournament) {
+      throw new NotFoundError(tournamentMessages.notFound);
+    }
+
+    // Check if the category exists
+    const category = await new Category({id: params.category_id}).fetch();
+
+    if (!category) {
+      throw new NotFoundError(categoryMessages.notFound);
+    }
+
+    const tournamentCategory: TournamentCategory = await new TournamentCategory({ id }).fetch();
+
+    if (!tournamentCategory) {
+      throw new NotFoundError(tournamentCategoryMessages.notFound);
+    }
+
+    const updatedTournamentCategory = await tournamentCategory.save(params, { patch: true });
+
+    if (!updatedTournamentCategory) {
+      throw new NoRowUpdatedError(tournamentCategoryMessages.unableToUpdate);
+    }
+
+    return {
+      code: HttpStatus.OK,
+      data: updatedTournamentCategory,
+      message: tournamentCategoryMessages.updated,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
+  } catch (error) {
+    throw(error);
+  }
+}
 
 /**
  * Fetch all categories of a tournament.
