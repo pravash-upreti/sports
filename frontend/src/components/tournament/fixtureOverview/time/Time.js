@@ -1,11 +1,9 @@
-import React from 'react';
+import React from "react";
 
-const Time = (props) => {
-  return(
-    <div className="time-container">
-      <span>Time</span>
-    </div>
-  )
-}
+const Time = props => (
+  <div className="time-container">
+    <span>Time</span>
+  </div>
+);
 
 export default Time;
