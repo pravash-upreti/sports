@@ -1,3 +1,3 @@
-import FixtureOverview from "./FixtureOverview";
+import FixtureOverview from './FixtureOverview';
 
 export default FixtureOverview;

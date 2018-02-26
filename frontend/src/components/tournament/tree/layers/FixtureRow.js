@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Card from "../treeCard";
+import Card from '../treeCard';
 
-const FixtureRow = (props) => {
+const FixtureRow = props => {
   const { fixtures } = props;
 
   return (

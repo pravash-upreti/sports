@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Layer from "./layers/Layer";
-import Winner from "./layers/Winner";
-import Playoff from "./layers/Playoff";
+import Layer from './layers/Layer';
+import Winner from './layers/Winner';
+import Playoff from './layers/Playoff';
 
 import {
   WINNER,
@@ -10,8 +10,8 @@ import {
   SEMI_FINAL,
   QUARTER_FINAL,
   ROUND_OF_SIXTEEN,
-  PLAYOFFS,
-} from "../../../constants/rounds";
+  PLAYOFFS
+} from '../../../constants/rounds';
 
 const Tree = props => (
   <div className="tree-outer-container">

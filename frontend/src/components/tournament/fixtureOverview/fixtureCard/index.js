@@ -1,3 +1,3 @@
-import FixtureCard from "./FixtureCard";
+import FixtureCard from './FixtureCard';
 
 export default FixtureCard;

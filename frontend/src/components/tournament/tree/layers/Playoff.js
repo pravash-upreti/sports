@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 
-import LayerHeader from "./LayerHeader";
-import PlayerPhoto from "../treeCard/PlayerPhoto";
+import LayerHeader from './LayerHeader';
+import PlayerPhoto from '../treeCard/PlayerPhoto';
 
 // Todo: Remove this function when data is dynamic
-const getImagesFromFixtures = (fixtures) => {
+const getImagesFromFixtures = fixtures => {
   const imgArr = [];
   fixtures &&
-    fixtures.map((fixture) => {
+    fixtures.map(fixture => {
       imgArr.push(fixture.playerUp.img, fixture.playerDown.img);
     });
 
   return imgArr;
 };
 
-const Playoff = (props) => {
+const Playoff = props => {
   const { fixtures, layerTitle } = props;
   const images = getImagesFromFixtures(fixtures);
 

@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import Dates from "../../commons/dates";
-import Title from "../../commons/title";
-import FixtureCard from "./fixtureCard";
-import Header from "../../commons/header";
+import Dates from '../../commons/dates';
+import Title from '../../commons/title';
+import FixtureCard from './fixtureCard';
+import Header from '../../commons/header';
 
 const FixtureOverview = props => (
   <div className="user-outer-container">

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import logo from "../../../../public/assets/images/sports-logo.png";
+import logo from '../../../../public/assets/images/sports-logo.png';
 
 const Header = props => (
   <div className="header-main-container">

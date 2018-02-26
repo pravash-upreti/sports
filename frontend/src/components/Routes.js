@@ -1,13 +1,13 @@
-import React from "react";
-import { Router, Route, Switch } from "react-router";
+import React from 'react';
+import { Router, Route, Switch } from 'react-router';
 
-import * as routes from "../constants/routes";
+import * as routes from '../constants/routes';
 
-import Login from "./auth";
-import Tree from "./tournament/tree";
-import FixtureOverview from "./tournament/fixtureOverview";
+import Login from './auth';
+import Tree from './tournament/tree';
+import FixtureOverview from './tournament/fixtureOverview';
 
-import history from "../utils/routerHistory";
+import history from '../utils/routerHistory';
 
 const Routes = () => (
   <Router history={history}>
