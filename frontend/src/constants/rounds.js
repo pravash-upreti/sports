@@ -5,7 +5,7 @@ export const WINNER = {
   name: 'SAGUN',
   img: playerUpImg,
   title: 'CHAMPION'
-}
+};
 
 export const FINAL = {
   title: 'FINAL',
@@ -14,7 +14,7 @@ export const FINAL = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -35,7 +35,7 @@ export const SEMI_FINAL = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -49,7 +49,7 @@ export const SEMI_FINAL = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -70,7 +70,7 @@ export const QUARTER_FINAL = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -84,7 +84,7 @@ export const QUARTER_FINAL = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -98,7 +98,7 @@ export const QUARTER_FINAL = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -112,7 +112,7 @@ export const QUARTER_FINAL = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -133,7 +133,7 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -147,7 +147,7 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -161,7 +161,7 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -175,7 +175,7 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -189,7 +189,7 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -203,7 +203,7 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -217,7 +217,7 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -231,7 +231,7 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -251,7 +251,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -265,7 +265,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -279,7 +279,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -293,7 +293,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -307,7 +307,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -321,7 +321,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -335,7 +335,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -349,7 +349,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -363,7 +363,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -377,7 +377,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -391,7 +391,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -405,7 +405,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -419,7 +419,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -433,7 +433,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -447,7 +447,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -461,7 +461,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -475,7 +475,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -489,7 +489,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -503,7 +503,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -517,7 +517,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -531,7 +531,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -545,7 +545,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -559,7 +559,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',
@@ -573,7 +573,7 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: 'FEB 23',
-        time: '11:30 AM',
+        time: '11:30 AM'
       },
       playerUp: {
         name: 'SAGUN',

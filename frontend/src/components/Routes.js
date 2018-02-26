@@ -9,16 +9,18 @@ import FixtureOverview from './tournament/fixtureOverview';
 
 import history from '../utils/routerHistory';
 
-const Routes = () => {
-  return (
-    <Router history={history}>
-      <Switch>
-        <Route exact path={routes.LOGIN} component={Login} />
-        <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
-        <Route exact path={routes.TOURNAMENT_FIXTURE_OVERVIEW} component={FixtureOverview} />
-      </Switch>
-    </Router>
-  );
-};
+const Routes = () => (
+  <Router history={history}>
+    <Switch>
+      <Route exact path={routes.LOGIN} component={Login} />
+      <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
+      <Route
+        exact
+        path={routes.TOURNAMENT_FIXTURE_OVERVIEW}
+        component={FixtureOverview}
+      />
+    </Switch>
+  </Router>
+);
 
 export default Routes;

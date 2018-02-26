@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { IMAGE_SIZES } from '../../../../constants/constants';
 
-const PlayerPhoto = (props) => {
+const PlayerPhoto = props => {
   const { size, img } = props;
 
   const photoClass = classNames({
@@ -17,6 +17,6 @@ const PlayerPhoto = (props) => {
       <img src={img} alt="Player image" />
     </div>
   );
-}
+};
 
 export default PlayerPhoto;
