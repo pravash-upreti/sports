@@ -10,11 +10,13 @@ import fetchUsers from '../../services/userServices/fetchUsers';
 import refreshAccessToken from '../../services/authServices/refreshAccessToken';
 
 const Test = (props) => {
+  const { handleUserFetch, handleRefesh } = props;
+
   return (
     <div>
       This is protected admin page.
-      <button onClick={props.handleUserFetch}>Get Users</button>
-      <button onClick={props.handleRefesh}>Refresh Token</button>
+      <button onClick={handleUserFetch}>Get Users</button>
+      <button onClick={handleRefesh}>Refresh Token</button>
     </div>
   );
 };

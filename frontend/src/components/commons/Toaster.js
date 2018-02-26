@@ -1,10 +1,12 @@
 import React from 'react';
 
 const Toaster = (props) => {
+  const { message, hideToaster } = props;
+
   return (
     <div className="Toaster">
-      <p> {props.message} </p>
-      <button onClick={props.hideToaster}>Hide Toaster</button>
+      <p> {message} </p>
+      <button onClick={hideToaster}>Hide Toaster</button>
     </div>
   );
 };

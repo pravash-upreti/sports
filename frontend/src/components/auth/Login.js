@@ -14,6 +14,14 @@ import login from '../../services/authServices/login';
 import redirectIfAuthenticated from '../hocs/redirectIfAuthenticated';
 
 const Login = (props) => {
+  const {
+    errorMessage,
+    handleLogin,
+    handleEmailChange,
+    shouldShowLoginError,
+    handlePasswordChange
+  } = props;
+
   return (
     <div className="login-outer-container">
       <div className="login-inner-container">
@@ -22,26 +30,26 @@ const Login = (props) => {
             <img src={logo} alt="Sports logo" />
           </a>
         </div>
-        {props.shouldShowLoginError ? (
-          <p className="login-error">{props.errorMessage}</p>
+        {shouldShowLoginError ? (
+          <p className="login-error">{errorMessage}</p>
         ) : (
           null
         )}
-        <form className="login-form" onSubmit={props.handleLogin}>
+        <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
             <input
               type="email"
               placeholder="EMAIL"
               name="email"
               required={true}
-              onChange={props.handleEmailChange}
+              onChange={handleEmailChange}
             />
             <input
               type="password"
               placeholder="PASSWORD"
               name="password"
               required={true}
-              onChange={props.handlePasswordChange}
+              onChange={handlePasswordChange}
             />
           </div>
           <button type="submit">SIGN IN</button>
@@ -73,6 +81,7 @@ export default compose(
               })
             );
             setTokenInHeader(loginResponse.tokens.accessToken);
+            
             return;
           }
           throw DEFAULT_LOGIN_ERROR_MESSAGE;

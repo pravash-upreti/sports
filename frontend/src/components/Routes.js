@@ -29,33 +29,43 @@ let authDetails = getAuthDetails();
 
 
 const Routes = (props) => {
+  const {
+    shouldShowToaster,
+    toasterMessage,
+    hideToaster,
+    isAuthenticated,
+    handleLogout,
+    setAuthentication,
+    showToaster
+  } = props;
+
   return (
     <Router history={history}>
       <Fragment>
         {
-          props.shouldShowToaster ? (
-            <Toaster message={props.toasterMessage} hideToaster={props.hideToaster} />
+          shouldShowToaster ? (
+            <Toaster message={toasterMessage} hideToaster={hideToaster} />
           ) : (
               null
             )
         }
-        <Navigation isAuthenticated={props.isAuthenticated} logout={props.handleLogout} />
+        <Navigation isAuthenticated={isAuthenticated} logout={handleLogout} />
         <Switch>
           <Route exact path={routes.ROOT} component={Tree} />
           <Route exact path={routes.LOGIN} render={(routerProps) =>
             <Login
               {...routerProps}
-              isAuthenticated={props.isAuthenticated}
-              setAuthentication={props.setAuthentication}
-              showToaster={props.showToaster}
+              isAuthenticated={isAuthenticated}
+              setAuthentication={setAuthentication}
+              showToaster={showToaster}
             />
           } />
           <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
           <Route exact path={routes.TOURNAMENT_FIXTURE_OVERVIEW} component={FixtureOverview} />
           <RedirectIfNotAuthenticated
             Component={Test}
-            showToaster={props.showToaster}
-            isAuthenticated={props.isAuthenticated}
+            showToaster={showToaster}
+            isAuthenticated={isAuthenticated}
             path={routes.ADMIN}
           />
         </Switch>
@@ -68,19 +78,19 @@ export default compose(
   withState('isAuthenticated', 'setAuthentication', authDetails.isAuthenticated),
   withState('shouldShowToaster', 'setShouldShowToaster', false),
   withState('toasterMessage', 'setToasterMessage', DEFAULT_TOASTER_MESSAGE),
-  withProps((props) => {
+  withProps(({ setAuthentication, setToasterMessage, setShouldShowToaster }) => {
     return {
       localLogout: () => {
-        props.setAuthentication(false);
+        setAuthentication(false);
         localStorage.removeItem(LOCAL_AUTH_VARIABLE);
       },
       showToaster: (message) => {
-        props.setShouldShowToaster(true);
-        props.setToasterMessage(message);
+        setShouldShowToaster(true);
+        setToasterMessage(message);
       },
       hideToaster: () => {
-        props.setShouldShowToaster(false);
-        props.setToasterMessage(DEFAULT_TOASTER_MESSAGE);
+        setShouldShowToaster(false);
+        setToasterMessage(DEFAULT_TOASTER_MESSAGE);
       },
     };
   }),
