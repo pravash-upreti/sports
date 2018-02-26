@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router';
-import { compose, branch, withState, withHandlers, renderComponent } from 'recompose';
+import { compose, branch, withState, withHandlers } from 'recompose';
 
 import logo from '../../../public/assets/images/sports-logo.png';
 
@@ -10,6 +10,8 @@ import { DEFAULT_LOGIN_ERROR_MESSAGE } from '../../constants/errorMessages';
 import { setTokenInHeader } from '../../utils/axios';
 
 import login from '../../services/authServices/login';
+
+import redirectIfAuthenticated from '../hocs/redirectIfAuthenticated';
 
 const Login = (props) => {
   return (
@@ -48,17 +50,6 @@ const Login = (props) => {
     </div>
   );
 };
-
-const checkAuthentication = (({ isAuthenticated }) => isAuthenticated);
-const RedirectHere = ({ location, isAuthenticated }) => {
-  const newRoute = location.state && location.state.from || { pathname: '/' };
-
-  return <Redirect to={newRoute} />;
-}
-const RedirectIfAuthenticated = branch(
-  checkAuthentication,
-  renderComponent(RedirectHere)
-);
 
 export default compose(
   withState('email', 'setEmail', ''),
@@ -99,5 +90,5 @@ export default compose(
         });
     },
   }),
-  RedirectIfAuthenticated
+  redirectIfAuthenticated
 )(Login);

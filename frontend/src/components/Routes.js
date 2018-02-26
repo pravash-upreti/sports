@@ -16,6 +16,7 @@ import getAuthDetails from '../utils/getAuthDetails';
 
 import logout from '../services/authServices/logout';
 
+import RedirectIfNotAuthenticated from './hocs/redirectIfNotAuthenticated';
 
 import Login from './auth';
 import Test from './admin/Test';
@@ -39,34 +40,25 @@ const Routes = (props) => {
             )
         }
         <Navigation isAuthenticated={props.isAuthenticated} logout={props.handleLogout} />
-        <Route exact path={routes.LOGIN} render={(routerProps) =>
-          <Login
-            {...routerProps}
-            isAuthenticated={props.isAuthenticated}
-            setAuthentication={props.setAuthentication}
+        <Switch>
+          <Route exact path={routes.ROOT} component={Tree} />
+          <Route exact path={routes.LOGIN} render={(routerProps) =>
+            <Login
+              {...routerProps}
+              isAuthenticated={props.isAuthenticated}
+              setAuthentication={props.setAuthentication}
+              showToaster={props.showToaster}
+            />
+          } />
+          <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
+          <Route exact path={routes.TOURNAMENT_FIXTURE_OVERVIEW} component={FixtureOverview} />
+          <RedirectIfNotAuthenticated
+            Component={Test}
             showToaster={props.showToaster}
+            isAuthenticated={props.isAuthenticated}
+            path={routes.ADMIN}
           />
-        } />
-        <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
-        <Route exact path={routes.TOURNAMENT_FIXTURE_OVERVIEW} component={FixtureOverview} />
-        <Route
-          path={routes.ADMIN}
-          render={(routerProps) => {
-            return (
-              props.isAuthenticated ? (
-                <Test showToaster={props.showToaster} />
-              ) : (
-                  <Redirect to={{
-                    pathname: routes.LOGIN,
-                    state: {
-                      from: routerProps.location
-                    }
-                  }}
-                  />
-                )
-            )
-          }}
-        />
+        </Switch>
       </Fragment>
     </Router>
   );
