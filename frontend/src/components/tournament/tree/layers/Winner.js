@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import { IMAGE_SIZES } from '../../../../constants/constants';
+import { IMAGE_SIZES } from "../../../../constants/constants";
 
-import PlayerPhoto from '../treeCard/PlayerPhoto';
+import PlayerPhoto from "../treeCard/PlayerPhoto";
 
-const Winner = (props) => {
+const Winner = props => {
   const { img, name, title } = props;
 
   return (
