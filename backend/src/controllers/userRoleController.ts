@@ -9,12 +9,13 @@ import * as userRoleService from '../services/userRoleService';
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
+ * @returns
  */
 export async function createRole(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await userRoleService.createRole(req.body);
 
-    res.status(response.code).json(response);
+    return res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }

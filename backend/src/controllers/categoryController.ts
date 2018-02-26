@@ -9,12 +9,13 @@ import * as categoryService from '../services/categoryService';
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
+ * @returns
  */
 export async function create(req : Request, res : Response, next : NextFunction) {
   try {
     const response = await categoryService.create(req.body);
 
-    res.status(response.code).json(response);
+    return res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }
@@ -27,12 +28,13 @@ export async function create(req : Request, res : Response, next : NextFunction)
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
+ * @returns
  */
 export async function getAll(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await categoryService.getAll();
 
-    res.status(response.code).json(response);
+    return res.status(response.code).json(response);
   } catch(error) {
     next(error);
   }
@@ -45,12 +47,13 @@ export async function getAll(req: Request, res: Response, next: NextFunction) {
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
+ * @returns
  */
 export async function get(req : Request, res : Response, next : NextFunction) {
   try {
     const response = await categoryService.get(req.params.id);
 
-    res.status(response.code).json(response);
+    return res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }
@@ -63,12 +66,13 @@ export async function get(req : Request, res : Response, next : NextFunction) {
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
+ * @returns
  */
 export async function update(req : Request, res : Response, next : NextFunction) {
   try {
     const response = await categoryService.update(req.params.id, req.body);
 
-    res.status(response.code).json(response);
+    return res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }
@@ -81,12 +85,13 @@ export async function update(req : Request, res : Response, next : NextFunction)
  * @param {Request} req
  * @param {Response} res
  * @param {NextFunction} next
+ * @returns
  */
 export async function remove(req: Request, res: Response, next: NextFunction) {
   try {
     const response = await categoryService.remove(req.params.id);
 
-    res.status(response.code).json(response);
+    return res.status(response.code).json(response);
   } catch (error) {
     next(error);
   }
