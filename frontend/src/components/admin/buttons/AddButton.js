@@ -20,12 +20,13 @@ function PostData(props) {
       moment(startDate, "YYYY/MM/DD").isValid &&
       (finishDate === null || moment(finishDate, "YYYY/MM/DD").isValid)
     ) {
+      let payload = {
+        title: title,
+        start_date: startDate
+      };
+      if(finishDate) payload.finish_date = finishDate;
       axios
-        .post("http://0.0.0.0:5000/api/v1/tournaments", {
-          title: title,
-          start_date: startDate,
-          finish_date: finishDate
-        })
+        .post("http://0.0.0.0:5000/api/v1/tournaments", payload)
         .then(res => {
           axios
             .get("http://0.0.0.0:5000/api/v1/tournaments")

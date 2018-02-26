@@ -6,11 +6,7 @@ import AddButton from "./buttons/AddButton";
 import TournamentList from "./tournamentList";
 
 function Admin(props) {
-  const {
-    tournament
-  } = props;
-
-  console.log(props);
+  const { tournament } = props;
 
   return (
     <div className="admin-main-container">
@@ -27,11 +23,10 @@ function Admin(props) {
       />
       <div className="admin-panel-container">
         <TournamentList
-          id={props.id}
           title={props.title}
           startDate={props.startDate}
           finishDate={props.finishDate}
-          tournament={props.tournament}
+          tournament={tournament}
           isEditable={props.isEditable}
           handleEditClick={props.handleEditClick}
           updateTournament={props.updateTournament}
@@ -45,7 +40,10 @@ function Admin(props) {
 }
 
 const enhance = compose(
-  withState("tournaments", "updateTournament", []),
+  withState("tournament", "updateTournament", []),
+  withState("title", "updateTitle", ""),
+  withState("startDate", "updateStartDate", ""),
+  withState("finishDate", "updateFinishDate", ""),
   withState("isEditable", "toggleIsEditable", false),
   lifecycle({
     componentDidMount() {
@@ -72,7 +70,7 @@ const enhance = compose(
       updateFinishDate(finishDate);
     },
     handleEditClick: ({ toggleIsEditable }) => () => {
-      toggleIsEditable(isEditable => !isEditable)
+      toggleIsEditable(isEditable => !isEditable);
     }
   })
 );

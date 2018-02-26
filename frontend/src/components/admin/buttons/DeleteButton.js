@@ -2,11 +2,11 @@ import axios from "axios";
 import React from "react";
 
 function DeleteData(props) {
-  const { id, tournament, updateTournament } = props;
+  const { tournament, updateTournament } = props;
 
   const remove = () => {
     axios
-      .delete("http://0.0.0.0:5000/api/v1/tournaments/" + id)
+      .delete("http://0.0.0.0:5000/api/v1/tournaments/" + tournament[0].id)
       .then(res => {
         axios
           .get("http://0.0.0.0:5000/api/v1/tournaments")

@@ -5,7 +5,6 @@ import InputMask from "react-input-mask";
 
 function EditData(props) {
   const {
-    id,
     title,
     startDate,
     finishDate,
@@ -23,12 +22,13 @@ function EditData(props) {
       moment(startDate, "YYYY/MM/DD").isValid &&
       (finishDate === null || moment(finishDate, "YYYY/MM/DD").isValid)
     ) {
+      let payload = { title: title, start_date: startDate };
+      if (finishDate) payload.finish_date = finishDate;
       axios
-        .put("http://0.0.0.0:5000/api/v1/tournaments/" + id, {
-          title: "title",
-          start_date: "2012/12/12",
-          finish_date: "2013/12/12"
-        })
+        .put(
+          "http://0.0.0.0:5000/api/v1/tournaments/" + tournament[0].id,
+          payload
+        )
         .then(res => {
           axios
             .get("http://0.0.0.0:5000/api/v1/tournaments")
@@ -48,6 +48,7 @@ function EditData(props) {
         onSubmit={e => {
           e.preventDefault();
           edit();
+          handleEditClick();
         }}
       >
         <input

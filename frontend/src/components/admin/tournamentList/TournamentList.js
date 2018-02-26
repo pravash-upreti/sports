@@ -5,7 +5,6 @@ import DeleteButton from "../buttons/DeleteButton";
 
 function TournamentList(props) {
   const {
-    id,
     title,
     startDate,
     finishDate,
@@ -17,7 +16,6 @@ function TournamentList(props) {
     handleChangeStartDate,
     handleChangeFinishDate
   } = props;
-  console.log(props);
 
   return (
     <ul>
@@ -28,7 +26,6 @@ function TournamentList(props) {
               tournament.finishDate
             }
             <EditButton
-              id={props.id}
               title={props.title}
               startDate={props.startDate}
               finishDate={props.finishDate}
@@ -41,7 +38,6 @@ function TournamentList(props) {
               handleChangeFinishDate={props.handleChangeFinishDate}
             />
             <DeleteButton
-              id={props.id}
               tournament={props.tournament}
               updateTournament={props.updateTournament}
             />
