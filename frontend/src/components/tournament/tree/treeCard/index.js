@@ -3,7 +3,7 @@ import React from "react";
 import Player from "./Player";
 import MatchTime from "./MatchTime";
 
-const Card = props => {
+const Card = (props) => {
   const { matchTime, playerUp, playerDown } = props;
 
   return (

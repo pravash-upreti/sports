@@ -4,7 +4,7 @@ import playerDownImg from "../../public/assets/images/dummy-image.jpg";
 export const WINNER = {
   name: "SAGUN",
   img: playerUpImg,
-  title: "CHAMPION"
+  title: "CHAMPION",
 };
 
 export const FINAL = {
@@ -14,18 +14,18 @@ export const FINAL = {
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
-    }
-  ]
+        img: playerDownImg,
+      },
+    },
+  ],
 };
 
 export const SEMI_FINAL = {
@@ -35,32 +35,32 @@ export const SEMI_FINAL = {
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
-    }
-  ]
+        img: playerDownImg,
+      },
+    },
+  ],
 };
 
 export const QUARTER_FINAL = {
@@ -70,60 +70,60 @@ export const QUARTER_FINAL = {
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
-    }
-  ]
+        img: playerDownImg,
+      },
+    },
+  ],
 };
 
 export const ROUND_OF_SIXTEEN = {
@@ -133,116 +133,116 @@ export const ROUND_OF_SIXTEEN = {
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
-    }
-  ]
+        img: playerDownImg,
+      },
+    },
+  ],
 };
 
 export const PLAYOFFS = {
@@ -251,338 +251,338 @@ export const PLAYOFFS = {
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
+        img: playerDownImg,
+      },
     },
     {
       matchTime: {
         day: "FEB 23",
-        time: "11:30 AM"
+        time: "11:30 AM",
       },
       playerUp: {
         name: "SAGUN",
-        img: playerUpImg
+        img: playerUpImg,
       },
       playerDown: {
         name: "CHUMLUNG",
-        img: playerDownImg
-      }
-    }
-  ]
+        img: playerDownImg,
+      },
+    },
+  ],
 };

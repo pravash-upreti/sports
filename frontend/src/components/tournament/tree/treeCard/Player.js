@@ -2,7 +2,7 @@ import React from "react";
 
 import PlayerPhoto from "./PlayerPhoto";
 
-const Player = props => {
+const Player = (props) => {
   const { name, img } = props;
 
   return (

@@ -4,7 +4,7 @@ import { IMAGE_SIZES } from "../../../../constants/constants";
 
 import PlayerPhoto from "../treeCard/PlayerPhoto";
 
-const Winner = props => {
+const Winner = (props) => {
   const { img, name, title } = props;
 
   return (

@@ -13,7 +13,7 @@
     "build:production": "webpack --config webpack.config.prod.js"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,json,css,md}": ["git add"]
   },
   "author": "",
   "license": "ISC",

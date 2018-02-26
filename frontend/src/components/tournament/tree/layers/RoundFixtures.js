@@ -4,7 +4,7 @@ import { MAX_CARDS_PER_ROW } from "../../../../constants/constants";
 
 import FixtureRow from "./FixtureRow";
 
-const RoundFixtures = props => {
+const RoundFixtures = (props) => {
   const { fixtures } = props;
 
   return fixtures.length > MAX_CARDS_PER_ROW ? (

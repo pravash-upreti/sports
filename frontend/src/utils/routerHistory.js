@@ -6,5 +6,5 @@ export default createBrowserHistory({
     window.alert("Session has expired. Please login.");
 
     return setTimeout(callback(true), 100000);
-  }
+  },
 });

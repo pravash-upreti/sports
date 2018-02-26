@@ -1,6 +1,6 @@
 import React from "react";
 
-const LayerHeader = props => {
+const LayerHeader = (props) => {
   const { title } = props;
 
   return (

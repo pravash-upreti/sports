@@ -10,7 +10,7 @@ import {
   SEMI_FINAL,
   QUARTER_FINAL,
   ROUND_OF_SIXTEEN,
-  PLAYOFFS
+  PLAYOFFS,
 } from "../../../constants/rounds";
 
 const Tree = props => (
