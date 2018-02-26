@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { IMAGE_SIZES } from '../../../../constants/constants';
 
-const PlayerPhoto = (props) => {
+const PlayerPhoto = props => {
   const { img, size } = props;
 
   const photoClass = classNames({

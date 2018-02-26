@@ -13,7 +13,7 @@ import login from '../../services/authServices/login';
 
 import redirectIfAuthenticated from '../hocs/redirectIfAuthenticated';
 
-const Login = (props) => {
+const Login = props => {
   const {
     handleLogin,
     errorMessage,
@@ -32,23 +32,21 @@ const Login = (props) => {
         </div>
         {shouldShowLoginError ? (
           <p className="login-error">{errorMessage}</p>
-        ) : (
-            null
-          )}
+        ) : null}
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
             <input
               type="email"
               placeholder="EMAIL"
               name="email"
-              required={true}
+              required
               onChange={handleEmailChange}
             />
             <input
               type="password"
               placeholder="PASSWORD"
               name="password"
-              required={true}
+              required
               onChange={handlePasswordChange}
             />
           </div>
@@ -77,12 +75,18 @@ export default compose(
   withState('shouldShowLoginError', 'setShouldShowLoginError', false),
   withState('errorMessage', 'setErrorMessage', DEFAULT_LOGIN_ERROR_MESSAGE),
   withHandlers({
-    handleEmailChange: ({ setEmail }) => (e) => setEmail(e.target.value),
-    handlePasswordChange: ({ setPassword }) => (e) => setPassword(e.target.value),
-    handleLogin: ({ email, password, setAuthentication, setErrorMessage, setShouldShowLoginError }) => (e) => {
+    handleEmailChange: ({ setEmail }) => e => setEmail(e.target.value),
+    handlePasswordChange: ({ setPassword }) => e => setPassword(e.target.value),
+    handleLogin: ({
+      email,
+      password,
+      setAuthentication,
+      setErrorMessage,
+      setShouldShowLoginError
+    }) => e => {
       e.preventDefault();
       login({ email, password })
-        .then((loginResponse) => {
+        .then(loginResponse => {
           if (loginResponse && loginResponse.tokens) {
             const res = setAuthentication(true);
             localStorage.setItem(
@@ -98,7 +102,7 @@ export default compose(
           }
           throw DEFAULT_LOGIN_ERROR_MESSAGE;
         })
-        .catch((error) => {
+        .catch(error => {
           const errorMessage = error && error.error && error.error.message;
           setShouldShowLoginError(true);
           if (errorMessage) {
@@ -109,7 +113,7 @@ export default compose(
 
           setErrorMessage(DEFAULT_LOGIN_ERROR_MESSAGE);
         });
-    },
+    }
   }),
   redirectIfAuthenticated
 )(Login);

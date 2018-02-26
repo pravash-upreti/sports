@@ -10,15 +10,13 @@ const axiosInstance = axios.create({
 
 export function setTokenInHeader(accessToken) {
   axiosInstance.defaults.headers = {
-    authorization: 'Bearer ' + accessToken
+    authorization: `Bearer ${accessToken}`
   };
-
-  return;
 }
 
 export function refreshAndRepeat(lastRequestConfig) {
   return refreshAccessToken()
-    .then((newAccessToken) => {
+    .then(newAccessToken => {
       if (newAccessToken) {
         lastRequestConfig.headers.authorization = newAccessToken;
 
@@ -27,31 +25,31 @@ export function refreshAndRepeat(lastRequestConfig) {
 
       return null;
     })
-    .catch((error) => {
+    .catch(error => {
       throw error;
     });
 }
 
 export function addInterceptor(localLogout, getAuthenticationStatus) {
   axiosInstance.interceptors.response.use(
-    (response) => response,
-    (error) => {
+    response => response,
+    error => {
       if (error.response.status === 401) {
         if (!getAuthenticationStatus()) {
           throw error.response.data;
         }
 
-        let lastRequestConfig = error.response.config;
+        const lastRequestConfig = error.response.config;
 
         return refreshAndRepeat(lastRequestConfig);
       } else if (error.response.status === 403) {
         localLogout();
 
         return null;
-      } else {
-        throw error.response.data;
       }
-    });
+      throw error.response.data;
+    }
+  );
 }
 
 export default axiosInstance;

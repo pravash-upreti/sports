@@ -7,20 +7,24 @@ const refreshAccessToken = () => {
   try {
     const { refreshToken } = getAuthDetails();
     axiosInstance.defaults.headers = {
-      refresh: 'Bearer ' + refreshToken
+      refresh: `Bearer ${refreshToken}`
     };
 
     return axiosInstance
       .get(REFRESH_ROUTE)
-      .then((response) => {
-        const newAccessToken = response && response.data && response.data.data && response.data.data.newAccessToken;
+      .then(response => {
+        const newAccessToken =
+          response &&
+          response.data &&
+          response.data.data &&
+          response.data.data.newAccessToken;
 
         setTokenInHeader(newAccessToken);
 
         return newAccessToken;
       })
-      .catch((error) => {
-        throw (error);
+      .catch(error => {
+        throw error;
       });
   } catch (error) {
     throw error;

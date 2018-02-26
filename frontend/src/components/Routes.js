@@ -1,7 +1,13 @@
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Router, Route, Switch, Redirect } from 'react-router';
-import { compose, withState, withHandlers, lifecycle, withProps } from 'recompose';
+import {
+  compose,
+  withState,
+  withHandlers,
+  lifecycle,
+  withProps
+} from 'recompose';
 
 import * as routes from '../constants/routes';
 import { LOCAL_AUTH_VARIABLE } from '../constants/constants';
@@ -25,10 +31,9 @@ import Toaster from './commons/Toaster';
 import Navigation from './commons/Navigation';
 import FixtureOverview from './tournament/fixtureOverview';
 
-let authDetails = getAuthDetails();
+const authDetails = getAuthDetails();
 
-
-const Routes = (props) => {
+const Routes = props => {
   const {
     showToaster,
     hideToaster,
@@ -36,32 +41,36 @@ const Routes = (props) => {
     toasterMessage,
     isAuthenticated,
     shouldShowToaster,
-    setAuthentication,
+    setAuthentication
   } = props;
 
   return (
     <Router history={history}>
       <Fragment>
-        {
-          shouldShowToaster ? (
-            <Toaster message={toasterMessage} hideToaster={hideToaster} />
-          ) : (
-              null
-            )
-        }
+        {shouldShowToaster ? (
+          <Toaster message={toasterMessage} hideToaster={hideToaster} />
+        ) : null}
         <Navigation isAuthenticated={isAuthenticated} logout={handleLogout} />
         <Switch>
           <Route exact path={routes.ROOT} component={Tree} />
-          <Route exact path={routes.LOGIN} render={(routerProps) =>
-            <Login
-              {...routerProps}
-              isAuthenticated={isAuthenticated}
-              setAuthentication={setAuthentication}
-              showToaster={showToaster}
-            />
-          } />
+          <Route
+            exact
+            path={routes.LOGIN}
+            render={routerProps => (
+              <Login
+                {...routerProps}
+                isAuthenticated={isAuthenticated}
+                setAuthentication={setAuthentication}
+                showToaster={showToaster}
+              />
+            )}
+          />
           <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
-          <Route exact path={routes.TOURNAMENT_FIXTURE_OVERVIEW} component={FixtureOverview} />
+          <Route
+            exact
+            path={routes.TOURNAMENT_FIXTURE_OVERVIEW}
+            component={FixtureOverview}
+          />
           <PrivateRoute
             Component={Test}
             showToaster={showToaster}
@@ -75,32 +84,36 @@ const Routes = (props) => {
 };
 
 export default compose(
-  withState('isAuthenticated', 'setAuthentication', authDetails.isAuthenticated),
+  withState(
+    'isAuthenticated',
+    'setAuthentication',
+    authDetails.isAuthenticated
+  ),
   withState('shouldShowToaster', 'setShouldShowToaster', false),
   withState('toasterMessage', 'setToasterMessage', DEFAULT_TOASTER_MESSAGE),
-  withProps(({ setAuthentication, setToasterMessage, setShouldShowToaster }) => {
-    return {
+  withProps(
+    ({ setAuthentication, setToasterMessage, setShouldShowToaster }) => ({
       localLogout: () => {
         setAuthentication(false);
         localStorage.removeItem(LOCAL_AUTH_VARIABLE);
       },
-      showToaster: (message) => {
+      showToaster: message => {
         setShouldShowToaster(true);
         setToasterMessage(message);
       },
       hideToaster: () => {
         setShouldShowToaster(false);
         setToasterMessage(DEFAULT_TOASTER_MESSAGE);
-      },
-    };
-  }),
+      }
+    })
+  ),
   withHandlers({
-    handleLogout: ({ localLogout, showToaster }) => (e) => {
+    handleLogout: ({ localLogout, showToaster }) => e => {
       logout()
-        .then((response) => {
+        .then(response => {
           localLogout();
         })
-        .catch((error) => {
+        .catch(error => {
           const errorMessage = error && error.error && error.error.message;
 
           if (errorMessage) {
@@ -112,13 +125,14 @@ export default compose(
           showToaster(DEFAULT_LOGOUT_ERROR_MESSAGE);
         });
     },
-    getAuthenticationStatus: ({ isAuthenticated }) => (e) => {
-      return isAuthenticated;
-    },
+    getAuthenticationStatus: ({ isAuthenticated }) => e => isAuthenticated
   }),
   lifecycle({
     componentDidMount() {
-      addInterceptor(this.props.localLogout, this.props.getAuthenticationStatus);
+      addInterceptor(
+        this.props.localLogout,
+        this.props.getAuthenticationStatus
+      );
     }
   })
 )(Routes);

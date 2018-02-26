@@ -3,20 +3,18 @@ import { Link } from 'react-router-dom';
 
 import * as routes from '../../constants/routes';
 
-const Navigation = (props) => {
+const Navigation = props => {
   const { logout, isAuthenticated } = props;
 
   return (
     <div>
       <Link to={routes.ADMIN}>Admin</Link>
       <Link to={routes.TOURNAMENT_FIXTURE_OVERVIEW}>FixtureOverview</Link>
-      {
-        isAuthenticated ? (
-          <Link onClick={logout} to="/logout">Logout</Link>
-        ) : (
-            null
-          )
-      }
+      {isAuthenticated ? (
+        <Link onClick={logout} to="/logout">
+          Logout
+        </Link>
+      ) : null}
     </div>
   );
 };
