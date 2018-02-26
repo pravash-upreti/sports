@@ -49,9 +49,7 @@ const Routes = props => {
         {shouldShowToaster ? (
           <Toaster message={toasterMessage} hideToaster={hideToaster} />
         ) : null}
-        <Navigation isAuthenticated={isAuthenticated} logout={handleLogout} />
         <Switch>
-          <Route exact path={routes.ROOT} component={Tree} />
           <Route
             exact
             path={routes.LOGIN}
@@ -64,6 +62,10 @@ const Routes = props => {
               />
             )}
           />
+          <Navigation isAuthenticated={isAuthenticated} logout={handleLogout} />
+        </Switch>
+        <Switch>
+          <Route exact path={routes.ROOT} component={Tree} />
           <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
           <Route
             exact

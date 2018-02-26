@@ -8,6 +8,7 @@ const Navigation = props => {
 
   return (
     <div>
+      <Link to={routes.ROOT}>Home</Link>
       <Link to={routes.ADMIN}>Admin</Link>
       <Link to={routes.TOURNAMENT_FIXTURE_OVERVIEW}>FixtureOverview</Link>
       {isAuthenticated ? (
