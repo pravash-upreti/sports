@@ -1,8 +1,10 @@
-import axiosInstance from '../../utils/axios';
 import { LOGOUT_ROUTE } from '../../constants/apiUrls';
 
+import axiosInstance from '../../utils/axios';
+import getAuthDetails from '../../utils/getAuthDetails';
+
 const logout = () => {
-  const { refreshToken } = JSON.parse(localStorage.sportSessionDetails);
+  const { refreshToken } = getAuthDetails();
 
   axiosInstance.defaults.headers = {
     refresh: 'Bearer ' + refreshToken
@@ -11,12 +13,10 @@ const logout = () => {
   return axiosInstance
     .post(LOGOUT_ROUTE)
     .then((logoutResponse) => {
-      return logoutResponse && logoutResponse.data && logoutResponse.data.data;
+      return logoutResponse && logoutResponse.data && logoutResponse.data.data || {};
     })
     .catch((error) => {
-      console.log('logout error is', error);
-      
-      return null;
+      throw(error);
     });
 };
 

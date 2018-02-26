@@ -4,8 +4,12 @@ import { compose, branch, withState, withHandlers, renderComponent } from 'recom
 
 import logo from '../../../public/assets/images/sports-logo.png';
 
+import { LOCAL_AUTH_VARIABLE } from '../../constants/constants';
+
 import { setTokenInHeader } from '../../utils/axios';
 import login from '../../services/authServices/login';
+
+const DEFAULT_LOGIN_ERROR_MESSAGE = 'Error occured in login';
 
 const Login = (props) => {
   return (
@@ -41,9 +45,9 @@ const Login = (props) => {
 };
 
 const checkAuthentication = (({ isAuthenticated }) => isAuthenticated);
-const RedirectHere = ({location, isAuthenticated}) => {
+const RedirectHere = ({ location, isAuthenticated }) => {
   const newRoute = location.state && location.state.from || { pathname: '/' };
-  
+
   return <Redirect to={newRoute} />;
 }
 const RedirectIfAuthenticated = branch(
@@ -57,21 +61,34 @@ export default compose(
   withHandlers({
     handleEmailChange: ({ setEmail }) => (e) => setEmail(e.target.value),
     handlePasswordChange: ({ setPassword }) => (e) => setPassword(e.target.value),
-    handleLogin: ({ email, password, setAuthentication }) => (e) => {
+    handleLogin: ({ email, password, setAuthentication, showToaster }) => (e) => {
       e.preventDefault();
       login({ email, password })
         .then((loginResponse) => {
           if (loginResponse && loginResponse.tokens) {
             const res = setAuthentication(true);
             localStorage.setItem(
-              'sportSessionDetails',
+              LOCAL_AUTH_VARIABLE,
               JSON.stringify({
                 isAuthenticated: true,
                 refreshToken: loginResponse.tokens.refreshToken
               })
             );
             setTokenInHeader(loginResponse.tokens.accessToken);
+            return;
           }
+          throw DEFAULT_LOGIN_ERROR_MESSAGE;
+        })
+        .catch((error) => {
+          const errorMessage = error && error.error && error.error.message;
+
+          if (errorMessage) {
+            showToaster(errorMessage);
+
+            return;
+          }
+
+          showToaster(DEFAULT_LOGIN_ERROR_MESSAGE);
         });
     },
   }),

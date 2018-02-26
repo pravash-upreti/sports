@@ -5,12 +5,10 @@ const login = (loginDetails) => {
   return axiosInstance
     .post(LOGIN_ROUTE, loginDetails)
     .then((loginResponse) => {
-      return loginResponse && loginResponse.data && loginResponse.data.data;
+      return loginResponse && loginResponse.data && loginResponse.data.data || {};
     })
     .catch((error) => {
-      console.log('login error is', error);
-      
-      return null;
+      throw error;
     });
 };
 

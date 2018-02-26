@@ -28,9 +28,7 @@ export function refreshAndRepeat(lastRequestConfig) {
       return null;
     })
     .catch((error) => {
-      console.log('error in refresh and repeat', error);
-
-      return null;
+      throw error;
     });
 }
 
