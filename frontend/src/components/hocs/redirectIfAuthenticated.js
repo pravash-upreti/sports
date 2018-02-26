@@ -9,6 +9,7 @@ const RedirectHere = ({ location, isAuthenticated }) => {
 
   return <Redirect to={newRoute} />;
 };
+
 const redirectIfAuthenticated = branch(
   checkAuthentication,
   renderComponent(RedirectHere)

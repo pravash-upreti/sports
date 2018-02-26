@@ -1,6 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router';
-import { compose, branch, withState, withHandlers } from 'recompose';
+import { compose, withState, withHandlers } from 'recompose';
 
 import logo from '../../../public/assets/images/sports-logo.png';
 
@@ -65,15 +64,15 @@ export default compose(
     handleLogin: ({
       email,
       password,
-      setAuthentication,
       setErrorMessage,
+      setAuthentication,
       setShouldShowLoginError
     }) => e => {
       e.preventDefault();
       login({ email, password })
         .then(loginResponse => {
           if (loginResponse && loginResponse.tokens) {
-            const res = setAuthentication(true);
+            setAuthentication(true);
             localStorage.setItem(
               LOCAL_AUTH_VARIABLE,
               JSON.stringify({
@@ -89,7 +88,9 @@ export default compose(
         })
         .catch(error => {
           const errorMessage = error && error.error && error.error.message;
+
           setShouldShowLoginError(true);
+
           if (errorMessage) {
             setErrorMessage(errorMessage);
 
