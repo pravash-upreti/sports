@@ -20,6 +20,11 @@ const Login = (props) => {
             <img src={logo} alt="Sports logo" />
           </a>
         </div>
+        {props.shouldShowLoginError ? (
+          <p className="login-error">{props.errorMessage}</p>
+        ) : (
+          null
+        )}
         <form className="login-form" onSubmit={props.handleLogin}>
           <div className="input-group">
             <input
@@ -58,10 +63,12 @@ const RedirectIfAuthenticated = branch(
 export default compose(
   withState('email', 'setEmail', ''),
   withState('password', 'setPassword', ''),
+  withState('shouldShowLoginError', 'setShouldShowLoginError', false),
+  withState('errorMessage', 'setErrorMessage', DEFAULT_LOGIN_ERROR_MESSAGE),
   withHandlers({
     handleEmailChange: ({ setEmail }) => (e) => setEmail(e.target.value),
     handlePasswordChange: ({ setPassword }) => (e) => setPassword(e.target.value),
-    handleLogin: ({ email, password, setAuthentication, showToaster }) => (e) => {
+    handleLogin: ({ email, password, setAuthentication, setErrorMessage, setShouldShowLoginError }) => (e) => {
       e.preventDefault();
       login({ email, password })
         .then((loginResponse) => {
@@ -81,14 +88,14 @@ export default compose(
         })
         .catch((error) => {
           const errorMessage = error && error.error && error.error.message;
-
+          setShouldShowLoginError(true);
           if (errorMessage) {
-            showToaster(errorMessage);
+            setErrorMessage(errorMessage);
 
             return;
           }
 
-          showToaster(DEFAULT_LOGIN_ERROR_MESSAGE);
+          setErrorMessage(DEFAULT_LOGIN_ERROR_MESSAGE);
         });
     },
   }),
