@@ -63,3 +63,14 @@ export const tournamentCategoryMessages = {
   unableToUpdate: 'Unable to update the tournament category.',
   unableToCreate: 'Unable to create a new tournament category.'
 };
+
+export const playerMessages = {
+  notFound: 'Player not found.',
+  updated: 'Player updated successfully.',
+  removed: 'Player deleted successfully.',
+  fetched: 'Player(s) fetched successfully.',
+  created: 'New player created successfully.',
+  unableToRemove: 'Unable to remove the player.',
+  unableToUpdate: 'Unable to update the player.',
+  unableToCreate: 'Unable to create a new player.'
+};

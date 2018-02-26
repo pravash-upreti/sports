@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import authRoutes from './authRoutes';
 import userRoutes from './userRoutes';
+import playerRoutes from './playerRoutes';
 import userRoleRoutes from './userRoleRoutes';
 import categoryRoutes from './categoryRoutes';
 import tournamentRoutes from './tournamentRoutes';
@@ -21,6 +22,9 @@ router.use('/auth', authRoutes);
 
 // Load user routes
 router.use('/users', userRoutes);
+
+// Load player routes
+router.use('/players', playerRoutes);
 
 // Load userRole routes
 router.use('/userRoles', userRoleRoutes);
