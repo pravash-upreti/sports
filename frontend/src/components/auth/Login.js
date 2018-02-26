@@ -26,7 +26,7 @@ const Login = (props) => {
     <div className="login-outer-container">
       <div className="login-inner-container">
         <div className="login-header">
-          <a href="#">
+          <a href="/">
             <img src={logo} alt="Sports logo" />
           </a>
         </div>
