@@ -13,13 +13,13 @@ export default function getAuthDetails() {
     }
 
     return {
-      isAuthenticated: false,
-      refreshToken: ''
+      refreshToken: '',
+      isAuthenticated: false
     };
   } catch (error) {
     return {
-      isAuthenticated: false,
-      refreshToken: ''
+      refreshToken: '',
+      isAuthenticated: false
     };
   }
 }

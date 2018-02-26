@@ -34,19 +34,19 @@ const authDetails = getAuthDetails();
 
 const Routes = props => {
   const {
-    showToaster,
     hideToaster,
+    showToaster,
     handleLogout,
     toasterMessage,
+    displayToaster,
     isAuthenticated,
-    shouldShowToaster,
     setAuthentication
   } = props;
 
   return (
     <Router history={history}>
       <Fragment>
-        {shouldShowToaster ? (
+        {showToaster ? (
           <Toaster message={toasterMessage} hideToaster={hideToaster} />
         ) : null}
         <Switch>
@@ -56,9 +56,9 @@ const Routes = props => {
             render={routerProps => (
               <Login
                 {...routerProps}
+                displayToaster={displayToaster}
                 isAuthenticated={isAuthenticated}
                 setAuthentication={setAuthentication}
-                showToaster={showToaster}
               />
             )}
           />
@@ -74,9 +74,9 @@ const Routes = props => {
           />
           <PrivateRoute
             Component={Test}
-            showToaster={showToaster}
-            isAuthenticated={isAuthenticated}
             path={routes.ADMIN}
+            displayToaster={displayToaster}
+            isAuthenticated={isAuthenticated}
           />
         </Switch>
       </Fragment>
@@ -85,50 +85,45 @@ const Routes = props => {
 };
 
 export default compose(
-  withState(
-    'isAuthenticated',
-    'setAuthentication',
-    authDetails.isAuthenticated
-  ),
-  withState('shouldShowToaster', 'setShouldShowToaster', false),
+  withState('isAuthenticated', 'setAuthentication', false),
+  withState('showToaster', 'setShowToaster', false),
   withState('toasterMessage', 'setToasterMessage', DEFAULT_TOASTER_MESSAGE),
-  withProps(
-    ({ setAuthentication, setToasterMessage, setShouldShowToaster }) => ({
-      localLogout: () => {
-        setAuthentication(false);
-        localStorage.removeItem(LOCAL_AUTH_VARIABLE);
-      },
-      showToaster: message => {
-        setShouldShowToaster(true);
-        setToasterMessage(message);
-      },
-      hideToaster: () => {
-        setShouldShowToaster(false);
-        setToasterMessage(DEFAULT_TOASTER_MESSAGE);
-      }
-    })
-  ),
+  withProps(({ setAuthentication, setToasterMessage, setShowToaster }) => ({
+    localLogout: () => {
+      setAuthentication(false);
+      localStorage.removeItem(LOCAL_AUTH_VARIABLE);
+    },
+    displayToaster: message => {
+      setShowToaster(true);
+      setToasterMessage(message);
+    },
+    hideToaster: () => {
+      setShowToaster(false);
+      setToasterMessage(DEFAULT_TOASTER_MESSAGE);
+    }
+  })),
   withHandlers({
-    handleLogout: ({ localLogout, showToaster }) => e => {
+    handleLogout: ({ localLogout, displayToaster }) => () => {
       logout()
         .then(response => {
           localLogout();
         })
         .catch(error => {
-          const errorMessage = error && error.error && error.error.message;
+          const errorMessage =
+            (error && error.error && error.error.message) ||
+            DEFAULT_LOGOUT_ERROR_MESSAGE;
 
-          if (errorMessage) {
-            showToaster(errorMessage);
-
-            return;
-          }
-
-          showToaster(DEFAULT_LOGOUT_ERROR_MESSAGE);
+          displayToaster(errorMessage);
         });
     },
-    getAuthenticationStatus: ({ isAuthenticated }) => e => isAuthenticated
+    getAuthenticationStatus: ({ isAuthenticated }) => () => isAuthenticated
   }),
   lifecycle({
+    componentWillMount() {
+      this.props.setAuthentication(
+        Boolean(authDetails && authDetails.isAuthenticated)
+      );
+    },
     componentDidMount() {
       addInterceptor(
         this.props.localLogout,

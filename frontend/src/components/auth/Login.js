@@ -16,8 +16,8 @@ const Login = props => {
   const {
     handleLogin,
     errorMessage,
+    showLoginError,
     handleEmailChange,
-    shouldShowLoginError,
     handlePasswordChange
   } = props;
 
@@ -29,6 +29,9 @@ const Login = props => {
             <img src={logo} alt="Sports logo" />
           </a>
         </div>
+        {props.showLoginError ? (
+          <p className="login-error">{props.errorMessage}</p>
+        ) : null}
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
             <input
@@ -56,7 +59,7 @@ const Login = props => {
 export default compose(
   withState('email', 'setEmail', ''),
   withState('password', 'setPassword', ''),
-  withState('shouldShowLoginError', 'setShouldShowLoginError', false),
+  withState('showLoginError', 'setShowLoginError', false),
   withState('errorMessage', 'setErrorMessage', DEFAULT_LOGIN_ERROR_MESSAGE),
   withHandlers({
     handleEmailChange: ({ setEmail }) => e => setEmail(e.target.value),
@@ -66,7 +69,7 @@ export default compose(
       password,
       setErrorMessage,
       setAuthentication,
-      setShouldShowLoginError
+      setShowLoginError
     }) => e => {
       e.preventDefault();
       login({ email, password })
@@ -87,17 +90,12 @@ export default compose(
           throw DEFAULT_LOGIN_ERROR_MESSAGE;
         })
         .catch(error => {
-          const errorMessage = error && error.error && error.error.message;
+          const errorMessage =
+            (error && error.error && error.error.message) ||
+            DEFAULT_LOGIN_ERROR_MESSAGE;
 
-          setShouldShowLoginError(true);
-
-          if (errorMessage) {
-            setErrorMessage(errorMessage);
-
-            return;
-          }
-
-          setErrorMessage(DEFAULT_LOGIN_ERROR_MESSAGE);
+          setShowLoginError(true);
+          setErrorMessage(errorMessage);
         });
     }
   }),
