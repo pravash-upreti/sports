@@ -1,33 +1,33 @@
 import { Collection } from 'bookshelf';
 import * as HttpStatus from 'http-status-codes';
 
-import { playerMessages } from './../constants/messages';
+import { teamMessages } from './../constants/messages';
 
-import Player from '../models/player';
+import Team from '../models/team';
+import TeamInterface from '../domain/TeamInterface';
 import NotFoundError from '../errors/NotFoundError';
-import PlayerInterface from '../domain/PlayerInterface';
 import NoRowUpdatedError from '../errors/NoRowUpdatedError';
 
 /**
- * Create a new player.
+ * Create a new team.
  *
  * @export
- * @param {PlayerInterface} params
+ * @param {TeamInterface} params
  * @returns {object}
  * @throws {NoRowUpdatedError|error}
  */
-export async function create(params: PlayerInterface) {
+export async function create(params: TeamInterface) {
   try {
-    const player: Player = await new Player(params).save();
+    const team: Team = await new Team(params).save();
 
-    if (!player) {
-      throw new NoRowUpdatedError(playerMessages.unableToCreate);
+    if (!team) {
+      throw new NoRowUpdatedError(teamMessages.unableToCreate);
     }
 
     return {
-      data: player,
+      data: team,
       code: HttpStatus.CREATED,
-      message: playerMessages.created,
+      message: teamMessages.created,
       status: HttpStatus.getStatusText(HttpStatus.CREATED)
     };
   } catch (error) {
@@ -40,17 +40,17 @@ export async function create(params: PlayerInterface) {
  *
  * @export
  * @param {number} id
- * @returns
+ * @returns {object}
  * @throws {NotFoundError|error}
  */
 export async function get(id: number) {
   try {
-    const player: Player = await findById(id);
+    const team: Team = await findById(id);
 
     return {
-      data: player,
+      data: team,
       code: HttpStatus.OK,
-      message: playerMessages.fetched,
+      message: teamMessages.fetched,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
@@ -62,17 +62,17 @@ export async function get(id: number) {
  * Fetch all players' information.
  *
  * @export
- * @returns
+ * @returns {object}
  * @throws {error}
  */
 export async function getAll() {
   try {
-    const players: Collection<Player> = await new Player().fetchAll();
+    const teams: Collection<Team> = await new Team().fetchAll();
 
     return {
-      data: players,
+      data: teams,
       code: HttpStatus.OK,
-      message: playerMessages.fetched,
+      message: teamMessages.fetched,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
@@ -85,24 +85,24 @@ export async function getAll() {
  *
  * @export
  * @param {number} id
- * @param {PlayerInterface} params
- * @returns
+ * @param {TeamInterface} params
+ * @returns {object}
  * @throws {NoRowUpdatedError|error}
  */
-export async function update(id: number, params: PlayerInterface) {
+export async function update(id: number, params: TeamInterface) {
   try {
-    const player: Player = await findById(id);
+    const team: Team = await findById(id);
 
-    const updatedPlayer: Player = await player.save(params, { patch: true });
+    const updatedTeam: Team = await team.save(params, { patch: true });
 
-    if (!updatedPlayer) {
-      throw new NoRowUpdatedError(playerMessages.unableToUpdate);
+    if (!updatedTeam) {
+      throw new NoRowUpdatedError(teamMessages.unableToUpdate);
     }
 
     return {
-      data: updatedPlayer,
+      data: updatedTeam,
       code: HttpStatus.OK,
-      message: playerMessages.updated,
+      message: teamMessages.updated,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
@@ -115,17 +115,17 @@ export async function update(id: number, params: PlayerInterface) {
  *
  * @export
  * @param {number} id
- * @returns
+ * @returns {object}
  * @throws {NoRowUpdatedError|error}
  */
 export async function remove(id: number) {
   try {
-    const player: Player = await findById(id);
+    const team: Team = await findById(id);
 
-    const removedPlayer: Player = await player.destroy();
+    const removedTeam: Team = await team.destroy();
 
-    if (!removedPlayer) {
-      throw new NoRowUpdatedError(playerMessages.unableToRemove);
+    if (!removedTeam) {
+      throw new NoRowUpdatedError(teamMessages.unableToRemove);
     }
 
     return {
@@ -133,7 +133,7 @@ export async function remove(id: number) {
         id
       },
       code: HttpStatus.OK,
-      message: playerMessages.removed,
+      message: teamMessages.removed,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
@@ -142,21 +142,21 @@ export async function remove(id: number) {
 };
 
 /**
- * Find player by ID.
+ * Find team by ID.
  *
  * @param {number} id
- * @returns {Player}
+ * @returns {Team}
  * @throws {NotFoundError|error}
  */
 async function findById(id: number) {
   try {
-    const player: Player = await new Player({ id }).fetch();
+    const team: Team = await new Team({ id }).fetch();
 
-    if (!player) {
-      throw new NotFoundError(playerMessages.notFound);
+    if (!team) {
+      throw new NotFoundError(teamMessages.notFound);
     }
 
-    return player;
+    return team;
   } catch (error) {
     throw error;
   }

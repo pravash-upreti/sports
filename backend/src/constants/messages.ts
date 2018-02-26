@@ -74,3 +74,14 @@ export const playerMessages = {
   unableToUpdate: 'Unable to update the player.',
   unableToCreate: 'Unable to create a new player.'
 };
+
+export const teamMessages = {
+  notFound: 'Team not found.',
+  updated: 'Team updated successfully.',
+  removed: 'Team deleted successfully.',
+  fetched: 'Team(s) fetched successfully.',
+  created: 'New team created successfully.',
+  unableToRemove: 'Unable to remove the team.',
+  unableToUpdate: 'Unable to update the team.',
+  unableToCreate: 'Unable to create a new team.'
+};
