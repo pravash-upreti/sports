@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import * as UserRoleService from '../services/userRoleService';
+import * as userRoleService from '../services/userRoleService';
 
 /**
  * Create a new user role.
@@ -12,7 +12,7 @@ import * as UserRoleService from '../services/userRoleService';
  */
 export async function createRole(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await UserRoleService.createRole(req.body);
+    const response = await userRoleService.createRole(req.body);
 
     res.status(response.code).json(response);
   } catch (error) {

@@ -1,17 +1,18 @@
 import { Router } from 'express';
-import * as URLParamsValidator from '../../validators/paramsValidator';
-import * as TournamentValidator from '../../validators/tournamentValidator';
+
+import * as urlParamsValidator from '../../validators/paramsValidator';
+import * as tournamentValidator from '../../validators/tournamentValidator';
 import * as tournamentController from '../../controllers/tournamentController';
 
 const router: Router = Router();
 
 // Tournaments
 router.get('/', tournamentController.getAll);
-router.get('/:id', URLParamsValidator.validateURLParams, tournamentController.get);
+router.get('/:id', urlParamsValidator.validateURLParams, tournamentController.get);
 
-router.post('/', TournamentValidator.validateTournamentSchema, tournamentController.create);
-router.put('/:id', URLParamsValidator.validateURLParams, TournamentValidator.validateTournamentSchema, tournamentController.update);
+router.post('/', tournamentValidator.validateTournamentSchema, tournamentController.create);
+router.put('/:id', urlParamsValidator.validateURLParams, tournamentValidator.validateTournamentSchema, tournamentController.update);
 
-router.delete('/:id', URLParamsValidator.validateURLParams, tournamentController.remove);
+router.delete('/:id', urlParamsValidator.validateURLParams, tournamentController.remove);
 
 export default router;

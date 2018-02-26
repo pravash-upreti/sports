@@ -12,6 +12,7 @@ import notFoundHandler from './middlewares/notFoundHandler';
 import genericErrorHandler from './middlewares/genericErrorHandler';
 
 const { name, version, host, port } = config;
+
 const app: express.Application = express();
 
 app.locals.name = name;

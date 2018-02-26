@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import * as AuthService from '../services/authService';
+import * as authService from '../services/authService';
 
 /**
  * Create and send new access token to the user
@@ -13,7 +13,7 @@ import * as AuthService from '../services/authService';
 export async function refreshAccessToken(req: Request, res: Response, next: NextFunction) {
   try {
     const token = String(req.headers.refresh).replace('Bearer ', '');
-    const response = await AuthService.refreshAccessToken(res.locals.userInfo, token);
+    const response = await authService.refreshAccessToken(res.locals.userInfo, token);
 
     res.status(response.code).json(response);
   } catch (error) {
@@ -31,7 +31,7 @@ export async function refreshAccessToken(req: Request, res: Response, next: Next
  */
 export async function login(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await AuthService.login(req.body);
+    const response = await authService.login(req.body);
 
     res.status(response.code).json(response);
   } catch (error) {
@@ -49,7 +49,7 @@ export async function login(req: Request, res: Response, next: NextFunction) {
  */
 export async function logout(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await AuthService.logout(String(req.headers.refresh));
+    const response = await authService.logout(String(req.headers.refresh));
 
     res.status(response.code).json(response);
   } catch (error) {

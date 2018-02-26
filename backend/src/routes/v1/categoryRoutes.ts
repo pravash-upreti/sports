@@ -1,18 +1,18 @@
 import { Router } from 'express';
 
-import * as URLParamsValidator from '../../validators/paramsValidator';
-import * as CategoryValidator from '../../validators/categoryValidator';
-import * as CategoryController from '../../controllers/categoryController';
+import * as urlParamsValidator from '../../validators/paramsValidator';
+import * as categoryValidator from '../../validators/categoryValidator';
+import * as categoryController from '../../controllers/categoryController';
 
 const router: Router = Router();
 
 // Categries
-router.get('/', CategoryController.getAll);
-router.get('/:id', URLParamsValidator.validateURLParams, CategoryController.get);
+router.get('/', categoryController.getAll);
+router.get('/:id', urlParamsValidator.validateURLParams, categoryController.get);
 
-router.post('/', CategoryValidator.validateCategorySchema, CategoryController.create);
-router.put('/:id', URLParamsValidator.validateURLParams, CategoryValidator.validateCategorySchema, CategoryController.update);
+router.post('/', categoryValidator.validateCategorySchema, categoryController.create);
+router.put('/:id', urlParamsValidator.validateURLParams, categoryValidator.validateCategorySchema, categoryController.update);
 
-router.delete('/:id', URLParamsValidator.validateURLParams, CategoryController.remove);
+router.delete('/:id', urlParamsValidator.validateURLParams, categoryController.remove);
 
 export default router;

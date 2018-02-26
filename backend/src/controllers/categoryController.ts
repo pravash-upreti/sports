@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 
-import * as CategoryService from '../services/categoryService';
+import * as categoryService from '../services/categoryService';
 
 /**
  * Create a new category.
@@ -12,7 +12,7 @@ import * as CategoryService from '../services/categoryService';
  */
 export async function create(req : Request, res : Response, next : NextFunction) {
   try {
-    const response = await CategoryService.create(req.body);
+    const response = await categoryService.create(req.body);
 
     res.status(response.code).json(response);
   } catch (error) {
@@ -30,7 +30,7 @@ export async function create(req : Request, res : Response, next : NextFunction)
  */
 export async function getAll(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await CategoryService.getAll();
+    const response = await categoryService.getAll();
 
     res.status(response.code).json(response);
   } catch(error) {
@@ -48,7 +48,7 @@ export async function getAll(req: Request, res: Response, next: NextFunction) {
  */
 export async function get(req : Request, res : Response, next : NextFunction) {
   try {
-    const response = await CategoryService.get(req.params.id);
+    const response = await categoryService.get(req.params.id);
 
     res.status(response.code).json(response);
   } catch (error) {
@@ -66,7 +66,7 @@ export async function get(req : Request, res : Response, next : NextFunction) {
  */
 export async function update(req : Request, res : Response, next : NextFunction) {
   try {
-    const response = await CategoryService.update(req.params.id, req.body);
+    const response = await categoryService.update(req.params.id, req.body);
 
     res.status(response.code).json(response);
   } catch (error) {
@@ -84,7 +84,7 @@ export async function update(req : Request, res : Response, next : NextFunction)
  */
 export async function remove(req: Request, res: Response, next: NextFunction) {
   try {
-    const response = await CategoryService.remove(req.params.id);
+    const response = await categoryService.remove(req.params.id);
 
     res.status(response.code).json(response);
   } catch (error) {
