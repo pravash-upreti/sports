@@ -8,7 +8,7 @@ const Card = (props) => {
   
   return (
     <div className="card">
-      <MatchTime {...matchTime}/>
+      <MatchTime {...matchTime} />
       <Player {...playerUp} />
       <Player {...playerDown} />
     </div>

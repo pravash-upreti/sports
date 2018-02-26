@@ -17,6 +17,6 @@ const PlayerPhoto = (props) => {
       <img src={img} alt="Player image" />
     </div>
   );
-}
+};
 
 export default PlayerPhoto;
