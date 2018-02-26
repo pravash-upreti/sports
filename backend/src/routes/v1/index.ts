@@ -5,6 +5,7 @@ import userRoutes from './userRoutes';
 import userRoleRoutes from './userRoleRoutes';
 import categoryRoutes from './categoryRoutes';
 import tournamentRoutes from './tournamentRoutes';
+import tournamentCateogryRoutes from './tournamentCategoryRoutes';
 
 const router: Router = Router();
 
@@ -29,5 +30,8 @@ router.use('/categories', categoryRoutes);
 
 // Load tournament routes
 router.use('/tournaments', tournamentRoutes);
+
+// Load tournament category routes
+router.use('/tournament-categories', tournamentCateogryRoutes);
 
 export default router;

@@ -52,3 +52,14 @@ export const categoryMessages = {
   unableToUpdate: 'Unable to update the category.',
   unableToCreate: 'Unable to create a new category.'
 };
+
+export const tournamentCategoryMessages = {
+  notFound: 'Tournament category not found.',
+  updated: 'Tournament category updated successfully.',
+  removed: 'Tournament category deleted successfully.',
+  fetched: 'Tournament category(s) fetched successfully.',
+  created: 'New tournament category created successfully.',
+  unableToRemove: 'Unable to remove the tournament category.',
+  unableToUpdate: 'Unable to update the tournament category.',
+  unableToCreate: 'Unable to create a new tournament category.'
+};
