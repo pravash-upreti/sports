@@ -30,13 +30,13 @@ let authDetails = getAuthDetails();
 
 const Routes = (props) => {
   const {
-    shouldShowToaster,
-    toasterMessage,
+    showToaster,
     hideToaster,
-    isAuthenticated,
     handleLogout,
+    toasterMessage,
+    isAuthenticated,
+    shouldShowToaster,
     setAuthentication,
-    showToaster
   } = props;
 
   return (

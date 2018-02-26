@@ -10,7 +10,7 @@ import fetchUsers from '../../services/userServices/fetchUsers';
 import refreshAccessToken from '../../services/authServices/refreshAccessToken';
 
 const Test = (props) => {
-  const { handleUserFetch, handleRefesh } = props;
+  const { handleRefesh, handleUserFetch } = props;
 
   return (
     <div>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as routes from '../../constants/routes';
 
 const Navigation = (props) => {
-  const { isAuthenticated, logout } = props;
+  const { logout, isAuthenticated } = props;
 
   return (
     <div>

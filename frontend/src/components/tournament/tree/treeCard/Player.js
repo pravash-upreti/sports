@@ -3,7 +3,7 @@ import React from 'react';
 import PlayerPhoto from './PlayerPhoto';
 
 const Player = (props) => {
-  const { name, img } = props;
+  const { img, name } = props;
   
   return (
     <div className="player">

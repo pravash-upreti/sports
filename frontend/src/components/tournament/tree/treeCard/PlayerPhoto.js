@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { IMAGE_SIZES } from '../../../../constants/constants';
 
 const PlayerPhoto = (props) => {
-  const { size, img } = props;
+  const { img, size } = props;
 
   const photoClass = classNames({
     'photo-container-large': size === IMAGE_SIZES.large,

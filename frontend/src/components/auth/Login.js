@@ -15,8 +15,8 @@ import redirectIfAuthenticated from '../hocs/redirectIfAuthenticated';
 
 const Login = (props) => {
   const {
-    errorMessage,
     handleLogin,
+    errorMessage,
     handleEmailChange,
     shouldShowLoginError,
     handlePasswordChange

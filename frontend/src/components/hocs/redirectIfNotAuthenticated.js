@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router';
 import * as routes from '../../constants/routes';
 
 const RedirectIfNotAuthenticated = (props) => {
-  const { Component, path, showToaster, isAuthenticated } = props;
+  const { path, Component, showToaster, isAuthenticated } = props;
 
   return (
     <Route
