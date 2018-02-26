@@ -35,17 +35,17 @@ const Login = props => {
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
             <input
-              type="email"
-              placeholder="EMAIL"
-              name="email"
               required
+              type="email"
+              name="email"
+              placeholder="EMAIL"
               onChange={handleEmailChange}
             />
             <input
-              type="password"
-              placeholder="PASSWORD"
-              name="password"
               required
+              type="password"
+              name="password"
+              placeholder="PASSWORD"
               onChange={handlePasswordChange}
             />
           </div>

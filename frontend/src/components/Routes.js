@@ -2,10 +2,10 @@ import React, { Fragment } from 'react';
 import { Router, Route, Switch } from 'react-router';
 import {
   compose,
+  withProps,
   withState,
-  withHandlers,
   lifecycle,
-  withProps
+  withHandlers
 } from 'recompose';
 
 import * as routes from '../constants/routes';
