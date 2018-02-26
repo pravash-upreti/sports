@@ -1,11 +1,13 @@
 import React from 'react';
 import { compose, withHandlers } from 'recompose';
 
+import {
+  DEFAULT_REFRESH_ERROR_MESSAGE,
+  DEFAULT_USER_FETCH_ERROR_MESSAGE
+} from '../../constants/errorMessages';
+
 import fetchUsers from '../../services/userServices/fetchUsers';
 import refreshAccessToken from '../../services/authServices/refreshAccessToken';
-
-const DEFAULT_USER_FETCH_ERROR_MESSAGE = 'An error occured while downloading user. Please try again or refresh';
-const DEFAULT_REFRESH_ERROR_MESSAGE = 'An error occured in refreshing token';
 
 const Test = (props) => {
   return (
@@ -39,7 +41,7 @@ export default compose(
     handleRefesh: ({ showToaster }) => (e) => {
       refreshAccessToken()
         .then((response) => {
-          // console.log('refresh response', response);
+          console.log('refresh response', response);
         })
         .catch((error) => {
           const errorMessage = error && error.error && error.error.message;

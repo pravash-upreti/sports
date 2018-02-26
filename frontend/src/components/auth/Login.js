@@ -5,11 +5,11 @@ import { compose, branch, withState, withHandlers, renderComponent } from 'recom
 import logo from '../../../public/assets/images/sports-logo.png';
 
 import { LOCAL_AUTH_VARIABLE } from '../../constants/constants';
+import { DEFAULT_LOGIN_ERROR_MESSAGE } from '../../constants/errorMessages';
 
 import { setTokenInHeader } from '../../utils/axios';
-import login from '../../services/authServices/login';
 
-const DEFAULT_LOGIN_ERROR_MESSAGE = 'Error occured in login';
+import login from '../../services/authServices/login';
 
 const Login = (props) => {
   return (

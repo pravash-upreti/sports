@@ -5,13 +5,17 @@ import { compose, withState, withHandlers, lifecycle, withProps } from 'recompos
 
 import * as routes from '../constants/routes';
 import { LOCAL_AUTH_VARIABLE } from '../constants/constants';
+import {
+  DEFAULT_TOASTER_MESSAGE,
+  DEFAULT_LOGOUT_ERROR_MESSAGE
+} from '../constants/errorMessages';
 
 import history from '../utils/routerHistory';
 import { addInterceptor } from '../utils/axios';
+import getAuthDetails from '../utils/getAuthDetails';
 
 import logout from '../services/authServices/logout';
 
-import getAuthDetails from '../utils/getAuthDetails';
 
 import Login from './auth';
 import Test from './admin/Test';
@@ -19,9 +23,6 @@ import Tree from './tournament/tree';
 import Toaster from './commons/Toaster';
 import Navigation from './commons/Navigation';
 import FixtureOverview from './tournament/fixtureOverview';
-
-const DEFAULT_TOASTER_MESSAGE = 'Some error occured';
-const DEFAULT_LOGOUT_ERROR_MESSAGE = 'Error occured in logout';
 
 let authDetails = getAuthDetails();
 
