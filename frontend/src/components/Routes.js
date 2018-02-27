@@ -1,12 +1,6 @@
 import React, { Fragment } from 'react';
 import { Router, Route, Switch } from 'react-router';
-import {
-  compose,
-  withProps,
-  withState,
-  lifecycle,
-  withHandlers
-} from 'recompose';
+import { compose, withState, lifecycle, withHandlers } from 'recompose';
 
 import * as routes from '../constants/routes';
 import { LOCAL_AUTH_VARIABLE } from '../constants/constants';
