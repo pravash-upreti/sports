@@ -30,24 +30,24 @@ import Toaster from './commons/Toaster';
 import Navigation from './commons/Navigation';
 import FixtureOverview from './tournament/fixtureOverview';
 
-const authDetails = getAuthDetails();
-
 const Routes = props => {
   const {
-    hideToaster,
     showToaster,
     handleLogout,
     toasterMessage,
-    displayToaster,
     isAuthenticated,
-    setAuthentication
+    setAuthentication,
+    toggleShowToaster
   } = props;
 
   return (
     <Router history={history}>
       <Fragment>
         {showToaster ? (
-          <Toaster message={toasterMessage} hideToaster={hideToaster} />
+          <Toaster
+            message={toasterMessage}
+            toggleShowToaster={toggleShowToaster}
+          />
         ) : null}
         <Switch>
           <Route
@@ -56,27 +56,26 @@ const Routes = props => {
             render={routerProps => (
               <Login
                 {...routerProps}
-                displayToaster={displayToaster}
                 isAuthenticated={isAuthenticated}
                 setAuthentication={setAuthentication}
               />
             )}
           />
-          <Navigation isAuthenticated={isAuthenticated} logout={handleLogout} />
+          <Navigation logout={handleLogout} isAuthenticated={isAuthenticated} />
         </Switch>
         <Switch>
-          <Route exact path={routes.ROOT} component={Tree} />
-          <Route exact path={routes.TOURNAMENT_TREE} component={Tree} />
+          <Route exact component={Tree} path={routes.ROOT} />
+          <Route exact component={Tree} path={routes.TOURNAMENT_TREE} />
           <Route
             exact
-            path={routes.TOURNAMENT_FIXTURE_OVERVIEW}
             component={FixtureOverview}
+            path={routes.TOURNAMENT_FIXTURE_OVERVIEW}
           />
           <PrivateRoute
             Component={Test}
             path={routes.ADMIN}
-            displayToaster={displayToaster}
             isAuthenticated={isAuthenticated}
+            toggleShowToaster={toggleShowToaster}
           />
         </Switch>
       </Fragment>
@@ -85,25 +84,25 @@ const Routes = props => {
 };
 
 export default compose(
-  withState('isAuthenticated', 'setAuthentication', false),
   withState('showToaster', 'setShowToaster', false),
+  withState('isAuthenticated', 'setAuthentication', false),
   withState('toasterMessage', 'setToasterMessage', DEFAULT_TOASTER_MESSAGE),
-  withProps(({ setAuthentication, setToasterMessage, setShowToaster }) => ({
-    localLogout: () => {
+  withHandlers({
+    localLogout: ({ setAuthentication }) => () => {
       setAuthentication(false);
       localStorage.removeItem(LOCAL_AUTH_VARIABLE);
     },
-    displayToaster: message => {
-      setShowToaster(true);
-      setToasterMessage(message);
-    },
-    hideToaster: () => {
-      setShowToaster(false);
-      setToasterMessage(DEFAULT_TOASTER_MESSAGE);
+    toggleShowToaster: ({
+      showToaster,
+      setShowToaster,
+      setToasterMessage
+    }) => message => {
+      setShowToaster(!showToaster);
+      setToasterMessage(message || DEFAULT_TOASTER_MESSAGE);
     }
-  })),
+  }),
   withHandlers({
-    handleLogout: ({ localLogout, displayToaster }) => () => {
+    handleLogout: ({ localLogout, toggleShowToaster }) => () => {
       logout()
         .then(response => {
           localLogout();
@@ -113,13 +112,15 @@ export default compose(
             (error && error.error && error.error.message) ||
             DEFAULT_LOGOUT_ERROR_MESSAGE;
 
-          displayToaster(errorMessage);
+          toggleShowToaster(errorMessage);
         });
     },
     getAuthenticationStatus: ({ isAuthenticated }) => () => isAuthenticated
   }),
   lifecycle({
     componentWillMount() {
+      const authDetails = getAuthDetails();
+
       this.props.setAuthentication(
         Boolean(authDetails && authDetails.isAuthenticated)
       );
