@@ -1,3 +1,8 @@
+export const paramsValidatorMessages = {
+  invalidId: 'Id must be a number.',
+  invalidTournamentId: 'Tournament ID must be a number.'
+};
+
 export const tournamentMessages = {
   notFound: 'Tournament not found.',
   updated: 'Tournament updated successfully.',

@@ -14,7 +14,7 @@ import * as categorySchemas from '../schemas/categorySchema';
 export function validateCategorySchema(req: Request, res: Response, next: NextFunction) {
   const result = validate(req.body, categorySchemas.categorySchema);
 
-  if (result.error) {
+  if (result && result.error) {
     return res.status(HttpStatus.BAD_REQUEST).json(result.error);
   }
 

@@ -14,7 +14,7 @@ import * as tournamentSchemas from '../schemas/tournamentSchema';
 export function validateTournamentSchema(req: Request, res: Response, next: NextFunction) {
   const result = validate(req.body, tournamentSchemas.tournamentSchema);
 
-  if (result.error) {
+  if (result && result.error) {
     return res.status(HttpStatus.BAD_REQUEST).json(result.error);
   }
 

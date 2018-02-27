@@ -14,7 +14,7 @@ import * as userSchemas from '../schemas/userSchema';
 export function validateUserSchema(req: Request, res: Response, next: NextFunction) {
   const result = validate(req.body, userSchemas.userSchema);
 
-  if (result.error) {
+  if (result && result.error) {
     return res.status(HttpStatus.BAD_REQUEST).json(result.error);
   }
 

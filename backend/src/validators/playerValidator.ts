@@ -14,7 +14,7 @@ import * as playerSchemas from '../schemas/playerSchema';
 export function validatePlayerSchema(req: Request, res: Response, next: NextFunction) {
   const result = validate(req.body, playerSchemas.playerSchema);
 
-  if (result.error) {
+  if (result && result.error) {
     return res.status(HttpStatus.BAD_REQUEST).json(result.error);
   }
 

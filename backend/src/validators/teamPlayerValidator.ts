@@ -14,7 +14,7 @@ import * as teamPlayerSchemas from '../schemas/teamPlayerSchema';
 export function validateTeamSchema(req: Request, res: Response, next: NextFunction) {
   const result = validate(req.body, teamPlayerSchemas.teamPlayerSchema);
 
-  if (result.error) {
+  if (result && result.error) {
     return res.status(HttpStatus.BAD_REQUEST).json(result.error);
   }
 

@@ -126,10 +126,10 @@ export async function remove(id: number) {
     }
 
     return {
-      code: HttpStatus.OK,
       data: {
         id
       },
+      code: HttpStatus.OK,
       message: tournamentCategoryMessages.removed,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
@@ -160,8 +160,8 @@ export async function getCategoriesByTournament(tournamentId : number) {
     }).fetchAll({withRelated: ['category', 'tournament']});
 
     return {
-      data: tournamentCategories,
       code: HttpStatus.OK,
+      data: tournamentCategories,
       message: tournamentCategoryMessages.fetched,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
