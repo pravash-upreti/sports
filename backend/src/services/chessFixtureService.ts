@@ -92,6 +92,60 @@ export async function create(params: ChessFixtureInterface) {
 }
 
 /**
+ * Fetch a chess fixture info.
+ *
+ * @export
+ * @param {number} id
+ * @returns {object}
+ * @throws {error}
+ */
+export async function get(id: number) {
+  try {
+    const chessFixture: ChessFixture = await findById(id);
+
+    return {
+      data: chessFixture,
+      code: HttpStatus.OK,
+      message: chessFixtureMessages.fetched,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
+  } catch (error) {
+    throw(error);
+  }
+}
+
+/**
+ * Find a chess fixture by ID.
+ *
+ * @param {number} id
+ * @returns {ChessFixture}
+ * @throws {NotFoundError|;error}
+ */
+async function findById(id: number) {
+  try {
+    const chessFixture: ChessFixture = await new ChessFixture({ id })
+      .fetch({
+        withRelated: [
+          'team1',
+          'team2',
+          'round',
+          'status',
+          'winningMethod',
+          'tournamentCategory'
+        ]
+      });
+
+    if (!chessFixture) {
+      throw new NotFoundError(chessFixtureMessages.notFound);
+    }
+
+    return chessFixture;
+  } catch (error) {
+    throw(error);
+  }
+};
+
+/**
  * Check if a match or fixture exists.
  *
  * @param {ChessFixtureInterface} params

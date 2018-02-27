@@ -20,3 +20,22 @@ export async function create(req: Request, res: Response, next: NextFunction) {
     next(error);
   }
 };
+
+/**
+ * Fetch a chess fixture info.
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns
+ */
+export async function get(req: Request, res: Response, next: NextFunction) {
+  try {
+    const response = await chessFixtureService.get(req.params.id);
+
+    return res.status(response.code).json(response);
+  } catch (error) {
+    next(error);
+  }
+};
