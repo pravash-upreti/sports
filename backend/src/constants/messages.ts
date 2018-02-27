@@ -1,3 +1,8 @@
+export const paramsValidatorMessages = {
+  invalidId: 'Id must be a number.',
+  invalidTournamentId: 'Tournament ID must be a number.'
+};
+
 export const tournamentMessages = {
   notFound: 'Tournament not found.',
   updated: 'Tournament updated successfully.',
@@ -51,4 +56,48 @@ export const categoryMessages = {
   unableToRemove: 'Unable to remove the category.',
   unableToUpdate: 'Unable to update the category.',
   unableToCreate: 'Unable to create a new category.'
+};
+
+export const tournamentCategoryMessages = {
+  notFound: 'Tournament category not found.',
+  updated: 'Tournament category updated successfully.',
+  removed: 'Tournament category deleted successfully.',
+  fetched: 'Tournament category(s) fetched successfully.',
+  created: 'New tournament category created successfully.',
+  unableToRemove: 'Unable to remove the tournament category.',
+  unableToUpdate: 'Unable to update the tournament category.',
+  unableToCreate: 'Unable to create a new tournament category.'
+};
+
+export const playerMessages = {
+  notFound: 'Player not found.',
+  updated: 'Player updated successfully.',
+  removed: 'Player deleted successfully.',
+  fetched: 'Player(s) fetched successfully.',
+  created: 'New player created successfully.',
+  unableToRemove: 'Unable to remove the player.',
+  unableToUpdate: 'Unable to update the player.',
+  unableToCreate: 'Unable to create a new player.'
+};
+
+export const teamMessages = {
+  notFound: 'Team not found.',
+  updated: 'Team updated successfully.',
+  removed: 'Team deleted successfully.',
+  fetched: 'Team(s) fetched successfully.',
+  created: 'New team created successfully.',
+  unableToRemove: 'Unable to remove the team.',
+  unableToUpdate: 'Unable to update the team.',
+  unableToCreate: 'Unable to create a new team.'
+};
+
+export const teamPlayerMessages = {
+  notFound: 'Team player not found.',
+  updated: 'Team player updated successfully.',
+  removed: 'Team player deleted successfully.',
+  fetched: 'Team player(s) fetched successfully.',
+  created: 'New team player created successfully.',
+  unableToRemove: 'Unable to remove the team player.',
+  unableToUpdate: 'Unable to update the team player.',
+  unableToCreate: 'Unable to create a new team player.'
 };

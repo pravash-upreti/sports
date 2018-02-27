@@ -2,17 +2,17 @@ import { validate } from 'joi';
 import * as HttpStatus from 'http-status-codes';
 import { Request, Response, NextFunction } from 'express';
 
-import * as tournamentSchemas from '../schemas/tournamentSchema';
+import * as playerSchemas from '../schemas/playerSchema';
 
 /**
- * Validate tournament post object.
+ * Validate player post/put object.
  *
  * @param req
  * @param res
  * @param next
  */
-export function validateTournamentSchema(req: Request, res: Response, next: NextFunction) {
-  const result = validate(req.body, tournamentSchemas.tournamentSchema);
+export function validatePlayerSchema(req: Request, res: Response, next: NextFunction) {
+  const result = validate(req.body, playerSchemas.playerSchema);
 
   if (result && result.error) {
     return res.status(HttpStatus.BAD_REQUEST).json(result.error);
