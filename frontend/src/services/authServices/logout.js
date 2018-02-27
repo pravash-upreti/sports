@@ -11,7 +11,7 @@ const logout = async () => {
   };
 
   try {
-    const logoutResponse = axiosInstance.post(LOGOUT_ROUTE);
+    const logoutResponse = await axiosInstance.post(LOGOUT_ROUTE);
 
     return (
       (logoutResponse && logoutResponse.data && logoutResponse.data.data) || {}

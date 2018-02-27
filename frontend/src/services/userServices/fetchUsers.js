@@ -3,7 +3,7 @@ import { USERS_ROUTE } from '../../constants/apiUrls';
 
 const fetchUsers = async () => {
   try {
-    const serverResponse = axiosInstance.get(USERS_ROUTE);
+    const serverResponse = await axiosInstance.get(USERS_ROUTE);
     const fetchedUsers =
       (serverResponse && serverResponse.data && serverResponse.data.data) || [];
 
