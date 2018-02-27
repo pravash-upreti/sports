@@ -16,9 +16,9 @@ const Login = props => {
   const {
     handleLogin,
     errorMessage,
+    loginDetails,
     showLoginError,
-    handleEmailChange,
-    handlePasswordChange
+    handleInputChange
   } = props;
 
   return (
@@ -29,9 +29,7 @@ const Login = props => {
             <img src={logo} alt="Sports logo" />
           </a>
         </div>
-        {props.showLoginError ? (
-          <p className="login-error">{props.errorMessage}</p>
-        ) : null}
+        {showLoginError ? <p className="login-error">{errorMessage}</p> : null}
         <form className="login-form" onSubmit={handleLogin}>
           <div className="input-group">
             <input
@@ -39,14 +37,16 @@ const Login = props => {
               type="email"
               name="email"
               placeholder="EMAIL"
-              onChange={handleEmailChange}
+              value={loginDetails.email}
+              onChange={handleInputChange}
             />
             <input
               required
               type="password"
               name="password"
               placeholder="PASSWORD"
-              onChange={handlePasswordChange}
+              onChange={handleInputChange}
+              value={loginDetails.password}
             />
           </div>
           <button type="submit">SIGN IN</button>
@@ -57,22 +57,26 @@ const Login = props => {
 };
 
 export default compose(
-  withState('email', 'setEmail', ''),
-  withState('password', 'setPassword', ''),
   withState('showLoginError', 'setShowLoginError', false),
+  withState('loginDetails', 'setLoginDetails', { email: '', password: '' }),
   withState('errorMessage', 'setErrorMessage', DEFAULT_LOGIN_ERROR_MESSAGE),
   withHandlers({
-    handleEmailChange: ({ setEmail }) => e => setEmail(e.target.value),
-    handlePasswordChange: ({ setPassword }) => e => setPassword(e.target.value),
+    handleInputChange: ({ setLoginDetails, loginDetails }) => e => {
+      const { name, value } = e.target;
+      const loginDetailsCopy = { ...loginDetails };
+
+      loginDetailsCopy[name] = value;
+
+      setLoginDetails(loginDetailsCopy);
+    },
     handleLogin: ({
-      email,
-      password,
+      loginDetails,
       setErrorMessage,
       setAuthentication,
       setShowLoginError
     }) => e => {
       e.preventDefault();
-      login({ email, password })
+      login(loginDetails)
         .then(loginResponse => {
           if (loginResponse && loginResponse.tokens) {
             setAuthentication(true);
