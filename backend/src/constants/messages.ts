@@ -101,3 +101,38 @@ export const teamPlayerMessages = {
   unableToUpdate: 'Unable to update the team player.',
   unableToCreate: 'Unable to create a new team player.'
 };
+
+export const chessFixtureMessages = {
+  notFound: 'Chess fixture not found.',
+  updated: 'Chess fixture updated successfully.',
+  removed: 'Chess fixture deleted successfully.',
+  fetched: 'Chess fixture(s) fetched successfully.',
+  created: 'New chess fixture created successfully.',
+  alreadyExists: 'The chess fixture already exists.',
+  unableToRemove: 'Unable to remove the chess fixture.',
+  unableToUpdate: 'Unable to update the chess fixture.',
+  unableToCreate: 'Unable to create a new chess fixture.',
+  sameTeams: 'The two opponent teams should be different.'
+};
+
+export const roundMessages = {
+  notFound: 'Round not found.',
+  updated: 'Round updated successfully.',
+  removed: 'Round deleted successfully.',
+  fetched: 'Round(s) fetched successfully.',
+  created: 'New round created successfully.',
+  unableToRemove: 'Unable to remove the round.',
+  unableToUpdate: 'Unable to update the round.',
+  unableToCreate: 'Unable to create a new round.'
+};
+
+export const fixtureStatusMessages = {
+  notFound: 'Fixture status not found.',
+  updated: 'Fixture status updated successfully.',
+  removed: 'Fixture status deleted successfully.',
+  fetched: 'Fixture status(s) fetched successfully.',
+  created: 'New fixture status created successfully.',
+  unableToRemove: 'Unable to remove the fixture status.',
+  unableToUpdate: 'Unable to update the fixture status.',
+  unableToCreate: 'Unable to create a new fixture status.'
+};
