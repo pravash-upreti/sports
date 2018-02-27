@@ -14,20 +14,19 @@ export function setTokenInHeader(accessToken) {
   };
 }
 
-export function refreshAndRepeat(lastRequestConfig) {
-  return refreshAccessToken()
-    .then(newAccessToken => {
-      if (newAccessToken) {
-        lastRequestConfig.headers.authorization = newAccessToken;
+export async function refreshAndRepeat(lastRequestConfig) {
+  try {
+    const newAccessToken = await refreshAccessToken();
+    if (newAccessToken) {
+      lastRequestConfig.headers.authorization = newAccessToken;
 
-        return axiosInstance(lastRequestConfig);
-      }
+      return axiosInstance(lastRequestConfig);
+    }
 
-      return null;
-    })
-    .catch(error => {
-      throw error;
-    });
+    return null;
+  } catch (error) {
+    throw error;
+  }
 }
 
 export function addInterceptor(localLogout, getAuthenticationStatus) {

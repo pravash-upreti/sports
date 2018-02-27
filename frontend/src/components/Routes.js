@@ -96,18 +96,17 @@ export default compose(
     }
   }),
   withHandlers({
-    handleLogout: ({ localLogout, toggleShowToaster }) => () => {
-      logout()
-        .then(response => {
-          localLogout();
-        })
-        .catch(error => {
-          const errorMessage =
-            (error && error.error && error.error.message) ||
-            DEFAULT_LOGOUT_ERROR_MESSAGE;
+    handleLogout: ({ localLogout, toggleShowToaster }) => async () => {
+      try {
+        await logout();
+        localLogout();
+      } catch (error) {
+        const errorMessage =
+          (error && error.error && error.error.message) ||
+          DEFAULT_LOGOUT_ERROR_MESSAGE;
 
-          toggleShowToaster(errorMessage);
-        });
+        toggleShowToaster(errorMessage);
+      }
     },
     getAuthenticationStatus: ({ isAuthenticated }) => () => isAuthenticated
   }),

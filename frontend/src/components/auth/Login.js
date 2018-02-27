@@ -74,33 +74,34 @@ export default compose(
       setErrorMessage,
       setAuthentication,
       setShowLoginError
-    }) => e => {
+    }) => async e => {
       e.preventDefault();
-      login(loginDetails)
-        .then(loginResponse => {
-          if (loginResponse && loginResponse.tokens) {
-            setAuthentication(true);
-            localStorage.setItem(
-              LOCAL_AUTH_VARIABLE,
-              JSON.stringify({
-                isAuthenticated: true,
-                refreshToken: loginResponse.tokens.refreshToken
-              })
-            );
-            setTokenInHeader(loginResponse.tokens.accessToken);
+      try {
+        const loginResponse = await login(loginDetails);
 
-            return;
-          }
-          throw DEFAULT_LOGIN_ERROR_MESSAGE;
-        })
-        .catch(error => {
-          const errorMessage =
-            (error && error.error && error.error.message) ||
-            DEFAULT_LOGIN_ERROR_MESSAGE;
+        if (loginResponse && loginResponse.tokens) {
+          setAuthentication(true);
+          localStorage.setItem(
+            LOCAL_AUTH_VARIABLE,
+            JSON.stringify({
+              isAuthenticated: true,
+              refreshToken: loginResponse.tokens.refreshToken
+            })
+          );
+          setTokenInHeader(loginResponse.tokens.accessToken);
 
-          setShowLoginError(true);
-          setErrorMessage(errorMessage);
-        });
+          return;
+        }
+
+        throw DEFAULT_LOGIN_ERROR_MESSAGE;
+      } catch (error) {
+        const errorMessage =
+          (error && error.error && error.error.message) ||
+          DEFAULT_LOGIN_ERROR_MESSAGE;
+
+        setShowLoginError(true);
+        setErrorMessage(errorMessage);
+      }
     }
   }),
   redirectIfAuthenticated
