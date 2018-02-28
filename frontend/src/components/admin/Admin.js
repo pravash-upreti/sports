@@ -3,9 +3,9 @@ import React from 'react';
 import moment from 'moment';
 import { withState, withHandlers, lifecycle, compose } from 'recompose';
 
-import PostData from './actions/PostData';
+import CreateTournament from './actions/CreateTournament';
 import TournamentList from './tournamentList';
-import TournamentModal from './tournamentModal/TournamentModal';
+import AddEditTournamentModal from './tournamentModal/AddEditTournamentModal';
 import DeleteTournamentModal from './tournamentModal/DeleteTournamentModal';
 import {
   getTournaments,
@@ -15,32 +15,36 @@ import {
 
 function Admin(props) {
   const {
-    input,
+    formData,
     handleClose,
     tournaments,
-    selectedTournament,
-    updateTournaments
+    updateTournaments,
+    selectedTournament
   } = props;
 
   const edit = () => {
     if (
-      moment(input.startDate, 'YYYY/MM/DD').isValid &&
-      (input.finishDate === null ||
-        moment(input.finishDate, 'YYYY/MM/DD').isValid)
+      moment(formData.startDate, 'YYYY/MM/DD').isValid &&
+      (formData.finishDate === null ||
+        moment(formData.finishDate, 'YYYY/MM/DD').isValid)
     ) {
       let title, startDate;
-      if (!input.title) {
+
+      if (!formData.title) {
         title = selectedTournament.title;
       } else {
-        title = input.title;
+        title = formData.title;
       }
-      if (!input.startDate) {
+
+      if (!formData.startDate) {
         startDate = selectedTournament.startDate;
       } else {
-        startDate = input.startDate;
+        startDate = formData.startDate;
       }
+
       let payload = { title: title, start_date: startDate };
-      if (input.finishDate) payload.finish_date = input.finishDate;
+
+      if (formData.finishDate) payload.finish_date = formData.finishDate;
       editTournament(payload, selectedTournament.id)
         .then(res => {
           getTournaments()
@@ -73,9 +77,9 @@ function Admin(props) {
     <div className="admin-outer-container">
       <div className="admin-main-container">
         <h1>Tournaments</h1>
-        <PostData
+        <CreateTournament
           title={props.title}
-          input={props.input}
+          formData={props.formData}
           startDate={props.startDate}
           modalOpen={props.modalOpen}
           finishDate={props.finishDate}
@@ -86,7 +90,7 @@ function Admin(props) {
         />
         <div className="admin-panel-container">
           <TournamentList
-            input={props.input}
+            formData={props.formData}
             title={props.title}
             tournaments={tournaments}
             modalOpen={props.modalOpen}
@@ -99,12 +103,12 @@ function Admin(props) {
           />
         </div>
         {selectedTournament ? (
-          <TournamentModal
+          <AddEditTournamentModal
             toggle="edit"
             action={edit}
-            tournament={selectedTournament}
             open={props.modalOpen.edit}
             modalOpen={props.modalOpen}
+            tournament={selectedTournament}
             handleClose={props.handleClose}
             handleChange={props.handleChange}
           />
@@ -125,7 +129,7 @@ const enhance = compose(
   withState('tournaments', 'updateTournaments', []),
   withState('isEditable', 'toggleIsEditable', false),
   withState('selectedTournament', 'setSelectedTournament', {}),
-  withState('input', 'updateInput', {
+  withState('formData', 'updateInput', {
     title: '',
     startDate: '',
     finishDate: ''
@@ -135,6 +139,7 @@ const enhance = compose(
     edit: false,
     delete: false
   }),
+
   lifecycle({
     componentDidMount() {
       getTournaments().then(res => {
@@ -143,12 +148,14 @@ const enhance = compose(
       });
     }
   }),
+
   withHandlers({
-    handleChange: ({ input, updateInput }) => e => {
+    handleChange: ({ formData, updateInput }) => e => {
       const { name, value } = e.target;
-      let inputCopy = { ...input };
-      inputCopy[name] = value;
-      updateInput(inputCopy);
+      let formDateCopy = { ...formData };
+      formDateCopy[name] = value;
+
+      updateInput(formDateCopy);
     },
     handleOpen: ({ modalOpen, updateModalOpen, setSelectedTournament }) => (
       action,
@@ -156,6 +163,7 @@ const enhance = compose(
     ) => {
       const modelOpenCopy = { ...modalOpen };
       modelOpenCopy[action] = true;
+
       setSelectedTournament(tournament);
       updateModalOpen(modelOpenCopy);
     },
@@ -166,6 +174,7 @@ const enhance = compose(
     }) => action => {
       const modelOpenCopy = { ...modalOpen };
       modelOpenCopy[action] = false;
+
       setSelectedTournament({});
       updateModalOpen(modelOpenCopy);
     }

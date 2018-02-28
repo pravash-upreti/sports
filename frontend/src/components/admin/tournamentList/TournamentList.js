@@ -6,7 +6,7 @@ import NewIcon from '../../commons/Icon';
 function TournamentList(props) {
   const {
     title,
-    input,
+    formData,
     modalOpen,
     startDate,
     finishDate,
@@ -42,8 +42,8 @@ function TournamentList(props) {
                   handleOpen={handleOpen}
                 />
                 <NewIcon
-                  name="remove"
                   color="red"
+                  name="remove"
                   tournament={tournament}
                   handleOpen={handleOpen}
                 />

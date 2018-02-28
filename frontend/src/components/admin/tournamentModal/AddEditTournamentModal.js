@@ -8,7 +8,7 @@ import ModalContent, {
   Header
 } from 'semantic-ui-react';
 
-const TournamentModal = props => {
+const AddEditTournamentModal = props => {
   const {
     icon,
     open,
@@ -66,4 +66,4 @@ const TournamentModal = props => {
   );
 };
 
-export default TournamentModal;
+export default AddEditTournamentModal;

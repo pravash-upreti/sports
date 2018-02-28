@@ -21,15 +21,15 @@
   .day {
     @extend %inline-after;
 
-    font-weight: 700;
     color: #737373;
+    font-weight: 700;
   }
 
   .time {
     @extend %inline-after;
 
-    font-weight: 500;
     color: #828282;
+    font-weight: 500;
   }
 }
 

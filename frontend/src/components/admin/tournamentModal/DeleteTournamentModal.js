@@ -6,8 +6,8 @@ const DeleteTournamentModal = props => {
 
   return (
     <Modal
-      open={modalOpen.remove}
       onClose={handleClose}
+      open={modalOpen.remove}
       style={{ marginTop: '100px', marginLeft: '200px' }}
     >
       <Modal.Header>Delete Tournament</Modal.Header>

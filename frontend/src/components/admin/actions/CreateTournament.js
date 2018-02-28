@@ -4,16 +4,16 @@ import moment from 'moment';
 import { Icon } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 
-import TournamentModal from '../tournamentModal/TournamentModal';
+import AddEditTournamentModal from '../tournamentModal/AddEditTournamentModal';
 import {
   getTournaments,
   createTournament
 } from '../../../services/tournamentService';
 
-function PostData(props) {
+function CreateTournament(props) {
   const {
     title,
-    input,
+    formData,
     modalOpen,
     startDate,
     finishDate,
@@ -41,15 +41,16 @@ function PostData(props) {
 
   const post = () => {
     if (
-      moment(input.startDate, 'YYYY/MM/DD').isValid &&
-      (input.finishDate === null ||
-        moment(input.finishDate, 'YYYY/MM/DD').isValid)
+      moment(formData.startDate, 'YYYY/MM/DD').isValid &&
+      (formData.finishDate === null ||
+        moment(formData.finishDate, 'YYYY/MM/DD').isValid)
     ) {
       let payload = {
-        title: input.title,
-        start_date: input.startDate
+        title: formData.title,
+        start_date: formData.startDate
       };
-      if (input.finishDate) payload.finish_date = input.finishDate;
+
+      if (formData.finishDate) payload.finish_date = formData.finishDate;
       createTournament(payload)
         .then(res => {
           getTournaments()
@@ -57,7 +58,9 @@ function PostData(props) {
               const tournaments = (res && res.data && res.data.data) || [];
               updateTournaments(tournaments);
             })
-            .catch(err => err);
+            .catch(err => {
+              throw err;
+            });
         })
         .catch(err => err);
     }
@@ -75,7 +78,7 @@ function PostData(props) {
           cursor: 'pointer'
         }}
       />
-      <TournamentModal
+      <AddEditTournamentModal
         toggle="add"
         action={post}
         tournament={{}}
@@ -89,4 +92,4 @@ function PostData(props) {
   );
 }
 
-export default PostData;
+export default CreateTournament;
