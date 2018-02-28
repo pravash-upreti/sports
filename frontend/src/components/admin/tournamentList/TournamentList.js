@@ -1,50 +1,58 @@
-import React from "react";
+import React from 'react';
+import TableHeader, { Table } from 'semantic-ui-react';
 
-import EditButton from "../buttons/EditButton";
-import DeleteButton from "../buttons/DeleteButton";
+import NewIcon from '../../commons/Icon';
 
 function TournamentList(props) {
   const {
     title,
+    input,
+    modalOpen,
     startDate,
     finishDate,
-    tournament,
-    isEditable,
-    handleEditClick,
-    updateTournament,
-    handleChangeTitle,
-    handleChangeStartDate,
-    handleChangeFinishDate
+    handleOpen,
+    tournaments,
+    handleClose,
+    handleChange,
+    updateTournaments
   } = props;
 
   return (
-    <ul>
-      {props.tournament.map((tournament, index) => {
+    <Table compact>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Tournament Name</Table.HeaderCell>
+          <Table.HeaderCell>Start Date</Table.HeaderCell>
+          <Table.HeaderCell>Finish Date</Table.HeaderCell>
+          <Table.HeaderCell>Edit/Delete</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      {tournaments.map((tournament, index) => {
         return (
-          <li key={index}>
-            {tournament.title} Start Date:{tournament.startDate} Finish Date:{
-              tournament.finishDate
-            }
-            <EditButton
-              title={props.title}
-              startDate={props.startDate}
-              finishDate={props.finishDate}
-              tournament={props.tournament}
-              isEditable={props.isEditable}
-              handleEditClick={props.handleEditClick}
-              updateTournament={props.updateTournament}
-              handleChangeTitle={props.handleChangeTitle}
-              handleChangeStartDate={props.handleChangeStartDate}
-              handleChangeFinishDate={props.handleChangeFinishDate}
-            />
-            <DeleteButton
-              tournament={props.tournament}
-              updateTournament={props.updateTournament}
-            />
-          </li>
+          <Table.Body key={index}>
+            <Table.Row>
+              <Table.Cell>{tournament.title}</Table.Cell>
+              <Table.Cell>{tournament.startDate}</Table.Cell>
+              <Table.Cell>{tournament.finishDate}</Table.Cell>
+              <Table.Cell>
+                <NewIcon
+                  name="edit"
+                  color="blue"
+                  tournament={tournament}
+                  handleOpen={handleOpen}
+                />
+                <NewIcon
+                  name="remove"
+                  color="red"
+                  tournament={tournament}
+                  handleOpen={handleOpen}
+                />
+              </Table.Cell>
+            </Table.Row>
+          </Table.Body>
         );
       })}
-    </ul>
+    </Table>
   );
 }
 

@@ -27,7 +27,7 @@
 
   .time {
     @extend %inline-after;
-    
+
     font-weight: 500;
     color: #828282;
   }
@@ -41,13 +41,13 @@
   font-family: $player-font-family;
   font-weight: $player-font-weight;
   line-height: $player-line-height;
-  border-top: $player-border-width solid #E8E8E8;    
+  border-top: $player-border-width solid #E8E8E8;
 
   .photo-container-small {
     float: left;
     margin: $photo-container-vertical-margin 0 $photo-container-vertical-margin $photo-container-left-margin;
   }
-  
+
   .player-name {
     float: right;
     width: $player-name-width;
