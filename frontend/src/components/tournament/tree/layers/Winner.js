@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { IMAGE_SIZES } from '../../../../constants/constants';
 
@@ -14,6 +15,12 @@ const Winner = props => {
       <p className="winner-title">{title}</p>
     </div>
   );
+};
+
+Winner.propTypes = {
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default Winner;

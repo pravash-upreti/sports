@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import { Router, Route, Switch } from 'react-router';
 import { compose, withState, lifecycle, withHandlers } from 'recompose';
@@ -75,6 +76,17 @@ const Routes = props => {
       </Fragment>
     </Router>
   );
+};
+
+Routes.propTypes = {
+  showToaster: PropTypes.bool.isRequired,
+  handleLogout: PropTypes.func.isRequired,
+  closeToaster: PropTypes.func.isRequired,
+  setShowToaster: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  toasterMessage: PropTypes.string.isRequired,
+  setAuthentication: PropTypes.func.isRequired,
+  setToasterMessage: PropTypes.func.isRequired
 };
 
 export default compose(

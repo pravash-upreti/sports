@@ -3,7 +3,7 @@ import React from 'react';
 import Time from '../time';
 import Player from '../player';
 
-const FixtureCard = props => (
+const FixtureCard = () => (
   <div className="fixture-container">
     <Player />
     <Time />

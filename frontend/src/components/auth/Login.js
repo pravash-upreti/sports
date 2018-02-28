@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { compose, withState, withHandlers } from 'recompose';
 
 import logo from '../../../public/assets/images/sports-logo.png';
@@ -54,6 +55,17 @@ const Login = props => {
       </div>
     </div>
   );
+};
+
+Login.propTypes = {
+  handleLogin: PropTypes.func.isRequired,
+  showLoginError: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  loginDetails: PropTypes.shape({
+    email: PropTypes.string,
+    password: PropTypes.string
+  }).isRequired
 };
 
 export default compose(
