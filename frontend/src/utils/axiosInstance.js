@@ -31,6 +31,7 @@ export function setTokenInHeader(accessToken) {
 export async function refreshAndRepeat(lastRequestConfig) {
   try {
     const newAccessToken = await refreshAccessToken();
+
     if (newAccessToken) {
       lastRequestConfig.headers.authorization = newAccessToken;
 
