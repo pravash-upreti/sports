@@ -4,7 +4,7 @@ import LayerHeader from './LayerHeader';
 import RoundFixtures from './RoundFixtures';
 
 const Final = props => {
-  const { layerTitle, fixtures, containerClass } = props;
+  const { fixtures, layerTitle, containerClass } = props;
 
   return (
     <div className={containerClass}>
