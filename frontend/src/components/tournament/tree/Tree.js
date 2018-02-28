@@ -13,7 +13,7 @@ import {
   PLAYOFFS
 } from '../../../constants/rounds';
 
-const Tree = props => (
+const Tree = () => (
   <div className="tree-outer-container">
     <div className="tree-inner-container">
       <Winner {...WINNER} />

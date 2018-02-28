@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import * as routes from '../../constants/routes';
@@ -18,6 +19,11 @@ const Navigation = props => {
       ) : null}
     </div>
   );
+};
+
+Navigation.propTypes = {
+  logout: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
 export default Navigation;
