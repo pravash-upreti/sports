@@ -1,7 +1,13 @@
-import { createBrowserHistory } from 'history';
+import createBrowserHistory from 'history/createBrowserHistory';
 
+/**
+ * Create a history object to use with react-router
+ *
+ * @export
+ * @returns {object}
+ */
 export default createBrowserHistory({
-  forceRefresh: true,
+  forceRefresh: false,
   getUserConfirmation: (message, callback) => {
     window.alert('Session has expired. Please login.');
 

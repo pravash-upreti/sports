@@ -3,8 +3,8 @@ import React from 'react';
 import LayerHeader from './LayerHeader';
 import RoundFixtures from './RoundFixtures';
 
-const Final = props => {
-  const { layerTitle, fixtures, containerClass } = props;
+const Final = (props) => {
+  const { fixtures, layerTitle, containerClass } = props;
 
   return (
     <div className={containerClass}>
