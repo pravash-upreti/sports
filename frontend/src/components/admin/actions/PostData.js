@@ -78,7 +78,7 @@ function PostData(props) {
       <TournamentModal
         toggle="add"
         action={post}
-        tournament=""
+        tournament={{}}
         icon={addIcon()}
         open={props.modalOpen.add}
         modalOpen={props.modalOpen}

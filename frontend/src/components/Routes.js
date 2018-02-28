@@ -9,8 +9,16 @@ import {
   DEFAULT_LOGOUT_ERROR_MESSAGE
 } from '../constants/errorMessages';
 
-import Admin from './admin';
+import history from '../utils/routerHistory';
+import getAuthDetails from '../utils/getAuthDetails';
+import { addInterceptor } from '../utils/axiosInstance';
+
+import logout from '../services/authServices/logout';
+
+import PrivateRoute from './hocs/PrivateRoute';
+
 import Login from './auth';
+import Admin from './admin';
 import Test from './admin/Test';
 import Tree from './tournament/tree';
 import Toaster from './commons/Toaster';
@@ -58,7 +66,7 @@ const Routes = props => {
             path={routes.FIXTURE_OVERVIEW}
           />
           <PrivateRoute
-            Component={Test}
+            Component={Admin}
             path={routes.ADMIN}
             setShowToaster={setShowToaster}
             isAuthenticated={isAuthenticated}
