@@ -1,21 +1,31 @@
 import { REFRESH_ROUTE } from '../../constants/apiUrls';
+import { DEFAULT_TOASTER_MESSAGE } from '../../constants/errorMessages';
 
 import getAuthDetails from '../../utils/getAuthDetails';
-import axiosInstance, { setTokenInHeader } from '../../utils/axios';
+import axiosInstance, { setTokenInHeader } from '../../utils/axiosInstance';
 
-const refreshAccessToken = async () => {
+/**
+ * Refresh access token
+ *
+ * @export
+ * @returns {string}
+ * @throws {error}
+ */
+export default async function refreshAccessToken() {
   try {
     const { refreshToken } = getAuthDetails();
     axiosInstance.defaults.headers = {
       refresh: `Bearer ${refreshToken}`
     };
 
-    const serverResponse = await axiosInstance.get(REFRESH_ROUTE);
+    const response = await axiosInstance.get(REFRESH_ROUTE);
     const newAccessToken =
-      serverResponse &&
-      serverResponse.data &&
-      serverResponse.data.data &&
-      serverResponse.data.data.newAccessToken;
+      response &&
+      response.data &&
+      response.data.data &&
+      response.data.data.newAccessToken;
+
+    if (!newAccessToken) throw DEFAULT_TOASTER_MESSAGE;
 
     setTokenInHeader(newAccessToken);
 
@@ -23,6 +33,4 @@ const refreshAccessToken = async () => {
   } catch (error) {
     throw error;
   }
-};
-
-export default refreshAccessToken;
+}

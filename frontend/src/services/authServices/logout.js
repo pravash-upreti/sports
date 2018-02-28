@@ -1,9 +1,16 @@
 import { LOGOUT_ROUTE } from '../../constants/apiUrls';
 
-import axiosInstance from '../../utils/axios';
+import axiosInstance from '../../utils/axiosInstance';
 import getAuthDetails from '../../utils/getAuthDetails';
 
-const logout = async () => {
+/**
+ * Logout from the server
+ *
+ * @export
+ * @returns {object}
+ * @throws {error}
+ */
+export default async function logout() {
   const { refreshToken } = getAuthDetails();
 
   axiosInstance.defaults.headers = {
@@ -11,14 +18,10 @@ const logout = async () => {
   };
 
   try {
-    const logoutResponse = await axiosInstance.post(LOGOUT_ROUTE);
+    const response = await axiosInstance.post(LOGOUT_ROUTE);
 
-    return (
-      (logoutResponse && logoutResponse.data && logoutResponse.data.data) || {}
-    );
+    return (response && response.data && response.data.data) || {};
   } catch (error) {
     throw error;
   }
-};
-
-export default logout;
+}

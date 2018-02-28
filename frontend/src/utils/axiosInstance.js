@@ -8,12 +8,26 @@ const axiosInstance = axios.create({
   baseURL: BASE_URL
 });
 
+/**
+ * Set token in header of our axiosInstance
+ *
+ * @export
+ * @param {string} accessToken
+ */
 export function setTokenInHeader(accessToken) {
   axiosInstance.defaults.headers = {
     authorization: `Bearer ${accessToken}`
   };
 }
 
+/**
+ * Refresh token and repeat previous server request
+ *
+ * @export
+ * @param {object} lastRequestConfig
+ * @returns {promise}
+ * @throws {error}
+ */
 export async function refreshAndRepeat(lastRequestConfig) {
   try {
     const newAccessToken = await refreshAccessToken();
@@ -29,6 +43,12 @@ export async function refreshAndRepeat(lastRequestConfig) {
   }
 }
 
+/**
+ * Add interceptor for our axios-responses in case access token is expired.
+ *
+ * @param {function} localLogout
+ * @param {function} getAuthenticationStatus
+ */
 export function addInterceptor(localLogout, getAuthenticationStatus) {
   axiosInstance.interceptors.response.use(
     response => response,
@@ -46,6 +66,7 @@ export function addInterceptor(localLogout, getAuthenticationStatus) {
 
         return null;
       }
+
       throw error.response.data;
     }
   );

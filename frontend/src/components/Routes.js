@@ -10,8 +10,8 @@ import {
 } from '../constants/errorMessages';
 
 import history from '../utils/routerHistory';
-import { addInterceptor } from '../utils/axios';
 import getAuthDetails from '../utils/getAuthDetails';
+import { addInterceptor } from '../utils/axiosInstance';
 
 import logout from '../services/authServices/logout';
 
@@ -28,20 +28,19 @@ const Routes = props => {
   const {
     showToaster,
     handleLogout,
+    closeToaster,
+    setShowToaster,
     toasterMessage,
     isAuthenticated,
-    setAuthentication,
-    toggleShowToaster
+    setToasterMessage,
+    setAuthentication
   } = props;
 
   return (
     <Router history={history}>
       <Fragment>
         {showToaster ? (
-          <Toaster
-            message={toasterMessage}
-            toggleShowToaster={toggleShowToaster}
-          />
+          <Toaster message={toasterMessage} closeToaster={closeToaster} />
         ) : null}
         <Switch>
           <Route
@@ -63,13 +62,14 @@ const Routes = props => {
           <Route
             exact
             component={FixtureOverview}
-            path={routes.TOURNAMENT_FIXTURE_OVERVIEW}
+            path={routes.FIXTURE_OVERVIEW}
           />
           <PrivateRoute
             Component={Test}
             path={routes.ADMIN}
+            setShowToaster={setShowToaster}
             isAuthenticated={isAuthenticated}
-            toggleShowToaster={toggleShowToaster}
+            setToasterMessage={setToasterMessage}
           />
         </Switch>
       </Fragment>
@@ -85,18 +85,14 @@ export default compose(
     localLogout: ({ setAuthentication }) => () => {
       setAuthentication(false);
       localStorage.removeItem(LOCAL_AUTH_VARIABLE);
-    },
-    toggleShowToaster: ({
-      showToaster,
-      setShowToaster,
-      setToasterMessage
-    }) => message => {
-      setShowToaster(!showToaster);
-      setToasterMessage(message || DEFAULT_TOASTER_MESSAGE);
     }
   }),
   withHandlers({
-    handleLogout: ({ localLogout, toggleShowToaster }) => async () => {
+    handleLogout: ({
+      localLogout,
+      setShowToaster,
+      setToasterMessage
+    }) => async () => {
       try {
         await logout();
         localLogout();
@@ -105,8 +101,12 @@ export default compose(
           (error && error.error && error.error.message) ||
           DEFAULT_LOGOUT_ERROR_MESSAGE;
 
-        toggleShowToaster(errorMessage);
+        setShowToaster(true);
+        setToasterMessage(errorMessage);
       }
+    },
+    closeToaster: ({ setShowToaster }) => () => {
+      setShowToaster(false);
     },
     getAuthenticationStatus: ({ isAuthenticated }) => () => isAuthenticated
   }),

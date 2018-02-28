@@ -14,7 +14,7 @@ const PlayerPhoto = props => {
 
   return (
     <div className={photoClass}>
-      <img src={img} alt="Player image" />
+      <img src={img} alt="Player" />
     </div>
   );
 };

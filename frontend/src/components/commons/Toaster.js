@@ -1,12 +1,14 @@
 import React from 'react';
 
-const Toaster = (props) => {
-  const { message, hideToaster } = props;
+import { DEFAULT_TOASTER_MESSAGE } from '../../constants/errorMessages';
+
+const Toaster = props => {
+  const { message, closeToaster } = props;
 
   return (
-    <div className="Toaster">
+    <div className="toaster">
       <p> {message} </p>
-      <button onClick={hideToaster}>Hide Toaster</button>
+      <button onClick={closeToaster}>Hide Toaster</button>
     </div>
   );
 };

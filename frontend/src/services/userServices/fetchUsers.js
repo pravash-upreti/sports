@@ -1,16 +1,22 @@
-import axiosInstance from '../../utils/axios';
 import { USERS_ROUTE } from '../../constants/apiUrls';
 
-const fetchUsers = async () => {
+import axiosInstance from '../../utils/axiosInstance';
+
+/**
+ * Fetch Users from server
+ *
+ * @export
+ * @returns {array}
+ * @throws {error}
+ */
+export default async function fetchUsers() {
   try {
-    const serverResponse = await axiosInstance.get(USERS_ROUTE);
+    const response = await axiosInstance.get(USERS_ROUTE);
     const fetchedUsers =
-      (serverResponse && serverResponse.data && serverResponse.data.data) || [];
+      (response && response.data && response.data.data) || [];
 
     return fetchedUsers;
   } catch (error) {
     throw error;
   }
-};
-
-export default fetchUsers;
+}

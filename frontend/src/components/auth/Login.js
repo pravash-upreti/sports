@@ -6,7 +6,7 @@ import logo from '../../../public/assets/images/sports-logo.png';
 import { LOCAL_AUTH_VARIABLE } from '../../constants/constants';
 import { DEFAULT_LOGIN_ERROR_MESSAGE } from '../../constants/errorMessages';
 
-import { setTokenInHeader } from '../../utils/axios';
+import { setTokenInHeader } from '../../utils/axiosInstance';
 
 import login from '../../services/authServices/login';
 
@@ -63,11 +63,11 @@ export default compose(
   withHandlers({
     handleInputChange: ({ setLoginDetails, loginDetails }) => e => {
       const { name, value } = e.target;
-      const loginDetailsCopy = { ...loginDetails };
+      const loginInfo = { ...loginDetails };
 
-      loginDetailsCopy[name] = value;
+      loginInfo[name] = value;
 
-      setLoginDetails(loginDetailsCopy);
+      setLoginDetails(loginInfo);
     },
     handleLogin: ({
       loginDetails,
@@ -77,18 +77,18 @@ export default compose(
     }) => async e => {
       e.preventDefault();
       try {
-        const loginResponse = await login(loginDetails);
+        const response = await login(loginDetails);
 
-        if (loginResponse && loginResponse.tokens) {
+        if (response && response.tokens) {
           setAuthentication(true);
           localStorage.setItem(
             LOCAL_AUTH_VARIABLE,
             JSON.stringify({
               isAuthenticated: true,
-              refreshToken: loginResponse.tokens.refreshToken
+              refreshToken: response.tokens.refreshToken
             })
           );
-          setTokenInHeader(loginResponse.tokens.accessToken);
+          setTokenInHeader(response.tokens.accessToken);
 
           return;
         }

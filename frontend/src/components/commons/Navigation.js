@@ -10,7 +10,7 @@ const Navigation = props => {
     <div>
       <Link to={routes.ROOT}>Home</Link>
       <Link to={routes.ADMIN}>Admin</Link>
-      <Link to={routes.TOURNAMENT_FIXTURE_OVERVIEW}>FixtureOverview</Link>
+      <Link to={routes.FIXTURE_OVERVIEW}>FixtureOverview</Link>
       {isAuthenticated ? (
         <Link onClick={logout} to="/logout">
           Logout

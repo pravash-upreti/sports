@@ -1,16 +1,21 @@
-import axiosInstance from '../../utils/axios';
 import { LOGIN_ROUTE } from '../../constants/apiUrls';
 
-const login = async loginDetails => {
-  try {
-    const loginResponse = await axiosInstance.post(LOGIN_ROUTE, loginDetails);
+import axiosInstance from '../../utils/axiosInstance';
 
-    return (
-      (loginResponse && loginResponse.data && loginResponse.data.data) || {}
-    );
+/**
+ * Login to the server
+ *
+ * @export
+ * @param {object} loginDetails
+ * @returns {object}
+ * @throws {error}
+ */
+export default async function login(loginDetails) {
+  try {
+    const response = await axiosInstance.post(LOGIN_ROUTE, loginDetails);
+
+    return (response && response.data && response.data.data) || {};
   } catch (error) {
     throw error;
   }
-};
-
-export default login;
+}
