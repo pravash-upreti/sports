@@ -92,6 +92,112 @@ export async function create(params: ChessFixtureInterface) {
 }
 
 /**
+ * Update an existing chess fixture/match.
+ *
+ * @export
+ * @param {number} id
+ * @param {ChessFixtureInterface} params
+ * @returns
+ * @throws {NotFoundError|BadRequestError|NoRowUpdatedError|AlreadyExistsError|error}
+ */
+export async function update(id: number, params: ChessFixtureInterface) {
+  try {
+    // Check existence of the round
+    const round: Round = await new Round({ id: params.round_id }).fetch();
+
+    if (!round) {
+      throw new NotFoundError(roundMessages.notFound);
+    }
+
+    // Check existence of the first team
+    const team1: Team = await new Team({ id: params.team_1_id }).fetch();
+
+    if (!team1) {
+      throw new NotFoundError(teamMessages.notFound);
+    }
+
+    // Check existence of the second team
+    const team2: Team = await new Team({ id: params.team_2_id }).fetch();
+
+    if (!team2) {
+      throw new NotFoundError(teamMessages.notFound);
+    }
+
+    // Check whether both the opponents are same
+    if (params.team_1_id === params.team_2_id) {
+      throw new BadRequestError(chessFixtureMessages.sameTeams);
+    }
+
+    // Check existence of fixture status
+    const fixtureStatus: FixtureStatus = await new FixtureStatus({ id: params.status_id }).fetch();
+
+    if (!fixtureStatus) {
+      throw new NotFoundError(fixtureStatusMessages.notFound);
+    }
+
+    // Check existence of tournament category
+    const tournamentCategory: TournamentCategory = await new TournamentCategory({ id: params.tournament_category_id }).fetch();
+
+    if (!tournamentCategory) {
+      throw new NotFoundError(tournamentCategoryMessages.notFound);
+    }
+
+    const chessFixture: ChessFixture = await findById(id);
+
+    // Check whether the match already exists
+    if (await checkIfFixtureExists(params, [ id ])) {
+      throw new AlreadyExistsError(chessFixtureMessages.alreadyExists);
+    }
+
+    const updatedChessFixture: ChessFixture = await chessFixture.save(params, { patch: true });
+
+    if (!updatedChessFixture) {
+      throw new NoRowUpdatedError(chessFixtureMessages.unableToUpdate);
+    }
+
+    return {
+      code: HttpStatus.OK,
+      data: updatedChessFixture,
+      message: chessFixtureMessages.updated,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
+  } catch (error) {
+    throw(error);
+  }
+}
+
+/**
+ * Remove or delete an existing chess fixture.
+ *
+ * @export
+ * @param {number} id
+ * @returns {object}
+ * @throws {NoRowUpdatedError|error}
+ */
+export async function remove(id: number) {
+  try {
+    const chessFixture: ChessFixture = await findById(id);
+    const removedChessFixture: ChessFixture = await chessFixture.destroy();
+
+    if (!removedChessFixture) {
+      throw new NoRowUpdatedError(chessFixtureMessages.unableToRemove);
+
+    }
+
+    return {
+      data: {
+        id
+      },
+      code: HttpStatus.OK,
+      message: chessFixtureMessages.removed,
+      status: HttpStatus.getStatusText(HttpStatus.OK)
+    };
+  } catch (error) {
+    throw(error);
+  }
+}
+
+/**
  * Fetch a chess fixture info.
  *
  * @export
@@ -149,28 +255,45 @@ async function findById(id: number) {
  * Check if a match or fixture exists.
  *
  * @param {ChessFixtureInterface} params
- * @returns {boolean}
+ * @param {number[]} ignoredIds
+ * @returns
  * @throws {error}
  */
-async function checkIfFixtureExists(params: ChessFixtureInterface) {
+async function checkIfFixtureExists(params: ChessFixtureInterface, ignoredIds: number[] = []) {
   try {
-    const chessFixture: ChessFixture = await new ChessFixture().where({
+    const chessFixtureQuery: ChessFixture = await new ChessFixture().where({
       round_id: params.round_id,
       team_1_id: params.team_1_id,
       team_2_id: params.team_2_id,
       tournament_category_id: params.tournament_category_id
-    }).fetch();
+    });
+
+    if (ignoredIds.length) {
+      ignoredIds.forEach(element => {
+        chessFixtureQuery.where('id', '!=', element);
+      });
+    }
+
+    const chessFixture: ChessFixture = await chessFixtureQuery.fetch();
 
     if (chessFixture) {
       return true;
     }
 
-    const chessFixture2: ChessFixture = await new ChessFixture().where({
+    const chessFixture2Query: ChessFixture = await new ChessFixture().where({
       round_id: params.round_id,
-      team_1_id: params.team_2_id,
-      team_2_id: params.team_1_id,
+      team_1_id: params.team_1_id,
+      team_2_id: params.team_2_id,
       tournament_category_id: params.tournament_category_id
-    }).fetch();
+    });
+
+    if (ignoredIds.length) {
+      ignoredIds.forEach(element => {
+        chessFixture2Query.where('id', '!=', element);
+      });
+    }
+
+    const chessFixture2: ChessFixture = await chessFixture2Query.fetch();
 
     if (chessFixture2) {
       return true;

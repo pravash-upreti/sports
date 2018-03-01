@@ -7,14 +7,12 @@ import * as chessFixtureController from '../../controllers/chessFixtureControlle
 const router: Router = Router();
 
 // Player routes
-// router.get('/', chessFixtureController.getAll);
-
 router.get('/:id', urlParamsValidator.validateURLParams, chessFixtureController.get);
+
+router.delete('/:id', urlParamsValidator.validateURLParams, chessFixtureController.remove);
 
 router.post('/', chessFixtureValidator.validateChessFixtureSchema, chessFixtureController.create);
 
-// router.delete('/:id', urlParamsValidator.validateURLParams, chessFixtureController.remove);
-
-// router.put('/:id', urlParamsValidator.validateURLParams, playerValidator.validatePlayerSchema, chessFixtureController.update);
+router.put('/:id', urlParamsValidator.validateURLParams, chessFixtureValidator.validateChessFixtureSchema, chessFixtureController.update);
 
 export default router;
