@@ -10,7 +10,7 @@ import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
 import {
   getTournaments,
   createTournament
-} from '../../../services/tournamentService';
+} from '../../../services/tournamentServices/tournamentServices';
 
 import AddEditTournamentModal from '../tournamentModal/AddEditTournamentModal';
 

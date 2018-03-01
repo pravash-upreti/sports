@@ -1,6 +1,6 @@
-import { TOURNAMENTS } from '../constants/apiUrls';
+import { TOURNAMENTS } from '../../constants/apiUrls';
 
-import axiosInstance from '../utils/axiosInstance';
+import axiosInstance from '../../utils/axiosInstance';
 
 export async function getTournaments() {
   try {

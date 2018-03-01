@@ -10,7 +10,7 @@ import {
   getTournaments,
   editTournament,
   deleteTournament
-} from '../../services/tournamentService';
+} from '../../services/tournamentServices/tournamentServices';
 
 import TournamentList from './tournamentList';
 import CreateTournament from './actions/CreateTournament';
