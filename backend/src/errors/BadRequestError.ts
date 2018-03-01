@@ -16,7 +16,7 @@ class BadRequestError extends Error {
   message: string;
 
   /**
-   * Creates an instance of ForbiddenError.
+   * Creates an instance of BadRequestError.
    *
    * @param {string} message
    * @memberof ForbiddenError

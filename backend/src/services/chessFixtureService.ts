@@ -256,50 +256,33 @@ async function findById(id: number) {
  *
  * @param {ChessFixtureInterface} params
  * @param {number[]} ignoredIds
- * @returns
+ * @returns {boolean}
  * @throws {error}
  */
 async function checkIfFixtureExists(params: ChessFixtureInterface, ignoredIds: number[] = []) {
   try {
-    const chessFixtureQuery: ChessFixture = await new ChessFixture().where({
-      round_id: params.round_id,
-      team_1_id: params.team_1_id,
-      team_2_id: params.team_2_id,
-      tournament_category_id: params.tournament_category_id
-    });
+    const chessFixture: ChessFixture = await new ChessFixture()
+      .query(qb => {
+        qb.where(q => {
+          q.orWhere({
+            round_id: params.round_id,
+            team_1_id: params.team_1_id,
+            team_2_id: params.team_2_id,
+            tournament_category_id: params.tournament_category_id
+          }).orWhere({
+            round_id: params.round_id,
+            team_1_id: params.team_2_id,
+            team_2_id: params.team_1_id,
+            tournament_category_id: params.tournament_category_id
+          });
+        });
 
-    if (ignoredIds.length) {
-      ignoredIds.forEach(element => {
-        chessFixtureQuery.where('id', '!=', element);
-      });
-    }
+        if (ignoredIds.length) {
+          qb.whereNotIn('id', ignoredIds);
+        }
+      }).fetch();
 
-    const chessFixture: ChessFixture = await chessFixtureQuery.fetch();
-
-    if (chessFixture) {
-      return true;
-    }
-
-    const chessFixture2Query: ChessFixture = await new ChessFixture().where({
-      round_id: params.round_id,
-      team_1_id: params.team_1_id,
-      team_2_id: params.team_2_id,
-      tournament_category_id: params.tournament_category_id
-    });
-
-    if (ignoredIds.length) {
-      ignoredIds.forEach(element => {
-        chessFixture2Query.where('id', '!=', element);
-      });
-    }
-
-    const chessFixture2: ChessFixture = await chessFixture2Query.fetch();
-
-    if (chessFixture2) {
-      return true;
-    }
-
-    return false;
+    return !!chessFixture;
   } catch (error) {
     throw(error);
   }

@@ -16,7 +16,7 @@ class AlreadyExistsError extends Error {
   message: string;
 
   /**
-   * Creates an instance of ForbiddenError.
+   * Creates an instance of AlreadyExistsError.
    *
    * @param {string} message
    * @memberof ForbiddenError
