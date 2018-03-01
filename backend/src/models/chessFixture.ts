@@ -1,5 +1,6 @@
 import BookShelf from '../config/bookshelf';
 import { TABLES } from '../constants/tables';
+
 import Team from './team';
 import Round from './round';
 import FixtureStatus from './fixtureStatus';
@@ -13,10 +14,6 @@ class ChessFixture extends BookShelf.Model<ChessFixture> {
 
   timestamp() {
     return true;
-  }
-
-  status() {
-    return this.belongsTo(FixtureStatus, 'status_id');
   }
 
   round() {
@@ -33,6 +30,10 @@ class ChessFixture extends BookShelf.Model<ChessFixture> {
 
   winnerTeam() {
     return this.belongsTo(Team, 'winner_team_id');
+  }
+
+  status() {
+    return this.belongsTo(FixtureStatus, 'status_id');
   }
 
   winningMethod() {
