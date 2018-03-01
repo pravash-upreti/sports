@@ -1,6 +1,8 @@
 import React from 'react';
 import TableHeader, { Table } from 'semantic-ui-react';
 
+import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
+
 import NewIcon from '../../commons/Icon';
 
 function TournamentList(props) {
@@ -27,31 +29,32 @@ function TournamentList(props) {
           <Table.HeaderCell>Edit/Delete</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
-      {tournaments.map((tournament, index) => {
-        return (
-          <Table.Body key={index}>
-            <Table.Row>
-              <Table.Cell>{tournament.title}</Table.Cell>
-              <Table.Cell>{tournament.startDate}</Table.Cell>
-              <Table.Cell>{tournament.finishDate}</Table.Cell>
-              <Table.Cell>
-                <NewIcon
-                  name="edit"
-                  color="blue"
-                  tournament={tournament}
-                  handleOpen={handleOpen}
-                />
-                <NewIcon
-                  color="red"
-                  name="remove"
-                  tournament={tournament}
-                  handleOpen={handleOpen}
-                />
-              </Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        );
-      })}
+      {tournaments &&
+        tournaments.map((tournament, index) => {
+          return (
+            <Table.Body key={index}>
+              <Table.Row>
+                <Table.Cell>{tournament.title}</Table.Cell>
+                <Table.Cell>{tournament.startDate}</Table.Cell>
+                <Table.Cell>{tournament.finishDate}</Table.Cell>
+                <Table.Cell>
+                  <NewIcon
+                    color="blue"
+                    tournament={tournament}
+                    handleOpen={handleOpen}
+                    name={TOURNAMENT_ACTIONS.edit}
+                  />
+                  <NewIcon
+                    color="red"
+                    tournament={tournament}
+                    handleOpen={handleOpen}
+                    name={TOURNAMENT_ACTIONS.remove}
+                  />
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          );
+        })}
     </Table>
   );
 }

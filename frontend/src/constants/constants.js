@@ -9,3 +9,11 @@ export const MAX_CARDS_PER_ROW = 4;
 export const IS_AUTHENTICATED = 'isAuthenticated';
 
 export const LOCAL_AUTH_VARIABLE = 'sportsAuthDetails';
+
+export const TOURNAMENT_ACTIONS = {
+  add: 'add',
+  edit: 'edit',
+  remove: 'remove'
+};
+
+export const DATE_FORMAT = 'YYYY/MM/DD';

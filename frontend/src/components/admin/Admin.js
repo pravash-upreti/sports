@@ -3,15 +3,19 @@ import React from 'react';
 import moment from 'moment';
 import { withState, withHandlers, lifecycle, compose } from 'recompose';
 
-import CreateTournament from './actions/CreateTournament';
-import TournamentList from './tournamentList';
-import AddEditTournamentModal from './tournamentModal/AddEditTournamentModal';
-import DeleteTournamentModal from './tournamentModal/DeleteTournamentModal';
+import { DATE_FORMAT } from '../../constants/constants';
+import { TOURNAMENT_ACTIONS } from '../../constants/constants';
+
 import {
   getTournaments,
   editTournament,
   deleteTournament
 } from '../../services/tournamentService';
+
+import TournamentList from './tournamentList';
+import CreateTournament from './actions/CreateTournament';
+import AddEditTournamentModal from './tournamentModal/AddEditTournamentModal';
+import DeleteTournamentModal from './tournamentModal/DeleteTournamentModal';
 
 function Admin(props) {
   const {
@@ -22,55 +26,61 @@ function Admin(props) {
     selectedTournament
   } = props;
 
-  const edit = () => {
+  const edit = async () => {
     if (
-      moment(formData.startDate, 'YYYY/MM/DD').isValid &&
+      moment(formData.startDate, DATE_FORMAT).isValid &&
       (formData.finishDate === null ||
-        moment(formData.finishDate, 'YYYY/MM/DD').isValid)
+        moment(formData.finishDate, DATE_FORMAT).isValid)
     ) {
       let title, startDate;
 
-      if (!formData.title) {
-        title = selectedTournament.title;
-      } else {
-        title = formData.title;
-      }
+      !formData.title
+        ? (title = selectedTournament.title)
+        : (title = formData.title);
 
-      if (!formData.startDate) {
-        startDate = selectedTournament.startDate;
-      } else {
-        startDate = formData.startDate;
-      }
+      !formData.startDate
+        ? (startDate = selectedTournament.startDate)
+        : (startDate = formData.startDate);
 
       let payload = { title: title, start_date: startDate };
 
       if (formData.finishDate) payload.finish_date = formData.finishDate;
-      editTournament(payload, selectedTournament.id)
-        .then(res => {
-          getTournaments()
-            .then(res => {
-              const tournaments = (res && res.data && res.data.data) || [];
-              updateTournaments(tournaments);
-            })
-            .catch(err => err);
-        })
-        .catch(err => err);
+
+      try {
+        const res = await editTournament(payload, selectedTournament.id);
+
+        try {
+          const res = await getTournaments();
+          const tournaments = res;
+
+          updateTournaments(tournaments);
+        } catch (err) {
+          throw err;
+        }
+      } catch (err) {
+        throw err;
+      }
     }
-    handleClose('edit');
+    handleClose(TOURNAMENT_ACTIONS.edit);
   };
 
-  const remove = e => {
-    deleteTournament(selectedTournament.id)
-      .then(res => {
-        getTournaments()
-          .then(res => {
-            const tournaments = (res && res.data && res.data.data) || [];
-            updateTournaments(tournaments);
-          })
-          .catch(err => err);
-      })
-      .catch(err => err);
-    handleClose('remove');
+  const remove = async () => {
+    try {
+      const res = await deleteTournament(selectedTournament.id);
+
+      try {
+        const res = await getTournaments();
+        const tournaments = res;
+
+        updateTournaments(tournaments);
+      } catch (err) {
+        throw err;
+      }
+    } catch (err) {
+      throw err;
+    }
+
+    handleClose(TOURNAMENT_ACTIONS.remove);
   };
 
   return (
@@ -104,7 +114,7 @@ function Admin(props) {
         </div>
         {selectedTournament ? (
           <AddEditTournamentModal
-            toggle="edit"
+            toggle={TOURNAMENT_ACTIONS.edit}
             action={edit}
             open={props.modalOpen.edit}
             modalOpen={props.modalOpen}
@@ -127,7 +137,6 @@ function Admin(props) {
 
 const enhance = compose(
   withState('tournaments', 'updateTournaments', []),
-  withState('isEditable', 'toggleIsEditable', false),
   withState('selectedTournament', 'setSelectedTournament', {}),
   withState('formData', 'updateInput', {
     title: '',
@@ -143,7 +152,8 @@ const enhance = compose(
   lifecycle({
     componentDidMount() {
       getTournaments().then(res => {
-        const tournaments = (res && res.data && res.data.data) || [];
+        const tournaments = res;
+
         this.props.updateTournaments(tournaments);
       });
     }
@@ -153,6 +163,7 @@ const enhance = compose(
     handleChange: ({ formData, updateInput }) => e => {
       const { name, value } = e.target;
       let formDateCopy = { ...formData };
+
       formDateCopy[name] = value;
 
       updateInput(formDateCopy);
@@ -162,6 +173,7 @@ const enhance = compose(
       tournament
     ) => {
       const modelOpenCopy = { ...modalOpen };
+
       modelOpenCopy[action] = true;
 
       setSelectedTournament(tournament);
@@ -173,6 +185,7 @@ const enhance = compose(
       setSelectedTournament
     }) => action => {
       const modelOpenCopy = { ...modalOpen };
+
       modelOpenCopy[action] = false;
 
       setSelectedTournament({});

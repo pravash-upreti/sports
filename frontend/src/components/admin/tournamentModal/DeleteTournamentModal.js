@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Modal } from 'semantic-ui-react';
 
+import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
+
 const DeleteTournamentModal = props => {
   const { action, modalOpen, handleClose } = props;
 
@@ -15,14 +17,18 @@ const DeleteTournamentModal = props => {
         <p>Are you sure you want to delete this tournament?</p>
       </Modal.Content>
       <Modal.Actions>
-        <Button negative content="No" onClick={() => handleClose('remove')} />
+        <Button
+          negative
+          content="No"
+          onClick={() => handleClose(TOURNAMENT_ACTIONS.remove)}
+        />
         <Button
           positive
-          name="remove"
           content="Yes"
           icon="checkmark"
           onClick={action}
           labelPosition="right"
+          name={TOURNAMENT_ACTIONS.remove}
         />
       </Modal.Actions>
     </Modal>

@@ -4,11 +4,15 @@ import moment from 'moment';
 import { Icon } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 
-import AddEditTournamentModal from '../tournamentModal/AddEditTournamentModal';
+import { DATE_FORMAT } from '../../../constants/constants';
+import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
+
 import {
   getTournaments,
   createTournament
 } from '../../../services/tournamentService';
+
+import AddEditTournamentModal from '../tournamentModal/AddEditTournamentModal';
 
 function CreateTournament(props) {
   const {
@@ -26,9 +30,9 @@ function CreateTournament(props) {
   const addIcon = () => {
     return (
       <Icon
-        name="add"
+        name={TOURNAMENT_ACTIONS.add}
         color="green"
-        onClick={() => handleOpen('add')}
+        onClick={() => handleOpen(TOURNAMENT_ACTIONS.add)}
         style={{
           float: 'right',
           cursor: 'pointer'
@@ -39,11 +43,11 @@ function CreateTournament(props) {
     );
   };
 
-  const post = () => {
+  const post = async () => {
     if (
-      moment(formData.startDate, 'YYYY/MM/DD').isValid &&
+      moment(formData.startDate, DATE_FORMAT).isValid &&
       (formData.finishDate === null ||
-        moment(formData.finishDate, 'YYYY/MM/DD').isValid)
+        moment(formData.finishDate, DATE_FORMAT).isValid)
     ) {
       let payload = {
         title: formData.title,
@@ -51,35 +55,38 @@ function CreateTournament(props) {
       };
 
       if (formData.finishDate) payload.finish_date = formData.finishDate;
-      createTournament(payload)
-        .then(res => {
-          getTournaments()
-            .then(res => {
-              const tournaments = (res && res.data && res.data.data) || [];
-              updateTournaments(tournaments);
-            })
-            .catch(err => {
-              throw err;
-            });
-        })
-        .catch(err => err);
+
+      try {
+        const res = await createTournament(payload);
+
+        try {
+          const res = await getTournaments();
+          const tournaments = res;
+
+          updateTournaments(tournaments);
+        } catch (err) {
+          throw err;
+        }
+      } catch (err) {
+        throw err;
+      }
     }
-    handleClose('add');
+    handleClose(TOURNAMENT_ACTIONS.add);
   };
 
   return (
     <span>
       <Icon
-        name="add"
+        name={TOURNAMENT_ACTIONS.add}
         color="green"
-        onClick={() => handleOpen('add', {})}
+        onClick={() => handleOpen(TOURNAMENT_ACTIONS.add, {})}
         style={{
           float: 'right',
           cursor: 'pointer'
         }}
       />
       <AddEditTournamentModal
-        toggle="add"
+        toggle={TOURNAMENT_ACTIONS.add}
         action={post}
         tournament={{}}
         icon={addIcon()}

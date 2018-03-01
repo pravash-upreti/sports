@@ -1,37 +1,51 @@
-import axios from 'axios';
+import { TOURNAMENTS } from '../constants/apiUrls';
 
-export const getTournaments = () => {
-  return axios
-    .get('http://0.0.0.0:5000/api/v1/tournaments')
-    .then(res => {
-      return res;
-    })
-    .catch(err => err);
-};
+import axiosInstance from '../utils/axiosInstance';
 
-export const createTournament = payload => {
-  return axios
-    .post('http://0.0.0.0:5000/api/v1/tournaments', payload)
-    .then(res => {
-      return res;
-    })
-    .catch(err => err);
-};
+export async function getTournaments() {
+  try {
+    const response = await axiosInstance.get(TOURNAMENTS);
+    const fetchedUsers =
+      (response && response.data && response.data.data) || [];
 
-export const editTournament = (payload, id) => {
-  return axios
-    .put('http://0.0.0.0:5000/api/v1/tournaments/' + id, payload)
-    .then(res => {
-      return res;
-    })
-    .catch(err => err);
-};
+    return fetchedUsers;
+  } catch (error) {
+    throw error;
+  }
+}
 
-export const deleteTournament = id => {
-  return axios
-    .delete('http://0.0.0.0:5000/api/v1/tournaments/' + id)
-    .then(res => {
-      return res;
-    })
-    .catch(err => err);
-};
+export async function createTournament(payload) {
+  try {
+    const response = await axiosInstance.post(TOURNAMENTS, payload);
+    const fetchedUsers =
+      (response && response.data && response.data.data) || [];
+
+    return fetchedUsers;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function editTournament(payload, id) {
+  try {
+    const response = await axiosInstance.put(TOURNAMENTS + '/' + id, payload);
+    const fetchedUsers =
+      (response && response.data && response.data.data) || [];
+
+    return fetchedUsers;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function deleteTournament(id) {
+  try {
+    const response = await axiosInstance.delete(TOURNAMENTS + '/' + id);
+    const fetchedUsers =
+      (response && response.data && response.data.data) || [];
+
+    return fetchedUsers;
+  } catch (error) {
+    throw error;
+  }
+}

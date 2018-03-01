@@ -19,7 +19,6 @@ import PrivateRoute from './hocs/PrivateRoute';
 
 import Login from './auth';
 import Admin from './admin';
-import Test from './admin/Test';
 import Tree from './tournament/tree';
 import Toaster from './commons/Toaster';
 import Navigation from './commons/Navigation';
