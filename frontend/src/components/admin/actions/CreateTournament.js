@@ -1,21 +1,13 @@
-import axios from 'axios';
 import React from 'react';
-import moment from 'moment';
 import { Icon } from 'semantic-ui-react';
-import InputMask from 'react-input-mask';
 
-import { DATE_FORMAT, TOURNAMENT_ACTIONS } from '../../../constants/constants';
-import { DEFAULT_INVALID_INPUT_MESSAGE } from '../../../constants/errorMessages';
-
-import {
-  getTournaments,
-  createTournament
-} from '../../../services/tournamentServices/tournamentServices';
+import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
 
 import AddEditTournamentModal from '../tournamentModal/AddEditTournamentModal';
 
 function CreateTournament(props) {
   const {
+    add,
     title,
     formData,
     modalOpen,
@@ -45,38 +37,6 @@ function CreateTournament(props) {
     );
   };
 
-  const post = async () => {
-    if (
-      moment(formData.startDate, DATE_FORMAT).isValid &&
-      moment(formData.finishDate, DATE_FORMAT).isValid
-    ) {
-      let payload = {
-        title: formData.title,
-        start_date: formData.startDate
-      };
-
-      if (formData.finishDate) {
-        payload.finish_date = formData.finishDate;
-      }
-
-      try {
-        const createResponse = await createTournament(payload);
-
-        const getResponse = await getTournaments();
-
-        updateTournaments(getResponse);
-      } catch (error) {
-        const errorMessage =
-          (error && error.error && error.error.message) ||
-          DEFAULT_INVALID_INPUT_MESSAGE;
-
-        setShowToaster(true);
-        setToasterMessage(errorMessage);
-      }
-    }
-    handleClose(TOURNAMENT_ACTIONS.add);
-  };
-
   return (
     <span>
       <Icon
@@ -89,7 +49,7 @@ function CreateTournament(props) {
         }}
       />
       <AddEditTournamentModal
-        action={post}
+        action={add}
         tournament={{}}
         icon={addIcon}
         open={modalOpen.add}

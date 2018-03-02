@@ -12,6 +12,8 @@ export function up(knex: Knex) {
 
 export function down(knex: Knex) {
   return knex.schema.table('user', table => {
-    table.dropColumn('email');
+    table.string('email', 100)
+      .notNullable()
+      .alter();
   });
 }

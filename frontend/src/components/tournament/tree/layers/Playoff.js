@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import LayerHeader from './LayerHeader';
 import PlayerPhoto from '../treeCard/PlayerPhoto';
@@ -29,6 +30,11 @@ const Playoff = props => {
       </div>
     </div>
   );
+};
+
+Playoff.propTypes = {
+  layerTitle: PropTypes.string,
+  fixtures: PropTypes.array.isRequired
 };
 
 export default Playoff;

@@ -20,6 +20,16 @@
     "comma-dangle": ["error", "never"],
     "linebreak-style": ["error", "unix"],
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "arrow-parens": 0,
+    "react/require-default-props": [0, { "forbidDefaultForRequired": true }],
+    "react/forbid-prop-types": [
+      0,
+      {
+        "forbid": [],
+        "checkContextTypes": false,
+        "checkChildContextTypes": false
+      }
+    ]
   }
 }

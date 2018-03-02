@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Card from '../treeCard';
 
@@ -13,6 +14,10 @@ const FixtureRow = props => {
         ))}
     </div>
   );
+};
+
+FixtureRow.propTypes = {
+  fixtures: PropTypes.array.isRequired
 };
 
 export default FixtureRow;

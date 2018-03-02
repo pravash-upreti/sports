@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 
 import { MAX_CARDS_PER_ROW } from '../../../../constants/constants';
@@ -15,6 +16,10 @@ const RoundFixtures = props => {
   ) : (
     <FixtureRow fixtures={fixtures} />
   );
+};
+
+RoundFixtures.propTypes = {
+  fixtures: PropTypes.array.isRequired
 };
 
 export default RoundFixtures;

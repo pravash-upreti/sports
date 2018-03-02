@@ -1,25 +1,22 @@
-import axios from 'axios';
 import React from 'react';
-import moment from 'moment';
 import { withState, withHandlers, lifecycle, compose } from 'recompose';
 
-import { DATE_FORMAT, TOURNAMENT_ACTIONS } from '../../constants/constants';
-import { DEFAULT_INVALID_INPUT_MESSAGE } from '../../constants/errorMessages';
+import { TOURNAMENT_ACTIONS } from '../../constants/constants';
 
-import {
-  getTournaments,
-  editTournament,
-  deleteTournament
-} from '../../services/tournamentServices/tournamentServices';
+import { getTournaments } from '../../services/tournamentServices/tournamentServices';
 
 import TournamentList from './tournamentList';
+import tournamentActions from '../hocs/tournamentActions';
 import CreateTournament from './actions/CreateTournament';
 import DeleteTournamentModal from './tournamentModal/DeleteTournamentModal';
 import AddEditTournamentModal from './tournamentModal/AddEditTournamentModal';
 
 function Admin(props) {
   const {
+    add,
+    edit,
     title,
+    remove,
     formData,
     startDate,
     modalOpen,
@@ -34,69 +31,12 @@ function Admin(props) {
     selectedTournament
   } = props;
 
-  console.log(props);
-
-  const edit = async () => {
-    if (
-      moment(formData.startDate, DATE_FORMAT).isValid &&
-      moment(formData.finishDate, DATE_FORMAT).isValid
-    ) {
-      let title, startDate;
-
-      title = formData.title || selectedTournament.title;
-      startDate = formData.startDate || selectedTournament.startDate;
-
-      let payload = { title: title, start_date: startDate };
-
-      if (formData.finishDate) {
-        payload.finish_date = formData.finishDate;
-      }
-
-      try {
-        const editResponse = await editTournament(
-          payload,
-          selectedTournament.id
-        );
-        const getResponse = await getTournaments();
-
-        updateTournaments(getResponse);
-      } catch (error) {
-        const errorMessage =
-          (error && error.error && error.error.message) ||
-          DEFAULT_INVALID_INPUT_MESSAGE;
-
-        setShowToaster(true);
-        setToasterMessage(errorMessage);
-      }
-    }
-
-    handleClose(TOURNAMENT_ACTIONS.edit);
-  };
-
-  const remove = async () => {
-    try {
-      const deleteResponse = await deleteTournament(selectedTournament.id);
-
-      const getResponse = await getTournaments();
-
-      updateTournaments(getResponse);
-    } catch (error) {
-      const errorMessage =
-        (error && error.error && error.error.message) ||
-        DEFAULT_INVALID_INPUT_MESSAGE;
-
-      setShowToaster(true);
-      setToasterMessage(errorMessage);
-    }
-
-    handleClose(TOURNAMENT_ACTIONS.remove);
-  };
-
   return (
     <div className="admin-outer-container">
       <div className="admin-main-container">
         <h1>Tournaments</h1>
         <CreateTournament
+          add={add}
           title={title}
           formData={formData}
           startDate={startDate}
@@ -200,7 +140,8 @@ const enhance = compose(
       setSelectedTournament({});
       updateModalOpen(modelOpenCopy);
     }
-  })
+  }),
+  tournamentActions
 );
 
 export default enhance(Admin);

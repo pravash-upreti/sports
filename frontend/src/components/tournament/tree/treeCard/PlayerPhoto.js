@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { IMAGE_SIZES } from '../../../../constants/constants';
@@ -17,6 +18,11 @@ const PlayerPhoto = props => {
       <img src={img} alt="Player" />
     </div>
   );
+};
+
+PlayerPhoto.propTypes = {
+  img: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired
 };
 
 export default PlayerPhoto;
