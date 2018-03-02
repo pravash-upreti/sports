@@ -19,7 +19,7 @@ import logout from '../services/authServices/logout';
 import PrivateRoute from './hocs/PrivateRoute';
 
 import Login from './auth';
-import Test from './admin/Test';
+import Admin from './admin';
 import Tree from './tournament/tree';
 import Toaster from './commons/Toaster';
 import Navigation from './commons/Navigation';
@@ -66,7 +66,7 @@ const Routes = props => {
             path={routes.FIXTURE_OVERVIEW}
           />
           <PrivateRoute
-            Component={Test}
+            Component={Admin}
             path={routes.ADMIN}
             setShowToaster={setShowToaster}
             isAuthenticated={isAuthenticated}

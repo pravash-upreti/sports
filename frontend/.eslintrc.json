@@ -1,27 +1,27 @@
 {
   "env": {
-    "browser": true,
-    "es6": true
+    "es6": true,
+    "browser": true
   },
   "extends": ["airbnb", "react-app", "plugin:react/recommended"],
   "parserOptions": {
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     },
     "sourceType": "module"
   },
   "plugins": ["react"],
   "rules": {
     "indent": ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
     "semi": ["error", "always"],
+    "quotes": ["error", "single"],
     "jsx-a11y/href-no-hash": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
-    "arrow-parens": 0,
     "comma-dangle": ["error", "never"],
+    "linebreak-style": ["error", "unix"],
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "arrow-parens": 0,
     "react/require-default-props": [0, { "forbidDefaultForRequired": true }],
     "react/forbid-prop-types": [
       0,
