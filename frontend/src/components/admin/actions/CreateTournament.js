@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'semantic-ui-react';
 
 import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
@@ -31,5 +32,13 @@ function CreateTournament(props) {
     </span>
   );
 }
+
+CreateTournament.propTypes = {
+  add: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
+  modalOpen: PropTypes.object.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired
+};
 
 export default CreateTournament;

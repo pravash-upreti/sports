@@ -1,10 +1,11 @@
 import React from 'react';
-import TableHeader, { Table, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { Table, Icon } from 'semantic-ui-react';
 
 import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
 
 function TournamentList(props) {
-  const { title, startDate, finishDate, handleOpen, tournaments } = props;
+  const { handleOpen, tournaments } = props;
 
   return (
     <Table compact>
@@ -49,5 +50,10 @@ function TournamentList(props) {
     </Table>
   );
 }
+
+TournamentList.propTypes = {
+  handleOpen: PropTypes.func.isRequired,
+  tournaments: PropTypes.array.isRequired
+};
 
 export default TournamentList;

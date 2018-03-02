@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Modal } from 'semantic-ui-react';
 
 import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
@@ -33,6 +34,12 @@ const DeleteTournamentModal = props => {
       </Modal.Actions>
     </Modal>
   );
+};
+
+DeleteTournamentModal.propTypes = {
+  action: PropTypes.func.isRequired,
+  modalOpen: PropTypes.object.isRequired,
+  handleClose: PropTypes.func.isRequired
 };
 
 export default DeleteTournamentModal;

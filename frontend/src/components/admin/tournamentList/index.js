@@ -1,3 +1,3 @@
-import TournamentList from './TournamentList'
+import TournamentList from './TournamentList';
 
 export default TournamentList;

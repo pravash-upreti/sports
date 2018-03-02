@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import InputMask from 'react-input-mask';
 import { Form, Modal, Button } from 'semantic-ui-react';
 
@@ -49,6 +50,15 @@ const AddEditTournamentModal = props => {
       </Modal.Content>
     </Modal>
   );
+};
+
+AddEditTournamentModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  action: PropTypes.func.isRequired,
+  toggle: PropTypes.string.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  tournament: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired
 };
 
 export default AddEditTournamentModal;
