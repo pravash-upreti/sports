@@ -6,36 +6,7 @@ import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
 import AddEditTournamentModal from '../tournamentModal/AddEditTournamentModal';
 
 function CreateTournament(props) {
-  const {
-    add,
-    title,
-    formData,
-    modalOpen,
-    startDate,
-    finishDate,
-    handleOpen,
-    handleClose,
-    handleChange,
-    setShowToaster,
-    setToasterMessage,
-    updateTournaments
-  } = props;
-
-  const addIcon = () => {
-    return (
-      <Icon
-        color="green"
-        name={TOURNAMENT_ACTIONS.add}
-        onClick={() => handleOpen(TOURNAMENT_ACTIONS.add)}
-        style={{
-          float: 'right',
-          cursor: 'pointer'
-        }}
-      >
-        Add
-      </Icon>
-    );
-  };
+  const { add, modalOpen, handleOpen, handleClose, handleChange } = props;
 
   return (
     <span>
@@ -50,7 +21,6 @@ function CreateTournament(props) {
       />
       <AddEditTournamentModal
         action={add}
-        icon={addIcon}
         tournament={{}}
         open={modalOpen.add}
         modalOpen={modalOpen}

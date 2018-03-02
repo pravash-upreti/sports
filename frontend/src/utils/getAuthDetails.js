@@ -1,7 +1,7 @@
 import { IS_AUTHENTICATED, LOCAL_AUTH_VARIABLE } from '../constants/constants';
 
 /**
- * Get authentication status and refresh token
+ * Get authentication status and refresh token.
  *
  * @export
  * @returns {object}

@@ -24,7 +24,7 @@ export default withHandlers({
       moment(formData.startDate, DATE_FORMAT).isValid &&
       moment(formData.finishDate, DATE_FORMAT).isValid
     ) {
-      let payload = {
+      const payload = {
         title: formData.title,
         start_date: formData.startDate
       };
@@ -62,9 +62,9 @@ export default withHandlers({
       moment(formData.startDate, DATE_FORMAT).isValid &&
       moment(formData.finishDate, DATE_FORMAT).isValid
     ) {
-      let title = formData.title || selectedTournament.title;
-      let startDate = formData.startDate || selectedTournament.startDate;
-      let payload = { title: title, start_date: startDate };
+      const title = formData.title || selectedTournament.title;
+      const startDate = formData.startDate || selectedTournament.startDate;
+      const payload = { title: title, start_date: startDate };
 
       if (formData.finishDate) {
         payload.finish_date = formData.finishDate;

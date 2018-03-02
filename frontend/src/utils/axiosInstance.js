@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 });
 
 /**
- * Set token in header of our axiosInstance
+ * Set token in header of our axiosInstance.
  *
  * @export
  * @param {string} accessToken
@@ -21,7 +21,7 @@ export function setTokenInHeader(accessToken) {
 }
 
 /**
- * Refresh token and repeat previous server request
+ * Refresh token and repeat previous server request.
  *
  * @export
  * @param {object} lastRequestConfig
