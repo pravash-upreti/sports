@@ -22,7 +22,7 @@ class AlreadyExistsError extends Error {
    * @memberof ForbiddenError
    */
   constructor(message: string) {
-    super(message, HttpStatus.BAD_REQUEST);
+    super(message, HttpStatus.CONFLICT);
 
     this.message = message;
   }

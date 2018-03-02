@@ -1,15 +1,15 @@
 import * as HttpStatus from 'http-status-codes';
 
 import {
-  teamMessages,
   roundMessages,
-  chessFixtureMessages,
+  playerMessages,
+  fixtureMessages,
   fixtureStatusMessages,
   tournamentCategoryMessages
 } from './../constants/messages';
 
-import Team from '../models/team';
 import Round from '../models/round';
+import Player from '../models/player';
 import ChessFixture from '../models/chessFixture';
 import NotFoundError from '../errors/NotFoundError';
 import FixtureStatus from '../models/fixtureStatus';
@@ -29,6 +29,16 @@ import ChessFixtureInterface from '../domain/ChessFixtureInterface';
  */
 export async function create(params: ChessFixtureInterface) {
   try {
+    // Check whether both the opponents are same
+    if (params.player_1_id === params.player_2_id) {
+      throw new BadRequestError(fixtureMessages.sameTeams);
+    }
+
+    // Check whether the fixture already exists
+    if (await checkIfFixtureExists(params)) {
+      throw new AlreadyExistsError(fixtureMessages.alreadyExists);
+    }
+
     // Check existence of the round
     const round: Round = await new Round({ id: params.round_id }).fetch();
 
@@ -36,54 +46,48 @@ export async function create(params: ChessFixtureInterface) {
       throw new NotFoundError(roundMessages.notFound);
     }
 
-    // Check existence of the first team
-    const team1: Team = await new Team({ id: params.team_1_id }).fetch();
+    // Check existence of the first player
+    const player1: Player = await new Player({ id: params.player_1_id }).fetch();
 
-    if (!team1) {
-      throw new NotFoundError(teamMessages.notFound);
+    if (!player1) {
+      throw new NotFoundError(playerMessages.notFound);
     }
 
-    // Check existence of the second team
-    const team2: Team = await new Team({ id: params.team_2_id }).fetch();
+    // Check existence of the second player
+    const player2: Player = await new Player({ id: params.player_2_id }).fetch();
 
-    if (!team2) {
-      throw new NotFoundError(teamMessages.notFound);
-    }
-
-    // Check whether both the opponents are same
-    if (params.team_1_id === params.team_2_id) {
-      throw new BadRequestError(chessFixtureMessages.sameTeams);
+    if (!player2) {
+      throw new NotFoundError(playerMessages.notFound);
     }
 
     // Check existence of fixture status
-    const fixtureStatus: FixtureStatus = await new FixtureStatus({ id: params.status_id }).fetch();
+    const fixtureStatus: FixtureStatus = await new FixtureStatus({
+      id: params.status_id
+    }).fetch();
 
     if (!fixtureStatus) {
       throw new NotFoundError(fixtureStatusMessages.notFound);
     }
 
     // Check existence of tournament category
-    const tournamentCategory: TournamentCategory = await new TournamentCategory({ id: params.tournament_category_id }).fetch();
+    const tournamentCategory: TournamentCategory = await new TournamentCategory({
+      id: params.tournament_category_id
+    }).fetch();
 
     if (!tournamentCategory) {
       throw new NotFoundError(tournamentCategoryMessages.notFound);
     }
 
-    // Check whether the match already exists
-    if (await checkIfFixtureExists(params)) {
-      throw new AlreadyExistsError(chessFixtureMessages.alreadyExists);
-    }
-
     const chessFixture: ChessFixture = await new ChessFixture(params).save();
 
     if (!chessFixture) {
-      throw new NoRowUpdatedError(chessFixtureMessages.unableToCreate);
+      throw new NoRowUpdatedError(fixtureMessages.unableToCreate);
     }
 
     return {
       data: chessFixture,
       code: HttpStatus.CREATED,
-      message: chessFixtureMessages.created,
+      message: fixtureMessages.created,
       status: HttpStatus.getStatusText(HttpStatus.CREATED)
     };
   } catch (error) {
@@ -102,6 +106,16 @@ export async function create(params: ChessFixtureInterface) {
  */
 export async function update(id: number, params: ChessFixtureInterface) {
   try {
+    // Check whether both the opponents are same
+    if (params.player_1_id === params.player_2_id) {
+      throw new BadRequestError(fixtureMessages.sameTeams);
+    }
+
+    // Check whether the match already exists
+    if (await checkIfFixtureExists(params, [ id ])) {
+      throw new AlreadyExistsError(fixtureMessages.alreadyExists);
+    }
+
     // Check existence of the round
     const round: Round = await new Round({ id: params.round_id }).fetch();
 
@@ -109,56 +123,49 @@ export async function update(id: number, params: ChessFixtureInterface) {
       throw new NotFoundError(roundMessages.notFound);
     }
 
-    // Check existence of the first team
-    const team1: Team = await new Team({ id: params.team_1_id }).fetch();
+    // Check existence of the first player
+    const player1: Player = await new Player({ id: params.player_1_id }).fetch();
 
-    if (!team1) {
-      throw new NotFoundError(teamMessages.notFound);
+    if (!player1) {
+      throw new NotFoundError(playerMessages.notFound);
     }
 
-    // Check existence of the second team
-    const team2: Team = await new Team({ id: params.team_2_id }).fetch();
+    // Check existence of the second player
+    const player2: Player = await new Player({ id: params.player_2_id }).fetch();
 
-    if (!team2) {
-      throw new NotFoundError(teamMessages.notFound);
-    }
-
-    // Check whether both the opponents are same
-    if (params.team_1_id === params.team_2_id) {
-      throw new BadRequestError(chessFixtureMessages.sameTeams);
+    if (!player2) {
+      throw new NotFoundError(playerMessages.notFound);
     }
 
     // Check existence of fixture status
-    const fixtureStatus: FixtureStatus = await new FixtureStatus({ id: params.status_id }).fetch();
+    const fixtureStatus: FixtureStatus = await new FixtureStatus({
+      id: params.status_id
+    }).fetch();
 
     if (!fixtureStatus) {
       throw new NotFoundError(fixtureStatusMessages.notFound);
     }
 
     // Check existence of tournament category
-    const tournamentCategory: TournamentCategory = await new TournamentCategory({ id: params.tournament_category_id }).fetch();
+    const tournamentCategory: TournamentCategory = await new TournamentCategory({
+      id: params.tournament_category_id
+    }).fetch();
 
     if (!tournamentCategory) {
       throw new NotFoundError(tournamentCategoryMessages.notFound);
     }
 
     const chessFixture: ChessFixture = await findById(id);
-
-    // Check whether the match already exists
-    if (await checkIfFixtureExists(params, [ id ])) {
-      throw new AlreadyExistsError(chessFixtureMessages.alreadyExists);
-    }
-
     const updatedChessFixture: ChessFixture = await chessFixture.save(params, { patch: true });
 
     if (!updatedChessFixture) {
-      throw new NoRowUpdatedError(chessFixtureMessages.unableToUpdate);
+      throw new NoRowUpdatedError(fixtureMessages.unableToUpdate);
     }
 
     return {
       code: HttpStatus.OK,
       data: updatedChessFixture,
-      message: chessFixtureMessages.updated,
+      message: fixtureMessages.updated,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
@@ -180,7 +187,7 @@ export async function remove(id: number) {
     const removedChessFixture: ChessFixture = await chessFixture.destroy();
 
     if (!removedChessFixture) {
-      throw new NoRowUpdatedError(chessFixtureMessages.unableToRemove);
+      throw new NoRowUpdatedError(fixtureMessages.unableToRemove);
 
     }
 
@@ -189,7 +196,7 @@ export async function remove(id: number) {
         id
       },
       code: HttpStatus.OK,
-      message: chessFixtureMessages.removed,
+      message: fixtureMessages.removed,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
@@ -212,7 +219,7 @@ export async function get(id: number) {
     return {
       data: chessFixture,
       code: HttpStatus.OK,
-      message: chessFixtureMessages.fetched,
+      message: fixtureMessages.fetched,
       status: HttpStatus.getStatusText(HttpStatus.OK)
     };
   } catch (error) {
@@ -232,17 +239,18 @@ async function findById(id: number) {
     const chessFixture: ChessFixture = await new ChessFixture({ id })
       .fetch({
         withRelated: [
-          'team1',
-          'team2',
           'round',
           'status',
+          'player1',
+          'player2',
+          'winnerPlayer',
           'winningMethod',
           'tournamentCategory'
         ]
       });
 
     if (!chessFixture) {
-      throw new NotFoundError(chessFixtureMessages.notFound);
+      throw new NotFoundError(fixtureMessages.notFound);
     }
 
     return chessFixture;
@@ -266,13 +274,13 @@ async function checkIfFixtureExists(params: ChessFixtureInterface, ignoredIds: n
         qb.where(q => {
           q.orWhere({
             round_id: params.round_id,
-            team_1_id: params.team_1_id,
-            team_2_id: params.team_2_id,
+            player_1_id: params.player_1_id,
+            player_2_id: params.player_2_id,
             tournament_category_id: params.tournament_category_id
           }).orWhere({
             round_id: params.round_id,
-            team_1_id: params.team_2_id,
-            team_2_id: params.team_1_id,
+            player_1_id: params.player_2_id,
+            player_2_id: params.player_1_id,
             tournament_category_id: params.tournament_category_id
           });
         });
