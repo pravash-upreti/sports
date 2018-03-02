@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withState, withHandlers, lifecycle, compose } from 'recompose';
 
 import { TOURNAMENT_ACTIONS } from '../../constants/constants';
@@ -86,6 +87,25 @@ function Admin(props) {
     </div>
   );
 }
+
+Admin.propTypes = {
+  title: PropTypes.string,
+  startDate: PropTypes.string,
+  finishDate: PropTypes.string,
+  add: PropTypes.func.isRequired,
+  edit: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  handleOpen: PropTypes.func.isRequired,
+  formData: PropTypes.object.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  modalOpen: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  tournaments: PropTypes.array.isRequired,
+  setShowToaster: PropTypes.func.isRequired,
+  setToasterMessage: PropTypes.func.isRequired,
+  updateTournaments: PropTypes.func.isRequired,
+  selectedTournament: PropTypes.object.isRequired
+};
 
 const enhance = compose(
   withState('tournaments', 'updateTournaments', []),

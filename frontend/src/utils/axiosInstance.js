@@ -31,11 +31,12 @@ export function setTokenInHeader(accessToken) {
 export async function refreshAndRepeat(lastRequestConfig) {
   try {
     const newAccessToken = await refreshAccessToken();
+    const lastRequestConfigCopy = { ...lastRequestConfig };
 
     if (newAccessToken) {
-      lastRequestConfig.headers.authorization = newAccessToken;
+      lastRequestConfigCopy.headers.authorization = newAccessToken;
 
-      return axiosInstance(lastRequestConfig);
+      return axiosInstance(lastRequestConfigCopy);
     }
 
     return null;

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { compose, withState, withHandlers } from 'recompose';
 
 import logo from '../../../public/assets/images/sports-logo.png';
 
+import { ROOT } from '../../constants/routes';
 import { LOCAL_AUTH_VARIABLE } from '../../constants/constants';
 import { DEFAULT_LOGIN_ERROR_MESSAGE } from '../../constants/errorMessages';
 
@@ -26,9 +28,9 @@ const Login = props => {
     <div className="login-outer-container">
       <div className="login-inner-container">
         <div className="login-header">
-          <a href="/">
+          <Link to={ROOT}>
             <img src={logo} alt="Sports logo" />
-          </a>
+          </Link>
         </div>
         {showLoginError ? <p className="login-error">{errorMessage}</p> : null}
         <form className="login-form" onSubmit={handleLogin}>
