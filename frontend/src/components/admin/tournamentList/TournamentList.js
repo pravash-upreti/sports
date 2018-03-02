@@ -1,9 +1,7 @@
 import React from 'react';
-import TableHeader, { Table } from 'semantic-ui-react';
+import TableHeader, { Table, Icon } from 'semantic-ui-react';
 
 import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
-
-import NewIcon from '../../commons/Icon';
 
 function TournamentList(props) {
   const {
@@ -38,17 +36,21 @@ function TournamentList(props) {
                 <Table.Cell>{tournament.startDate}</Table.Cell>
                 <Table.Cell>{tournament.finishDate}</Table.Cell>
                 <Table.Cell>
-                  <NewIcon
+                  <Icon
                     color="blue"
-                    tournament={tournament}
-                    handleOpen={handleOpen}
+                    style={{ cursor: 'pointer' }}
                     name={TOURNAMENT_ACTIONS.edit}
+                    onClick={() =>
+                      handleOpen(TOURNAMENT_ACTIONS.edit, tournament)
+                    }
                   />
-                  <NewIcon
+                  <Icon
                     color="red"
-                    tournament={tournament}
-                    handleOpen={handleOpen}
+                    style={{ cursor: 'pointer' }}
                     name={TOURNAMENT_ACTIONS.remove}
+                    onClick={() =>
+                      handleOpen(TOURNAMENT_ACTIONS.remove, tournament)
+                    }
                   />
                 </Table.Cell>
               </Table.Row>

@@ -47,6 +47,7 @@ export default withHandlers({
         setToasterMessage(errorMessage);
       }
     }
+
     handleClose(TOURNAMENT_ACTIONS.add);
   },
   edit: ({
