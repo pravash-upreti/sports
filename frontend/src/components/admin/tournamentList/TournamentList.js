@@ -4,18 +4,7 @@ import TableHeader, { Table, Icon } from 'semantic-ui-react';
 import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
 
 function TournamentList(props) {
-  const {
-    title,
-    formData,
-    modalOpen,
-    startDate,
-    finishDate,
-    handleOpen,
-    tournaments,
-    handleClose,
-    handleChange,
-    updateTournaments
-  } = props;
+  const { title, startDate, finishDate, handleOpen, tournaments } = props;
 
   return (
     <Table compact>

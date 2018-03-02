@@ -1,12 +1,6 @@
 import React from 'react';
 import InputMask from 'react-input-mask';
-import ModalContent, {
-  Form,
-  Icon,
-  Modal,
-  Button,
-  Header
-} from 'semantic-ui-react';
+import { Form, Modal, Button } from 'semantic-ui-react';
 
 const AddEditTournamentModal = props => {
   const { open, action, toggle, tournament, handleClose, handleChange } = props;

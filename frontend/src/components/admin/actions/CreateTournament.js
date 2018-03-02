@@ -6,20 +6,7 @@ import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
 import AddEditTournamentModal from '../tournamentModal/AddEditTournamentModal';
 
 function CreateTournament(props) {
-  const {
-    add,
-    title,
-    formData,
-    modalOpen,
-    startDate,
-    finishDate,
-    handleOpen,
-    handleClose,
-    handleChange,
-    setShowToaster,
-    setToasterMessage,
-    updateTournaments
-  } = props;
+  const { add, modalOpen, handleOpen, handleClose, handleChange } = props;
 
   return (
     <span>
