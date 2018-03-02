@@ -34,8 +34,7 @@ export default withHandlers({
       }
 
       try {
-        const createResponse = await createTournament(payload);
-
+        await createTournament(payload);
         const getResponse = await getTournaments();
 
         updateTournaments(getResponse);
@@ -62,11 +61,8 @@ export default withHandlers({
       moment(formData.startDate, DATE_FORMAT).isValid &&
       moment(formData.finishDate, DATE_FORMAT).isValid
     ) {
-      let title, startDate;
-
-      title = formData.title || selectedTournament.title;
-      startDate = formData.startDate || selectedTournament.startDate;
-
+      let title = formData.title || selectedTournament.title;
+      let startDate = formData.startDate || selectedTournament.startDate;
       let payload = { title: title, start_date: startDate };
 
       if (formData.finishDate) {
@@ -74,10 +70,7 @@ export default withHandlers({
       }
 
       try {
-        const editResponse = await editTournament(
-          payload,
-          selectedTournament.id
-        );
+        await editTournament(payload, selectedTournament.id);
         const getResponse = await getTournaments();
 
         updateTournaments(getResponse);
@@ -101,8 +94,7 @@ export default withHandlers({
     selectedTournament
   }) => async () => {
     try {
-      const deleteResponse = await deleteTournament(selectedTournament.id);
-
+      await deleteTournament(selectedTournament.id);
       const getResponse = await getTournaments();
 
       updateTournaments(getResponse);

@@ -3,7 +3,7 @@ import { TOURNAMENTS } from '../../constants/apiUrls';
 import axiosInstance from '../../utils/axiosInstance';
 
 /**
- * Get all Tournaments
+ * Get all tournaments.
  *
  * @export
  * @returns {array}
@@ -20,7 +20,7 @@ export async function getTournaments() {
 }
 
 /**
- * Create a Tournament
+ * Create a new tournament.
  *
  * @export
  * @param {object} payload
@@ -38,7 +38,7 @@ export async function createTournament(payload) {
 }
 
 /**
- * Edit a Tournament
+ * Edit a tournament.
  *
  * @export
  * @param {object} payload
@@ -58,7 +58,7 @@ export async function editTournament(payload, id) {
 }
 
 /**
- * Delete a Tournament
+ * Delete a tournament.
  *
  * @export
  * @param {number} id
