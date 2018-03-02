@@ -8,6 +8,7 @@ import userRoleRoutes from './userRoleRoutes';
 import categoryRoutes from './categoryRoutes';
 import tournamentRoutes from './tournamentRoutes';
 import teamPlayerRoutes from './teamPlayerRoutes';
+import chessFixtureRoutes from './chessFixtureRoutes';
 import tournamentCateogryRoutes from './tournamentCategoryRoutes';
 
 const router: Router = Router();
@@ -42,6 +43,9 @@ router.use('/tournaments', tournamentRoutes);
 
 // Load team-player routes
 router.use('/team-players', teamPlayerRoutes);
+
+// Load chess fixture routes
+router.use('/chess-fixtures', chessFixtureRoutes);
 
 // Load tournament category routes
 router.use('/tournament-categories', tournamentCateogryRoutes);
