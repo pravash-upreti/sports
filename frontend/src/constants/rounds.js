@@ -1,5 +1,5 @@
+import playerDownImg from '../../public/assets/images/image.jpg';
 import playerUpImg from '../../public/assets/images/dummy-image.jpg';
-import playerDownImg from '../../public/assets/images/dummy-image.jpg';
 
 export const WINNER = {
   name: 'SAGUN',

@@ -64,7 +64,8 @@ export default withHandlers({
     ) {
       const title = formData.title || selectedTournament.title;
       const startDate = formData.startDate || selectedTournament.startDate;
-      const payload = { title: title, start_date: startDate };
+
+      const payload = { title, start_date: startDate };
 
       if (formData.finishDate) {
         payload.finish_date = formData.finishDate;

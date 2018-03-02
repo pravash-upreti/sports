@@ -18,35 +18,33 @@ function TournamentList(props) {
         </Table.Row>
       </Table.Header>
       {tournaments &&
-        tournaments.map((tournament, index) => {
-          return (
-            <Table.Body key={index}>
-              <Table.Row>
-                <Table.Cell>{tournament.title}</Table.Cell>
-                <Table.Cell>{tournament.startDate}</Table.Cell>
-                <Table.Cell>{tournament.finishDate}</Table.Cell>
-                <Table.Cell>
-                  <Icon
-                    color="blue"
-                    style={{ cursor: 'pointer' }}
-                    name={TOURNAMENT_ACTIONS.edit}
-                    onClick={() =>
-                      handleOpen(TOURNAMENT_ACTIONS.edit, tournament)
-                    }
-                  />
-                  <Icon
-                    color="red"
-                    style={{ cursor: 'pointer' }}
-                    name={TOURNAMENT_ACTIONS.remove}
-                    onClick={() =>
-                      handleOpen(TOURNAMENT_ACTIONS.remove, tournament)
-                    }
-                  />
-                </Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          );
-        })}
+        tournaments.map(tournament => (
+          <Table.Body key={tournament.id}>
+            <Table.Row>
+              <Table.Cell>{tournament.title}</Table.Cell>
+              <Table.Cell>{tournament.startDate}</Table.Cell>
+              <Table.Cell>{tournament.finishDate}</Table.Cell>
+              <Table.Cell>
+                <Icon
+                  color="blue"
+                  style={{ cursor: 'pointer' }}
+                  name={TOURNAMENT_ACTIONS.edit}
+                  onClick={() =>
+                    handleOpen(TOURNAMENT_ACTIONS.edit, tournament)
+                  }
+                />
+                <Icon
+                  color="red"
+                  style={{ cursor: 'pointer' }}
+                  name={TOURNAMENT_ACTIONS.remove}
+                  onClick={() =>
+                    handleOpen(TOURNAMENT_ACTIONS.remove, tournament)
+                  }
+                />
+              </Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        ))}
     </Table>
   );
 }

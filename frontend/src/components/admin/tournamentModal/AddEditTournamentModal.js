@@ -16,34 +16,40 @@ const AddEditTournamentModal = props => {
       <Modal.Content>
         <Form onSubmit={action}>
           <Form.Field>
-            <label>Tournament Name</label>
-            <input
-              type="text"
-              name="title"
-              onChange={handleChange}
-              defaultValue={tournament.title}
-              placeholder="Enter Tournament Title"
-            />
+            <label htmlFor="tournamentName">
+              Tournament Name
+              <input
+                type="text"
+                name="title"
+                onChange={handleChange}
+                defaultValue={tournament.title}
+                placeholder="Enter Tournament Title"
+              />
+            </label>
           </Form.Field>
           <Form.Field>
-            <label>Start Date</label>
-            <InputMask
-              name="startDate"
-              mask="****/**/**"
-              onChange={handleChange}
-              defaultValue={tournament.startDate}
-              placeholder="Start Date YYYY/MM/DD"
-            />
+            <label htmlFor="startDate">
+              Start Date
+              <InputMask
+                name="startDate"
+                mask="****/**/**"
+                onChange={handleChange}
+                defaultValue={tournament.startDate}
+                placeholder="Start Date YYYY/MM/DD"
+              />
+            </label>
           </Form.Field>
           <Form.Field>
-            <label>Finish Date</label>
-            <InputMask
-              name="finishDate"
-              mask="****/**/**"
-              onChange={handleChange}
-              defaultValue={tournament.finishDate}
-              placeholder="Finish Date YYYY/MM/DD"
-            />
+            <label htmlFor="finishDate">
+              Finish Date
+              <InputMask
+                name="finishDate"
+                mask="****/**/**"
+                onChange={handleChange}
+                defaultValue={tournament.finishDate}
+                placeholder="Finish Date YYYY/MM/DD"
+              />
+            </label>
           </Form.Field>
           <Button>Submit</Button>
         </Form>
