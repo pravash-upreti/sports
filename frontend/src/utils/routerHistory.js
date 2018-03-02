@@ -1,7 +1,7 @@
 import createBrowserHistory from 'history/createBrowserHistory';
 
 /**
- * Create a history object to use with react-router
+ * Create a history object to use with react-router.
  *
  * @export
  * @returns {object}

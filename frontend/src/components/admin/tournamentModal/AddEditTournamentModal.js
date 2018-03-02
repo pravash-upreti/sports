@@ -9,16 +9,7 @@ import ModalContent, {
 } from 'semantic-ui-react';
 
 const AddEditTournamentModal = props => {
-  const {
-    icon,
-    open,
-    action,
-    toggle,
-    modalOpen,
-    tournament,
-    handleClose,
-    handleChange
-  } = props;
+  const { open, action, toggle, tournament, handleClose, handleChange } = props;
 
   return (
     <Modal
