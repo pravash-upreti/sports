@@ -4,8 +4,8 @@ import moment from 'moment';
 import { Icon } from 'semantic-ui-react';
 import InputMask from 'react-input-mask';
 
-import { DATE_FORMAT } from '../../../constants/constants';
-import { TOURNAMENT_ACTIONS } from '../../../constants/constants';
+import { DATE_FORMAT, TOURNAMENT_ACTIONS } from '../../../constants/constants';
+import { DEFAULT_INVALID_INPUT_MESSAGE } from '../../../constants/errorMessages';
 
 import {
   getTournaments,
@@ -24,14 +24,16 @@ function CreateTournament(props) {
     handleOpen,
     handleClose,
     handleChange,
+    setShowToaster,
+    setToasterMessage,
     updateTournaments
   } = props;
 
   const addIcon = () => {
     return (
       <Icon
-        name={TOURNAMENT_ACTIONS.add}
         color="green"
+        name={TOURNAMENT_ACTIONS.add}
         onClick={() => handleOpen(TOURNAMENT_ACTIONS.add)}
         style={{
           float: 'right',
@@ -46,29 +48,30 @@ function CreateTournament(props) {
   const post = async () => {
     if (
       moment(formData.startDate, DATE_FORMAT).isValid &&
-      (formData.finishDate === null ||
-        moment(formData.finishDate, DATE_FORMAT).isValid)
+      moment(formData.finishDate, DATE_FORMAT).isValid
     ) {
       let payload = {
         title: formData.title,
         start_date: formData.startDate
       };
 
-      if (formData.finishDate) payload.finish_date = formData.finishDate;
+      if (formData.finishDate) {
+        payload.finish_date = formData.finishDate;
+      }
 
       try {
-        const res = await createTournament(payload);
+        const createResponse = await createTournament(payload);
 
-        try {
-          const res = await getTournaments();
-          const tournaments = res;
+        const getResponse = await getTournaments();
 
-          updateTournaments(tournaments);
-        } catch (err) {
-          throw err;
-        }
-      } catch (err) {
-        throw err;
+        updateTournaments(getResponse);
+      } catch (error) {
+        const errorMessage =
+          (error && error.error && error.error.message) ||
+          DEFAULT_INVALID_INPUT_MESSAGE;
+
+        setShowToaster(true);
+        setToasterMessage(errorMessage);
       }
     }
     handleClose(TOURNAMENT_ACTIONS.add);
@@ -77,8 +80,8 @@ function CreateTournament(props) {
   return (
     <span>
       <Icon
-        name={TOURNAMENT_ACTIONS.add}
         color="green"
+        name={TOURNAMENT_ACTIONS.add}
         onClick={() => handleOpen(TOURNAMENT_ACTIONS.add, {})}
         style={{
           float: 'right',
@@ -86,14 +89,14 @@ function CreateTournament(props) {
         }}
       />
       <AddEditTournamentModal
-        toggle={TOURNAMENT_ACTIONS.add}
         action={post}
         tournament={{}}
-        icon={addIcon()}
-        open={props.modalOpen.add}
-        modalOpen={props.modalOpen}
-        handleClose={props.handleClose}
-        handleChange={props.handleChange}
+        icon={addIcon}
+        open={modalOpen.add}
+        modalOpen={modalOpen}
+        toggle={TOURNAMENT_ACTIONS.add}
+        handleClose={handleClose}
+        handleChange={handleChange}
       />
     </span>
   );

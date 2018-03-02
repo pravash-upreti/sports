@@ -12,10 +12,8 @@ import axiosInstance from '../../utils/axiosInstance';
 export default async function fetchUsers() {
   try {
     const response = await axiosInstance.get(USERS_ROUTE);
-    const fetchedUsers =
-      (response && response.data && response.data.data) || [];
 
-    return fetchedUsers;
+    return (response && response.data && response.data.data) || [];
   } catch (error) {
     throw error;
   }

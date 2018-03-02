@@ -3,8 +3,8 @@ import React from 'react';
 import moment from 'moment';
 import { withState, withHandlers, lifecycle, compose } from 'recompose';
 
-import { DATE_FORMAT } from '../../constants/constants';
-import { TOURNAMENT_ACTIONS } from '../../constants/constants';
+import { DATE_FORMAT, TOURNAMENT_ACTIONS } from '../../constants/constants';
+import { DEFAULT_INVALID_INPUT_MESSAGE } from '../../constants/errorMessages';
 
 import {
   getTournaments,
@@ -14,70 +14,79 @@ import {
 
 import TournamentList from './tournamentList';
 import CreateTournament from './actions/CreateTournament';
-import AddEditTournamentModal from './tournamentModal/AddEditTournamentModal';
 import DeleteTournamentModal from './tournamentModal/DeleteTournamentModal';
+import AddEditTournamentModal from './tournamentModal/AddEditTournamentModal';
 
 function Admin(props) {
   const {
+    title,
     formData,
-    handleClose,
+    startDate,
+    modalOpen,
+    finishDate,
+    handleOpen,
     tournaments,
+    handleClose,
+    handleChange,
+    setShowToaster,
+    setToasterMessage,
     updateTournaments,
     selectedTournament
   } = props;
 
+  console.log(props);
+
   const edit = async () => {
     if (
       moment(formData.startDate, DATE_FORMAT).isValid &&
-      (formData.finishDate === null ||
-        moment(formData.finishDate, DATE_FORMAT).isValid)
+      moment(formData.finishDate, DATE_FORMAT).isValid
     ) {
       let title, startDate;
 
-      !formData.title
-        ? (title = selectedTournament.title)
-        : (title = formData.title);
-
-      !formData.startDate
-        ? (startDate = selectedTournament.startDate)
-        : (startDate = formData.startDate);
+      title = formData.title || selectedTournament.title;
+      startDate = formData.startDate || selectedTournament.startDate;
 
       let payload = { title: title, start_date: startDate };
 
-      if (formData.finishDate) payload.finish_date = formData.finishDate;
+      if (formData.finishDate) {
+        payload.finish_date = formData.finishDate;
+      }
 
       try {
-        const res = await editTournament(payload, selectedTournament.id);
+        const editResponse = await editTournament(
+          payload,
+          selectedTournament.id
+        );
+        const getResponse = await getTournaments();
 
-        try {
-          const res = await getTournaments();
-          const tournaments = res;
+        updateTournaments(getResponse);
+      } catch (error) {
+        const errorMessage =
+          (error && error.error && error.error.message) ||
+          DEFAULT_INVALID_INPUT_MESSAGE;
 
-          updateTournaments(tournaments);
-        } catch (err) {
-          throw err;
-        }
-      } catch (err) {
-        throw err;
+        setShowToaster(true);
+        setToasterMessage(errorMessage);
       }
     }
+
     handleClose(TOURNAMENT_ACTIONS.edit);
   };
 
   const remove = async () => {
     try {
-      const res = await deleteTournament(selectedTournament.id);
+      const deleteResponse = await deleteTournament(selectedTournament.id);
 
-      try {
-        const res = await getTournaments();
-        const tournaments = res;
+      const getResponse = await getTournaments();
 
-        updateTournaments(tournaments);
-      } catch (err) {
-        throw err;
-      }
-    } catch (err) {
-      throw err;
+      updateTournaments(getResponse);
+    } catch (error) {
+      const errorMessage =
+        (error && error.error && error.error.message) ||
+        DEFAULT_INVALID_INPUT_MESSAGE;
+
+      setShowToaster(true);
+      setToasterMessage(errorMessage);
     }
 
     handleClose(TOURNAMENT_ACTIONS.remove);
@@ -88,46 +97,48 @@ function Admin(props) {
       <div className="admin-main-container">
         <h1>Tournaments</h1>
         <CreateTournament
-          title={props.title}
-          formData={props.formData}
-          startDate={props.startDate}
-          modalOpen={props.modalOpen}
-          finishDate={props.finishDate}
-          handleOpen={props.handleOpen}
-          handleClose={props.handleClose}
-          handleChange={props.handleChange}
-          updateTournaments={props.updateTournaments}
+          title={title}
+          formData={formData}
+          startDate={startDate}
+          modalOpen={modalOpen}
+          finishDate={finishDate}
+          handleOpen={handleOpen}
+          handleClose={handleClose}
+          handleChange={handleChange}
+          setShowToaster={setShowToaster}
+          setToasterMessage={setToasterMessage}
+          updateTournaments={updateTournaments}
         />
         <div className="admin-panel-container">
           <TournamentList
-            formData={props.formData}
-            title={props.title}
+            title={title}
+            formData={formData}
             tournaments={tournaments}
-            modalOpen={props.modalOpen}
-            startDate={props.startDate}
-            finishDate={props.finishDate}
-            handleOpen={props.handleOpen}
-            handleClose={props.handleClose}
-            handleChange={props.handleChange}
-            updateTournaments={props.updateTournaments}
+            modalOpen={modalOpen}
+            startDate={startDate}
+            finishDate={finishDate}
+            handleOpen={handleOpen}
+            handleClose={handleClose}
+            handleChange={handleChange}
+            updateTournaments={updateTournaments}
           />
         </div>
         {selectedTournament ? (
           <AddEditTournamentModal
-            toggle={TOURNAMENT_ACTIONS.edit}
             action={edit}
-            open={props.modalOpen.edit}
-            modalOpen={props.modalOpen}
+            open={modalOpen.edit}
+            modalOpen={modalOpen}
             tournament={selectedTournament}
-            handleClose={props.handleClose}
-            handleChange={props.handleChange}
+            handleClose={handleClose}
+            toggle={TOURNAMENT_ACTIONS.edit}
+            handleChange={handleChange}
           />
         ) : null}
         {selectedTournament ? (
           <DeleteTournamentModal
             action={remove}
-            modalOpen={props.modalOpen}
-            handleClose={props.handleClose}
+            modalOpen={modalOpen}
+            handleClose={handleClose}
           />
         ) : null}
       </div>
@@ -150,23 +161,21 @@ const enhance = compose(
   }),
 
   lifecycle({
-    componentDidMount() {
-      getTournaments().then(res => {
-        const tournaments = res;
+    async componentDidMount() {
+      const response = await getTournaments();
 
-        this.props.updateTournaments(tournaments);
-      });
+      this.props.updateTournaments(response);
     }
   }),
 
   withHandlers({
     handleChange: ({ formData, updateInput }) => e => {
       const { name, value } = e.target;
-      let formDateCopy = { ...formData };
+      const formDataCopy = { ...formData };
 
-      formDateCopy[name] = value;
+      formDataCopy[name] = value;
 
-      updateInput(formDateCopy);
+      updateInput(formDataCopy);
     },
     handleOpen: ({ modalOpen, updateModalOpen, setSelectedTournament }) => (
       action,
