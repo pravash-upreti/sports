@@ -5,8 +5,9 @@ import { TOURNAMENT_ACTIONS } from '../../constants/constants';
 
 import { getTournaments } from '../../services/tournamentServices/tournamentServices';
 
-import TournamentList from './tournamentList';
 import tournamentActions from '../hocs/tournamentActions';
+
+import TournamentList from './tournamentList';
 import CreateTournament from './actions/CreateTournament';
 import DeleteTournamentModal from './tournamentModal/DeleteTournamentModal';
 import AddEditTournamentModal from './tournamentModal/AddEditTournamentModal';
@@ -53,28 +54,28 @@ function Admin(props) {
           <TournamentList
             title={title}
             formData={formData}
-            tournaments={tournaments}
             modalOpen={modalOpen}
             startDate={startDate}
             finishDate={finishDate}
             handleOpen={handleOpen}
+            tournaments={tournaments}
             handleClose={handleClose}
             handleChange={handleChange}
             updateTournaments={updateTournaments}
           />
         </div>
-        {selectedTournament ? (
+        {Object.keys(selectedTournament).length ? (
           <AddEditTournamentModal
             action={edit}
-            open={modalOpen.edit}
             modalOpen={modalOpen}
-            tournament={selectedTournament}
+            open={modalOpen.edit}
             handleClose={handleClose}
-            toggle={TOURNAMENT_ACTIONS.edit}
             handleChange={handleChange}
+            tournament={selectedTournament}
+            toggle={TOURNAMENT_ACTIONS.edit}
           />
         ) : null}
-        {selectedTournament ? (
+        {Object.keys(selectedTournament).length ? (
           <DeleteTournamentModal
             action={remove}
             modalOpen={modalOpen}

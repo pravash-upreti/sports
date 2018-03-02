@@ -50,13 +50,13 @@ function CreateTournament(props) {
       />
       <AddEditTournamentModal
         action={add}
-        tournament={{}}
         icon={addIcon}
+        tournament={{}}
         open={modalOpen.add}
         modalOpen={modalOpen}
-        toggle={TOURNAMENT_ACTIONS.add}
         handleClose={handleClose}
         handleChange={handleChange}
+        toggle={TOURNAMENT_ACTIONS.add}
       />
     </span>
   );

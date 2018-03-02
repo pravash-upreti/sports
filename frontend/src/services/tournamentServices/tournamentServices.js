@@ -48,7 +48,8 @@ export async function createTournament(payload) {
  */
 export async function editTournament(payload, id) {
   try {
-    const response = await axiosInstance.put(TOURNAMENTS + '/' + id, payload);
+    const url = `${TOURNAMENTS}/${id}`;
+    const response = await axiosInstance.put(url, payload);
 
     return (response && response.data && response.data.data) || [];
   } catch (error) {
@@ -66,7 +67,8 @@ export async function editTournament(payload, id) {
  */
 export async function deleteTournament(id) {
   try {
-    const response = await axiosInstance.delete(TOURNAMENTS + '/' + id);
+    const url = `${TOURNAMENTS}/${id}`;
+    const response = await axiosInstance.delete(url);
 
     return (response && response.data && response.data.data) || [];
   } catch (error) {
