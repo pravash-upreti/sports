@@ -21,22 +21,6 @@ function CreateTournament(props) {
     updateTournaments
   } = props;
 
-  const addIcon = () => {
-    return (
-      <Icon
-        color="green"
-        name={TOURNAMENT_ACTIONS.add}
-        onClick={() => handleOpen(TOURNAMENT_ACTIONS.add)}
-        style={{
-          float: 'right',
-          cursor: 'pointer'
-        }}
-      >
-        Add
-      </Icon>
-    );
-  };
-
   return (
     <span>
       <Icon
@@ -50,7 +34,6 @@ function CreateTournament(props) {
       />
       <AddEditTournamentModal
         action={add}
-        icon={addIcon}
         tournament={{}}
         open={modalOpen.add}
         modalOpen={modalOpen}
