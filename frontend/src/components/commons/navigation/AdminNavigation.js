@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown } from 'semantic-ui-react';
+import { compose, lifecycle, withState } from 'recompose';
+import { Menu, Dropdown, Responsive } from 'semantic-ui-react';
 
 import logo from '../../../../public/assets/images/dummy-image.jpg';
 
@@ -10,60 +11,56 @@ import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
 import withActiveMenu from '../../hocs/withActiveMenu';
 
-const dropTrigger = (
-  <div style={{ width: '40px', height: '40px', borderRadius: '50%' }}>
-    <img style={{ borderRadius: '50%' }} src={logo} alt="Logo" />
-  </div>
-);
-
-// Save Navbar menu names in constants file.
+import CurrentUserPhoto from './CurrentUserPhoto';
+import { Players, Tournaments } from './navMenuItems';
 
 const Navbar = props => {
-  const { logout, activeMenu, handleItemClick } = props;
+  const { logout, activeMenu, dropDownTrigger, handleItemClick } = props;
 
   return (
     <Menu fixed="top">
       <Menu.Item header>
         <img src={logo} alt="Logo" />
       </Menu.Item>
-      <Menu.Item
-        as={Link}
-        onClick={handleItemClick}
-        to={routes.ADMIN_TOURNAMENTS}
-        name={NAV_MENU_ITEMS.tournaments}
-        active={activeMenu === NAV_MENU_ITEMS.tournaments}
+      <Responsive as={Menu.Menu} minWidth={Responsive.onlyTablet.minWidth}>
+        <Tournaments
+          handleItemClick={handleItemClick}
+          activeMenu={activeMenu}
+        />
+        <Players handleItemClick={handleItemClick} activeMenu={activeMenu} />
+      </Responsive>
+      <Responsive
+        as={Dropdown}
+        item
+        icon="bars"
+        maxWidth={Responsive.onlyMobile.maxWidth}
       >
-        Tournaments
-      </Menu.Item>
-      <Menu.Item
-        as={Link}
-        to={routes.ADMIN_PLAYERS}
-        onClick={handleItemClick}
-        name={NAV_MENU_ITEMS.players}
-        active={activeMenu === NAV_MENU_ITEMS.players}
-      >
-        Players
-      </Menu.Item>
+        <Dropdown.Menu>
+          <Tournaments
+            handleItemClick={handleItemClick}
+            activeMenu={activeMenu}
+          />
+          <Players handleItemClick={handleItemClick} activeMenu={activeMenu} />
+        </Dropdown.Menu>
+      </Responsive>
       <Menu.Menu position="right">
-        <Menu.Item>
-          <Dropdown icon={false} trigger={dropTrigger}>
-            <Dropdown.Menu>
-              <Dropdown.Item
-                as={Link}
-                text="Logout"
-                icon="sign out"
-                onClick={logout}
-                to={routes.LOGOUT}
-              />
-              <Dropdown.Item
-                as={Link}
-                icon="key"
-                text="Change Password"
-                to={routes.CHANGE_PASSWORD}
-              />
-            </Dropdown.Menu>
-          </Dropdown>
-        </Menu.Item>
+        <Dropdown item icon={false} trigger={dropDownTrigger}>
+          <Dropdown.Menu>
+            <Dropdown.Item
+              as={Link}
+              text="Logout"
+              icon="sign out"
+              onClick={logout}
+              to={routes.LOGOUT}
+            />
+            <Dropdown.Item
+              as={Link}
+              icon="key"
+              text="Change Password"
+              to={routes.CHANGE_PASSWORD}
+            />
+          </Dropdown.Menu>
+        </Dropdown>
       </Menu.Menu>
     </Menu>
   );
@@ -72,7 +69,16 @@ const Navbar = props => {
 Navbar.propTypes = {
   activeMenu: PropTypes.string,
   logout: PropTypes.func.isRequired,
-  handleItemClick: PropTypes.func.isRequired
+  handleItemClick: PropTypes.func.isRequired,
+  dropDownTrigger: PropTypes.element.isRequired
 };
 
-export default withActiveMenu(NAV_MENU_ITEMS.tournaments)(Navbar);
+export default compose(
+  withActiveMenu(NAV_MENU_ITEMS.tournaments),
+  withState('dropDownTrigger', 'setDropDownTrigger', <div />),
+  lifecycle({
+    componentWillMount() {
+      this.props.setDropDownTrigger(CurrentUserPhoto());
+    }
+  })
+)(Navbar);
