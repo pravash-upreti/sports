@@ -6,6 +6,7 @@ import { Menu, Dropdown } from 'semantic-ui-react';
 import logo from '../../../../public/assets/images/dummy-image.jpg';
 
 import * as routes from '../../../constants/routes';
+import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
 import withActiveMenu from '../../hocs/withActiveMenu';
 
@@ -27,19 +28,19 @@ const Navbar = props => {
       </Menu.Item>
       <Menu.Item
         as={Link}
-        name="tournaments"
         onClick={handleItemClick}
         to={routes.ADMIN_TOURNAMENTS}
-        active={activeMenu === 'tournaments'}
+        name={NAV_MENU_ITEMS.tournaments}
+        active={activeMenu === NAV_MENU_ITEMS.tournaments}
       >
         Tournaments
       </Menu.Item>
       <Menu.Item
         as={Link}
-        name="players"
         to={routes.ADMIN_PLAYERS}
         onClick={handleItemClick}
-        active={activeMenu === 'players'}
+        name={NAV_MENU_ITEMS.players}
+        active={activeMenu === NAV_MENU_ITEMS.players}
       >
         Players
       </Menu.Item>
@@ -74,4 +75,4 @@ Navbar.propTypes = {
   handleItemClick: PropTypes.func.isRequired
 };
 
-export default withActiveMenu('tournaments')(Navbar);
+export default withActiveMenu(NAV_MENU_ITEMS.tournaments)(Navbar);

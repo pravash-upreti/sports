@@ -16,4 +16,12 @@ export const TOURNAMENT_ACTIONS = {
   remove: 'remove'
 };
 
+export const NAV_MENU_ITEMS = {
+  home: 'home',
+  players: 'players',
+  tournaments: 'tournaments',
+  tournamentTree: 'tournamentTree',
+  fixtureOverview: 'fixtureOverview'
+};
+
 export const DATE_FORMAT = 'YYYY/MM/DD';

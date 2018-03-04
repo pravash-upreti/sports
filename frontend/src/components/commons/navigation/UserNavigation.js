@@ -6,6 +6,7 @@ import { Menu } from 'semantic-ui-react';
 import logo from '../../../../public/assets/images/dummy-image.jpg';
 
 import * as routes from '../../../constants/routes';
+import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
 import withActiveMenu from '../../hocs/withActiveMenu';
 
@@ -19,30 +20,30 @@ const Navbar = props => {
       </Menu.Item>
       <Menu.Item
         as={Link}
-        name="home"
         to={routes.ROOT}
         onClick={handleItemClick}
-        active={activeMenu === 'home'}
+        name={NAV_MENU_ITEMS.home}
+        active={activeMenu === NAV_MENU_ITEMS.home}
       >
         Home
       </Menu.Item>
       <Menu.Item
         as={Link}
-        name="fixtureOverview"
         onClick={handleItemClick}
         to={routes.FIXTURE_OVERVIEW}
-        active={activeMenu === 'fixtureOverview'}
+        name={NAV_MENU_ITEMS.fixtureOverview}
+        active={activeMenu === NAV_MENU_ITEMS.fixtureOverview}
       >
         FixtureOverview
       </Menu.Item>
       <Menu.Item
         as={Link}
-        name="tree"
         onClick={handleItemClick}
         to={routes.TOURNAMENT_TREE}
-        active={activeMenu === 'tree'}
+        name={NAV_MENU_ITEMS.tournamentTree}
+        active={activeMenu === NAV_MENU_ITEMS.tournamentTree}
       >
-        Tree
+        TournamentTree
       </Menu.Item>
     </Menu>
   );
@@ -53,4 +54,4 @@ Navbar.propTypes = {
   handleItemClick: PropTypes.func.isRequired
 };
 
-export default withActiveMenu('home')(Navbar);
+export default withActiveMenu(NAV_MENU_ITEMS.home)(Navbar);
