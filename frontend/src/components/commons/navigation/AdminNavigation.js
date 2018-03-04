@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Menu, Dropdown, Icon } from 'semantic-ui-react';
+import { Menu, Dropdown } from 'semantic-ui-react';
 import { compose, withState, withHandlers } from 'recompose';
 
 import logo from '../../../../public/assets/images/dummy-image.jpg';
@@ -20,52 +20,50 @@ const Navbar = props => {
   const { logout, activeMenu, handleItemClick } = props;
 
   return (
-    <div className="admin-navbar-container">
-      <Menu fixed="top" fluid defaultActiveIndex="1">
-        <Menu.Item header>
-          <img src={logo} alt="Logo" />
+    <Menu fixed="top">
+      <Menu.Item header>
+        <img src={logo} alt="Logo" />
+      </Menu.Item>
+      <Menu.Item
+        as={Link}
+        name="tournaments"
+        onClick={handleItemClick}
+        to={routes.ADMIN_TOURNAMENTS}
+        active={activeMenu === 'tournaments'}
+      >
+        Tournaments
+      </Menu.Item>
+      <Menu.Item
+        as={Link}
+        name="players"
+        to={routes.ADMIN_PLAYERS}
+        onClick={handleItemClick}
+        active={activeMenu === 'players'}
+      >
+        Players
+      </Menu.Item>
+      <Menu.Menu position="right">
+        <Menu.Item>
+          <Dropdown icon={false} trigger={dropTrigger}>
+            <Dropdown.Menu>
+              <Dropdown.Item
+                as={Link}
+                text="Logout"
+                icon="sign out"
+                onClick={logout}
+                to={routes.LOGOUT}
+              />
+              <Dropdown.Item
+                as={Link}
+                icon="key"
+                text="Change Password"
+                to={routes.CHANGE_PASSWORD}
+              />
+            </Dropdown.Menu>
+          </Dropdown>
         </Menu.Item>
-        <Menu.Item
-          as={Link}
-          name="tournaments"
-          onClick={handleItemClick}
-          to={routes.ADMIN_TOURNAMENTS}
-          active={activeMenu === 'tournaments'}
-        >
-          Tournaments
-        </Menu.Item>
-        <Menu.Item
-          as={Link}
-          name="players"
-          to={routes.ADMIN_PLAYERS}
-          onClick={handleItemClick}
-          active={activeMenu === 'players'}
-        >
-          Players
-        </Menu.Item>
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Dropdown icon={false} trigger={dropTrigger}>
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  as={Link}
-                  text="Logout"
-                  icon="sign out"
-                  onClick={logout}
-                  to={routes.LOGOUT}
-                />
-                <Dropdown.Item
-                  as={Link}
-                  icon="key"
-                  text="Change Password"
-                  to={routes.CHANGE_PASSWORD}
-                />
-              </Dropdown.Menu>
-            </Dropdown>
-          </Menu.Item>
-        </Menu.Menu>
-      </Menu>
-    </div>
+      </Menu.Menu>
+    </Menu>
   );
 };
 

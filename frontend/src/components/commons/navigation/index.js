@@ -7,10 +7,14 @@ import AdminNavigation from './AdminNavigation';
 const Navigation = props => {
   const { isAuthenticated } = props;
 
-  return isAuthenticated ? (
-    <AdminNavigation {...props} />
-  ) : (
-    <UserNavigation {...props} />
+  return (
+    <div className="navbar-container">
+      {isAuthenticated ? (
+        <AdminNavigation {...props} />
+      ) : (
+        <UserNavigation {...props} />
+      )}
+    </div>
   );
 };
 
