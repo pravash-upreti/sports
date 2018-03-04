@@ -7,7 +7,7 @@ import * as routes from '../../../constants/routes';
 import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
 const NavMenuItems = props => {
-  const { activeMenu, handleItemClick } = props;
+  const { activeRoute, handleItemClick } = props;
 
   return (
     <Fragment>
@@ -16,7 +16,7 @@ const NavMenuItems = props => {
         onClick={handleItemClick}
         to={routes.ADMIN_TOURNAMENTS}
         name={NAV_MENU_ITEMS.tournaments}
-        active={activeMenu === NAV_MENU_ITEMS.tournaments}
+        active={activeRoute === routes.ADMIN_TOURNAMENTS}
       >
         Tournaments
       </Menu.Item>
@@ -25,7 +25,7 @@ const NavMenuItems = props => {
         to={routes.ADMIN_PLAYERS}
         onClick={handleItemClick}
         name={NAV_MENU_ITEMS.players}
-        active={activeMenu === NAV_MENU_ITEMS.players}
+        active={activeRoute === routes.ADMIN_PLAYERS}
       >
         Players
       </Menu.Item>
@@ -34,7 +34,7 @@ const NavMenuItems = props => {
 };
 
 NavMenuItems.propTypes = {
-  activeMenu: PropTypes.string,
+  activeRoute: PropTypes.string,
   handleItemClick: PropTypes.func
 };
 

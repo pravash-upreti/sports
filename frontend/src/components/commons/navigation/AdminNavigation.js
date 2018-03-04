@@ -7,15 +7,14 @@ import { Menu, Dropdown, Responsive } from 'semantic-ui-react';
 import logo from '../../../../public/assets/images/dummy-image.jpg';
 
 import * as routes from '../../../constants/routes';
-import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
-import withActiveMenu from '../../hocs/withActiveMenu';
+import withActiveRoute from '../../hocs/withActiveRoute';
 
 import NavMenuItems from './AdminLeftNav';
 import CurrentUserPhoto from './CurrentUserPhoto';
 
 const Navbar = props => {
-  const { logout, activeMenu, dropDownTrigger, handleItemClick } = props;
+  const { logout, activeRoute, dropDownTrigger, handleItemClick } = props;
 
   return (
     <Menu fixed="top">
@@ -24,7 +23,7 @@ const Navbar = props => {
       </Menu.Item>
       <Responsive as={Menu.Menu} minWidth={Responsive.onlyTablet.minWidth}>
         <NavMenuItems
-          activeMenu={activeMenu}
+          activeRoute={activeRoute}
           handleItemClick={handleItemClick}
         />
       </Responsive>
@@ -36,7 +35,7 @@ const Navbar = props => {
       >
         <Dropdown.Menu>
           <NavMenuItems
-            activeMenu={activeMenu}
+            activeRoute={activeRoute}
             handleItemClick={handleItemClick}
           />
         </Dropdown.Menu>
@@ -65,14 +64,14 @@ const Navbar = props => {
 };
 
 Navbar.propTypes = {
-  activeMenu: PropTypes.string,
+  activeRoute: PropTypes.string,
   logout: PropTypes.func.isRequired,
   handleItemClick: PropTypes.func.isRequired,
   dropDownTrigger: PropTypes.element.isRequired
 };
 
 export default compose(
-  withActiveMenu(NAV_MENU_ITEMS.tournaments),
+  withActiveRoute(routes.ROOT),
   withState('dropDownTrigger', 'setDropDownTrigger', <div />),
   lifecycle({
     componentWillMount() {

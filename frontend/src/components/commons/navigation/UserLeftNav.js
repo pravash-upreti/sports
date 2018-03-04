@@ -7,7 +7,7 @@ import * as routes from '../../../constants/routes';
 import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
 const NavMenuItems = props => {
-  const { activeMenu, handleItemClick } = props;
+  const { activeRoute, handleItemClick } = props;
 
   return (
     <Fragment>
@@ -16,7 +16,7 @@ const NavMenuItems = props => {
         to={routes.ROOT}
         onClick={handleItemClick}
         name={NAV_MENU_ITEMS.home}
-        active={activeMenu === NAV_MENU_ITEMS.home}
+        active={activeRoute === routes.ROOT}
       >
         Home
       </Menu.Item>
@@ -25,7 +25,7 @@ const NavMenuItems = props => {
         onClick={handleItemClick}
         to={routes.FIXTURE_OVERVIEW}
         name={NAV_MENU_ITEMS.fixtureOverview}
-        active={activeMenu === NAV_MENU_ITEMS.fixtureOverview}
+        active={activeRoute === routes.FIXTURE_OVERVIEW}
       >
         FixtureOverview
       </Menu.Item>
@@ -34,7 +34,7 @@ const NavMenuItems = props => {
         onClick={handleItemClick}
         to={routes.TOURNAMENT_TREE}
         name={NAV_MENU_ITEMS.tournamentTree}
-        active={activeMenu === NAV_MENU_ITEMS.tournamentTree}
+        active={activeRoute === routes.TOURNAMENT_TREE}
       >
         TournamentTree
       </Menu.Item>
@@ -43,7 +43,7 @@ const NavMenuItems = props => {
 };
 
 NavMenuItems.propTypes = {
-  activeMenu: PropTypes.string,
+  activeRoute: PropTypes.string,
   handleItemClick: PropTypes.func.isRequired
 };
 

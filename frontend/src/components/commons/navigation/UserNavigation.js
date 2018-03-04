@@ -4,13 +4,13 @@ import { Menu, Dropdown, Responsive } from 'semantic-ui-react';
 
 import logo from '../../../../public/assets/images/dummy-image.jpg';
 
-import { NAV_MENU_ITEMS } from '../../../constants/constants';
+import { ROOT } from '../../../constants/routes';
 
 import NavMenuItems from './UserLeftNav';
-import withActiveMenu from '../../hocs/withActiveMenu';
+import withActiveRoute from '../../hocs/withActiveRoute';
 
 const Navbar = props => {
-  const { activeMenu, handleItemClick } = props;
+  const { activeRoute, handleItemClick } = props;
 
   return (
     <Menu fixed="top">
@@ -19,7 +19,7 @@ const Navbar = props => {
       </Menu.Item>
       <Responsive as={Menu.Menu} minWidth={Responsive.onlyTablet.minWidth}>
         <NavMenuItems
-          activeMenu={activeMenu}
+          activeRoute={activeRoute}
           handleItemClick={handleItemClick}
         />
       </Responsive>
@@ -31,7 +31,7 @@ const Navbar = props => {
       >
         <Dropdown.Menu>
           <NavMenuItems
-            activeMenu={activeMenu}
+            activeRoute={activeRoute}
             handleItemClick={handleItemClick}
           />
         </Dropdown.Menu>
@@ -41,8 +41,8 @@ const Navbar = props => {
 };
 
 Navbar.propTypes = {
-  activeMenu: PropTypes.string,
+  activeRoute: PropTypes.string,
   handleItemClick: PropTypes.func.isRequired
 };
 
-export default withActiveMenu(NAV_MENU_ITEMS.home)(Navbar);
+export default withActiveRoute(ROOT)(Navbar);
