@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Menu, Dropdown } from 'semantic-ui-react';
-import { compose, withState, withHandlers } from 'recompose';
 
 import logo from '../../../../public/assets/images/dummy-image.jpg';
 
 import * as routes from '../../../constants/routes';
+
+import withActiveMenu from '../../hocs/withActiveMenu';
 
 const dropTrigger = (
   <div style={{ width: '40px', height: '40px', borderRadius: '50%' }}>
@@ -73,11 +74,4 @@ Navbar.propTypes = {
   handleItemClick: PropTypes.func.isRequired
 };
 
-export default compose(
-  withState('activeMenu', 'setActiveMenu', 'tournaments'),
-  withHandlers({
-    handleItemClick: ({ setActiveMenu }) => (e, props) => {
-      setActiveMenu(props.name);
-    }
-  })
-)(Navbar);
+export default withActiveMenu('tournaments')(Navbar);
