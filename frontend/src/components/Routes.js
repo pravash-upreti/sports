@@ -18,11 +18,12 @@ import logout from '../services/authServices/logout';
 
 import PrivateRoute from './hocs/PrivateRoute';
 
+import Test from './Test';
 import Login from './auth';
 import Admin from './admin';
 import Tree from './tournament/tree';
 import Toaster from './commons/Toaster';
-import Navigation from './commons/Navigation';
+import Navigation from './commons/navigation/index';
 import FixtureOverview from './tournament/fixtureOverview';
 
 const Routes = props => {
@@ -67,7 +68,14 @@ const Routes = props => {
           />
           <PrivateRoute
             Component={Admin}
-            path={routes.ADMIN}
+            path={routes.ADMIN_TOURNAMENTS}
+            setShowToaster={setShowToaster}
+            isAuthenticated={isAuthenticated}
+            setToasterMessage={setToasterMessage}
+          />
+          <PrivateRoute
+            Component={Test}
+            path={routes.ADMIN_PLAYERS}
             setShowToaster={setShowToaster}
             isAuthenticated={isAuthenticated}
             setToasterMessage={setToasterMessage}

@@ -25,6 +25,7 @@ html, body {
 }
 
 body {
+	overflow: auto;
 	color: $color-text;
 	font-family: $font-family--primary;
 	text-rendering: optimizeLegibility;
