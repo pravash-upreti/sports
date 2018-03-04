@@ -11,8 +11,8 @@ import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
 import withActiveMenu from '../../hocs/withActiveMenu';
 
+import NavMenuItems from './AdminLeftNav';
 import CurrentUserPhoto from './CurrentUserPhoto';
-import { Players, Tournaments } from './navMenuItems';
 
 const Navbar = props => {
   const { logout, activeMenu, dropDownTrigger, handleItemClick } = props;
@@ -23,24 +23,22 @@ const Navbar = props => {
         <img src={logo} alt="Logo" />
       </Menu.Item>
       <Responsive as={Menu.Menu} minWidth={Responsive.onlyTablet.minWidth}>
-        <Tournaments
-          handleItemClick={handleItemClick}
+        <NavMenuItems
           activeMenu={activeMenu}
+          handleItemClick={handleItemClick}
         />
-        <Players handleItemClick={handleItemClick} activeMenu={activeMenu} />
       </Responsive>
       <Responsive
-        as={Dropdown}
         item
         icon="bars"
+        as={Dropdown}
         maxWidth={Responsive.onlyMobile.maxWidth}
       >
         <Dropdown.Menu>
-          <Tournaments
-            handleItemClick={handleItemClick}
+          <NavMenuItems
             activeMenu={activeMenu}
+            handleItemClick={handleItemClick}
           />
-          <Players handleItemClick={handleItemClick} activeMenu={activeMenu} />
         </Dropdown.Menu>
       </Responsive>
       <Menu.Menu position="right">

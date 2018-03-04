@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Dropdown, Responsive } from 'semantic-ui-react';
 
 import logo from '../../../../public/assets/images/dummy-image.jpg';
 
-import * as routes from '../../../constants/routes';
 import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
+import NavMenuItems from './UserLeftNav';
 import withActiveMenu from '../../hocs/withActiveMenu';
 
 const Navbar = props => {
@@ -18,33 +17,25 @@ const Navbar = props => {
       <Menu.Item header>
         <img src={logo} alt="Logo" />
       </Menu.Item>
-      <Menu.Item
-        as={Link}
-        to={routes.ROOT}
-        onClick={handleItemClick}
-        name={NAV_MENU_ITEMS.home}
-        active={activeMenu === NAV_MENU_ITEMS.home}
+      <Responsive as={Menu.Menu} minWidth={Responsive.onlyTablet.minWidth}>
+        <NavMenuItems
+          activeMenu={activeMenu}
+          handleItemClick={handleItemClick}
+        />
+      </Responsive>
+      <Responsive
+        item
+        icon="bars"
+        as={Dropdown}
+        maxWidth={Responsive.onlyMobile.maxWidth}
       >
-        Home
-      </Menu.Item>
-      <Menu.Item
-        as={Link}
-        onClick={handleItemClick}
-        to={routes.FIXTURE_OVERVIEW}
-        name={NAV_MENU_ITEMS.fixtureOverview}
-        active={activeMenu === NAV_MENU_ITEMS.fixtureOverview}
-      >
-        FixtureOverview
-      </Menu.Item>
-      <Menu.Item
-        as={Link}
-        onClick={handleItemClick}
-        to={routes.TOURNAMENT_TREE}
-        name={NAV_MENU_ITEMS.tournamentTree}
-        active={activeMenu === NAV_MENU_ITEMS.tournamentTree}
-      >
-        TournamentTree
-      </Menu.Item>
+        <Dropdown.Menu>
+          <NavMenuItems
+            activeMenu={activeMenu}
+            handleItemClick={handleItemClick}
+          />
+        </Dropdown.Menu>
+      </Responsive>
     </Menu>
   );
 };
