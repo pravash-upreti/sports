@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { compose, lifecycle, withState } from 'recompose';
 import { Menu, Dropdown, Responsive } from 'semantic-ui-react';
 
-import logo from '../../../../public/assets/images/dummy-image.jpg';
+import logo from '../../../../public/assets/images/sports-logo.svg';
 
 import * as routes from '../../../constants/routes';
 
@@ -17,8 +17,8 @@ const Navbar = props => {
   const { logout, activeRoute, dropDownTrigger, handleItemClick } = props;
 
   return (
-    <Menu fixed="top">
-      <Menu.Item header>
+    <Menu borderless size="large" fixed="top">
+      <Menu.Item header className="navbar-header">
         <img src={logo} alt="Logo" />
       </Menu.Item>
       <Responsive as={Menu.Menu} minWidth={Responsive.onlyTablet.minWidth}>
@@ -48,7 +48,7 @@ const Navbar = props => {
               text="Logout"
               icon="sign out"
               onClick={logout}
-              to={routes.LOGOUT}
+              to={routes.ROOT}
             />
             <Dropdown.Item
               as={Link}

@@ -1,3 +1,21 @@
 .navbar-container {
   margin-bottom: 90px;
 }
+
+.navbar-user-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.ui.menu.fixed .navbar-header {
+  border: none;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  img {
+    font-size: 50px;
+  }
+}

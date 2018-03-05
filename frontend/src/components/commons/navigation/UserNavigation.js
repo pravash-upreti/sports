@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Menu, Dropdown, Responsive } from 'semantic-ui-react';
 
-import logo from '../../../../public/assets/images/dummy-image.jpg';
+import logo from '../../../../public/assets/images/sports-logo.svg';
 
 import { ROOT } from '../../../constants/routes';
 
@@ -13,11 +14,12 @@ const Navbar = props => {
   const { activeRoute, handleItemClick } = props;
 
   return (
-    <Menu fixed="top">
-      <Menu.Item header>
+    <Menu borderless size="massive" fixed="top">
+      <Menu.Item header as={Link} to={ROOT} className="navbar-header">
         <img src={logo} alt="Logo" />
       </Menu.Item>
-      <Responsive as={Menu.Menu} minWidth={Responsive.onlyTablet.minWidth}>
+      {/* Todo: The following may be used in the future */}
+      {/* <Responsive as={Menu.Menu} minWidth={Responsive.onlyTablet.minWidth}>
         <NavMenuItems
           activeRoute={activeRoute}
           handleItemClick={handleItemClick}
@@ -35,7 +37,7 @@ const Navbar = props => {
             handleItemClick={handleItemClick}
           />
         </Dropdown.Menu>
-      </Responsive>
+      </Responsive> */}
     </Menu>
   );
 };
