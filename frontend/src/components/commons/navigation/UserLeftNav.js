@@ -6,7 +6,7 @@ import { Menu } from 'semantic-ui-react';
 import * as routes from '../../../constants/routes';
 import { NAV_MENU_ITEMS } from '../../../constants/constants';
 
-const NavMenuItems = props => {
+const UserLeftNav = props => {
   const { activeRoute, handleItemClick } = props;
 
   return (
@@ -42,9 +42,9 @@ const NavMenuItems = props => {
   );
 };
 
-NavMenuItems.propTypes = {
+UserLeftNav.propTypes = {
   activeRoute: PropTypes.string,
   handleItemClick: PropTypes.func.isRequired
 };
 
-export default NavMenuItems;
+export default UserLeftNav;
