@@ -13,7 +13,7 @@ import withActiveRoute from '../../hocs/withActiveRoute';
 import NavMenuItems from './AdminLeftNav';
 import CurrentUserPhoto from './CurrentUserPhoto';
 
-const Navbar = props => {
+const AdminNavigation = props => {
   const { logout, activeRoute, dropDownTrigger, handleItemClick } = props;
 
   return (
@@ -63,7 +63,7 @@ const Navbar = props => {
   );
 };
 
-Navbar.propTypes = {
+AdminNavigation.propTypes = {
   activeRoute: PropTypes.string,
   logout: PropTypes.func.isRequired,
   handleItemClick: PropTypes.func.isRequired,
@@ -78,4 +78,4 @@ export default compose(
       this.props.setDropDownTrigger(CurrentUserPhoto());
     }
   })
-)(Navbar);
+)(AdminNavigation);

@@ -10,7 +10,7 @@ import { ROOT } from '../../../constants/routes';
 import NavMenuItems from './UserLeftNav';
 import withActiveRoute from '../../hocs/withActiveRoute';
 
-const Navbar = props => {
+const UserNavigation = props => {
   const { activeRoute, handleItemClick } = props;
 
   return (
@@ -42,9 +42,9 @@ const Navbar = props => {
   );
 };
 
-Navbar.propTypes = {
+UserNavigation.propTypes = {
   activeRoute: PropTypes.string,
   handleItemClick: PropTypes.func.isRequired
 };
 
-export default withActiveRoute(ROOT)(Navbar);
+export default withActiveRoute(ROOT)(UserNavigation);
