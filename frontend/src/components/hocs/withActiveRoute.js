@@ -1,6 +1,6 @@
 import { compose, withState, withHandlers, lifecycle } from 'recompose';
 
-const withActiveMenu = initialValue =>
+const withActiveRoute = initialValue =>
   compose(
     withState('activeRoute', 'setActiveRoute'),
     lifecycle({
@@ -15,4 +15,4 @@ const withActiveMenu = initialValue =>
     })
   );
 
-export default withActiveMenu;
+export default withActiveRoute;

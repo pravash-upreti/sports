@@ -8,7 +8,7 @@ import { ADMIN_TOURNAMENTS } from '../../constants/routes';
 const checkAuthentication = ({ isAuthenticated }) => isAuthenticated;
 
 const RedirectHere = ({ location }) => {
-  const newRoute = (location.state && location.state.from) || {
+  const newRoute = (location && location.state && location.state.from) || {
     pathname: ADMIN_TOURNAMENTS
   };
 

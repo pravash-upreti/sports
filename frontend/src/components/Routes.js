@@ -23,7 +23,7 @@ import Admin from './admin';
 import Players from './players';
 import Tree from './tournament/tree';
 import Toaster from './commons/Toaster';
-import Navigation from './commons/navigation/index';
+import Navigation from './commons/navigation';
 import FixtureOverview from './tournament/fixtureOverview';
 
 const Routes = props => {

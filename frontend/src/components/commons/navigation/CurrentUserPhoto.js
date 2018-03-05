@@ -1,10 +1,10 @@
 import React from 'react';
 
-import logo from '../../../../public/assets/images/dummy-image.jpg';
+import playerImage from '../../../../public/assets/images/dummy-image.jpg';
 
 const CurrentUserPhoto = () => (
   <div className="navbar-user-photo">
-    <img style={{ borderRadius: '50%' }} src={logo} alt="Logo" />
+    <img style={{ borderRadius: '50%' }} src={playerImage} alt="Logo" />
   </div>
 );
 
