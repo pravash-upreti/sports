@@ -3,29 +3,29 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react';
 
-import * as routes from '../../../constants/routes';
 import { NAV_MENU_ITEMS } from '../../../constants/constants';
+import { ADMIN_PLAYERS, ADMIN_TOURNAMENTS } from '../../../constants/routes';
 
-const AdminLeftNav = props => {
+const AdminLeftNavBar = props => {
   const { activeRoute, handleItemClick } = props;
 
   return (
     <Fragment>
       <Menu.Item
         as={Link}
+        to={ADMIN_TOURNAMENTS}
         onClick={handleItemClick}
-        to={routes.ADMIN_TOURNAMENTS}
         name={NAV_MENU_ITEMS.tournaments}
-        active={activeRoute === routes.ADMIN_TOURNAMENTS}
+        active={activeRoute === ADMIN_TOURNAMENTS}
       >
         Tournaments
       </Menu.Item>
       <Menu.Item
         as={Link}
-        to={routes.ADMIN_PLAYERS}
+        to={ADMIN_PLAYERS}
         onClick={handleItemClick}
         name={NAV_MENU_ITEMS.players}
-        active={activeRoute === routes.ADMIN_PLAYERS}
+        active={activeRoute === ADMIN_PLAYERS}
       >
         Players
       </Menu.Item>
@@ -33,9 +33,9 @@ const AdminLeftNav = props => {
   );
 };
 
-AdminLeftNav.propTypes = {
+AdminLeftNavBar.propTypes = {
   activeRoute: PropTypes.string,
   handleItemClick: PropTypes.func
 };
 
-export default AdminLeftNav;
+export default AdminLeftNavBar;

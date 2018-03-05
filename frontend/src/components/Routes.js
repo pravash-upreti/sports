@@ -3,12 +3,19 @@ import React, { Fragment } from 'react';
 import { Router, Route, Switch } from 'react-router';
 import { compose, withState, lifecycle, withHandlers } from 'recompose';
 
-import * as routes from '../constants/routes';
 import { LOCAL_AUTH_VARIABLE } from '../constants/constants';
 import {
   DEFAULT_TOASTER_MESSAGE,
   DEFAULT_LOGOUT_ERROR_MESSAGE
 } from '../constants/errorMessages';
+import {
+  ROOT,
+  LOGIN,
+  ADMIN_PLAYERS,
+  TOURNAMENT_TREE,
+  FIXTURE_OVERVIEW,
+  ADMIN_TOURNAMENTS
+} from '../constants/routes';
 
 import history from '../utils/routerHistory';
 import getAuthDetails from '../utils/getAuthDetails';
@@ -47,7 +54,7 @@ const Routes = props => {
         <Switch>
           <Route
             exact
-            path={routes.LOGIN}
+            path={LOGIN}
             render={routerProps => (
               <Login
                 {...routerProps}
@@ -59,23 +66,19 @@ const Routes = props => {
           <Navigation logout={handleLogout} isAuthenticated={isAuthenticated} />
         </Switch>
         <Switch>
-          <Route exact component={Tree} path={routes.ROOT} />
-          <Route exact component={Tree} path={routes.TOURNAMENT_TREE} />
-          <Route
-            exact
-            component={FixtureOverview}
-            path={routes.FIXTURE_OVERVIEW}
-          />
+          <Route exact path={ROOT} component={Tree} />
+          <Route exact component={Tree} path={TOURNAMENT_TREE} />
+          <Route exact path={FIXTURE_OVERVIEW} component={FixtureOverview} />
           <PrivateRoute
             Component={Admin}
-            path={routes.ADMIN_TOURNAMENTS}
+            path={ADMIN_TOURNAMENTS}
             setShowToaster={setShowToaster}
             isAuthenticated={isAuthenticated}
             setToasterMessage={setToasterMessage}
           />
           <PrivateRoute
             Component={Players}
-            path={routes.ADMIN_PLAYERS}
+            path={ADMIN_PLAYERS}
             setShowToaster={setShowToaster}
             isAuthenticated={isAuthenticated}
             setToasterMessage={setToasterMessage}

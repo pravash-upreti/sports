@@ -6,12 +6,12 @@ import { Menu, Dropdown, Responsive } from 'semantic-ui-react';
 
 import logo from '../../../../public/assets/images/sports-logo.svg';
 
-import * as routes from '../../../constants/routes';
+import { ROOT, CHANGE_PASSWORD } from '../../../constants/routes';
 
 import withActiveRoute from '../../hocs/withActiveRoute';
 
+import UserImage from './UserImage';
 import NavMenuItems from './AdminLeftNav';
-import CurrentUserPhoto from './CurrentUserPhoto';
 
 const AdminNavigation = props => {
   const { logout, activeRoute, dropDownTrigger, handleItemClick } = props;
@@ -45,16 +45,16 @@ const AdminNavigation = props => {
           <Dropdown.Menu>
             <Dropdown.Item
               as={Link}
+              to={ROOT}
               text="Logout"
               icon="sign out"
               onClick={logout}
-              to={routes.ROOT}
             />
             <Dropdown.Item
               as={Link}
               icon="key"
+              to={CHANGE_PASSWORD}
               text="Change Password"
-              to={routes.CHANGE_PASSWORD}
             />
           </Dropdown.Menu>
         </Dropdown>
@@ -71,11 +71,11 @@ AdminNavigation.propTypes = {
 };
 
 export default compose(
-  withActiveRoute(routes.ROOT),
+  withActiveRoute(ROOT),
   withState('dropDownTrigger', 'setDropDownTrigger', <div />),
   lifecycle({
     componentWillMount() {
-      this.props.setDropDownTrigger(CurrentUserPhoto());
+      this.props.setDropDownTrigger(UserImage());
     }
   })
 )(AdminNavigation);
