@@ -1,14 +1,21 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import { Router, Route, Switch } from 'react-router';
+import { Route, Router, Switch, Redirect } from 'react-router';
 import { compose, withState, lifecycle, withHandlers } from 'recompose';
 
-import * as routes from '../constants/routes';
 import { LOCAL_AUTH_VARIABLE } from '../constants/constants';
 import {
   DEFAULT_TOASTER_MESSAGE,
   DEFAULT_LOGOUT_ERROR_MESSAGE
 } from '../constants/errorMessages';
+import {
+  ROOT,
+  LOGIN,
+  ADMIN_PLAYERS,
+  TOURNAMENT_TREE,
+  FIXTURE_OVERVIEW,
+  ADMIN_TOURNAMENTS
+} from '../constants/routes';
 
 import history from '../utils/routerHistory';
 import getAuthDetails from '../utils/getAuthDetails';
@@ -20,9 +27,10 @@ import PrivateRoute from './hocs/PrivateRoute';
 
 import Login from './auth';
 import Admin from './admin';
+import Players from './players';
 import Tree from './tournament/tree';
 import Toaster from './commons/Toaster';
-import Navigation from './commons/Navigation';
+import Navigation from './commons/navigation';
 import FixtureOverview from './tournament/fixtureOverview';
 
 const Routes = props => {
@@ -46,7 +54,7 @@ const Routes = props => {
         <Switch>
           <Route
             exact
-            path={routes.LOGIN}
+            path={LOGIN}
             render={routerProps => (
               <Login
                 {...routerProps}
@@ -58,16 +66,19 @@ const Routes = props => {
           <Navigation logout={handleLogout} isAuthenticated={isAuthenticated} />
         </Switch>
         <Switch>
-          <Route exact component={Tree} path={routes.ROOT} />
-          <Route exact component={Tree} path={routes.TOURNAMENT_TREE} />
-          <Route
-            exact
-            component={FixtureOverview}
-            path={routes.FIXTURE_OVERVIEW}
-          />
+          <Redirect exact from={ROOT} to={TOURNAMENT_TREE} />
+          <Route exact component={Tree} path={TOURNAMENT_TREE} />
+          <Route exact path={FIXTURE_OVERVIEW} component={FixtureOverview} />
           <PrivateRoute
             Component={Admin}
-            path={routes.ADMIN}
+            path={ADMIN_TOURNAMENTS}
+            setShowToaster={setShowToaster}
+            isAuthenticated={isAuthenticated}
+            setToasterMessage={setToasterMessage}
+          />
+          <PrivateRoute
+            Component={Players}
+            path={ADMIN_PLAYERS}
             setShowToaster={setShowToaster}
             isAuthenticated={isAuthenticated}
             setToasterMessage={setToasterMessage}

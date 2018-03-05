@@ -2,7 +2,7 @@ import React from 'react';
 import PropsTypes from 'prop-types';
 import { Route, Redirect } from 'react-router';
 
-import * as routes from '../../constants/routes';
+import { LOGIN } from '../../constants/routes';
 
 const PrivateRoute = props => {
   const { path, Component, isAuthenticated, ...otherProps } = props;
@@ -16,7 +16,7 @@ const PrivateRoute = props => {
         ) : (
           <Redirect
             to={{
-              pathname: routes.LOGIN,
+              pathname: LOGIN,
               state: {
                 from: routerProps.location
               }
