@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
-import { Router, Route, Switch } from 'react-router';
+import { Route, Router, Switch, Redirect } from 'react-router';
 import { compose, withState, lifecycle, withHandlers } from 'recompose';
 
 import { LOCAL_AUTH_VARIABLE } from '../constants/constants';
@@ -66,7 +66,7 @@ const Routes = props => {
           <Navigation logout={handleLogout} isAuthenticated={isAuthenticated} />
         </Switch>
         <Switch>
-          <Route exact path={ROOT} component={Tree} />
+          <Redirect exact from={ROOT} to={TOURNAMENT_TREE} />
           <Route exact component={Tree} path={TOURNAMENT_TREE} />
           <Route exact path={FIXTURE_OVERVIEW} component={FixtureOverview} />
           <PrivateRoute
