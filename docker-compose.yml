@@ -73,7 +73,26 @@ services:
       - './frontend/:/home/sports/frontend/'
     working_dir: /home/sports/frontend/
     command: sh -c 'yarn'
-
+  sports_web_build:
+    image: 'node:8'
+    volumes:
+      - './frontend/:/home/sports/frontend/'
+    working_dir: /home/sports/frontend/
+    command: sh -c 'yarn build'
+  sports_web_build_serve:
+    image: 'nginx:1.12-alpine'
+    volumes:
+      - './frontend/dist/:/home/sports/frontend/'
+      - './docker-compose/frontend/nginx.conf:/etc/nginx/conf.d/default.conf'
+    environment:
+      - NGINX_HOST=sports.local
+      - NGINX_PORT=80
+    working_dir: '/home/sports/frontend/'
+    ports:
+      - "80:80"
+    depends_on:
+      - sports_web_build
+    command: sh -c "nginx -g 'daemon off;'"
   sports_web_scss_rebuild:
     image: 'node:8'
     volumes:
