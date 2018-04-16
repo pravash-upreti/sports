@@ -33,9 +33,3 @@ $ cp .env.docker .env
 ```bash
 $ docker-compose up web
 ```
-
-## Building for Production
-
-```bash
-$ yarn build
-```
