@@ -33,3 +33,9 @@ $ cp .env.docker .env
 ```bash
 $ docker-compose up web
 ```
+
+## Building for Production
+
+```bash
+$ docker-compose up web_build
+```
