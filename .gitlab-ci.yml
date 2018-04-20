@@ -2,12 +2,17 @@
 before_script:
   - echo Starting
 build:
+  only:
+    - dev
   script:
     - docker build . -t registry.lftechnology.com/sports:latest
 push:
+  only:
+    - dev
   script:
     - docker push registry.lftechnology.com/sports:latest
 deploy:
+  only:
+    - dev
   script:
     - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com
-    
