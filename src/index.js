@@ -1,14 +1,8 @@
+import './public.js';
+
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 
-import 'semantic-ui-css/semantic.min.css';
+import App from './components/App';
 
-import './assets/sass/style.scss';
-
-import Routes from './components/Routes';
-
-export default function Main() {
-  return <Routes />;
-}
-
-render(<Main />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('root'));

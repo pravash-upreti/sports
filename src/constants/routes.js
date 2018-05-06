@@ -1,11 +1,2 @@
-export const ROOT = '/';
-export const ADMIN = '/admin';
+export const DASHBOARD = '/';
 export const LOGIN = '/login';
-export const LOGOUT = '/logout';
-export const PLAYERS = '/players';
-export const TOURNAMENTS = '/tournaments';
-export const ADMIN_PLAYERS = '/admin/players';
-export const CHANGE_PASSWORD = '/change-password';
-export const TOURNAMENT_TREE = '/tournament/tree';
-export const ADMIN_TOURNAMENTS = '/admin/tournaments';
-export const FIXTURE_OVERVIEW = '/tournament/fixture-overview';
