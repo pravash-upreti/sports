@@ -1,3 +1,4 @@
-import logo from './images/logo.svg';
+import logoSVG from './images/logo.svg';
+import logo from './images/sports-logo.png';
 
-export { logo };
+export { logo, logoSVG };

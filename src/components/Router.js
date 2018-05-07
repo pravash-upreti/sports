@@ -1,18 +1,27 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import * as routes from '../constants/routes';
 
-import Login from './login';
+import Chess from './chess';
+import Header from './header';
+import Futsal from './futsal';
 import Dashboard from './dashboard';
 
 // Top level application router.
 const Router = () => (
   <BrowserRouter>
-    <Switch>
-      <Route exact path={routes.LOGIN} component={Login} />
-      <Route path={routes.DASHBOARD} component={Dashboard} />
-    </Switch>
+    <Fragment>
+      <Header />
+
+      <Switch>
+        <Route exact path={routes.CHESS} component={Chess} />
+        <Route exact path={routes.FUTSAL} component={Futsal} />
+        <Route exact path={routes.HOME} component={Dashboard} />
+        {/* <Route from="*" to={routes.HOME} component={Dashboard}/>*/}
+        <Redirect to={routes.HOME} />
+      </Switch>
+    </Fragment>
   </BrowserRouter>
 );
 
