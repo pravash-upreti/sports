@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faChess, faCircle, faFutbol, faTableTennis } from '@fortawesome/fontawesome-free-solid';
 
 import * as routes from '../../constants/routes';
 
@@ -14,18 +16,27 @@ const Header = () => (
 
       <ul className="pull-right">
         <li>
-          <NavLink exact to={routes.HOME}>
-            HOME
+          <NavLink exact to={routes.FUTSAL}>
+            <FontAwesomeIcon icon={faFutbol} size="lg" />
+            <span className="nav-link-text"> FUTSAL</span>
           </NavLink>
         </li>
         <li>
           <NavLink exact to={routes.CHESS}>
-            CHESS
+            <FontAwesomeIcon icon={faChess} size="lg" />
+            <span className="nav-link-text"> CHESS</span>
           </NavLink>
         </li>
         <li>
-          <NavLink exact to={routes.FUTSAL}>
-            FUTSAL
+          <NavLink exact to={routes.CAROM_BOARD}>
+            <FontAwesomeIcon icon={faCircle} size="lg" />
+            <span className="nav-link-text"> CAROM-BOARD</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink exact to={routes.TABLE_TENNIS}>
+            <FontAwesomeIcon icon={faTableTennis} size="lg" />
+            <span className="nav-link-text"> TABLE-TENNIS</span>
           </NavLink>
         </li>
       </ul>
