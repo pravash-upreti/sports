@@ -14,13 +14,14 @@ const Router = () => (
     <Fragment>
       <Header />
 
-      <Switch>
-        <Route exact path={routes.CHESS} component={Chess} />
-        <Route exact path={routes.FUTSAL} component={Futsal} />
-        <Route exact path={routes.HOME} component={Dashboard} />
-        {/* <Route from="*" to={routes.HOME} component={Dashboard}/>*/}
-        <Redirect to={routes.HOME} />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route exact path={routes.CHESS} component={Chess} />
+          <Route exact path={routes.FUTSAL} component={Futsal} />
+          <Route exact path={routes.HOME} component={Dashboard} />
+          <Redirect to={routes.HOME} />
+        </Switch>
+      </div>
     </Fragment>
   </BrowserRouter>
 );
