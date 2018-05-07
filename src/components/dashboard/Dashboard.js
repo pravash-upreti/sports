@@ -1,8 +1,11 @@
 import React from 'react';
 
 const Dashboard = () => (
-  <div className="wrapper">
-    <h1>Dashboard</h1>
+  <div>
+    <div className="row">
+      <h1>Home Page</h1>
+      <p>Under construction.</p>
+    </div>
   </div>
 );
 

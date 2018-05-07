@@ -1,8 +1,14 @@
 import React from 'react';
 
+import { futsalSVG } from '../../assets/images';
+
+import TournamentTitle from '../common/tournamentTitle';
+
 const Futsal = () => (
   <div>
-    <h1>Futsal</h1>
+    <div className="row">
+      <TournamentTitle title="Futsal League" season="2017" tournamentImage={futsalSVG} />
+    </div>
   </div>
 );
 

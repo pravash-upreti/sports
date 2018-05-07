@@ -2,7 +2,10 @@ import React from 'react';
 
 const CaromBoard = () => (
   <div>
-    <h1>Carom Board</h1>
+    <div className="row">
+      <h1>Carom Board</h1>
+      <p>Under construction.</p>
+    </div>
   </div>
 );
 

@@ -2,7 +2,10 @@ import React from 'react';
 
 const Chess = () => (
   <div>
-    <h1>Chess</h1>
+    <div className="row">
+      <h1>Chess</h1>
+      <p>Under construction.</p>
+    </div>
   </div>
 );
 
