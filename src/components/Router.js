@@ -15,7 +15,6 @@ const Router = () => (
   <BrowserRouter>
     <Fragment>
       <Header />
-
       <Switch>
         <Route exact path={routes.CHESS} component={Chess} />
         <Route exact path={routes.FUTSAL} component={Futsal} />

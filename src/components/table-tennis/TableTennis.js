@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const TableTennis = () => (
-  <div>
+  <Fragment>
     <div className="row">
       <h1>Table Tennis</h1>
       <p>Under construction.</p>
     </div>
-  </div>
+  </Fragment>
 );
 
 export default TableTennis;

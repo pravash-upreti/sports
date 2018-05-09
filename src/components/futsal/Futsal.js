@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { futsalSVG } from '../../assets/images';
 
@@ -6,10 +6,10 @@ import SubHeader from './SubHeader';
 import TournamentTitle from '../common/tournamentTitle';
 
 const Futsal = () => (
-  <div>
+  <Fragment>
     <TournamentTitle title="Futsal League" season="2017" tournamentImage={futsalSVG} />
     <SubHeader />
-  </div>
+  </Fragment>
 );
 
 export default Futsal;

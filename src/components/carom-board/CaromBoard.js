@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const CaromBoard = () => (
-  <div>
+  <Fragment>
     <div className="row">
       <h1>Carom Board</h1>
       <p>Under construction.</p>
     </div>
-  </div>
+  </Fragment>
 );
 
 export default CaromBoard;
