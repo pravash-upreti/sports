@@ -12,7 +12,7 @@ $ git clone git@gitlab.lftechnology.com:sports/web.git
 $ cd web/
 ```
 
-Make a copy of `.env.docker` and save as `.env`.
+Make a copy of `.env.example` and save as `.env`.
 
 ```bash
 $ cp .env.docker .env

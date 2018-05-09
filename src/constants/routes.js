@@ -1,11 +1,13 @@
-export const ROOT = '/';
-export const ADMIN = '/admin';
-export const LOGIN = '/login';
-export const LOGOUT = '/logout';
-export const PLAYERS = '/players';
-export const TOURNAMENTS = '/tournaments';
-export const ADMIN_PLAYERS = '/admin/players';
-export const CHANGE_PASSWORD = '/change-password';
-export const TOURNAMENT_TREE = '/tournament/tree';
-export const ADMIN_TOURNAMENTS = '/admin/tournaments';
-export const FIXTURE_OVERVIEW = '/tournament/fixture-overview';
+export const HOME = '/';
+export const CHESS = '/chess';
+export const FUTSAL = '/futsal';
+export const CAROM_BOARD = '/carom-board';
+export const TABLE_TENNIS = '/table-tennis';
+
+export const FUTSAL_ROUTES = {
+  STATS: '/futsal/stats',
+  TEAMS: '/futsal/teams',
+  TABLE: '/futsal/table',
+  RESULTS: '/futsal/results',
+  FIXTURES: '/futsal/fixtures'
+};

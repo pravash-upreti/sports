@@ -7,7 +7,7 @@ services:
       - './:/home/sports/frontend/'
     working_dir: /home/sports/frontend/
     ports:
-      - '${WEB_PORT:-8080}:8080'
+      - '${WEB_PORT:-3000}:3000'
     command: sh -c 'yarn && yarn start'
     networks:
       - sports

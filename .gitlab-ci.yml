@@ -5,14 +5,8 @@ build:
   only:
     - dev
   script:
-    - docker build . -t registry.lftechnology.com/sports:latest
-push:
-  only:
-    - dev
-  script:
+    - yarn
+    - yarn build
+    - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
     - docker push registry.lftechnology.com/sports:latest
-deploy:
-  only:
-    - dev
-  script:
     - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com
