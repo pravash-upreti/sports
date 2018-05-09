@@ -18,7 +18,7 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "eslint --fix",
-      "prettier --single-quote --print-width 120 --write src/**/*.{js,jsx}",
+      "prettier --config ./.prettierrc --write src/**/*.{js,jsx}",
       "git add"
     ]
   },
@@ -34,7 +34,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "prettify": "prettier --single-quote --print-width 120 --write src/**/*.{js,jsx}"
+    "prettify": "prettier --config ./.prettierrc --write src/**/*.{js,jsx}"
   },
   "contributors": [
     "sanjeevpandit@lftechnology.com"

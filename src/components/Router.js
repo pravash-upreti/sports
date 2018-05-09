@@ -16,16 +16,14 @@ const Router = () => (
     <Fragment>
       <Header />
 
-      <div className="container">
-        <Switch>
-          <Route exact path={routes.CHESS} component={Chess} />
-          <Route exact path={routes.FUTSAL} component={Futsal} />
-          <Route exact path={routes.HOME} component={Dashboard} />
-          <Route exact path={routes.CAROM_BOARD} component={CaromBoard} />
-          <Route exact path={routes.TABLE_TENNIS} component={TableTennis} />
-          <Redirect to={routes.HOME} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path={routes.CHESS} component={Chess} />
+        <Route exact path={routes.FUTSAL} component={Futsal} />
+        <Route exact path={routes.HOME} component={Dashboard} />
+        <Route exact path={routes.CAROM_BOARD} component={CaromBoard} />
+        <Route exact path={routes.TABLE_TENNIS} component={TableTennis} />
+        <Redirect to={routes.HOME} />
+      </Switch>
     </Fragment>
   </BrowserRouter>
 );

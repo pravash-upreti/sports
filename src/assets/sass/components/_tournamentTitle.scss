@@ -4,6 +4,7 @@
   padding: 10px 0;
   text-align: center;
   color: $color-title;
+  background: $color-background-sub-header1;
 
   .tournament-image, .tournament-title {
     padding: 10px 20px;
@@ -19,7 +20,7 @@
     font-weight: 700;
     text-align: left;
     display: inline-block;
-    font-size: $font-size-h4;
+    font-size: $font-size-h3;
     text-transform: uppercase;
   }
 }
