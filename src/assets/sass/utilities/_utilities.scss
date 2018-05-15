@@ -2,22 +2,8 @@
 // $break  - RWD break point values, change them in _config.scss. Default: bootstrap grid
 // @usage  - `.Nav {@include mq(sm) {...}}`
 @mixin mq($break) {
-  @if $break == "xs" { //lowest breakpoint value
-    @content;
-  } @else if $break == "sm" { // phone
-    @media(min-width: $sm-device) {
-      @content;
-    }
-  } @else if $break == "md" { // tablet
-    @media(min-width: $md-device) {
-      @content;
-    }
-  } @else if $break == "lg" { // laptop and desktop
-    @media(min-width: $lg-device) {
-      @content;
-    }
-  } @else if $break == "xl" { // High res desktop and TVs
-    @media(min-width: $xl-device) {
+  @if $break and (($break == $sm-device) or ($break == $md-device) or ($break == $lg-device) or ($break == $xl-device)) {
+    @media(min-width: $break) {
       @content;
     }
   } @else {

@@ -1,48 +1,74 @@
 .header {
   padding: 10px;
+  position: relative;
   background-color: $color-background-header;
 
-  nav {
-    position: relative;
+  @include mq($md-device) {
+    padding-bottom: 0;
+  }
 
-    ul {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      left: 0;
-      float: none;
-      margin: 0 auto;
-      list-style: none;
-      padding: 0;
-      text-align: center;
-      background-color: $color-background-header;
-      border-top: 1px solid rgba(128, 128, 128, 0.2);
-      border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+  ul {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    float: none;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    background-color: $color-background-header;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 
-      li {
-        float: left;
-        width: 25%;
+    @include mq($md-device) {
+      float: right;
+      border-top: none;
+      padding: 10px 10px 0;
+      border-bottom: none;
+      position: static;
+    }
 
-        a {
-          display: block;
-          margin: 0 2px;
-          padding: 10px 20px;
-          text-align: center;
-          color: $color-text;
+    li {
+      float: left;
+      width: 25%;
 
-          &.active {
-            color: $color-nav-link;
-            border-bottom: 4px solid $color-nav-link;
-          }
+      a {
+        display: block;
+        margin: 0 2px;
+        padding: 10px 20px;
+        text-align: center;
+        color: $color-text;
 
-          &:hover {
-            color: $color-nav-link;
-          }
+        &.active {
+          color: $color-nav-link;
+          border-bottom: 4px solid $color-nav-link;
         }
 
-        .nav-link-text {
-          display: none;
+        &:hover {
+          color: $color-nav-link;
         }
+
+        @include mq($lg-device) {
+          margin: 0 5px;
+          padding: 10px 20px 5px 5px;
+        }
+      }
+
+      .nav-link-text {
+        display: none;
+
+        @include mq($lg-device) {
+          font-size: $font-size-h5;
+          padding-left: 10px;
+          display: inline-block;
+        }
+      }
+
+      @include mq($md-device) {
+        float: none;
+        width: auto;
+        display: inline-block;
       }
     }
 
@@ -56,52 +82,9 @@
         width: 100%;
         display: block;
       }
-    }
-  }
-}
 
-@media only screen and (min-width: 768px) {
-  .header {
-    padding-bottom: 0;
-
-    nav {
-      ul {
-        float: right;
-        border-top: none;
-        padding: 10px 10px 0;
-        border-bottom: none;
-        position: static;
-
-        li {
-          float: none;
-          width: auto;
-          display: inline-block;
-        }
-      }
-
-      .logo-wrapper {
+      @include mq($md-device) {
         float: left;
-      }
-    }
-  }
-
-  @media only screen and (min-width: 1024px) {
-    .header {
-      nav {
-        ul {
-          li {
-            a {
-              margin: 0 5px;
-              padding: 10px 20px 5px 5px;
-            }
-
-            .nav-link-text {
-              font-size: $font-size-h5;
-              padding-left: 10px;
-              display: inline-block;
-            }
-          }
-        }
       }
     }
   }
