@@ -22,7 +22,6 @@ const Points = () => {
   return (
     <Fragment>
       <h1>Points</h1>
-
       <table className="table">
         <thead>
           <tr>
@@ -37,7 +36,6 @@ const Points = () => {
             <th>Points</th>
           </tr>
         </thead>
-
         <tbody>{tableBodyEl}</tbody>
       </table>
     </Fragment>
