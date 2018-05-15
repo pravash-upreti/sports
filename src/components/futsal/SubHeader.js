@@ -5,7 +5,7 @@ import { FUTSAL_ROUTES } from '../../constants/routes';
 
 import Stats from './views/Stats';
 import Teams from './views/Teams';
-import Points from './views/Points';
+import Points from './views/points';
 import Results from './views/Results';
 import Fixtures from './views/Fixtures';
 

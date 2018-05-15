@@ -71,21 +71,21 @@
         display: inline-block;
       }
     }
+  }
 
-    .logo-wrapper {
-      width: 150px;
-      margin: 0 auto;
-      padding: 10px;
-      text-align: center;
+  .logo-wrapper {
+    width: 150px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
 
-      img {
-        width: 100%;
-        display: block;
-      }
+    img {
+      width: 100%;
+      display: block;
+    }
 
-      @include mq($md-device) {
-        float: left;
-      }
+    @include mq($md-device) {
+      float: left;
     }
   }
 }

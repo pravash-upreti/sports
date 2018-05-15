@@ -1,23 +1,12 @@
 import React, { Fragment } from 'react';
 
-import { getPointsData } from '../../../services/FutsalService';
+import { getPointsData } from '../../../../services/FutsalService';
+
+import PointsDataTable from './PointsDataTable';
 
 const Points = () => {
+  // TODO: Fetch data from HOC
   const pointsData = getPointsData();
-
-  const tableBodyEl = pointsData.map(points => (
-    <tr key={`points-table-${points.id}`}>
-      <td>{points.id}</td>
-      <td>{points.name}</td>
-      <td>{points.gamesPlayed}</td>
-      <td className="hide-on-small-screen">{points.gamesWon}</td>
-      <td className="hide-on-small-screen">{points.gamesDrawn}</td>
-      <td className="hide-on-small-screen">{points.gamesLost}</td>
-      <td>{points.goalsFor}</td>
-      <td>{points.goalsAgainst}</td>
-      <td>{points.points}</td>
-    </tr>
-  ));
 
   return (
     <Fragment>
@@ -36,7 +25,9 @@ const Points = () => {
             <th>Points</th>
           </tr>
         </thead>
-        <tbody>{tableBodyEl}</tbody>
+        <tbody>
+          <PointsDataTable pointsData={pointsData} />
+        </tbody>
       </table>
     </Fragment>
   );
