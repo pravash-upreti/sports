@@ -1,30 +1,34 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { Fragment } from 'react';
+import { Link, Route } from 'react-router-dom';
 
-import { FUTSAL_ROUTES } from '../../constants/routes';
+import SubView from './SubView';
 
-const SubHeader = () => (
-  <div className="sub-header futsal">
-    <nav className="container">
-      <ul>
-        <li>
-          <NavLink to={FUTSAL_ROUTES.RESULTS}>Results</NavLink>
-        </li>
-        <li>
-          <NavLink to={FUTSAL_ROUTES.FIXTURES}>Fixtures</NavLink>
-        </li>
-        <li>
-          <NavLink to={FUTSAL_ROUTES.TABLE}>Points</NavLink>
-        </li>
-        <li>
-          <NavLink to={FUTSAL_ROUTES.STATS}>Stats</NavLink>
-        </li>
-        <li>
-          <NavLink to={FUTSAL_ROUTES.TEAMS}>Teams</NavLink>
-        </li>
-      </ul>
-    </nav>
-  </div>
+const SubHeader = ({ match }) => (
+  <Fragment>
+    <div className="sub-header futsal">
+      <nav className="container">
+        <ul>
+          <li>
+            <Link to={`${match.url}/results`}>Results</Link>
+          </li>
+          <li>
+            <Link to={`${match.url}/fixtures`}>Fixtures</Link>
+          </li>
+          <li>
+            <Link to={`${match.url}/points`}>Points</Link>
+          </li>
+          <li>
+            <Link to={`${match.url}/stats`}>Stats</Link>
+          </li>
+          <li>
+            <Link to={`${match.url}/teams`}>Teams</Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <Route path={`${match.url}/:viewName`} component={SubView} />
+  </Fragment>
 );
 
 export default SubHeader;
