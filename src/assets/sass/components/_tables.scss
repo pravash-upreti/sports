@@ -1,0 +1,17 @@
+table {
+  th {
+    text-align: left;
+  }
+}
+
+.table {
+  width: 100%;
+}
+
+.hide-on-small-screen {
+  display: none;
+
+  @include mq($md-device) {
+    display: table-cell;
+  }
+}

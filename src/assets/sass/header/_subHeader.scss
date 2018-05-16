@@ -1,25 +1,27 @@
 .sub-header {
   background-color: $color-background-sub-header2;
 
-  nav {
-    ul {
-      display: block;
-      text-align: center;
+  ul {
+    display: block;
+    text-align: center;
 
-      li {
-        float: left;
-        display: inline-block;
+    li {
+      float: left;
+      display: inline-block;
 
-        a {
-          display: block;
-          padding: 10px 5px;
-          color: $color-nav-link;
-          font-size: $font-size-h5;
+      a {
+        display: block;
+        padding: 10px 5px;
+        color: $color-nav-link;
+        font-size: $font-size-h5;
 
-          &.active, &:hover {
-            color: $white;
-            background-color: $color-nav-link;
-          }
+        &.active, &:hover {
+          color: $white;
+          background-color: $color-nav-link;
+        }
+
+        @include mq($md-device) {
+          font-size: $font-size-h4;
         }
       }
     }
@@ -30,18 +32,6 @@
       ul {
         li {
           width: 20%;
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  nav {
-    ul {
-      li {
-        a {
-          font-size: $font-size-h4;
         }
       }
     }

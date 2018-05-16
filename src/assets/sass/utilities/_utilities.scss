@@ -1,0 +1,12 @@
+// Media Queries
+// $break  - RWD break point values, change them in _config.scss. Default: bootstrap grid
+// @usage  - `.Nav {@include mq(sm) {...}}`
+@mixin mq($break) {
+  @if $break and (($break == $sm-device) or ($break == $md-device) or ($break == $lg-device) or ($break == $xl-device)) {
+    @media(min-width: $break) {
+      @content;
+    }
+  } @else {
+    @error "No value could be retrieved for '#{$break}'";
+  }
+}

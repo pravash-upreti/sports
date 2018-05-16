@@ -5,9 +5,9 @@ export const CAROM_BOARD = '/carom-board';
 export const TABLE_TENNIS = '/table-tennis';
 
 export const FUTSAL_ROUTES = {
-  STATS: '/futsal/stats',
   TEAMS: '/futsal/teams',
-  TABLE: '/futsal/table',
-  RESULTS: '/futsal/results',
+  STATS: '/futsal/stats',
+  RESULTS: '/futsal/chess',
+  POINTS: '/futsal/points',
   FIXTURES: '/futsal/fixtures'
 };

@@ -14,6 +14,10 @@
     width: 100px;
     display: inline-block;
     border-right: 2px solid rgba(128, 128, 128, 0.2);
+
+    @include mq($lg-device) {
+      width: 125px;
+    }
   }
 
   .tournament-title {
@@ -22,16 +26,8 @@
     display: inline-block;
     font-size: $font-size-h3;
     text-transform: uppercase;
-  }
-}
 
-@media only screen and (min-width: 1024px) {
-  .tournament-title-wrapper {
-    .tournament-image {
-      width: 125px;
-    }
-
-    .tournament-title {
+    @include mq($lg-device) {
       font-size: $font-size-h3;
     }
   }
