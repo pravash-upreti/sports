@@ -11,7 +11,7 @@ table {
 .hide-on-small-screen {
   display: none;
 
-  @include mq($md-device) {
+  @include mq(md) {
     display: table-cell;
   }
 }

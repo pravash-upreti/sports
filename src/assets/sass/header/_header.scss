@@ -3,7 +3,7 @@
   position: relative;
   background-color: $color-background-header;
 
-  @include mq($md-device) {
+  @include mq(md) {
     padding-bottom: 0;
   }
 
@@ -21,7 +21,7 @@
     border-top: 1px solid rgba(128, 128, 128, 0.2);
     border-bottom: 1px solid rgba(128, 128, 128, 0.2);
 
-    @include mq($md-device) {
+    @include mq(md) {
       float: right;
       border-top: none;
       padding: 10px 10px 0;
@@ -49,7 +49,7 @@
           color: $color-nav-link;
         }
 
-        @include mq($lg-device) {
+        @include mq(lg) {
           margin: 0 5px;
           padding: 10px 20px 5px 5px;
         }
@@ -58,14 +58,14 @@
       .nav-link-text {
         display: none;
 
-        @include mq($lg-device) {
+        @include mq(lg) {
           font-size: $font-size-h5;
           padding-left: 10px;
           display: inline-block;
         }
       }
 
-      @include mq($md-device) {
+      @include mq(md) {
         float: none;
         width: auto;
         display: inline-block;
@@ -84,7 +84,7 @@
       display: block;
     }
 
-    @include mq($md-device) {
+    @include mq(md) {
       float: left;
     }
   }

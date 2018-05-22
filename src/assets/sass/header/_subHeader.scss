@@ -20,7 +20,7 @@
           background-color: $color-nav-link;
         }
 
-        @include mq($md-device) {
+        @include mq(md) {
           font-size: $font-size-h4;
         }
       }
