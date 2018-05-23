@@ -8,40 +8,39 @@ import * as routes from '../../constants/routes';
 import { logoSVG } from '../../assets/images';
 
 const Header = () => (
-  <div className="header">
-    <nav>
+  <header>
+    <div className="container">
       <div className="logo-wrapper">
         <img src={logoSVG} alt="" />
       </div>
-
-      <ul className="pull-right">
+      <ul className="nav nav--primary">
         <li>
-          <NavLink exact to={routes.FUTSAL}>
+          <NavLink exact to={routes.FUTSAL} title="Futsal">
             <FontAwesomeIcon icon={faFutbol} size="lg" />
-            <span className="nav-link-text"> FUTSAL</span>
+            <span className="nav__link-text">FUTSAL</span>
           </NavLink>
         </li>
         <li>
-          <NavLink exact to={routes.CHESS}>
+          <NavLink exact to={routes.CHESS} title="Chess">
             <FontAwesomeIcon icon={faChess} size="lg" />
-            <span className="nav-link-text"> CHESS</span>
+            <span className="nav__link-text">CHESS</span>
           </NavLink>
         </li>
         <li>
-          <NavLink exact to={routes.CAROM_BOARD}>
+          <NavLink exact to={routes.CAROM_BOARD} title="Carom-board">
             <FontAwesomeIcon icon={faCircle} size="lg" />
-            <span className="nav-link-text"> CAROM-BOARD</span>
+            <span className="nav__link-text">CAROM-BOARD</span>
           </NavLink>
         </li>
         <li>
-          <NavLink exact to={routes.TABLE_TENNIS}>
+          <NavLink exact to={routes.TABLE_TENNIS} title="Table Tennis">
             <FontAwesomeIcon icon={faTableTennis} size="lg" />
-            <span className="nav-link-text"> TABLE-TENNIS</span>
+            <span className="nav__link-text">TABLE-TENNIS</span>
           </NavLink>
         </li>
       </ul>
-    </nav>
-  </div>
+    </div>
+  </header>
 );
 
 export default Header;
