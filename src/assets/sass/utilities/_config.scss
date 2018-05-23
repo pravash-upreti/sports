@@ -9,6 +9,7 @@ $color-title: #737373;
 $color-background-header: #E0E0E0;
 $color-background-sub-header1: #EEEEEE;
 $color-background-sub-header2: #F5F5F5;
+$color-nav-link-text: #737373;
 
 // Typography
 $font-size-base: 14px;
@@ -21,6 +22,8 @@ $font-size-h3: ceil(($font-size-base * 1.7)) !default; // ~24px
 $font-size-h4: ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-h5: $font-size-base;
 $font-size-h6: ceil(($font-size-base * 0.85)) !default; // ~12px
+
+$font-size--title: 22px;
 
 // Colors
 $red: #D24D57;
