@@ -33,12 +33,14 @@ const SubHeader = () => (
       </div>
     </div>
 
-    <div className="container">
-      <Route path={FUTSAL_ROUTES.STATS} component={Stats} />
-      <Route path={FUTSAL_ROUTES.TEAMS} component={Teams} />
-      <Route path={FUTSAL_ROUTES.POINTS} component={Points} />
-      <Route path={FUTSAL_ROUTES.RESULTS} component={Results} />
-      <Route path={FUTSAL_ROUTES.FIXTURES} component={Fixtures} />
+    <div className="tournament-content">
+      <div className="container">
+        <Route path={FUTSAL_ROUTES.STATS} component={Stats} />
+        <Route path={FUTSAL_ROUTES.TEAMS} component={Teams} />
+        <Route path={FUTSAL_ROUTES.POINTS} component={Points} />
+        <Route path={FUTSAL_ROUTES.RESULTS} component={Results} />
+        <Route path={FUTSAL_ROUTES.FIXTURES} component={Fixtures} />
+      </div>
     </div>
   </Fragment>
 );
