@@ -18,6 +18,7 @@ $color-text-darker: #333333;
 
 // Typography
 $font-size-base: 14px;
+$font-size--medium: 16px;
 $font-size-large: ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small: ceil(($font-size-base * 0.85)) !default; // ~12px
 
@@ -29,6 +30,8 @@ $font-size-h5: $font-size-base;
 $font-size-h6: ceil(($font-size-base * 0.85)) !default; // ~12px
 
 $font-size--title: 22px;
+$font-size--xlarge: 24px;
+$font-size--xxlarge: 48px;
 
 // Colors
 $red: #D24D57;
