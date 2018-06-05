@@ -1,13 +1,13 @@
 import React from 'react';
 
-const TournamentListItem = () => (
+const TournamentListItem = (props) => (
     <li className="tournament-list__item">
         <div className="tournament-list__item--score-time">
             Full Time
         </div>
         <div className="tournament-list__item--date">
             <span className="day">Sunday </span>
-            <span className="date">21 July</span>
+            <span className="date">{props.listItem.date}</span>
             <span className="time">10:00AM</span>
         </div>
         <div className="tournament-list__item--team-block tournament-list__item--team-block-left">
