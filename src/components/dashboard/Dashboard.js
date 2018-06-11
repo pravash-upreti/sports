@@ -1,12 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const Dashboard = () => (
-  <Fragment>
-    <div className="row">
-      <h1>Home Page</h1>
-      <p>Under construction.</p>
-    </div>
-  </Fragment>
+  <div>
+    <h1>Home Page</h1>
+    <p>Under construction.</p>
+  </div>
 );
 
 export default Dashboard;

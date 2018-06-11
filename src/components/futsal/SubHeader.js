@@ -12,8 +12,8 @@ import Fixtures from './views/Fixtures';
 const SubHeader = () => (
   <Fragment>
     <div className="sub-header futsal">
-      <nav className="container">
-        <ul>
+      <div className="container">
+        <ul className="nav nav--secondary">
           <li>
             <Link to={FUTSAL_ROUTES.RESULTS}>Results</Link>
           </li>
@@ -30,15 +30,17 @@ const SubHeader = () => (
             <Link to={FUTSAL_ROUTES.TEAMS}>Teams</Link>
           </li>
         </ul>
-      </nav>
+      </div>
     </div>
 
-    <div className="container">
-      <Route path={FUTSAL_ROUTES.STATS} component={Stats} />
-      <Route path={FUTSAL_ROUTES.TEAMS} component={Teams} />
-      <Route path={FUTSAL_ROUTES.POINTS} component={Points} />
-      <Route path={FUTSAL_ROUTES.RESULTS} component={Results} />
-      <Route path={FUTSAL_ROUTES.FIXTURES} component={Fixtures} />
+    <div className="tournament-content">
+      <div className="container">
+        <Route path={FUTSAL_ROUTES.STATS} component={Stats} />
+        <Route path={FUTSAL_ROUTES.TEAMS} component={Teams} />
+        <Route path={FUTSAL_ROUTES.POINTS} component={Points} />
+        <Route path={FUTSAL_ROUTES.RESULTS} component={Results} />
+        <Route path={FUTSAL_ROUTES.FIXTURES} component={Fixtures} />
+      </div>
     </div>
   </Fragment>
 );

@@ -7,9 +7,7 @@
 // Scalable and Modular Architecture for CSS (SMACSS)
 // With SMACSS, we divide our styles into fives categories: base, libs, modules, states, and utilities
 // ==========================================================================
-
 @import 'utilities/manifest';
 @import 'base/manifest';
-@import 'grid/manifest';
 @import 'header/manifest';
 @import 'components/manifest';

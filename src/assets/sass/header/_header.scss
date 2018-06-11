@@ -1,91 +1,116 @@
-.header {
-  padding: 10px;
-  position: relative;
-  background-color: $color-background-header;
+.logo-wrapper {
+  width: 140px;
+  margin: 0 auto;
+  padding: 11px 0;
 
-  @include mq($md-device) {
-    padding-bottom: 0;
+  img {
+    width: 100%;
+    display: block;
   }
 
-  ul {
+  @include mq(md) {
+    margin: 0;
+    float: left;
+  }
+}
+
+.sub-header {
+  background-color: $color-background-sub-header2;
+}
+
+.nav {
+  list-style-type: none;
+
+  @include m(primary) {
     position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
-    float: none;
-    margin: 0 auto;
-    list-style: none;
-    padding: 0;
-    text-align: center;
-    background-color: $color-background-header;
-    border-top: 1px solid rgba(128, 128, 128, 0.2);
-    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    background: $color-background-header;
+    border-color: rgba(128, 128, 128, 0.2);
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    z-index: 100;
 
-    @include mq($md-device) {
+    @include mq(md) {
       float: right;
-      border-top: none;
-      padding: 10px 10px 0;
-      border-bottom: none;
-      position: static;
+      position: initial;
+      border: 0;
+      margin-top: 10px;
     }
 
     li {
       float: left;
       width: 25%;
 
+      @include mq(md) {
+        width: auto;
+        margin-right: 20px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
       a {
         display: block;
-        margin: 0 2px;
-        padding: 10px 20px;
         text-align: center;
-        color: $color-text;
+        padding: 15px 20px;
+        color: $color-nav-link-text;
+        text-transform: uppercase;
+        border-bottom: 4px solid transparent;
+        font-weight: bold;
+
+        @include mq(lg) {
+          padding: 10px 8px;
+          border: 0;
+        }
 
         &.active {
           color: $color-nav-link;
-          border-bottom: 4px solid $color-nav-link;
+          border-color: $color-nav-link;
+          transition: all 0.15s ease-in;
         }
 
         &:hover {
           color: $color-nav-link;
+          transition: all 0.15s ease-in;
         }
-
-        @include mq($lg-device) {
-          margin: 0 5px;
-          padding: 10px 20px 5px 5px;
-        }
-      }
-
-      .nav-link-text {
-        display: none;
-
-        @include mq($lg-device) {
-          font-size: $font-size-h5;
-          padding-left: 10px;
-          display: inline-block;
-        }
-      }
-
-      @include mq($md-device) {
-        float: none;
-        width: auto;
-        display: inline-block;
       }
     }
   }
 
-  .logo-wrapper {
-    width: 150px;
-    margin: 0 auto;
-    padding: 10px;
-    text-align: center;
-
-    img {
-      width: 100%;
-      display: block;
-    }
-
-    @include mq($md-device) {
+  @include m(secondary) {
+    li {
+      width: 20%;
       float: left;
+
+      a {
+        display: block;
+        padding: 10px 5px;
+        font-size: $font-size-small;
+        text-align: center;
+        color: $color-nav-link;
+
+        &.active, &:hover {
+          color: $white;
+          background-color: $color-nav-link;
+        }
+
+        @include mq(md) {
+          font-size: $font-size--medium;
+        }
+      }
+    }
+  }
+
+  @include e(link-text) {
+    display: none;
+
+    @include mq(lg) {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: $font-size-base;
     }
   }
 }

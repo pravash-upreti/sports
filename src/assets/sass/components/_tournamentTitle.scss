@@ -1,34 +1,30 @@
 .tournament-title-wrapper {
-  width: 100%;
-  display: block;
   padding: 10px 0;
-  text-align: center;
-  color: $color-title;
   background: $color-background-sub-header1;
+}
 
-  .tournament-image, .tournament-title {
-    padding: 10px 20px;
+.tournament-image, .tournament-title {
+  padding: 10px 20px;
+}
+
+.tournament-image {
+  width: 100px;
+  display: inline-block;
+  border-right: 2px solid rgba(128, 128, 128, 0.2);
+
+  @include mq(lg) {
+    width: 125px;
   }
+}
 
-  .tournament-image {
-    width: 100px;
-    display: inline-block;
-    border-right: 2px solid rgba(128, 128, 128, 0.2);
+.tournament-title {
+  font-weight: 700;
+  text-align: center;
+  font-size: $font-size--title;
+  text-transform: uppercase;
+  color: $color-title;
 
-    @include mq($lg-device) {
-      width: 125px;
-    }
-  }
-
-  .tournament-title {
-    font-weight: 700;
-    text-align: left;
-    display: inline-block;
+  @include mq(lg) {
     font-size: $font-size-h3;
-    text-transform: uppercase;
-
-    @include mq($lg-device) {
-      font-size: $font-size-h3;
-    }
   }
 }
