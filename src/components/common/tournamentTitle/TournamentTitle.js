@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 const TournamentTitle = props => (
   <Fragment>
@@ -9,5 +10,10 @@ const TournamentTitle = props => (
     </div>
   </Fragment>
 );
+
+TournamentTitle.propTypes = {
+  title: PropTypes.string,
+  season: PropTypes.string
+};
 
 export default TournamentTitle;

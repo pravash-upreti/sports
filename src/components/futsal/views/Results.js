@@ -6,18 +6,19 @@ class Results extends React.Component {
   render() {
     let tournamentDataSet = [
       {
-        month: "July",
+        month: 'July',
         data: [
           {
-            date: "21 July",
-            day: "Sunday",
-            time: "10:00 am",
+            id: 1,
+            date: '21 July',
+            day: 'Sunday',
+            time: '10:00 am',
             firstTeam: {
-              name: "The Royal Strikers",
+              name: 'The Royal Strikers',
               score: 3
             },
             secondTeam: {
-              name: "Flying Pundits",
+              name: 'Flying Pundits',
               score: 8
             },
             halfTimeScore: {
@@ -26,15 +27,16 @@ class Results extends React.Component {
             }
           },
           {
-            date: "21 July",
-            day: "Sunday",
-            time: "10:00 am",
+            id: 2,
+            date: '21 July',
+            day: 'Sunday',
+            time: '10:00 am',
             firstTeam: {
-              name: "The Royal Strikers",
+              name: 'The Royal Strikers',
               score: 3
             },
             secondTeam: {
-              name: "Flying Pundits",
+              name: 'Flying Pundits',
               score: 8
             },
             halfTimeScore: {
@@ -43,15 +45,16 @@ class Results extends React.Component {
             }
           },
           {
-            date: "21 July",
-            day: "Sunday",
-            time: "10:00 am",
+            id: 3,
+            date: '21 July',
+            day: 'Sunday',
+            time: '10:00 am',
             firstTeam: {
-              name: "The Royal Strikers",
+              name: 'The Royal Strikers',
               score: 3
             },
             secondTeam: {
-              name: "Flying Pundits",
+              name: 'Flying Pundits',
               score: 8
             },
             halfTimeScore: {
@@ -60,15 +63,16 @@ class Results extends React.Component {
             }
           },
           {
-            date: "21 July",
-            day: "Sunday",
-            time: "10:00 am",
+            id: 4,
+            date: '21 July',
+            day: 'Sunday',
+            time: '10:00 am',
             firstTeam: {
-              name: "The Royal Strikers",
+              name: 'The Royal Strikers',
               score: 3
             },
             secondTeam: {
-              name: "Flying Pundits",
+              name: 'Flying Pundits',
               score: 8
             },
             halfTimeScore: {
@@ -79,18 +83,19 @@ class Results extends React.Component {
         ]
       },
       {
-        month: "June",
+        month: 'June',
         data: [
           {
-            date: "21 June",
-            day: "Sunday",
-            time: "10:00 am",
+            id: 5,
+            date: '21 June',
+            day: 'Sunday',
+            time: '10:00 am',
             firstTeam: {
-              name: "The Royal Strikers",
+              name: 'The Royal Strikers',
               score: 3
             },
             secondTeam: {
-              name: "Flying Pundits",
+              name: 'Flying Pundits',
               score: 8
             },
             halfTimeScore: {
@@ -99,15 +104,16 @@ class Results extends React.Component {
             }
           },
           {
-            date: "21 June",
-            day: "Sunday",
-            time: "10:00 am",
+            id: 6,
+            date: '21 June',
+            day: 'Sunday',
+            time: '10:00 am',
             firstTeam: {
-              name: "The Royal Strikers",
+              name: 'The Royal Strikers',
               score: 3
             },
             secondTeam: {
-              name: "Flying Pundits",
+              name: 'Flying Pundits',
               score: 8
             },
             halfTimeScore: {
@@ -116,15 +122,16 @@ class Results extends React.Component {
             }
           },
           {
-            date: "21 June",
-            day: "Sunday",
-            time: "10:00 am",
+            id: 7,
+            date: '21 June',
+            day: 'Sunday',
+            time: '10:00 am',
             firstTeam: {
-              name: "The Royal Strikers",
+              name: 'The Royal Strikers',
               score: 3
             },
             secondTeam: {
-              name: "Flying Pundits",
+              name: 'Flying Pundits',
               score: 8
             },
             halfTimeScore: {
@@ -136,11 +143,13 @@ class Results extends React.Component {
       }
     ];
 
-    return(
+    return (
       <Fragment>
         <h3 className="tournament-content__heading">Results</h3>
         {
-          tournamentDataSet.map((dataItem) => <TournamentContentGroup dataSet = {dataItem}/>)
+          tournamentDataSet.map((dataItem) => (
+            <TournamentContentGroup key={`tournament-content-group-${dataItem.month}`} dataSet = {dataItem}/>
+          ))
         }
       </Fragment>
     );
