@@ -29,6 +29,7 @@
         padding-bottom: 40px;
         color: $color-text-dark;
         background: $white;
+        margin-bottom: 40px;
 
         @include mq(lg) {
             padding: 0;
