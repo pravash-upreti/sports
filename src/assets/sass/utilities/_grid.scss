@@ -6,8 +6,8 @@
 $grid-count: 12 !default;
 $grid-class: col !default;
 $gutter-width: 30px !default;
-$grid-breakpoints: ( xs: 0, sm: $sm-device, md: $md-device, lg: $lg-device, xl: $xl-device) !default;
-$container-max-widths: ( sm: 540px, md: 720px, lg: 960px, xl: 1140px) !default;
+$grid-breakpoints: (xs: 0, sm: $sm-device, md: $md-device, lg: $lg-device, xl: $xl-device) !default;
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px) !default;
 $grid-container: 'container';
 $grid-container-fluid: 'container-fluid';
 $row-name: 'row';
@@ -109,12 +109,12 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
       .#{$grid-class}-#{$name}-#{$i} {
         @if $grid-type=='flex' {
           @extend %grid-column-flex;
-        }
-        @else if $grid-type=='float' {
+        } @else if $grid-type=='float' {
           @extend %grid-column-float;
         }
-			}
-		} //Generates breakpoint wise grid classes
+      }
+    }
+    //Generates breakpoint wise grid classes
 
     @include mq($name) {
       @if $grid-type=='flex' {
@@ -135,8 +135,7 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
         .#{$grid-class}-#{$name}-#{$i} {
           @if $grid-type=='flex' {
             @include make-col-flex($i, $columns);
-          }
-          @else if $grid-type=='float' {
+          } @else if $grid-type=='float' {
             @include make-col-float($i, $columns);
           }
         }
@@ -151,8 +150,6 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
 
 @if ($grid-type=='flex' or $grid-type=='float') {
   @include make-grid;
-}
-
-@else {
+} @else {
   @error "$grid-type should be 'flex' or 'float'";
 }

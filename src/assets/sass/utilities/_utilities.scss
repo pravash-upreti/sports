@@ -5,32 +5,27 @@
   @if $break=="xs" {
     //lowest breakpoint value
     @content;
-  }
-  @else if $break=="sm" {
+  } @else if $break=="sm" {
     // phone
     @media(min-width: $sm-device) {
       @content;
     }
-  }
-  @else if $break=="md" {
+  } @else if $break=="md" {
     // tablet
     @media(min-width: $md-device) {
       @content;
     }
-  }
-  @else if $break=="lg" {
+  } @else if $break=="lg" {
     // laptop and desktop
     @media(min-width: $lg-device) {
       @content;
     }
-  }
-  @else if $break=="xl" {
+  } @else if $break=="xl" {
     // High res desktop and TVs
     @media(min-width: $xl-device) {
       @content;
     }
-  }
-  @else {
+  } @else {
     @error "No value could be retrieved for '#{$break}'";
   }
 }

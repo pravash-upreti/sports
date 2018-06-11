@@ -43,7 +43,7 @@ a {
 }
 
 a, span, strong {
-  &:after{
+  &:after {
     @extend %clearfix-none;
   }
 }
