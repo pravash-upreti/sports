@@ -42,16 +42,16 @@
     li {
       float: left;
       width: 25%;
-  
+
       @include mq(md) {
         width: auto;
         margin-right: 20px;
-  
+
         &:last-child {
           margin-right: 0;
         }
       }
-  
+
       a {
         display: block;
         text-align: center;
@@ -60,21 +60,21 @@
         text-transform: uppercase;
         border-bottom: 4px solid transparent;
         font-weight: bold;
-  
+
         @include mq(lg) {
           padding: 10px 8px;
           border: 0;
         }
-  
+
         &.active {
           color: $color-nav-link;
           border-color: $color-nav-link;
           transition: all 0.15s ease-in;
         }
-  
+
         &:hover {
           color: $color-nav-link;
-          transition: all 0.15s ease-in;        
+          transition: all 0.15s ease-in;
         }
       }
     }
