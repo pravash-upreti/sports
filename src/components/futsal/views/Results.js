@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 
 import TournamentContentGroup from './TournamentContentGroup';
 
@@ -8,7 +8,7 @@ class Results extends React.Component {
       {
         month: "July",
         data: [
-          { 
+          {
             date: "21 July",
             day: "Sunday",
             time: "10:00 am",
@@ -25,7 +25,7 @@ class Results extends React.Component {
               secondTeam: 2
             }
           },
-          { 
+          {
             date: "21 July",
             day: "Sunday",
             time: "10:00 am",
@@ -42,7 +42,7 @@ class Results extends React.Component {
               secondTeam: 2
             }
           },
-          { 
+          {
             date: "21 July",
             day: "Sunday",
             time: "10:00 am",
@@ -59,7 +59,7 @@ class Results extends React.Component {
               secondTeam: 2
             }
           },
-          { 
+          {
             date: "21 July",
             day: "Sunday",
             time: "10:00 am",
@@ -75,13 +75,13 @@ class Results extends React.Component {
               firstTeam: 1,
               secondTeam: 2
             }
-          }      
+          }
         ]
       },
       {
         month: "June",
         data: [
-          { 
+          {
             date: "21 June",
             day: "Sunday",
             time: "10:00 am",
@@ -98,7 +98,7 @@ class Results extends React.Component {
               secondTeam: 2
             }
           },
-          { 
+          {
             date: "21 June",
             day: "Sunday",
             time: "10:00 am",
@@ -115,7 +115,7 @@ class Results extends React.Component {
               secondTeam: 2
             }
           },
-          { 
+          {
             date: "21 June",
             day: "Sunday",
             time: "10:00 am",
@@ -131,7 +131,7 @@ class Results extends React.Component {
               firstTeam: 1,
               secondTeam: 2
             }
-          }    
+          }
         ]
       }
     ];
