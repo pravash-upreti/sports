@@ -146,11 +146,9 @@ class Results extends React.Component {
     return (
       <Fragment>
         <h3 className="tournament-content__heading">Results</h3>
-        {
-          tournamentDataSet.map((dataItem) => (
-            <TournamentContentGroup key={`tournament-content-group-${dataItem.month}`} dataSet = {dataItem}/>
-          ))
-        }
+        {tournamentDataSet.map(dataItem => (
+          <TournamentContentGroup key={`tournament-content-group-${dataItem.month}`} dataSet={dataItem} />
+        ))}
       </Fragment>
     );
   }

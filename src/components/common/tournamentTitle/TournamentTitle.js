@@ -1,5 +1,5 @@
+import { string } from 'prop-types';
 import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 
 const TournamentTitle = props => (
   <Fragment>
@@ -12,8 +12,8 @@ const TournamentTitle = props => (
 );
 
 TournamentTitle.propTypes = {
-  title: PropTypes.string,
-  season: PropTypes.string
+  title: string,
+  season: string
 };
 
 export default TournamentTitle;
