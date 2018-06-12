@@ -44,6 +44,7 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
 @mixin make-container($container-name: $grid-container-fluid) {
   .#{$container-name} {
     width: 100%;
+
     @extend %common-container;
   }
 }
@@ -53,14 +54,14 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
 // $max-width      - map with respective breakpoint names and values for container maxwidths
 // Make changes to $container-max-widths map to make changes in container width
 @mixin make-container-fixed-width($breakpoints:$grid-breakpoints, $max-width: $container-max-widths, $container-name: $grid-container) {
-  @each $size-name,
-  $container-width in $max-width {
+  @each $size-name, $container-width in $max-width {
     @include mq($size-name) {
       .#{$container-name} {
         max-width: map-get($max-width, $size-name);
       }
     }
   }
+
   .#{$container-name} {
     @extend %common-container;
   }
@@ -74,6 +75,7 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
       display: flex;
       flex-wrap: wrap;
     }
+
     margin-right: ($gutter-width / -2);
     margin-left: ($gutter-width / -2);
   }
@@ -102,14 +104,15 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
 // $breakpoints - Map for breakpoints
 // $grid-type        - type of grid (either 'float' or 'flex')
 @mixin make-grid($columns: $grid-count, $gutter: $gutter-width, $grid-class: $grid-class, $breakpoints: $grid-breakpoints, $grid-type: $grid-type) {
-  @each $name,
-  $breakpoint in $breakpoints {
+  @each $name, $breakpoint in $breakpoints {
     //Generates common styles for grid classes
     @for $i from 1 through $columns {
       .#{$grid-class}-#{$name}-#{$i} {
         @if $grid-type=='flex' {
           @extend %grid-column-flex;
-        } @else if $grid-type=='float' {
+        }
+
+        @else if $grid-type=='float' {
           @extend %grid-column-float;
         }
       }
@@ -125,17 +128,21 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
           flex-grow: 1;
           max-width: 100%;
         }
+
         .#{$grid-class}-#{$name}-auto {
           flex: 0 0 auto;
           width: auto;
           max-width: none; // Reset earlier grid tiers
         }
       }
+
       @for $i from 1 through $columns {
         .#{$grid-class}-#{$name}-#{$i} {
           @if $grid-type=='flex' {
             @include make-col-flex($i, $columns);
-          } @else if $grid-type=='float' {
+          }
+
+          @else if $grid-type=='float' {
             @include make-col-float($i, $columns);
           }
         }
@@ -150,6 +157,8 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
 
 @if ($grid-type=='flex' or $grid-type=='float') {
   @include make-grid;
-} @else {
+}
+
+@else {
   @error "$grid-type should be 'flex' or 'float'";
 }
