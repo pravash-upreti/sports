@@ -92,7 +92,8 @@
         text-align: center;
         color: $color-nav-link;
 
-        &.active, &:hover {
+        &.active,
+        &:hover {
           color: $white;
           background-color: $color-nav-link;
         }
