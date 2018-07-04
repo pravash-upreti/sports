@@ -15,7 +15,7 @@ $ cd web/
 Make a copy of `.env.example` and save as `.env`.
 
 ```bash
-$ cp .env.docker .env
+$ cp .env.example .env
 ```
 
 Install dependencies and run the application locally.
