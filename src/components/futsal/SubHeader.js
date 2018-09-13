@@ -11,8 +11,8 @@ import Fixtures from './views/Fixtures';
 
 const SubHeader = () => (
   <Fragment>
-    <div className="sub-header futsal">
-      <div className="container">
+    <div className="container">
+      <div className="sub-header futsal">
         <ul className="nav nav--secondary">
           <li>
             <Link to={FUTSAL_ROUTES.RESULTS}>Results</Link>
