@@ -92,11 +92,13 @@ $score-card-height: 80px;
               .team-logo {
                 width: 24px;
                 height: 24px;
+                line-height: 24px;
                 color: #fff;
                 font-size: 12px;
                 font-weight: bold;
                 border-radius: 50%;
                 display: inline-block;
+                background-color: $color-green;
               }
             }
           }

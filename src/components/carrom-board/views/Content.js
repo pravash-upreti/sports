@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { CARROM_BOARD_ROUTES } from '../../../constants/routes';
@@ -9,23 +10,23 @@ import Results from './Results';
 import Fixtures from './Fixtures';
 import SubHeader from './SubHeader';
 
-const Content = () => {
+const Content = props => {
   return (
     <div>
       <SubHeader />
-      <div className="tournament-content">
-        <div className="container">
-          <Switch>
-            <Route path={CARROM_BOARD_ROUTES.HOME} component={Recent} />
-            <Route path={CARROM_BOARD_ROUTES.TEAMS} component={Teams} />
-            <Route path={CARROM_BOARD_ROUTES.RESULTS} component={Results} />
-            <Route path={CARROM_BOARD_ROUTES.FIXTURES} component={Fixtures} />
-            <Redirect to={CARROM_BOARD_ROUTES.HOME} />
-          </Switch>
-        </div>
-      </div>
+      <Switch>
+        <Route path={CARROM_BOARD_ROUTES.HOME} render={() => <Recent data={props.data.recent} />} />
+        <Route path={CARROM_BOARD_ROUTES.TEAMS} render={() => <Teams data={props.data.teams} />} />
+        <Route path={CARROM_BOARD_ROUTES.RESULTS} render={() => <Results data={props.data.results} />} />
+        <Route path={CARROM_BOARD_ROUTES.FIXTURES} render={() => <Fixtures data={props.data.fixtures} />} />
+        <Redirect to={CARROM_BOARD_ROUTES.HOME} render={() => <Recent data={props.data.recent} />} />
+      </Switch>
     </div>
   );
+};
+
+Content.propTypes = {
+  data: PropTypes.object
 };
 
 export default Content;

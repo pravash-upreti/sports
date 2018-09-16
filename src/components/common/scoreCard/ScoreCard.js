@@ -32,7 +32,7 @@ class ScoreCard extends Component {
 
   render() {
     let fixture = this.props.fixture;
-    let tournamentStage = fixture.stage;
+    let fixtureInfo = [fixture.categoryType, fixture.round];
     let fixtureDate = this.parseFixtureDate(fixture.date);
 
     return (
@@ -43,7 +43,7 @@ class ScoreCard extends Component {
             <FixtureTeam team={fixture.homeTeam} classNames="home-team text-right" />
             <FixtureResult fixture={fixture} />
             <FixtureTeam team={fixture.awayTeam} classNames="away-team text-left" />
-            <FixtureInfo fixtureInfo={tournamentStage} />
+            <FixtureInfo fixtureInfo={fixtureInfo} />
           </div>
           <div className="score-details" />
         </div>

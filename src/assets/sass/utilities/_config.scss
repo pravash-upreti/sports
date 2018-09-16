@@ -20,7 +20,7 @@ $color-text-darker: #333;
 
 // Typography
 $font-size-base: 14px;
-$font-size--medium: 16px;
+$font-size-medium: 16px;
 $font-size-large: ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small: ceil(($font-size-base * 0.85)) !default; // ~12px
 
@@ -41,7 +41,7 @@ $gray: #c7c7c7;
 $blue: #3a539b;
 $white: #fff;
 $black: #000;
-$green: #36d7b7;
+$green: #2ecc71;
 $yellow: #f7ca18;
 
 //theme-colors
