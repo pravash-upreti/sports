@@ -1,0 +1,127 @@
+/* Score card */
+$score-card-height: 80px;
+
+.score-card-wrapper {
+  .score-card {
+    max-width: 100%;
+    margin: 5px 0;
+    transition: 0.25s;
+    background: $white;
+    display: inline-block;
+    color: $color-text-dark;
+    text-transform: uppercase;
+    font-size: $font-size-base;
+    border-radius: 3px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .score-brief {
+      display: table;
+      vertical-align: middle;
+      height: $score-card-height;
+
+      .team-name {
+        font-size: $font-size-base;
+      }
+
+      .other-info,
+      .team-info,
+      .score {
+        height: $score-card-height;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .other-info {
+        width: 150px;
+        text-align: center;
+        font-weight: bold;
+
+        .game-time {
+          font-weight: bold;
+        }
+
+        &.date {
+          border-right: 1px solid #e8e8e8;
+        }
+
+        &.fixture-info {
+          border-left: 1px solid #e8e8e8;
+        }
+      }
+
+      .home-team {
+        .team-name-wrapper {
+          text-align: right;
+        }
+      }
+
+      .away-team {
+        .team-name-wrapper {
+          text-align: left;
+        }
+
+        .team-logo-wrapper {
+          float: left;
+        }
+      }
+
+      .team-info {
+        width: 300px;
+        display: table-cell;
+        vertical-align: middle;
+
+        .team-name-wrapper {
+          display: block;
+          padding: 0 10px;
+
+          .team-name {
+            font-size: $font-size-h4;
+            font-weight: 400;
+            padding: 5px 3px;
+
+            .team-logo-wrapper {
+              display: inline-block;
+              text-align: center;
+              margin: 0 5px;
+
+              .team-logo {
+                width: 24px;
+                height: 24px;
+                color: #fff;
+                font-size: 12px;
+                font-weight: bold;
+                border-radius: 50%;
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+
+      .score {
+        width: 200px;
+        text-align: center;
+
+        .result {
+          color: $color-text-darker;
+          font-size: 54px;
+          font-weight: lighter;
+          background: $color-background-gray;
+          line-height: $score-card-height;
+          border-left: 1px solid $color-border;
+          border-right: 1px solid $color-border;
+
+          .versus {
+            font-size: $font-size-h3;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

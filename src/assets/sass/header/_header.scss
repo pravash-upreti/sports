@@ -63,15 +63,11 @@
           border: 0;
         }
 
-        &.active {
+        &.active,
+        &:hover {
           color: $color-nav-link;
           font-weight: bold;
           border-color: $color-nav-link;
-          transition: all 0.15s ease-in;
-        }
-
-        &:hover {
-          color: $color-nav-link;
           transition: all 0.15s ease-in;
         }
       }
@@ -92,7 +88,10 @@
 
         &.active,
         &:hover {
-          color: $color-nav-link;
+          font-weight: bold;
+          border-bottom: 2px solid $color-nav-link-secondary;
+          color: $color-nav-link-secondary;
+          background-color: $color-background-sub-header2;
         }
 
         @include mq(md) {

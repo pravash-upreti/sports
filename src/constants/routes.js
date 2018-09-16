@@ -18,12 +18,12 @@ export const FUTSAL_ROUTES = {
   STATS: `${FUTSAL}/stats`,
   POINTS: `${FUTSAL}/points`,
   RESULTS: `${FUTSAL}/results`,
-  FIXTURES: `${FUTSAL}/fixture`
+  FIXTURES: `${FUTSAL}/fixtures`
 };
 
 export const CARROM_BOARD_ROUTES = {
   HOME: `${CARROM_BOARD}/recent`,
   TEAMS: `${CARROM_BOARD}/teams`,
   RESULTS: `${CARROM_BOARD}/results`,
-  FIXTURES: `${CARROM_BOARD}/fixture`
+  FIXTURES: `${CARROM_BOARD}/fixtures`
 };

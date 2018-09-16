@@ -18,9 +18,9 @@ const Router = () => (
       <Switch>
         <Route path={BASE_ROUTES.CHESS} component={Chess} />
         <Route path={BASE_ROUTES.FUTSAL} component={Futsal} />
-        <Route exact path={BASE_ROUTES.HOME} component={Dashboard} />
         <Route path={BASE_ROUTES.CARROM_BOARD} component={CarromBoard} />
         <Route path={BASE_ROUTES.TABLE_TENNIS} component={TableTennis} />
+        <Route exact path={BASE_ROUTES.HOME} component={Dashboard} />
         <Redirect to={BASE_ROUTES.HOME} />
       </Switch>
     </Fragment>
