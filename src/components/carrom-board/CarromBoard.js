@@ -70,7 +70,7 @@ class CarromBoard extends Component {
       showChampions: false
     };
 
-    if (moment(today).isBefore(finishDate)) {
+    if (moment(today).isAfter(finishDate)) {
       recents.showChampions = true;
       recents.winner = data.details.winner;
       recents.runnerUp = data.details.runnerUp;
