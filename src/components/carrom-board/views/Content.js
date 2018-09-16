@@ -15,11 +15,11 @@ const Content = props => {
     <div>
       <SubHeader />
       <Switch>
-        <Route path={CARROM_BOARD_ROUTES.HOME} render={() => <Recent data={props.data.recent} />} />
+        <Route path={CARROM_BOARD_ROUTES.HOME} render={() => <Recent data={props.data.recents} />} />
         <Route path={CARROM_BOARD_ROUTES.TEAMS} render={() => <Teams data={props.data.teams} />} />
         <Route path={CARROM_BOARD_ROUTES.RESULTS} render={() => <Results data={props.data.results} />} />
         <Route path={CARROM_BOARD_ROUTES.FIXTURES} render={() => <Fixtures data={props.data.fixtures} />} />
-        <Redirect to={CARROM_BOARD_ROUTES.HOME} render={() => <Recent data={props.data.recent} />} />
+        <Redirect to={CARROM_BOARD_ROUTES.HOME} render={() => <Recent data={props.data.recents} />} />
       </Switch>
     </div>
   );

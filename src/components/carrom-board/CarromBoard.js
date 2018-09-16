@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import React, { Component } from 'react';
 
 import Content from './views/Content';
@@ -40,21 +41,56 @@ class CarromBoard extends Component {
       });
   };
 
-  getFixtures = data => {
-    return data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0);
+  getFixtures = (data, limit) => {
+    let fixtures = data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0);
+
+    if (limit) {
+      fixtures = fixtures.slice(0, limit);
+    }
+
+    return fixtures;
   };
 
-  getResults = data => {
-    return data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0);
+  getResults = (data, limit) => {
+    let results = data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0);
+
+    if (limit) {
+      results = results.slice(0, limit);
+    }
+
+    return results;
+  };
+
+  getRecents = data => {
+    const today = moment();
+    const finishDate = moment(data.details.finishDate);
+    let recents = {
+      results: [],
+      fixtures: [],
+      showChampions: false
+    };
+
+    if (moment(today).isAfter(finishDate)) {
+      recents.showChampions = true;
+      recents.winner = data.details.winner;
+      recents.runnerUp = data.details.runnerUp;
+    } else {
+      recents.results = this.getResults(data.fixtures, 2);
+      recents.fixtures = this.getFixtures(data.fixtures, 2);
+    }
+
+    return recents;
   };
 
   getSanitizedData = rawData => {
     let data = {
-      results: this.getResults(rawData.fixtures),
-      fixtures: this.getFixtures(rawData.fixtures),
+      details: rawData.details,
       rounds: rawData.rounds,
       statuses: rawData.statuses,
-      categories: rawData.categories
+      categories: rawData.categories,
+      recents: this.getRecents(rawData),
+      results: this.getResults(rawData.fixtures),
+      fixtures: this.getFixtures(rawData.fixtures)
     };
 
     return data;
@@ -72,17 +108,19 @@ class CarromBoard extends Component {
     if (this.state.error) {
       return (
         <div className="container">
-          <div className="alert alert-error">Unable to load data.</div>
+          <div className="alert alert-error">Unable to load data. Please try again later.</div>
         </div>
       );
     }
 
+    const data = this.getSanitizedData(this.state.data);
+
     return (
       <div className="carrom-board">
-        <TournamentTitle title="Carrom Board Tournament" season="2018" />
+        <TournamentTitle title={data.details.title} season={data.details.year} />
         <div className="tournament-content">
           <div className="container">
-            <Content data={this.getSanitizedData(this.state.data)} />
+            <Content data={data} />
           </div>
         </div>
       </div>

@@ -29,3 +29,23 @@
     font-size: $font-size-h3;
   }
 }
+
+.fixture-title {
+  color: $color-green;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+  padding: 30px 0 10px;
+}
+
+.winners {
+  font-size: 72px;
+  text-align: center;
+  margin: 40px 0;
+}
+
+.runner-up {
+  font-size: 54px;
+  text-align: center;
+  margin: 40px 0;
+}
