@@ -55,7 +55,7 @@ class CarromBoard extends Component {
     let results = data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0);
 
     if (limit) {
-      results = results.slice(0, limit);
+      results = results.reverse().slice(0, limit);
     }
 
     return results;
@@ -70,7 +70,7 @@ class CarromBoard extends Component {
       showChampions: false
     };
 
-    if (moment(today).isAfter(finishDate)) {
+    if (moment(today).isBefore(finishDate)) {
       recents.showChampions = true;
       recents.winner = data.details.winner;
       recents.runnerUp = data.details.runnerUp;
