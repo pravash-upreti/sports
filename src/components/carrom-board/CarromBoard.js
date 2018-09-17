@@ -84,8 +84,9 @@ class CarromBoard extends Component {
 
   getSanitizedData = rawData => {
     let data = {
-      details: rawData.details,
+      teams: rawData.teams,
       rounds: rawData.rounds,
+      details: rawData.details,
       statuses: rawData.statuses,
       categories: rawData.categories,
       recents: this.getRecents(rawData),
