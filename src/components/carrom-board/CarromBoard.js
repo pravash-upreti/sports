@@ -83,7 +83,7 @@ class CarromBoard extends Component {
   };
 
   getSanitizedData = rawData => {
-    let data = {
+    const data = {
       teams: rawData.teams,
       rounds: rawData.rounds,
       details: rawData.details,

@@ -32,7 +32,9 @@ class ScoreCard extends Component {
 
   render() {
     let fixture = this.props.fixture;
-    let fixtureInfo = [fixture.categoryType, fixture.round];
+    let fixtureInfo = fixture.round
+      ? [fixture.categoryType, fixture.round]
+      : ['HALF-TIME', `${fixture.homeTeamHalfTimeScore} - ${fixture.homeTeamHalfTimeScore}`];
     let fixtureDate = this.parseFixtureDate(fixture.date);
 
     return (

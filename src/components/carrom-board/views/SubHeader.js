@@ -12,10 +12,10 @@ const SubHeader = () => (
             <NavLink to={CARROM_BOARD_ROUTES.HOME}>Home</NavLink>
           </li>
           <li>
-            <NavLink to={CARROM_BOARD_ROUTES.FIXTURES}>Fixtures</NavLink>
+            <NavLink to={CARROM_BOARD_ROUTES.RESULTS}>Results</NavLink>
           </li>
           <li>
-            <NavLink to={CARROM_BOARD_ROUTES.RESULTS}>Results</NavLink>
+            <NavLink to={CARROM_BOARD_ROUTES.FIXTURES}>Fixtures</NavLink>
           </li>
           <li>
             <NavLink to={CARROM_BOARD_ROUTES.TEAMS}>Teams</NavLink>

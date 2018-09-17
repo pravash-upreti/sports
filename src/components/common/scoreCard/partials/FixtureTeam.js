@@ -11,7 +11,7 @@ const FixtureTeam = props => {
       teamEls.push(<FixtureTeamInfo team={player} key={`team-player-${index}`} />);
     });
   } else {
-    teamEls.push(<FixtureTeamInfo team={props.team} />);
+    teamEls.push(<FixtureTeamInfo team={props.team} key={`team-player-${props.team.id}`} />);
   }
 
   return <div className={`team-info ${props.classNames}`}>{teamEls}</div>;
