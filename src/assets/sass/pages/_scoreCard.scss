@@ -4,7 +4,7 @@ $score-card-height: 80px;
 .score-card-wrapper {
   .score-card {
     max-width: 100%;
-    margin: 5px 0;
+    margin: 8px 0;
     transition: 0.25s;
     background: $white;
     display: inline-block;
@@ -24,10 +24,6 @@ $score-card-height: 80px;
       vertical-align: middle;
       height: $score-card-height;
 
-      .team-name {
-        font-size: $font-size-base;
-      }
-
       .other-info,
       .team-info,
       .score {
@@ -39,7 +35,7 @@ $score-card-height: 80px;
       .other-info {
         width: 150px;
         text-align: center;
-        font-weight: bold;
+        font-size: $font-size-small;
 
         .game-time {
           font-weight: bold;
@@ -50,6 +46,7 @@ $score-card-height: 80px;
         }
 
         &.fixture-info {
+          font-weight: bold;
           border-left: 1px solid #e8e8e8;
         }
       }
@@ -80,9 +77,10 @@ $score-card-height: 80px;
           padding: 0 10px;
 
           .team-name {
-            font-size: $font-size-h4;
-            font-weight: 400;
-            padding: 5px 3px;
+            font-size: $font-size-medium;
+            font-weight: normal;
+            padding: 3px;
+            line-height: 24px;
 
             .team-logo-wrapper {
               display: inline-block;
@@ -92,10 +90,7 @@ $score-card-height: 80px;
               .team-logo {
                 width: 24px;
                 height: 24px;
-                line-height: 24px;
                 color: #fff;
-                font-size: 12px;
-                font-weight: bold;
                 border-radius: 50%;
                 display: inline-block;
                 background-color: $color-green;
@@ -106,21 +101,27 @@ $score-card-height: 80px;
       }
 
       .score {
-        width: 200px;
+        width: 250px;
         text-align: center;
+        font-weight: lighter;
 
         .result {
-          color: $color-text-darker;
           font-size: 54px;
           font-weight: lighter;
-          background: $color-background-gray;
+          color: $color-text-darker;
           line-height: $score-card-height;
+          background: $color-background-gray;
           border-left: 1px solid $color-border;
           border-right: 1px solid $color-border;
 
           .versus {
             font-size: $font-size-h3;
             display: block;
+          }
+
+          .result-dash {
+            padding: 0 10px;
+            color: $gray;
           }
         }
       }
