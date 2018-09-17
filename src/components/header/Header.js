@@ -5,13 +5,13 @@ import { faChess, faExpand, faFutbol, faTableTennis } from '@fortawesome/free-so
 
 import { BASE_ROUTES } from '../../constants/routes';
 
-import { logoSVG } from '../../assets/images';
+import { invertedLogo } from '../../assets/images';
 
 const Header = () => (
   <header>
     <div className="container-fluid">
       <div className="logo-wrapper">
-        <img src={logoSVG} alt="" />
+        <img src={invertedLogo} alt="" />
       </div>
       <ul className="nav nav--primary">
         <li>
