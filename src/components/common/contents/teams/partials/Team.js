@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { getOneRandomColor } from '../../../../../utils/colorChooser';
+
 const Team = props => {
   let playersEl = [];
   const title = props.team.logo ? (
@@ -10,12 +12,23 @@ const Team = props => {
   ) : null;
 
   props.team.players.forEach((player, index) => {
-    let teamLogoEl = <span className="player-image">{player.name.substring(0, 1)}</span>;
+    const styles = {
+      backgroundColor: getOneRandomColor()
+    };
+    let teamLogoEl = (
+      <span className="player-image" style={styles}>
+        {player.name.substring(0, 1)}
+      </span>
+    );
 
     if (player.image) {
       teamLogoEl = <img className="player-image" src={player.image} alt={player.name} />;
     } else if (player.logo) {
-      teamLogoEl = <span className="player-image">{player.logo.text}</span>;
+      teamLogoEl = (
+        <span className="player-image" style={styles}>
+          {player.logo.text}
+        </span>
+      );
     }
 
     playersEl.push(
