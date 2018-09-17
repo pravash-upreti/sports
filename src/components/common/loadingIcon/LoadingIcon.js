@@ -3,7 +3,7 @@ import Loader from 'react-loader-spinner';
 
 const LoadingIcon = () => (
   <div className="loader">
-    <Loader type="Watch" color="#2ECC71" height="100" width="100" />
+    <Loader type="Oval" color="#2ECC71" height="50" width="50" />
   </div>
 );
 
