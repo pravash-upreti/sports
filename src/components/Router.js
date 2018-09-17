@@ -5,6 +5,7 @@ import { BASE_ROUTES } from '../constants/routes';
 
 import Chess from './chess';
 import Header from './header';
+import Footer from './footer';
 import Futsal from './futsal';
 import Dashboard from './dashboard';
 import CarromBoard from './carrom-board';
@@ -14,15 +15,18 @@ import TableTennis from './table-tennis';
 const Router = () => (
   <BrowserRouter>
     <Fragment>
-      <Header />
-      <Switch>
-        <Route path={BASE_ROUTES.CHESS} component={Chess} />
-        <Route path={BASE_ROUTES.FUTSAL} component={Futsal} />
-        <Route path={BASE_ROUTES.CARROM_BOARD} component={CarromBoard} />
-        <Route path={BASE_ROUTES.TABLE_TENNIS} component={TableTennis} />
-        <Route exact path={BASE_ROUTES.HOME} component={Dashboard} />
-        <Redirect to={BASE_ROUTES.HOME} />
-      </Switch>
+      <div className="main-wrapper">
+        <Header />
+        <Switch>
+          <Route path={BASE_ROUTES.CHESS} component={Chess} />
+          <Route path={BASE_ROUTES.FUTSAL} component={Futsal} />
+          <Route path={BASE_ROUTES.CARROM_BOARD} component={CarromBoard} />
+          <Route path={BASE_ROUTES.TABLE_TENNIS} component={TableTennis} />
+          <Route exact path={BASE_ROUTES.HOME} component={Dashboard} />
+          <Redirect to={BASE_ROUTES.HOME} />
+        </Switch>
+      </div>
+      <Footer />
     </Fragment>
   </BrowserRouter>
 );
