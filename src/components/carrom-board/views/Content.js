@@ -4,11 +4,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { CARROM_BOARD_ROUTES } from '../../../constants/routes';
 
-import Teams from './Teams';
-import Recent from './Recent';
-import Results from './Results';
-import Fixtures from './Fixtures';
 import SubHeader from './SubHeader';
+import { Teams, Recent, Results, Fixtures } from '../../common/contents';
 
 const Content = props => {
   return (

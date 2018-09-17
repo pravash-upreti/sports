@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ScoreCard from '../../common/scoreCard';
+import ScoreCard from '../../scoreCard';
 
 const Fixtures = props => {
   const fixtureEls = props.data.map((fixture, index) => <ScoreCard key={`fixture-${index}`} fixture={fixture} />);

@@ -1,5 +1,5 @@
 import React from 'react';
 
-const Teams = () => <div>Carrom Board Teams</div>;
+const Teams = () => <div>Teams/Players</div>;
 
 export default Teams;
