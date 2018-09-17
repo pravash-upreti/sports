@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { winnerTrophy, runnerUpTrophy } from '../../../assets/images';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import { faMedal } from '@fortawesome/free-solid-svg-icons';
 
 import ScoreCard from '../../common/scoreCard';
 
@@ -14,17 +14,17 @@ const Recent = props => {
         <div>
           <h2 className="fixture-title">WINNERS</h2>
           <h1 className="winners">
-            <img src={winnerTrophy} alt="Trophy" className="winner-trophy" />
+            <FontAwesomeIcon icon={faMedal} className="winner-trophy" />
             {recents.winner}
-            <img src={winnerTrophy} alt="Trophy" className="winner-trophy" />
+            <FontAwesomeIcon icon={faMedal} className="winner-trophy" />
           </h1>
         </div>
         <div>
           <h2 className="fixture-title">RUNNER-UP</h2>
           <h1 className="runner-up">
-            <img src={runnerUpTrophy} alt="Trophy" className="runner-up-trophy" />
+            <FontAwesomeIcon icon={faMedal} className="runner-up-trophy" />
             {recents.runnerUp}
-            <img src={runnerUpTrophy} alt="Trophy" className="runner-up-trophy" />
+            <FontAwesomeIcon icon={faMedal} className="runner-up-trophy" />
           </h1>
         </div>
       </div>
