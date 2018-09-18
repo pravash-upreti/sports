@@ -16,7 +16,7 @@
 .sub-header {
   margin-bottom: 20px;
   background-color: $white;
-  border-bottom: 1px solid $gray;
+  border-bottom: 1px solid $color-light-grey;
 }
 
 .nav {
@@ -95,7 +95,7 @@
 
         &.active,
         &:hover {
-          border: 1px solid $gray;
+          border: 1px solid $color-light-grey;
           border-bottom: none;
           border-radius: 5px 5px 0 0;
           color: $color-nav-link-secondary;

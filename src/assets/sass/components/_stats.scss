@@ -1,0 +1,55 @@
+.stats-wrapper {
+  text-align: center;
+
+  .stats-col {
+    width: 500px;
+    margin: 10px;
+    padding: 10px;
+    text-align: left;
+    color: $color-grey;
+    background: white;
+    vertical-align: top;
+    display: inline-block;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    .stats-title {
+      padding: 10px;
+      font-size: 20px;
+      border-bottom: 3px solid $color-border;
+
+      .stat-image-logo {
+        width: 32px;
+        padding: 0 8px 0 0;
+      }
+    }
+
+    ul {
+      font-size: 14px;
+      list-style: none;
+
+      li {
+        padding: 10px;
+        border-bottom: 1px solid $color-border;
+
+        .stat-player-name,
+        .stat-player-stat {
+          display: inline-block;
+        }
+
+        .stat-player-name {
+          width: 80%;
+          text-align: left;
+        }
+
+        .stat-player-stat {
+          width: 20%;
+          text-align: right;
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
