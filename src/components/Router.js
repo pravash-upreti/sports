@@ -7,7 +7,7 @@ import Chess from './chess';
 import Header from './header';
 import Footer from './footer';
 import Futsal from './futsal';
-import Dashboard from './dashboard';
+// import Dashboard from './dashboard';
 import CarromBoard from './carrom-board';
 import TableTennis from './table-tennis';
 
@@ -22,8 +22,8 @@ const Router = () => (
           <Route path={BASE_ROUTES.FUTSAL} component={Futsal} />
           <Route path={BASE_ROUTES.CARROM_BOARD} component={CarromBoard} />
           <Route path={BASE_ROUTES.TABLE_TENNIS} component={TableTennis} />
-          <Route exact path={BASE_ROUTES.HOME} component={Dashboard} />
-          <Redirect to={BASE_ROUTES.HOME} />
+          {/* TODO: Update Dashboard <Route exact path={BASE_ROUTES.HOME} component={CarromBoard} /> */}
+          <Redirect to={BASE_ROUTES.CARROM_BOARD} />
         </Switch>
       </div>
       <Footer />
