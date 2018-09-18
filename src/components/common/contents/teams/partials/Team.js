@@ -5,11 +5,27 @@ import { getOneRandomColor } from '../../../../../utils/colorChooser';
 
 const Team = props => {
   let playersEl = [];
-  const title = props.team.logo ? (
-    <div className="team-title">
-      <h3>{props.team.name}</h3>
-    </div>
-  ) : null;
+  let titleEl = null;
+
+  if (props.team.logo) {
+    const styles = {
+      color: props.team.logo.color,
+      backgroundColor: props.team.logo.backgroundColor
+    };
+
+    titleEl = (
+      <div className="team-title">
+        <h4>
+          <span className="team-title-logo-wrapper">
+            <span className="team-title-logo" style={styles}>
+              {props.team.logo.text}
+            </span>
+          </span>
+          {props.team.name}
+        </h4>
+      </div>
+    );
+  }
 
   props.team.players.forEach((player, index) => {
     const styles = {
@@ -41,7 +57,7 @@ const Team = props => {
 
   return (
     <div className="team">
-      {title}
+      {titleEl}
       <div className="team-players-wrapper">
         <ul>{playersEl}</ul>
       </div>

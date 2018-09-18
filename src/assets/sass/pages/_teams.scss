@@ -16,7 +16,25 @@
 
     .team-title {
       padding: 10px;
+      line-height: 28px;
+      color: $color-grey;
       border-bottom: 3px solid $color-border;
+
+      .team-title-logo-wrapper {
+        display: inline-block;
+        text-align: center;
+        margin: 0 8px 0 0;
+
+        .team-title-logo {
+          font-weight: normal;
+          width: 28px;
+          height: 28px;
+          color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          background-color: $color-green;
+        }
+      }
     }
 
     .team-players-wrapper {
@@ -25,6 +43,7 @@
 
         li {
           padding: 10px;
+          color: $color-grey;
           border-bottom: 1px solid $color-border;
 
           &:last-child {
@@ -36,7 +55,7 @@
       .player-image-wrapper {
         display: inline-block;
         text-align: center;
-        margin: 0 5px;
+        margin: 0 8px 0 0;
 
         .player-image {
           width: 24px;
