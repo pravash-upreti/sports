@@ -14,8 +14,9 @@
 }
 
 .sub-header {
-  margin-bottom: 10px;
-  border-bottom: 1px solid $color-green;
+  margin-bottom: 20px;
+  background-color: $white;
+  border-bottom: 1px solid $gray;
 }
 
 .nav {
@@ -86,13 +87,19 @@
         font-size: $font-size-small;
         text-align: center;
         color: $color-text;
+        margin-bottom: -1px;
+
+        &.active {
+          font-weight: bold;
+        }
 
         &.active,
         &:hover {
-          font-weight: bold;
-          border-bottom: 2px solid $color-nav-link-secondary;
+          border: 1px solid $gray;
+          border-bottom: none;
+          border-radius: 5px 5px 0 0;
           color: $color-nav-link-secondary;
-          background-color: $color-background-sub-header2;
+          background-color: $color-background-main-wrapper;
         }
 
         @include mq(md) {

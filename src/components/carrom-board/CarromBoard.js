@@ -120,9 +120,7 @@ class CarromBoard extends Component {
       <div className="carrom-board">
         <TournamentTitle title={data.details.title} season={data.details.year} />
         <div className="tournament-content">
-          <div className="container">
-            <Content data={data} />
-          </div>
+          <Content data={data} />
         </div>
       </div>
     );

@@ -5,9 +5,9 @@ import { CARROM_BOARD_ROUTES } from '../../../constants/routes';
 
 const SubHeader = () => (
   <Fragment>
-    <div className="container">
+    <div className="container-fluid">
       <div className="sub-header">
-        <ul className="nav nav--secondary">
+        <ul className="nav nav--secondary container">
           <li>
             <NavLink to={CARROM_BOARD_ROUTES.HOME}>Home</NavLink>
           </li>
