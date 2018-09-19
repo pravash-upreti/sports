@@ -7,8 +7,8 @@ $score-card-height: 80px;
     margin: 8px 0;
     transition: 0.25s;
     background: $white;
-    color: $color-grey;
     display: inline-block;
+    color: $color-text-dark;
     font-size: $font-size-base;
     border-radius: 3px !important;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -90,7 +90,7 @@ $score-card-height: 80px;
               .team-logo {
                 width: 24px;
                 height: 24px;
-                color: #fff;
+                color: $white;
                 border-radius: 50%;
                 display: inline-block;
                 background-color: $color-green;
