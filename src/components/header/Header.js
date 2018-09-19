@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChess, faExpand, faFutbol, faTableTennis } from '@fortawesome/free-solid-svg-icons';
+import { faChess, faFutbol, faTableTennis, faVectorSquare } from '@fortawesome/free-solid-svg-icons';
 
 import { BASE_ROUTES } from '../../constants/routes';
 
@@ -28,7 +28,7 @@ const Header = () => (
         </li>
         <li>
           <NavLink to={BASE_ROUTES.CARROM_BOARD} title="Carom-board">
-            <FontAwesomeIcon icon={faExpand} size="lg" />
+            <FontAwesomeIcon icon={faVectorSquare} size="lg" />
             <span className="nav__link-text">CAROM-BOARD</span>
           </NavLink>
         </li>
