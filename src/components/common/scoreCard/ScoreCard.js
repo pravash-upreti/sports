@@ -14,7 +14,7 @@ class ScoreCard extends Component {
     let minutes = fDate.format('mm');
     let hours = fDate.format('HH');
     let hour = hours > 12 ? `${hours - 12}` : `${hours}`;
-    let amPm = hours > 12 ? `PM` : `AM`;
+    let amPm = hours >= 12 ? `PM` : `AM`;
 
     return {
       weekDay: fDate.format('dddd'),
