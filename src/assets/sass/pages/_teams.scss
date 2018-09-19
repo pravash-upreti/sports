@@ -44,6 +44,7 @@
         li {
           padding: 10px;
           color: $color-grey;
+          text-transform: capitalize;
           border-bottom: 1px solid $color-border;
 
           &:last-child {

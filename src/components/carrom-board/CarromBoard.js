@@ -23,7 +23,7 @@ class CarromBoard extends Component {
 
   fetchData = () => {
     axios
-      .get('https://script.google.com/macros/s/AKfycbx14eWMw6x6klJ5SAtUg6UgLAV0YiqctjQE2LJMS7tXmpPh7ek/exec')
+      .get('https://script.google.com/macros/s/AKfycbyYfBIlzlDhbFKprirQTDeeb_-ezxQkYsYq9HyEDT9LAl7HLkPc/exec')
       .then(response => {
         this.setState({
           data: response.data.data
