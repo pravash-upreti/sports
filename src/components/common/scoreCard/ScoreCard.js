@@ -10,16 +10,17 @@ import FixtureResult from './partials/FixtureResult';
 class ScoreCard extends Component {
   parseFixtureDate = fixtureDate => {
     let fDate = moment(fixtureDate).local();
-    let today = moment.now();
-    let dateDiff = fDate.diff(today, 'days');
-
+    let fixtureDayOfTheWeek = fDate.day();
+    let todayDayOfTheWeek = moment()
+      .local()
+      .day();
     let weekDay = fDate.format('dddd');
 
-    if (dateDiff === 0) {
+    if (fixtureDayOfTheWeek === todayDayOfTheWeek) {
       weekDay = 'Today';
-    } else if (dateDiff === 1) {
+    } else if (fixtureDayOfTheWeek === todayDayOfTheWeek + 1) {
       weekDay = 'Tomorrow';
-    } else if (dateDiff === -1) {
+    } else if (fixtureDayOfTheWeek === todayDayOfTheWeek - 1) {
       weekDay = 'Yesterday';
     }
 
