@@ -29,7 +29,6 @@
 
       li {
         padding: 10px;
-        border-bottom: 1px solid $color-border;
 
         .stat-player-name,
         .stat-player-stat {
@@ -48,6 +47,10 @@
 
         &:last-child {
           border-bottom: none;
+        }
+
+        &:nth-child(even) {
+          background-color: $color-background-main-wrapper;
         }
       }
     }

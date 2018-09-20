@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { getParticipantLogoElement } from '../../../../../utils/participantHelpers';
+
 const Stat = props => {
   let statImageEl = null;
   let playerListEl = <p>No players under this stat.</p>;
@@ -15,12 +17,19 @@ const Stat = props => {
   }
 
   if (players && players.length) {
-    playerListEl = players.map(player => (
-      <li key={`stat-player-${player.name}`}>
-        <span className="stat-player-name">{player.name}</span>
-        <span className="stat-player-stat">{player.count}</span>
-      </li>
-    ));
+    playerListEl = players.map(player => {
+      const playerLogoEl = getParticipantLogoElement(player);
+
+      return (
+        <li key={`stat-player-${player.name}`}>
+          <span className="stat-player-name">
+            {playerLogoEl}
+            {player.name}
+          </span>
+          <span className="stat-player-stat">{player.count}</span>
+        </li>
+      );
+    });
   }
 
   return (
