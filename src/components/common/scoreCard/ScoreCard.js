@@ -9,7 +9,19 @@ import FixtureResult from './partials/FixtureResult';
 
 class ScoreCard extends Component {
   parseFixtureDate = fixtureDate => {
-    let fDate = moment(fixtureDate);
+    let fDate = moment(fixtureDate).local();
+    let today = moment.now();
+    let dateDiff = fDate.diff(today, 'days');
+
+    let weekDay = fDate.format('dddd');
+
+    if (dateDiff === 0) {
+      weekDay = 'Today';
+    } else if (dateDiff === 1) {
+      weekDay = 'Tomorrow';
+    } else if (dateDiff === -1) {
+      weekDay = 'Yesterday';
+    }
 
     let minutes = fDate.format('mm');
     let hours = fDate.format('HH');
@@ -17,7 +29,7 @@ class ScoreCard extends Component {
     let amPm = hours >= 12 ? `PM` : `AM`;
 
     return {
-      weekDay: fDate.format('dddd'),
+      weekDay: weekDay,
       date: fDate.format('D MMMM'),
       time: `${hour}:${minutes} ${amPm}`
     };

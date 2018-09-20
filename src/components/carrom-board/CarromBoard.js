@@ -42,7 +42,11 @@ class CarromBoard extends Component {
   };
 
   getFixtures = (data, limit) => {
-    let fixtures = data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0);
+    let fixtures = data
+      .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0)
+      .sort((a, b) => {
+        return moment(a.date) - new Date(b.date);
+      });
 
     if (limit) {
       fixtures = fixtures.slice(0, limit);
@@ -52,7 +56,11 @@ class CarromBoard extends Component {
   };
 
   getResults = (data, limit) => {
-    let results = data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0);
+    let results = data
+      .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0)
+      .sort((a, b) => {
+        return moment(a.date) - new Date(b.date);
+      });
 
     if (limit) {
       results = results.reverse().slice(0, limit);
