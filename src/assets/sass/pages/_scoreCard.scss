@@ -61,7 +61,7 @@ $score-card-height: 80px;
           text-align: left;
         }
 
-        .team-logo-wrapper {
+        .participant-image-wrapper {
           float: left;
         }
       }
@@ -81,21 +81,6 @@ $score-card-height: 80px;
             padding: 3px;
             line-height: 24px;
             text-transform: capitalize;
-
-            .team-logo-wrapper {
-              display: inline-block;
-              text-align: center;
-              margin: 0 8px;
-
-              .team-logo {
-                width: 24px;
-                height: 24px;
-                color: $white;
-                border-radius: 50%;
-                display: inline-block;
-                background-color: $color-green;
-              }
-            }
           }
         }
       }

@@ -1,33 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getOneRandomColor } from '../../../../utils/colorChooser';
+import { getParticipantLogoElement } from '../../../../utils/participantHelpers';
 
 const FixtureTeamInfo = props => {
-  const styles = {
-    backgroundColor: getOneRandomColor()
+  const team = props.team;
+  let teamCustomStyles = {
+    margin: '0 8px'
   };
-  let teamLogoEl = (
-    <span className="team-logo" style={styles}>
-      {props.team.name.substring(0, 1)}
-    </span>
-  );
 
-  if (props.team.image) {
-    teamLogoEl = <img className="team-logo" src={props.team.image} alt={props.team.name} />;
-  } else if (props.team.logo) {
-    teamLogoEl = (
-      <span className="team-logo" style={styles}>
-        {props.team.logo.text}
-      </span>
-    );
+  if (team.logo) {
+    teamCustomStyles = Object.assign(teamCustomStyles, {
+      color: team.logo.color,
+      backgroundColor: team.logo.backgroundColor
+    });
   }
+
+  const teamLogoEl = getParticipantLogoElement(team, teamCustomStyles);
 
   return (
     <div className="team-name-wrapper">
       <h2 className="team-name">
-        {props.team.name}
-        <span className="team-logo-wrapper">{teamLogoEl}</span>
+        {team.name}
+        {teamLogoEl}
       </h2>
     </div>
   );
