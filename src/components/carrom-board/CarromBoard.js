@@ -60,10 +60,11 @@ class CarromBoard extends Component {
       .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0)
       .sort((a, b) => {
         return moment(a.date) - new Date(b.date);
-      });
+      })
+      .reverse();
 
     if (limit) {
-      results = results.reverse().slice(0, limit);
+      results = results.slice(0, limit);
     }
 
     return results;

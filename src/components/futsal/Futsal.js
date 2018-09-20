@@ -42,7 +42,11 @@ class Futsal extends Component {
   };
 
   getFixtures = (data, limit) => {
-    let fixtures = data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0);
+    let fixtures = data
+      .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0)
+      .sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      });
 
     if (limit) {
       fixtures = fixtures.slice(0, limit);
@@ -52,10 +56,15 @@ class Futsal extends Component {
   };
 
   getResults = (data, limit) => {
-    let results = data.filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0);
+    let results = data
+      .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0)
+      .sort((a, b) => {
+        return new Date(a.date) - new Date(b.date);
+      })
+      .reverse();
 
     if (limit) {
-      results = results.reverse().slice(0, limit);
+      results = results.slice(0, limit);
     }
 
     return results;
