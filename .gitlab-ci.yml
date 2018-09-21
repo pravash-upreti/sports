@@ -7,12 +7,16 @@ build:
   script:
     - docker-compose up web_yarn
     - docker-compose up web_build
-    - docker build . -t registry.lftechnology.com/sports:latest
-push:
+tag:
   only:
     - dev
   script:
     - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
+push:
+  only:
+    - dev
+  script:
+    - docker push registry.lftechnology.com/sports:latest
 deploy:
   only:
     - dev
