@@ -5,8 +5,8 @@ build:
   only:
     - dev
   script:
-    - yarn
-    - yarn build
+    - docker-compose up web_yarn
+    - docker-compose up web_build
     - docker build . -t registry.lftechnology.com/sports:latest
 push:
   only:
