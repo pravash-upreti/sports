@@ -12,7 +12,7 @@ push:
   only:
     - dev
   script:
-    - docker push registry.lftechnology.com/sports:latest
+    - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
 deploy:
   only:
     - dev
