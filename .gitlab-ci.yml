@@ -5,6 +5,8 @@ build:
   only:
     - dev
   script:
+    - yarn
+    - yarn build
     - docker build . -t registry.lftechnology.com/sports:latest
 push:
   only:
