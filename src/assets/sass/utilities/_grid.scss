@@ -110,9 +110,7 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
       .#{$grid-class}-#{$name}-#{$i} {
         @if $grid-type=='flex' {
           @extend %grid-column-flex;
-        }
-
-        @else if $grid-type=='float' {
+        } @else if $grid-type=='float' {
           @extend %grid-column-float;
         }
       }
@@ -140,9 +138,7 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
         .#{$grid-class}-#{$name}-#{$i} {
           @if $grid-type=='flex' {
             @include make-col-flex($i, $columns);
-          }
-
-          @else if $grid-type=='float' {
+          } @else if $grid-type=='float' {
             @include make-col-float($i, $columns);
           }
         }
@@ -157,8 +153,6 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
 
 @if ($grid-type=='flex' or $grid-type=='float') {
   @include make-grid;
-}
-
-@else {
+} @else {
   @error "$grid-type should be 'flex' or 'float'";
 }

@@ -2,10 +2,6 @@ import React from 'react';
 
 import Router from './Router';
 
-const App = () => (
-  <div className="main-wrapper">
-    <Router />
-  </div>
-);
+const App = () => <Router />;
 
 export default App;

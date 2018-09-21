@@ -1,0 +1,57 @@
+.teams-wrapper {
+  text-align: center;
+
+  .team {
+    margin: 10px;
+    padding: 10px;
+    width: 400px;
+    text-align: left;
+    line-height: 24px;
+    font-weight: normal;
+    display: inline-block;
+    background-color: $white;
+    font-size: $font-size-medium;
+    border-radius: 3px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+    .team-title {
+      padding: 10px;
+      line-height: 28px;
+      color: $color-text-dark;
+      border-bottom: 3px solid $color-border;
+
+      .team-title-logo-wrapper {
+        display: inline-block;
+        text-align: center;
+        margin: 0 8px 0 0;
+
+        .team-title-logo {
+          font-weight: normal;
+          width: 28px;
+          height: 28px;
+          color: #fff;
+          border-radius: 50%;
+          display: inline-block;
+          background-color: $color-green;
+        }
+      }
+    }
+
+    .team-players-wrapper {
+      ul {
+        list-style: none;
+
+        li {
+          padding: 10px;
+          color: $color-grey;
+          text-transform: capitalize;
+          border-bottom: 1px solid $color-border;
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}

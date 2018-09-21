@@ -1,11 +1,6 @@
 .tournament-title-wrapper {
-  padding: 10px 0;
-  background: $color-background-sub-header1;
-}
-
-.tournament-image,
-.tournament-title {
-  padding: 10px 20px;
+  padding: 5px 0;
+  background-color: $white;
 }
 
 .tournament-image {
@@ -19,6 +14,7 @@
 }
 
 .tournament-title {
+  padding: 12px;
   font-weight: 700;
   text-align: center;
   font-size: $font-size--title;

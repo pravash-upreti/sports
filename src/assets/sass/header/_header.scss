@@ -1,7 +1,6 @@
 .logo-wrapper {
   width: 140px;
   margin: 0 auto;
-  padding: 11px 0;
 
   img {
     width: 100%;
@@ -15,7 +14,9 @@
 }
 
 .sub-header {
-  background-color: $color-background-sub-header2;
+  margin-bottom: 20px;
+  background-color: $white;
+  border-bottom: 1px solid $color-light-grey;
 }
 
 .nav {
@@ -26,9 +27,6 @@
     bottom: 0;
     right: 0;
     left: 0;
-    background: $color-background-header;
-    border-color: rgba(128, 128, 128, 0.2);
-    border-width: 1px 0 1px 0;
     border-style: solid;
     z-index: 100;
 
@@ -36,7 +34,6 @@
       float: right;
       position: initial;
       border: 0;
-      margin-top: 10px;
     }
 
     li {
@@ -56,25 +53,24 @@
         display: block;
         text-align: center;
         padding: 15px 20px;
-        color: $color-nav-link-text;
+        color: $white;
+        opacity: 0.7;
         text-transform: uppercase;
-        border-bottom: 4px solid transparent;
-        font-weight: bold;
 
         @include mq(lg) {
           padding: 10px 8px;
           border: 0;
         }
 
-        &.active {
-          color: $color-nav-link;
-          border-color: $color-nav-link;
+        &.active,
+        &:hover {
+          opacity: 1;
+          color: $white;
           transition: all 0.15s ease-in;
         }
 
-        &:hover {
-          color: $color-nav-link;
-          transition: all 0.15s ease-in;
+        &.active {
+          font-weight: bold;
         }
       }
     }
@@ -90,16 +86,24 @@
         padding: 10px 5px;
         font-size: $font-size-small;
         text-align: center;
-        color: $color-nav-link;
+        color: $color-text;
+        margin-bottom: -1px;
+
+        &.active {
+          font-weight: bold;
+        }
 
         &.active,
         &:hover {
-          color: $white;
-          background-color: $color-nav-link;
+          border: 1px solid $color-light-grey;
+          border-bottom: none;
+          border-radius: 5px 5px 0 0;
+          color: $color-nav-link-secondary;
+          background-color: $color-background-main-wrapper;
         }
 
         @include mq(md) {
-          font-size: $font-size--medium;
+          font-size: $font-size-medium;
         }
       }
     }

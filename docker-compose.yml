@@ -1,7 +1,7 @@
 version: '2.1'
 services:
   web:
-    image: 'node:8-alpine'
+    image: 'node:8'
     container_name: 'sports-web'
     volumes:
       - './:/home/sports/frontend/'
@@ -13,7 +13,7 @@ services:
       - sports
 
   web_yarn:
-    image: 'node:8-alpine'
+    image: 'node:8'
     container_name: 'sports-web-yarn'
     volumes:
       - './:/home/sports/frontend/'
@@ -23,7 +23,7 @@ services:
       - sports
 
   web_build:
-    image: 'node:8-alpine'
+    image: 'node:8'
     container_name: 'sports-web-build'
     volumes:
       - './:/home/sports/frontend/'
@@ -33,7 +33,7 @@ services:
       - sports
 
   web_build_serve:
-    image: 'nginx:1.12-alpine'
+    image: 'nginx:1.12'
     container_name: 'sports-web-serve'
     volumes:
       - './dist/:/home/sports/frontend/'
@@ -49,7 +49,7 @@ services:
       - sports
 
   web_scss_rebuild:
-    image: 'node:8-alpine'
+    image: 'node:8'
     container_name: 'sports-web-rebuild'
     volumes:
       - './:/home/sports/frontend/'

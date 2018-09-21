@@ -1,12 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const Chess = () => (
-  <Fragment>
-    <div className="row">
-      <h1>Chess</h1>
-      <p>Under construction.</p>
-    </div>
-  </Fragment>
+  <div className="container text-center">
+    <h1>Chess</h1>
+    <p>Under construction...</p>
+  </div>
 );
 
 export default Chess;

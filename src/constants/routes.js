@@ -1,13 +1,29 @@
-export const HOME = '/';
-export const CHESS = '/chess';
-export const FUTSAL = '/futsal';
-export const CAROM_BOARD = '/carom-board';
-export const TABLE_TENNIS = '/table-tennis';
+const HOME = '/';
+const CHESS = '/chess';
+const FUTSAL = '/futsal';
+const CARROM_BOARD = '/carrom-board';
+const TABLE_TENNIS = '/table-tennis';
+
+export const BASE_ROUTES = {
+  HOME: HOME,
+  CHESS: CHESS,
+  FUTSAL: FUTSAL,
+  CARROM_BOARD: CARROM_BOARD,
+  TABLE_TENNIS: TABLE_TENNIS
+};
 
 export const FUTSAL_ROUTES = {
-  TEAMS: '/futsal/teams',
-  STATS: '/futsal/stats',
-  RESULTS: '/futsal/chess',
-  POINTS: '/futsal/points',
-  FIXTURES: '/futsal/fixtures'
+  HOME: `${FUTSAL}/recent`,
+  TEAMS: `${FUTSAL}/teams`,
+  STATS: `${FUTSAL}/stats`,
+  POINTS: `${FUTSAL}/points`,
+  RESULTS: `${FUTSAL}/results`,
+  FIXTURES: `${FUTSAL}/fixtures`
+};
+
+export const CARROM_BOARD_ROUTES = {
+  HOME: `${CARROM_BOARD}/recent`,
+  TEAMS: `${CARROM_BOARD}/teams`,
+  RESULTS: `${CARROM_BOARD}/results`,
+  FIXTURES: `${CARROM_BOARD}/fixtures`
 };

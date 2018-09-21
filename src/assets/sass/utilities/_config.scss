@@ -6,19 +6,24 @@ $color-body: #fafafa;
 $color-text: #4f4f4f;
 $color-link: #0645ad;
 $color-title: #737373;
+$color-background-body: #fff;
 $color-background-gray: #fbfbfb;
-$color-background-header: #e0e0e0;
+$color-background-header: #e5e5e5;
 $color-background-sub-header1: #eee;
 $color-background-sub-header2: #f5f5f5;
+$color-background-main-wrapper: #f9f9f9;
 $color-nav-link-text: #737373;
-$color-green: #66bf61;
+$color-green: #2ecc71;
+$color-blue: #102b7b;
+$color-grey: #808080;
 $color-border: #e8e8e8;
 $color-text-dark: #666;
 $color-text-darker: #333;
+$color-light-grey: #efefef;
 
 // Typography
 $font-size-base: 14px;
-$font-size--medium: 16px;
+$font-size-medium: 16px;
 $font-size-large: ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small: ceil(($font-size-base * 0.85)) !default; // ~12px
 
@@ -39,15 +44,18 @@ $gray: #c7c7c7;
 $blue: #3a539b;
 $white: #fff;
 $black: #000;
-$green: #36d7b7;
+$green: #2ecc71;
 $yellow: #f7ca18;
+$gold: #ffd700;
+$silver: #c0c0c0;
 
 //theme-colors
 $theme-red: #ff9393;
 $theme-blue: #93d8ff;
 
 // Header and Footer
-$color-nav-link: #2ecc71;
+$color-nav-link: #102b7b;
+$color-nav-link-secondary: #2ecc71;
 
 //Breakpoints
 $sm-device: 576px;
