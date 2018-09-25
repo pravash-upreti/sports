@@ -9,16 +9,14 @@ import FixtureResult from './partials/FixtureResult';
 
 class ScoreCard extends Component {
   parseFixtureDate = fixtureDate => {
-    let today = new Date();
     let fDate = new Date(fixtureDate);
     let weekDay = dateFns.format(fDate, 'dddd');
-    let daysDifference = dateFns.differenceInDays(today, fDate);
 
-    if (daysDifference === 0) {
+    if (dateFns.isToday(fDate)) {
       weekDay = 'Today';
-    } else if (daysDifference === 1) {
+    } else if (dateFns.isTomorrow(fDate)) {
       weekDay = 'Tomorrow';
-    } else if (daysDifference === -1) {
+    } else if (dateFns.isYesterday(fDate)) {
       weekDay = 'Yesterday';
     }
 
