@@ -8,7 +8,7 @@ import ScoreCard from '../../scoreCard';
 const Recent = props => {
   const recents = props.data;
 
-  if (recents.showChampions) {
+  if (recents.showWinners) {
     return (
       <div>
         <div>

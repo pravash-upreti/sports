@@ -1,21 +1,18 @@
 import axios from 'axios';
-import moment from 'moment';
 import React, { Component } from 'react';
+
+import FixtureService from '../../services/FixtureService';
 
 import Content from './views/Content';
 import LoadingIcon from '../common/loadingIcon';
 import TournamentTitle from '../common/tournamentTitle';
 
 class CarromBoard extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      data: [],
-      error: false,
-      loading: true
-    };
-  }
+  state = {
+    data: [],
+    error: false,
+    loading: true
+  };
 
   componentDidMount() {
     this.fetchData();
@@ -41,56 +38,6 @@ class CarromBoard extends Component {
       });
   };
 
-  getFixtures = (data, limit) => {
-    let fixtures = data
-      .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0)
-      .sort((a, b) => {
-        return moment(a.date) - new Date(b.date);
-      });
-
-    if (limit) {
-      fixtures = fixtures.slice(0, limit);
-    }
-
-    return fixtures;
-  };
-
-  getResults = (data, limit) => {
-    let results = data
-      .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0)
-      .sort((a, b) => {
-        return moment(a.date) - new Date(b.date);
-      })
-      .reverse();
-
-    if (limit) {
-      results = results.slice(0, limit);
-    }
-
-    return results;
-  };
-
-  getRecents = data => {
-    const today = moment();
-    const finishDate = moment(data.details.finishDate);
-    let recents = {
-      results: [],
-      fixtures: [],
-      showChampions: false
-    };
-
-    if (moment(today).isAfter(finishDate)) {
-      recents.showChampions = true;
-      recents.winner = data.details.winner;
-      recents.runnerUp = data.details.runnerUp;
-    } else {
-      recents.results = this.getResults(data.fixtures, 2);
-      recents.fixtures = this.getFixtures(data.fixtures, 2);
-    }
-
-    return recents;
-  };
-
   getSanitizedData = rawData => {
     const data = {
       teams: rawData.teams,
@@ -98,9 +45,9 @@ class CarromBoard extends Component {
       details: rawData.details,
       statuses: rawData.statuses,
       categories: rawData.categories,
-      recents: this.getRecents(rawData),
-      results: this.getResults(rawData.fixtures),
-      fixtures: this.getFixtures(rawData.fixtures)
+      recents: FixtureService.getRecentFixtures(rawData),
+      results: FixtureService.getResults(rawData.fixtures),
+      fixtures: FixtureService.getFixtures(rawData.fixtures)
     };
 
     return data;
