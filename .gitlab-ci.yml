@@ -5,12 +5,6 @@ build:
   only:
     - dev
   script:
-    - docker-compose up web_yarn
-    - docker-compose up web_build
-tag:
-  only:
-    - dev
-  script:
     - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
 push:
   only:
