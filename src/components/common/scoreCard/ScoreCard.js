@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dateFns from 'date-fns';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -9,29 +9,27 @@ import FixtureResult from './partials/FixtureResult';
 
 class ScoreCard extends Component {
   parseFixtureDate = fixtureDate => {
-    let fDate = moment(fixtureDate).local();
-    let fixtureDayOfTheWeek = fDate.day();
-    let todayDayOfTheWeek = moment()
-      .local()
-      .day();
-    let weekDay = fDate.format('dddd');
+    let today = new Date();
+    let fDate = new Date(fixtureDate);
+    let weekDay = dateFns.format(fDate, 'dddd');
+    let daysDifference = dateFns.differenceInDays(today, fDate);
 
-    if (fixtureDayOfTheWeek === todayDayOfTheWeek) {
+    if (daysDifference === 0) {
       weekDay = 'Today';
-    } else if (fixtureDayOfTheWeek === todayDayOfTheWeek + 1) {
+    } else if (daysDifference === 1) {
       weekDay = 'Tomorrow';
-    } else if (fixtureDayOfTheWeek === todayDayOfTheWeek - 1) {
+    } else if (daysDifference === -1) {
       weekDay = 'Yesterday';
     }
 
-    let minutes = fDate.format('mm');
-    let hours = fDate.format('HH');
+    let minutes = dateFns.format(fDate, 'mm');
+    let hours = dateFns.format(fDate, 'HH');
     let hour = hours > 12 ? `${hours - 12}` : `${hours}`;
     let amPm = hours >= 12 ? `PM` : `AM`;
 
     return {
       weekDay: weekDay,
-      date: fDate.format('D MMMM'),
+      date: dateFns.format(fDate, 'D MMMM'),
       time: `${hour}:${minutes} ${amPm}`
     };
   };
