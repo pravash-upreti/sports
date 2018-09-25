@@ -6,6 +6,16 @@
   padding: 30px 0 10px;
 }
 
+.recent-date-group-title {
+  display: block;
+  padding: 5px;
+  margin: 10px 0 0 0;
+  color: $white;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: $color-nav-link-text;
+}
+
 .winners,
 .runner-up {
   margin: 40px 0;
