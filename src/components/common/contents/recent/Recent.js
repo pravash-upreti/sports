@@ -45,10 +45,8 @@ class Recent extends React.Component {
   };
 
   getWeekFixtures = (recents, date) => {
-    const weekResults = recents.results.filter(result => dateFns.differenceInWeeks(date, new Date(result.date)) === 0);
-    const weekFixtures = recents.fixtures.filter(
-      fixture => dateFns.differenceInWeeks(date, new Date(fixture.date)) === 0
-    );
+    const weekResults = recents.results.filter(result => dateFns.isSameWeek(date, new Date(result.date)));
+    const weekFixtures = recents.fixtures.filter(fixture => dateFns.isSameWeek(date, new Date(fixture.date)));
 
     return weekResults.concat(weekFixtures);
   };
@@ -61,7 +59,9 @@ class Recent extends React.Component {
     const fixtureEls = this.getScoreCardEls(fixtures);
     let weekTitle = null;
     const today = new Date();
-    const weekRange = `${dateFns.startOfWeek(date)} - ${dateFns.endOfWeek(date)}`;
+    const weekRange = `
+      ${dateFns.format(dateFns.startOfWeek(date), 'MMM D')} - ${dateFns.format(dateFns.endOfWeek(date), 'MMM D')}
+    `;
 
     if (dateFns.isSameWeek(date, today)) {
       weekTitle = 'This week';
@@ -73,7 +73,7 @@ class Recent extends React.Component {
 
     const headerTitleEl = weekTitle ? (
       <h5 className="recent-date-group-title">
-        {weekTitle}&#39;s matches: {weekRange}
+        {weekTitle}: {weekRange}
       </h5>
     ) : (
       ''
@@ -151,19 +151,8 @@ class Recent extends React.Component {
     const tomorrowFixtures = this.getDayFixtures(recents, dateFns.addDays(today, 1));
     // Get this week's fixtures
     const thisWeekFixtures = this.getWeekFixtures(recents, today);
-    // Get last week's fixtures
-    const lastWeekFixtures = this.getWeekFixtures(recents, dateFns.subWeeks(today, 1));
-    // Get next week's fixtures
-    const nextWeekFixtures = this.getWeekFixtures(recents, dateFns.addWeeks(today, 1));
 
-    if (
-      !todayFixtures.length &&
-      !yesterdayFixtures.length &&
-      !tomorrowFixtures.length &&
-      !thisWeekFixtures.length &&
-      !lastWeekFixtures.length &&
-      !nextWeekFixtures.length
-    ) {
+    if (!todayFixtures.length && !yesterdayFixtures.length && !tomorrowFixtures.length && !thisWeekFixtures.length) {
       const resultElements = recents.results.map(result => (
         <ScoreCard key={`score-card-${result.id}`} fixture={result} />
       ));
@@ -198,12 +187,20 @@ class Recent extends React.Component {
     // Get remaining fixtures of the week
     const thisWeekRemainingFixtures = this.getThisWeekRemainingFixtures(recents);
 
+    // Get next week's fixtures
+    const nextWeekFirstDay = dateFns.startOfWeek(dateFns.addWeeks(today, 1));
+    const nextWeekFixtures =
+      dateFns.isThursday(today) || dateFns.isFriday(today) || dateFns.isSaturday(today)
+        ? this.getWeekFixtures(recents, nextWeekFirstDay)
+        : [];
+
     return (
       <div>
         {this.getDayFixtureEls(todayFixtures, today)}
         {this.getDayFixtureEls(tomorrowFixtures, dateFns.addDays(today, 1))}
         {this.getDayFixtureEls(yesterdayFixtures, dateFns.subDays(today, 1))}
         {this.getThisWeekRemainingFixturesEls(thisWeekRemainingFixtures)}
+        {this.getWeekFixturesEls(nextWeekFixtures, nextWeekFirstDay)}
       </div>
     );
   }
