@@ -56,7 +56,6 @@ class ScoreCard extends Component {
             <FixtureTeam team={fixture.awayTeam} classNames="away-team text-left" />
             <FixtureInfo fixtureInfo={fixtureInfo} />
           </div>
-          <div className="score-details" />
         </div>
       </div>
     );

@@ -1,20 +1,28 @@
+.recent-wrapper {
+  .recent-date-group-title {
+    display: block;
+    padding: 5px;
+    color: $white;
+    border-radius: 3px;
+    margin: 25px 0 5px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: $color-nav-link-text;
+  }
+
+  .score-card-wrapper {
+    .score-card {
+      margin: 0 0 3px;
+    }
+  }
+}
+
 .fixture-title {
   color: $color-green;
   font-size: 24px;
   font-weight: 400;
   text-align: center;
   padding: 30px 0 10px;
-}
-
-.recent-date-group-title {
-  display: block;
-  padding: 5px;
-  color: $white;
-  border-radius: 3px;
-  margin: 20px 0 0 0;
-  text-align: center;
-  text-transform: uppercase;
-  background-color: $color-nav-link-text;
 }
 
 .winners,
