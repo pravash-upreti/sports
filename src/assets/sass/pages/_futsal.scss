@@ -19,10 +19,8 @@
       min-width: 20px;
       text-align: right;
     }
-  }
 
-  @include mq(md) {
-    .points-table {
+    @include mq(md) {
       .point-rank {
         width: 30px;
       }
