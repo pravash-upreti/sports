@@ -1,12 +1,10 @@
 import React from 'react';
 import dateFns from 'date-fns';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMedal } from '@fortawesome/free-solid-svg-icons';
 
-import ScoreCard from '../../scoreCard';
+import ScoreCard from '../../../scoreCard';
 
-class Recent extends React.Component {
+class RecentFixtures extends React.Component {
   getScoreCardEls = fixtures => {
     return fixtures.map(fixture => <ScoreCard key={`score-card-${fixture.id}`} fixture={fixture} />);
   };
@@ -118,30 +116,6 @@ class Recent extends React.Component {
 
   render() {
     const recents = this.props.data;
-
-    if (recents.showWinners) {
-      return (
-        <div>
-          <div>
-            <h2 className="fixture-title">WINNERS</h2>
-            <h1 className="winners">
-              <FontAwesomeIcon icon={faMedal} className="winner-trophy" />
-              {recents.winner}
-              <FontAwesomeIcon icon={faMedal} className="winner-trophy" />
-            </h1>
-          </div>
-          <div>
-            <h2 className="fixture-title">RUNNER-UP</h2>
-            <h1 className="runner-up">
-              <FontAwesomeIcon icon={faMedal} className="runner-up-trophy" />
-              {recents.runnerUp}
-              <FontAwesomeIcon icon={faMedal} className="runner-up-trophy" />
-            </h1>
-          </div>
-        </div>
-      );
-    }
-
     const today = new Date();
     // Get today's fixtures
     const todayFixtures = this.getDayFixtures(recents, today);
@@ -206,8 +180,8 @@ class Recent extends React.Component {
   }
 }
 
-Recent.propTypes = {
+RecentFixtures.propTypes = {
   data: PropTypes.object
 };
 
-export default Recent;
+export default RecentFixtures;
