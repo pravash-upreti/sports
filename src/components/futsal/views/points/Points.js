@@ -1,36 +1,32 @@
-import React, { Fragment } from 'react';
-
-import { getPointsData } from '../../../../services/FutsalService';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import PointsDataTable from './PointsDataTable';
 
-const Points = () => {
-  // TODO: Fetch data from HOC
-  const pointsData = getPointsData();
+const Points = props => (
+  <table className="table table-striped points-table">
+    <thead>
+      <tr>
+        <th className="point-rank">#</th>
+        <th>Team</th>
+        <th className="point-stat">P</th>
+        <th className="point-stat">W</th>
+        <th className="point-stat">D</th>
+        <th className="point-stat">L</th>
+        <th className="point-stat hide-on-small-screen">GF</th>
+        <th className="point-stat hide-on-small-screen">GA</th>
+        <th className="point-stat">GD</th>
+        <th className="point-stat">Pts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <PointsDataTable pointsData={props.data} />
+    </tbody>
+  </table>
+);
 
-  return (
-    <Fragment>
-      <h1>Points</h1>
-      <table className="table">
-        <thead>
-          <tr>
-            <th>S. No.</th>
-            <th>Team</th>
-            <th>MP</th>
-            <th className="hide-on-small-screen">W</th>
-            <th className="hide-on-small-screen">D</th>
-            <th className="hide-on-small-screen">L</th>
-            <th>GF</th>
-            <th>GA</th>
-            <th>Points</th>
-          </tr>
-        </thead>
-        <tbody>
-          <PointsDataTable pointsData={pointsData} />
-        </tbody>
-      </table>
-    </Fragment>
-  );
+Points.propTypes = {
+  data: PropTypes.array
 };
 
 export default Points;

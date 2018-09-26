@@ -4,15 +4,16 @@ const PointsDataTable = ({ pointsData }) =>
   pointsData.length &&
   pointsData.map(points => (
     <tr key={`points-table-${points.id}`}>
-      <td>{points.id}</td>
-      <td>{points.name}</td>
-      <td>{points.gamesPlayed}</td>
-      <td className="hide-on-small-screen">{points.gamesWon}</td>
-      <td className="hide-on-small-screen">{points.gamesDrawn}</td>
-      <td className="hide-on-small-screen">{points.gamesLost}</td>
-      <td>{points.goalsFor}</td>
-      <td>{points.goalsAgainst}</td>
-      <td>{points.points}</td>
+      <td className="point-rank">{points.id}</td>
+      <td>{points.team.name}</td>
+      <td className="point-stat">{points.played}</td>
+      <td className="point-stat">{points.won}</td>
+      <td className="point-stat">{points.drawn}</td>
+      <td className="point-stat">{points.lost}</td>
+      <td className="point-stat hide-on-small-screen">{points.goalsFor}</td>
+      <td className="point-stat hide-on-small-screen">{points.goalsAgainst}</td>
+      <td className="point-stat">{points.goalDifference}</td>
+      <td className="point-stat">{points.points}</td>
     </tr>
   ));
 

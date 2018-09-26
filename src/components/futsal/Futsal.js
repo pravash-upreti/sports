@@ -43,6 +43,7 @@ class Futsal extends Component {
       teams: rawData.teams,
       details: rawData.details,
       stats: rawData.stats,
+      pointsTable: rawData.table,
       recents: FixtureService.getRecentFixtures(rawData),
       results: FixtureService.getResults(rawData.fixtures),
       fixtures: FixtureService.getFixtures(rawData.fixtures)
