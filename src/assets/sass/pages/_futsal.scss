@@ -8,4 +8,26 @@
   .team-name {
     text-transform: uppercase !important;
   }
+
+  .points-table {
+    .point-rank {
+      width: 20px;
+      text-align: right;
+    }
+
+    .point-stat {
+      min-width: 20px;
+      text-align: right;
+    }
+
+    @include mq(md) {
+      .point-rank {
+        width: 30px;
+      }
+
+      .point-stat {
+        min-width: 60px;
+      }
+    }
+  }
 }

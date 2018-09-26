@@ -1,11 +1,50 @@
 table {
-  th {
+  width: 100%;
+  font-size: $font-size-small;
+  border-collapse: collapse;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+  th,
+  td {
+    padding: 10px 5px;
     text-align: left;
   }
-}
 
-.table {
-  width: 100%;
+  thead {
+    text-align: left;
+
+    th {
+      font-weight: bold;
+    }
+  }
+
+  &.table-border {
+    th,
+    td {
+      border: 1px solid $color-border;
+    }
+  }
+
+  &.table-striped {
+    tr {
+      &:nth-child(even) {
+        background-color: $color-border;
+      }
+    }
+
+    thead {
+      background-color: $color-border;
+    }
+  }
+
+  @include mq(md) {
+    font-size: $font-size-medium;
+
+    th,
+    td {
+      padding: 10px;
+    }
+  }
 }
 
 .hide-on-small-screen {
