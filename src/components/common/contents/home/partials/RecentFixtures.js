@@ -9,97 +9,11 @@ class RecentFixtures extends React.Component {
     return fixtures.map(fixture => <ScoreCard key={`score-card-${fixture.id}`} fixture={fixture} />);
   };
 
-  getDayFixtures = (recents, date) => {
-    const dayResults = recents.results.filter(result => dateFns.isSameDay(date, new Date(result.date)));
-    const dayFixtures = recents.fixtures.filter(fixture => dateFns.isSameDay(date, new Date(fixture.date)));
-
-    return dayResults.concat(dayFixtures);
+  getFixturesForRangeOfDays = (fixtures, firstDay, lastDay) => {
+    return fixtures.filter(fixture => dateFns.isWithinRange(new Date(fixture.date), firstDay, lastDay));
   };
 
-  getDayFixtureEls = (fixtures, date) => {
-    if (!fixtures.length) {
-      return null;
-    }
-
-    const fixtureEls = this.getScoreCardEls(fixtures);
-    let dayTitle = null;
-
-    if (dateFns.isToday(date)) {
-      dayTitle = 'Today';
-    } else if (dateFns.isYesterday(date)) {
-      dayTitle = 'Yesterday';
-    } else if (dateFns.isTomorrow(date)) {
-      dayTitle = 'Tomorrow';
-    }
-
-    const headerTitleEl = dayTitle ? <h5 className="recent-date-group-title">{dayTitle}</h5> : null;
-
-    return (
-      <div className="recent-wrapper">
-        {headerTitleEl}
-        {fixtureEls}
-      </div>
-    );
-  };
-
-  getWeekFixtures = (recents, date) => {
-    const weekResults = recents.results.filter(result => dateFns.isSameWeek(date, new Date(result.date)));
-    const weekFixtures = recents.fixtures.filter(fixture => dateFns.isSameWeek(date, new Date(fixture.date)));
-
-    return weekResults.concat(weekFixtures);
-  };
-
-  getWeekFixturesEls = (fixtures, date) => {
-    if (!fixtures.length) {
-      return null;
-    }
-
-    const fixtureEls = this.getScoreCardEls(fixtures);
-    let weekTitle = null;
-    const today = new Date();
-    const weekRange = `
-      ${dateFns.format(dateFns.startOfWeek(date), 'MMM D')} - ${dateFns.format(dateFns.endOfWeek(date), 'MMM D')}
-    `;
-
-    if (dateFns.isSameWeek(date, today)) {
-      weekTitle = 'This week';
-    } else if (dateFns.isSameWeek(date, dateFns.subWeeks(today, 1))) {
-      weekTitle = 'Last week';
-    } else if (dateFns.isSameWeek(date, dateFns.addWeeks(today, 1))) {
-      weekTitle = 'Next week';
-    }
-
-    const headerTitleEl = weekTitle ? (
-      <h5 className="recent-date-group-title">
-        {weekTitle}: {weekRange}
-      </h5>
-    ) : (
-      ''
-    );
-
-    return (
-      <div className="recent-wrapper">
-        {headerTitleEl}
-        {fixtureEls}
-      </div>
-    );
-  };
-
-  getThisWeekRemainingFixtures = recents => {
-    const dayAfterTomorrow = dateFns.addDays(new Date(), 2);
-    const lastDayOfThisWeek = dateFns.endOfWeek(dayAfterTomorrow);
-
-    const remainingResults = recents.results.filter(result =>
-      dateFns.isWithinRange(result.date, dayAfterTomorrow, lastDayOfThisWeek)
-    );
-    const remainingFixtures = recents.fixtures.filter(fixture =>
-      dateFns.isWithinRange(fixture.date, dayAfterTomorrow, lastDayOfThisWeek)
-    );
-
-    return remainingResults.concat(remainingFixtures);
-  };
-
-  getThisWeekRemainingFixturesEls = fixtures => {
+  getFixturesWrapperEl = (fixtures, title) => {
     if (!fixtures.length) {
       return null;
     }
@@ -108,7 +22,7 @@ class RecentFixtures extends React.Component {
 
     return (
       <div className="recent-wrapper">
-        <h5 className="recent-date-group-title">Later this week</h5>
+        <h5 className="recent-date-group-title">{title}</h5>
         {fixtureEls}
       </div>
     );
@@ -116,65 +30,40 @@ class RecentFixtures extends React.Component {
 
   render() {
     const recents = this.props.data;
+    const recentFixtures = recents.results.concat(recents.fixtures);
     const today = new Date();
+    const tomorrow = dateFns.addDays(today, 1);
+    const dayAfterTomorrow = dateFns.addDays(today, 2);
+    const todayWeekDay = dateFns.getDay(today);
+    const twStartDay = dateFns.startOfWeek(today);
+    const twLastDay = dateFns.endOfWeek(today);
+    const lwStartDay = dateFns.startOfWeek(dateFns.subWeeks(today, 1));
+    const lwEndDay = dateFns.endOfWeek(dateFns.subWeeks(today, 1));
+    const nwStartDay = dateFns.startOfWeek(dateFns.addWeeks(today, 1));
+    const nwEndDay = dateFns.endOfWeek(dateFns.addWeeks(today, 1));
+
     // Get today's fixtures
-    const todayFixtures = this.getDayFixtures(recents, today);
-    // Get yesterday's fixtures
-    const yesterdayFixtures = this.getDayFixtures(recents, dateFns.subDays(today, 1));
+    const todayFixtures = this.getFixturesForRangeOfDays(recentFixtures, today, tomorrow);
     // Get tomorrow's fixtures
-    const tomorrowFixtures = this.getDayFixtures(recents, dateFns.addDays(today, 1));
-    // Get this week's fixtures
-    const thisWeekFixtures = this.getWeekFixtures(recents, today);
-
-    if (!todayFixtures.length && !yesterdayFixtures.length && !tomorrowFixtures.length && !thisWeekFixtures.length) {
-      const resultElements = recents.results.map(result => (
-        <ScoreCard key={`score-card-${result.id}`} fixture={result} />
-      ));
-      const fixtureElements = recents.fixtures.map(fixture => (
-        <ScoreCard key={`score-card-${fixture.id}`} fixture={fixture} />
-      ));
-      const resultElWrapper = !resultElements.length ? null : (
-        <div>
-          <h2 className="fixture-title">RESULTS</h2>
-          {resultElements}
-        </div>
-      );
-      const fixtureElWrapper = !fixtureElements.length ? null : (
-        <div>
-          <h2 className="fixture-title">FIXTURES</h2>
-          {fixtureElements}
-        </div>
-      );
-
-      return (
-        <div>
-          {resultElWrapper}
-          {fixtureElWrapper}
-        </div>
-      );
-    }
-
-    if (!todayFixtures.length && !yesterdayFixtures.length && !tomorrowFixtures.length) {
-      return <div>{this.getWeekFixturesEls(thisWeekFixtures, today)}</div>;
-    }
-
-    // Get remaining fixtures of the week
-    const thisWeekRemainingFixtures = this.getThisWeekRemainingFixtures(recents);
-
+    const tomorrowFixtures = this.getFixturesForRangeOfDays(recentFixtures, tomorrow, dayAfterTomorrow);
+    // Get this week played fixtures
+    const twPlayedFixtures = todayWeekDay >= 1 ? this.getFixturesForRangeOfDays(recentFixtures, twStartDay, today) : [];
+    // Get this week remaining fixtures
+    const twRemainingFixtures =
+      todayWeekDay >= 1 ? this.getFixturesForRangeOfDays(recentFixtures, dayAfterTomorrow, twLastDay) : [];
+    // Get last week fixtures
+    const lwFixtures = todayWeekDay <= 2 ? this.getFixturesForRangeOfDays(recentFixtures, lwStartDay, lwEndDay) : [];
     // Get next week's fixtures
-    const nextWeekFirstDay = dateFns.startOfWeek(dateFns.addWeeks(today, 1));
-    const nextWeekFixtures =
-      dateFns.isThursday(today) || dateFns.isFriday(today) || dateFns.isSaturday(today)
-        ? this.getWeekFixtures(recents, nextWeekFirstDay)
-        : [];
+    const nwFixtures = todayWeekDay >= 4 ? this.getFixturesForRangeOfDays(recentFixtures, nwStartDay, nwEndDay) : [];
 
     return (
       <div>
-        {this.getDayFixtureEls(todayFixtures, today)}
-        {this.getDayFixtureEls(tomorrowFixtures, dateFns.addDays(today, 1))}
-        {this.getDayFixtureEls(yesterdayFixtures, dateFns.subDays(today, 1))}
-        {this.getThisWeekRemainingFixturesEls(thisWeekRemainingFixtures)}
-        {this.getWeekFixturesEls(nextWeekFixtures, nextWeekFirstDay)}
+        {this.getFixturesWrapperEl(todayFixtures, 'Today')}
+        {this.getFixturesWrapperEl(tomorrowFixtures, 'Tomorrow')}
+        {this.getFixturesWrapperEl(twRemainingFixtures, 'Later this week')}
+        {this.getFixturesWrapperEl(nwFixtures, 'Next week')}
+        {this.getFixturesWrapperEl(twPlayedFixtures, 'Earlier this week')}
+        {this.getFixturesWrapperEl(lwFixtures, 'Last week')}
       </div>
     );
   }

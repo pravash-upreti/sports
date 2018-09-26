@@ -28,7 +28,7 @@ const getResults = (fixturesList, limit) => {
   return results;
 };
 
-const getRecentFixtures = tournamentDetails => {
+const getRecentFixtures = (tournamentDetails, limit = 2) => {
   const today = new Date();
   const finishDate = new Date(tournamentDetails.details.finishDate);
   let recents = {
@@ -42,8 +42,8 @@ const getRecentFixtures = tournamentDetails => {
     recents.winner = tournamentDetails.details.winner;
     recents.runnerUp = tournamentDetails.details.runnerUp;
   } else {
-    recents.results = getResults(tournamentDetails.fixtures, 2);
-    recents.fixtures = getFixtures(tournamentDetails.fixtures, 2);
+    recents.results = getResults(tournamentDetails.fixtures, limit);
+    recents.fixtures = getFixtures(tournamentDetails.fixtures, limit);
   }
 
   return recents;

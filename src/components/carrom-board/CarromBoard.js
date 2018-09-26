@@ -45,7 +45,7 @@ class CarromBoard extends Component {
       details: rawData.details,
       statuses: rawData.statuses,
       categories: rawData.categories,
-      recents: FixtureService.getRecentFixtures(rawData),
+      recents: FixtureService.getRecentFixtures(rawData, 5),
       results: FixtureService.getResults(rawData.fixtures),
       fixtures: FixtureService.getFixtures(rawData.fixtures)
     };
