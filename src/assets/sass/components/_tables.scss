@@ -28,7 +28,7 @@ table {
   &.table-striped {
     tr {
       &:nth-child(even) {
-        background-color: $color-border;
+        background-color: $color-background-main-wrapper;
       }
     }
 
