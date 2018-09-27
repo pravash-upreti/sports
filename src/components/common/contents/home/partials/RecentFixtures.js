@@ -21,8 +21,8 @@ class RecentFixtures extends React.Component {
     const fixtureEls = this.getScoreCardEls(fixtures);
 
     return (
-      <div className="recent-wrapper">
-        <h5 className="recent-date-group-title">{title}</h5>
+      <div>
+        <h5 className="group-heading">{title}</h5>
         {fixtureEls}
       </div>
     );
@@ -57,7 +57,7 @@ class RecentFixtures extends React.Component {
     const nwFixtures = todayWeekDay >= 4 ? this.getFixturesForRangeOfDays(recentFixtures, nwStartDay, nwEndDay) : [];
 
     return (
-      <div>
+      <div className="recent-wrapper">
         {this.getFixturesWrapperEl(todayFixtures, 'Today')}
         {this.getFixturesWrapperEl(tomorrowFixtures, 'Tomorrow')}
         {this.getFixturesWrapperEl(twRemainingFixtures, 'Later this week')}
