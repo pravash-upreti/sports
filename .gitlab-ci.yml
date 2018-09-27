@@ -3,8 +3,8 @@ before_script:
   - echo Starting...
 deploy:
   only:
-    - dev
+    - master
   script:
-    - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
-    - docker push registry.lftechnology.com/sports:latest
-    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com
+    - docker build -t registry.lftechnology.com/sports:stable -f ./docker/Dockerfile .
+    - docker push registry.lftechnology.com/sports:stable
+    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/sports.lftechnology.com
