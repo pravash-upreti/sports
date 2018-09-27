@@ -32,13 +32,6 @@ class ScoreCard extends Component {
     };
   };
 
-  handleClick = () => {
-    if (this.props.fixture.status.toLowerCase() === 'played' && this.props.fixture.activities) {
-      this.props.updateShowModalData(this.props.fixture);
-      this.props.toggleModal(true);
-    }
-  };
-
   render() {
     let fixture = this.props.fixture;
     let fixtureInfo = fixture.round
@@ -48,7 +41,7 @@ class ScoreCard extends Component {
 
     return (
       <div className="score-card-wrapper">
-        <div className="score-card" onClick={this.handleClick}>
+        <div className="score-card">
           <div className="score-brief">
             <FixtureDate fixtureDate={fixtureDate} />
             <FixtureTeam team={fixture.homeTeam} classNames="home-team text-right" />
