@@ -1,11 +1,11 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import FixtureService from '../../services/FixtureService';
 
 import Content from './views/Content';
 import LoadingIcon from '../common/loadingIcon';
-import TournamentTitle from '../common/tournamentTitle';
 
 class Futsal extends Component {
   state = {
@@ -15,6 +15,7 @@ class Futsal extends Component {
   };
 
   componentDidMount() {
+    this.props.handleChangePageTitle('Futsal');
     this.fetchData();
   }
 
@@ -22,9 +23,10 @@ class Futsal extends Component {
     axios
       .get('https://script.google.com/macros/s/AKfycbzSidEKAgKW6EhCUB5qukR5lO-8JUW-O35ax82JZUumFxwJFns/exec')
       .then(response => {
-        this.setState({
-          data: response.data.data
-        });
+        const data = this.getSanitizedData(response.data.data);
+
+        this.setState({ data });
+        this.props.handleChangePageTitle(data.details.title, data.details.year);
       })
       .catch(() => {
         this.setState({
@@ -69,17 +71,18 @@ class Futsal extends Component {
       );
     }
 
-    const data = this.getSanitizedData(this.state.data);
-
     return (
       <div className="futsal">
-        <TournamentTitle title={data.details.title} season={data.details.year} />
         <div className="tournament-content">
-          <Content data={data} />
+          <Content data={this.state.data} />
         </div>
       </div>
     );
   }
 }
+
+Futsal.propTypes = {
+  handleChangePageTitle: PropTypes.func
+};
 
 export default Futsal;

@@ -1,11 +1,11 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import FixtureService from '../../services/FixtureService';
 
 import Content from './views/Content';
 import LoadingIcon from '../common/loadingIcon';
-import TournamentTitle from '../common/tournamentTitle';
 
 class CarromBoard extends Component {
   state = {
@@ -15,6 +15,7 @@ class CarromBoard extends Component {
   };
 
   componentDidMount() {
+    this.props.handleChangePageTitle('Carrom Board');
     this.fetchData();
   }
 
@@ -23,8 +24,10 @@ class CarromBoard extends Component {
       .get('https://script.google.com/macros/s/AKfycbyYfBIlzlDhbFKprirQTDeeb_-ezxQkYsYq9HyEDT9LAl7HLkPc/exec')
       .then(response => {
         this.setState({
-          data: response.data.data
+          data: this.getSanitizedData(response.data.data)
         });
+
+        this.props.handleChangePageTitle(this.state.data.details.title, this.state.data.details.year);
       })
       .catch(() => {
         this.setState({
@@ -70,17 +73,18 @@ class CarromBoard extends Component {
       );
     }
 
-    const data = this.getSanitizedData(this.state.data);
-
     return (
       <div className="carrom-board">
-        <TournamentTitle title={data.details.title} season={data.details.year} />
         <div className="tournament-content">
-          <Content data={data} />
+          <Content data={this.state.data} />
         </div>
       </div>
     );
   }
 }
+
+CarromBoard.propTypes = {
+  handleChangePageTitle: PropTypes.func
+};
 
 export default CarromBoard;
