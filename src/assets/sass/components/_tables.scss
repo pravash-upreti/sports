@@ -3,7 +3,7 @@ table {
   background-color: $white;
   font-size: $font-size-small;
   border-collapse: collapse;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px $color-grey-cool-2;
 
   th,
   td {
@@ -12,7 +12,9 @@ table {
   }
 
   thead {
+    color: $white;
     text-align: left;
+    background-color: $color-blue;
 
     th {
       font-weight: bold;
@@ -31,10 +33,6 @@ table {
       &:nth-child(even) {
         background-color: $color-background-main-wrapper;
       }
-    }
-
-    thead {
-      background-color: $color-border;
     }
   }
 
