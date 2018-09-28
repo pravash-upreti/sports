@@ -10,6 +10,10 @@ class RecentFixtures extends React.Component {
   };
 
   getFixturesForRangeOfDays = (fixtures, firstDay, lastDay) => {
+    if (dateFns.isSameDay(firstDay, lastDay)) {
+      return fixtures.filter(fixture => dateFns.isSameDay(new Date(fixture.date), firstDay));
+    }
+
     return fixtures.filter(fixture => dateFns.isWithinRange(new Date(fixture.date), firstDay, lastDay));
   };
 
@@ -33,6 +37,7 @@ class RecentFixtures extends React.Component {
     const recentFixtures = recents.results.concat(recents.fixtures);
     const today = new Date();
     const tomorrow = dateFns.addDays(today, 1);
+    const yesterday = dateFns.subDays(today, 1);
     const dayAfterTomorrow = dateFns.addDays(today, 2);
     const todayWeekDay = dateFns.getDay(today);
     const twStartDay = dateFns.startOfWeek(today);
@@ -43,11 +48,12 @@ class RecentFixtures extends React.Component {
     const nwEndDay = dateFns.endOfWeek(dateFns.addWeeks(today, 1));
 
     // Get today's fixtures
-    const todayFixtures = this.getFixturesForRangeOfDays(recentFixtures, today, tomorrow);
+    const todayFixtures = this.getFixturesForRangeOfDays(recentFixtures, today, today);
     // Get tomorrow's fixtures
-    const tomorrowFixtures = this.getFixturesForRangeOfDays(recentFixtures, tomorrow, dayAfterTomorrow);
+    const tomorrowFixtures = this.getFixturesForRangeOfDays(recentFixtures, tomorrow, tomorrow);
     // Get this week played fixtures
-    const twPlayedFixtures = todayWeekDay >= 1 ? this.getFixturesForRangeOfDays(recentFixtures, twStartDay, today) : [];
+    const twPlayedFixtures =
+      todayWeekDay >= 1 ? this.getFixturesForRangeOfDays(recentFixtures, twStartDay, yesterday) : [];
     // Get this week remaining fixtures
     const twRemainingFixtures =
       todayWeekDay >= 1 && todayWeekDay <= 4
