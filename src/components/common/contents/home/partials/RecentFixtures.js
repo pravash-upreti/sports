@@ -50,7 +50,9 @@ class RecentFixtures extends React.Component {
     const twPlayedFixtures = todayWeekDay >= 1 ? this.getFixturesForRangeOfDays(recentFixtures, twStartDay, today) : [];
     // Get this week remaining fixtures
     const twRemainingFixtures =
-      todayWeekDay >= 1 ? this.getFixturesForRangeOfDays(recentFixtures, dayAfterTomorrow, twLastDay) : [];
+      todayWeekDay >= 1 && todayWeekDay <= 4
+        ? this.getFixturesForRangeOfDays(recentFixtures, dayAfterTomorrow, twLastDay)
+        : [];
     // Get last week fixtures
     const lwFixtures = todayWeekDay <= 2 ? this.getFixturesForRangeOfDays(recentFixtures, lwStartDay, lwEndDay) : [];
     // Get next week's fixtures
