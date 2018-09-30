@@ -6,7 +6,11 @@ import Team from './partials/Team';
 const Teams = props => {
   const els = props.data.map((team, index) => <Team key={`team-${index}`} team={team} />);
 
-  return <div className="teams-wrapper">{els}</div>;
+  return (
+    <div className="container">
+      <div className="teams-wrapper">{els}</div>
+    </div>
+  );
 };
 
 Teams.propTypes = {

@@ -1,5 +1,6 @@
 import dateFns from 'date-fns';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 
 import FixtureTeam from './partials/FixtureTeam';
@@ -41,15 +42,26 @@ class ScoreCard extends Component {
 
     return (
       <div className="score-card-wrapper">
-        <div className="score-card">
-          <div className="score-brief">
-            <FixtureDate fixtureDate={fixtureDate} />
-            <FixtureTeam team={fixture.homeTeam} classNames="home-team text-right" />
-            <FixtureResult fixture={fixture} />
-            <FixtureTeam team={fixture.awayTeam} classNames="away-team text-left" />
-            <FixtureInfo fixtureInfo={fixtureInfo} />
+        <Link
+          key={fixture.id}
+          to={{
+            pathname: `/carrom-board/fixture/${fixture.id}`,
+            state: {
+              modal: true,
+              data: fixture
+            }
+          }}
+        >
+          <div className="score-card">
+            <div className="score-brief">
+              <FixtureDate fixtureDate={fixtureDate} />
+              <FixtureTeam team={fixture.homeTeam} classNames="home-team text-right" />
+              <FixtureResult fixture={fixture} />
+              <FixtureTeam team={fixture.awayTeam} classNames="away-team text-left" />
+              <FixtureInfo fixtureInfo={fixtureInfo} />
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     );
   }

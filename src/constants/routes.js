@@ -25,5 +25,6 @@ export const CARROM_BOARD_ROUTES = {
   HOME: `${CARROM_BOARD}/recent`,
   TEAMS: `${CARROM_BOARD}/teams`,
   RESULTS: `${CARROM_BOARD}/results`,
-  FIXTURES: `${CARROM_BOARD}/fixtures`
+  FIXTURES: `${CARROM_BOARD}/fixtures`,
+  FIXTURE: `${CARROM_BOARD}/fixture/:fixtureId`
 };

@@ -76,7 +76,7 @@ class CarromBoard extends Component {
     return (
       <div className="carrom-board">
         <div className="tournament-content">
-          <Content data={this.state.data} />
+          <Content routeProps={this.props.routeProps} data={this.state.data} />
         </div>
       </div>
     );
@@ -84,6 +84,7 @@ class CarromBoard extends Component {
 }
 
 CarromBoard.propTypes = {
+  routeProps: PropTypes.object,
   handleChangePageTitle: PropTypes.func
 };
 

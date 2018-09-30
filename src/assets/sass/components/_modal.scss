@@ -1,0 +1,134 @@
+.modal-wrapper {
+  display: block;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: auto;
+  margin: 0 auto;
+  text-align: center;
+  overflow-y: scroll;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.25s;
+  font-size: $font-size-base;
+  font-weight: normal;
+
+  .modal {
+    min-width: 40%;
+    max-width: 80%;
+    margin: 20px;
+    padding: 8px;
+    color: $color-text-dark;
+    position: relative;
+    border-radius: 4px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 1);
+
+    .modal-close {
+      position: absolute;
+      right: -16px;
+      top: -16px;
+      width: 32px;
+      height: 32px;
+      color: $white;
+      font-size: 20px;
+      line-height: 32px;
+      border-radius: 50%;
+      background: $red;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .modal-row {
+      width: 100%;
+      display: table;
+      font-weight: 300;
+      line-height: 16px;
+
+      .col-1,
+      .col-2,
+      .col-3,
+      .col-4,
+      .col-5 {
+        padding: 15px 10px;
+        line-height: 18px;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .col-1,
+      .col-5 {
+        width: 50px;
+      }
+
+      .col-2,
+      .col-4 {
+        width: 250px;
+      }
+
+      .col-3 {
+        width: 100px;
+        font-weight: 400;
+        text-align: center;
+        background: rgba(232, 232, 232, 0.6);
+      }
+
+      .col-2 {
+        text-align: right;
+      }
+
+      .col-4 {
+        text-align: left;
+      }
+    }
+
+    .modal-title,
+    .modal-body {
+      padding: 10px;
+    }
+
+    .modal-title {
+      font-size: $font-size--title;
+      background: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid $color-light-grey;
+
+      .col-3 {
+        background: none;
+      }
+
+      .col-4 {
+        background: none;
+      }
+
+      .col-1,
+      .col-5 {
+        width: 0;
+        padding: 0;
+      }
+
+      .col-2,
+      .col-4 {
+        width: 300px;
+      }
+    }
+
+    .modal-half-time {
+      font-size: 11px;
+      display: block;
+    }
+
+    .scorer-name {
+      display: inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .team-logo-wrapper {
+      display: inline-block;
+    }
+  }
+}
