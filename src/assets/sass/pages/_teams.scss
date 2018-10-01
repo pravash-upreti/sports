@@ -12,7 +12,7 @@
     background-color: $white;
     font-size: $font-size-medium;
     border-radius: 3px !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px $color-grey-cool-2;
 
     .team-title {
       padding: 10px;
@@ -43,7 +43,7 @@
 
         li {
           padding: 10px;
-          color: $color-grey;
+          color: $color-text-darker;
           text-transform: capitalize;
           border-bottom: 1px solid $color-border;
 

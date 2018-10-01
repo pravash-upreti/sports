@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChess, faFutbol, faTableTennis, faVectorSquare } from '@fortawesome/free-solid-svg-icons';
@@ -7,11 +8,12 @@ import { BASE_ROUTES } from '../../constants/routes';
 
 import { invertedLogo } from '../../assets/images';
 
-const Header = () => (
+const Header = props => (
   <header>
     <div className="container-fluid">
       <div className="logo-wrapper">
-        <img src={invertedLogo} alt="" />
+        <img className="logo" src={invertedLogo} alt="" />
+        <div className="logo-title">{`${props.pageTitle.mainText} ${props.pageTitle.secondaryText}`}</div>
       </div>
       <ul className="nav nav--primary">
         <li>
@@ -42,5 +44,9 @@ const Header = () => (
     </div>
   </header>
 );
+
+Header.propTypes = {
+  pageTitle: PropTypes.object
+};
 
 export default Header;

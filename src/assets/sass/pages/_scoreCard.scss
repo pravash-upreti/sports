@@ -8,13 +8,14 @@ $score-card-height: 80px;
     transition: 0.25s;
     background: $white;
     display: inline-block;
-    color: $color-text-dark;
+    color: $color-text-darker;
     font-size: $font-size-base;
     border-radius: 3px !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px $color-grey-cool-2;
 
     &:hover {
-      box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
+      position: relative;
+      box-shadow: 0 18px 24px $color-grey-cool-2;
     }
 
     .score-brief {
