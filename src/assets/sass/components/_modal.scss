@@ -9,21 +9,23 @@
   margin: 0 auto;
   text-align: center;
   overflow-y: scroll;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba($black, 0.5);
   transition: 0.25s;
   font-size: $font-size-base;
   font-weight: normal;
 
   .modal {
-    min-width: 40%;
-    max-width: 80%;
-    margin: 20px;
+    width: 90%;
+    margin: 20px 0;
     padding: 8px;
     color: $color-text-dark;
-    position: relative;
+    position: absolute;
     border-radius: 4px;
     display: inline-block;
-    background: rgba(255, 255, 255, 1);
+    background: $white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     .modal-close {
       position: absolute;
@@ -42,47 +44,47 @@
       }
     }
 
+    .col-1,
+    .col-2,
+    .col-3,
+    .col-4,
+    .col-5 {
+      padding: 15px 10px;
+      line-height: 18px;
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .col-1,
+    .col-5 {
+      width: 10%;
+    }
+
+    .col-2,
+    .col-4 {
+      width: 30%;
+    }
+
+    .col-3 {
+      width: 20%;
+      font-weight: 400;
+      text-align: center;
+      background: rgba(232, 232, 232, 0.6);
+    }
+
+    .col-2 {
+      text-align: right;
+    }
+
+    .col-4 {
+      text-align: left;
+    }
+
     .modal-row {
       width: 100%;
       display: table;
       font-weight: 300;
       line-height: 16px;
-
-      .col-1,
-      .col-2,
-      .col-3,
-      .col-4,
-      .col-5 {
-        padding: 15px 10px;
-        line-height: 18px;
-        display: table-cell;
-        vertical-align: middle;
-      }
-
-      .col-1,
-      .col-5 {
-        width: 50px;
-      }
-
-      .col-2,
-      .col-4 {
-        width: 250px;
-      }
-
-      .col-3 {
-        width: 100px;
-        font-weight: 400;
-        text-align: center;
-        background: rgba(232, 232, 232, 0.6);
-      }
-
-      .col-2 {
-        text-align: right;
-      }
-
-      .col-4 {
-        text-align: left;
-      }
     }
 
     .modal-title,
@@ -91,17 +93,23 @@
     }
 
     .modal-title {
-      font-size: $font-size--title;
+      font-size: $font-size-h5;
       background: none;
       text-transform: uppercase;
       border-bottom: 1px solid $color-light-grey;
 
-      .col-3 {
-        background: none;
+      .col-1,
+      .col-2,
+      .col-3,
+      .col-4,
+      .col-5 {
+        display: inline-block;
       }
 
-      .col-4 {
+      .col-3 {
+        width: 20%;
         background: none;
+        font-size: $font-size-h4;
       }
 
       .col-1,
@@ -112,8 +120,13 @@
 
       .col-2,
       .col-4 {
-        width: 300px;
+        width: 40%;
+        background: none;
       }
+    }
+
+    .modal-body {
+      font-size: $font-size-small;
     }
 
     .modal-half-time {
@@ -129,6 +142,64 @@
 
     .team-logo-wrapper {
       display: inline-block;
+    }
+
+    .modal-team-name {
+      padding: 2px;
+    }
+
+    .modal-fixture-date {
+      font-size: $font-size-base;
+      padding: 5px;
+      text-transform: capitalize;
+    }
+
+    table {
+      background: transparent;
+      box-shadow: none;
+      font-size: $font-size-small;
+
+      tr {
+        th,
+        td {
+          text-transform: capitalize;
+          border: 1px solid $color-light-grey;
+
+          &.activity-points {
+            min-width: 10px;
+            max-width: 20px;
+            text-align: center;
+          }
+        }
+
+        &:nth-child(even) {
+          background-color: $color-background-main-wrapper;
+        }
+      }
+    }
+
+    @include mq(md) {
+      width: 80%;
+
+      .modal-title {
+        font-size: $font-size-h4;
+
+        .col-3 {
+          font-size: $font-size-h3;
+        }
+      }
+
+      table {
+        font-size: $font-size-base;
+      }
+    }
+
+    @include mq(lg) {
+      width: 60%;
+    }
+
+    @include mq(xl) {
+      width: 55%;
     }
   }
 }

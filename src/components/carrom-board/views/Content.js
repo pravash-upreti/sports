@@ -33,7 +33,10 @@ class Content extends React.Component {
           <Route path={CARROM_BOARD_ROUTES.TEAMS} render={() => <Teams data={data.teams} />} />
           <Route path={CARROM_BOARD_ROUTES.RESULTS} render={() => <Results data={data.results} />} />
           <Route path={CARROM_BOARD_ROUTES.FIXTURES} render={() => <Fixtures data={data.fixtures} />} />
-          <Route path={CARROM_BOARD_ROUTES.FIXTURE} render={routeProps => <Fixture routeProps={routeProps} />} />
+          <Route
+            path={CARROM_BOARD_ROUTES.FIXTURE}
+            render={routeProps => <Fixture fixtures={data.allFixtures} routeProps={routeProps} />}
+          />
           <Redirect to={CARROM_BOARD_ROUTES.HOME} />
         </Switch>
         {isModal ? (
