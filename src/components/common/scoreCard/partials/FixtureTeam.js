@@ -1,20 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FixtureTeamInfo from './FixtureTeamInfo';
+import { getParticipantLogoElement } from '../../../../utils/participantHelpers';
 
 const FixtureTeam = props => {
-  let teamEls = [];
+  const team = props.team;
+  let teamCustomStyles = {
+    margin: '0 8px'
+  };
 
-  if (props.team.players) {
-    props.team.players.forEach((player, index) => {
-      teamEls.push(<FixtureTeamInfo team={player} key={`team-player-${index}`} />);
+  const teamLogoEl = getParticipantLogoElement(team, teamCustomStyles);
+
+  if (team.logo) {
+    teamCustomStyles = Object.assign(teamCustomStyles, {
+      color: team.logo.color,
+      backgroundColor: team.logo.backgroundColor
     });
-  } else {
-    teamEls.push(<FixtureTeamInfo team={props.team} key={`team-player-${props.team.id}`} />);
   }
 
-  return <div className={`team-info ${props.classNames}`}>{teamEls}</div>;
+  // If the team name represents combination of two or more players
+  // const isGrouped = !!props.team.players;
+
+  return (
+    <div className={`team-info ${props.classNames}`}>
+      <div className="team-name-wrapper">
+        <h2 className="team-name">
+          {team.name}
+          {teamLogoEl}
+        </h2>
+      </div>
+    </div>
+  );
 };
 
 FixtureTeam.propTypes = {
