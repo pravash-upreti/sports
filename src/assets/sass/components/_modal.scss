@@ -49,7 +49,7 @@
     .col-3,
     .col-4,
     .col-5 {
-      padding: 15px 10px;
+      padding: 10px;
       line-height: 18px;
       display: table-cell;
       vertical-align: middle;
@@ -200,6 +200,14 @@
 
     @include mq(xl) {
       width: 55%;
+
+      .modal-title {
+        font-size: $font-size-h4;
+
+        .col-3 {
+          font-size: $font-size-h1;
+        }
+      }
     }
   }
 }

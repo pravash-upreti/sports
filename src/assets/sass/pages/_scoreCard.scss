@@ -1,5 +1,5 @@
 /* Score card */
-$score-card-height: 70px;
+$score-card-height: 80px;
 
 .score-card-wrapper {
   .score-card {
@@ -82,6 +82,20 @@ $score-card-height: 70px;
           .versus {
             display: block;
             font-size: $font-size-h4;
+
+            p {
+              font-size: $font-size-base;
+              line-height: $score-card-height / 3;
+
+              &.game-time {
+                font-weight: normal;
+                font-size: $font-size--xlarge;
+              }
+
+              &.game-round {
+                text-transform: capitalize;
+              }
+            }
           }
 
           .result-dash {

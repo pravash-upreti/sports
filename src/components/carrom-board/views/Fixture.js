@@ -96,7 +96,7 @@ const Fixture = ({ fixtures, routeProps }) => {
           </div>
         </div>
       </div>
-      <div className="modal-row modal-fixture-date">{fixtureDate}</div>
+      <div className="modal-row modal-fixture-date">{`${fixture.round}, ${fixtureDate}`}</div>
     </div>
   );
   const scoreEl = !isFixturePlayed ? (
