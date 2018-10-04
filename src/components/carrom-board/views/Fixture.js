@@ -99,13 +99,15 @@ const Fixture = ({ fixtures, routeProps }) => {
       <div className="modal-row modal-fixture-date">{`${fixture.round}, ${fixtureDate}`}</div>
     </div>
   );
+
   const scoreEl = !isFixturePlayed ? (
-    <div>This fixture is yet to be played.</div>
+    <div className="modal-row">This fixture is yet to be played.</div>
   ) : !fixture.activities.length ? (
-    <div>No info available.</div>
+    <div className="modal-row">No info available.</div>
   ) : (
     getScoreElement(fixture.activities)
   );
+
   const bodyEl = <div>{scoreEl}</div>;
 
   return (
