@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import AppRouter from './AppRouter';
 
@@ -24,7 +25,15 @@ class App extends React.Component {
   };
 
   render() {
-    return <AppRouter pageTitle={this.state.pageTitle} handleChangePageTitle={this.handleChangePageTitle} />;
+    return (
+      <Router>
+        <Route
+          render={() => (
+            <AppRouter pageTitle={this.state.pageTitle} handleChangePageTitle={this.handleChangePageTitle} />
+          )}
+        />
+      </Router>
+    );
   }
 }
 

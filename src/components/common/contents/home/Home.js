@@ -6,16 +6,18 @@ import RecentFixtures from './partials/RecentFixtures';
 
 const Home = props => {
   const recents = props.data;
+  const recentEl = recents.showWinners ? (
+    <Winners winner={recents.winner} runnerUp={recents.runnerUp} />
+  ) : (
+    <RecentFixtures data={recents} fixtureLink={props.fixtureLink} />
+  );
 
-  if (recents.showWinners) {
-    return <Winners winner={recents.winner} runnerUp={recents.runnerUp} />;
-  }
-
-  return <RecentFixtures data={recents} />;
+  return <div className="container">{recentEl}</div>;
 };
 
 Home.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  fixtureLink: PropTypes.string
 };
 
 export default Home;

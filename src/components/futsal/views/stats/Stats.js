@@ -46,7 +46,11 @@ const Stats = props => {
     statsEl.push(redCardsStatEl);
   }
 
-  return <div className="stats-wrapper">{statsEl}</div>;
+  return (
+    <div className="container">
+      <div className="stats-wrapper">{statsEl}</div>
+    </div>
+  );
 };
 
 Stats.propTypes = {

@@ -4,28 +4,61 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { CARROM_BOARD_ROUTES } from '../../../constants/routes';
 
+import Fixture from './Fixture';
 import SubHeader from './SubHeader';
 import { Home, Teams, Results, Fixtures } from '../../common/contents';
 
-const Content = props => {
-  return (
-    <div>
-      <SubHeader />
-      <div className="container">
+class Content extends React.Component {
+  previousLocation = this.props.routeProps.location;
+
+  componentWillUpdate(nextProps) {
+    const { location } = this.props.routeProps;
+
+    // set previousLocation if props.location is not modal
+    if (nextProps.routeProps.history.action !== 'POP' && (!location.state || !location.state.modal)) {
+      this.previousLocation = this.props.routeProps.location;
+    }
+  }
+
+  render() {
+    const data = this.props.data;
+    const { location } = this.props.routeProps;
+    const isModal = !!(location.state && location.state.modal && this.previousLocation !== location); // not initial render
+
+    return (
+      <React.Fragment>
+        <SubHeader />
         <Switch>
-          <Route path={CARROM_BOARD_ROUTES.HOME} render={() => <Home data={props.data.recents} />} />
-          <Route path={CARROM_BOARD_ROUTES.TEAMS} render={() => <Teams data={props.data.teams} />} />
-          <Route path={CARROM_BOARD_ROUTES.RESULTS} render={() => <Results data={props.data.results} />} />
-          <Route path={CARROM_BOARD_ROUTES.FIXTURES} render={() => <Fixtures data={props.data.fixtures} />} />
+          <Route
+            path={CARROM_BOARD_ROUTES.HOME}
+            render={() => <Home data={data.recents} fixtureLink={CARROM_BOARD_ROUTES.FIXTURE} />}
+          />
+          <Route path={CARROM_BOARD_ROUTES.TEAMS} render={() => <Teams data={data.teams} />} />
+          <Route
+            path={CARROM_BOARD_ROUTES.RESULTS}
+            render={() => <Results data={data.results} fixtureLink={CARROM_BOARD_ROUTES.FIXTURE} />}
+          />
+          <Route
+            path={CARROM_BOARD_ROUTES.FIXTURES}
+            render={() => <Fixtures data={data.fixtures} fixtureLink={CARROM_BOARD_ROUTES.FIXTURE} />}
+          />
+          <Route
+            path={CARROM_BOARD_ROUTES.FIXTURE}
+            render={routeProps => <Fixture fixtures={data.allFixtures} routeProps={routeProps} />}
+          />
           <Redirect to={CARROM_BOARD_ROUTES.HOME} />
         </Switch>
-      </div>
-    </div>
-  );
-};
+        {isModal ? (
+          <Route path={CARROM_BOARD_ROUTES.FIXTURE} render={routeProps => <Fixture routeProps={routeProps} />} />
+        ) : null}
+      </React.Fragment>
+    );
+  }
+}
 
 Content.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  routeProps: PropTypes.object
 };
 
 export default Content;

@@ -36,5 +36,9 @@ export const getParticipantLogoElement = (participant, customStyles = null) => {
     );
   }
 
-  return <span className="participant-image-wrapper">{participantLogoEl}</span>;
+  return (
+    <span key={`participant-image-${participant.name}`} className="participant-image-wrapper">
+      {participantLogoEl}
+    </span>
+  );
 };

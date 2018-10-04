@@ -47,6 +47,7 @@ class CarromBoard extends Component {
       rounds: rawData.rounds,
       details: rawData.details,
       statuses: rawData.statuses,
+      allFixtures: rawData.fixtures,
       categories: rawData.categories,
       recents: FixtureService.getRecentFixtures(rawData, 5),
       results: FixtureService.getResults(rawData.fixtures),
@@ -76,7 +77,7 @@ class CarromBoard extends Component {
     return (
       <div className="carrom-board">
         <div className="tournament-content">
-          <Content data={this.state.data} />
+          <Content routeProps={this.props.routeProps} data={this.state.data} />
         </div>
       </div>
     );
@@ -84,6 +85,7 @@ class CarromBoard extends Component {
 }
 
 CarromBoard.propTypes = {
+  routeProps: PropTypes.object,
   handleChangePageTitle: PropTypes.func
 };
 

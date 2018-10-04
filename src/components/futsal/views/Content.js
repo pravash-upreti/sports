@@ -13,17 +13,15 @@ const Content = props => {
   return (
     <div>
       <SubHeader />
-      <div className="container">
-        <Switch>
-          <Route path={FUTSAL_ROUTES.HOME} render={() => <Home data={props.data.recents} />} />
-          <Route path={FUTSAL_ROUTES.TEAMS} render={() => <Teams data={props.data.teams} />} />
-          <Route path={FUTSAL_ROUTES.RESULTS} render={() => <Results data={props.data.results} />} />
-          <Route path={FUTSAL_ROUTES.FIXTURES} render={() => <Fixtures data={props.data.fixtures} />} />
-          <Route path={FUTSAL_ROUTES.POINTS} render={() => <Points data={props.data.pointsTable} />} />
-          <Route path={FUTSAL_ROUTES.STATS} render={() => <Stats data={props.data.stats} />} />
-          <Redirect to={FUTSAL_ROUTES.HOME} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path={FUTSAL_ROUTES.HOME} render={() => <Home data={props.data.recents} />} />
+        <Route path={FUTSAL_ROUTES.TEAMS} render={() => <Teams data={props.data.teams} />} />
+        <Route path={FUTSAL_ROUTES.RESULTS} render={() => <Results data={props.data.results} />} />
+        <Route path={FUTSAL_ROUTES.FIXTURES} render={() => <Fixtures data={props.data.fixtures} />} />
+        <Route path={FUTSAL_ROUTES.POINTS} render={() => <Points data={props.data.pointsTable} />} />
+        <Route path={FUTSAL_ROUTES.STATS} render={() => <Stats data={props.data.stats} />} />
+        <Redirect to={FUTSAL_ROUTES.HOME} />
+      </Switch>
     </div>
   );
 };
