@@ -7,14 +7,17 @@ const Results = props => {
   const resultEls = !props.data.length ? (
     <div className="alert">No fixtures have been played. Please checkout the fixtures section.</div>
   ) : (
-    props.data.map((fixture, index) => <ScoreCard key={`result-${index}`} fixture={fixture} />)
+    props.data.map((fixture, index) => (
+      <ScoreCard key={`result-${index}`} fixture={fixture} fixtureLink={props.fixtureLink} />
+    ))
   );
 
   return <div className="container">{resultEls}</div>;
 };
 
 Results.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  fixtureLink: PropTypes.string
 };
 
 export default Results;

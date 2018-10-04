@@ -55,7 +55,7 @@ $score-card-height: 80px;
           .team-name {
             font-size: $font-size-medium;
             font-weight: normal;
-            text-transform: uppercase;
+            text-transform: capitalize;
           }
         }
 
@@ -84,11 +84,16 @@ $score-card-height: 80px;
             font-size: $font-size-h4;
 
             p {
+              font-weight: normal;
               font-size: $font-size-base;
               line-height: $score-card-height / 3;
 
+              &.game-date,
+              &.game-round {
+                color: $color-grey;
+              }
+
               &.game-time {
-                font-weight: normal;
                 font-size: $font-size--xlarge;
               }
 

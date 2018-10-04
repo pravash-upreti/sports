@@ -19,7 +19,7 @@ const FixtureResult = props => {
     ) : (
       <div className="result">
         <div className="versus">
-          <p>{fixtureDate.date}</p>
+          <p className="game-date">{fixtureDate.date}</p>
           <p className="game-time">{fixtureDate.time}</p>
           <p className="game-round">{fixture.round}</p>
         </div>

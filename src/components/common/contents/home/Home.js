@@ -9,14 +9,15 @@ const Home = props => {
   const recentEl = recents.showWinners ? (
     <Winners winner={recents.winner} runnerUp={recents.runnerUp} />
   ) : (
-    <RecentFixtures data={recents} />
+    <RecentFixtures data={recents} fixtureLink={props.fixtureLink} />
   );
 
   return <div className="container">{recentEl}</div>;
 };
 
 Home.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  fixtureLink: PropTypes.string
 };
 
 export default Home;

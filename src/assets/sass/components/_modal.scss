@@ -124,6 +124,10 @@
     .modal-body {
       padding: 0;
       font-size: $font-size-small;
+
+      .modal-row {
+        padding: 10px 0;
+      }
     }
 
     .modal-half-time {

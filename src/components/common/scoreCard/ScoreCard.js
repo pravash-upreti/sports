@@ -18,34 +18,43 @@ const ScoreCard = props => {
   const homeTeamClassNames = `home-team text-right ${isHomeTeamWinner ? 'winner' : ''}`;
   const awayTeamClassNames = `away-team text-left ${isAwayTeamWinner ? 'winner' : ''}`;
 
-  return (
-    <div className="score-card-wrapper">
+  const scoreCardEl = (
+    <div className="score-card">
+      <div className="score-brief">
+        <FixtureTeam team={fixture.homeTeam} classNames={homeTeamClassNames} />
+        <FixtureResult fixture={fixture} />
+        <FixtureTeam team={fixture.awayTeam} classNames={awayTeamClassNames} />
+      </div>
+    </div>
+  );
+
+  let scoreCardLinkEl = scoreCardEl;
+
+  if (props.fixtureLink) {
+    const fixtureLink = props.fixtureLink.replace(':fixtureId', fixture.id);
+
+    scoreCardLinkEl = (
       <Link
         key={fixture.id}
         to={{
-          pathname: `/carrom-board/fixture/${fixture.id}`,
+          pathname: fixtureLink,
           state: {
             modal: true,
             data: fixture
           }
         }}
       >
-        <div className="score-card">
-          <div className="score-brief">
-            <FixtureTeam team={fixture.homeTeam} classNames={homeTeamClassNames} />
-            <FixtureResult fixture={fixture} />
-            <FixtureTeam team={fixture.awayTeam} classNames={awayTeamClassNames} />
-          </div>
-        </div>
+        {scoreCardEl}
       </Link>
-    </div>
-  );
+    );
+  }
+
+  return <div className="score-card-wrapper">{scoreCardLinkEl}</div>;
 };
 
 ScoreCard.propTypes = {
   fixture: PropTypes.object,
-  toggleModal: PropTypes.func,
-  updateShowModalData: PropTypes.func
+  fixtureLink: PropTypes.string
 };
 
 export default ScoreCard;

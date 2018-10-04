@@ -29,10 +29,19 @@ class Content extends React.Component {
       <React.Fragment>
         <SubHeader />
         <Switch>
-          <Route path={CARROM_BOARD_ROUTES.HOME} render={() => <Home data={data.recents} />} />
+          <Route
+            path={CARROM_BOARD_ROUTES.HOME}
+            render={() => <Home data={data.recents} fixtureLink={CARROM_BOARD_ROUTES.FIXTURE} />}
+          />
           <Route path={CARROM_BOARD_ROUTES.TEAMS} render={() => <Teams data={data.teams} />} />
-          <Route path={CARROM_BOARD_ROUTES.RESULTS} render={() => <Results data={data.results} />} />
-          <Route path={CARROM_BOARD_ROUTES.FIXTURES} render={() => <Fixtures data={data.fixtures} />} />
+          <Route
+            path={CARROM_BOARD_ROUTES.RESULTS}
+            render={() => <Results data={data.results} fixtureLink={CARROM_BOARD_ROUTES.FIXTURE} />}
+          />
+          <Route
+            path={CARROM_BOARD_ROUTES.FIXTURES}
+            render={() => <Fixtures data={data.fixtures} fixtureLink={CARROM_BOARD_ROUTES.FIXTURE} />}
+          />
           <Route
             path={CARROM_BOARD_ROUTES.FIXTURE}
             render={routeProps => <Fixture fixtures={data.allFixtures} routeProps={routeProps} />}
