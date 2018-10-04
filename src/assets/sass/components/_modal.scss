@@ -17,7 +17,6 @@
   .modal {
     width: 90%;
     margin: 20px 0;
-    padding: 8px;
     color: $color-text-dark;
     position: absolute;
     border-radius: 4px;
@@ -87,16 +86,13 @@
       line-height: 16px;
     }
 
-    .modal-title,
-    .modal-body {
-      padding: 10px;
-    }
-
     .modal-title {
+      padding: 25px;
       font-size: $font-size-h5;
       background: none;
       text-transform: uppercase;
       border-bottom: 1px solid $color-light-grey;
+      background-color: #f3f3f3;
 
       .col-1,
       .col-2,
@@ -126,6 +122,7 @@
     }
 
     .modal-body {
+      padding: 0;
       font-size: $font-size-small;
     }
 
@@ -162,6 +159,7 @@
       tr {
         th,
         td {
+          padding: 14px;
           text-transform: capitalize;
           border: 1px solid $color-light-grey;
 

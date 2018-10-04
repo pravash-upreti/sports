@@ -14,3 +14,21 @@
     background-color: $color-green;
   }
 }
+
+.participant-logo-wrapper {
+  display: inline-block;
+}
+
+.team-grouped {
+  .participant-logo-wrapper {
+    .participant-image-wrapper {
+      .participant-image {
+        margin: 0;
+      }
+
+      &:not(:first-child) {
+        margin-left: -20px;
+      }
+    }
+  }
+}
