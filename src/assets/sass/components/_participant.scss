@@ -3,7 +3,7 @@
   text-align: center;
 
   .participant-image {
-    margin: 0 8px 0 0;
+    margin: 0 8px;
     font-weight: normal;
     width: 24px;
     height: 24px;
@@ -12,5 +12,23 @@
     border-radius: 50%;
     display: inline-block;
     background-color: $color-green;
+  }
+}
+
+.participant-logo-wrapper {
+  display: inline-block;
+}
+
+.team-grouped {
+  .participant-logo-wrapper {
+    .participant-image-wrapper {
+      .participant-image {
+        margin: 0;
+      }
+
+      &:not(:first-child) {
+        margin-left: -20px;
+      }
+    }
   }
 }

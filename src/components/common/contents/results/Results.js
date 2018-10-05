@@ -4,17 +4,20 @@ import PropTypes from 'prop-types';
 import ScoreCard from '../../scoreCard';
 
 const Results = props => {
-  const resultEls = props.data.map((fixture, index) => <ScoreCard key={`result-${index}`} fixture={fixture} />);
+  const resultEls = !props.data.length ? (
+    <div className="alert">No fixtures have been played. Please checkout the fixtures section.</div>
+  ) : (
+    props.data.map((fixture, index) => (
+      <ScoreCard key={`result-${index}`} fixture={fixture} fixtureLink={props.fixtureLink} />
+    ))
+  );
 
-  if (!resultEls.length) {
-    return <div className="alert">No fixtures have bee played. Please checkout the fixtures section.</div>;
-  }
-
-  return resultEls;
+  return <div className="container">{resultEls}</div>;
 };
 
 Results.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
+  fixtureLink: PropTypes.string
 };
 
 export default Results;

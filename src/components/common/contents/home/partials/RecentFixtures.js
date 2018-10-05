@@ -6,7 +6,9 @@ import ScoreCard from '../../../scoreCard';
 
 class RecentFixtures extends React.Component {
   getScoreCardEls = fixtures => {
-    return fixtures.map(fixture => <ScoreCard key={`score-card-${fixture.id}`} fixture={fixture} />);
+    return fixtures.map(fixture => (
+      <ScoreCard key={`score-card-${fixture.id}`} fixture={fixture} fixtureLink={this.props.fixtureLink} />
+    ));
   };
 
   getFixturesForRangeOfDays = (fixtures, firstDay, lastDay) => {
@@ -76,7 +78,8 @@ class RecentFixtures extends React.Component {
 }
 
 RecentFixtures.propTypes = {
-  data: PropTypes.object
+  data: PropTypes.object,
+  fixtureLink: PropTypes.string
 };
 
 export default RecentFixtures;
