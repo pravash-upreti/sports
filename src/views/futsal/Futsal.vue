@@ -30,7 +30,6 @@
 import axios from 'axios';
 
 import EventBus from '../../events/eventBus';
-import { FUTSAL_API } from '../../constants/apiData';
 import { FUTSAL_ROUTES } from '../../constants/routes';
 
 import SubHeader from './partials/SubHeader';
@@ -55,10 +54,8 @@ export default {
   },
   methods: {
     fetchData: function() {
-      const api = process.env.VUE_APP_API_FUTSAL ? process.env.VUE_APP_API_FUTSAL : FUTSAL_API;
-
       axios
-        .get(api)
+        .get(process.env.VUE_APP_API_FUTSAL)
         .then(response => {
           this.data = this.getSanitizedData(response.data.data);
 
