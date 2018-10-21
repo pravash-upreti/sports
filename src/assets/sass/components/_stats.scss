@@ -2,9 +2,9 @@
   text-align: center;
 
   .stats-col {
-    width: 500px;
-    margin: 10px;
-    padding: 10px;
+    width: 100%;
+    margin: 5px 0;
+    padding: 5px;
     text-align: left;
     color: $color-grey;
     background: white;
@@ -13,8 +13,8 @@
     box-shadow: 0 10px 25px $color-grey-cool-2;
 
     .stats-title {
-      padding: 10px;
-      font-size: 20px;
+      padding: 5px;
+      font-size: $font-size-medium;
       border-bottom: 3px solid $color-border;
 
       .stat-image-logo {
@@ -24,7 +24,7 @@
     }
 
     ul {
-      font-size: 14px;
+      font-size: $font-size-base;
       list-style: none;
 
       li {
@@ -52,6 +52,23 @@
         &:nth-child(even) {
           background-color: $color-background-main-wrapper;
         }
+      }
+    }
+  }
+
+  @include mq(md) {
+    .stats-col {
+      width: 500px;
+      margin: 10px;
+      padding: 10px;
+
+      .stats-title {
+        padding: 10px;
+        font-size: $font-size-large;
+      }
+
+      ul {
+        font-size: $font-size-base;
       }
     }
   }

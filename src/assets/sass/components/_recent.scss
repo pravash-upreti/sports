@@ -8,7 +8,7 @@
 
 .fixture-title {
   color: $color-green;
-  font-size: 24px;
+  font-size: $font-size-large;
   font-weight: 400;
   text-align: center;
   padding: 30px 0 10px;
@@ -16,17 +16,25 @@
 
 .winners,
 .runner-up {
-  margin: 40px 0;
+  margin: 30px 0;
   text-align: center;
   text-transform: uppercase;
 }
 
 .winners {
-  font-size: 48px;
+  font-size: $font-size--xlarge;
+
+  @include mq(md) {
+    font-size: $font-size--xxlarge;
+  }
 }
 
 .runner-up {
-  font-size: 36px;
+  font-size: $font-size-large;
+
+  @include mq(md) {
+    font-size: $font-size--xlarge;
+  }
 }
 
 .winner-trophy,

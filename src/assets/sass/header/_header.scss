@@ -1,22 +1,46 @@
+header {
+  padding: 0;
+  position: relative;
+  background-color: $color-blue;
+
+  @include mq(md) {
+    padding: 0 15px;
+  }
+}
+
 .logo-wrapper {
-  padding: 5px;
+  padding: 0 5px;
   margin: 0 auto;
 
+  @include mq(md) {
+    padding: 5px;
+  }
+
   .logo {
-    width: 140px;
-    padding: 5px 10px 10px;
+    width: 100px;
+    padding: 5px;
     display: inline-block;
     vertical-align: middle;
+
+    @include mq(md) {
+      width: 140px;
+      padding: 5px 10px 10px;
+    }
   }
 
   .logo-title {
     color: $white;
-    padding: 0 15px;
+    padding: 5px;
     font-weight: bold;
     display: inline-block;
-    font-size: $font-size-h3;
+    font-size: $font-size-medium;
     vertical-align: top;
     text-transform: uppercase;
+
+    @include mq(md) {
+      padding: 0 15px;
+      font-size: $font-size-h3;
+    }
   }
 
   @include mq(md) {
@@ -45,28 +69,24 @@
 
 .nav {
   list-style-type: none;
+  background-color: $color-blue;
 
   @include m(primary) {
     position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
-    border-style: solid;
     z-index: 100;
 
     @include mq(md) {
       float: right;
       position: initial;
       border: 0;
-
-      svg {
-        display: none;
-      }
     }
 
     li {
       float: left;
-      width: 25%;
+      width: 20%;
 
       @include mq(md) {
         width: auto;
@@ -88,14 +108,24 @@
 
         @include mq(lg) {
           padding: 10px 8px;
+
+          i {
+            display: none;
+          }
         }
 
         &.active,
         &:hover {
           opacity: 1;
-          color: $white;
+          color: $color-blue;
           transition: all 0.15s ease-in;
-          border-top: 4px solid $white;
+          background-color: $color-grey-cool;
+
+          @include mq(md) {
+            color: $white;
+            background-color: transparent;
+            border-top: 4px solid $white;
+          }
         }
 
         &.active {
@@ -116,6 +146,7 @@
         padding: 10px 5px;
         text-align: center;
         font-size: $font-size-small;
+        border-bottom: 4px solid $color-blue;
 
         &.active {
           font-weight: bold;
