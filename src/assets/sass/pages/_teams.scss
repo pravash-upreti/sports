@@ -2,21 +2,21 @@
   text-align: center;
 
   .team {
-    margin: 10px;
+    margin: 5px 0;
     padding: 10px;
-    width: 400px;
+    width: 100%;
     text-align: left;
-    line-height: 24px;
+    line-height: $font-size-base;
     font-weight: normal;
     display: inline-block;
     background-color: $white;
-    font-size: $font-size-medium;
+    font-size: $font-size-base;
     border-radius: 3px !important;
     box-shadow: 0 10px 25px $color-grey-cool-2;
 
     .team-title {
       padding: 10px;
-      line-height: 28px;
+      line-height: 24px;
       color: $color-text-dark;
       border-bottom: 3px solid $color-border;
 
@@ -51,6 +51,20 @@
             border-bottom: none;
           }
         }
+      }
+    }
+  }
+
+  @include mq(md) {
+    .team {
+      margin: 10px;
+      padding: 10px;
+      width: 400px;
+      line-height: $font-size-medium;
+      font-size: $font-size-medium;
+
+      .team-title {
+        line-height: 28px;
       }
     }
   }

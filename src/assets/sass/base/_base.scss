@@ -34,10 +34,14 @@ body {
 
 body {
   color: $color-text;
-  background-color: $color-background-body;
+  background-color: $color-grey-cool;
   font-family: $font-family-primary;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+
+  @include mq(md) {
+    background-color: $color-background-body;
+  }
 }
 
 a {
@@ -99,16 +103,15 @@ img {
   vertical-align: top;
 }
 
-header {
-  padding: 0 15px;
-  position: relative;
-  background-color: $color-blue;
-}
-
 footer {
-  width: 100%;
-  padding: 20px 0;
-  text-align: center;
-  color: $color-title;
-  background-color: $white;
+  display: none;
+
+  @include mq(md) {
+    display: block;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    color: $color-title;
+    background-color: $white;
+  }
 }
