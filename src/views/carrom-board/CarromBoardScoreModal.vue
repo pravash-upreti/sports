@@ -20,13 +20,13 @@
         <div class="modal-title">
           <div class="modal-row">
             <div class="col-2">
-              <div class="modal-team-name">
-                {{ fixture.homeTeam.players[0].name }}
-                <team-logo :participant="fixture.homeTeam.players[0]" />
-              </div>
-              <div class="modal-team-name">
-                {{ fixture.homeTeam.players[1].name }}
-                <team-logo :participant="fixture.homeTeam.players[1]" />
+              <div 
+                v-for="(player, index) in fixture.homeTeam.players"
+                :key="index"
+                class="modal-team-name"
+              >
+                {{ player.name }}
+                <team-logo :participant="player" />
               </div>
             </div>
             <div class="col-3">
@@ -38,13 +38,13 @@
               </div>
             </div>
             <div class="col-4">
-              <div class="modal-team-name">
-                <team-logo :participant="fixture.awayTeam.players[0]" />
-                {{ fixture.awayTeam.players[0].name }}
-              </div>
-              <div class="modal-team-name">
-                <team-logo :participant="fixture.awayTeam.players[0]" />
-                {{ fixture.awayTeam.players[0].name }}
+              <div 
+                v-for="(player, index) in fixture.awayTeam.players"
+                :key="index"
+                class="modal-team-name"
+              >
+                <team-logo :participant="player" />
+                {{ player.name }}
               </div>
             </div>
           </div>
