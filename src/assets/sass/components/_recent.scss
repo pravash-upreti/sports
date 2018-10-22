@@ -25,7 +25,11 @@
   font-size: $font-size--xlarge;
 
   @include mq(md) {
-    font-size: $font-size--xxlarge;
+    font-size: $font-size--xxxlarge;
+  }
+
+  @include mq(xl) {
+    font-size: $font-size--xxxxlarge;
   }
 }
 
@@ -34,6 +38,10 @@
 
   @include mq(md) {
     font-size: $font-size--xlarge;
+  }
+
+  @include mq(xl) {
+    font-size: $font-size--xxlarge;
   }
 }
 
