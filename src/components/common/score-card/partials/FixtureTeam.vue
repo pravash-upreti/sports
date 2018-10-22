@@ -1,9 +1,52 @@
 <template>
   <div :class="classObject">
     <div class="team-name-wrapper">
-      <h2 :class="teamClassObject">
+      <h2
+        v-if="isAwayTeam"
+        :class="teamClassObject"
+      >
+        <span
+          v-if="isGrouped"
+          class="participant-logo-wrapper"
+        >
+          <team-logo
+            v-for="(player, index) in team.players"
+            :key="index"
+            :participant="player"
+            :custom-styles="teamCustomStyles"
+          />
+        </span>
+        <span
+          v-else
+          class="participant-logo-wrapper"
+        >
+          <team-logo
+            :participant="team"
+            :custom-styles="teamCustomStyles"
+          />
+        </span>
         {{ team.name }}
-        <span class="participant-logo-wrapper">
+      </h2>
+      <h2
+        v-else
+        :class="teamClassObject"
+      >
+        {{ team.name }}
+        <span
+          v-if="isGrouped"
+          class="participant-logo-wrapper"
+        >
+          <team-logo
+            v-for="(player, index) in team.players"
+            :key="index"
+            :participant="player"
+            :custom-styles="teamCustomStyles"
+          />
+        </span>
+        <span
+          v-else
+          class="participant-logo-wrapper"
+        >
           <team-logo
             :participant="team"
             :custom-styles="teamCustomStyles"
@@ -27,6 +70,10 @@ export default {
         return {};
       }
     },
+    isAwayTeam: {
+      type: Boolean,
+      default: false
+    },
     classNames: {
       type: Object,
       default: function() {
@@ -34,12 +81,11 @@ export default {
       }
     }
   },
-  data: function() {
-    return {
-      isGrouped: false
-    };
-  },
   computed: {
+    isGrouped: function() {
+      return !!this.team.players;
+    },
+
     classObject: function() {
       return Object.assign(
         {
@@ -70,9 +116,6 @@ export default {
 
       return customStyles;
     }
-  },
-  created: function() {
-    this.isGrouped = !!this.team.players;
   }
 };
 </script>

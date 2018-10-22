@@ -24,28 +24,18 @@
                 v-for="(player, index) in fixture.homeTeam.players"
                 :key="index"
                 class="modal-team-name"
-              >
-                {{ player.name }}
-                <team-logo :participant="player" />
-              </div>
+              >{{ player.name }}<team-logo :participant="player" /></div>
             </div>
             <div class="col-3">
-              <div v-if="isFixturePlayed">
-                {{ fixture.homeTeamScore }} - {{ fixture.awayTeamScore }}
-              </div>
-              <div v-else>
-                vs
-              </div>
+              <div v-if="isFixturePlayed">{{ fixture.homeTeamScore }} - {{ fixture.awayTeamScore }}</div>
+              <div v-else>vs</div>
             </div>
             <div class="col-4">
               <div 
                 v-for="(player, index) in fixture.awayTeam.players"
                 :key="index"
                 class="modal-team-name"
-              >
-                <team-logo :participant="player" />
-                {{ player.name }}
-              </div>
+              ><team-logo :participant="player" />{{ player.name }}</div>
             </div>
           </div>
           <div class="modal-row modal-fixture-date">{{ fixture.round }}, {{ fixtureDate }}</div>

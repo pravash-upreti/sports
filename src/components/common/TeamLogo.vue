@@ -13,16 +13,12 @@
       v-else-if="participant.logo" 
       :style="logoStyleObject"
       class="participant-image" 
-    >
-      {{ participant.logo.text }}
-    </span>
+    >{{ participant.logo.text }}</span>
     <span
       v-else
       :style="classObject"
       class="participant-image" 
-    >
-      {{ participant.name.substring(0, 1) }}
-    </span>
+    >{{ participant.name.substring(0, 1) }}</span>
   </span>
 </template>
 
