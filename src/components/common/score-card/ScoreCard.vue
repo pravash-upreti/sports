@@ -1,19 +1,20 @@
 <template>
   <div class="score-card-wrapper">
     <router-link 
-      v-if="fixtureLink.length" 
+      v-if="fixtureLink.length"
       :key="fixture.id"
       :to="fixtureURL"
     >
       <div class="score-card">
         <div class="score-brief">
           <fixture-team 
-            :team="fixture.homeTeam" 
-            :class-names="homeTeamClassObject" 
+            :team="fixture.homeTeam"
+            :class-names="homeTeamClassObject"
           />
           <fixture-score :fixture="fixture" />
           <fixture-team
             :team="fixture.awayTeam"
+            :is-away-team="true"
             :class-names="awayTeamClassObject"
           />
         </div>
@@ -25,13 +26,14 @@
     >
       <div class="score-brief">
         <fixture-team
-          :team="fixture.homeTeam" 
-          :class="homeTeamClassObject" 
+          :team="fixture.homeTeam"
+          :class="homeTeamClassObject"
         />
         <fixture-score :fixture="fixture" />
         <fixture-team 
-          :team="fixture.awayTeam" 
-          :class="awayTeamClassObject" 
+          :team="fixture.awayTeam"
+          :is-away-team="true"
+          :class="awayTeamClassObject"
         />
       </div>
     </div>
