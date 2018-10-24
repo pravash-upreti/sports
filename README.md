@@ -12,7 +12,7 @@ git clone git@gitlab.lftechnology.com:sports/web.git
 cd web/
 ```
 
-### Setup With docker
+### Setup with docker
 
 Install dependencies and run the application locally.
 
