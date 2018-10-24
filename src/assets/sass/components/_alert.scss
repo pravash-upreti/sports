@@ -1,18 +1,18 @@
 .alert {
-  padding: 10px;
-  margin: 5px 0;
+  border: 1px solid $color-border;
   border-radius: 5px;
   color: $color-text-dark;
   font-size: $font-size-medium;
-  border: 1px solid $color-border;
+  margin: 5px 0;
+  padding: 10px;
 
   &.alert-error {
-    color: $red;
     border-color: $red;
+    color: $red;
   }
 
   &.alert-success {
-    color: $green;
     border-color: $green;
+    color: $green;
   }
 }

@@ -9,9 +9,9 @@
 
 // Reset CSS
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 
   &::after {
     // Global Clearfixing
@@ -24,20 +24,20 @@
 // Base Code
 html,
 body {
-  margin: 0;
-  padding: 0;
-  position: relative;
   font-size: 100%;
   height: 100%;
+  margin: 0;
   min-height: 100%;
+  padding: 0;
+  position: relative;
 }
 
 body {
-  color: $color-text;
   background-color: $color-grey-cool;
+  color: $color-text;
   font-family: $font-family-primary;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 
   @include mq(md) {
     background-color: $color-background-body;
@@ -45,8 +45,8 @@ body {
 }
 
 a {
-  outline: none;
   color: $color-link;
+  outline: none;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -107,11 +107,11 @@ footer {
   display: none;
 
   @include mq(md) {
+    background-color: $white;
+    color: $color-title;
     display: block;
-    width: 100%;
     padding: 20px 0;
     text-align: center;
-    color: $color-title;
-    background-color: $white;
+    width: 100%;
   }
 }

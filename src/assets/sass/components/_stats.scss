@@ -1,25 +1,42 @@
 .stats-wrapper {
   text-align: center;
 
+  @include mq(md) {
+    .stats-col {
+      margin: 10px;
+      padding: 10px;
+      width: 500px;
+
+      .stats-title {
+        font-size: $font-size-large;
+        padding: 10px;
+      }
+
+      ul {
+        font-size: $font-size-base;
+      }
+    }
+  }
+
   .stats-col {
-    width: 100%;
+    background: $white;
+    box-shadow: 0 10px 25px $color-grey-cool-2;
+    color: $color-grey;
+    display: inline-block;
     margin: 5px 0;
     padding: 5px;
     text-align: left;
-    color: $color-grey;
-    background: white;
     vertical-align: top;
-    display: inline-block;
-    box-shadow: 0 10px 25px $color-grey-cool-2;
+    width: 100%;
 
     .stats-title {
-      padding: 5px;
-      font-size: $font-size-medium;
       border-bottom: 3px solid $color-border;
+      font-size: $font-size-medium;
+      padding: 5px;
 
       .stat-image-logo {
-        width: 32px;
         padding: 0 8px 0 0;
+        width: 32px;
       }
     }
 
@@ -36,39 +53,22 @@
         }
 
         .stat-player-name {
-          width: 80%;
           text-align: left;
+          width: 80%;
         }
 
         .stat-player-stat {
-          width: 20%;
           text-align: right;
+          width: 20%;
         }
 
         &:last-child {
-          border-bottom: none;
+          border-bottom: 0;
         }
 
         &:nth-child(even) {
           background-color: $color-background-main-wrapper;
         }
-      }
-    }
-  }
-
-  @include mq(md) {
-    .stats-col {
-      width: 500px;
-      margin: 10px;
-      padding: 10px;
-
-      .stats-title {
-        padding: 10px;
-        font-size: $font-size-large;
-      }
-
-      ul {
-        font-size: $font-size-base;
       }
     }
   }

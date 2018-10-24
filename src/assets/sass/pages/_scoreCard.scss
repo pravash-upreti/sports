@@ -3,19 +3,19 @@ $score-card-height: 80px;
 
 .score-card-wrapper {
   .score-card {
-    max-width: 100%;
-    margin: 8px 0;
-    transition: 0.25s;
     background: $white;
-    display: block;
-    color: $color-text-darker;
-    font-size: $font-size-base;
     border-radius: 3px;
     box-shadow: 0 10px 25px $color-grey-cool-2;
+    color: $color-text-darker;
+    display: block;
+    font-size: $font-size-base;
+    margin: 8px 0;
+    max-width: 100%;
+    transition: 0.25s;
 
     &:hover {
-      position: relative;
       box-shadow: 0 18px 24px $color-grey-cool-2;
+      position: relative;
     }
 
     .score-brief {
@@ -25,8 +25,8 @@ $score-card-height: 80px;
       .team-info,
       .score {
         display: table-cell;
-        vertical-align: middle;
         padding: 20px 0;
+        vertical-align: middle;
 
         @include mq(md) {
           padding: 15px 0;
@@ -48,6 +48,20 @@ $score-card-height: 80px;
       .team-info {
         width: 35%;
 
+        @include mq(md) {
+          width: 40%;
+
+          .team-name-wrapper {
+            .team-name {
+              font-size: $font-size-medium;
+
+              .participant-logo-wrapper {
+                display: inline-block;
+              }
+            }
+          }
+        }
+
         .team-name-wrapper {
           display: block;
           padding: 0 10px;
@@ -68,31 +82,30 @@ $score-card-height: 80px;
             font-weight: bold;
           }
         }
-
-        @include mq(md) {
-          width: 40%;
-
-          .team-name-wrapper {
-            .team-name {
-              font-size: $font-size-medium;
-
-              .participant-logo-wrapper {
-                display: inline-block;
-              }
-            }
-          }
-        }
       }
 
       .score {
-        width: 30%;
-        text-align: center;
-        font-weight: normal;
-        font-size: $font-size--xlarge;
-        color: $color-text-darker;
         background: $color-background-gray;
         border-left: 1px solid $color-border;
         border-right: 1px solid $color-border;
+        color: $color-text-darker;
+        font-size: $font-size--xlarge;
+        font-weight: normal;
+        text-align: center;
+        width: 30%;
+
+        @include mq(md) {
+          width: 20%;
+
+          .result {
+            font-size: $font-size--xxxlarge;
+            font-weight: lighter;
+
+            .result-dash {
+              padding: 0 10px;
+            }
+          }
+        }
 
         .result {
           .versus {
@@ -100,8 +113,8 @@ $score-card-height: 80px;
             font-size: $font-size-h4;
 
             p {
-              font-weight: normal;
               font-size: $font-size-base;
+              font-weight: normal;
               line-height: $score-card-height / 3;
 
               &.game-date,
@@ -120,21 +133,8 @@ $score-card-height: 80px;
           }
 
           .result-dash {
-            padding: 0 5px;
             color: $gray;
-          }
-        }
-
-        @include mq(md) {
-          width: 20%;
-
-          .result {
-            font-size: $font-size--xxxlarge;
-            font-weight: lighter;
-
-            .result-dash {
-              padding: 0 10px;
-            }
+            padding: 0 5px;
           }
         }
       }

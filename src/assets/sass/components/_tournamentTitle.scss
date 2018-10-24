@@ -1,12 +1,12 @@
 .tournament-title-wrapper {
-  padding: 5px 0;
   background-color: $white;
+  padding: 5px 0;
 }
 
 .tournament-image {
-  width: 100px;
-  display: inline-block;
   border-right: 2px solid rgba(128, 128, 128, 0.2);
+  display: inline-block;
+  width: 100px;
 
   @include mq(lg) {
     width: 125px;
@@ -14,12 +14,12 @@
 }
 
 .tournament-title {
-  padding: 12px;
-  font-weight: 700;
-  text-align: center;
-  font-size: $font-size--title;
-  text-transform: uppercase;
   color: $color-blue;
+  font-size: $font-size--title;
+  font-weight: 700;
+  padding: 12px;
+  text-align: center;
+  text-transform: uppercase;
 
   @include mq(lg) {
     font-size: $font-size-h3;

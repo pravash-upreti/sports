@@ -26,35 +26,34 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
 
 // Common properties for container class
 %common-container {
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
 }
 
 //Common properties of floated grid columns
 %grid-column-float {
-  position: relative;
-  min-height: 1px; // Prevent columns from collapsing when empty
-  padding-right: ($gutter-width / 2);
-  padding-left: ($gutter-width / 2);
   float: left;
+  min-height: 1px; // Prevent columns from collapsing when empty
+  padding-left: ($gutter-width / 2);
+  padding-right: ($gutter-width / 2);
+  position: relative;
 }
 
 //Common properties of flexed grid columns
 %grid-column-flex {
+  min-height: 1px; // Prevent columns from collapsing when empty
+  padding-left: ($gutter-width / 2);
+  padding-right: ($gutter-width / 2);
   position: relative;
   width: 100%;
-  min-height: 1px; // Prevent columns from collapsing when empty
-  padding-right: ($gutter-width / 2);
-  padding-left: ($gutter-width / 2);
 }
 
 // Container mixin
 // $container-name - class name of container
 @mixin make-container($container-name: $grid-container-fluid) {
   .#{$container-name} {
-    width: 100%;
-
     @extend %common-container;
+    width: 100%;
   }
 }
 
@@ -67,6 +66,9 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
   $max-width: $container-max-widths,
   $container-name: $grid-container
 ) {
+  .#{$container-name} {
+    @extend %common-container;
+  }
   @each $size-name, $container-width in $max-width {
     @include mq($size-name) {
       .#{$container-name} {
@@ -74,23 +76,19 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
       }
     }
   }
-
-  .#{$container-name} {
-    @extend %common-container;
-  }
 }
 
 // Row mixin
 // $row-name    - class name for row
 @mixin make-row($row-name: $row-name) {
   .#{$row-name} {
+    margin-left: ($gutter-width / -2);
+
+    margin-right: ($gutter-width / -2);
     @if $grid-type== 'flex' {
       display: flex;
       flex-wrap: wrap;
     }
-
-    margin-right: ($gutter-width / -2);
-    margin-left: ($gutter-width / -2);
   }
 }
 
@@ -148,8 +146,8 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
 
         .#{$grid-class}-#{$name}-auto {
           flex: 0 0 auto;
-          width: auto;
           max-width: none; // Reset earlier grid tiers
+          width: auto;
         }
       }
 
