@@ -66,8 +66,8 @@
       height: 32px;
       line-height: 32px;
       position: absolute;
-      right: -16px;
-      top: -16px;
+      right: 0;
+      top: 0;
       width: 32px;
 
       &:hover {
@@ -183,7 +183,8 @@
 
     .modal-fixture-date {
       font-size: $font-size-base;
-      padding: 5px;
+      padding: 10px 10px 20px;
+      text-align: center;
       text-transform: capitalize;
     }
 
@@ -191,6 +192,7 @@
       background: transparent;
       box-shadow: none;
       font-size: $font-size-small;
+      width: 100%;
 
       tr {
         th,
@@ -203,6 +205,15 @@
             max-width: 20px;
             min-width: 10px;
             text-align: center;
+
+            &.total-points {
+              max-width: none;
+              min-width: 20px;
+            }
+
+            &.winner-team {
+              font-weight: bold;
+            }
           }
         }
 
