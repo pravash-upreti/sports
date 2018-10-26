@@ -1,5 +1,5 @@
 .modal-wrapper {
-  background: rgba($black, 0.5);
+  background: rgba($black, 0.8);
   display: block;
   font-size: $font-size-base;
   font-weight: normal;
@@ -16,7 +16,6 @@
 
   .modal {
     background: $white;
-    border-radius: 4px;
     color: $color-text-dark;
     display: inline-block;
     left: 50%;
@@ -24,10 +23,10 @@
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
+    width: 100%;
 
     @include mq(md) {
-      width: 80%;
+      max-width: 80%;
 
       .modal-title {
         font-size: $font-size-h4;
@@ -60,55 +59,27 @@
 
     .modal-close {
       background: $red;
-      border-radius: 50%;
+      border-radius: 0;
       color: $white;
       font-size: 20px;
       height: 32px;
       line-height: 32px;
       position: absolute;
       right: 0;
+      text-align: center;
       top: 0;
       width: 32px;
+
+      @include mq(md) {
+        border-radius: 50%;
+        display: inline-block;
+        right: -16px;
+        top: -16px;
+      }
 
       &:hover {
         cursor: pointer;
       }
-    }
-
-    .col-1,
-    .col-2,
-    .col-3,
-    .col-4,
-    .col-5 {
-      display: table-cell;
-      line-height: 18px;
-      padding: 10px;
-      vertical-align: middle;
-    }
-
-    .col-1,
-    .col-5 {
-      width: 10%;
-    }
-
-    .col-2,
-    .col-4 {
-      width: 30%;
-    }
-
-    .col-3 {
-      background: rgba(232, 232, 232, 0.6);
-      font-weight: 400;
-      text-align: center;
-      width: 20%;
-    }
-
-    .col-2 {
-      text-align: right;
-    }
-
-    .col-4 {
-      text-align: left;
     }
 
     .modal-row {
@@ -123,33 +94,16 @@
       background-color: #f3f3f3;
       border-bottom: 1px solid $color-light-grey;
       font-size: $font-size-h5;
-      padding: 25px;
-      text-transform: uppercase;
+      padding: 30px 5px 20px;
+      text-transform: capitalize;
 
-      .col-1,
-      .col-2,
-      .col-3,
-      .col-4,
-      .col-5 {
-        display: inline-block;
-      }
-
-      .col-3 {
-        background: none;
+      @include mq(md) {
         font-size: $font-size-h4;
-        width: 20%;
       }
 
-      .col-1,
-      .col-5 {
-        padding: 0;
-        width: 0;
-      }
-
-      .col-2,
-      .col-4 {
-        background: none;
-        width: 40%;
+      // this is real bad
+      .hidden {
+        color: #f3f3f3;
       }
     }
 
@@ -182,10 +136,18 @@
     }
 
     .modal-fixture-date {
-      font-size: $font-size-base;
+      font-size: $font-size-small;
       padding: 10px 10px 20px;
       text-align: center;
       text-transform: capitalize;
+
+      @include mq(md) {
+        font-size: $font-size-base;
+      }
+    }
+
+    .winner-team {
+      font-weight: bold;
     }
 
     table {
@@ -194,15 +156,22 @@
       font-size: $font-size-small;
       width: 100%;
 
+      @include mq(md) {
+        font-size: $font-size-base;
+      }
+
       tr {
         th,
         td {
           border: 1px solid $color-light-grey;
-          padding: 14px;
+          padding: 5px 2px;
           text-transform: capitalize;
 
+          @include mq(md) {
+            padding: 5px 10px;
+          }
+
           &.activity-points {
-            max-width: 20px;
             min-width: 10px;
             text-align: center;
 
@@ -210,15 +179,71 @@
               max-width: none;
               min-width: 20px;
             }
-
-            &.winner-team {
-              font-weight: bold;
-            }
           }
         }
 
         &:nth-child(even) {
           background-color: $color-background-main-wrapper;
+        }
+      }
+    }
+
+    .col {
+      padding: 0;
+    }
+
+    .score-wrapper {
+      display: table;
+      padding: 0 5px;
+      width: 100%;
+
+      .team,
+      .score {
+        display: table-cell;
+        float: none;
+        padding: 5px 0;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .score {
+        font-size: $font-size--xlarge;
+
+        @include mq(md) {
+          font-size: $font-size--xxlarge;
+        }
+      }
+
+      .team {
+        padding-left: 2px;
+        padding-right: 2px;
+
+        .team-name {
+          padding: 10px 0;
+        }
+
+        .participant-image {
+          font-size: $font-size--xxxlarge;
+          height: $font-size--xxxlarge;
+          line-height: $font-size--xxxlarge;
+          margin: 0;
+          width: $font-size--xxxlarge;
+
+          @include mq(lg) {
+            font-size: $font-size--xxxxlarge;
+            height: $font-size--xxxxlarge;
+            line-height: $font-size--xxxxlarge;
+            margin: 0;
+            width: $font-size--xxxxlarge;
+          }
+        }
+      }
+
+      .team-grouped {
+        .participant-image-wrapper {
+          &:not(:first-child) {
+            margin-left: -5px;
+          }
         }
       }
     }
