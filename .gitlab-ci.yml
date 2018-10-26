@@ -1,9 +1,0 @@
-before_script:
-  - echo Starting...
-deploy:
-  only:
-    - dev
-  script:
-    - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
-    - docker push registry.lftechnology.com/sports:latest
-    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com

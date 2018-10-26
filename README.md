@@ -1,59 +1,26 @@
-# Sports Web App
+# web
 
-## Setup Instructions
-
-### Clone
-
-Clone this repository and change directory to `web`.
-
-```bash
-git clone git@gitlab.lftechnology.com:sports/web.git
-
-cd web/
+## Project setup
 ```
-
-### Setup with docker
-
-Install dependencies and run the application locally.
-
-```bash
-docker-compose up -d web
-```
-
-To view logs of the container:
-
-```bash
-docker-compose logs -f web
-```
-
-For production build:
-
-```bash
-docker-compose up web_build
-```
-
-### Setup w/o docker
-
-Install dependencies.
-
-```bash
 yarn install
 ```
 
-Start application in development mode.
-
-```bash
+### Compiles and hot-reloads for development
+```
 yarn run serve
 ```
 
-For production build:
-
-```bash
+### Compiles and minifies for production
+```
 yarn run build
 ```
 
-Lints and fixes files
+### Run your tests
+```
+yarn run test
+```
 
-```bash
+### Lints and fixes files
+```
 yarn run lint
 ```

@@ -1,25 +1,29 @@
 <template>
   <div id="app">
-    <div class="main-wrapper">
-      <NavBar />
-      <router-view/>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
     </div>
-    <Footer />
+    <router-view/>
   </div>
 </template>
 
-<style lang="sass">
-@import './assets/sass/style.scss';
+<style lang="scss">
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+#nav {
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
 </style>
-
-<script>
-import '@fortawesome/fontawesome-free/css/all.css';
-
-import Footer from './components/footer/Footer';
-import NavBar from './components/navigations/NavBar';
-
-export default {
-  name: 'App',
-  components: { NavBar, Footer }
-};
-</script>
