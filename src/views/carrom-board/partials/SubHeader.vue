@@ -41,14 +41,13 @@
   </div>
 </template>
 
-<script>
-import { CARROM_BOARD_ROUTES } from '../../../constants/routes';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  data: function() {
-    return {
-      routes: CARROM_BOARD_ROUTES
-    };
-  }
-};
+import { CARROM_BOARD_ROUTES } from '@/constants/routes';
+
+@Component
+export default class SubHeader extends Vue {
+  public routes: object = CARROM_BOARD_ROUTES;
+}
 </script>

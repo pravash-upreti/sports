@@ -36,13 +36,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'FutsalPoints',
-  data: function() {
-    return {
-      points: this.$parent.data.points
-    };
-  }
-};
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+import { PointInterface } from '@/interfaces/interfaces';
+
+@Component
+export default class FutsalPoints extends Vue {
+  public points: PointInterface[] = this.$parent.$data.data.points;
+}
 </script>

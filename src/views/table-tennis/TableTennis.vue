@@ -5,13 +5,15 @@
   </div>
 </template>
 
-<script>
-import EventBus from '../../events/eventBus';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: 'TableTennis',
-  created: function() {
+import EventBus from '@/events/eventBus';
+
+@Component
+export default class TableTennis extends Vue {
+  public created() {
     EventBus.$emit('change-logo-title', 'Table Tennis');
   }
-};
+}
 </script>

@@ -1,8 +1,10 @@
 import dateFns from 'date-fns';
 
-const getFixtures = (fixturesList, limit) => {
+import { FixtureInterface, RecentsInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
+
+export function getFixtures(fixturesList: FixtureInterface[], limit: number = 0): FixtureInterface[] {
   let fixtures = fixturesList
-    .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0)
+    .filter((fixture) => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) < 0)
     .sort((a, b) => {
       return dateFns.compareAsc(a.date, b.date);
     });
@@ -12,11 +14,11 @@ const getFixtures = (fixturesList, limit) => {
   }
 
   return fixtures;
-};
+}
 
-const getResults = (fixturesList, limit) => {
+export function getResults(fixturesList: FixtureInterface[], limit: number = 0): FixtureInterface[] {
   let results = fixturesList
-    .filter(fixture => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0)
+    .filter((fixture) => ['played', 'forfeited'].indexOf(fixture.status.toLowerCase()) >= 0)
     .sort((a, b) => {
       return dateFns.compareDesc(a.date, b.date);
     });
@@ -26,14 +28,19 @@ const getResults = (fixturesList, limit) => {
   }
 
   return results;
-};
+}
 
-const getRecentFixtures = (tournamentDetails, limit = 2) => {
+export function getRecentFixtures(
+  tournamentDetails: TournamentDataResponseInterface,
+  limit: number = 2
+): RecentsInterface {
   const today = new Date();
   const finishDate = new Date(tournamentDetails.details.finishDate);
-  let recents = {
+  const recents: RecentsInterface = {
     results: [],
     fixtures: [],
+    winner: null,
+    runnerUp: null,
     showWinners: false
   };
 
@@ -47,10 +54,4 @@ const getRecentFixtures = (tournamentDetails, limit = 2) => {
   }
 
   return recents;
-};
-
-export default {
-  getResults,
-  getFixtures,
-  getRecentFixtures
-};
+}

@@ -6,24 +6,22 @@
   }
 
   .points-table {
-    @include mq(md) {
-      .point-rank {
-        width: 30px;
-      }
-
-      .point-stat {
-        min-width: 60px;
-      }
-    }
-
     .point-rank {
       text-align: right;
       width: 20px;
+
+      @include mq(md) {
+        width: 30px;
+      }
     }
 
     .point-stat {
       min-width: 20px;
       text-align: right;
+
+      @include mq(md) {
+        min-width: 60px;
+      }
     }
   }
 }

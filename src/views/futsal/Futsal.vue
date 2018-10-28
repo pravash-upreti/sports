@@ -26,62 +26,60 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
+import { Component, Vue } from 'vue-property-decorator';
 
 import EventBus from '../../events/eventBus';
+import SubHeader from './partials/SubHeader.vue';
 import { FUTSAL_ROUTES } from '../../constants/routes';
+import LoadingIcon from '@/components/common/LoadingIcon.vue';
+import * as FixtureService from '../../services/FixtureService';
+import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
-import SubHeader from './partials/SubHeader';
-import FixtureService from '../../services/FixtureService';
-import LoadingIcon from '../../components/common/LoadingIcon';
+@Component({
+  components: { SubHeader, LoadingIcon }
+})
+export default class Futsal extends Vue {
+  public error: boolean = false;
+  public loading: boolean = true;
+  public fixtureLink: string = '';
+  public data: TournamentDataInterface | null = null;
 
-export default {
-  name: 'Futsal',
-  components: { SubHeader, LoadingIcon },
-  data: function() {
-    return {
-      data: {},
-      error: false,
-      loading: true,
-      fixtureLink: FUTSAL_ROUTES.FIXTURE
-    };
-  },
-  created: function() {
+  public created() {
     EventBus.$emit('change-logo-title', 'Futsal');
 
     this.fetchData();
-  },
-  methods: {
-    fetchData: function() {
-      axios
-        .get(process.env.VUE_APP_API_FUTSAL)
-        .then(response => {
-          this.data = this.getSanitizedData(response.data.data);
-
-          EventBus.$emit('change-logo-title', this.data.details.title, this.data.details.year);
-        })
-        .catch(() => {
-          this.error = true;
-        })
-        .then(() => {
-          this.loading = false;
-        });
-    },
-
-    getSanitizedData: function(rawData) {
-      const data = {
-        teams: rawData.teams,
-        details: rawData.details,
-        stats: rawData.stats,
-        points: rawData.table,
-        recents: FixtureService.getRecentFixtures(rawData),
-        results: FixtureService.getResults(rawData.fixtures),
-        fixtures: FixtureService.getFixtures(rawData.fixtures)
-      };
-
-      return data;
-    }
   }
-};
+
+  public fetchData() {
+    axios
+      .get(process.env.VUE_APP_API_FUTSAL)
+      .then((response) => {
+        this.data = this.getSanitizedData(response.data.data);
+
+        EventBus.$emit('change-logo-title', this.data.details.title, this.data.details.year);
+      })
+      .catch(() => {
+        this.error = true;
+      })
+      .then(() => {
+        this.loading = false;
+      });
+  }
+
+  public getSanitizedData(rawData: TournamentDataResponseInterface): TournamentDataInterface {
+    const data = {
+      teams: rawData.teams,
+      points: rawData.table,
+      details: rawData.details,
+      stats: rawData.stats || [],
+      recents: FixtureService.getRecentFixtures(rawData),
+      results: FixtureService.getResults(rawData.fixtures),
+      fixtures: FixtureService.getFixtures(rawData.fixtures)
+    };
+
+    return data;
+  }
+}
 </script>

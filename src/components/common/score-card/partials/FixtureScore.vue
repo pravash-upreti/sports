@@ -1,5 +1,5 @@
 <template>
-  <div class="score">
+  <div v-if="fixture" class="score">
     <div 
       v-if="fixture.status.toLowerCase() === 'cancelled'"
       class="result"
@@ -25,16 +25,13 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'FixtureScore',
-  props: {
-    fixture: {
-      type: Object,
-      default: function() {
-        return {};
-      }
-    }
-  }
-};
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
+
+import { FixtureInterface } from '@/interfaces/interfaces';
+
+@Component
+export default class FixtureScore extends Vue {
+  @Prop() private fixture!: FixtureInterface;
+}
 </script>

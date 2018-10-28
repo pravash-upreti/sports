@@ -1,5 +1,5 @@
 <template>
-  <div class="stats-col">
+  <div v-if="stat" class="stats-col">
     <h4 class="stats-title">
       <img 
         v-if="stat.icon"
@@ -15,7 +15,7 @@
         :key="index"
       >
         <span class="stat-player-name">
-          <team-logo :participant="player" />
+          <participant-logo :participant="player" />
           {{ player.name }}
         </span>
         <span class="stat-player-stat">
@@ -26,23 +26,16 @@
   </div>
 </template>
 
-<script>
-import TeamLogo from '../../../components/common/TeamLogo';
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
-export default {
-  components: { TeamLogo },
-  props: {
-    stat: {
-      type: Object,
-      required: true,
-      default: function() {
-        return {
-          title: '',
-          icon: null,
-          players: []
-        };
-      }
-    }
-  }
-};
+import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import { StatInterface } from '@/interfaces/interfaces';
+
+@Component({
+  components: { ParticipantLogo }
+})
+export default class Stat extends Vue {
+  @Prop() public stat!: StatInterface;
+}
 </script>

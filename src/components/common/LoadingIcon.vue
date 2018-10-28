@@ -58,8 +58,9 @@ svg rect {
 }
 </style>
 
-<script>
-export default {
-  name: 'LoadingIcon'
-};
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class LoadingIcon extends Vue {}
 </script>

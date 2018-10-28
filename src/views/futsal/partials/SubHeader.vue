@@ -59,14 +59,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
 import { FUTSAL_ROUTES } from '../../../constants/routes';
 
-export default {
-  data: function() {
-    return {
-      futsalRoutes: FUTSAL_ROUTES
-    };
-  }
-};
+@Component
+export default class SubHeader extends Vue {
+  public futsalRoutes: object = FUTSAL_ROUTES;
+}
 </script>

@@ -19,7 +19,7 @@ const DEFAULT_PAGE_TITLE = 'LF Sports';
 
 Vue.use(Router);
 
-let router = new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -128,7 +128,7 @@ let router = new Router({
   ]
 });
 
-router.afterEach(to => {
+router.afterEach((to) => {
   document.title = to.meta.title ? `${to.meta.title} | ${DEFAULT_PAGE_TITLE}` : DEFAULT_PAGE_TITLE;
 });
 

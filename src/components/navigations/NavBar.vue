@@ -55,40 +55,35 @@
   </header>
 </template>
 
-<script>
-import EventBus from '../../events/eventBus';
-import { invertedLogo } from '../../assets/images';
-import { BASE_ROUTES } from '../../constants/routes';
+<script lang="ts">
+import EventBus from '@/events/eventBus';
+import { invertedLogo } from '@/assets/images';
+import { BASE_ROUTES } from '@/constants/routes';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
-export default {
-  name: 'NavBar',
-  props: {
-    title: {
-      type: Object,
-      default() {
-        return {
-          primaryText: 'LF Sports',
-          secondaryText: ''
-        };
-      }
-    }
-  },
-  data: function() {
-    return {
-      logo: invertedLogo,
-      baseRoutes: Object.freeze(BASE_ROUTES)
-    };
-  },
-  computed: {
-    pageTitle: function() {
-      return `${this.title.primaryText} ${this.title.secondaryText}`;
-    }
-  },
-  created: function() {
+interface TitleInterface {
+  primaryText: string;
+  secondaryText?: string;
+}
+
+@Component
+export default class NavBar extends Vue {
+  private baseRoutes: object = Object.freeze(BASE_ROUTES);
+  private logo: string = invertedLogo;
+  private title: TitleInterface = {
+    primaryText: 'LF Sports',
+    secondaryText: '',
+  };
+
+  public created() {
     EventBus.$on('change-logo-title', (primaryText = 'LF Sports', secondaryText = '') => {
       this.title.primaryText = primaryText;
       this.title.secondaryText = secondaryText;
     });
   }
-};
+
+  get pageTitle() {
+    return `${this.title.primaryText} ${this.title.secondaryText}`;
+  }
+}
 </script>

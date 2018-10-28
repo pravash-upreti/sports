@@ -17,43 +17,41 @@
   </div>
 </template>
 
-<script>
-import { footballIcon, redCardIcon, yellowCardIcon } from '../../assets/images';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-import Stat from './partials/Stat';
+import Stat from './partials/Stat.vue';
+import { StatsInterface } from '@/interfaces/interfaces';
+import { footballIcon, redCardIcon, yellowCardIcon } from '@/assets/images';
 
-export default {
-  name: 'FutsalStats',
-  components: { Stat },
-  data: function() {
+@Component({
+  components: { Stat }
+})
+export default class FutsalStats extends Vue {
+  public stats: StatsInterface = this.$parent.$data.data.stats;
+
+  get goalsStats() {
     return {
-      stats: this.$parent.data.stats
+      title: 'Goals',
+      icon: footballIcon,
+      players: this.stats.goals
     };
-  },
-  computed: {
-    goalsStats: function() {
-      return {
-        title: 'Goals',
-        icon: footballIcon,
-        players: this.stats.goals
-      };
-    },
-
-    yellowCardsStats: function() {
-      return {
-        title: 'Yellow Cards',
-        icon: yellowCardIcon,
-        players: this.stats.yellowCards
-      };
-    },
-
-    redCardsStats: function() {
-      return {
-        title: 'Red Cards',
-        icon: redCardIcon,
-        players: this.stats.redCards
-      };
-    }
   }
-};
+
+  get yellowCardsStats() {
+    return {
+      title: 'Yellow Cards',
+      icon: yellowCardIcon,
+      players: this.stats.yellowCards
+    };
+  }
+
+  get redCardsStats() {
+    return {
+      title: 'Red Cards',
+      icon: redCardIcon,
+      players: this.stats.redCards
+    };
+  }
+}
 </script>

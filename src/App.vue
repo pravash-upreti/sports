@@ -1,25 +1,31 @@
 <template>
   <div id="app">
     <div class="main-wrapper">
-      <NavBar />
+      <NavBar/>
       <router-view/>
     </div>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
 <style lang="sass">
-@import './assets/sass/style.scss';
+@import './assets/sass/style.scss'
 </style>
 
-<script>
+<script lang="ts">
 import '@fortawesome/fontawesome-free/css/all.css';
+import { Component, Vue } from 'vue-property-decorator';
 
-import Footer from './components/footer/Footer';
-import NavBar from './components/navigations/NavBar';
+import Footer from '@/components/footer/Footer.vue';
+import NavBar from '@/components/navigations/NavBar.vue';
 
-export default {
-  name: 'App',
-  components: { NavBar, Footer }
-};
+@Component({
+  components: {
+    Footer,
+    NavBar
+  }
+})
+export default class Home extends Vue {
+}
 </script>
+

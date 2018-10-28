@@ -5,11 +5,11 @@ const CARROM_BOARD = '/carrom-board';
 const TABLE_TENNIS = '/table-tennis';
 
 export const BASE_ROUTES = {
-  HOME: HOME,
-  CHESS: CHESS,
-  FUTSAL: FUTSAL,
-  CARROM_BOARD: CARROM_BOARD,
-  TABLE_TENNIS: TABLE_TENNIS
+  HOME,
+  CHESS,
+  FUTSAL,
+  CARROM_BOARD,
+  TABLE_TENNIS,
 };
 
 export const FUTSAL_ROUTES = {
@@ -18,7 +18,7 @@ export const FUTSAL_ROUTES = {
   STATS: `${FUTSAL}/stats`,
   POINTS: `${FUTSAL}/points`,
   RESULTS: `${FUTSAL}/results`,
-  FIXTURES: `${FUTSAL}/fixtures`
+  FIXTURES: `${FUTSAL}/fixtures`,
 };
 
 export const CARROM_BOARD_ROUTES = {
@@ -26,5 +26,5 @@ export const CARROM_BOARD_ROUTES = {
   TEAMS: `${CARROM_BOARD}/teams`,
   RESULTS: `${CARROM_BOARD}/results`,
   FIXTURES: `${CARROM_BOARD}/fixtures`,
-  FIXTURE: `${CARROM_BOARD}/fixture/:fixtureId`
+  FIXTURE: `${CARROM_BOARD}/fixture/:fixtureId`,
 };

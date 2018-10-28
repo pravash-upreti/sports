@@ -5,7 +5,7 @@
       class="team-title"
     >
       <h4>
-        <team-logo 
+        <participant-logo 
           :participant="team"
           :custom-styles="customStyles"
         />
@@ -18,7 +18,7 @@
           v-for="(player, index) in team.players"
           :key="index"
         >
-          <team-logo
+          <participant-logo
             :participant="player"
             :custom-styles="customStyles"
           />
@@ -29,32 +29,23 @@
   </div>
 </template>
 
-<script>
-import TeamLogo from '../../../../components/common/TeamLogo';
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
-export default {
-  name: 'Team',
-  components: { TeamLogo },
-  props: {
-    team: {
-      type: Object,
-      required: true,
-      default: function() {
-        return {};
-      }
-    }
-  },
-  computed: {
-    customStyles: function() {
-      if (this.team.logo) {
-        return {
-          color: this.team.logo.color,
-          backgroundColor: this.team.logo.backgroundColor
-        };
-      }
+import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import { TeamInterface } from '@/interfaces/interfaces';
 
-      return {};
-    }
+@Component({
+  components: { ParticipantLogo }
+})
+export default class Team extends Vue {
+  @Prop() public team!: TeamInterface;
+
+  get customStyles() {
+    return this.team.logo ? {
+      color: this.team.logo.color,
+      backgroundColor: this.team.logo.backgroundColor
+    } : {};
   }
-};
+}
 </script>

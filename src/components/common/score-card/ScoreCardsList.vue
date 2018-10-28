@@ -6,7 +6,7 @@
     >
       {{ title }}
     </h5>
-    <score-card
+    <ScoreCardWrapper
       v-for="(fixture, index) in fixtures"
       :fixture="fixture"
       :fixture-link="fixtureLink"
@@ -16,26 +16,18 @@
 </template>
 
 
-<script>
-import ScoreCard from './ScoreCard';
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
-export default {
-  components: { ScoreCard },
-  props: {
-    title: {
-      type: String,
-      default: ''
-    },
-    fixtures: {
-      type: Array,
-      default: function() {
-        return [];
-      }
-    },
-    fixtureLink: {
-      type: String,
-      default: ''
-    }
-  }
-};
+import { FixtureInterface } from '@/interfaces/interfaces';
+import ScoreCardWrapper from '@/components/common/score-card/ScoreCardWrapper.vue';
+
+@Component({
+  components: { ScoreCardWrapper }
+})
+export default class ScoreCardList extends Vue {
+  @Prop({ default: '' }) public title!: string;
+  @Prop() public fixtureLink!: string;
+  @Prop() public fixtures!: FixtureInterface[];
+}
 </script>

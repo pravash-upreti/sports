@@ -21,7 +21,7 @@
             <div class="">
               <div class="col-md-12 score-wrapper">
                 <div class="col col-sm-4 col-md-5 team team-grouped">
-                  <team-logo
+                  <participant-logo
                     v-for="(player, index) in fixture.homeTeam.players"
                     :key="index"
                     :participant="player" 
@@ -31,7 +31,7 @@
                   <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
                 </div>
                 <div class="col col-sm-4 col-md-5 team team-grouped">
-                  <team-logo
+                  <participant-logo
                     v-for="(player, index) in fixture.awayTeam.players"
                     :key="index"
                     :participant="player" 
@@ -108,82 +108,78 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import dateFns from 'date-fns';
+import { Component, Vue } from 'vue-property-decorator';
 
-import TeamLogo from '../../components/common/TeamLogo';
+import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import { FixtureInterface, TeamInterface, ActivityInterface } from '@/interfaces/interfaces';
 
-export default {
-  name: 'CarromBoardScoreModal',
-  components: { TeamLogo },
-  data: function() {
-    return {
-      fixture: {},
-      error: false
-    };
-  },
-  computed: {
-    isFixturePlayed: function() {
-      return this.fixture.status.toLowerCase() === 'played';
-    },
+@Component({
+  components: { ParticipantLogo }
+})
+export default class CarromBoardScoreModal extends Vue {
+  public error: boolean =  false;
+  public fixture: FixtureInterface | null = null;
 
-    fixtureDate: function() {
-      return dateFns.format(new Date(this.fixture.date), 'dddd MMM D, YYYY, hh:mm A');
-    }
-  },
-  created: function() {
-    const fixtureId = this.$route.params.fixtureId;
-    const allFixtures = this.$parent.data.allFixtures;
+  public created() {
+    const fixtureId = parseInt(this.$route.params.fixtureId, 10);
+    const allFixtures = this.$parent.$data.data.allFixtures;
 
     this.setFixture(allFixtures, fixtureId);
-  },
-  methods: {
-    close() {
-      if (window.history.length > 2) {
-        this.$router.go(-1);
-      } else {
-        this.$router.push(this.$route.matched[0]);
-      }
-    },
+  }
 
-    doNothing: function(e) {
-      e.stopPropagation();
-    },
-
-    setFixture(fixtures, fixtureId) {
-      const fixture = fixtures.find(function(f) {
-        return parseInt(f.id, 10) === parseInt(fixtureId, 10);
-      });
-
-      if (!fixture) {
-        this.error = true;
-
-        return;
-      }
-
-      this.fixture = fixture;
-    },
-
-    isTeamWinner: function(team) {
-      const winnerTeam =
-        parseInt(this.fixture.homeTeamScore, 10) > parseInt(this.fixture.awayTeamScore)
-          ? this.fixture.homeTeam
-          : this.fixture.awayTeam;
-
-      return parseInt(team.id, 10) === parseInt(winnerTeam.id, 10);
-    },
-
-    getWinnerClassObject: function(team) {
-      return this.isFixturePlayed && this.isTeamWinner(team) ? { 'winner-team': true } : {};
-    },
-
-    getHomeTeamActivityScore: function(activity) {
-      return activity.team === this.fixture.homeTeam.name ? activity.points : ' - ';
-    },
-
-    getAwayTeamActivityScore: function(activity) {
-      return activity.team === this.fixture.awayTeam.name ? activity.points : ' - ';
+  public close() {
+    if (window.history.length > 2) {
+      this.$router.go(-1);
+    } else {
+      this.$router.push(this.$route.matched[0]);
     }
   }
-};
+
+  public doNothing(e: any) {
+    e.stopPropagation();
+  }
+
+  public setFixture(fixtures: FixtureInterface[], fixtureId: number) {
+    const fixture = fixtures.find((f) => (f.id === fixtureId));
+
+    if (!fixture) {
+      this.error = true;
+
+      return;
+    }
+
+    this.fixture = fixture;
+  }
+
+  public isTeamWinner(team: TeamInterface) {
+    const winnerTeam =
+      this.fixture && this.fixture.homeTeamScore > this.fixture.awayTeamScore
+        ? this.fixture && this.fixture.homeTeam
+        : this.fixture && this.fixture.awayTeam;
+
+    return winnerTeam && team.id === winnerTeam.id;
+  }
+
+  public getWinnerClassObject(team: TeamInterface) {
+    return this.isFixturePlayed && this.isTeamWinner(team) ? { 'winner-team': true } : {};
+  }
+
+  public getHomeTeamActivityScore(activity: ActivityInterface) {
+    return this.fixture && activity.team === this.fixture.homeTeam.name ? activity.points : ' - ';
+  }
+
+  public getAwayTeamActivityScore(activity: ActivityInterface) {
+    return this.fixture && activity.team === this.fixture.awayTeam.name ? activity.points : ' - ';
+  }
+
+  get isFixturePlayed() {
+    return this.fixture && this.fixture.status.toLowerCase() === 'played';
+  }
+
+  get fixtureDate() {
+    return this.fixture && dateFns.format(new Date(this.fixture.date), 'dddd MMM D, YYYY, hh:mm A');
+  }
+}
 </script>

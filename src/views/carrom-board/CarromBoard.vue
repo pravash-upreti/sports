@@ -26,63 +26,65 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
+import { Component, Vue } from 'vue-property-decorator';
 
-import EventBus from '../../events/eventBus';
-import { CARROM_BOARD_ROUTES } from '../../constants/routes';
+import EventBus from '@/events/eventBus';
+import SubHeader from './partials/SubHeader.vue';
+import { CARROM_BOARD_ROUTES } from '@/constants/routes';
+import * as FixtureService from '@/services/FixtureService';
+import LoadingIcon from '@/components/common/LoadingIcon.vue';
+import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
-import SubHeader from './partials/SubHeader';
-import FixtureService from '../../services/FixtureService';
-import LoadingIcon from '../../components/common/LoadingIcon';
+@Component({
+  components: { SubHeader, LoadingIcon }
+})
+export default class CarromBoard extends Vue {
+  public data: TournamentDataInterface | null = null;
+  public error: boolean = false;
+  public loading: boolean = true;
+  public fixtureLink: string = CARROM_BOARD_ROUTES.FIXTURE;
 
-export default {
-  name: 'CarromBoard',
-  components: { SubHeader, LoadingIcon },
-  data: function() {
-    return {
-      data: {},
-      error: false,
-      loading: true,
-      fixtureLink: CARROM_BOARD_ROUTES.FIXTURE
-    };
-  },
-  created: function() {
+  public created() {
     EventBus.$emit('change-logo-title', 'Carrom Board');
 
     this.fetchData();
-  },
-  methods: {
-    fetchData: function() {
-      axios
-        .get(process.env.VUE_APP_API_CARROM_BOARD)
-        .then(response => {
-          this.data = this.getSanitizedData(response.data.data);
-          EventBus.$emit('change-logo-title', this.data.details.title, this.data.details.year);
-        })
-        .catch(() => {
-          this.error = true;
-        })
-        .then(() => {
-          this.loading = false;
-        });
-    },
-
-    getSanitizedData: function(rawData) {
-      const data = {
-        teams: rawData.teams,
-        rounds: rawData.rounds,
-        details: rawData.details,
-        statuses: rawData.statuses,
-        allFixtures: rawData.fixtures,
-        categories: rawData.categories,
-        recents: FixtureService.getRecentFixtures(rawData, 5),
-        results: FixtureService.getResults(rawData.fixtures),
-        fixtures: FixtureService.getFixtures(rawData.fixtures)
-      };
-
-      return data;
-    }
   }
-};
+
+  public fetchData() {
+    axios
+      .get(process.env.VUE_APP_API_CARROM_BOARD)
+      .then((response) => {
+        this.data = this.getSanitizedData(response.data.data);
+
+        const title = this.data && this.data.details.title;
+        const year = this.data && this.data.details.year;
+
+        EventBus.$emit('change-logo-title', title, year);
+      })
+      .catch(() => {
+        this.error = true;
+      })
+      .then(() => {
+        this.loading = false;
+      });
+  }
+
+  public getSanitizedData(rawData: TournamentDataResponseInterface): TournamentDataInterface {
+    const data = {
+      teams: rawData.teams,
+      rounds: rawData.rounds || [],
+      details: rawData.details,
+      statuses: rawData.statuses || [],
+      allFixtures: rawData.fixtures,
+      categories: rawData.categories || [],
+      recents: FixtureService.getRecentFixtures(rawData, 5),
+      results: FixtureService.getResults(rawData.fixtures),
+      fixtures: FixtureService.getFixtures(rawData.fixtures)
+    };
+
+    return data;
+  }
+}
 </script>

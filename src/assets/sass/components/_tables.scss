@@ -7,17 +7,16 @@ table {
 
   @include mq(md) {
     font-size: $font-size-medium;
-
-    th,
-    td {
-      padding: 10px;
-    }
   }
 
   th,
   td {
     padding: 10px 5px;
     text-align: left;
+
+    @include mq(md) {
+      padding: 10px;
+    }
   }
 
   thead {

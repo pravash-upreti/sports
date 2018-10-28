@@ -1,23 +1,6 @@
 .stats-wrapper {
   text-align: center;
 
-  @include mq(md) {
-    .stats-col {
-      margin: 10px;
-      padding: 10px;
-      width: 500px;
-
-      .stats-title {
-        font-size: $font-size-large;
-        padding: 10px;
-      }
-
-      ul {
-        font-size: $font-size-base;
-      }
-    }
-  }
-
   .stats-col {
     background: $white;
     box-shadow: 0 10px 25px $color-grey-cool-2;
@@ -29,10 +12,21 @@
     vertical-align: top;
     width: 100%;
 
+    @include mq(md) {
+      margin: 10px;
+      padding: 10px;
+      width: 500px;
+    }
+
     .stats-title {
       border-bottom: 3px solid $color-border;
       font-size: $font-size-medium;
       padding: 5px;
+
+      @include mq(md) {
+        font-size: $font-size-large;
+        padding: 10px;
+      }
 
       .stat-image-logo {
         padding: 0 8px 0 0;
@@ -43,6 +37,10 @@
     ul {
       font-size: $font-size-base;
       list-style: none;
+
+      @include mq(md) {
+        font-size: $font-size-base;
+      }
 
       li {
         padding: 10px;

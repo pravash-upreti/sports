@@ -13,21 +13,14 @@
       </h1>
     </div>
   </div>
-
 </template>
 
-<script>
-export default {
-  name: 'Winners',
-  props: {
-    winner: {
-      type: String,
-      default: ''
-    },
-    runnerUp: {
-      type: String,
-      default: ''
-    }
-  }
-};
+<script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
+
+@Component({})
+export default class Winners extends Vue {
+  @Prop() private winner!: string;
+  @Prop() private runnerUp!: string;
+}
 </script>

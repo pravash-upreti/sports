@@ -10,16 +10,15 @@
   </div>
 </template>
 
-<script>
-import Team from './partials/Team';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: 'Teams',
-  components: { Team },
-  data: function() {
-    return {
-      teams: this.$parent.data.teams
-    };
-  }
-};
+import Team from './partials/Team.vue';
+
+@Component({
+  components: { Team }
+})
+export default class Teams extends Vue {
+  private teams: Team[] = this.$parent.$data.data.teams;
+}
 </script>

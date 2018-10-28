@@ -4,25 +4,22 @@
       <p class="alert">All fixtures have been played. Please checkout the results section.</p>
     </div>
     <div v-else>
-      <score-cards-list
-        :fixtures="fixtures"
-        :fixture-link="fixtureLink"
-      />
+      <score-cards-list :fixtures="fixtures" :fixture-link="fixtureLink" />
     </div>
   </div>
 </template>
 
-<script>
-import ScoreCardsList from '../../../components/common/score-card/ScoreCardsList';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: 'Fixtures',
-  components: { ScoreCardsList },
-  data: function() {
-    return {
-      fixtures: this.$parent.data.fixtures,
-      fixtureLink: this.$parent.fixtureLink
-    };
-  }
-};
+import { FixtureInterface } from '@/interfaces/interfaces';
+import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
+
+@Component({
+  components: { ScoreCardsList }
+})
+export default class Fixtures extends Vue {
+  public fixtureLink: string =  this.$parent.$data.fixtureLink;
+  public fixtures: FixtureInterface[] = this.$parent.$data.data.fixtures;
+}
 </script>
