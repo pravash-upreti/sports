@@ -26,15 +26,15 @@
     width: 100%;
 
     @include mq(md) {
-      max-width: 80%;
+      width: 700px;
     }
 
     @include mq(lg) {
-      width: 60%;
+      width: 800px;
     }
 
     @include mq(xl) {
-      width: 55%;
+      width: 1000px;
     }
 
     .modal-close {
