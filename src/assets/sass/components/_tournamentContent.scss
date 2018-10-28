@@ -1,0 +1,242 @@
+.tournament-content {
+  @include e(heading) {
+    color: $color-green;
+    font-size: $font-size--xlarge;
+    text-align: center;
+  }
+
+  @include e(group) {
+    margin-top: 16px;
+
+    @include m(title) {
+      font-size: $font-size-large;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+  }
+}
+
+.tournament-list {
+  @include e(item) {
+    background: $white;
+    border: 1px solid $color-border;
+    border-radius: 3px;
+    box-shadow: 0 15px 25px $color-grey-cool-2;
+    color: $color-text-dark;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    position: relative;
+
+    @include mq(lg) {
+      padding: 0;
+    }
+
+    @include m(score-time) {
+      bottom: 0;
+      font-size: $font-size-small;
+      font-weight: bold;
+      left: 0;
+      padding: 12px 16px;
+      position: absolute;
+      text-transform: uppercase;
+
+      @include mq(lg) {
+        display: none;
+      }
+    }
+
+    @include m(date) {
+      bottom: 0;
+      font-size: $font-size-small;
+      padding: 12px 16px;
+      position: absolute;
+      right: 0;
+
+      @include mq(lg) {
+        float: left;
+        padding: 12px;
+        position: initial;
+        text-align: center;
+        width: 12%;
+
+        .day {
+          display: block;
+          font-weight: bold;
+          text-align: center;
+          text-transform: uppercase;
+        }
+
+        .date {
+          display: block;
+          margin-top: 4px;
+          text-align: center;
+          text-transform: uppercase;
+        }
+
+        .time {
+          display: block;
+          font-weight: bold;
+          margin-top: 8px;
+          text-align: center;
+        }
+      }
+
+      .time {
+        display: none;
+      }
+    }
+
+    @include m(team-block) {
+      @include mq(lg) {
+        float: left;
+        height: 100%;
+        width: 36%;
+      }
+    }
+
+    @include m(team-block-left) {
+      @include mq(lg) {
+        border-left: 1px solid $color-border;
+      }
+    }
+
+    @include m(team-block-right) {
+      @include mq(lg) {
+        border-right: 1px solid $color-border;
+      }
+    }
+
+    @include m(team-left) {
+      float: left;
+      padding: 12px 16px;
+      width: calc(100% - 68px);
+
+      @include mq(lg) {
+        margin-top: 16px;
+
+        .name-card {
+          float: right;
+          margin-left: 12px;
+          margin-right: 0;
+        }
+
+        span {
+          float: right;
+        }
+      }
+
+      .name-card {
+        margin-right: 12px;
+      }
+    }
+
+    @include m(team-left-score) {
+      float: right;
+      font-size: $font-size--xlarge;
+      padding: 12px 16px;
+      text-align: right;
+      width: 68px;
+
+      @include mq(lg) {
+        background: $color-background-gray;
+        border-left: 1px solid $color-border;
+        font-size: $font-size--xxlarge;
+        padding: 12px 0 12px 4px;
+      }
+    }
+
+    @include m(team-right) {
+      float: left;
+      padding: 12px 16px;
+      width: calc(100% - 68px);
+
+      @include mq(lg) {
+        margin-top: 16px;
+      }
+
+      .name-card {
+        margin-right: 12px;
+      }
+    }
+
+    @include m(team-right-score) {
+      float: right;
+      font-size: $font-size--xlarge;
+      padding: 12px 16px;
+      text-align: right;
+      width: 68px;
+
+      @include mq(lg) {
+        background: $color-background-gray;
+        border-right: 1px solid $color-border;
+        float: left;
+        font-size: $font-size--xxlarge;
+        padding: 12px 4px 12px 0;
+        text-align: left;
+      }
+    }
+
+    @include m(separator) {
+      display: none;
+
+      @include mq(lg) {
+        background: $color-background-gray;
+        display: inline-block;
+        float: left;
+        font-size: $font-size--xxlarge;
+        padding: 12px 0;
+        text-align: center;
+        width: 4%;
+      }
+    }
+
+    @include m(half-time) {
+      display: none;
+
+      @include mq(lg) {
+        display: inline-block;
+        float: right;
+        font-size: $font-size-small;
+        padding: 12px;
+        text-align: center;
+        text-transform: uppercase;
+        width: 12%;
+
+        .title {
+          display: block;
+          font-weight: bold;
+        }
+
+        .score {
+          display: block;
+          margin-top: 8px;
+        }
+      }
+    }
+
+    @include m(team-winner) {
+      color: $color-text-darker;
+      position: relative;
+
+      @include mq(lg) {
+        color: $color-text-dark;
+        position: initial;
+      }
+
+      &::after {
+        border-bottom: 8px solid transparent;
+        border-right: 10px solid $color-text-darker;
+        border-top: 8px solid transparent;
+        height: 0;
+        position: absolute;
+        right: 0;
+        top: 18px;
+        width: 0;
+
+        @include mq(lg) {
+          display: none;
+        }
+      }
+    }
+  }
+}
