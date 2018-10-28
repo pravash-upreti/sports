@@ -3,13 +3,13 @@
 }
 
 .main-wrapper {
-  width: 100%;
+  background-color: $color-grey-cool;
   display: block;
   padding-bottom: 58px;
-  background-color: $color-grey-cool;
+  width: 100%;
 }
 
 .row {
-  padding: 10px;
   display: block;
+  padding: 10px;
 }

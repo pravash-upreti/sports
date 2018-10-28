@@ -1,129 +1,99 @@
 .modal-wrapper {
+  background: rgba($black, 0.8);
   display: block;
-  height: 100%;
-  width: 100%;
-  z-index: 999;
-  position: fixed;
-  top: 0;
-  left: auto;
-  margin: 0 auto;
-  text-align: center;
-  overflow-y: scroll;
-  background: rgba($black, 0.5);
-  transition: 0.25s;
   font-size: $font-size-base;
   font-weight: normal;
+  height: 100%;
+  left: auto;
+  margin: 0 auto;
+  overflow-y: scroll;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  transition: 0.25s;
+  width: 100%;
+  z-index: 999;
 
   .modal {
-    width: 90%;
-    margin: 20px 0;
-    color: $color-text-dark;
-    position: absolute;
-    border-radius: 4px;
-    display: inline-block;
     background: $white;
-    top: 50%;
+    color: $color-text-dark;
+    display: inline-block;
     left: 50%;
+    margin: 20px 0;
+    position: absolute;
+    top: 50%;
     transform: translate(-50%, -50%);
+    width: 100%;
+
+    @include mq(md) {
+      width: 700px;
+    }
+
+    @include mq(lg) {
+      width: 800px;
+    }
+
+    @include mq(xl) {
+      width: 1000px;
+    }
 
     .modal-close {
-      position: absolute;
-      right: -16px;
-      top: -16px;
-      width: 32px;
-      height: 32px;
+      background: $red;
+      border-radius: 0;
       color: $white;
       font-size: 20px;
+      height: 32px;
       line-height: 32px;
-      border-radius: 50%;
-      background: $red;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      width: 32px;
+
+      @include mq(md) {
+        border-radius: 50%;
+        display: inline-block;
+        right: -16px;
+        top: -16px;
+      }
 
       &:hover {
         cursor: pointer;
       }
     }
 
-    .col-1,
-    .col-2,
-    .col-3,
-    .col-4,
-    .col-5 {
-      padding: 10px;
-      line-height: 18px;
-      display: table-cell;
-      vertical-align: middle;
-    }
-
-    .col-1,
-    .col-5 {
-      width: 10%;
-    }
-
-    .col-2,
-    .col-4 {
-      width: 30%;
-    }
-
-    .col-3 {
-      width: 20%;
-      font-weight: 400;
-      text-align: center;
-      background: rgba(232, 232, 232, 0.6);
-    }
-
-    .col-2 {
-      text-align: right;
-    }
-
-    .col-4 {
-      text-align: left;
-    }
-
     .modal-row {
-      width: 100%;
       display: table;
       font-weight: normal;
       line-height: 16px;
+      width: 100%;
     }
 
     .modal-title {
-      padding: 25px;
-      font-size: $font-size-h5;
       background: none;
-      text-transform: uppercase;
-      border-bottom: 1px solid $color-light-grey;
       background-color: #f3f3f3;
+      border-bottom: 1px solid $color-light-grey;
+      font-size: $font-size-h5;
+      padding: 30px 5px 20px;
+      text-transform: capitalize;
 
-      .col-1,
-      .col-2,
-      .col-3,
-      .col-4,
-      .col-5 {
-        display: inline-block;
-      }
-
-      .col-3 {
-        width: 20%;
-        background: none;
+      @include mq(md) {
         font-size: $font-size-h4;
       }
 
-      .col-1,
-      .col-5 {
-        width: 0;
-        padding: 0;
+      @include mq(xl) {
+        font-size: $font-size-h4;
       }
 
-      .col-2,
-      .col-4 {
-        width: 40%;
-        background: none;
+      // this is real bad
+      .hidden {
+        color: #f3f3f3;
       }
     }
 
     .modal-body {
-      padding: 0;
       font-size: $font-size-small;
+      padding: 0;
 
       .modal-row {
         padding: 10px 0;
@@ -131,8 +101,8 @@
     }
 
     .modal-half-time {
-      font-size: 11px;
       display: block;
+      font-size: 11px;
     }
 
     .scorer-name {
@@ -150,27 +120,49 @@
     }
 
     .modal-fixture-date {
-      font-size: $font-size-base;
-      padding: 5px;
+      font-size: $font-size-small;
+      padding: 10px 10px 20px;
+      text-align: center;
       text-transform: capitalize;
+
+      @include mq(md) {
+        font-size: $font-size-base;
+      }
+    }
+
+    .winner-team {
+      font-weight: bold;
     }
 
     table {
       background: transparent;
       box-shadow: none;
       font-size: $font-size-small;
+      width: 100%;
+
+      @include mq(md) {
+        font-size: $font-size-base;
+      }
 
       tr {
         th,
         td {
-          padding: 14px;
-          text-transform: capitalize;
           border: 1px solid $color-light-grey;
+          padding: 5px 2px;
+          text-transform: capitalize;
+
+          @include mq(md) {
+            padding: 5px 10px;
+          }
 
           &.activity-points {
             min-width: 10px;
-            max-width: 20px;
             text-align: center;
+
+            &.total-points {
+              max-width: none;
+              min-width: 20px;
+            }
           }
         }
 
@@ -180,34 +172,62 @@
       }
     }
 
-    @include mq(md) {
-      width: 80%;
+    .col {
+      padding: 0;
+    }
 
-      .modal-title {
-        font-size: $font-size-h4;
+    .score-wrapper {
+      display: table;
+      padding: 0 5px;
+      width: 100%;
 
-        .col-3 {
-          font-size: $font-size-h3;
+      .team,
+      .score {
+        display: table-cell;
+        float: none;
+        padding: 5px 0;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .score {
+        font-size: $font-size--xlarge;
+
+        @include mq(md) {
+          font-size: $font-size--xxlarge;
         }
       }
 
-      table {
-        font-size: $font-size-base;
+      .team {
+        padding-left: 2px;
+        padding-right: 2px;
+
+        .team-name {
+          padding: 10px 0;
+        }
+
+        .participant-image {
+          font-size: $font-size--xxxlarge;
+          height: $font-size--xxxlarge;
+          line-height: $font-size--xxxlarge;
+          margin: 0;
+          width: $font-size--xxxlarge;
+
+          @include mq(lg) {
+            font-size: $font-size--xxxxlarge;
+            height: $font-size--xxxxlarge;
+            line-height: $font-size--xxxxlarge;
+            margin: 0;
+            width: $font-size--xxxxlarge;
+          }
+        }
       }
-    }
 
-    @include mq(lg) {
-      width: 60%;
-    }
-
-    @include mq(xl) {
-      width: 55%;
-
-      .modal-title {
-        font-size: $font-size-h4;
-
-        .col-3 {
-          font-size: $font-size-h1;
+      .team-grouped {
+        .participant-image-wrapper {
+          &:not(:first-child) {
+            margin-left: -5px;
+          }
         }
       }
     }

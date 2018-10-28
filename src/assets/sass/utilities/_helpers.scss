@@ -24,14 +24,12 @@
 }
 
 %pseudos {
+  content: "";
   display: block;
-  content: '';
   position: absolute;
 }
 
 %shadow {
-  -webkit-box-shadow: 0 8px 12px -6px transparentize($black, 0.8);
-  -moz-box-shadow: 0 8px 12px -6px transparentize($black, 0.8);
   box-shadow: 0 8px 12px -6px transparentize($black, 0.8);
 }
 

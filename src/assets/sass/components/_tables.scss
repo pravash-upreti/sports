@@ -1,20 +1,28 @@
 table {
-  width: 100%;
   background-color: $white;
-  font-size: $font-size-small;
   border-collapse: collapse;
   box-shadow: 0 10px 25px $color-grey-cool-2;
+  font-size: $font-size-small;
+  width: 100%;
+
+  @include mq(md) {
+    font-size: $font-size-medium;
+  }
 
   th,
   td {
     padding: 10px 5px;
     text-align: left;
+
+    @include mq(md) {
+      padding: 10px;
+    }
   }
 
   thead {
+    background-color: $color-blue;
     color: $white;
     text-align: left;
-    background-color: $color-blue;
 
     th {
       font-weight: bold;
@@ -33,15 +41,6 @@ table {
       &:nth-child(even) {
         background-color: $color-background-main-wrapper;
       }
-    }
-  }
-
-  @include mq(md) {
-    font-size: $font-size-medium;
-
-    th,
-    td {
-      padding: 10px;
     }
   }
 }

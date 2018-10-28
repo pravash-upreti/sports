@@ -1,19 +1,9 @@
 {
-  "extends": "stylelint-config-standard",
+  "extends": "stylelint-config-sass-guidelines",
   "rules": {
-    "at-rule-no-unknown": [true, {
-      "ignoreAtRules": [
-        "if",
-        "for",
-        "else",
-        "each",
-        "error",
-        "mixin",
-        "extend",
-        "include",
-        "content",
-        "function"
-      ]
-    }]
+    "selector-max-id": 1,
+    "max-nesting-depth": 8,
+    "selector-max-compound-selectors": 8,
+    "selector-no-qualifying-type": [true, { "ignore": ["attribute", "class", "id"] }]
   }
 }
