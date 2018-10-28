@@ -27,18 +27,6 @@
 
     @include mq(md) {
       max-width: 80%;
-
-      .modal-title {
-        font-size: $font-size-h4;
-
-        .col-3 {
-          font-size: $font-size-h3;
-        }
-      }
-
-      table {
-        font-size: $font-size-base;
-      }
     }
 
     @include mq(lg) {
@@ -47,14 +35,6 @@
 
     @include mq(xl) {
       width: 55%;
-
-      .modal-title {
-        font-size: $font-size-h4;
-
-        .col-3 {
-          font-size: $font-size-h1;
-        }
-      }
     }
 
     .modal-close {
@@ -98,6 +78,10 @@
       text-transform: capitalize;
 
       @include mq(md) {
+        font-size: $font-size-h4;
+      }
+
+      @include mq(xl) {
         font-size: $font-size-h4;
       }
 

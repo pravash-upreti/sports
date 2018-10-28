@@ -50,16 +50,6 @@ $score-card-height: 80px;
 
         @include mq(md) {
           width: 40%;
-
-          .team-name-wrapper {
-            .team-name {
-              font-size: $font-size-medium;
-
-              .participant-logo-wrapper {
-                display: inline-block;
-              }
-            }
-          }
         }
 
         .team-name-wrapper {
@@ -71,8 +61,16 @@ $score-card-height: 80px;
             font-weight: normal;
             text-transform: capitalize;
 
+            @include mq(md) {
+              font-size: $font-size-medium;
+            }
+
             .participant-logo-wrapper {
               display: none;
+
+              @include mq(md) {
+                display: inline-block;
+              }
             }
           }
         }
@@ -96,18 +94,14 @@ $score-card-height: 80px;
 
         @include mq(md) {
           width: 20%;
-
-          .result {
-            font-size: $font-size--xxxlarge;
-            font-weight: lighter;
-
-            .result-dash {
-              padding: 0 10px;
-            }
-          }
         }
 
         .result {
+          @include mq(md) {
+            font-size: $font-size--xxxlarge;
+            font-weight: lighter;
+          }
+
           .versus {
             display: block;
             font-size: $font-size-h4;
@@ -135,6 +129,10 @@ $score-card-height: 80px;
           .result-dash {
             color: $gray;
             padding: 0 5px;
+
+            @include mq(md) {
+              padding: 0 10px;
+            }
           }
         }
       }

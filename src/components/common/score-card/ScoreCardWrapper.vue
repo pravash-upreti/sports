@@ -23,11 +23,7 @@ export default class ScoreCardWrapper extends Vue {
   @Prop() public fixtureLink!: string;
 
   get fixtureURL(): string {
-    if (this.fixtureLink && !this.fixtureLink.length) {
-      return this.fixtureLink.replace(':fixtureId', this.fixture.id.toString());
-    }
-
-    return '';
+    return this.fixtureLink.length ? this.fixtureLink.replace(':fixtureId', this.fixture.id.toString()) : '';
   }
 }
 </script>

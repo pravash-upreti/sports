@@ -13,6 +13,7 @@
 </style>
 
 <script lang="ts">
+import '@fortawesome/fontawesome-free/css/all.css';
 import { Component, Vue } from 'vue-property-decorator';
 
 import Footer from '@/components/footer/Footer.vue';
