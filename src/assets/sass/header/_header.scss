@@ -1,9 +1,9 @@
 header {
   background-color: $color-blue;
-  padding: 0;
+  padding: 5px 0;
   position: relative;
 
-  @include mq(md) {
+  @include mq(lg) {
     padding: 0 15px;
   }
 }
@@ -64,7 +64,11 @@ header {
   background-color: $color-blue;
   border-bottom: 1px solid $color-light-grey;
   margin-bottom: 20px;
-  padding-top: 10px;
+  padding-top: 5px;
+
+  @include mq(lg) {
+    padding-top: 10px;
+  }
 }
 
 .nav {
@@ -78,7 +82,7 @@ header {
     right: 0;
     z-index: 100;
 
-    @include mq(md) {
+    @include mq(lg) {
       border: 0;
       float: right;
       position: initial;
@@ -86,9 +90,9 @@ header {
 
     li {
       float: left;
-      width: 20%;
+      width: 25%;
 
-      @include mq(md) {
+      @include mq(lg) {
         margin-right: 20px;
         width: auto;
 
@@ -116,12 +120,12 @@ header {
 
         &.active,
         &:hover {
-          background-color: $color-grey-cool;
+          background-color: rgba($color: $white, $alpha: 0.8);
           color: $color-blue;
           opacity: 1;
           transition: all 0.15s ease-in;
 
-          @include mq(md) {
+          @include mq(lg) {
             background-color: transparent;
             border-top: 4px solid $white;
             color: $white;

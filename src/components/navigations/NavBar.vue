@@ -45,12 +45,6 @@
           <span class="nav__link-text">TABLE-TENNIS</span>
         </router-link>
       </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-ellipsis-h" />
-          <span class="nav__link-text">...MORE</span>
-        </a>
-      </li>
     </ul>
   </header>
 </template>
