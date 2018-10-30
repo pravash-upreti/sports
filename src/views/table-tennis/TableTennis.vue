@@ -1,7 +1,7 @@
 <template>
   <div class="container text-center">
     <h1>Table Tennis</h1>
-    <p>Under construction...</p>
+    <p>Coming soon...</p>
   </div>
 </template>
 
