@@ -167,11 +167,11 @@ export default class CarromBoardScoreModal extends Vue {
   }
 
   public getHomeTeamActivityScore(activity: ActivityInterface) {
-    return this.fixture && activity.team === this.fixture.homeTeam.name ? activity.points : ' - ';
+    return this.fixture && activity.team.name === this.fixture.homeTeam.name ? activity.points : ' - ';
   }
 
   public getAwayTeamActivityScore(activity: ActivityInterface) {
-    return this.fixture && activity.team === this.fixture.awayTeam.name ? activity.points : ' - ';
+    return this.fixture && activity.team.name === this.fixture.awayTeam.name ? activity.points : ' - ';
   }
 
   get isFixturePlayed() {
