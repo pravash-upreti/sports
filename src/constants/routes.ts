@@ -6,7 +6,9 @@ const CARROM_BOARD = '/carrom-board';
 const TABLE_TENNIS = '/table-tennis';
 
 /* Other games routes */
-const OTHERS_DASHAIN_CUP = `${OTHERS}/dashain-cup`;
+const OTHER_GAMES_BASE_ROUTES = {
+  DASHAIN_CUP: `${OTHERS}/dashain-cup`
+};
 
 export const BASE_ROUTES = {
   HOME,
@@ -15,7 +17,7 @@ export const BASE_ROUTES = {
   OTHERS,
   CARROM_BOARD,
   TABLE_TENNIS,
-  OTHERS_DASHAIN_CUP
+  OTHER_GAMES_BASE_ROUTES
 };
 
 export const FUTSAL_ROUTES = {
@@ -37,11 +39,11 @@ export const CARROM_BOARD_ROUTES = {
 
 export const OTHER_GAMES_ROUTES = {
   DASHAIN_CUP: {
-    HOME: `${OTHERS_DASHAIN_CUP}/recent`,
-    TEAMS: `${OTHERS_DASHAIN_CUP}/teams`,
-    STATS: `${OTHERS_DASHAIN_CUP}/stats`,
-    POINTS: `${OTHERS_DASHAIN_CUP}/points`,
-    RESULTS: `${OTHERS_DASHAIN_CUP}/results`,
-    FIXTURES: `${OTHERS_DASHAIN_CUP}/fixtures`
+    HOME: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/recent`,
+    TEAMS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/teams`,
+    STATS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/stats`,
+    POINTS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/points`,
+    RESULTS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/results`,
+    FIXTURES: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/fixtures`
   }
 };

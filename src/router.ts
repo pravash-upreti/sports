@@ -5,6 +5,7 @@ import { BASE_ROUTES, FUTSAL_ROUTES, CARROM_BOARD_ROUTES, OTHER_GAMES_ROUTES } f
 
 import Chess from '@/views/chess/Chess.vue';
 import Futsal from '@/views/futsal/Futsal.vue';
+import Dashain from '@/views/dashain/Dashain.vue';
 import Teams from '@/views/common/teams/Teams.vue';
 import Recent from '@/views/common/recents/Recent.vue';
 import FutsalStats from '@/views/futsal/FutsalStats.vue';
@@ -16,7 +17,6 @@ import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 import CarromBoardScoreModal from '@/views/carrom-board/CarromBoardScoreModal.vue';
 
-import Dashain from '@/views/dashain/Dashain.vue';
 
 const DEFAULT_PAGE_TITLE = 'LF Sports';
 
@@ -129,7 +129,7 @@ const router = new Router({
       component: OtherGames,
       children: [
         {
-          path: BASE_ROUTES.OTHERS_DASHAIN_CUP,
+          path: BASE_ROUTES.OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP,
           component: Dashain,
           children: [
             {
