@@ -32,7 +32,6 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import EventBus from '@/events/eventBus';
 import SubHeader from './partials/SubHeader.vue';
-import { FUTSAL_ROUTES } from '@/constants/routes';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';

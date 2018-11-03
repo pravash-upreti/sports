@@ -50,11 +50,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import { DASHAIN_CUP_ROUTES } from '../../../constants/routes';
+import { OTHER_GAMES_ROUTES } from '../../../constants/routes';
 
 @Component
 export default class SubHeader extends Vue {
-  public futsalRoutes: object = DASHAIN_CUP_ROUTES;
+  private futsalRoutes: object = Object.freeze(OTHER_GAMES_ROUTES.DASHAIN_CUP);
   private header: any;
   private stickyOffset: any;
 

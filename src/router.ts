@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import { BASE_ROUTES, FUTSAL_ROUTES, CARROM_BOARD_ROUTES, DASHAIN_CUP_ROUTES } from './constants/routes';
+import { BASE_ROUTES, FUTSAL_ROUTES, CARROM_BOARD_ROUTES, OTHER_GAMES_ROUTES } from './constants/routes';
 
 import Chess from '@/views/chess/Chess.vue';
 import Futsal from '@/views/futsal/Futsal.vue';
@@ -10,6 +10,7 @@ import Recent from '@/views/common/recents/Recent.vue';
 import FutsalStats from '@/views/futsal/FutsalStats.vue';
 import Results from '@/views/common/results/Results.vue';
 import FutsalPoints from '@/views/futsal/FutsalPoints.vue';
+import OtherGames from '@/views/other-games/OtherGames.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
@@ -124,46 +125,52 @@ const router = new Router({
       component: TableTennis
     },
     {
-      path: '*',
-      redirect: BASE_ROUTES.FUTSAL
-    },
-    {
-      path: BASE_ROUTES.DASHAIN_CUP,
-      component: Dashain,
+      path: BASE_ROUTES.OTHERS,
+      component: OtherGames,
       children: [
         {
-          path: '',
-          redirect: DASHAIN_CUP_ROUTES.HOME
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.HOME,
-          component: Recent
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.FIXTURES,
-          component: Fixtures
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.RESULTS,
-          component: Results
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.POINTS,
-          component: FutsalPoints
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.STATS,
-          component: FutsalStats
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.TEAMS,
-          component: Teams
-        },
-        {
-          path: '*',
-          redirect: DASHAIN_CUP_ROUTES.HOME
+          path: BASE_ROUTES.OTHERS_DASHAIN_CUP,
+          component: Dashain,
+          children: [
+            {
+              path: '',
+              redirect: OTHER_GAMES_ROUTES.DASHAIN_CUP.HOME
+            },
+            {
+              path: OTHER_GAMES_ROUTES.DASHAIN_CUP.HOME,
+              component: Recent
+            },
+            {
+              path: OTHER_GAMES_ROUTES.DASHAIN_CUP.FIXTURES,
+              component: Fixtures
+            },
+            {
+              path: OTHER_GAMES_ROUTES.DASHAIN_CUP.RESULTS,
+              component: Results
+            },
+            {
+              path: OTHER_GAMES_ROUTES.DASHAIN_CUP.POINTS,
+              component: FutsalPoints
+            },
+            {
+              path: OTHER_GAMES_ROUTES.DASHAIN_CUP.STATS,
+              component: FutsalStats
+            },
+            {
+              path: OTHER_GAMES_ROUTES.DASHAIN_CUP.TEAMS,
+              component: Teams
+            },
+            {
+              path: '*',
+              redirect: OTHER_GAMES_ROUTES.DASHAIN_CUP.HOME
+            }
+          ]
         }
       ]
+    },
+    {
+      path: '*',
+      redirect: BASE_ROUTES.FUTSAL
     }
   ]
 });
