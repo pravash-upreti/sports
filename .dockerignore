@@ -7,6 +7,5 @@ Dockerfile
 .gitignore
 README.md
 env.*
-/docker/*
 
 # and try to ignore all the file which doesnot need inside image 
