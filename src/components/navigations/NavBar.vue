@@ -45,15 +45,25 @@
           <span class="nav__link-text">TABLE-TENNIS</span>
         </router-link>
       </li>
+      <li>
+        <router-link
+          :to="baseRoutes.OTHERS"
+          active-class="active"
+        >
+          <i class="fa fa-ellipsis-h" />
+          <span class="nav__link-text">MORE...</span>
+        </router-link>
+      </li>
     </ul>
   </header>
 </template>
 
 <script lang="ts">
+import { Component, Vue, Prop } from 'vue-property-decorator';
+
 import EventBus from '@/events/eventBus';
 import { invertedLogo } from '@/assets/images';
 import { BASE_ROUTES } from '@/constants/routes';
-import { Component, Vue, Prop } from 'vue-property-decorator';
 
 interface TitleInterface {
   primaryText: string;

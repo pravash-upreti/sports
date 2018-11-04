@@ -6,32 +6,32 @@
     <div v-else>
       <score-cards-list 
         :title="'Today'"
-        :fixtures="todayFixtures"
+        :fixtures="recentFixtures.todayFixtures"
         :fixture-link="fixtureLink"
       />
       <score-cards-list 
         :title="'Tomorrow'"
-        :fixtures="tomorrowFixtures"
+        :fixtures="recentFixtures.tomorrowFixtures"
         :fixture-link="fixtureLink"
       />
       <score-cards-list 
         :title="'Later this week'"
-        :fixtures="twRemainingFixtures"
+        :fixtures="recentFixtures.twRemainingFixtures"
         :fixture-link="fixtureLink"
       />
       <score-cards-list 
         :title="'Next week'"
-        :fixtures="nwFixtures"
+        :fixtures="recentFixtures.nwFixtures"
         :fixture-link="fixtureLink"
       />
       <score-cards-list 
         :title="'Earlier this week'"
-        :fixtures="twPlayedFixtures"
+        :fixtures="recentFixtures.twPlayedFixtures"
         :fixture-link="fixtureLink"
       />
       <score-cards-list 
         :title="'Last week'"
-        :fixtures="lwFixtures"
+        :fixtures="recentFixtures.lwFixtures"
         :fixture-link="fixtureLink"
       />
     </div>

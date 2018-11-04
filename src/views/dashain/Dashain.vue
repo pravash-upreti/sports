@@ -32,7 +32,6 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import EventBus from '@/events/eventBus';
 import SubHeader from './partials/SubHeader.vue';
-import { FUTSAL_ROUTES } from '@/constants/routes';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
@@ -40,21 +39,21 @@ import { TournamentDataInterface, TournamentDataResponseInterface } from '@/inte
 @Component({
   components: { SubHeader, LoadingIcon }
 })
-export default class Futsal extends Vue {
+export default class Dashain extends Vue {
   public error: boolean = false;
   public loading: boolean = true;
   public fixtureLink: string = '';
   public data: TournamentDataInterface | null = null;
 
   public created() {
-    EventBus.$emit('change-logo-title', 'Futsal');
+    EventBus.$emit('change-logo-title', 'Dashain Cup');
 
     this.fetchData();
   }
 
   public fetchData() {
     axios
-      .get(process.env.VUE_APP_API_FUTSAL)
+      .get(process.env.VUE_APP_API_DASHAIN_CUP)
       .then((response) => {
         this.data = this.getSanitizedData(response.data.data);
 

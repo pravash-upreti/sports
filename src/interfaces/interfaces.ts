@@ -1,4 +1,3 @@
-import { StatusInterface, FixtureInterface, RecentsInterface, PointInterface } from './interfaces';
 export interface PlayerInterface {
   id: number;
   name: string;
@@ -47,7 +46,7 @@ export interface ActivityInterface {
   id: number;
   fixtureId: number;
   player: PlayerInterface;
-  team: string;
+  team: TeamInterface;
   time?: number | string;
   points?: number;
 }

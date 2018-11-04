@@ -3,28 +3,42 @@
     <ul class="nav nav--secondary container">
       <li>
         <router-link 
-          :to="routes.HOME"
+          :to="futsalRoutes.HOME"
           exact-active-class="active"
           exact
         >Home</router-link>
       </li>
       <li>
         <router-link 
-          :to="routes.RESULTS"
+          :to="futsalRoutes.RESULTS"
           exact-active-class="active"
           exact
         >Results</router-link>
       </li>
       <li>
         <router-link 
-          :to="routes.FIXTURES"
+          :to="futsalRoutes.FIXTURES"
           exact-active-class="active"
           exact
         >Fixtures</router-link>
       </li>
       <li>
         <router-link 
-          :to="routes.TEAMS"
+          :to="futsalRoutes.POINTS"
+          exact-active-class="active"
+          exact
+        >Points</router-link>
+      </li>
+      <li>
+        <router-link 
+          :to="futsalRoutes.STATS"
+          exact-active-class="active"
+          exact
+        >Stats</router-link>
+      </li>
+      <li>
+        <router-link 
+          :to="futsalRoutes.TEAMS"
           exact-active-class="active"
           exact
         >Teams</router-link>
@@ -36,11 +50,11 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import { CARROM_BOARD_ROUTES } from '@/constants/routes';
+import { OTHER_GAMES_ROUTES } from '../../../constants/routes';
 
 @Component
 export default class SubHeader extends Vue {
-  public routes: object = CARROM_BOARD_ROUTES;
+  private futsalRoutes: object = Object.freeze(OTHER_GAMES_ROUTES.DASHAIN_CUP);
   private header: any;
   private stickyOffset: any;
 

@@ -62,12 +62,16 @@ header {
 
 .sub-header {
   background-color: $color-blue;
-  border-bottom: 1px solid $color-light-grey;
   margin-bottom: 20px;
-  padding-top: 5px;
 
   @include mq(lg) {
     padding-top: 10px;
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
   }
 }
 
@@ -90,7 +94,7 @@ header {
 
     li {
       float: left;
-      width: 25%;
+      width: 20%;
 
       @include mq(lg) {
         margin-right: 20px;
@@ -149,11 +153,12 @@ header {
         color: $white;
         display: block;
         font-size: $font-size-small;
-        padding: 10px 5px;
+        padding: 10px 3px;
         text-align: center;
 
         @include mq(md) {
           font-size: $font-size-medium;
+          padding: 5px 10px;
         }
 
         &.active {
