@@ -1,0 +1,12 @@
+# we need to ignore .git because gitlab-ci runner will clone git repo so there is .git file
+.git
+
+# Dockerfile itself need to be ignore 
+Dockerfile
+.DS_Store
+.gitignore
+README.md
+env.*
+/docker/*
+
+# and try to ignore all the file which doesnot need inside image 
