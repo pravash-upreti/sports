@@ -1,0 +1,72 @@
+.futsal-score-details-wrapper {
+  position: relative;
+
+  .futsal-score-details {
+    width: 100%;
+
+    .activity-row {
+      background: transparent !important;
+
+      .activity-home-team,
+      .activity-away-team,
+      .activity-score-time {
+        border: 0;
+        padding: 10px 5px;
+      }
+
+      .activity-score-time {
+        background: transparent;
+        text-align: center;
+      }
+
+      .activity-home-team {
+        text-align: right;
+      }
+
+      .activity-away-team {
+        text-align: left;
+      }
+
+      .activity-home-team,
+      .activity-away-team {
+        width: 40%;
+      }
+
+      .futsal-activitivist-wrapper {
+        .activity-symbol-wrapper {
+          display: inline-block;
+
+          .activity-symbol {
+            display: inline-block;
+            margin: 0 2px;
+            padding: 1px;
+            width: 16px;
+          }
+        }
+      }
+
+      .activity-score-time-wrapper {
+        background-color: $color-grey-cool;
+        border: 1px solid $color-grey-cool;
+        border-radius: 50%;
+        display: inline-block;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        vertical-align: middle;
+        width: 48px;
+        z-index: 1;
+      }
+    }
+  }
+
+  .activity-score-time-line {
+    border: 1px solid $color-grey-cool;
+    height: 100%;
+    left: 50%;
+    position: absolute;
+    right: 50%;
+    top: 0;
+    z-index: -1;
+  }
+}

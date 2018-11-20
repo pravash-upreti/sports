@@ -27,6 +27,7 @@ export const FUTSAL_ROUTES = {
   POINTS: `${FUTSAL}/points`,
   RESULTS: `${FUTSAL}/results`,
   FIXTURES: `${FUTSAL}/fixtures`,
+  FIXTURE: `${FUTSAL}/fixture/:fixtureId`,
 };
 
 export const CARROM_BOARD_ROUTES = {
@@ -44,6 +45,7 @@ export const OTHER_GAMES_ROUTES = {
     STATS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/stats`,
     POINTS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/points`,
     RESULTS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/results`,
-    FIXTURES: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/fixtures`
+    FIXTURES: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/fixtures`,
+    FIXTURE: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/fixture/:fixtureId`
   }
 };

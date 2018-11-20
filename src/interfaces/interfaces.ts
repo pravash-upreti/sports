@@ -45,10 +45,12 @@ export interface StatsInterface {
 export interface ActivityInterface {
   id: number;
   fixtureId: number;
-  player: PlayerInterface;
+  player: string;
   team: TeamInterface;
   time?: number | string;
   points?: number;
+  teamType: string;
+  type: string;
 }
 
 export interface RoundInterface {
