@@ -1,6 +1,6 @@
 <template>
   <div class="futsal-activitivist-wrapper" v-if="showActivityInfo">
-    <span v-if="teamType === 'home'">{{ activity.player }}</span>
+    <span class="activitist-name" v-if="teamType === 'home'">{{ activity.player }}</span>
     <div class="activity-symbol-wrapper">
       <img
         v-if="activityType === 'goal'"
@@ -28,7 +28,7 @@
         class="activity-symbol"
       />
     </div>
-    <span v-if="teamType === 'away'">{{ activity.player }}</span>
+    <span class="activitist-name" v-if="teamType === 'away'">{{ activity.player }}</span>
   </div>
 </template>
 

@@ -8,7 +8,7 @@
           class="activity-row"
         >
           <td class="activity-home-team"><futsal-activitivist :activity="activity" teamType="home" /></td>
-          <td class="activity-score-time"><span class="activity-score-time-wrapper">{{ activity.time }}'</span></td>
+          <td class="activity-score-time"><span class="activity-score-time-wrapper"><span v-if="activity.time">{{ activity.time }}'</span><span v-else>NA</span></span></td>
           <td class="activity-away-team"><futsal-activitivist :activity="activity" teamType="away" /></td>
         </tr>
       </tbody>

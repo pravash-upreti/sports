@@ -16,7 +16,7 @@
       </div>
       <div v-else>
         <div class="modal-title">
-          <div class="row modal-fixture-date"><span class="fixture-date">{{ fixtureDate }}</span></div>
+          <div class="modal-fixture-date"><span class="fixture-date">{{ fixtureDate }}</span></div>
           <div class="modal-row">
             <div>
               <div class="col-md-12 score-wrapper">

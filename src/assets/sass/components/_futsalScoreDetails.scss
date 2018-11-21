@@ -1,10 +1,14 @@
 $futsal-activity-row-spacing: 10px;
+$futsal-activity-score-time-width: 48px;
+$futsal-activity-score-time-width--mobile: 36px;
 
 .futsal-score-details-wrapper {
   position: relative;
 
   .futsal-score-details {
+    font-weight: 500;
     position: relative;
+    table-layout: fixed;
     z-index: 1;
 
     .activity-row {
@@ -15,11 +19,16 @@ $futsal-activity-row-spacing: 10px;
       .activity-score-time {
         border: 0;
         box-sizing: border-box;
-        padding: $futsal-activity-row-spacing 5px;
+        padding: $futsal-activity-row-spacing 2px;
       }
 
       .activity-score-time {
         text-align: center;
+        width: calc(#{$futsal-activity-score-time-width--mobile} + 4px);
+
+        @include mq(md) {
+          width: calc(#{$futsal-activity-score-time-width} + 4px);
+        }
       }
 
       .activity-home-team {
@@ -32,10 +41,12 @@ $futsal-activity-row-spacing: 10px;
 
       .activity-home-team,
       .activity-away-team {
-        width: 45%;
+        width: 50%;
       }
 
       .futsal-activitivist-wrapper {
+        overflow: hidden;
+
         .activity-symbol-wrapper {
           display: inline-block;
 
@@ -46,6 +57,12 @@ $futsal-activity-row-spacing: 10px;
             width: 16px;
           }
         }
+
+        .activitist-name {
+          display: inline-block;
+          white-space: nowrap;
+          width: calc(100% - 22px);
+        }
       }
 
       .activity-score-time-wrapper {
@@ -53,17 +70,17 @@ $futsal-activity-row-spacing: 10px;
         border: 1px solid $color-grey-cool;
         border-radius: 50%;
         display: inline-block;
-        height: 36px;
-        line-height: 36px;
+        height: $futsal-activity-score-time-width--mobile;
+        line-height: $futsal-activity-score-time-width--mobile;
         text-align: center;
         vertical-align: middle;
-        width: 36px;
+        width: $futsal-activity-score-time-width--mobile;
         z-index: 1;
 
         @include mq(md) {
-          height: 48px;
-          line-height: 48px;
-          width: 48px;
+          height: $futsal-activity-score-time-width;
+          line-height: $futsal-activity-score-time-width;
+          width: $futsal-activity-score-time-width;
         }
       }
     }
