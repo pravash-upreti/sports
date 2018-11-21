@@ -1,8 +1,11 @@
+$futsal-activity-row-spacing: 10px;
+
 .futsal-score-details-wrapper {
   position: relative;
 
   .futsal-score-details {
-    width: 100%;
+    position: relative;
+    z-index: 1;
 
     .activity-row {
       background: transparent !important;
@@ -11,11 +14,11 @@
       .activity-away-team,
       .activity-score-time {
         border: 0;
-        padding: 10px 5px;
+        box-sizing: border-box;
+        padding: $futsal-activity-row-spacing 5px;
       }
 
       .activity-score-time {
-        background: transparent;
         text-align: center;
       }
 
@@ -29,7 +32,7 @@
 
       .activity-home-team,
       .activity-away-team {
-        width: 40%;
+        width: 45%;
       }
 
       .futsal-activitivist-wrapper {
@@ -50,23 +53,29 @@
         border: 1px solid $color-grey-cool;
         border-radius: 50%;
         display: inline-block;
-        height: 48px;
-        line-height: 48px;
+        height: 36px;
+        line-height: 36px;
         text-align: center;
         vertical-align: middle;
-        width: 48px;
+        width: 36px;
         z-index: 1;
+
+        @include mq(md) {
+          height: 48px;
+          line-height: 48px;
+          width: 48px;
+        }
       }
     }
   }
 
   .activity-score-time-line {
     border: 1px solid $color-grey-cool;
-    height: 100%;
+    height: calc(100% - 2 *#{$futsal-activity-row-spacing});
     left: 50%;
     position: absolute;
     right: 50%;
-    top: 0;
-    z-index: -1;
+    top: $futsal-activity-row-spacing;
+    z-index: 0;
   }
 }

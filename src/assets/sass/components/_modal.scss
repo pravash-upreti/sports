@@ -18,24 +18,9 @@
     background: $white;
     color: $color-text-dark;
     display: inline-block;
-    left: 50%;
     margin: 20px 0;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-
-    @include mq(md) {
-      width: 700px;
-    }
-
-    @include mq(lg) {
-      width: 800px;
-    }
-
-    @include mq(xl) {
-      width: 1000px;
-    }
+    max-width: 95%;
+    position: relative;
 
     .modal-close {
       background: transparent;
@@ -87,7 +72,7 @@
         font-size: $font-size-h4;
       }
 
-      // this is real bad
+      // TODO: this is real bad
       .hidden {
         color: #f3f3f3;
       }

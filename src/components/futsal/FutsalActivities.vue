@@ -38,7 +38,9 @@ export default class FutsalActivities extends Vue {
   }
 
   get reverserActivities() {
-    return this.activities.reverse();
+    const acts: ActivityInterface[] = Object.assign([], this.activities);
+
+    return acts.sort((activity) => activity.id).reverse();
   }
 }
 </script>
