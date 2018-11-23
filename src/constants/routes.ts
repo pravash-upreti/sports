@@ -38,6 +38,14 @@ export const CARROM_BOARD_ROUTES = {
   FIXTURE: `${CARROM_BOARD}/fixture/:fixtureId`,
 };
 
+export const TABLE_TENNIS_ROUTES = {
+  HOME: `${TABLE_TENNIS}/recent`,
+  TEAMS: `${TABLE_TENNIS}/teams`,
+  RESULTS: `${TABLE_TENNIS}/results`,
+  FIXTURES: `${TABLE_TENNIS}/fixtures`,
+  FIXTURE: `${TABLE_TENNIS}/fixture/:fixtureId`,
+};
+
 export const OTHER_GAMES_ROUTES = {
   DASHAIN_CUP: {
     HOME: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/recent`,
