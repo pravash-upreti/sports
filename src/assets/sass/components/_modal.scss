@@ -19,7 +19,7 @@
     background: $white;
     color: $color-text-dark;
     display: inline-block;
-    font-weight: 500;
+    font-weight: 400;
     margin: 20px 0;
     position: relative;
 
@@ -83,13 +83,13 @@
     }
 
     .modal-fixture-date {
-      font-size: $font-size-small;
-      padding: 5px 36px 20px;
+      font-size: $font-size-base;
+      padding: 5px 20px 20px;
       text-align: center;
       text-transform: capitalize;
 
       @include mq(md) {
-        font-size: $font-size-base;
+        font-size: $font-size-medium;
       }
 
       .comma {
@@ -110,7 +110,7 @@
     }
 
     .winner-team {
-      font-weight: bold;
+      font-weight: 500;
     }
 
     .score-wrapper {
@@ -132,14 +132,14 @@
       }
 
       .score {
-        font-size: $font-size--xlarge;
+        font-size: $font-size--xxlarge;
         padding-top: 25px;
         vertical-align: unset;
-        width: 100px;
+        width: 120px;
 
         @include mq(md) {
-          font-size: $font-size--xxlarge;
-          width: 150px;
+          font-size: $font-size--xxxlarge;
+          width: 180px;
         }
       }
 
@@ -148,16 +148,21 @@
         padding-right: 2px;
 
         .team-name {
+          font-size: $font-size-medium;
           padding: 10px 0;
           text-align: center;
+
+          @include mq(md) {
+            font-size: $font-size-large;
+          }
         }
 
         .participant-image {
-          font-size: $font-size--xxxlarge;
-          height: $font-size--xxlarge;
-          line-height: $font-size--xxlarge;
+          font-size: $font-size--xxlarge;
+          height: $font-size--xxxlarge;
+          line-height: $font-size--xxxlarge;
           margin: 0;
-          width: $font-size--xxlarge;
+          width: $font-size--xxxlarge;
 
           @include mq(lg) {
             font-size: $font-size--xxlarge;

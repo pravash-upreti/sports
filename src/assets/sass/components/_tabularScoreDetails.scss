@@ -4,11 +4,11 @@
 
   table {
     box-shadow: none;
-    font-size: $font-size-small;
+    font-size: $font-size-base;
     width: 100%;
 
     @include mq(md) {
-      font-size: $font-size-base;
+      font-size: $font-size-medium;
     }
 
     tr {

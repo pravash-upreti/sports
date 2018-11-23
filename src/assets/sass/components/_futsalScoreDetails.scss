@@ -8,14 +8,17 @@ $futsal-activity-score-time-width--mobile: 36px;
   .futsal-score-details {
     background-color: transparent;
     box-shadow: none;
+    font-size: $font-size-base;
     font-weight: 500;
     position: relative;
     table-layout: fixed;
     z-index: 1;
 
-    .activity-row {
-      background: transparent !important;
+    @include mq(md) {
+      font-size: $font-size-medium;
+    }
 
+    .activity-row {
       .activity-home-team,
       .activity-away-team,
       .activity-score-time {

@@ -76,7 +76,7 @@ $score-card-height: 80px;
         color: $color-text-darker;
         font-size: $font-size--xxlarge;
         text-align: center;
-        width: 110px;
+        width: 120px;
 
         @include mq(md) {
           font-size: $font-size--xxxlarge;
