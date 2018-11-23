@@ -159,7 +159,7 @@
       width: 100%;
 
       @include mq(md) {
-        font-size: $font-size-base;
+        font-size: $font-size-large;
       }
 
       tr {
