@@ -73,6 +73,7 @@ export interface DetailsInterface {
   year: number;
   startDate: string;
   finishDate: string;
+  winners: object[];
   winner: string;
   runnerUp: string;
 }
@@ -93,8 +94,7 @@ export interface FixtureInterface {
 export interface RecentsInterface {
   results: FixtureInterface[];
   fixtures: FixtureInterface[];
-  winner: string | null;
-  runnerUp: string | null;
+  winners: object[];
   showWinners: boolean;
 }
 

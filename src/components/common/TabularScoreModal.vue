@@ -16,7 +16,7 @@
       </div>
       <div v-else>
         <div class="modal-title">
-          <div class="modal-fixture-date">{{ fixture.round }}<span class="comma">, </span><span class="fixture-date">{{ fixtureDate }}</span></div>
+          <div class="modal-fixture-date">{{ fixture.round }} - {{ fixture.categoryType }}<span class="comma">, </span><span class="fixture-date">{{ fixtureDate }}</span></div>
           <div class="modal-row">
             <table class="score-wrapper">
               <tbody>
@@ -115,7 +115,7 @@ import { FixtureInterface, TeamInterface, ActivityInterface } from '@/interfaces
 @Component({
   components: { ParticipantLogo }
 })
-export default class CarromBoardScoreModal extends Vue {
+export default class TabularScoreModal extends Vue {
   public error: boolean =  false;
   public fixture: FixtureInterface | null = null;
 

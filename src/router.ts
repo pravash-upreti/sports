@@ -1,7 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import { BASE_ROUTES, FUTSAL_ROUTES, CARROM_BOARD_ROUTES, OTHER_GAMES_ROUTES } from './constants/routes';
+import {
+  BASE_ROUTES,
+  FUTSAL_ROUTES,
+  OTHER_GAMES_ROUTES,
+  TABLE_TENNIS_ROUTES,
+  CARROM_BOARD_ROUTES
+} from './constants/routes';
 
 import Chess from '@/views/chess/Chess.vue';
 import Futsal from '@/views/futsal/Futsal.vue';
@@ -16,7 +22,7 @@ import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 import FutsalScoreModal from '@/views/futsal/FutsalScoreModal.vue';
-import CarromBoardScoreModal from '@/views/carrom-board/CarromBoardScoreModal.vue';
+import TabularScoreModal from '@/components/common/TabularScoreModal.vue';
 
 
 const DEFAULT_PAGE_TITLE = 'LF Sports';
@@ -117,7 +123,7 @@ const router = new Router({
         },
         {
           path: CARROM_BOARD_ROUTES.FIXTURE,
-          component: CarromBoardScoreModal,
+          component: TabularScoreModal,
           meta: {
             title: 'Carrom Board - Fixture'
           }
@@ -130,7 +136,55 @@ const router = new Router({
     },
     {
       path: BASE_ROUTES.TABLE_TENNIS,
-      component: TableTennis
+      component: TableTennis,
+      meta: {
+        title: 'Table Tennis'
+      },
+      children: [
+        {
+          path: '',
+          redirect: TABLE_TENNIS_ROUTES.HOME
+        },
+        {
+          path: TABLE_TENNIS_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Table Tennis - Home'
+          }
+        },
+        {
+          path: TABLE_TENNIS_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Table Tennis - Fixtures'
+          }
+        },
+        {
+          path: TABLE_TENNIS_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Table Tennis - Results'
+          }
+        },
+        {
+          path: TABLE_TENNIS_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Table Tennis - Teams'
+          }
+        },
+        {
+          path: TABLE_TENNIS_ROUTES.FIXTURE,
+          component: TabularScoreModal,
+          meta: {
+            title: 'Table Tennis - Fixture'
+          }
+        },
+        {
+          path: '*',
+          redirect: TABLE_TENNIS_ROUTES.HOME
+        }
+      ]
     },
     {
       path: BASE_ROUTES.OTHERS,
