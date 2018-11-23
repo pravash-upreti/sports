@@ -27,7 +27,7 @@ $score-card-height: 80px;
       .team-info,
       .score {
         display: table-cell;
-        padding: 20px 5px;
+        padding: 5px;
         vertical-align: middle;
       }
 
@@ -90,26 +90,25 @@ $score-card-height: 80px;
         .result {
           font-weight: 300;
 
+          p {
+            font-size: $font-size-base;
+
+            &.game-date,
+            &.game-round {
+              color: $color-grey;
+            }
+
+            &.game-time {
+              font-size: $font-size--xlarge;
+            }
+
+            &.game-round {
+              text-transform: capitalize;
+            }
+          }
+
           .versus {
             display: block;
-
-            p {
-              font-size: $font-size-base;
-              line-height: $score-card-height / 3;
-
-              &.game-date,
-              &.game-round {
-                color: $color-grey;
-              }
-
-              &.game-time {
-                font-size: $font-size--xlarge;
-              }
-
-              &.game-round {
-                text-transform: capitalize;
-              }
-            }
           }
 
           .result-dash {

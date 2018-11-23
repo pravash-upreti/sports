@@ -60,3 +60,10 @@ export function getRecentFixtures(
 
   return recents;
 }
+
+export function getFixtureDate(fixture: FixtureInterface) {
+  return {
+    date: dateFns.format(fixture.date, 'MMM D'),
+    time: dateFns.format(fixture.date, 'h:mm A')
+  };
+}
