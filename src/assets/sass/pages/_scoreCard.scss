@@ -62,7 +62,7 @@ $score-card-height: 80px;
               font-size: $font-size-large;
             }
 
-            .participant-logo-wrapper {
+            .participant-image-wrapper {
               display: none;
 
               @include mq(md) {

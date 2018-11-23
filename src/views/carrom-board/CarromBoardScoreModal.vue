@@ -24,6 +24,7 @@
                   <td class="team home-team team-grouped">
                     <participant-logo
                       v-for="(player, index) in fixture.homeTeam.players"
+                      :show-large="true"
                       :key="index"
                       :participant="player"
                     />
@@ -35,6 +36,7 @@
                   <td class="team away-team team-grouped">
                     <participant-logo
                       v-for="(player, index) in fixture.awayTeam.players"
+                      :show-large="true"
                       :key="index"
                       :participant="player"
                     />

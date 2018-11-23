@@ -6,17 +6,17 @@
       v-if="participant.profileImage && shouldShowImage"
       :src="participant.profileImage"
       :alt="participant.name"
-      class="participant-image"
+      :class="imageClassObject"
     >
     <span 
       v-else-if="participant.logo" 
       :style="logoStyleObject"
-      class="participant-image"
+      :class="imageClassObject"
     >{{ participant.logo.text }}</span>
     <span
       v-else
       :style="classObject"
-      class="participant-image" 
+      :class="imageClassObject" 
     >{{ participant.name.substring(0, 1) }}</span>
   </span>
 </template>
@@ -32,6 +32,7 @@ export default class ParticipantLogo extends Vue {
   @Prop() private participant!: object;
   @Prop() private customStyles!: object;
   @Prop() private hideImage!: boolean;
+  @Prop() private showLarge!: boolean;
 
   get classObject() {
     return Object.assign(
@@ -60,6 +61,13 @@ export default class ParticipantLogo extends Vue {
 
   get shouldShowImage() {
     return !this.hideImage;
+  }
+
+  get imageClassObject() {
+    return {
+      'participant-image': true,
+      'participant-image--large': this.showLarge
+    };
   }
 }
 </script>

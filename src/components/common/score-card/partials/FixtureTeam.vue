@@ -2,7 +2,7 @@
   <div :class="classObject">
     <div class="team-name-wrapper">
       <div v-if="isAwayTeam" :class="teamClassObject">
-        <span v-if="isGrouped" class="participant-logo-wrapper">
+        <span v-if="isGrouped">
           <participant-logo
             v-for="(player, index) in team.players"
             :key="index"
@@ -11,7 +11,7 @@
             :custom-styles="teamCustomStyles"
           />
         </span>
-        <span v-else class="participant-logo-wrapper">
+        <span v-else>
           <participant-logo
             :hide-image="true"
             :participant="team"
@@ -22,7 +22,7 @@
       </div>
       <div v-else :class="teamClassObject" >
         {{ team.name }}
-        <span v-if="isGrouped" class="participant-logo-wrapper">
+        <span v-if="isGrouped">
           <participant-logo
             v-for="(player, index) in team.players"
             :key="index"
@@ -31,7 +31,7 @@
             :custom-styles="teamCustomStyles"
           />
         </span>
-        <span v-else class="participant-logo-wrapper">
+        <span v-else>
           <participant-logo
             :hide-image="true"
             :participant="team"

@@ -156,30 +156,6 @@
             font-size: $font-size-large;
           }
         }
-
-        .participant-image {
-          font-size: $font-size--xxlarge;
-          height: $font-size--xxxlarge;
-          line-height: $font-size--xxxlarge;
-          margin: 0;
-          width: $font-size--xxxlarge;
-
-          @include mq(lg) {
-            font-size: $font-size--xxlarge;
-            height: $font-size--xxxxlarge;
-            line-height: $font-size--xxxxlarge;
-            margin: 0;
-            width: $font-size--xxxxlarge;
-          }
-        }
-      }
-
-      .team-grouped {
-        .participant-image-wrapper {
-          &:not(:first-child) {
-            margin-left: -5px;
-          }
-        }
       }
     }
   }

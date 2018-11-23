@@ -22,14 +22,20 @@
               <tbody>
                 <tr>
                   <td class="team">
-                    <participant-logo :participant="fixture.homeTeam" />
+                    <participant-logo
+                      :show-large="true"
+                      :participant="fixture.homeTeam"
+                    />
                     <p :class="['team-name', getWinnerClassObject(fixture.homeTeam)]">{{ fixture.homeTeam.name }}</p>
                   </td>
                   <td class="score">
                     <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
                   </td>
                   <td class="team away-team team-grouped">
-                    <participant-logo :participant="fixture.awayTeam" />
+                    <participant-logo
+                      :show-large="true"
+                      :participant="fixture.awayTeam"
+                    />
                     <p :class="['team-name', getWinnerClassObject(fixture.awayTeam)]">{{ fixture.awayTeam.name }}</p>
                   </td>
                 </tr>
