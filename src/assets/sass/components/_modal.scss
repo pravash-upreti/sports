@@ -21,21 +21,11 @@
     font-weight: 500;
     left: 50%;
     margin: 20px 0;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
+    max-width: 98%;
+    position: relative;
 
     @include mq(md) {
-      width: 700px;
-    }
-
-    @include mq(lg) {
-      width: 800px;
-    }
-
-    @include mq(xl) {
-      width: 1000px;
+      max-width: 95%;
     }
 
     .modal-close {
@@ -187,14 +177,14 @@
         }
 
         .participant-image {
-          font-size: $font-size--xxxlarge;
+          font-size: $font-size--xlarge;
           height: $font-size--xxxlarge;
           line-height: $font-size--xxxlarge;
           margin: 0;
           width: $font-size--xxxlarge;
 
           @include mq(lg) {
-            font-size: $font-size--xxxxlarge;
+            font-size: $font-size--xxlarge;
             height: $font-size--xxxxlarge;
             line-height: $font-size--xxxxlarge;
             margin: 0;

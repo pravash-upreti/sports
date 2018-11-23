@@ -43,7 +43,7 @@ import { TournamentDataInterface, TournamentDataResponseInterface } from '@/inte
 export default class Futsal extends Vue {
   public error: boolean = false;
   public loading: boolean = true;
-  public fixtureLink: string = '';
+  public fixtureLink: string = FUTSAL_ROUTES.FIXTURE;
   public data: TournamentDataInterface | null = null;
 
   public created() {
@@ -74,6 +74,7 @@ export default class Futsal extends Vue {
       points: rawData.table,
       details: rawData.details,
       stats: rawData.stats || [],
+      allFixtures: rawData.fixtures,
       recents: FixtureService.getRecentFixtures(rawData),
       results: FixtureService.getResults(rawData.fixtures),
       fixtures: FixtureService.getFixtures(rawData.fixtures)

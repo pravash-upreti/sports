@@ -15,6 +15,7 @@ import OtherGames from '@/views/other-games/OtherGames.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
+import FutsalScoreModal from '@/views/futsal/FutsalScoreModal.vue';
 import CarromBoardScoreModal from '@/views/carrom-board/CarromBoardScoreModal.vue';
 
 
@@ -61,6 +62,13 @@ const router = new Router({
         {
           path: FUTSAL_ROUTES.TEAMS,
           component: Teams
+        },
+        {
+          path: FUTSAL_ROUTES.FIXTURE,
+          component: FutsalScoreModal,
+          meta: {
+            title: 'Futsal - Fixture'
+          }
         },
         {
           path: '*',
@@ -147,6 +155,10 @@ const router = new Router({
             {
               path: OTHER_GAMES_ROUTES.DASHAIN_CUP.RESULTS,
               component: Results
+            },
+            {
+              path: OTHER_GAMES_ROUTES.DASHAIN_CUP.FIXTURE,
+              component: FutsalScoreModal
             },
             {
               path: OTHER_GAMES_ROUTES.DASHAIN_CUP.POINTS,

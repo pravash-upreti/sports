@@ -128,11 +128,6 @@ $score-card-height: 80px;
 
           .result-dash {
             color: $gray;
-            padding: 0 5px;
-
-            @include mq(md) {
-              padding: 0 10px;
-            }
           }
         }
       }
