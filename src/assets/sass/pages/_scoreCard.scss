@@ -40,7 +40,11 @@ $score-card-height: 80px;
       }
 
       .winner {
-        font-weight: 500;
+        font-weight: 400;
+
+        .team-name {
+          font-weight: 500;
+        }
       }
 
       .team-info {

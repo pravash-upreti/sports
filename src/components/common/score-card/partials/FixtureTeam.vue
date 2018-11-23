@@ -6,12 +6,14 @@
           <participant-logo
             v-for="(player, index) in team.players"
             :key="index"
+            :hide-image="true"
             :participant="player"
             :custom-styles="teamCustomStyles"
           />
         </span>
         <span v-else class="participant-logo-wrapper">
           <participant-logo
+            :hide-image="true"
             :participant="team"
             :custom-styles="teamCustomStyles"
           />
@@ -24,12 +26,14 @@
           <participant-logo
             v-for="(player, index) in team.players"
             :key="index"
+            :hide-image="true"
             :participant="player"
             :custom-styles="teamCustomStyles"
           />
         </span>
         <span v-else class="participant-logo-wrapper">
           <participant-logo
+            :hide-image="true"
             :participant="team"
             :custom-styles="teamCustomStyles"
           />
@@ -75,9 +79,7 @@ export default class FixtureTeam extends Vue {
   }
 
   get teamCustomStyles(): object {
-    let customStyles = {
-      margin: '0 8px'
-    };
+    let customStyles = {};
 
     if (this.team.logo) {
       customStyles = Object.assign(customStyles, {

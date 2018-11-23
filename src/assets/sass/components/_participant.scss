@@ -27,6 +27,7 @@ $profile-image-width: 32px;
     .participant-image-wrapper {
       .participant-image {
         border: 2px solid $color-grey-cool;
+        line-height: calc(#{$profile-image-width} - 2px); // Because of border
         margin: 0;
       }
 

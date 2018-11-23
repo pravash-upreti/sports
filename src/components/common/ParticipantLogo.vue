@@ -3,7 +3,7 @@
     class="participant-image-wrapper"
   >
     <img 
-      v-if="participant.profileImage"
+      v-if="participant.profileImage && shouldShowImage"
       :src="participant.profileImage"
       :alt="participant.name"
       class="participant-image"
@@ -31,6 +31,7 @@ import { TeamInterface, PlayerInterface } from '@/interfaces/interfaces';
 export default class ParticipantLogo extends Vue {
   @Prop() private participant!: object;
   @Prop() private customStyles!: object;
+  @Prop() private hideImage!: boolean;
 
   get classObject() {
     return Object.assign(
@@ -55,6 +56,10 @@ export default class ParticipantLogo extends Vue {
     }
 
     return this.customStyles;
+  }
+
+  get shouldShowImage() {
+    return !this.hideImage;
   }
 }
 </script>

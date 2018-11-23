@@ -63,6 +63,7 @@ header {
 .sub-header {
   background-color: $color-blue;
   margin-bottom: 20px;
+  z-index: 1;
 
   @include mq(lg) {
     padding-top: 10px;
