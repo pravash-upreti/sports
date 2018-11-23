@@ -4,7 +4,7 @@
     @click="close"
   >
     <div 
-      class="modal"
+      class="modal container"
       @click="doNothing"
     >
       <div 
@@ -18,30 +18,23 @@
         <div class="modal-title">
           <div class="modal-fixture-date"><span class="fixture-date">{{ fixtureDate }}</span></div>
           <div class="modal-row">
-            <div>
-              <div class="col-md-12 score-wrapper">
-                <div class="col col-sm-4 col-md-5 team">
-                  <participant-logo :participant="fixture.homeTeam" />
-                </div>
-                <div class="col col-sm-4 col-md-2 score">
-                  <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
-                </div>
-                <div class="col col-sm-4 col-md-5 team">
-                  <participant-logo :participant="fixture.awayTeam" />
-                </div>
-              </div>
-              <div class="col-md-12 score-wrapper">
-                <div class="col col-md-5 team">
-                  <p :class="['team-name', getWinnerClassObject(fixture.homeTeam)]">{{ fixture.homeTeam.name }}</p>
-                </div>
-                <div class="col col-md-2 score hidden">
-                  <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
-                </div>
-                <div class="col col-md-5 team">
-                  <p :class="['team-name', getWinnerClassObject(fixture.awayTeam)]">{{ fixture.awayTeam.name }}</p>
-                </div>
-              </div>
-            </div>
+            <table class="score-wrapper">
+              <tbody>
+                <tr>
+                  <td class="team">
+                    <participant-logo :participant="fixture.homeTeam" />
+                    <p :class="['team-name', getWinnerClassObject(fixture.homeTeam)]">{{ fixture.homeTeam.name }}</p>
+                  </td>
+                  <td class="score">
+                    <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
+                  </td>
+                  <td class="team away-team team-grouped">
+                    <participant-logo :participant="fixture.awayTeam" />
+                    <p :class="['team-name', getWinnerClassObject(fixture.awayTeam)]">{{ fixture.awayTeam.name }}</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
         <div class="modal-body">

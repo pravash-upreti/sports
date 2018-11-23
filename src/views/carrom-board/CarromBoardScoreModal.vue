@@ -4,7 +4,7 @@
     @click="close"
   >
     <div 
-      class="modal"
+      class="modal container"
       @click="doNothing"
     >
       <div 
