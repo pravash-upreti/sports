@@ -16,36 +16,28 @@
       </div>
       <div v-else>
         <div class="modal-title">
-          <div class="row modal-fixture-date">{{ fixture.round }}<span class="comma">, </span><span class="fixture-date">{{ fixtureDate }}</span></div>
+          <div class="modal-fixture-date"><span class="fixture-date">{{ fixtureDate }}</span></div>
           <div class="modal-row">
             <div>
               <div class="col-md-12 score-wrapper">
-                <div class="col col-sm-4 col-md-5 team team-grouped">
-                  <participant-logo
-                    v-for="(player, index) in fixture.homeTeam.players"
-                    :key="index"
-                    :participant="player" 
-                  />
+                <div class="col col-sm-4 col-md-5 team">
+                  <participant-logo :participant="fixture.homeTeam" />
                 </div>
                 <div class="col col-sm-4 col-md-2 score">
                   <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
                 </div>
-                <div class="col col-sm-4 col-md-5 team team-grouped">
-                  <participant-logo
-                    v-for="(player, index) in fixture.awayTeam.players"
-                    :key="index"
-                    :participant="player" 
-                  />
+                <div class="col col-sm-4 col-md-5 team">
+                  <participant-logo :participant="fixture.awayTeam" />
                 </div>
               </div>
               <div class="col-md-12 score-wrapper">
-                <div class="col col-md-5 team team-grouped">
+                <div class="col col-md-5 team">
                   <p :class="['team-name', getWinnerClassObject(fixture.homeTeam)]">{{ fixture.homeTeam.name }}</p>
                 </div>
                 <div class="col col-md-2 score hidden">
                   <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
                 </div>
-                <div class="col col-md-5 team team-grouped">
+                <div class="col col-md-5 team">
                   <p :class="['team-name', getWinnerClassObject(fixture.awayTeam)]">{{ fixture.awayTeam.name }}</p>
                 </div>
               </div>
@@ -60,47 +52,7 @@
             <div class="modal-row">No info available.</div>
           </div>
           <div v-else>
-            <table>
-              <tbody>
-                <tr>
-                  <th>Team</th>
-                  <th 
-                    v-for="(activity, index) in fixture.activities"
-                    :key="index"
-                    class="activity-points"
-                  >R{{ index + 1 }}</th>
-                  <th class="activity-points total-points">Total</th>
-                </tr>
-                <tr>
-                  <td>
-                    <p 
-                      v-for="(player, index) in fixture.homeTeam.players"
-                      :key="index"
-                    >{{ player.name }}</p>
-                  </td>
-                  <td
-                    v-for="(activity, index) in fixture.activities"
-                    :key="index"
-                    class="activity-points"
-                  >{{ getHomeTeamActivityScore(activity) }}</td>
-                  <td :class="['activity-points total-points', getWinnerClassObject(fixture.homeTeam)]">{{ fixture.homeTeamScore }}</td>
-                </tr>
-                <tr>
-                  <td>
-                    <p 
-                      v-for="(player, index) in fixture.awayTeam.players"
-                      :key="index"
-                    >{{ player.name }}</p>
-                  </td>
-                  <td
-                    v-for="(activity, index) in fixture.activities"
-                    :key="index"
-                    class="activity-points"
-                  >{{ getAwayTeamActivityScore(activity) }}</td>
-                  <td :class="['activity-points total-points', getWinnerClassObject(fixture.awayTeam)]">{{ fixture.awayTeamScore }}</td>
-                </tr>
-              </tbody>
-            </table>
+            <futsal-activities :activities="fixture.activities" />
           </div>
         </div>
       </div>
@@ -113,12 +65,13 @@ import dateFns from 'date-fns';
 import { Component, Vue } from 'vue-property-decorator';
 
 import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import FutsalActivities from '@/components/futsal/FutsalActivities.vue';
 import { FixtureInterface, TeamInterface, ActivityInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { ParticipantLogo }
+  components: { ParticipantLogo, FutsalActivities }
 })
-export default class CarromBoardScoreModal extends Vue {
+export default class FutsalScoreModal extends Vue {
   public error: boolean =  false;
   public fixture: FixtureInterface | null = null;
 
@@ -164,14 +117,6 @@ export default class CarromBoardScoreModal extends Vue {
 
   public getWinnerClassObject(team: TeamInterface) {
     return this.isFixturePlayed && this.isTeamWinner(team) ? { 'winner-team': true } : {};
-  }
-
-  public getHomeTeamActivityScore(activity: ActivityInterface) {
-    return this.fixture && activity.team.name === this.fixture.homeTeam.name ? activity.points : ' - ';
-  }
-
-  public getAwayTeamActivityScore(activity: ActivityInterface) {
-    return this.fixture && activity.team.name === this.fixture.awayTeam.name ? activity.points : ' - ';
   }
 
   get isFixturePlayed() {
