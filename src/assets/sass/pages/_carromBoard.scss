@@ -12,28 +12,4 @@
       width: 25%;
     }
   }
-
-  .score-card {
-    .score-brief {
-      @include mq(md) {
-        .team-info {
-          width: 35%;
-        }
-
-        .score {
-          width: 30%;
-        }
-      }
-
-      @include mq(lg) {
-        .team-info {
-          width: 40%;
-        }
-
-        .score {
-          width: 20%;
-        }
-      }
-    }
-  }
 }

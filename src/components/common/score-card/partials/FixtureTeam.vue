@@ -1,7 +1,7 @@
 <template>
   <div :class="classObject">
     <div class="team-name-wrapper">
-      <h2 v-if="isAwayTeam" :class="teamClassObject">
+      <div v-if="isAwayTeam" :class="teamClassObject">
         <span v-if="isGrouped" class="participant-logo-wrapper">
           <participant-logo
             v-for="(player, index) in team.players"
@@ -17,8 +17,8 @@
           />
         </span>
         {{ team.name }}
-      </h2>
-      <h2 v-else :class="teamClassObject" >
+      </div>
+      <div v-else :class="teamClassObject" >
         {{ team.name }}
         <span v-if="isGrouped" class="participant-logo-wrapper">
           <participant-logo
@@ -34,7 +34,7 @@
             :custom-styles="teamCustomStyles"
           />
         </span>
-      </h2>
+      </div>
     </div>
   </div>
 </template>

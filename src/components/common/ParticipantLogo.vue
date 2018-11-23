@@ -3,15 +3,15 @@
     class="participant-image-wrapper"
   >
     <img 
-      v-if="participant.image"
-      :src="participant.image"
+      v-if="participant.profileImage"
+      :src="participant.profileImage"
       :alt="participant.name"
       class="participant-image"
     >
     <span 
       v-else-if="participant.logo" 
       :style="logoStyleObject"
-      class="participant-image" 
+      class="participant-image"
     >{{ participant.logo.text }}</span>
     <span
       v-else

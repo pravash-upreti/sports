@@ -4,7 +4,7 @@ header {
   position: relative;
 
   @include mq(lg) {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 }
 
@@ -78,13 +78,13 @@ header {
 .nav {
   background-color: $color-blue;
   list-style-type: none;
+  z-index: 100;
 
   @include m(primary) {
     bottom: 0;
     left: 0;
     position: fixed;
     right: 0;
-    z-index: 100;
 
     @include mq(lg) {
       border: 0;
@@ -97,7 +97,7 @@ header {
       width: 20%;
 
       @include mq(lg) {
-        margin-right: 20px;
+        margin-right: 10px;
         width: auto;
 
         &:last-child {

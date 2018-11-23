@@ -153,11 +153,11 @@
         }
 
         .participant-image {
-          font-size: $font-size--xlarge;
-          height: $font-size--xxxlarge;
-          line-height: $font-size--xxxlarge;
+          font-size: $font-size--xxxlarge;
+          height: $font-size--xxlarge;
+          line-height: $font-size--xxlarge;
           margin: 0;
-          width: $font-size--xxxlarge;
+          width: $font-size--xxlarge;
 
           @include mq(lg) {
             font-size: $font-size--xxlarge;

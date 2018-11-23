@@ -1,3 +1,5 @@
+$profile-image-width: 32px;
+
 .participant-image-wrapper {
   display: inline-block;
   text-align: center;
@@ -8,10 +10,11 @@
     color: $white;
     display: inline-block;
     font-weight: normal;
-    height: 28px;
-    line-height: 28px;
+    height: $profile-image-width;
+    line-height: $profile-image-width;
     margin: 0 8px;
-    width: 28px;
+    opacity: 0.8;
+    width: $profile-image-width;
   }
 }
 
@@ -23,11 +26,12 @@
   .participant-logo-wrapper {
     .participant-image-wrapper {
       .participant-image {
+        border: 2px solid $color-grey-cool;
         margin: 0;
       }
 
       &:not(:first-child) {
-        margin-left: -20px;
+        margin-left: -5px;
       }
     }
   }
