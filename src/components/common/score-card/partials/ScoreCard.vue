@@ -2,7 +2,7 @@
   <div class="score-card-wrapper">
     <div class="score-card">
       <div class="score-brief">
-        <fixture-team 
+        <fixture-team
           :team="fixture.homeTeam"
           :class-names="homeTeamClassObject"
         />

@@ -16,7 +16,7 @@
       </div>
       <div v-else>
         <div class="modal-title">
-          <div class="row modal-fixture-date">{{ fixture.round }}<span class="comma">, </span><span class="fixture-date">{{ fixtureDate }}</span></div>
+          <div class="modal-fixture-date">{{ fixture.round }}<span class="comma">, </span><span class="fixture-date">{{ fixtureDate }}</span></div>
           <div class="modal-row">
             <table class="score-wrapper">
               <tbody>
@@ -24,6 +24,7 @@
                   <td class="team home-team team-grouped">
                     <participant-logo
                       v-for="(player, index) in fixture.homeTeam.players"
+                      :show-large="true"
                       :key="index"
                       :participant="player"
                     />
@@ -35,6 +36,7 @@
                   <td class="team away-team team-grouped">
                     <participant-logo
                       v-for="(player, index) in fixture.awayTeam.players"
+                      :show-large="true"
                       :key="index"
                       :participant="player"
                     />

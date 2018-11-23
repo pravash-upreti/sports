@@ -1,40 +1,44 @@
 <template>
   <div :class="classObject">
     <div class="team-name-wrapper">
-      <h2 v-if="isAwayTeam" :class="teamClassObject">
-        <span v-if="isGrouped" class="participant-logo-wrapper">
+      <div v-if="isAwayTeam" :class="teamClassObject">
+        <span v-if="isGrouped">
           <participant-logo
             v-for="(player, index) in team.players"
             :key="index"
+            :hide-image="true"
             :participant="player"
             :custom-styles="teamCustomStyles"
           />
         </span>
-        <span v-else class="participant-logo-wrapper">
+        <span v-else>
           <participant-logo
+            :hide-image="true"
             :participant="team"
             :custom-styles="teamCustomStyles"
           />
         </span>
         {{ team.name }}
-      </h2>
-      <h2 v-else :class="teamClassObject" >
+      </div>
+      <div v-else :class="teamClassObject" >
         {{ team.name }}
-        <span v-if="isGrouped" class="participant-logo-wrapper">
+        <span v-if="isGrouped">
           <participant-logo
             v-for="(player, index) in team.players"
             :key="index"
+            :hide-image="true"
             :participant="player"
             :custom-styles="teamCustomStyles"
           />
         </span>
-        <span v-else class="participant-logo-wrapper">
+        <span v-else>
           <participant-logo
+            :hide-image="true"
             :participant="team"
             :custom-styles="teamCustomStyles"
           />
         </span>
-      </h2>
+      </div>
     </div>
   </div>
 </template>
@@ -75,9 +79,7 @@ export default class FixtureTeam extends Vue {
   }
 
   get teamCustomStyles(): object {
-    let customStyles = {
-      margin: '0 8px'
-    };
+    let customStyles = {};
 
     if (this.team.logo) {
       customStyles = Object.assign(customStyles, {
