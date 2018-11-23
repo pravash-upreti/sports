@@ -10,7 +10,7 @@
       <div 
         class="modal-close"
         @click="close"
-      >X</div>
+      ><i class="fa fa-times" /></div>
       <div v-if="error">
         <div class="modal-title">Fixture not found.</div>
       </div>
