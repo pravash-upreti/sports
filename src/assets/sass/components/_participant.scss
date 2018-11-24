@@ -1,3 +1,7 @@
+$profile-image-width: 32px;
+$profile-image-width--medium: $font-size--xxxlarge;
+$profile-image-width--large: $font-size--xxxxlarge;
+
 .participant-image-wrapper {
   display: inline-block;
   text-align: center;
@@ -8,27 +12,45 @@
     color: $white;
     display: inline-block;
     font-weight: normal;
-    height: 28px;
-    line-height: 28px;
+    height: $profile-image-width;
+    line-height: $profile-image-width;
     margin: 0 8px;
-    width: 28px;
+    vertical-align: middle;
+    width: $profile-image-width;
+
+    @include m(large) {
+      font-size: $font-size--xxlarge;
+      height: $profile-image-width--medium;
+      line-height: $profile-image-width--medium;
+      width: $profile-image-width--medium;
+
+      @include mq(lg) {
+        height: $profile-image-width--large;
+        line-height: $profile-image-width--large;
+        width: $profile-image-width--large;
+      }
+    }
   }
 }
 
-.participant-logo-wrapper {
-  display: inline-block;
-}
-
 .team-grouped {
-  .participant-logo-wrapper {
-    .participant-image-wrapper {
-      .participant-image {
-        margin: 0;
-      }
+  .participant-image-wrapper {
+    .participant-image {
+      border: 2px solid $color-grey-cool;
+      line-height: calc(#{$profile-image-width} - 2px); // Because of border
+      margin: 0;
 
-      &:not(:first-child) {
-        margin-left: -20px;
+      @include m(large) {
+        line-height: calc(#{$profile-image-width--medium} - 4px); // Because of border
+
+        @include mq(lg) {
+          line-height: calc(#{$profile-image-width--large} - 4px); // Because of border
+        }
       }
+    }
+
+    &:not(:first-child) {
+      margin-left: -5px;
     }
   }
 }

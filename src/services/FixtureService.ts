@@ -39,19 +39,31 @@ export function getRecentFixtures(
   const recents: RecentsInterface = {
     results: [],
     fixtures: [],
-    winner: null,
-    runnerUp: null,
+    winners: [],
     showWinners: false
   };
 
   if (dateFns.isAfter(today, finishDate)) {
     recents.showWinners = true;
-    recents.winner = tournamentDetails.details.winner;
-    recents.runnerUp = tournamentDetails.details.runnerUp;
+    recents.winners = tournamentDetails.details.winners && tournamentDetails.details.winners.length ?
+      tournamentDetails.details.winners : [
+        {
+          category: '',
+          winner: tournamentDetails.details.winner,
+          runnerUp: tournamentDetails.details.runnerUp
+        }
+      ];
   } else {
     recents.results = getResults(tournamentDetails.fixtures, limit);
     recents.fixtures = getFixtures(tournamentDetails.fixtures, limit);
   }
 
   return recents;
+}
+
+export function getFixtureDate(fixture: FixtureInterface) {
+  return {
+    date: dateFns.format(fixture.date, 'MMM D'),
+    time: dateFns.format(fixture.date, 'h:mm A')
+  };
 }

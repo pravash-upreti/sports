@@ -32,6 +32,7 @@ import { Component, Vue } from 'vue-property-decorator';
 
 import EventBus from '@/events/eventBus';
 import SubHeader from './partials/SubHeader.vue';
+import { OTHER_GAMES_ROUTES } from '@/constants/routes';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
@@ -42,7 +43,7 @@ import { TournamentDataInterface, TournamentDataResponseInterface } from '@/inte
 export default class Dashain extends Vue {
   public error: boolean = false;
   public loading: boolean = true;
-  public fixtureLink: string = '';
+  public fixtureLink: string = OTHER_GAMES_ROUTES.DASHAIN_CUP.FIXTURE;
   public data: TournamentDataInterface | null = null;
 
   public created() {
@@ -73,6 +74,7 @@ export default class Dashain extends Vue {
       points: rawData.table,
       details: rawData.details,
       stats: rawData.stats || [],
+      allFixtures: rawData.fixtures,
       recents: FixtureService.getRecentFixtures(rawData),
       results: FixtureService.getResults(rawData.fixtures),
       fixtures: FixtureService.getFixtures(rawData.fixtures)

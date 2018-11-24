@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="recents.showWinners">
-      <Winners :winner="recents.winner" :runner-up="recents.runnerUp" />
+      <Winners :winners="recents.winners" />
     </div>
     <div v-else>
       <RecentFixtures :recents="recents" :fixture-link="fixtureLink" />

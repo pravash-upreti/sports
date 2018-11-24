@@ -45,10 +45,12 @@ export interface StatsInterface {
 export interface ActivityInterface {
   id: number;
   fixtureId: number;
-  player: PlayerInterface;
+  player: string;
   team: TeamInterface;
   time?: number | string;
   points?: number;
+  teamType: string;
+  type: string;
 }
 
 export interface RoundInterface {
@@ -71,6 +73,7 @@ export interface DetailsInterface {
   year: number;
   startDate: string;
   finishDate: string;
+  winners: object[];
   winner: string;
   runnerUp: string;
 }
@@ -91,8 +94,7 @@ export interface FixtureInterface {
 export interface RecentsInterface {
   results: FixtureInterface[];
   fixtures: FixtureInterface[];
-  winner: string | null;
-  runnerUp: string | null;
+  winners: object[];
   showWinners: boolean;
 }
 
