@@ -10,7 +10,6 @@
       v-else-if="fixture.status.toLowerCase() === 'played'"
       class="result"
     >
-      <p class="game-date">{{ fixtureDate.time }} {{ fixtureDate.date }}</p>
       <span :class="getWinnerClassObject('home')">{{ fixture.homeTeamScore }}</span> <span class="result-dash">-</span> <span :class="getWinnerClassObject('away')">{{ fixture.awayTeamScore }}</span>
       <p v-if="fixture.round && fixture.categoryType" class="game-round">{{ fixture.round }} - {{ fixture.categoryType }}</p>
     </div>
