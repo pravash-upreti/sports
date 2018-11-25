@@ -90,6 +90,7 @@ export interface FixtureInterface {
   awayTeamHalfTimeScore?: number;
   status: string;
   activities?: ActivityInterface[];
+  categoryType: string;
 }
 
 export interface RecentsInterface {
