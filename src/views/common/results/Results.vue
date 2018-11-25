@@ -4,7 +4,7 @@
       <p class="alert">No fixtures have been played. Please checkout the fixtures section.</p>
     </div>
     <div v-else>
-      <category-filter
+      <categories-filter
         v-if="categories && categories.length"
         :categories="categories"
         :selected-category="selectedCategory"
@@ -18,12 +18,12 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import CategoryFilter from '@/components/common/CategoryFilter.vue';
+import CategoriesFilter from '@/components/common/CategoriesFilter.vue';
 import { FixtureInterface, CategoryInterface } from '@/interfaces/interfaces';
 import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
 
 @Component({
-  components: { ScoreCardsList, CategoryFilter }
+  components: { ScoreCardsList, CategoriesFilter }
 })
 export default class Results extends Vue {
   public fixtureLink: string = this.$parent.$data.fixtureLink;

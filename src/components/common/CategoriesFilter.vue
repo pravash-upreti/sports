@@ -18,7 +18,7 @@ import { CategoryInterface } from '@/interfaces/interfaces';
 import { Prop, Component, Vue } from 'vue-property-decorator';
 
 @Component
-export default class CategoryFilter extends Vue {
+export default class CategoriesFilter extends Vue {
   @Prop() public categories!: CategoryInterface[];
   @Prop() public selectedCategory!: CategoryInterface;
   @Prop() public changeSelectedCategory!: any;
