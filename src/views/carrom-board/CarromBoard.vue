@@ -74,14 +74,14 @@ export default class CarromBoard extends Vue {
   public getSanitizedData(rawData: TournamentDataResponseInterface): TournamentDataInterface {
     const data = {
       teams: rawData.teams,
-      rounds: rawData.rounds || [],
       details: rawData.details,
-      statuses: rawData.statuses || [],
       allFixtures: rawData.fixtures,
-      categories: rawData.categories || [],
-      recents: FixtureService.getRecentFixtures(rawData, 5),
+      statuses: rawData.statuses || [],
       results: FixtureService.getResults(rawData.fixtures),
-      fixtures: FixtureService.getFixtures(rawData.fixtures)
+      recents: FixtureService.getRecentFixtures(rawData, 5),
+      fixtures: FixtureService.getFixtures(rawData.fixtures),
+      rounds: FixtureService.getRounds(rawData.rounds) || [],
+      categories: FixtureService.getCategories(rawData.categories) || []
     };
 
     return data;

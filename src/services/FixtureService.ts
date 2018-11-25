@@ -1,4 +1,4 @@
-import { CategoryInterface } from './../interfaces/interfaces';
+import { CategoryInterface, RoundInterface } from './../interfaces/interfaces';
 import dateFns from 'date-fns';
 
 import { FixtureInterface, RecentsInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
@@ -74,16 +74,35 @@ export function getFixtureDate(fixture: FixtureInterface) {
  *
  * @export
  * @param {CategoryInterface[]} [categories=[]]
- * @returns
+ * @returns {CategoryInterface[]}
  */
 export function getCategories(categories: CategoryInterface[] = []) {
-  let cats: CategoryInterface[] = categories;
+  let categoriesList: CategoryInterface[] = categories;
 
   if (categories.length > 1) {
     const allCategory: CategoryInterface = { id: 0, description: 'All' };
 
-    cats = [allCategory].concat(categories);
+    categoriesList = [allCategory].concat(categories);
   }
 
-  return cats;
+  return categoriesList;
+}
+
+/**
+ * Fetch list of updated rounds.
+ *
+ * @export
+ * @param {RoundInterface[]} [rounds=[]]
+ * @returns {RoundInterface[]}
+ */
+export function getRounds(rounds: RoundInterface[] = []) {
+  let roundsList: CategoryInterface[] = rounds;
+
+  if (rounds.length > 1) {
+    const allCategory: CategoryInterface = { id: 0, description: 'All' };
+
+    roundsList = [allCategory].concat(rounds);
+  }
+
+  return roundsList;
 }

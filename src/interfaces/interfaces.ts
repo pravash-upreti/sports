@@ -91,6 +91,7 @@ export interface FixtureInterface {
   status: string;
   activities?: ActivityInterface[];
   categoryType: string;
+  round: string;
 }
 
 export interface RecentsInterface {
