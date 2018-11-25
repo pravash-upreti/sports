@@ -57,6 +57,7 @@ export interface ActivityInterface {
 export interface RoundInterface {
   id: number;
   description: string;
+  sortOrder: number;
 }
 
 export interface StatusInterface {

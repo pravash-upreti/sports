@@ -96,10 +96,14 @@ export function getCategories(categories: CategoryInterface[] = []) {
  * @returns {RoundInterface[]}
  */
 export function getRounds(rounds: RoundInterface[] = []) {
-  let roundsList: CategoryInterface[] = rounds;
+  let roundsList: RoundInterface[] = rounds;
 
   if (rounds.length > 1) {
-    const allCategory: CategoryInterface = { id: 0, description: 'All' };
+    const allCategory: RoundInterface = {
+      id: 0,
+      description: 'All',
+      sortOrder: 0
+    };
 
     roundsList = [allCategory].concat(rounds);
   }

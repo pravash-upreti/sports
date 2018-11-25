@@ -11,8 +11,8 @@
         :change-selected-category="setSelectedCategory"
       />
       <rounds-filter
-        v-if="rounds && rounds.length"
-        :rounds="rounds"
+        v-if="updatedRounds && updatedRounds.length"
+        :rounds="updatedRounds"
         :selected-round="selectedRound"
         :change-selected-round="setSelectedRound"
       />
@@ -22,6 +22,7 @@
 </template>
 
 <script lang="ts">
+import sortBy from 'lodash/sortBy';
 import { Component, Vue } from 'vue-property-decorator';
 
 import RoundsFilter from '@/components/common/RoundsFilter.vue';
@@ -33,10 +34,11 @@ import { FixtureInterface, CategoryInterface, RoundInterface } from '@/interface
   components: { RoundsFilter, ScoreCardsList, CategoriesFilter }
 })
 export default class Results extends Vue {
-  public fixtureLink: string = this.$parent.$data.fixtureLink;
-  public results: FixtureInterface[] = this.$parent.$data.data.results;
-  public rounds: RoundInterface[] = this.$parent.$data.data.rounds || [];
-  public categories: CategoryInterface[] = this.$parent.$data.data.categories || [];
+  private updatedRounds: RoundInterface[] = [];
+  private fixtureLink: string = this.$parent.$data.fixtureLink;
+  private results: FixtureInterface[] = this.$parent.$data.data.results;
+  private rounds: RoundInterface[] = this.$parent.$data.data.rounds || [];
+  private categories: CategoryInterface[] = this.$parent.$data.data.categories || [];
   private selectedRound: RoundInterface = this.rounds && this.rounds[0];
   private selectedCategory: CategoryInterface = this.categories && this.categories[0];
 
@@ -54,7 +56,7 @@ export default class Results extends Vue {
       return round.id === 0 || newRounds.indexOf(round.description) >= 0;
     });
 
-    this.rounds = roundsList;
+    this.updatedRounds = sortBy(roundsList, ['sortOrder']);
   }
 
   get resultsList() {
