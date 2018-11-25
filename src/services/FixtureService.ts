@@ -1,3 +1,4 @@
+import { CategoryInterface } from './../interfaces/interfaces';
 import dateFns from 'date-fns';
 
 import { FixtureInterface, RecentsInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
@@ -66,4 +67,23 @@ export function getFixtureDate(fixture: FixtureInterface) {
     date: dateFns.format(fixture.date, 'MMM D'),
     time: dateFns.format(fixture.date, 'h:mm A')
   };
+}
+
+/**
+ * Fetch list of updated categories.
+ *
+ * @export
+ * @param {CategoryInterface[]} [categories=[]]
+ * @returns
+ */
+export function getCategories(categories: CategoryInterface[] = []) {
+  let cats: CategoryInterface[] = categories;
+
+  if (categories.length > 1) {
+    const allCategory: CategoryInterface = { id: 0, description: 'All' };
+
+    cats = [allCategory].concat(categories);
+  }
+
+  return cats;
 }

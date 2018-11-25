@@ -16,6 +16,7 @@ export interface TeamInterface {
   name: string;
   logo?: ParticipantLogoInterface;
   players?: PlayerInterface[];
+  category: string;
 }
 
 export interface StatInterface {
@@ -89,6 +90,7 @@ export interface FixtureInterface {
   awayTeamHalfTimeScore?: number;
   status: string;
   activities?: ActivityInterface[];
+  categoryType: string;
 }
 
 export interface RecentsInterface {
