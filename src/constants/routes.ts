@@ -33,9 +33,10 @@ export const FUTSAL_ROUTES = {
 export const CARROM_BOARD_ROUTES = {
   HOME: `${CARROM_BOARD}/recent`,
   TEAMS: `${CARROM_BOARD}/teams`,
+  SEARCH: `${CARROM_BOARD}/search`,
   RESULTS: `${CARROM_BOARD}/results`,
   FIXTURES: `${CARROM_BOARD}/fixtures`,
-  FIXTURE: `${CARROM_BOARD}/fixture/:fixtureId`,
+  FIXTURE: `${CARROM_BOARD}/fixture/:fixtureId`
 };
 
 export const TABLE_TENNIS_ROUTES = {

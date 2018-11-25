@@ -22,6 +22,7 @@ import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 import FutsalScoreModal from '@/views/futsal/FutsalScoreModal.vue';
+import SearchResults from '@/views/common/search/SearchResults.vue';
 import TabularScoreModal from '@/components/common/TabularScoreModal.vue';
 
 
@@ -126,6 +127,13 @@ const router = new Router({
           component: TabularScoreModal,
           meta: {
             title: 'Carrom Board - Fixture'
+          }
+        },
+        {
+          path: CARROM_BOARD_ROUTES.SEARCH,
+          component: SearchResults,
+          meta: {
+            title: 'Carrom Board - Search Results'
           }
         },
         {

@@ -19,6 +19,7 @@
       <div class="tournament-content">
         <div class="container-fluid">
           <sub-header />
+          <search-bar :search-link="searchLink" />
           <router-view />
         </div>
       </div>
@@ -33,18 +34,20 @@ import { Component, Vue } from 'vue-property-decorator';
 import EventBus from '@/events/eventBus';
 import SubHeader from './partials/SubHeader.vue';
 import { CARROM_BOARD_ROUTES } from '@/constants/routes';
+import SearchBar from '@/components/common/SearchBar.vue';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { SubHeader, LoadingIcon }
+  components: { SubHeader, SearchBar, LoadingIcon }
 })
 export default class CarromBoard extends Vue {
   public data: TournamentDataInterface | null = null;
   public error: boolean = false;
   public loading: boolean = true;
   public fixtureLink: string = CARROM_BOARD_ROUTES.FIXTURE;
+  public searchLink: string = CARROM_BOARD_ROUTES.SEARCH;
 
   public created() {
     EventBus.$emit('change-logo-title', 'Carrom Board');
