@@ -78,6 +78,13 @@ const router = new Router({
           }
         },
         {
+          path: FUTSAL_ROUTES.SEARCH,
+          component: SearchResults,
+          meta: {
+            title: 'Futsal - Search Results'
+          }
+        },
+        {
           path: '*',
           redirect: FUTSAL_ROUTES.HOME
         }
@@ -186,6 +193,13 @@ const router = new Router({
           component: TabularScoreModal,
           meta: {
             title: 'Table Tennis - Fixture'
+          }
+        },
+        {
+          path: TABLE_TENNIS_ROUTES.SEARCH,
+          component: SearchResults,
+          meta: {
+            title: 'Table Tennis - Search Results'
           }
         },
         {

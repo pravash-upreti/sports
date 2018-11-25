@@ -19,6 +19,7 @@
       <div class="tournament-content">
         <div class="container-fluid">
           <sub-header />
+          <search-bar :search-link="searchLink" />
           <router-view />
         </div>
       </div>
@@ -33,16 +34,18 @@ import { Component, Vue } from 'vue-property-decorator';
 import EventBus from '@/events/eventBus';
 import SubHeader from './partials/SubHeader.vue';
 import { FUTSAL_ROUTES } from '@/constants/routes';
+import SearchBar from '@/components/common/SearchBar.vue';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { SubHeader, LoadingIcon }
+  components: { SubHeader, SearchBar, LoadingIcon }
 })
 export default class Futsal extends Vue {
   public error: boolean = false;
   public loading: boolean = true;
+  public searchLink: string = FUTSAL_ROUTES.SEARCH;
   public fixtureLink: string = FUTSAL_ROUTES.FIXTURE;
   public data: TournamentDataInterface | null = null;
 
