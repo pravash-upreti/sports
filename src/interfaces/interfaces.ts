@@ -16,6 +16,7 @@ export interface TeamInterface {
   name: string;
   logo?: ParticipantLogoInterface;
   players?: PlayerInterface[];
+  category: string;
 }
 
 export interface StatInterface {
