@@ -63,6 +63,14 @@ export default class Fixtures extends Vue {
     });
 
     this.updatedRounds = sortBy(roundsList, ['sortOrder']);
+
+    // If the selected round does not exist in another category
+    // Set the first round as the selected one.
+    const isSelectedRoundInUpdatedList = this.updatedRounds.some((round) => round.id === this.selectedRound.id);
+
+    if (!isSelectedRoundInUpdatedList) {
+      this.setSelectedRound(this.updatedRounds[0]);
+    }
   }
 
   get fixturesList() {
