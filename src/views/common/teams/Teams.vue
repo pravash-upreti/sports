@@ -1,17 +1,23 @@
 <template>
-  <div class="container">
-    <categories-filter
-      v-if="categories && categories.length"
-      :categories="categories"
-      :selected-category="selectedCategory"
-      :change-selected-category="setSelectedCategory"
-    />
-    <div class="teams-wrapper">
-      <team
-        v-for="(team, index) in teamsList"
-        :key="index"
-        :team="team"
-      />
+  <div >
+    <div class="filters-wrapper">
+      <div class="container">
+        <categories-filter
+          v-if="categories && categories.length"
+          :categories="categories"
+          :selected-category="selectedCategory"
+          :change-selected-category="setSelectedCategory"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <div class="teams-wrapper">
+        <team
+          v-for="(team, index) in teamsList"
+          :key="index"
+          :team="team"
+        />
+      </div>
     </div>
   </div>
 </template>
