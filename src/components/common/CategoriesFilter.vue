@@ -35,11 +35,5 @@ export default class CategoriesFilter extends Vue {
 
     this.changeSelectedCategory(category);
   }
-
-  private activeClassObject(category: CategoryInterface) {
-    return {
-      active: category.id === this.selectedCategory.id
-    };
-  }
 }
 </script>
