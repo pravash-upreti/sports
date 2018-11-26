@@ -7,7 +7,8 @@
         :class="activeClassObject(round)"
         @click="handleChangeSelectedRound(round)"
       >
-        {{ round.description }}
+        <span class="rounds-filter-label">{{ round.shortName }}</span>
+        <span class="rounds-filter-label--desktop">{{ round.description }}</span>
       </li>
     </ul>
   </div>

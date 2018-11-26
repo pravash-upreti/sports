@@ -1,16 +1,18 @@
 <template>
-  <div class="container">
-    <div v-if="!results.length">
+  <div>
+    <div class="container" v-if="!results.length">
       <p class="alert">No fixtures have been played. Please checkout the fixtures section.</p>
     </div>
     <div v-else>
       <div class="filters-wrapper">
-        <categories-filter
-          v-if="categories && categories.length"
-          :categories="categories"
-          :selected-category="selectedCategory"
-          :change-selected-category="setSelectedCategory"
-        />
+        <div class="container">
+          <categories-filter
+            v-if="categories && categories.length"
+            :categories="categories"
+            :selected-category="selectedCategory"
+            :change-selected-category="setSelectedCategory"
+          />
+        </div>
       </div>
       <rounds-filter
         v-if="updatedRounds && updatedRounds.length"
@@ -18,7 +20,9 @@
         :selected-round="selectedRound"
         :change-selected-round="setSelectedRound"
       />
-      <score-cards-list :fixtures="resultsList" :fixture-link="fixtureLink"/>
+      <div class="container">
+        <score-cards-list :fixtures="resultsList" :fixture-link="fixtureLink"/>
+      </div>
     </div>
   </div>
 </template>

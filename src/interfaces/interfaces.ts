@@ -58,6 +58,7 @@ export interface RoundInterface {
   id: number;
   description: string;
   sortOrder: number;
+  shortName: string;
 }
 
 export interface StatusInterface {

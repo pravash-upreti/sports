@@ -102,7 +102,8 @@ export function getRounds(rounds: RoundInterface[] = []) {
     const allCategory: RoundInterface = {
       id: 0,
       description: 'All',
-      sortOrder: 0
+      sortOrder: 0,
+      shortName: 'All'
     };
 
     roundsList = [allCategory].concat(rounds);
