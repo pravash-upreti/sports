@@ -1,5 +1,5 @@
 <template>
-  <div class="categories-filter-wrapper">
+  <div class="rounds-filter-wrapper">
     <ul>
       <li
         v-for="(round, index) in rounds"

@@ -4,19 +4,21 @@
       <p class="alert">No fixtures have been played. Please checkout the fixtures section.</p>
     </div>
     <div v-else>
-      <categories-filter
-        v-if="categories && categories.length"
-        :categories="categories"
-        :selected-category="selectedCategory"
-        :change-selected-category="setSelectedCategory"
-      />
+      <div class="filters-wrapper">
+        <categories-filter
+          v-if="categories && categories.length"
+          :categories="categories"
+          :selected-category="selectedCategory"
+          :change-selected-category="setSelectedCategory"
+        />
+      </div>
       <rounds-filter
         v-if="updatedRounds && updatedRounds.length"
         :rounds="updatedRounds"
         :selected-round="selectedRound"
         :change-selected-round="setSelectedRound"
       />
-      <score-cards-list :fixtures="resultsList" :fixture-link="fixtureLink" />
+      <score-cards-list :fixtures="resultsList" :fixture-link="fixtureLink"/>
     </div>
   </div>
 </template>
@@ -57,6 +59,14 @@ export default class Results extends Vue {
     });
 
     this.updatedRounds = sortBy(roundsList, ['sortOrder']);
+
+    // If the selected round does not exist in another category
+    // Set the first round as the selected one.
+    const isSelectedRoundInUpdatedList = this.updatedRounds.some((round) => round.id === this.selectedRound.id);
+
+    if (!isSelectedRoundInUpdatedList) {
+      this.setSelectedRound(this.updatedRounds[0]);
+    }
   }
 
   get resultsList() {

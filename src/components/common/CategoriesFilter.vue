@@ -1,15 +1,18 @@
 <template>
   <div class="categories-filter-wrapper">
-    <ul>
-      <li
+    <label class="categories-filter-label">Event: </label>
+    <select
+      class="categories-filter"
+      v-model="selectedCateogoryId"
+      @change="handleChangeSelectedCategoryId"
+    >
+      <option
         v-for="(category, index) in categories"
         :key="index"
-        :class="activeClassObject(category)"
-        @click="handleChangeSelectedCategory(category)"
-      >
-        {{ category.description }}
-      </li>
-    </ul>
+        :value="category.id"
+        class="categories-filter-item"
+      >{{ category.description }}</option>
+    </select>
   </div>
 </template>
 
@@ -23,7 +26,13 @@ export default class CategoriesFilter extends Vue {
   @Prop() public selectedCategory!: CategoryInterface;
   @Prop() public changeSelectedCategory!: any;
 
-  private handleChangeSelectedCategory(category: CategoryInterface) {
+  private selectedCateogoryId: number = this.selectedCategory.id;
+
+  private handleChangeSelectedCategoryId() {
+    const category = this.categories.find((cat) => {
+      return cat.id === this.selectedCateogoryId;
+    });
+
     this.changeSelectedCategory(category);
   }
 
