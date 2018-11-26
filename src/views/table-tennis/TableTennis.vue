@@ -75,14 +75,14 @@ export default class TableTennis extends Vue {
   public getSanitizedData(rawData: TournamentDataResponseInterface): TournamentDataInterface {
     const data = {
       teams: rawData.teams,
-      rounds: rawData.rounds || [],
       details: rawData.details,
-      statuses: rawData.statuses || [],
       allFixtures: rawData.fixtures,
-      categories: FixtureService.getCategories(rawData.categories) || [],
+      statuses: rawData.statuses || [],
       recents: FixtureService.getRecentFixtures(rawData, 5),
       results: FixtureService.getResults(rawData.fixtures),
-      fixtures: FixtureService.getFixtures(rawData.fixtures)
+      fixtures: FixtureService.getFixtures(rawData.fixtures),
+      rounds: FixtureService.getRounds(rawData.rounds) || [],
+      categories: FixtureService.getCategories(rawData.categories) || []
     };
 
     return data;

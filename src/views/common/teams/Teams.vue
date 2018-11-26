@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <category-filter
+    <categories-filter
       v-if="categories && categories.length"
       :categories="categories"
       :selected-category="selectedCategory"
@@ -21,11 +21,11 @@ import _ from 'lodash';
 import { Component, Vue } from 'vue-property-decorator';
 
 import Team from './partials/Team.vue';
-import CategoryFilter from '@/components/common/CategoryFilter.vue';
+import CategoriesFilter from '@/components/common/CategoriesFilter.vue';
 import { CategoryInterface, TeamInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { Team, CategoryFilter }
+  components: { Team, CategoriesFilter }
 })
 export default class Teams extends Vue {
   private teams: TeamInterface[] = this.$parent.$data.data.teams;

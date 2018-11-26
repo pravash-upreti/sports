@@ -1,0 +1,31 @@
+.categories-filter-wrapper {
+  display: inline-block;
+  padding: 5px 0;
+  text-align: center;
+  width: 100%;
+
+  @include mq(md) {
+    padding: 10px 0;
+    text-align: left;
+  }
+
+  .categories-filter-label {
+    display: inline-block;
+    padding: 0 5px 0 0;
+  }
+
+  .categories-filter {
+    background: transparent;
+    border: 0;
+    border-radius: 3px;
+    color: $color-blue;
+    font-size: $font-size-base;
+    font-weight: 700;
+    min-width: 100px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+
+    @include mq(md) {
+      font-size: $font-size-medium;
+    }
+  }
+}
