@@ -43,7 +43,6 @@ export default class CarromBoard extends Vue {
   public error: boolean = false;
   public loading: boolean = true;
   public fixtureLink: string = CARROM_BOARD_ROUTES.FIXTURE;
-  public searchLink: string = CARROM_BOARD_ROUTES.SEARCH;
 
   public created() {
     EventBus.$emit('change-logo-title', 'Carrom Board');

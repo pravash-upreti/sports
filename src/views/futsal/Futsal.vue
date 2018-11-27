@@ -41,7 +41,6 @@ import { TournamentDataInterface, TournamentDataResponseInterface } from '@/inte
 export default class Futsal extends Vue {
   public error: boolean = false;
   public loading: boolean = true;
-  public searchLink: string = FUTSAL_ROUTES.SEARCH;
   public fixtureLink: string = FUTSAL_ROUTES.FIXTURE;
   public data: TournamentDataInterface | null = null;
 

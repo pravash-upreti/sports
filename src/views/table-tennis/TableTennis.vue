@@ -43,7 +43,6 @@ export default class TableTennis extends Vue {
   public error: boolean = false;
   public loading: boolean = true;
   public data: TournamentDataInterface | null = null;
-  public searchLink: string = TABLE_TENNIS_ROUTES.SEARCH;
   public fixtureLink: string = TABLE_TENNIS_ROUTES.FIXTURE;
 
   public created() {

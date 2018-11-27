@@ -50,7 +50,6 @@ import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
 export default class Fixtures extends Vue {
   private searchKeyword: string = '';
   private updatedRounds: RoundInterface[] = [];
-  private searchLink: string = this.$parent.$data.searchLink;
   private fixtureLink: string = this.$parent.$data.fixtureLink;
   private fixtures: FixtureInterface[] = this.$parent.$data.data.fixtures;
   private rounds: RoundInterface[] = this.$parent.$data.data.rounds || [];
