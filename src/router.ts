@@ -22,7 +22,6 @@ import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 import FutsalScoreModal from '@/views/futsal/FutsalScoreModal.vue';
-import SearchResults from '@/views/common/search/SearchResults.vue';
 import TabularScoreModal from '@/components/common/TabularScoreModal.vue';
 
 
@@ -78,13 +77,6 @@ const router = new Router({
           }
         },
         {
-          path: FUTSAL_ROUTES.SEARCH,
-          component: SearchResults,
-          meta: {
-            title: 'Futsal - Search Results'
-          }
-        },
-        {
           path: '*',
           redirect: FUTSAL_ROUTES.HOME
         }
@@ -137,13 +129,6 @@ const router = new Router({
           }
         },
         {
-          path: CARROM_BOARD_ROUTES.SEARCH,
-          component: SearchResults,
-          meta: {
-            title: 'Carrom Board - Search Results'
-          }
-        },
-        {
           path: '*',
           redirect: CARROM_BOARD_ROUTES.HOME
         }
@@ -193,13 +178,6 @@ const router = new Router({
           component: TabularScoreModal,
           meta: {
             title: 'Table Tennis - Fixture'
-          }
-        },
-        {
-          path: TABLE_TENNIS_ROUTES.SEARCH,
-          component: SearchResults,
-          meta: {
-            title: 'Table Tennis - Search Results'
           }
         },
         {

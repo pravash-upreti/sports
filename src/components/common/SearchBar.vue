@@ -1,17 +1,12 @@
 <template>
   <div class="search-bar-wrapper container">
-    <form
-      @submit="submitSearch"
-      action="#"
-      method="GET"
-    >
-      <input
-        v-model.trim="searchKeyword"
-        type="text"
-        class="search-bar"
-        placeholder="Search for fixtures"
-      />
-    </form>
+    <input
+      v-model.trim="searchKeyword"
+      @input="submitSearch"
+      type="search"
+      class="search-bar"
+      placeholder="Search for team/player"
+    />
   </div>
 </template>
 
@@ -20,20 +15,13 @@ import { Vue, Prop, Component, Watch } from 'vue-property-decorator';
 
 @Component
 export default class SearchBar extends Vue {
-  @Prop() public searchLink!: string;
+  @Prop() public setSearchKeyword!: any;
   private searchKeyword: string = '';
-
-  @Watch('$route', { immediate: true, deep: true })
-  public onUrlChange(newVal: any) {
-    this.searchKeyword = this.$route.query.keyword;
-  }
 
   private submitSearch(e: any) {
     e.preventDefault();
 
-    const link = `${this.searchLink}/?keyword=${this.searchKeyword}`;
-
-    this.$router.push(link);
+    this.setSearchKeyword(this.searchKeyword);
   }
 }
 </script>

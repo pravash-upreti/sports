@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container tournament-content">
     <table class="table table-striped points-table">
       <thead>
         <tr>

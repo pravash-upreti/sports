@@ -16,12 +16,9 @@
       v-else
       class="table-tennis"
     >
-      <div class="tournament-content">
-        <div class="container-fluid">
-          <sub-header />
-          <search-bar :search-link="searchLink" />
-          <router-view />
-        </div>
+      <div class="container-fluid">
+        <sub-header />
+        <router-view />
       </div>
     </div>
   </div>
@@ -34,14 +31,13 @@ import { Component, Vue } from 'vue-property-decorator';
 import EventBus from '@/events/eventBus';
 import SubHeader from './partials/SubHeader.vue';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
-import SearchBar from '@/components/common/SearchBar.vue';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 
 @Component({
-  components: { SubHeader, SearchBar, LoadingIcon }
+  components: { SubHeader, LoadingIcon }
 })
 export default class TableTennis extends Vue {
   public error: boolean = false;
@@ -78,14 +74,14 @@ export default class TableTennis extends Vue {
   public getSanitizedData(rawData: TournamentDataResponseInterface): TournamentDataInterface {
     const data = {
       teams: rawData.teams,
-      rounds: rawData.rounds || [],
       details: rawData.details,
-      statuses: rawData.statuses || [],
       allFixtures: rawData.fixtures,
-      categories: FixtureService.getCategories(rawData.categories) || [],
+      statuses: rawData.statuses || [],
       recents: FixtureService.getRecentFixtures(rawData, 5),
       results: FixtureService.getResults(rawData.fixtures),
-      fixtures: FixtureService.getFixtures(rawData.fixtures)
+      fixtures: FixtureService.getFixtures(rawData.fixtures),
+      rounds: FixtureService.getRounds(rawData.rounds) || [],
+      categories: FixtureService.getCategories(rawData.categories) || []
     };
 
     return data;

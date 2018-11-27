@@ -57,6 +57,8 @@ export interface ActivityInterface {
 export interface RoundInterface {
   id: number;
   description: string;
+  sortOrder: number;
+  shortName: string;
 }
 
 export interface StatusInterface {
@@ -91,6 +93,7 @@ export interface FixtureInterface {
   status: string;
   activities?: ActivityInterface[];
   categoryType: string;
+  round: string;
 }
 
 export interface RecentsInterface {

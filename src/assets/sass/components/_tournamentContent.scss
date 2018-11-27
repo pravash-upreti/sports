@@ -1,4 +1,6 @@
 .tournament-content {
+  margin-top: 10px;
+
   @include e(heading) {
     color: $color-green;
     font-size: $font-size--xlarge;

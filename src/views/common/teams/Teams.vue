@@ -1,12 +1,16 @@
 <template>
-  <div class="container">
-    <category-filter
-      v-if="categories && categories.length"
-      :categories="categories"
-      :selected-category="selectedCategory"
-      :change-selected-category="setSelectedCategory"
-    />
-    <div class="teams-wrapper">
+  <div>
+    <div class="filters-wrapper">
+      <div class="container">
+        <categories-filter
+          v-if="categories && categories.length"
+          :categories="categories"
+          :selected-category="selectedCategory"
+          :change-selected-category="setSelectedCategory"
+        />
+      </div>
+    </div>
+    <div class=" container teams-wrapper tournament-content">
       <team
         v-for="(team, index) in teamsList"
         :key="index"
@@ -21,11 +25,11 @@ import _ from 'lodash';
 import { Component, Vue } from 'vue-property-decorator';
 
 import Team from './partials/Team.vue';
-import CategoryFilter from '@/components/common/CategoryFilter.vue';
+import CategoriesFilter from '@/components/common/CategoriesFilter.vue';
 import { CategoryInterface, TeamInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { Team, CategoryFilter }
+  components: { Team, CategoriesFilter }
 })
 export default class Teams extends Vue {
   private teams: TeamInterface[] = this.$parent.$data.data.teams;
