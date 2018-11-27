@@ -95,7 +95,7 @@ export default class Results extends Vue {
     let resultsList = this.results;
 
     if (this.searchKeyword && this.searchKeyword.length) {
-      resultsList = searchFixturesByKeyword(this.results, this.searchKeyword);
+      resultsList = searchFixturesByKeyword(resultsList, this.searchKeyword);
     }
 
     if (this.selectedCategory && this.selectedCategory.id !== 0) {

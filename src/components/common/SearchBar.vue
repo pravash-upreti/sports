@@ -5,7 +5,7 @@
       @input="submitSearch"
       type="search"
       class="search-bar"
-      placeholder="Search for team/player"
+      :placeholder="searchPlaceHolder"
     />
   </div>
 </template>
@@ -16,12 +16,17 @@ import { Vue, Prop, Component, Watch } from 'vue-property-decorator';
 @Component
 export default class SearchBar extends Vue {
   @Prop() public setSearchKeyword!: any;
+  @Prop() public placeHolder!: string;
   private searchKeyword: string = '';
 
   private submitSearch(e: any) {
     e.preventDefault();
 
     this.setSearchKeyword(this.searchKeyword);
+  }
+
+  get searchPlaceHolder(): string {
+    return this.placeHolder || 'Search by teams/players';
   }
 }
 </script>

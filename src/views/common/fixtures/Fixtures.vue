@@ -91,7 +91,7 @@ export default class Fixtures extends Vue {
     let fixturesList = this.fixtures;
 
     if (this.searchKeyword && this.searchKeyword.length) {
-      fixturesList = searchFixturesByKeyword(this.fixtures, this.searchKeyword);
+      fixturesList = searchFixturesByKeyword(fixturesList, this.searchKeyword);
     } else if (this.selectedCategory && this.selectedCategory.id !== 0) {
       fixturesList = fixturesList.filter((fixture) => {
         return (
