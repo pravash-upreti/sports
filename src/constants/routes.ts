@@ -24,7 +24,6 @@ export const FUTSAL_ROUTES = {
   HOME: `${FUTSAL}/recent`,
   TEAMS: `${FUTSAL}/teams`,
   STATS: `${FUTSAL}/stats`,
-  SEARCH: `${FUTSAL}/search`,
   POINTS: `${FUTSAL}/points`,
   RESULTS: `${FUTSAL}/results`,
   FIXTURES: `${FUTSAL}/fixtures`,
@@ -34,7 +33,6 @@ export const FUTSAL_ROUTES = {
 export const CARROM_BOARD_ROUTES = {
   HOME: `${CARROM_BOARD}/recent`,
   TEAMS: `${CARROM_BOARD}/teams`,
-  SEARCH: `${CARROM_BOARD}/search`,
   RESULTS: `${CARROM_BOARD}/results`,
   FIXTURES: `${CARROM_BOARD}/fixtures`,
   FIXTURE: `${CARROM_BOARD}/fixture/:fixtureId`
@@ -43,7 +41,6 @@ export const CARROM_BOARD_ROUTES = {
 export const TABLE_TENNIS_ROUTES = {
   HOME: `${TABLE_TENNIS}/recent`,
   TEAMS: `${TABLE_TENNIS}/teams`,
-  SEARCH: `${TABLE_TENNIS}/search`,
   RESULTS: `${TABLE_TENNIS}/results`,
   FIXTURES: `${TABLE_TENNIS}/fixtures`,
   FIXTURE: `${TABLE_TENNIS}/fixture/:fixtureId`,
