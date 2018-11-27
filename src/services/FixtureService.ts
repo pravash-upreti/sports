@@ -1,6 +1,7 @@
-import { CategoryInterface, RoundInterface, TeamInterface } from './../interfaces/interfaces';
 import dateFns from 'date-fns';
 
+import { checkIfPlayerIsInTeam } from './PlayerService';
+import { CategoryInterface, RoundInterface } from './../interfaces/interfaces';
 import { FixtureInterface, RecentsInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 export function getFixtures(fixturesList: FixtureInterface[], limit: number = 0): FixtureInterface[] {
@@ -135,19 +136,4 @@ export function getRounds(rounds: RoundInterface[] = []) {
   }
 
   return roundsList;
-}
-
-/**
- * Check if a player is in a team.
- *
- * @param {TeamInterface} team
- * @param {string} playerName
- * @returns {boolean}
- */
-function checkIfPlayerIsInTeam(team: TeamInterface, playerName: string) {
-  const players = team.players || [];
-
-  return players.some((player) => {
-    return player.name.toLowerCase().indexOf(playerName) >= 0;
-  });
 }
