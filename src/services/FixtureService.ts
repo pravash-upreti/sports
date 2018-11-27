@@ -1,4 +1,4 @@
-import { CategoryInterface, RoundInterface } from './../interfaces/interfaces';
+import { CategoryInterface, RoundInterface, TeamInterface } from './../interfaces/interfaces';
 import dateFns from 'date-fns';
 
 import { FixtureInterface, RecentsInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
@@ -46,14 +46,16 @@ export function getRecentFixtures(
 
   if (dateFns.isAfter(today, finishDate)) {
     recents.showWinners = true;
-    recents.winners = tournamentDetails.details.winners && tournamentDetails.details.winners.length ?
-      tournamentDetails.details.winners : [
-        {
-          category: '',
-          winner: tournamentDetails.details.winner,
-          runnerUp: tournamentDetails.details.runnerUp
-        }
-      ];
+    recents.winners =
+      tournamentDetails.details.winners && tournamentDetails.details.winners.length
+        ? tournamentDetails.details.winners
+        : [
+            {
+              category: '',
+              winner: tournamentDetails.details.winner,
+              runnerUp: tournamentDetails.details.runnerUp
+            }
+          ];
   } else {
     recents.results = getResults(tournamentDetails.fixtures, limit);
     recents.fixtures = getFixtures(tournamentDetails.fixtures, limit);
@@ -70,6 +72,29 @@ export function getFixtureDate(fixture: FixtureInterface) {
 }
 
 /**
+ * Get search results from a list of fixtures using keyword.
+ *
+ * @export
+ * @param {FixtureInterface[]} allFixtures
+ * @param {string} keyword
+ * @returns {FixtureInterface[]}
+ */
+export function searchFixturesByKeyword(allFixtures: FixtureInterface[], keyword: string): FixtureInterface[] {
+  let searchResults: FixtureInterface[] = [];
+
+  searchResults = allFixtures.filter((fixture) => {
+    return (
+      fixture.homeTeam.name.toLowerCase().indexOf(keyword) >= 0 ||
+      fixture.awayTeam.name.toLowerCase().indexOf(keyword) >= 0 ||
+      checkIfPlayerIsInTeam(fixture.homeTeam, keyword) ||
+      checkIfPlayerIsInTeam(fixture.awayTeam, keyword)
+    );
+  });
+
+  return searchResults;
+}
+
+/**
  * Fetch list of updated categories.
  *
  * @export
@@ -80,7 +105,7 @@ export function getCategories(categories: CategoryInterface[] = []) {
   let categoriesList: CategoryInterface[] = categories;
 
   if (categories.length > 1) {
-    const allCategory: CategoryInterface = { id: 0, description: 'All' };
+    const allCategory: CategoryInterface = { id: 0, description: 'All Categories' };
 
     categoriesList = [allCategory].concat(categories);
   }
@@ -101,7 +126,7 @@ export function getRounds(rounds: RoundInterface[] = []) {
   if (rounds.length > 1) {
     const allCategory: RoundInterface = {
       id: 0,
-      description: 'All',
+      description: 'All Rounds',
       sortOrder: 0,
       shortName: 'All'
     };
@@ -110,4 +135,19 @@ export function getRounds(rounds: RoundInterface[] = []) {
   }
 
   return roundsList;
+}
+
+/**
+ * Check if a player is in a team.
+ *
+ * @param {TeamInterface} team
+ * @param {string} playerName
+ * @returns {boolean}
+ */
+function checkIfPlayerIsInTeam(team: TeamInterface, playerName: string) {
+  const players = team.players || [];
+
+  return players.some((player) => {
+    return player.name.toLowerCase().indexOf(playerName) >= 0;
+  });
 }

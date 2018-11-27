@@ -1,6 +1,5 @@
 <template>
   <div class="categories-filter-wrapper">
-    <label class="categories-filter-label">Event: </label>
     <select
       class="categories-filter"
       v-model="selectedCateogoryId"

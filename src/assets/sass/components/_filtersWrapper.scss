@@ -2,4 +2,12 @@
   background-color: $white;
   border-radius: 3px;
   padding: 0 5px;
+
+  .search-bar-wrapper {
+    float: none;
+
+    @include mq(md) {
+      float: right;
+    }
+  }
 }

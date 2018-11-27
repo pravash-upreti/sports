@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container tournament-content">
     <div class="stats-wrapper">
       <stat
         v-if="goalsStats.players.length"

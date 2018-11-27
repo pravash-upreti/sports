@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <div class="filters-wrapper">
       <div class="container">
         <categories-filter
@@ -10,14 +10,12 @@
         />
       </div>
     </div>
-    <div class="container">
-      <div class="teams-wrapper">
-        <team
-          v-for="(team, index) in teamsList"
-          :key="index"
-          :team="team"
-        />
-      </div>
+    <div class=" container teams-wrapper tournament-content">
+      <team
+        v-for="(team, index) in teamsList"
+        :key="index"
+        :team="team"
+      />
     </div>
   </div>
 </template>
