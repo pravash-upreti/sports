@@ -16,11 +16,9 @@
       v-else
       class="futsal"
     >
-      <div class="tournament-content">
-        <div class="container-fluid">
-          <sub-header />
-          <router-view />
-        </div>
+      <div class="container-fluid">
+        <sub-header />
+        <router-view />
       </div>
     </div>
   </div>

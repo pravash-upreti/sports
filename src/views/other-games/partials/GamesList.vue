@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-center">
+  <div class="container text-center tournament-content">
     <router-link
       v-for="(route, index) in routes"
       :key="`other-games-${index}`"

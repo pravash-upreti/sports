@@ -19,6 +19,10 @@ $score-card-height: 80px;
       position: relative;
     }
 
+    &:first-child {
+      margin-top: 0;
+    }
+
     .score-brief {
       display: table;
       table-layout: fixed;
