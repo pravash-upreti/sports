@@ -67,6 +67,10 @@ export default class Fixtures extends Vue {
     this.selectedRound = round;
   }
 
+  private setSearchKeyword(keyword: string) {
+    this.searchKeyword = keyword || '';
+  }
+
   private updateRoundsList(newRounds: string[]) {
     const roundsList = this.rounds.filter((round) => {
       // Keep 'All' category
