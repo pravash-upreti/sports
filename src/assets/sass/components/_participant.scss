@@ -15,6 +15,7 @@ $profile-image-width--large: $font-size--xxxxlarge;
     height: $profile-image-width;
     line-height: $profile-image-width;
     margin: 0 8px;
+    object-fit: cover;
     vertical-align: middle;
     width: $profile-image-width;
 
