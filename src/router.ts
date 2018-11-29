@@ -236,7 +236,7 @@ const router = new Router({
     },
     {
       path: '*',
-      redirect: BASE_ROUTES.FUTSAL
+      redirect: BASE_ROUTES.TABLE_TENNIS
     }
   ]
 });

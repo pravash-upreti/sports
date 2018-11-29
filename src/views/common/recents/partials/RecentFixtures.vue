@@ -4,34 +4,39 @@
       <p class="alert alert-success">Nothing to see here. Trying other sections.</p>
     </div>
     <div v-else>
-      <score-cards-list 
+      <score-cards-list
         :title="'Today'"
         :fixtures="recentFixtures.todayFixtures"
         :fixture-link="fixtureLink"
       />
-      <score-cards-list 
+      <score-cards-list
         :title="'Tomorrow'"
         :fixtures="recentFixtures.tomorrowFixtures"
         :fixture-link="fixtureLink"
       />
-      <score-cards-list 
+      <score-cards-list
         :title="'Later this week'"
         :fixtures="recentFixtures.twRemainingFixtures"
         :fixture-link="fixtureLink"
       />
-      <score-cards-list 
+      <score-cards-list
         :title="'Next week'"
         :fixtures="recentFixtures.nwFixtures"
         :fixture-link="fixtureLink"
       />
-      <score-cards-list 
+      <score-cards-list
         :title="'Earlier this week'"
         :fixtures="recentFixtures.twPlayedFixtures"
         :fixture-link="fixtureLink"
       />
-      <score-cards-list 
+      <score-cards-list
         :title="'Last week'"
         :fixtures="recentFixtures.lwFixtures"
+        :fixture-link="fixtureLink"
+      />
+      <score-cards-list
+        :title="'Upcoming'"
+        :fixtures="recentFixtures.upComingFixtures"
         :fixture-link="fixtureLink"
       />
     </div>
@@ -59,7 +64,8 @@ export default class RecentFxtures extends Vue {
     twPlayedFixtures: [],
     twRemainingFixtures: [],
     lwFixtures: [],
-    nwFixtures: []
+    nwFixtures: [],
+    upComingFixtures: []
   };
 
   public created() {
@@ -83,6 +89,18 @@ export default class RecentFxtures extends Vue {
     return fixtures.filter((fixture) => dateFns.isWithinRange(new Date(fixture.date), firstDay, lastDay));
   }
 
+  public checkIfFixturesListIsEmpty(fixturesList: any) {
+    const keys = Object.keys(fixturesList);
+
+    keys.forEach((key) => {
+      if (fixturesList[key].length) {
+        return false;
+      }
+    });
+
+    return true;
+  }
+
   public getRecentFixtures(recentFixtures: FixtureInterface[]) {
     const today = new Date();
     const yesterday = dateFns.subDays(today, 1);
@@ -96,7 +114,7 @@ export default class RecentFxtures extends Vue {
     const nwStartDay = dateFns.startOfWeek(dateFns.addWeeks(today, 1));
     const nwEndDay = dateFns.endOfWeek(dateFns.addWeeks(today, 1));
 
-    return {
+    let recentFixturesList = {
       todayFixtures: this.getFixturesForRangeOfDays(recentFixtures, today, today),
       tomorrowFixtures: this.getFixturesForRangeOfDays(recentFixtures, tomorrow, tomorrow),
       twPlayedFixtures:
@@ -108,6 +126,14 @@ export default class RecentFxtures extends Vue {
       lwFixtures: todayWeekDay <= 1 ? this.getFixturesForRangeOfDays(recentFixtures, lwStartDay, lwEndDay) : [],
       nwFixtures: todayWeekDay >= 5 ? this.getFixturesForRangeOfDays(recentFixtures, nwStartDay, nwEndDay) : []
     };
+
+    if (this.checkIfFixturesListIsEmpty(recentFixturesList)) {
+      recentFixturesList = Object.assign(recentFixturesList, {
+        upComingFixtures: recentFixtures
+      });
+    }
+
+    return recentFixturesList;
   }
 }
 </script>
