@@ -19,10 +19,10 @@ printf "Preparing production build...\n"
 docker-compose up web_build
 
 printf "Preparing docker image...\n"
-docker build -t registry.lftechnology.com/sports:stable -f ./docker/Dockerfile .
+docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
 
 printf "Pushing docker image...\n"
-docker push registry.lftechnology.com/sports:stable
+docker push registry.lftechnology.com/sports:latest
 
 printf "Deploying docker image...\n"
-curl -X POST --user $DEPLOYMENT_USERNAME:$DEPLOYMENT_PASSWORD https://registry.lftechnology.com/deploy/sports.lftechnology.com
+curl -X POST --user $DEPLOYMENT_USERNAME:$DEPLOYMENT_PASSWORD https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com
