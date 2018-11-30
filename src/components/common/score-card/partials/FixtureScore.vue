@@ -20,7 +20,7 @@
       <div class="versus">
         <p class="game-date">{{ fixtureDate.date }}</p>
         <p class="game-time">{{ fixtureDate.time }}</p>
-        <p class="game-round">{{ fixture.round }}</p>
+        <p class="game-round">{{ fixture.round }} - {{ fixture.categoryType }}</p>
       </div>
     </div>
   </div>

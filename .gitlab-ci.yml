@@ -1,6 +1,15 @@
 before_script:
   - echo Starting...
-deploy:
+deploy_dev:
+  tags:
+    - shell
+  only:
+    - dev
+  script:
+    - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
+    - docker push registry.lftechnology.com/sports:latest
+    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com
+deploy_production:
   tags:
     - shell
   only:
@@ -9,3 +18,11 @@ deploy:
     - docker build -t registry.lftechnology.com/sports:stable -f ./docker/Dockerfile .
     - docker push registry.lftechnology.com/sports:stable
     - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/sports.lftechnology.com
+deploy_manual:
+  tags:
+    - shell
+  script:
+    - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
+    - docker push registry.lftechnology.com/sports:latest
+    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com
+  when: manual

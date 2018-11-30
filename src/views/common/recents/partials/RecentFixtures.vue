@@ -92,11 +92,11 @@ export default class RecentFxtures extends Vue {
   public checkIfFixturesListIsEmpty(fixturesList: any) {
     const keys = Object.keys(fixturesList);
 
-    keys.forEach((key) => {
-      if (fixturesList[key].length) {
+    for (const key of keys) {
+      if (fixturesList[key] && fixturesList[key].length) {
         return false;
       }
-    });
+    }
 
     return true;
   }

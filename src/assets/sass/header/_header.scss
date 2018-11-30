@@ -60,23 +60,26 @@ header {
   text-transform: uppercase;
 }
 
-.sub-header {
+.sub-header-wrapper {
   background-color: $color-blue;
   z-index: 1;
-
-  @include mq(lg) {
-    padding-top: 10px;
-  }
 
   &.sticky {
     position: fixed;
     top: 0;
     width: 100%;
   }
+
+  .sub-header {
+    background-color: rgba($color: $white, $alpha: 0.1);
+
+    @include mq(lg) {
+      padding-top: 10px;
+    }
+  }
 }
 
 .nav {
-  background-color: $color-blue;
   list-style-type: none;
   z-index: 100;
 
@@ -125,7 +128,6 @@ header {
         &.active,
         &:hover {
           background-color: rgba($color: $white, $alpha: 0.8);
-          color: $color-blue;
           opacity: 1;
           transition: all 0.15s ease-in;
 
@@ -149,7 +151,7 @@ header {
       width: 20%;
 
       a {
-        border-bottom: 4px solid $color-blue;
+        border-bottom: 4px solid transparent;
         color: $white;
         display: block;
         font-size: $font-size-base;

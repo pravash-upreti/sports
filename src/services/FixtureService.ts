@@ -66,9 +66,17 @@ export function getRecentFixtures(
 }
 
 export function getFixtureDate(fixture: FixtureInterface) {
+  let fDate = 'TBD';
+  let fTime = 'TBD';
+
+  if (fixture.date) {
+    fDate = dateFns.format(fixture.date, 'MMM D');
+    fTime = dateFns.format(fixture.date, 'h:mm A');
+  }
+
   return {
-    date: dateFns.format(fixture.date, 'MMM D'),
-    time: dateFns.format(fixture.date, 'h:mm A')
+    date: fDate,
+    time: fTime
   };
 }
 
