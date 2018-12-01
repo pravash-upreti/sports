@@ -80,11 +80,11 @@ header {
 }
 
 .nav {
-  background-color: $color-blue;
   list-style-type: none;
   z-index: 100;
 
   @include m(primary) {
+    background-color: $color-blue;
     bottom: 0;
     left: 0;
     position: fixed;
