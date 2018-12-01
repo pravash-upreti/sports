@@ -17,7 +17,7 @@
       class="carrom-board"
     >
       <div class="container-fluid">
-        <sub-header />
+        <sub-header :routes="routes" />
         <router-view />
       </div>
     </div>
@@ -29,8 +29,8 @@ import axios from 'axios';
 import { Component, Vue } from 'vue-property-decorator';
 
 import EventBus from '@/events/eventBus';
-import SubHeader from './partials/SubHeader.vue';
 import { CARROM_BOARD_ROUTES } from '@/constants/routes';
+import SubHeader from '@/components/common/SubHeader.vue';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
@@ -42,6 +42,7 @@ export default class CarromBoard extends Vue {
   public data: TournamentDataInterface | null = null;
   public error: boolean = false;
   public loading: boolean = true;
+  public routes: object = CARROM_BOARD_ROUTES;
   public fixtureLink: string = CARROM_BOARD_ROUTES.FIXTURE;
 
   public created() {
