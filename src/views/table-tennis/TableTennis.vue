@@ -17,7 +17,7 @@
       class="table-tennis"
     >
       <div class="container-fluid">
-        <sub-header />
+        <sub-header :routes="routes" />
         <router-view />
       </div>
     </div>
@@ -29,8 +29,8 @@ import axios from 'axios';
 import { Component, Vue } from 'vue-property-decorator';
 
 import EventBus from '@/events/eventBus';
-import SubHeader from './partials/SubHeader.vue';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
+import SubHeader from '@/components/common/SubHeader.vue';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
@@ -42,6 +42,7 @@ import { TournamentDataInterface, TournamentDataResponseInterface } from '@/inte
 export default class TableTennis extends Vue {
   public error: boolean = false;
   public loading: boolean = true;
+  public routes: object = TABLE_TENNIS_ROUTES;
   public data: TournamentDataInterface | null = null;
   public fixtureLink: string = TABLE_TENNIS_ROUTES.FIXTURE;
 

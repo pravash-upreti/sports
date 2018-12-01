@@ -1,4 +1,5 @@
 import dateFns from 'date-fns';
+import { isNull, isUndefined } from 'lodash';
 
 import { checkIfPlayerIsInTeam } from './PlayerService';
 import { CategoryInterface, RoundInterface } from './../interfaces/interfaces';
@@ -92,9 +93,14 @@ export function searchFixturesByKeyword(allFixtures: FixtureInterface[], keyword
   let searchResults: FixtureInterface[] = [];
 
   searchResults = allFixtures.filter((fixture) => {
+    const homeTeamName =
+      isUndefined(fixture.awayTeam.name) || isNull(fixture.awayTeam.name) ? '' : fixture.awayTeam.name;
+    const awayTeamName =
+      isUndefined(fixture.awayTeam.name) || isNull(fixture.awayTeam.name) ? '' : fixture.awayTeam.name;
+
     return (
-      fixture.homeTeam.name.toLowerCase().indexOf(keyword) >= 0 ||
-      fixture.awayTeam.name.toLowerCase().indexOf(keyword) >= 0 ||
+      homeTeamName.toLowerCase().indexOf(keyword) >= 0 ||
+      awayTeamName.toLowerCase().indexOf(keyword) >= 0 ||
       checkIfPlayerIsInTeam(fixture.homeTeam, keyword) ||
       checkIfPlayerIsInTeam(fixture.awayTeam, keyword)
     );
