@@ -38,10 +38,6 @@ body {
   font-family: $font-family-primary;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-
-  @include mq(md) {
-    background-color: $color-background-body;
-  }
 }
 
 a {
@@ -107,7 +103,6 @@ footer {
   display: none;
 
   @include mq(md) {
-    background-color: $white;
     color: $color-title;
     display: block;
     padding: 20px 0;
