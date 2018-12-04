@@ -98,15 +98,3 @@ img {
   max-width: 100%;
   vertical-align: top;
 }
-
-footer {
-  display: none;
-
-  @include mq(md) {
-    color: $color-title;
-    display: block;
-    padding: 20px 0;
-    text-align: center;
-    width: 100%;
-  }
-}
