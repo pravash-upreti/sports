@@ -77,7 +77,7 @@ export default class TableTennis extends Vue {
       details: rawData.details,
       allFixtures: rawData.fixtures,
       statuses: rawData.statuses || [],
-      recents: FixtureService.getRecentFixtures(rawData, 5),
+      recents: FixtureService.getRecentFixtures(rawData, 0),
       results: FixtureService.getResults(rawData.fixtures),
       fixtures: FixtureService.getFixtures(rawData.fixtures),
       rounds: FixtureService.getRounds(rawData.rounds) || [],
