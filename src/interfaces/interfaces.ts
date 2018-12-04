@@ -52,6 +52,8 @@ export interface ActivityInterface {
   points?: number;
   teamType: string;
   type: string;
+  homeTeamPoints: number;
+  awayTeamPoints: number;
 }
 
 export interface RoundInterface {

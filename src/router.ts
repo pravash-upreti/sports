@@ -23,6 +23,7 @@ import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 import FutsalScoreModal from '@/views/futsal/FutsalScoreModal.vue';
 import TabularScoreModal from '@/components/common/TabularScoreModal.vue';
+import TableTennisScoreModal from '@/views/table-tennis/TableTennisScoreModal.vue';
 
 
 const DEFAULT_PAGE_TITLE = 'LF Sports';
@@ -175,7 +176,7 @@ const router = new Router({
         },
         {
           path: TABLE_TENNIS_ROUTES.FIXTURE,
-          component: TabularScoreModal,
+          component: TableTennisScoreModal,
           meta: {
             title: 'Table Tennis - Fixture'
           }
