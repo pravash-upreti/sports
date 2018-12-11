@@ -1,0 +1,26 @@
+.top-navbar {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 64px;
+  text-align: center;
+  width: 100%;
+
+  @include mq(md) {
+    display: none;
+  }
+
+  .menu-bar {
+    flex: 1 0 20%;
+    font-size: $font-size--xlarge;
+    padding: 20px;
+
+    @include m(right) {
+      flex: 1 0 20%;
+    }
+  }
+
+  .logo-wrapper {
+    flex: 1 0 60%;
+  }
+}

@@ -1,0 +1,16 @@
+#app {
+  height: 100%;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.content-wrapper {
+  background: $color-content;
+  flex-grow: 1;
+}

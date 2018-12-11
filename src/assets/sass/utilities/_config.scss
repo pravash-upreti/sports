@@ -1,28 +1,15 @@
 // Variables
 // ==========================================================================
 
-$font-family-primary: "IBM Plex Sans Condensed", sans-serif;
-$color-body: #fafafa;
-$color-text: #4f4f4f;
+$font-family-primary: 'IBM Plex Sans Condensed', sans-serif;
+
+// Colors
+$color-text: #fff;
+$color-black: #000;
+$color-body: #102b7b;
 $color-link: #0645ad;
-$color-title: #737373;
-$color-background-body: #fff;
-$color-background-gray: #fbfbfb;
-$color-background-header: #e5e5e5;
-$color-background-sub-header1: #eee;
-$color-background-sub-header2: #f5f5f5;
-$color-background-main-wrapper: #f9f9f9;
-$color-nav-link-text: #737373;
-$color-green: #2ecc71;
-$color-blue: #102b7b;
-$color-grey: #808080;
-$color-border: #e8e8e8;
-$color-text-dark: #666;
-$color-text-darker: #555;
-$color-light-grey: #efefef;
-$color-lighter-grey: #aaa;
-$color-grey-cool: #eceef5;
-$color-grey-cool-2: #d4d9e8;
+$color-link--active: #70c5f9;
+$color-content: linear-gradient(225deg, #481faa 0%, #18084d 100%);
 
 // Typography
 $font-size-base: 14px;
@@ -43,24 +30,14 @@ $font-size--xxlarge: 36px;
 $font-size--xxxlarge: 48px;
 $font-size--xxxxlarge: 56px;
 
-// Colors
-$red: #d24d57;
-$gray: #c7c7c7;
-$blue: #3a539b;
-$white: #fff;
-$black: #000;
-$green: #2ecc71;
-$yellow: #f7ca18;
-$gold: #ffd700;
-$silver: #c0c0c0;
+// Sidebar
+$sidebar-width--mobile: 80%;
+$sidebar-width--desktop: 300px;
+$font-size--sidebar-menu: 20px;
+$font-size--sidebar-submenu: 18px;
 
-//theme-colors
-$theme-red: #ff9393;
-$theme-blue: #93d8ff;
-
-// Header and Footer
-$color-nav-link: #102b7b;
-$color-nav-link-secondary: #2ecc71;
+// Top navbar
+$top-navbar-height: 64px;
 
 //Breakpoints
 $sm-device: 576px;

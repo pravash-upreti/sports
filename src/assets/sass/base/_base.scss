@@ -16,7 +16,7 @@
   &::after {
     // Global Clearfixing
     clear: both;
-    content: "";
+    content: '';
     display: block;
   }
 }
@@ -33,7 +33,7 @@ body {
 }
 
 body {
-  background-color: $color-grey-cool;
+  background-color: $color-body;
   color: $color-text;
   font-family: $font-family-primary;
   -webkit-font-smoothing: antialiased;

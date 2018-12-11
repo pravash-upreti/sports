@@ -24,13 +24,13 @@
 }
 
 %pseudos {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
 }
 
 %shadow {
-  box-shadow: 0 8px 12px -6px transparentize($black, 0.8);
+  box-shadow: 0 8px 12px -6px transparentize($color-black, 0.8);
 }
 
 %ellipsis {
