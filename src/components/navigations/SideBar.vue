@@ -15,7 +15,11 @@
                 :key="`season-${index}`"
                 class="sidebar-submenu-item"
               >
-                <router-link :to="season.route" exact-active-class="active" exact>{{ season.name }}</router-link>
+                <router-link
+                  :to="season.route"
+                  exact-active-class="active"
+                  exact
+                >{{ season.name }}</router-link>
               </li>
             </ul>
           </div>
