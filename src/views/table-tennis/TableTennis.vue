@@ -32,8 +32,8 @@ import sports from '@/constants/sports';
 import EventBus from '@/events/eventBus';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
 import * as FixtureService from '@/services/FixtureService';
-import SportHeader from '@/components/common/SportHeader.vue';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
+import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 

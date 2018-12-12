@@ -3,31 +3,128 @@
 
   .sport-title {
     font-size: $font-size--xlarge;
-    font-weight: 700;
-    padding: $space $space--double;
+    font-weight: 900;
+    padding: $space $space--2;
+
+    @include mq(md) {
+      display: inline-block;
+      font-size: $font-size--xxxlarge;
+    }
   }
 
   .sport-categories-wrapper {
     width: 100%;
 
+    @include mq(md) {
+      display: inline-block;
+      width: auto;
+    }
+
     .sport-categories {
+      @include mq(md) {
+        padding-left: $space--4;
+      }
+
       select {
         color: #beb1de;
         font-size: $font-size--xlarge;
+
+        @include mq(md) {
+          font-size: $font-size--xxlarge;
+        }
       }
 
       &.select-wrapper::after {
         border-color: #beb1de;
+        top: -8px;
       }
     }
   }
 
   .sport-sub-header-wrapper {
-    border-bottom: 1px solid $sub-header-border-color;
-    border-top: 1px solid $sub-header-border-color;
     display: inline-block;
-    padding: $space 0;
-    width: 100%;
+
+    @include m(drop-down) {
+      display: block;
+
+      @include mq(md) {
+        display: none;
+      }
+    }
+
+    @include m(button-group) {
+      display: none;
+
+      @include mq(md) {
+        display: block;
+      }
+    }
+
+    .sport-menu-wrapper {
+      border-bottom: 1px solid $sub-header-border-color;
+      border-top: 1px solid $sub-header-border-color;
+      padding: $space 0;
+      width: 100%;
+
+      @include m(menu) {
+        ul {
+          list-style: none;
+          padding: $space 0;
+          text-align: center;
+
+          li {
+            display: inline-block;
+            margin: 0 16px;
+
+            &:first-child {
+              margin-left: 0;
+            }
+
+            a {
+              color: $color-link--active;
+              display: inline-block;
+              font-size: $font-size-medium;
+              padding: $space--2 $space--4;
+              text-transform: uppercase;
+
+              &.active,
+              &:hover {
+                background-color: #18084d;
+                border-radius: 18px;
+                color: $color-white;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+
+      @include m(round) {
+        border: 0;
+
+        ul {
+          list-style: none;
+          padding: $space--3 0;
+          text-align: center;
+
+          li {
+            background-color: #18084d;
+            border-radius: 50%;
+            display: inline-block;
+            height: $space--12;
+            line-height: $space--12;
+            margin: 0 16px;
+            width: $space--12;
+
+            &.active,
+            &:hover {
+              background-color: #70c5f9;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
 
     select {
       color: $color-white;

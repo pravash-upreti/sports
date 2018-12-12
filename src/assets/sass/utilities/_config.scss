@@ -46,9 +46,10 @@ $sub-header-border-color: rgba(112, 197, 249, 0.6);
 
 // Spacing
 $space: 4px;
-$space--double: 2 * $space;
-$space--tripe: 3 * $space;
-$space--quadruple: 4 * $space;
+$space--2: 2 * $space;
+$space--3: 3 * $space;
+$space--4: 4 * $space;
+$space--12: 12 * $space;
 
 //Breakpoints
 $sm-device: 576px;

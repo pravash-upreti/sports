@@ -13,34 +13,22 @@
           </select>
         </div>
       </div>
-      <div class="sport-sub-header-wrapper">
-        <div class="select-wrapper">
-          <select>
-            <option
-              v-for="(route, index) in subRoutes"
-              :key="index"
-              :value="route.path"
-            >{{ route.name }}</option>
-          </select>
-        </div>
-        <div class="select-wrapper">
-          <select>
-            <option
-              v-for="(round, index) in rounds"
-              :key="index"
-              :value="round.id"
-            >{{ round.description }}</option>
-          </select>
-        </div>
-      </div>
+      <drop-down-menu :subRoutes="subRoutes" :rounds="matchRounds" />
+      <button-group-menu :subRoutes="subRoutes" :rounds="matchRounds" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import _ from 'lodash';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
-@Component
+import DropDownMenu from './partials/DropDownMenu.vue';
+import ButtonGroupMenu from './partials/ButtonGroupMenu.vue';
+
+@Component({
+  components: { DropDownMenu, ButtonGroupMenu }
+})
 export default class SportHeader extends Vue {
   @Prop() private title!: string;
   @Prop() private routes!: any;
@@ -89,6 +77,10 @@ export default class SportHeader extends Vue {
     }
 
     return subRoutes;
+  }
+
+  get matchRounds() {
+    return _.sortBy(this.rounds, ['sortOrder']);
   }
 }
 </script>
