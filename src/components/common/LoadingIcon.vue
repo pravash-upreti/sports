@@ -38,18 +38,19 @@
         />
       </path>
     </svg>
+    <p>Work hard, play harder!</p>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .loader {
-  margin: 0 0 2em;
-  height: 100px;
-  width: 20%;
-  text-align: center;
-  padding: 1em;
-  margin: 0 auto 1em;
   display: block;
+  height: 100px;
+  margin: 0 0 2em;
+  margin: 0 auto 1em;
+  padding: 1em;
+  text-align: center;
+  width: 20%;
 }
 
 svg path,

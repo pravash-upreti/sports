@@ -2,39 +2,44 @@ export default [
   {
     name: 'Futsal',
     icon: 'far fa-futbol',
-    seasons: [
-      2018,
-      2017
-    ]
+    seasons: []
   },
   {
     name: 'Carrom Board',
     icon: 'fas fa-vector-square',
-    seasons: [
-      2018
-    ]
+    seasons: []
   },
   {
     name: 'Table Tennis',
     icon: 'fas fa-table-tennis',
     seasons: [
-      2018
+      {
+        name: 2018,
+        route: '/table-tennis/2018'
+      }
     ]
   },
   {
     name: 'Dashain Cup',
     icon: 'fas fa-trophy',
-    seasons: [
-      2018
-    ]
+    seasons: []
   },
   {
     name: 'January Jatra',
     icon: 'fas fa-gamepad',
     seasons: [
-      'Dota 2',
-      'FIFA 18',
-      'Counter Strike'
+      {
+        name: 'Dota 2',
+        route: '#'
+      },
+      {
+        name: 'FIFA 18',
+        route: '#'
+      },
+      {
+        name: 'Counter Strike',
+        route: '#'
+      }
     ]
   }
 ];

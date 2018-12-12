@@ -1,0 +1,40 @@
+.sport-header-wrapper {
+  width: 100%;
+
+  .sport-title {
+    font-size: $font-size--xlarge;
+    font-weight: 700;
+    padding: $space $space--double;
+  }
+
+  .sport-categories-wrapper {
+    width: 100%;
+
+    .sport-categories {
+      select {
+        color: #beb1de;
+        font-size: $font-size--xlarge;
+      }
+
+      &.select-wrapper::after {
+        border-color: #beb1de;
+      }
+    }
+  }
+
+  .sport-sub-header-wrapper {
+    border-bottom: 1px solid $sub-header-border-color;
+    border-top: 1px solid $sub-header-border-color;
+    display: inline-block;
+    padding: $space 0;
+    width: 100%;
+
+    select {
+      color: $color-white;
+      font-size: $font-size-medium;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 <template>
   <div>
     <div
-      v-if="loading"
+      v-if="data.loading"
       class="container"
     >
       <loading-icon />
     </div>
     <div
-      v-else-if="error"
+      v-else-if="data.error"
       class="container"
     >
       <div class="alert alert-error">Unable to load data. Please try again later.</div>
@@ -17,7 +17,7 @@
       class="table-tennis"
     >
       <div class="container-fluid">
-        <sub-header :routes="routes" />
+        <sport-header :title="title" :categories="data.data.categories" :rounds="data.data.rounds" :routes="routes" />
         <router-view />
       </div>
     </div>
@@ -26,48 +26,65 @@
 
 <script lang="ts">
 import axios from 'axios';
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Watch } from 'vue-property-decorator';
 
+import sports from '@/constants/sports';
 import EventBus from '@/events/eventBus';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
-import SubHeader from '@/components/common/SubHeader.vue';
 import * as FixtureService from '@/services/FixtureService';
+import SportHeader from '@/components/common/SportHeader.vue';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 
 @Component({
-  components: { SubHeader, LoadingIcon }
+  components: { SportHeader, LoadingIcon }
 })
 export default class TableTennis extends Vue {
-  public error: boolean = false;
-  public loading: boolean = true;
+  public data: any = { loading: true };
   public routes: object = TABLE_TENNIS_ROUTES;
-  public data: TournamentDataInterface | null = null;
   public fixtureLink: string = TABLE_TENNIS_ROUTES.FIXTURE;
 
   public created() {
-    EventBus.$emit('change-logo-title', 'Table Tennis');
-
     this.fetchData();
   }
 
-   public fetchData() {
-    axios
-      .get(process.env.VUE_APP_API_TABLE_TENNIS)
-      .then((response) => {
-        this.data = this.getSanitizedData(response.data.data);
+  public fetchData() {
+    const sport = sports.TABLE_TENNIS;
+    const season = this.$route.params.season;
 
-        const title = this.data && this.data.details.title;
-        const year = this.data && this.data.details.year;
+    let data = this.$parent.getTournamentData(sport, season);
 
-        EventBus.$emit('change-logo-title', title, year);
+    if (data && Object.keys(data).length) {
+      this.data = data;
+
+      return;
+    }
+
+    data = {
+      data: null,
+      error: false,
+      loading: true
+    };
+
+    this.data = data;
+
+    this.$parent.fetchTournamentData(sport, season)
+      .then((response: any) => {
+        const d = response.data;
+
+        if (!d.status) {
+          data = Object.assign(data, { data: null, error: true });
+        } else {
+          data = Object.assign(data, { data: d.data, error: false });
+        }
       })
       .catch(() => {
-        this.error = true;
+        data = Object.assign(data, { data: null, error: true });
       })
       .then(() => {
-        this.loading = false;
+        data = Object.assign(data, { loading: false });
+        this.data = data;
       });
   }
 
@@ -85,6 +102,10 @@ export default class TableTennis extends Vue {
     };
 
     return data;
+  }
+
+  get title(): string {
+    return `Table Tennis ${this.$route.params.season}`;
   }
 }
 </script>

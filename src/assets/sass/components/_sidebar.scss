@@ -6,6 +6,19 @@
   width: 100%;
   z-index: 1;
 
+  @include mq(md) {
+    position: relative;
+    top: 0;
+    transform: none;
+    width: $sidebar-width--desktop;
+    z-index: 0;
+
+    &.slide-in,
+    &.slide-out {
+      animation: none;
+    }
+  }
+
   .sidebar {
     background: $color-body;
     box-shadow: 0 20px 40px rgba($color: #000, $alpha: 0.6);
@@ -14,6 +27,7 @@
     width: $sidebar-width--mobile;
 
     @include mq(md) {
+      height: 100%;
       width: $sidebar-width--desktop;
     }
   }
@@ -28,10 +42,12 @@
         font-size: $font-size--sidebar-submenu;
 
         .sidebar-submenu-item {
+          padding: 0 0 0 36px;
+
           a {
             color: $color-text;
             display: block;
-            padding: 10px 10px 0 36px;
+            padding: 10px;
 
             &.active,
             &:hover {

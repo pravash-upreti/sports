@@ -3,7 +3,7 @@ const CHESS = '/chess';
 const FUTSAL = '/futsal';
 const OTHERS = '/others';
 const CARROM_BOARD = '/carrom-board';
-const TABLE_TENNIS = '/table-tennis';
+const TABLE_TENNIS = '/table-tennis/:season';
 
 /* Other games routes */
 const OTHER_GAMES_BASE_ROUTES = {
@@ -42,7 +42,7 @@ export const CARROM_BOARD_ROUTES = {
 
 // Order of route declaration appears on the UI.
 export const TABLE_TENNIS_ROUTES = {
-  HOME: `${TABLE_TENNIS}/recent`,
+  HOME: `${TABLE_TENNIS}/`,
   RESULTS: `${TABLE_TENNIS}/results`,
   FIXTURES: `${TABLE_TENNIS}/fixtures`,
   TEAMS: `${TABLE_TENNIS}/teams`,

@@ -6,10 +6,11 @@ $font-family-primary: 'IBM Plex Sans Condensed', sans-serif;
 // Colors
 $color-text: #fff;
 $color-black: #000;
-$color-body: #102b7b;
+$color-body: #18084d;
 $color-link: #0645ad;
+$color-white: #fff;
 $color-link--active: #70c5f9;
-$color-content: linear-gradient(225deg, #481faa 0%, #18084d 100%);
+$color-content: linear-gradient(135deg, #481faa 0%, #18084d 100%);
 
 // Typography
 $font-size-base: 14px;
@@ -38,6 +39,15 @@ $font-size--sidebar-submenu: 18px;
 
 // Top navbar
 $top-navbar-height: 64px;
+
+// Sub header
+$sub-header-border-color: rgba(112, 197, 249, 0.6);
+
+// Spacing
+$space: 4px;
+$space--double: 2 * $space;
+$space--tripe: 3 * $space;
+$space--quadruple: 4 * $space;
 
 //Breakpoints
 $sm-device: 576px;
