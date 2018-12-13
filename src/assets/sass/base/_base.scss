@@ -35,9 +35,15 @@ body {
 body {
   background-color: $color-body;
   color: $color-text;
-  font-family: $font-family-primary;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+body,
+input,
+select,
+textarea {
+  font-family: $font-family-primary;
 }
 
 a {

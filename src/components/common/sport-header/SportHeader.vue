@@ -62,6 +62,12 @@ export default class SportHeader extends Vue {
     return routeName;
   }
 
+  public getRouteWithSeason(route: string) {
+    const season = this.$route.params && this.$route.params.season;
+
+    return route.length && season.length ? route.replace(':season', season.toString()) : route;
+  }
+
   get subRoutes() {
     const subRoutes = [];
     const keys = Object.keys(this.routes);
@@ -70,7 +76,7 @@ export default class SportHeader extends Vue {
       // Exclude unnecessary routes for sub-header
       if (key.toLowerCase() !== 'fixture') {
         subRoutes.push({
-          path: this.routes[key],
+          path: this.getRouteWithSeason(this.routes[key]),
           name: this.getRouteName(key)
         });
       }

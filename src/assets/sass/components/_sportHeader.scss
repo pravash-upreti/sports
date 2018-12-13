@@ -3,7 +3,8 @@
 
   .sport-title {
     font-size: $font-size--xlarge;
-    font-weight: 900;
+    font-weight: 700;
+    letter-spacing: -2px;
     padding: $space $space--2;
 
     @include mq(md) {

@@ -13,6 +13,7 @@
               <li
                 v-for="(season, index) in sideBar.seasons"
                 :key="`season-${index}`"
+                @click="showHideSideBar(false)"
                 class="sidebar-submenu-item"
               >
                 <router-link
