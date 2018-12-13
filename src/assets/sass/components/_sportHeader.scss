@@ -2,14 +2,14 @@
   width: 100%;
 
   .sport-title {
-    font-size: $font-size--xlarge;
+    font-size: $font-size--24;
     font-weight: 700;
     letter-spacing: -2px;
     padding: $space $space--2;
 
     @include mq(md) {
       display: inline-block;
-      font-size: $font-size--xxxlarge;
+      font-size: $font-size--48;
     }
   }
 
@@ -28,10 +28,10 @@
 
       select {
         color: #beb1de;
-        font-size: $font-size--xlarge;
+        font-size: $font-size--24;
 
         @include mq(md) {
-          font-size: $font-size--xxlarge;
+          font-size: $font-size--36;
         }
       }
 
@@ -85,7 +85,7 @@
               color: $color-link--active;
               display: inline-block;
               font-size: $font-size-medium;
-              padding: $space--2 $space--4;
+              padding: $space $space--4;
               text-transform: uppercase;
 
               &.active,
@@ -120,6 +120,7 @@
             &.active,
             &:hover {
               background-color: #70c5f9;
+              cursor: pointer;
               font-weight: 600;
             }
           }

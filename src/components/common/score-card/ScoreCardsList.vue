@@ -5,7 +5,7 @@
       v-for="(fixture, index) in fixtures"
       :fixture="fixture"
       :fixture-link="fixtureLink"
-      :key="index"
+      :key="`score-card-wrapper-${index}`"
     />
   </div>
 </template>

@@ -10,7 +10,7 @@ import {
 } from './constants/routes';
 
 import Teams from '@/views/common/teams/Teams.vue';
-import Recent from '@/views/common/recents/Recent.vue';
+import Recent from '@/views/common/recent/Recent.vue';
 import Results from '@/views/common/results/Results.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
@@ -29,25 +29,25 @@ const router = new Router({
       meta: {
         title: 'Table Tennis'
       },
-      // children: [
-      //   {
-      //     path: '',
-      //     redirect: TABLE_TENNIS_ROUTES.HOME
-      //   },
-      //   {
-      //     path: TABLE_TENNIS_ROUTES.HOME,
-      //     component: Recent,
-      //     meta: {
-      //       title: 'Table Tennis - Home'
-      //     }
-      //   },
-      //   {
-      //     path: TABLE_TENNIS_ROUTES.FIXTURES,
-      //     component: Fixtures,
-      //     meta: {
-      //       title: 'Table Tennis - Fixtures'
-      //     }
-      //   },
+      children: [
+        // {
+        //   path: '',
+        //   redirect: TABLE_TENNIS_ROUTES.HOME
+        // },
+        // {
+        //   path: TABLE_TENNIS_ROUTES.HOME,
+        //   component: Recent,
+        //   meta: {
+        //     title: 'Table Tennis - Home'
+        //   }
+        // },
+        {
+          path: TABLE_TENNIS_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Table Tennis - Fixtures'
+          }
+        },
       //   {
       //     path: TABLE_TENNIS_ROUTES.RESULTS,
       //     component: Results,
@@ -73,7 +73,7 @@ const router = new Router({
       //     path: '*',
       //     redirect: TABLE_TENNIS_ROUTES.HOME
       //   }
-      // ]
+      ]
     }
   ]
 });

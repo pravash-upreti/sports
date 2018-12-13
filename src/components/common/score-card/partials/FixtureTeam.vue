@@ -1,7 +1,10 @@
 <template>
-  <div :class="classObject">
-    <div class="team-name-wrapper">
-      <div v-if="isAwayTeam" :class="teamClassObject">
+  <div class="fixture-team-name-wrapper">
+    <div v-if="isAwayTeam" :class="teamClassObject">
+      <span :class="['fixture-team-name', classNames]">
+        {{ teamInfo.name }}
+      </span>
+      <span class="fixture-team-symbol">
         <span v-if="isGrouped">
           <participant-logo
             v-for="(player, index) in teamInfo.players"
@@ -18,10 +21,10 @@
             :custom-styles="teamCustomStyles"
           />
         </span>
-        {{ teamInfo.name }}
-      </div>
-      <div v-else :class="teamClassObject">
-        {{ teamInfo.name }}
+      </span>
+    </div>
+    <div v-else :class="teamClassObject">
+      <span class="fixture-team-symbol">
         <span v-if="isGrouped">
           <participant-logo
             v-for="(player, index) in teamInfo.players"
@@ -38,7 +41,10 @@
             :custom-styles="teamCustomStyles"
           />
         </span>
-      </div>
+      </span>
+      <span :class="['fixture-team-name', classNames]">
+        {{ teamInfo.name }}
+      </span>
     </div>
   </div>
 </template>
@@ -68,18 +74,9 @@ export default class FixtureTeam extends Vue {
     return !!(this.team && this.team.players);
   }
 
-  get classObject(): object {
-    return Object.assign(
-      {
-        'team-info': true
-      },
-      this.classNames
-    );
-  }
-
   get teamClassObject(): object {
     return {
-      'team-name': true,
+      'fixture-team-name-wrapper': true,
       'team-grouped': this.isGrouped
     };
   }

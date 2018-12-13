@@ -1,18 +1,16 @@
 <template>
   <div class="score-card-wrapper">
     <div class="score-card">
-      <div class="score-brief">
-        <fixture-team
-          :team="fixture.homeTeam"
-          :class-names="homeTeamClassObject"
-        />
-        <fixture-score :fixture="fixture" />
-        <fixture-team
-          :team="fixture.awayTeam"
-          :is-away-team="true"
-          :class-names="awayTeamClassObject"
-        />
-      </div>
+      <fixture-team
+        :team="fixture.homeTeam"
+        :class-names="homeTeamClassObject"
+      />
+      <fixture-score :fixture="fixture" />
+      <fixture-team
+        :team="fixture.awayTeam"
+        :is-away-team="true"
+        :class-names="awayTeamClassObject"
+      />
     </div>
   </div>
 </template>
@@ -39,7 +37,6 @@ export default class ScoreCard extends Vue {
 
     return {
       'home-team': true,
-      'text-right': true,
       'winner': isHomeTeamWinner
     };
   }
@@ -52,7 +49,6 @@ export default class ScoreCard extends Vue {
 
     return {
       'away-team': true,
-      'text-right': true,
       'winner': isAwayTeamWinner
     };
   }

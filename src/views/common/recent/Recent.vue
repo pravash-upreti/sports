@@ -1,11 +1,12 @@
 <template>
   <div class="container">
-    <div v-if="recents.showWinners">
+    Nothing here
+    <!-- <div v-if="recents.showWinners">
       <Winners :winners="recents.winners" />
     </div>
     <div v-else>
       <RecentFixtures :recents="recents" :fixture-link="fixtureLink" />
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -19,7 +20,7 @@ import RecentFixtures from './partials/RecentFixtures.vue';
   components: { Winners, RecentFixtures }
 })
 export default class Recent extends Vue {
-  private recents: object = this.$parent.$data.data.recents;
-  private fixtureLink: string = this.$parent.$data.fixtureLink;
+  // private recents: object = this.$parent.$data.data.data.recents;
+  // private fixtureLink: string = this.$parent.$data.fixtureLink;
 }
 </script>

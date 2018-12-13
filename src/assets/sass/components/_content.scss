@@ -5,7 +5,6 @@
 .main-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
   position: relative;
   width: 100%;
 
@@ -19,6 +18,7 @@
   height: 100%;
 
   @include mq(md) {
+    margin-left: $sidebar-width--desktop;
     width: calc(100% - #{$sidebar-width--desktop});
   }
 }
