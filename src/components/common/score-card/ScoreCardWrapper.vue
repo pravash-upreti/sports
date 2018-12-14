@@ -1,12 +1,15 @@
 <template>
+  <!-- 
+  TODO: Might be needed in future.
   <router-link 
     v-if="fixtureLink.length"
     :key="fixture.id"
     :to="fixtureURL"
   >
     <ScoreCard :fixture="fixture" :fixture-link="fixtureLink" />
-  </router-link>
-  <ScoreCard v-else :fixture="fixture" :fixture-link="fixtureLink" />
+  </router-link> -->
+  <!-- <ScoreCard v-else :fixture="fixture" :fixture-link="fixtureLink" /> -->
+  <ScoreCard :fixture="fixture" :fixture-link="fixtureLink" />
 </template>
 
 <script lang="ts">

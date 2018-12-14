@@ -30,17 +30,13 @@ const router = new Router({
         title: 'Table Tennis'
       },
       children: [
-        // {
-        //   path: '',
-        //   redirect: TABLE_TENNIS_ROUTES.HOME
-        // },
-        // {
-        //   path: TABLE_TENNIS_ROUTES.HOME,
-        //   component: Recent,
-        //   meta: {
-        //     title: 'Table Tennis - Home'
-        //   }
-        // },
+        {
+          path: TABLE_TENNIS_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Table Tennis - Home'
+          }
+        },
         {
           path: TABLE_TENNIS_ROUTES.FIXTURES,
           component: Fixtures,
@@ -69,10 +65,10 @@ const router = new Router({
       //       title: 'Table Tennis - Fixture'
       //     }
       //   }, */
-      //   {
-      //     path: '*',
-      //     redirect: TABLE_TENNIS_ROUTES.HOME
-      //   }
+        {
+          path: '*',
+          redirect: TABLE_TENNIS_ROUTES.HOME
+        }
       ]
     }
   ]

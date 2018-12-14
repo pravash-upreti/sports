@@ -29,6 +29,7 @@
 
     @include mq(md) {
       height: 100%;
+      padding: $space--9;
       width: $sidebar-width--desktop;
     }
   }

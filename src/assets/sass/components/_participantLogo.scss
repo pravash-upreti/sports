@@ -1,35 +1,19 @@
-$profile-logo-width: 36px;
-$profile-logo-width--medium: $font-size--48;
-$profile-logo-width--large: $font-size--56;
-
 .participant-logo-wrapper {
-  display: inline-block;
+  display: inline-flex;
   text-align: center;
 
   .participant-logo {
+    align-items: center;
     background-color: $color-green;
     border-radius: 50%;
     color: $color-white;
-    display: inline-block;
+    display: flex;
     font-weight: normal;
     height: $profile-logo-width;
-    line-height: $profile-logo-width;
+    justify-content: center;
     margin: 0 8px;
     object-fit: cover;
     width: $profile-logo-width;
-
-    @include m(large) {
-      font-size: $font-size--24;
-      height: $profile-logo-width--medium;
-      // line-height: $profile-logo-width--medium;
-      width: $profile-logo-width--medium;
-
-      @include mq(lg) {
-        height: $profile-logo-width--large;
-        // line-height: $profile-logo-width--large;
-        width: $profile-logo-width--large;
-      }
-    }
   }
 }
 
@@ -37,20 +21,11 @@ $profile-logo-width--large: $font-size--56;
   .participant-logo-wrapper {
     .participant-logo {
       border: 2px solid $color-white;
-      line-height: calc(#{$profile-logo-width} - 4px); // Because of border
       margin: 0;
-
-      @include m(large) {
-        line-height: calc(#{$profile-logo-width--medium} - 4px); // Because of border
-
-        @include mq(lg) {
-          line-height: calc(#{$profile-logo-width--large} - 4px); // Because of border
-        }
-      }
     }
 
     &:not(:first-child) {
-      margin-left: -5px;
+      margin-left: -$space--3;
     }
   }
 }

@@ -1,8 +1,12 @@
 .sport-header-wrapper {
   width: 100%;
 
+  @include mq(md) {
+    padding-top: $space--12;
+  }
+
   .sport-title {
-    font-size: $font-size--24;
+    font-size: $font-size--36;
     font-weight: 700;
     letter-spacing: -2px;
     padding: $space $space--2;
@@ -22,7 +26,7 @@
     }
 
     .sport-categories {
-      @include mq(md) {
+      @include mq(lg) {
         padding-left: $space--4;
       }
 

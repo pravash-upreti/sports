@@ -1,8 +1,8 @@
 <template>
   <div class="fixture-team-name-wrapper">
-    <div v-if="isAwayTeam" :class="teamClassObject">
+    <div v-if="isAwayTeam" :class="[teamClassObject, isAwayTeamWinner ? 'winner' : '']">
       <span :class="['fixture-team-name', classNames]">
-        {{ teamInfo.name }}
+        {{ teamInfo.name }} <i v-if="isAwayTeamWinner" class="fas fa-trophy"></i>
       </span>
       <span class="fixture-team-symbol">
         <span v-if="isGrouped">
@@ -23,7 +23,7 @@
         </span>
       </span>
     </div>
-    <div v-else :class="teamClassObject">
+    <div v-else :class="[teamClassObject, isHomeTeamWinner ? 'winner' : '']">
       <span class="fixture-team-symbol">
         <span v-if="isGrouped">
           <participant-logo
@@ -43,7 +43,7 @@
         </span>
       </span>
       <span :class="['fixture-team-name', classNames]">
-        {{ teamInfo.name }}
+        <i v-if="isHomeTeamWinner" class="fas fa-trophy"></i> {{ teamInfo.name }}
       </span>
     </div>
   </div>
@@ -65,6 +65,10 @@ export default class FixtureTeam extends Vue {
   public classNames!: object;
   @Prop()
   public isAwayTeam!: boolean;
+  @Prop()
+  public isHomeTeamWinner!: boolean;
+  @Prop()
+  public isAwayTeamWinner!: boolean;
 
   public hideImage: boolean = false;
 

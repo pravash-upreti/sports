@@ -3,8 +3,11 @@
 }
 
 .main-wrapper {
+  background: $color-content;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
   position: relative;
   width: 100%;
 
@@ -14,8 +17,8 @@
 }
 
 .content-wrapper {
-  background: $color-content;
   height: 100%;
+  padding-bottom: $space--6;
 
   @include mq(md) {
     margin-left: $sidebar-width--desktop;

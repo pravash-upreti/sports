@@ -10,6 +10,7 @@ $color-body: #18084d;
 $color-link: #0645ad;
 $color-white: #fff;
 $color-green: #00d166;
+$color-trophy: #ffc82c;
 $color-score-result: #8c269f;
 $color-link--active: #70c5f9;
 $color-text--score-card: #717171;
@@ -54,8 +55,15 @@ $space: 4px;
 $space--2: 2 * $space;
 $space--3: 3 * $space;
 $space--4: 4 * $space;
+$space--6: 6 * $space;
 $space--8: 8 * $space;
+$space--9: 9 * $space;
 $space--12: 12 * $space;
+
+// Participant Logo
+$profile-logo-width: 36px;
+$profile-logo-width--medium: $font-size--48;
+$profile-logo-width--large: $font-size--56;
 
 //Breakpoints
 $sm-device: 576px;

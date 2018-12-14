@@ -18,8 +18,7 @@
               >
                 <router-link
                   :to="season.route"
-                  exact-active-class="active"
-                  exact
+                  active-class="active"
                 >{{ season.name }}</router-link>
               </li>
             </ul>
