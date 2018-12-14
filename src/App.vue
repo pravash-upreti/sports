@@ -5,9 +5,7 @@
       <TopNavBar :showSideBar="showSideBar" :showHideSideBar="showHideSideBar"/>
       <SideBar :classes="sideBarClassObject" :showHideSideBar="showHideSideBar"/>
       <div class="content-wrapper">
-        <div class="container">
-          <router-view/>
-        </div>
+        <router-view/>
       </div>
     </div>
   </div>

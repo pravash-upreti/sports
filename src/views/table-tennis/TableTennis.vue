@@ -1,23 +1,14 @@
 <template>
-  <div>
-    <div
-      v-if="data.loading"
-      class="container"
-    >
-      <loading-icon />
-    </div>
-    <div
-      v-else-if="data.error"
-      class="container"
-    >
-      <div class="alert alert-error">Unable to load data. Please try again later.</div>
-    </div>
-    <div
-      v-else
-      class="table-tennis"
-    >
-      <div class="container-fluid">
-        <sport-header :title="title" :categories="data.data.categories" :rounds="data.data.rounds" :routes="routes" />
+  <div v-if="data.loading">
+    <loading-icon />
+  </div>
+  <div v-else-if="data.error" class="container">
+    <div class="alert alert-error">Unable to load data. Please try again later.</div>
+  </div>
+  <div v-else class="table-tennis">
+    <div class="container-fluid">
+      <sport-header :title="title" :categories="data.data.categories" :rounds="data.data.rounds" :routes="routes" />
+      <div class="tournament-content-wrapper">
         <router-view />
       </div>
     </div>

@@ -17,11 +17,14 @@
 }
 
 .content-wrapper {
-  height: 100%;
-  padding-bottom: $space--6;
+  min-height: 100%;
 
   @include mq(md) {
     margin-left: $sidebar-width--desktop;
     width: calc(100% - #{$sidebar-width--desktop});
   }
+}
+
+.tournament-content-wrapper {
+  padding: $space--6 0;
 }
