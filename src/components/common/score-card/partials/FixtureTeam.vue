@@ -9,14 +9,14 @@
           <participant-logo
             v-for="(player, index) in teamInfo.players"
             :key="index"
-            :hide-image="true"
+            :hide-image="hideImage"
             :participant="player"
             :custom-styles="teamCustomStyles"
           />
         </span>
         <span v-else>
           <participant-logo
-            :hide-image="true"
+            :hide-image="hideImage"
             :participant="teamInfo"
             :custom-styles="teamCustomStyles"
           />
@@ -29,14 +29,14 @@
           <participant-logo
             v-for="(player, index) in teamInfo.players"
             :key="index"
-            :hide-image="true"
+            :hide-image="hideImage"
             :participant="player"
             :custom-styles="teamCustomStyles"
           />
         </span>
         <span v-else>
           <participant-logo
-            :hide-image="true"
+            :hide-image="hideImage"
             :participant="teamInfo"
             :custom-styles="teamCustomStyles"
           />
@@ -65,6 +65,8 @@ export default class FixtureTeam extends Vue {
   public classNames!: object;
   @Prop()
   public isAwayTeam!: boolean;
+
+  public hideImage: boolean = false;
 
   private isTeamTBD() {
     return !Object.keys(this.team).length;

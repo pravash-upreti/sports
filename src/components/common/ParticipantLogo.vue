@@ -1,6 +1,6 @@
 <template>
   <span
-    class="participant-image-wrapper"
+    class="participant-logo-wrapper"
   >
     <img 
       v-if="participant.profileImage && shouldShowImage"
@@ -65,8 +65,8 @@ export default class ParticipantLogo extends Vue {
 
   get imageClassObject() {
     return {
-      'participant-image': true,
-      'participant-image--large': this.showLarge
+      'participant-logo': true,
+      'participant-logo--large': this.showLarge
     };
   }
 }
