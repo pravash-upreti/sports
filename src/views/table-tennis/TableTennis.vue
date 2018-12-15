@@ -14,7 +14,7 @@
         :routes="routes"
       />
       <div class="tournament-content-wrapper">
-        <router-view :fixtures="data.fixtures" :fixture-link="fixtureLink"/>
+        <router-view :data="data" :fixture-link="fixtureLink"/>
       </div>
     </div>
   </div>
@@ -25,12 +25,11 @@ import axios from 'axios';
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 import sports from '@/constants/sports';
-import EventBus from '@/events/eventBus';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
 import * as FixtureService from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
-import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
+import { TournamentDataInterface } from '@/interfaces/interfaces';
 
 @Component({
   components: { SportHeader, LoadingIcon }

@@ -44,13 +44,13 @@ const router = new Router({
             title: 'Table Tennis - Fixtures'
           }
         },
-      //   {
-      //     path: TABLE_TENNIS_ROUTES.RESULTS,
-      //     component: Results,
-      //     meta: {
-      //       title: 'Table Tennis - Results'
-      //     }
-      //   },
+        {
+          path: TABLE_TENNIS_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Table Tennis - Results'
+          }
+        },
       //   {
       //     path: TABLE_TENNIS_ROUTES.TEAMS,
       //     component: Teams,
