@@ -5,7 +5,7 @@
     <img 
       v-if="participant.profileImage && shouldShowImage"
       :src="participant.profileImage"
-      :alt="participant.name"
+      :alt="nameFirstLetter"
       :class="imageClassObject"
     >
     <span 
@@ -17,7 +17,7 @@
       v-else
       :style="classObject"
       :class="imageClassObject" 
-    >{{ participant.name.substring(0, 1) }}</span>
+    >{{ nameFirstLetter }}</span>
   </span>
 </template>
 
@@ -29,7 +29,7 @@ import { TeamInterface, PlayerInterface } from '@/interfaces/interfaces';
 
 @Component
 export default class ParticipantLogo extends Vue {
-  @Prop() private participant!: object;
+  @Prop() private participant!: PlayerInterface|TeamInterface;
   @Prop() private customStyles!: object;
   @Prop() private hideImage!: boolean;
   @Prop() private showLarge!: boolean;
@@ -68,6 +68,10 @@ export default class ParticipantLogo extends Vue {
       'participant-logo': true,
       'participant-logo--large': this.showLarge
     };
+  }
+
+  get nameFirstLetter() {
+    return this.participant.name.substring(0, 1);
   }
 }
 </script>
