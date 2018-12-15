@@ -51,13 +51,13 @@ const router = new Router({
             title: 'Table Tennis - Results'
           }
         },
-      //   {
-      //     path: TABLE_TENNIS_ROUTES.TEAMS,
-      //     component: Teams,
-      //     meta: {
-      //       title: 'Table Tennis - Teams'
-      //     }
-      //   },
+        {
+          path: TABLE_TENNIS_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Table Tennis - Teams'
+          }
+        },
       //   /* {
       //     path: TABLE_TENNIS_ROUTES.FIXTURE,
       //     component: TableTennisScoreModal,

@@ -12,20 +12,19 @@
         {{ team.name }}
       </h4>
     </div>
-    <div class="team-players-wrapper">
-      <ul>
-        <li
-          v-for="(player, index) in team.players"
-          :key="index"
-        >
-          <participant-logo
-            :participant="player"
-            :custom-styles="customStyles"
-          />
-          {{ player.name }}
-        </li>
-      </ul>
-    </div>
+    <ul class="team-players-wrapper">
+      <li
+        v-for="(player, index) in team.players"
+        :key="`team-player-${index}`"
+        class="team-player"
+      >
+        <participant-logo
+          :participant="player"
+          :custom-styles="customStyles"
+        />
+        {{ player.name }}
+      </li>
+    </ul>
   </div>
 </template>
 

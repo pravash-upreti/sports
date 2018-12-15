@@ -1,0 +1,46 @@
+.teams-wrapper {
+  align-items: top;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -$space--2;
+  width: 100%;
+
+  .team {
+    background-color: $color-white;
+    color: $color-text--score-card;
+    margin: $space--2 $space;
+    padding: $space--2 $space;
+    width: 100%;
+
+    @include mq(md) {
+      width: 300px;
+    }
+
+    .team-title {
+      font-size: $font-size--24;
+      width: 100%;
+    }
+
+    .team-players-wrapper {
+      list-style: none;
+      width: 100%;
+
+      .team-player {
+        align-items: center;
+        border-bottom: 1px solid rgba($color-green, 0.2);
+        color: $color-text--score-card;
+        display: flex;
+        font-size: $font-size--18;
+        padding: $space--2 $space;
+        text-transform: capitalize;
+        width: 100%;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}
