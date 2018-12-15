@@ -1,15 +1,20 @@
 <template>
-  <div v-if="data.loading">
-    <loading-icon />
+  <div v-if="loadingData">
+    <loading-icon/>
   </div>
-  <div v-else-if="data.error" class="container">
+  <div v-else-if="error" class="container">
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
   <div v-else class="table-tennis">
     <div class="container-fluid">
-      <sport-header :title="title" :categories="data.data.categories" :rounds="data.data.rounds" :routes="routes" />
+      <sport-header
+        :title="title"
+        :categories="data.categories"
+        :rounds="data.rounds"
+        :routes="routes"
+      />
       <div class="tournament-content-wrapper">
-        <router-view />
+        <router-view :fixtures="data.fixtures" :fixture-link="fixtureLink"/>
       </div>
     </div>
   </div>
@@ -17,7 +22,7 @@
 
 <script lang="ts">
 import axios from 'axios';
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 import sports from '@/constants/sports';
 import EventBus from '@/events/eventBus';
@@ -27,59 +32,47 @@ import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
-
 @Component({
   components: { SportHeader, LoadingIcon }
 })
 export default class TableTennis extends Vue {
-  public data: any = { loading: true };
+  @Prop() public updateActives!: any;
+  @Prop() public loadingData!: boolean;
+  @Prop() public getTournamentData!: any;
+
+  public data: any = {};
+  public error: boolean = false;
   public routes: object = TABLE_TENNIS_ROUTES;
   public fixtureLink: string = TABLE_TENNIS_ROUTES.FIXTURE;
 
-  public created() {
-    this.fetchData();
+  @Watch('loadingData', { immediate: true, deep: true })
+  public onLoadingDataChanged(newVal: boolean, oldVal: boolean) {
+    if (newVal !== oldVal) {
+      this.fetchData();
+    }
   }
 
-  public fetchData() {
+  public created() {
     const sport = sports.TABLE_TENNIS;
     const season = this.$route.params.season;
 
-    let data = this.$parent.getTournamentData(sport, season);
+    this.updateActives(sport, season);
+  }
 
-    if (data && Object.keys(data).length) {
-      this.data = data;
+  public fetchData() {
+    const tournamentData = this.getTournamentData();
+
+    if (tournamentData && tournamentData.status) {
+      this.error = false;
+      this.data = this.getSanitizedData(tournamentData.data);
 
       return;
     }
 
-    data = {
-      data: null,
-      error: false,
-      loading: true
-    };
-
-    this.data = data;
-
-    this.$parent.fetchTournamentData(sport, season)
-      .then((response: any) => {
-        const d = response.data;
-
-        if (!d.status) {
-          data = Object.assign(data, { data: null, error: true });
-        } else {
-          data = Object.assign(data, { data: d.data, error: false });
-        }
-      })
-      .catch(() => {
-        data = Object.assign(data, { data: null, error: true });
-      })
-      .then(() => {
-        data = Object.assign(data, { loading: false });
-        this.data = data;
-      });
+    this.error = true;
   }
 
-  public getSanitizedData(rawData: TournamentDataResponseInterface): TournamentDataInterface {
+  public getSanitizedData(rawData: any): TournamentDataInterface {
     const data = {
       teams: rawData.teams,
       details: rawData.details,

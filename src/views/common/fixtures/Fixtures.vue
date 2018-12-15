@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import sortBy from 'lodash/sortBy';
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import { FixtureInterface, CategoryInterface, RoundInterface } from '@/interfaces/interfaces';
 import SearchBar from '@/components/common/SearchBar.vue';
@@ -25,7 +25,7 @@ import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
   components: { RoundsFilter, ScoreCardsList, CategoriesFilter, SearchBar }
 })
 export default class Fixtures extends Vue {
-  private fixtureLink: string = this.$parent.$data.fixtureLink;
-  private fixtures: FixtureInterface[] = this.$parent.$data.data.data.fixtures;
+  @Prop() private fixtureLink!: string;
+  @Prop() private fixtures!: FixtureInterface[];
 }
 </script>
