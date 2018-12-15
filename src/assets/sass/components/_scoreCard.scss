@@ -1,13 +1,15 @@
-.score-card-list-wrapper {
+.score-card-list-title-wrapper {
+  text-align: center;
+  width: 100%;
+
   .score-card-list-title {
-    background-color: $color-body;
-    border-radius: 3px 3px 0 0;
-    color: $color-white;
-    display: block;
-    margin: 25px 0 0;
-    padding: 7px;
+    color: $color-green;
+    display: inline-block;
+    font-size: $font-size--22;
+    padding: $space--2;
     text-align: center;
     text-transform: uppercase;
+    z-index: 1;
   }
 }
 

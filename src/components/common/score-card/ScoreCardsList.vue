@@ -1,6 +1,8 @@
 <template>
   <div v-if="fixtures.length">
-    <h5 v-if="title.length" class="group-heading">{{ title }}</h5>
+    <div class="score-card-list-title-wrapper">
+      <h5 v-if="title.length" class="score-card-list-title">{{ title }}</h5>
+    </div>
     <ScoreCardWrapper
       v-for="(fixture, index) in fixtures"
       :fixture="fixture"

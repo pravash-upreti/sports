@@ -1,17 +1,18 @@
 <template>
   <div class="container">
-    Nothing here
-    <!-- <div v-if="recents.showWinners">
-      <Winners :winners="recents.winners" />
+    <div class="recent-wrapper">
+      <div v-if="data.recents.showWinners">
+        <Winners :winners="data.recents.winners" />
+      </div>
+      <div v-else>
+        <RecentFixtures :recents="data.recents" :fixture-link="fixtureLink" />
+      </div>
     </div>
-    <div v-else>
-      <RecentFixtures :recents="recents" :fixture-link="fixtureLink" />
-    </div> -->
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Vue, Prop, Component } from 'vue-property-decorator';
 
 import Winners from './partials/Winners.vue';
 import RecentFixtures from './partials/RecentFixtures.vue';
@@ -20,7 +21,7 @@ import RecentFixtures from './partials/RecentFixtures.vue';
   components: { Winners, RecentFixtures }
 })
 export default class Recent extends Vue {
-  // private recents: object = this.$parent.$data.data.data.recents;
-  // private fixtureLink: string = this.$parent.$data.fixtureLink;
+  @Prop() private data!: any;
+  @Prop() private fixtureLink!: string;
 }
 </script>

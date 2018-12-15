@@ -1,45 +1,43 @@
 <template>
-  <div class="recent-wrapper">
-    <div v-if="noRecentFixtures">
-      <p class="alert alert-success">Nothing to see here. Trying other sections.</p>
-    </div>
-    <div v-else>
-      <score-cards-list
-        :title="'Today'"
-        :fixtures="recentFixtures.todayFixtures"
-        :fixture-link="fixtureLink"
-      />
-      <score-cards-list
-        :title="'Tomorrow'"
-        :fixtures="recentFixtures.tomorrowFixtures"
-        :fixture-link="fixtureLink"
-      />
-      <score-cards-list
-        :title="'Later this week'"
-        :fixtures="recentFixtures.twRemainingFixtures"
-        :fixture-link="fixtureLink"
-      />
-      <score-cards-list
-        :title="'Next week'"
-        :fixtures="recentFixtures.nwFixtures"
-        :fixture-link="fixtureLink"
-      />
-      <score-cards-list
-        :title="'Earlier this week'"
-        :fixtures="recentFixtures.twPlayedFixtures"
-        :fixture-link="fixtureLink"
-      />
-      <score-cards-list
-        :title="'Last week'"
-        :fixtures="recentFixtures.lwFixtures"
-        :fixture-link="fixtureLink"
-      />
-      <score-cards-list
-        :title="'Upcoming'"
-        :fixtures="recentFixtures.upComingFixtures"
-        :fixture-link="fixtureLink"
-      />
-    </div>
+  <div v-if="noRecentFixtures">
+    <p class="alert alert-success">Nothing to see here. Trying other sections.</p>
+  </div>
+  <div v-else>
+    <score-cards-list
+      :title="'Today'"
+      :fixtures="recentFixtures.todayFixtures"
+      :fixture-link="fixtureLink"
+    />
+    <score-cards-list
+      :title="'Tomorrow'"
+      :fixtures="recentFixtures.tomorrowFixtures"
+      :fixture-link="fixtureLink"
+    />
+    <score-cards-list
+      :title="'Later this week'"
+      :fixtures="recentFixtures.twRemainingFixtures"
+      :fixture-link="fixtureLink"
+    />
+    <score-cards-list
+      :title="'Next week'"
+      :fixtures="recentFixtures.nwFixtures"
+      :fixture-link="fixtureLink"
+    />
+    <score-cards-list
+      :title="'Earlier this week'"
+      :fixtures="recentFixtures.twPlayedFixtures"
+      :fixture-link="fixtureLink"
+    />
+    <score-cards-list
+      :title="'Last week'"
+      :fixtures="recentFixtures.lwFixtures"
+      :fixture-link="fixtureLink"
+    />
+    <score-cards-list
+      :title="'Upcoming'"
+      :fixtures="recentFixtures.upComingFixtures"
+      :fixture-link="fixtureLink"
+    />
   </div>
 </template>
 

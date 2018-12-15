@@ -1,0 +1,54 @@
+.recent-wrapper {
+  .winners,
+  .runner-up {
+    margin: 30px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .winners {
+    font-size: $font-size--36;
+
+    @include mq(md) {
+      font-size: $font-size--48;
+    }
+
+    @include mq(xl) {
+      font-size: $font-size--56;
+    }
+  }
+
+  .runner-up {
+    font-size: $font-size--24;
+
+    @include mq(md) {
+      font-size: $font-size--36;
+    }
+
+    @include mq(xl) {
+      font-size: $font-size--48;
+    }
+  }
+
+  .winner-trophy,
+  .runner-up-trophy {
+    margin: 0 10px;
+  }
+
+  .winner-trophy {
+    color: $color-trophy;
+  }
+
+  .runner-up-trophy {
+    color: $color-trophy;
+  }
+
+  .winner-category {
+    display: block;
+    font-size: $font-size-base;
+  }
+
+  .score-card-list-title-wrapper {
+    padding: $space--4 0 $space;
+  }
+}
