@@ -7,7 +7,7 @@
       <i class="fas fa-times"/>
     </div>
     <Logo/>
-    <div class="menu-bar--right"></div>
+    <div class="menu-bar--right"/>
   </div>
 </template>
 

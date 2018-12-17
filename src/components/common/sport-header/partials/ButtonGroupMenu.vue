@@ -8,14 +8,15 @@
         ><router-link :to="route.path" exact-active-class="active">{{ route.name }}</router-link></li>
       </ul>
     </div>
-    <div class="sport-menu-wrapper sport-menu-wrapper--round">
+    <!-- TODO: Enable once the feature is enabled. -->
+    <!-- <div class="sport-menu-wrapper sport-menu-wrapper--round">
       <ul>
         <li
           v-for="(round, index) in rounds"
           :key="`round-${index}`"
         >{{ round.shortName }}</li>
       </ul>
-    </div>
+    </div> -->
   </div>
 </template>
 

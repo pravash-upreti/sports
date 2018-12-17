@@ -10,7 +10,7 @@
             :loading-data="loading"
             :update-actives="updateActives"
             :get-tournament-data="getTournamentData"
-            :fetch-tournament-data="this.fetchTournamentData"
+            :fetch-tournament-data="fetchTournamentData"
           />
         </keep-alive>
       </div>
@@ -34,11 +34,11 @@ import TopNavBar from '@/components/navigations/TopNavBar.vue';
   components: { SideBar, TopNavBar }
 })
 export default class App extends Vue {
+  public loading: boolean = true;
   public activeSport: string = '';
-  public activeSeason: string | number = '';
   public tournamentData: any = {};
   public showSideBar: boolean = false;
-  public loading: boolean = true;
+  public activeSeason: string | number = '';
 
   @Watch('activeSport', { immediate: true, deep: true })
   public onActiveSportChanged(newVal: string, oldVal: string) {
@@ -62,7 +62,7 @@ export default class App extends Vue {
     return this.tournamentData[`${this.activeSport}-${this.activeSeason}`];
   }
 
-  public setTournamentData(sport: string, season: string|number, data: any) {
+  public setTournamentData(sport: string, season: string | number, data: any) {
     this.tournamentData[`${sport}-${season}`] = data;
   }
 
@@ -70,7 +70,7 @@ export default class App extends Vue {
     this.showSideBar = show;
   }
 
-  public updateActives(sport: string, season: string|number) {
+  public updateActives(sport: string, season: string | number) {
     if (!!sport) {
       this.activeSport = sport;
     }

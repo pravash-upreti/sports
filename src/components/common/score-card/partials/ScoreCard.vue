@@ -1,6 +1,18 @@
 <template>
   <div class="score-card-wrapper">
-    <div class="score-card">
+    <div class="score-card score-card--mobile">
+      <fixture-team-mobile
+        :team="fixture.homeTeam"
+        :score="fixture.homeTeamScore"
+        :is-winner="isHomeTeamWinner"
+      />
+      <fixture-team-mobile
+        :team="fixture.awayTeam"
+        :score="fixture.awayTeamScore"
+        :is-winner="isAwayTeamWinner"
+      />
+    </div>
+    <div class="score-card score-card--desktop">
       <fixture-team
         :team="fixture.homeTeam"
         :class-names="homeTeamClassObject"
@@ -24,10 +36,11 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import FixtureTeam from './FixtureTeam.vue';
 import FixtureScore from './FixtureScore.vue';
+import FixtureTeamMobile from './FixtureTeamMobile.vue';
 import { FixtureInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { FixtureTeam, FixtureScore }
+  components: { FixtureTeam, FixtureScore, FixtureTeamMobile }
 })
 export default class ScoreCard extends Vue {
   @Prop() public fixtureLink!: string;

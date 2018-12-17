@@ -2,7 +2,7 @@ import dateFns from 'date-fns';
 import { isNull, isUndefined } from 'lodash';
 
 import { checkIfPlayerIsInTeam } from './PlayerService';
-import { CategoryInterface, RoundInterface } from './../interfaces/interfaces';
+import { CategoryInterface, RoundInterface, TournamentDataInterface } from './../interfaces/interfaces';
 import { FixtureInterface, RecentsInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 export function getFixtures(fixturesList: FixtureInterface[], limit: number = 0): FixtureInterface[] {
@@ -150,4 +150,34 @@ export function getRounds(rounds: RoundInterface[] = []) {
   }
 
   return roundsList;
+}
+
+/**
+ * Get formatted tournament data.
+ *
+ * @export
+ * @param {*} data
+ * @param {number} [limit=0]
+ * @returns {TournamentDataInterface}
+ */
+export function getSanitizedData(data: any, limit: number = 0): TournamentDataInterface {
+  return {
+    teams: data.teams,
+    details: data.details,
+    allFixtures: data.fixtures,
+    statuses: data.statuses || [],
+    results: getResults(data.fixtures),
+    recents: getRecentFixtures(data, limit),
+    fixtures: getFixtures(data.fixtures),
+    rounds: getRounds(data.rounds) || [],
+    categories: getCategories(data.categories) || []
+  };
+}
+
+export function filterFixturesByCategory(allFixtures: FixtureInterface[], category: CategoryInterface) {
+  if (category.id !== 0) {
+    return allFixtures.filter((fixture) => fixture.categoryType.toLowerCase() === category.description.toLowerCase());
+  }
+
+  return allFixtures;
 }

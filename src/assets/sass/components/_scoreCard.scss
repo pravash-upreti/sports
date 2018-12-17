@@ -31,102 +31,157 @@
     padding: $space--2;
     transition: all 0.25s linear;
 
-    @include mq(md) {
-      font-size: $font-size--24;
+    @include m(desktop) {
+      display: none;
+
+      @include mq(md) {
+        display: flex;
+        font-size: $font-size--24;
+
+        &:hover {
+          box-shadow: 0 $space--4 $space--8 0 rgba($color-black, 0.2);
+          position: relative;
+          transform: scale(1.01);
+        }
+
+        .fixture-team-name-wrapper {
+          align-items: center;
+          display: flex;
+          flex: 1;
+          padding: 0 $space--2;
+
+          .fixture-team-name {
+            flex: 1;
+          }
+
+          .fixture-team-symbol {
+            display: flex;
+            padding: 0 $space;
+          }
+
+          .home-team {
+            text-align: right;
+          }
+
+          .away-team {
+            text-align: left;
+          }
+
+          .winner {
+            font-weight: 600;
+
+            .participant-logo {
+              border: 4px solid $color-trophy;
+            }
+          }
+
+          .fa-trophy {
+            color: $color-trophy;
+            font-size: $font-size--18;
+          }
+        }
+
+        .fixture-score-wrapper {
+          flex-basis: 250px;
+          font-weight: 700;
+          line-height: 160%;
+          padding: 0 $space--2;
+          text-align: center;
+
+          .result {
+            font-size: $font-size--56;
+            padding-top: $space--4;
+
+            @include m(versus) {
+              font-size: $font-size--36;
+              padding-top: 0;
+            }
+          }
+
+          .result-score-wrapper,
+          .fixture-date {
+            line-height: 75%;
+          }
+
+          .result-score-wrapper {
+            .result-score {
+              color: $color-score-result;
+            }
+          }
+
+          .fixture-round,
+          .fixture-time,
+          .fixture-date {
+            font-weight: 400;
+          }
+
+          .fixture-round,
+          .fixture-time {
+            font-size: $font-size--16;
+          }
+
+          .fixture-time {
+            opacity: 0.8;
+          }
+        }
+
+        .participant-logo {
+          height: $profile-logo-width--large;
+          width: $profile-logo-width--large;
+        }
+      }
     }
 
-    &:hover {
-      box-shadow: 0 $space--4 $space--8 0 rgba($color-black, 0.2);
-      position: relative;
-      transform: scale(1.01);
-    }
+    @include m(mobile) {
+      flex-direction: column;
+      font-size: $font-size--18;
+      padding: $space--3;
 
-    .fixture-team-name-wrapper {
-      flex: 1;
-      padding: 0 $space--2;
+      @include mq(md) {
+        display: none;
+      }
 
       .fixture-team-name-wrapper {
         align-items: center;
         display: flex;
+        flex: 1;
+        padding: $space;
+        width: 100%;
 
-        .fixture-team-name {
-          flex: 1;
+        &.winner {
+          .participant-logo {
+            border: 2px solid $color-trophy;
+          }
         }
 
         .fixture-team-symbol {
-          padding: 0 $space;
+          display: flex;
         }
-      }
-
-      .home-team {
-        text-align: right;
-      }
-
-      .away-team {
-        text-align: left;
-      }
-
-      .winner {
-        font-weight: 600;
 
         .participant-logo {
-          border: 4px solid $color-trophy;
+          height: $profile-logo-width;
+          width: $profile-logo-width;
         }
-      }
 
-      .fa-trophy {
-        color: $color-trophy;
-        font-size: $font-size--18;
-      }
-    }
-
-    .fixture-score-wrapper {
-      flex-basis: 250px;
-      font-weight: 700;
-      line-height: 160%;
-      padding: 0 $space--2;
-      text-align: center;
-
-      .result {
-        font-size: $font-size--56;
-        padding-top: $space--4;
-
-        @include m(versus) {
-          font-size: $font-size--36;
-          padding-top: 0;
+        .fixture-team-name {
+          flex: 1;
+          padding: 0 $space--2;
         }
-      }
 
-      .result-score-wrapper,
-      .fixture-date {
-        line-height: 75%;
-      }
-
-      .result-score-wrapper {
-        .result-score {
+        .fixture-team-score {
+          align-items: center;
           color: $color-score-result;
+          display: flex;
+          font-size: $font-size--22;
+          font-weight: 700;
+
+          .fa-trophy {
+            color: $color-trophy;
+            font-size: $font-size--16;
+            padding: 0 $space;
+          }
         }
       }
-
-      .fixture-round,
-      .fixture-time,
-      .fixture-date {
-        font-weight: 400;
-      }
-
-      .fixture-round,
-      .fixture-time {
-        font-size: $font-size--16;
-      }
-
-      .fixture-time {
-        opacity: 0.8;
-      }
-    }
-
-    .participant-logo {
-      height: $profile-logo-width--large;
-      width: $profile-logo-width--large;
     }
   }
 }

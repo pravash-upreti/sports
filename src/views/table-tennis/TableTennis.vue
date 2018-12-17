@@ -26,10 +26,9 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 import sports from '@/constants/sports';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
-import * as FixtureService from '@/services/FixtureService';
+import { getSanitizedData } from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
-import { TournamentDataInterface } from '@/interfaces/interfaces';
 
 @Component({
   components: { SportHeader, LoadingIcon }
@@ -63,28 +62,12 @@ export default class TableTennis extends Vue {
 
     if (tournamentData && tournamentData.status) {
       this.error = false;
-      this.data = this.getSanitizedData(tournamentData.data);
+      this.data = getSanitizedData(tournamentData.data);
 
       return;
     }
 
     this.error = true;
-  }
-
-  public getSanitizedData(rawData: any): TournamentDataInterface {
-    const data = {
-      teams: rawData.teams,
-      details: rawData.details,
-      allFixtures: rawData.fixtures,
-      statuses: rawData.statuses || [],
-      recents: FixtureService.getRecentFixtures(rawData, 0),
-      results: FixtureService.getResults(rawData.fixtures),
-      fixtures: FixtureService.getFixtures(rawData.fixtures),
-      rounds: FixtureService.getRounds(rawData.rounds) || [],
-      categories: FixtureService.getCategories(rawData.categories) || []
-    };
-
-    return data;
   }
 
   get title(): string {

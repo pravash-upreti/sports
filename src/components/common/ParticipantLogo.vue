@@ -1,11 +1,9 @@
 <template>
-  <span
-    class="participant-logo-wrapper"
-  >
+  <span class="participant-logo-wrapper">
     <img 
       v-if="participant.profileImage && shouldShowImage"
       :src="participant.profileImage"
-      :alt="nameFirstLetter"
+      :alt="participant.name"
       :class="imageClassObject"
     >
     <span 

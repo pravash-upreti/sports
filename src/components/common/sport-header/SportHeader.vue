@@ -13,8 +13,8 @@
           </select>
         </div>
       </div>
-      <drop-down-menu :subRoutes="subRoutes" :rounds="matchRounds" />
-      <button-group-menu :subRoutes="subRoutes" :rounds="matchRounds" />
+      <drop-down-menu :subRoutes="subRoutes" :rounds="matchRounds"/>
+      <button-group-menu :subRoutes="subRoutes" :rounds="matchRounds"/>
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import DropDownMenu from './partials/DropDownMenu.vue';
 import ButtonGroupMenu from './partials/ButtonGroupMenu.vue';
+import { CategoryInterface } from '@/interfaces/interfaces';
 
 @Component({
   components: { DropDownMenu, ButtonGroupMenu }
@@ -33,7 +34,7 @@ export default class SportHeader extends Vue {
   @Prop() private title!: string;
   @Prop() private routes!: any;
   @Prop() private rounds!: any;
-  @Prop() private categories!: any;
+  @Prop() private categories!: CategoryInterface[];
 
   public getRouteName(routeKey: string): string {
     let routeName = '';
