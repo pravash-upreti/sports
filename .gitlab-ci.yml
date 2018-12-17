@@ -5,6 +5,7 @@ deploy_dev:
     - shell
   only:
     - dev
+    - SPO-53
   script:
     - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
     - docker push registry.lftechnology.com/sports:latest
