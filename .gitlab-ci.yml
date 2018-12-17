@@ -8,7 +8,13 @@ deploy_dev:
   script:
     - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
     - docker push registry.lftechnology.com/sports:latest
-    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com -vv
+    - |
+        RESPONSE=$(curl -s -w 'HTTP_STATUS_CODE=%{http_code}\n' POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com -vv )
+        printf "\n$RESPONSE\n" 
+        status_response=$(echo "$RESPONSE" | grep HTTP_STATUS_CODE= | sed -n 2p)
+        status_code=(${status_response//HTTP_STATUS_CODE=/})
+        if [ $status_code -eq "200" ]; then exit 0; else exit 1; fi 
+    
 deploy_production:
   tags:
     - shell
@@ -17,7 +23,13 @@ deploy_production:
   script:
     - docker build -t registry.lftechnology.com/sports:stable -f ./docker/Dockerfile .
     - docker push registry.lftechnology.com/sports:stable
-    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/sports.lftechnology.com
+    - |
+        RESPONSE=$(curl -s -w 'HTTP_STATUS_CODE=%{http_code}\n' POST --user $username:$password https://registry.lftechnology.com/deploy/sports.lftechnology.com -vv )
+        printf "\n$RESPONSE\n" 
+        status_response=$(echo "$RESPONSE" | grep HTTP_STATUS_CODE= | sed -n 2p)
+        status_code=(${status_response//HTTP_STATUS_CODE=/})
+        if [ $status_code -eq "200" ]; then exit 0; else exit 1; fi 
+    
 deploy_manual:
   tags:
     - shell
@@ -31,5 +43,4 @@ deploy_manual:
         status_code=(${status_response//HTTP_STATUS_CODE=/})
         if [ $status_code -eq "200" ]; then exit 0; else exit 1; fi 
         
-    # - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com
   when: manual
