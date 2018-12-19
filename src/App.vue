@@ -4,7 +4,6 @@
       <NavBar/>
       <router-view/>
     </div>
-    <Footer/>
   </div>
 </template>
 
@@ -16,12 +15,10 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 import { Component, Vue } from 'vue-property-decorator';
 
-import Footer from '@/components/footer/Footer.vue';
 import NavBar from '@/components/navigations/NavBar.vue';
 
 @Component({
   components: {
-    Footer,
     NavBar
   }
 })

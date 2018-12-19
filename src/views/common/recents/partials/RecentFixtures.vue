@@ -54,10 +54,8 @@ import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
   components: { ScoreCardsList }
 })
 export default class RecentFxtures extends Vue {
-  @Prop()
-  public recents!: RecentsInterface;
-  @Prop()
-  public fixtureLink!: string;
+  @Prop() public recents!: RecentsInterface;
+  @Prop() public fixtureLink!: string;
 
   public noRecentFixtures: boolean = false;
   public recentFixtures: object = {
@@ -90,15 +88,21 @@ export default class RecentFxtures extends Vue {
     firstDay: any,
     lastDay: any
   ) {
+    let rangeFixtures: FixtureInterface[] = [];
+
     if (dateFns.isSameDay(firstDay, lastDay)) {
-      return fixtures.filter((fixture) =>
+      rangeFixtures = fixtures.filter((fixture) =>
         dateFns.isSameDay(new Date(fixture.date), firstDay)
+      );
+    } else {
+      rangeFixtures = fixtures.filter((fixture) =>
+        dateFns.isWithinRange(new Date(fixture.date), firstDay, lastDay)
       );
     }
 
-    return fixtures.filter((fixture) =>
-      dateFns.isWithinRange(new Date(fixture.date), firstDay, lastDay)
-    );
+    return rangeFixtures.sort((a, b) => {
+      return dateFns.compareAsc(a.date, b.date);
+    });
   }
 
   public checkIfFixturesListIsEmpty(fixturesList: any) {
@@ -115,6 +119,13 @@ export default class RecentFxtures extends Vue {
 
   public getRecentFixtures(recentFixtures: FixtureInterface[]) {
     const today = new Date();
+
+    // Reset time
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
+    today.setMilliseconds(0);
+
     const yesterday = dateFns.subDays(today, 1);
     const tomorrow = dateFns.addDays(today, 1);
     const dayAfterTomorrow = dateFns.addDays(today, 2);
@@ -126,41 +137,32 @@ export default class RecentFxtures extends Vue {
     const nwStartDay = dateFns.startOfWeek(dateFns.addWeeks(today, 1));
     const nwEndDay = dateFns.endOfWeek(dateFns.addWeeks(today, 1));
 
+    const todayFixtures = this.getFixturesForRangeOfDays(recentFixtures, today, today);
+    const tomorrowFixtures = this.getFixturesForRangeOfDays(recentFixtures, tomorrow, tomorrow);
+    // Display this week played fixtures from Tuesday till end of the week.
+    const twPlayedFixtures = todayWeekDay >= 2
+        ? this.getFixturesForRangeOfDays(recentFixtures, twStartDay, yesterday)
+        : [];
+    // Display this week remaining fixtures from Monday till Thursday.
+    const twRemainingFixtures = todayWeekDay >= 1 && todayWeekDay <= 4
+        ? this.getFixturesForRangeOfDays(recentFixtures, dayAfterTomorrow, twLastDay)
+        : [];
+    // Display last week fixtures from Sunday till Monday.
+    const lwFixtures = todayWeekDay <= 1
+        ? this.getFixturesForRangeOfDays(recentFixtures, lwStartDay, lwEndDay)
+        : [];
+    // Display next week fixtures from Friday till end of the week.
+    const nwFixtures = todayWeekDay >= 5
+        ? this.getFixturesForRangeOfDays(recentFixtures, nwStartDay, nwEndDay)
+        : [];
+
     let recentFixturesList = {
-      todayFixtures: this.getFixturesForRangeOfDays(
-        recentFixtures,
-        today,
-        today
-      ),
-      tomorrowFixtures: this.getFixturesForRangeOfDays(
-        recentFixtures,
-        tomorrow,
-        tomorrow
-      ),
-      twPlayedFixtures:
-        todayWeekDay >= 2
-          ? this.getFixturesForRangeOfDays(
-              recentFixtures,
-              twStartDay,
-              yesterday
-            )
-          : [],
-      twRemainingFixtures:
-        1 <= todayWeekDay && todayWeekDay <= 4
-          ? this.getFixturesForRangeOfDays(
-              recentFixtures,
-              dayAfterTomorrow,
-              twLastDay
-            )
-          : [],
-      lwFixtures:
-        todayWeekDay <= 1
-          ? this.getFixturesForRangeOfDays(recentFixtures, lwStartDay, lwEndDay)
-          : [],
-      nwFixtures:
-        todayWeekDay >= 5
-          ? this.getFixturesForRangeOfDays(recentFixtures, nwStartDay, nwEndDay)
-          : [],
+      todayFixtures,
+      tomorrowFixtures,
+      twPlayedFixtures,
+      twRemainingFixtures,
+      lwFixtures,
+      nwFixtures,
       upComingFixtures: []
     };
 
