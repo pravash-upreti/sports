@@ -8,6 +8,7 @@
         <keep-alive>
           <router-view
             :loading-data="loading"
+            :selected-sport="selectedSport"
             :update-actives="updateActives"
             :get-tournament-data="getTournamentData"
             :fetch-tournament-data="fetchTournamentData"
@@ -110,6 +111,13 @@ export default class App extends Vue {
 
     return {
       'slide-in': true
+    };
+  }
+
+  get selectedSport() {
+    return {
+      sport: this.activeSport,
+      season: this.activeSeason
     };
   }
 }

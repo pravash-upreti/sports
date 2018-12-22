@@ -1,17 +1,12 @@
 <template>
   <div class="team">
-    <div 
-      v-if="team.logo"
-      class="team-title"
-    >
-      <h4>
-        <participant-logo 
-          :participant="team"
-          :custom-styles="customStyles"
-        />
-        {{ team.name }}
-      </h4>
-    </div>
+    <h4 v-if="team.logo" class="team-title">
+      <participant-logo 
+        :participant="team"
+        :custom-styles="customStyles"
+      />
+      {{ team.name }}
+    </h4>
     <ul class="team-players-wrapper">
       <li
         v-for="(player, index) in team.players"

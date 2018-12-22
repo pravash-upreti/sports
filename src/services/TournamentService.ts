@@ -29,13 +29,7 @@ function getTournamentApiUrl(sport: string, season: string|number): string {
     return '';
   }
 
-  let apiUrl = `${process.env.VUE_APP_API_BASE_URL}?sport=`;
+  const apiUrl = `${process.env.VUE_APP_API_BASE_URL}?sport=${sport}`;
 
-  switch (sport) {
-    case sports.TABLE_TENNIS:
-      apiUrl += sport;
-      break;
-  }
-
-  return `${apiUrl}&year=${season}`;
+  return `${apiUrl}&season=${season}`;
 }

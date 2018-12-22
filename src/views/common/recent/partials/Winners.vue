@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>
-      <h2 class="fixture-title">WINNERS</h2>
+      <div class="score-card-list-title-wrapper">
+        <h5 class="score-card-list-title">WINNER</h5>
+      </div>
       <h1
         v-for="(winner, index) in winners"
         :key="index"
@@ -12,7 +14,9 @@
       </h1>
     </div>
     <div>
-      <h2 class="fixture-title">RUNNER-UP</h2>
+      <div class="score-card-list-title-wrapper">
+        <h5 class="score-card-list-title">RUNNER-UP</h5>
+      </div>
       <h1
         v-for="(winner, index) in winners"
         :key="index"

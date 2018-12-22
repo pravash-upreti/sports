@@ -14,7 +14,7 @@
         :custom-styles="teamCustomStyles"
       />
     </span>
-    <span :class="['fixture-team-name', classNames]">{{ teamInfo.name }}</span>
+    <span class="fixture-team-name">{{ teamInfo.name }}</span>
     <span class="fixture-team-score"><i v-if="isWinner" class="fas fa-trophy" /> {{ score }}</span>
   </div>
 </template>

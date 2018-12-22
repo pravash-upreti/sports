@@ -3,7 +3,7 @@
     <div class="sport-header">
       <h2 class="sport-title">{{ title }}</h2>
       <div class="sport-categories-wrapper">
-        <div class="select-wrapper sport-categories">
+        <div v-if="categories.length" class="select-wrapper sport-categories">
           <select>
             <option
               v-for="(category, index) in categories"
@@ -13,7 +13,7 @@
           </select>
         </div>
       </div>
-      <drop-down-menu :subRoutes="subRoutes" :rounds="matchRounds"/>
+      <!-- <drop-down-menu :subRoutes="subRoutes" :rounds="matchRounds"/> -->
       <button-group-menu :subRoutes="subRoutes" :rounds="matchRounds"/>
     </div>
   </div>
@@ -24,16 +24,17 @@ import _ from 'lodash';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import DropDownMenu from './partials/DropDownMenu.vue';
-import ButtonGroupMenu from './partials/ButtonGroupMenu.vue';
 import { CategoryInterface } from '@/interfaces/interfaces';
+import ButtonGroupMenu from './partials/ButtonGroupMenu.vue';
 
 @Component({
   components: { DropDownMenu, ButtonGroupMenu }
 })
 export default class SportHeader extends Vue {
-  @Prop() private title!: string;
   @Prop() private routes!: any;
   @Prop() private rounds!: any;
+  @Prop() private title!: string;
+  @Prop() private selectedSport!: any;
   @Prop() private categories!: CategoryInterface[];
 
   public getRouteName(routeKey: string): string {
@@ -64,7 +65,7 @@ export default class SportHeader extends Vue {
   }
 
   public getRouteWithSeason(route: string) {
-    const season = this.$route.params && this.$route.params.season;
+    const season = this.selectedSport.sport && this.selectedSport.season;
 
     return route.length && season.length ? route.replace(':season', season.toString()) : route;
   }

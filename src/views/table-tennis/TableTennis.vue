@@ -6,12 +6,13 @@
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
   <div v-else class="table-tennis">
-    <div class="container-fluid">
+    <div class="container">
       <sport-header
         :title="title"
         :categories="data.categories"
         :rounds="data.rounds"
         :routes="routes"
+        :selected-sport="selectedSport"
       />
       <div class="tournament-content-wrapper">
         <router-view :data="data" :fixture-link="fixtureLink"/>
@@ -21,7 +22,6 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios';
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 import sports from '@/constants/sports';
@@ -35,6 +35,7 @@ import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 })
 export default class TableTennis extends Vue {
   @Prop() public updateActives!: any;
+  @Prop() public selectedSport!: any;
   @Prop() public loadingData!: boolean;
   @Prop() public getTournamentData!: any;
 

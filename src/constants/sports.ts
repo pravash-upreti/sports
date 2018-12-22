@@ -1,5 +1,6 @@
 export default {
-  CARROM: 'carrom',
+  CARROM: 'carrom-board',
   FUTSAL: 'futsal',
-  TABLE_TENNIS: 'tt'
+  TABLE_TENNIS: 'table-tennis',
+  DASHAIN_CUP: 'dashain-cup'
 };

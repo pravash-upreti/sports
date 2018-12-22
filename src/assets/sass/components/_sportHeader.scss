@@ -58,11 +58,7 @@
     }
 
     @include m(button-group) {
-      display: none;
-
-      @include mq(md) {
-        display: block;
-      }
+      display: block;
     }
 
     .sport-menu-wrapper {
@@ -74,12 +70,18 @@
       @include m(menu) {
         ul {
           list-style: none;
+          overflow-x: auto;
           padding: $space 0;
           text-align: center;
+          white-space: nowrap;
 
           li {
             display: inline-block;
-            margin: 0 16px;
+            margin: 0 $space--2;
+
+            @include mq(md) {
+              margin: 0 $space--4;
+            }
 
             &:first-child {
               margin-left: 0;

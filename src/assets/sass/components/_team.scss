@@ -10,16 +10,18 @@
   .team {
     background-color: $color-white;
     color: $color-text--score-card;
-    margin: $space--2 $space;
+    margin: 0 0 $space--2 0;
     padding: $space--2 $space;
     width: 100%;
 
     @include mq(md) {
-      width: 300px;
+      margin: $space--2 $space;
+      width: 350px;
     }
 
     .team-title {
       font-size: $font-size--24;
+      padding: $space--2 $space;
       width: 100%;
     }
 

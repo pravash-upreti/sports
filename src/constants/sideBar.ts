@@ -2,12 +2,26 @@ export default [
   {
     name: 'Futsal',
     icon: 'far fa-futbol',
-    seasons: []
+    seasons: [
+      {
+        name: 2018,
+        route: '/futsal/2018'
+      },
+      {
+        name: 2017,
+        route: '/futsal/2017'
+      }
+    ]
   },
   {
     name: 'Carrom Board',
     icon: 'fas fa-vector-square',
-    seasons: []
+    seasons: [
+      {
+        name: 2018,
+        route: '/carrom-board/2018'
+      }
+    ]
   },
   {
     name: 'Table Tennis',
@@ -22,7 +36,12 @@ export default [
   {
     name: 'Dashain Cup',
     icon: 'fas fa-trophy',
-    seasons: []
+    seasons: [
+      {
+        name: 2018,
+        route: '/dashain-cup/2018'
+      }
+    ]
   },
   {
     name: 'January Jatra',
@@ -30,15 +49,15 @@ export default [
     seasons: [
       {
         name: 'Dota 2',
-        route: '#'
+        route: 'january-jatra/dota2'
       },
       {
         name: 'FIFA 18',
-        route: '#'
+        route: 'january-jatra/fifa18'
       },
       {
         name: 'Counter Strike',
-        route: '#'
+        route: 'january-jatra/counter-strike'
       }
     ]
   }

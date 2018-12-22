@@ -1,35 +1,35 @@
 <template>
-  <div class="container tournament-content">
-    <table class="table table-striped points-table">
+  <div class="container">
+    <table class="table table--striped points-wrapper">
       <thead>
         <tr>
-          <th class="point-rank">#</th>
+          <th>#</th>
           <th>Team</th>
-          <th class="point-stat">P</th>
-          <th class="point-stat">W</th>
-          <th class="point-stat">D</th>
-          <th class="point-stat">L</th>
-          <th class="point-stat hide-on-small-screen">GF</th>
-          <th class="point-stat hide-on-small-screen">GA</th>
-          <th class="point-stat">GD</th>
-          <th class="point-stat">Pts</th>
+          <th>P</th>
+          <th>W</th>
+          <th>D</th>
+          <th>L</th>
+          <th class="hide-on-small-screen">GF</th>
+          <th class="hide-on-small-screen">GA</th>
+          <th>GD</th>
+          <th>Pts</th>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="(point, index) in points"
+          v-for="(point, index) in data.points"
           :key="index"
         >
-          <td class="point-rank">{{ point.id }}</td>
+          <td>{{ point.id }}</td>
           <td>{{ point.team.name }}</td>
-          <td class="point-stat">{{ point.played }}</td>
-          <td class="point-stat">{{ point.won }}</td>
-          <td class="point-stat">{{ point.drawn }}</td>
-          <td class="point-stat">{{ point.lost }}</td>
-          <td class="point-stat hide-on-small-screen">{{ point.goalsFor }}</td>
-          <td class="point-stat hide-on-small-screen">{{ point.goalsAgainst }}</td>
-          <td class="point-stat">{{ point.goalDifference }}</td>
-          <td class="point-stat">{{ point.points }}</td>
+          <td>{{ point.played }}</td>
+          <td>{{ point.won }}</td>
+          <td>{{ point.drawn }}</td>
+          <td>{{ point.lost }}</td>
+          <td class="hide-on-small-screen">{{ point.goalsFor }}</td>
+          <td class="hide-on-small-screen">{{ point.goalsAgainst }}</td>
+          <td>{{ point.goalDifference }}</td>
+          <td>{{ point.points }}</td>
         </tr>
       </tbody>
     </table>
@@ -37,12 +37,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-
-import { PointInterface } from '@/interfaces/interfaces';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
 @Component
 export default class FutsalPoints extends Vue {
-  public points: PointInterface[] = this.$parent.$data.data.points;
+  @Prop() private data!: any;
 }
 </script>

@@ -1,0 +1,51 @@
+table {
+  border-collapse: collapse;
+  font-size: $font-size--16;
+  width: 100%;
+
+  @include mq(md) {
+    font-size: $font-size--18;
+  }
+
+  thead {
+    tr {
+      background: rgba($color-black, 0.1);
+    }
+  }
+
+  th,
+  td {
+    padding: 10px 5px;
+    text-align: left;
+
+    @include mq(md) {
+      padding: 10px;
+    }
+  }
+
+  th {
+    font-weight: bold;
+  }
+}
+
+.table {
+  @include m(striped) {
+    tr {
+      &:nth-child(even) {
+        background: rgba($color-black, 0.05);
+      }
+    }
+  }
+
+  @include m(bordered) {
+    border: 1px solid $color-white;
+  }
+
+  .hide-on-small-screen {
+    display: none;
+
+    @include mq(md) {
+      display: table-cell;
+    }
+  }
+}

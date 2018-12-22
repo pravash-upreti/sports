@@ -9,20 +9,14 @@
       >
       {{ stat.title }}
     </h4>
-    <ul>
-      <li
-        v-for="(player, index) in stat.players"
-        :key="index"
-      >
-        <span class="stat-player-name">
-          <participant-logo :participant="player" />
-          {{ player.name }}
-        </span>
-        <span class="stat-player-stat">
-          {{ player.count }}
-        </span>
-      </li>
-    </ul>
+    <table class="table table--striped">
+      <tbody>
+        <tr v-for="(player, index) in stat.players" :key="`player-stat-${index}`">
+          <td>{{ player.name }}</td>
+          <td>{{ player.count }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

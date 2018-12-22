@@ -4,14 +4,16 @@ import Router from 'vue-router';
 import {
   BASE_ROUTES,
   FUTSAL_ROUTES,
-  OTHER_GAMES_ROUTES,
   TABLE_TENNIS_ROUTES,
   CARROM_BOARD_ROUTES
 } from './constants/routes';
 
+import Futsal from '@/views/futsal/Futsal.vue';
 import Teams from '@/views/common/teams/Teams.vue';
 import Recent from '@/views/common/recent/Recent.vue';
 import Results from '@/views/common/results/Results.vue';
+import FutsalStats from '@/views/futsal/FutsalStats.vue';
+import FutsalPoints from '@/views/futsal/FutsalPoints.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 
@@ -68,6 +70,68 @@ const router = new Router({
         {
           path: '*',
           redirect: TABLE_TENNIS_ROUTES.HOME
+        }
+      ]
+    },
+    {
+      path: BASE_ROUTES.FUTSAL,
+      component: Futsal,
+      meta: {
+        title: 'Futsal'
+      },
+      children: [
+        {
+          path: FUTSAL_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Futsal - Home'
+          }
+        },
+        {
+          path: FUTSAL_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Futsal - Fixtures'
+          }
+        },
+        {
+          path: FUTSAL_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Futsal - Results'
+          }
+        },
+        {
+          path: FUTSAL_ROUTES.POINTS,
+          component: FutsalPoints,
+          meta: {
+            title: 'Futsal - Points'
+          }
+        },
+        {
+          path: FUTSAL_ROUTES.STATS,
+          component: FutsalStats,
+          meta: {
+            title: 'Futsal - Stats'
+          }
+        },
+        {
+          path: FUTSAL_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Futsal - Teams'
+          }
+        },
+      //   /* {
+      //     path: FUTSAL_ROUTES.FIXTURE,
+      //     component: TableTennisScoreModal,
+      //     meta: {
+      //       title: 'Futsal - Fixture'
+      //     }
+      //   }, */
+        {
+          path: '*',
+          redirect: FUTSAL_ROUTES.HOME
         }
       ]
     }
