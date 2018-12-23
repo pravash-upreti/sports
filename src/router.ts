@@ -4,6 +4,7 @@ import Router from 'vue-router';
 import {
   BASE_ROUTES,
   FUTSAL_ROUTES,
+  DASHAIN_CUP_ROUTES,
   TABLE_TENNIS_ROUTES,
   CARROM_BOARD_ROUTES
 } from './constants/routes';
@@ -14,6 +15,7 @@ import Recent from '@/views/common/recent/Recent.vue';
 import Results from '@/views/common/results/Results.vue';
 import FutsalStats from '@/views/futsal/FutsalStats.vue';
 import FutsalPoints from '@/views/futsal/FutsalPoints.vue';
+import DashainCup from '@/views/dashain-cup/DashainCup.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 
@@ -132,6 +134,68 @@ const router = new Router({
         {
           path: '*',
           redirect: FUTSAL_ROUTES.HOME
+        }
+      ]
+    },
+    {
+      path: BASE_ROUTES.DASHAIN_CUP,
+      component: DashainCup,
+      meta: {
+        title: 'Dashain Cup'
+      },
+      children: [
+        {
+          path: DASHAIN_CUP_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Dashain Cup - Home'
+          }
+        },
+        {
+          path: DASHAIN_CUP_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Dashain Cup - Fixtures'
+          }
+        },
+        {
+          path: DASHAIN_CUP_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Dashain Cup - Results'
+          }
+        },
+        {
+          path: DASHAIN_CUP_ROUTES.POINTS,
+          component: FutsalPoints,
+          meta: {
+            title: 'Dashain Cup - Points'
+          }
+        },
+        {
+          path: DASHAIN_CUP_ROUTES.STATS,
+          component: FutsalStats,
+          meta: {
+            title: 'Dashain Cup - Stats'
+          }
+        },
+        {
+          path: DASHAIN_CUP_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Dashain Cup - Teams'
+          }
+        },
+      //   /* {
+      //     path: DASHAIN_CUP_ROUTES.FIXTURE,
+      //     component: TableTennisScoreModal,
+      //     meta: {
+      //       title: 'Dashain Cup - Fixture'
+      //     }
+      //   }, */
+        {
+          path: '*',
+          redirect: DASHAIN_CUP_ROUTES.HOME
         }
       ]
     }

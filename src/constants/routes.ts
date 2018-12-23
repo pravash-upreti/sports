@@ -45,14 +45,12 @@ export const TABLE_TENNIS_ROUTES = {
 };
 
 // Order of route declaration appears on the UI.
-// export const OTHER_GAMES_ROUTES = {
-//   DASHAIN_CUP: {
-//     HOME: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/recent`,
-//     RESULTS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/results`,
-//     FIXTURES: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/fixtures`,
-//     POINTS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/points`,
-//     STATS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/stats`,
-//     TEAMS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/teams`,
-//     FIXTURE: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/fixture/:fixtureId`
-//   }
-// };
+export const DASHAIN_CUP_ROUTES = {
+  HOME: `${DASHAIN_CUP}/`,
+  RESULTS: `${DASHAIN_CUP}/results`,
+  FIXTURES: `${DASHAIN_CUP}/fixtures`,
+  POINTS: `${DASHAIN_CUP}/points`,
+  STATS: `${DASHAIN_CUP}/stats`,
+  TEAMS: `${DASHAIN_CUP}/teams`,
+  FIXTURE: `${DASHAIN_CUP}/fixture/:fixtureId`,
+};
