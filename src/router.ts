@@ -16,6 +16,7 @@ import Results from '@/views/common/results/Results.vue';
 import FutsalStats from '@/views/futsal/FutsalStats.vue';
 import FutsalPoints from '@/views/futsal/FutsalPoints.vue';
 import DashainCup from '@/views/dashain-cup/DashainCup.vue';
+import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 
@@ -196,6 +197,54 @@ const router = new Router({
         {
           path: '*',
           redirect: DASHAIN_CUP_ROUTES.HOME
+        }
+      ]
+    },
+    {
+      path: BASE_ROUTES.CARROM_BOARD,
+      component: CarromBoard,
+      meta: {
+        title: 'Carrom Board'
+      },
+      children: [
+        {
+          path: CARROM_BOARD_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Carrom Board - Home'
+          }
+        },
+        {
+          path: CARROM_BOARD_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Carrom Board - Fixtures'
+          }
+        },
+        {
+          path: CARROM_BOARD_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Carrom Board - Results'
+          }
+        },
+        {
+          path: CARROM_BOARD_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Carrom Board - Teams'
+          }
+        },
+      //   /* {
+      //     path: CARROM_BOARD_ROUTES.FIXTURE,
+      //     component: TableTennisScoreModal,
+      //     meta: {
+      //       title: 'Carrom Board - Fixture'
+      //     }
+      //   }, */
+        {
+          path: '*',
+          redirect: CARROM_BOARD_ROUTES.HOME
         }
       ]
     }

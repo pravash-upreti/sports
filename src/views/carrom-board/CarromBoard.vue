@@ -6,12 +6,13 @@
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
   <div v-else>
-    <div class="container-fluid">
+    <div class="container">
       <sport-header
         :title="title"
         :categories="data.categories"
         :rounds="data.rounds"
         :routes="routes"
+        :selected-sport="selectedSport"
       />
       <div class="tournament-content-wrapper">
         <router-view :data="data" :fixture-link="fixtureLink"/>
@@ -21,21 +22,20 @@
 </template>
 
 <script lang="ts">
-import axios from 'axios';
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 import sports from '@/constants/sports';
 import { CARROM_BOARD_ROUTES } from '@/constants/routes';
 import { getSanitizedData } from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
-import { TournamentDataInterface } from '@/interfaces/interfaces';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 
 @Component({
   components: { SportHeader, LoadingIcon }
 })
-export default class CarromBoard extends Vue {
+export default class TableTennis extends Vue {
   @Prop() public updateActives!: any;
+  @Prop() public selectedSport!: any;
   @Prop() public loadingData!: boolean;
   @Prop() public getTournamentData!: any;
 
@@ -52,7 +52,7 @@ export default class CarromBoard extends Vue {
   }
 
   public created() {
-    const sport = sports.TABLE_TENNIS;
+    const sport = sports.CARROM_BOARD;
     const season = this.$route.params.season;
 
     this.updateActives(sport, season);
@@ -63,7 +63,7 @@ export default class CarromBoard extends Vue {
 
     if (tournamentData && tournamentData.status) {
       this.error = false;
-      this.data = getSanitizedData(tournamentData, 5);
+      this.data = getSanitizedData(tournamentData.data);
 
       return;
     }

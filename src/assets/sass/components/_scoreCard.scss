@@ -52,6 +52,7 @@
 
           .fixture-team-name {
             flex: 1;
+            text-transform: capitalize;
           }
 
           .fixture-team-symbol {
@@ -160,6 +161,7 @@
         .fixture-team-name {
           flex: 1;
           padding: 0 $space--2;
+          text-transform: capitalize;
         }
 
         .fixture-team-score {
