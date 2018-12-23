@@ -53,6 +53,14 @@ export default class DashainCup extends Vue {
   }
 
   public created() {
+    this.updateActiveSport();
+  }
+
+  public updated() {
+    this.updateActiveSport();
+  }
+
+  public updateActiveSport() {
     const sport = sports.DASHAIN_CUP;
     const season = this.$route.params.season;
 

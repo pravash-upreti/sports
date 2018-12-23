@@ -53,6 +53,14 @@ export default class Futsal extends Vue {
   }
 
   public created() {
+    this.updateActiveSport();
+  }
+
+  public updated() {
+    this.updateActiveSport();
+  }
+
+  public updateActiveSport() {
     const sport = sports.FUTSAL;
     const season = this.$route.params.season;
 

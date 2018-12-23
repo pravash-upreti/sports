@@ -47,7 +47,7 @@ export default class App extends Vue {
     if (newVal !== oldVal) {
       this.activeSport = newVal;
 
-      this.fetchTournamentData();
+      this.fetchTournamentData(this.activeSport, this.activeSeason);
     }
   }
 
@@ -56,7 +56,7 @@ export default class App extends Vue {
     if (newVal !== oldVal) {
       this.activeSeason = newVal;
 
-      this.fetchTournamentData();
+      this.fetchTournamentData(this.activeSport, this.activeSeason);
     }
   }
 
@@ -82,15 +82,23 @@ export default class App extends Vue {
     }
   }
 
-  public fetchTournamentData() {
-    if (!this.activeSport || !this.activeSeason) {
+  public fetchTournamentData(activeSport: string, activeSeason: string|number) {
+    if (!activeSport || !activeSeason) {
       return;
     }
 
     this.loading = true;
-    let data: any = null;
+    let data: any = this.getTournamentData();
 
-    fetchSportData(this.activeSport, this.activeSeason)
+    // Check if data already exists.
+    if (data && data.status && Object.keys(data.data).length) {
+      this.loading = false;
+      this.setTournamentData(activeSport, activeSeason, data);
+
+      return;
+    }
+
+    fetchSportData(activeSport, activeSeason)
       .then((response: any) => {
         if (response && response.data && response.data.status) {
           data = response.data;
@@ -99,7 +107,7 @@ export default class App extends Vue {
       .catch()
       .then(() => {
         this.loading = false;
-        this.setTournamentData(this.activeSport, this.activeSeason, data);
+        this.setTournamentData(activeSport, activeSeason, data);
       });
   }
 

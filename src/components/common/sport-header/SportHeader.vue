@@ -3,7 +3,7 @@
     <div class="sport-header">
       <h2 class="sport-title">{{ title }}</h2>
       <div class="sport-categories-wrapper">
-        <div v-if="categories.length" class="select-wrapper sport-categories">
+        <div v-if="categories.length > 1" class="select-wrapper sport-categories">
           <select>
             <option
               v-for="(category, index) in categories"

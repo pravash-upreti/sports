@@ -52,6 +52,14 @@ export default class TableTennis extends Vue {
   }
 
   public created() {
+    this.updateActiveSport();
+  }
+
+  public updated() {
+    this.updateActiveSport();
+  }
+
+  public updateActiveSport() {
     const sport = sports.TABLE_TENNIS;
     const season = this.$route.params.season;
 
