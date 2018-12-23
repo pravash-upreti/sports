@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="main-wrapper container-fluid">
+    <div :class="['main-wrapper container-fluid', activeSport]">
       <!-- Only on mobile -->
       <top-nav-bar :showSideBar="showSideBar" :showHideSideBar="showHideSideBar"/>
       <side-bar :classes="sideBarClassObject" :showHideSideBar="showHideSideBar"/>
@@ -27,6 +27,7 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Component, Vue, Watch } from 'vue-property-decorator';
 
+import sports from '@/constants/sports';
 import SideBar from '@/components/navigations/SideBar.vue';
 import { fetchSportData } from '@/services/TournamentService';
 import TopNavBar from '@/components/navigations/TopNavBar.vue';

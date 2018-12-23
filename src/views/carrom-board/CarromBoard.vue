@@ -5,7 +5,7 @@
   <div v-else-if="error" class="container">
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
-  <div v-else class="table-tennis">
+  <div v-else>
     <div class="container-fluid">
       <sport-header
         :title="title"

@@ -84,23 +84,16 @@
         .fixture-score-wrapper {
           flex-basis: 250px;
           font-weight: 700;
-          line-height: 160%;
           padding: 0 $space--2;
           text-align: center;
 
           .result {
             font-size: $font-size--56;
-            padding-top: $space--4;
 
             @include m(versus) {
               font-size: $font-size--36;
               padding-top: 0;
             }
-          }
-
-          .result-score-wrapper,
-          .fixture-date {
-            line-height: 75%;
           }
 
           .result-score-wrapper {
@@ -118,6 +111,7 @@
           .fixture-round,
           .fixture-time {
             font-size: $font-size--16;
+            line-height: 95%;
           }
 
           .fixture-time {
