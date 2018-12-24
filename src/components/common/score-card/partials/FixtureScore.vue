@@ -1,6 +1,6 @@
 <template>
   <div v-if="fixture" class="fixture-score-wrapper">
-    <div v-if="isFixtureCancelled" class="result result--versus">Cancelled</div>
+    <div v-if="isFixtureCancelled" class="result result--cancelled">Cancelled</div>
     <div v-else-if="isFixturePlayed" class="result">
       <p class="result-score-wrapper">
         <span :class="['result-score', getWinnerClassObject('home')]">{{ fixture.homeTeamScore }}</span>

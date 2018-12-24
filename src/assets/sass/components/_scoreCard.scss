@@ -28,7 +28,7 @@
     flex-flow: row nowrap;
     font-size: $font-size--18;
     justify-content: center;
-    padding: $space--2;
+    padding: $space--4 $space--2;
     transition: all 0.25s linear;
 
     @include m(desktop) {
@@ -94,6 +94,13 @@
             @include m(versus) {
               font-size: $font-size--36;
               padding-top: 0;
+            }
+
+            @include m(cancelled) {
+              font-size: $font-size--24;
+              font-weight: 300;
+              padding-top: 0;
+              text-transform: uppercase;
             }
           }
 
