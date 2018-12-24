@@ -185,6 +185,25 @@
           }
         }
       }
+
+      .fixture-details {
+        display: flex;
+        flex-flow: row nowrap;
+        font-size: $font-size--14;
+        padding: $space;
+        width: 100%;
+
+        .fixture-details-date {
+          flex-grow: 1;
+          text-align: right;
+          width: 120px;
+        }
+
+        .fixture-details-round {
+          flex-grow: 1;
+          text-align: left;
+        }
+      }
     }
   }
 }

@@ -183,3 +183,25 @@ export function filterFixturesByCategory(allFixtures: FixtureInterface[], catego
 
   return allFixtures;
 }
+
+/**
+ * Check if fixture is played.
+ *
+ * @export
+ * @param {FixtureInterface} fixture
+ * @returns {boolean}
+ */
+export function isFixturePlayed(fixture: FixtureInterface) {
+  return fixture.status.toLowerCase() === 'played';
+}
+
+/**
+ * Check if fixture is cancelled.
+ *
+ * @export
+ * @param {FixtureInterface} fixture
+ * @returns {boolean}
+ */
+export function isFixtureCancelled(fixture: FixtureInterface) {
+  return fixture.status.toLowerCase() === 'cancelled';
+}

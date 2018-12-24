@@ -1,6 +1,7 @@
 <template>
   <div class="score-card-wrapper">
     <div class="score-card score-card--mobile">
+      <fixture-details-mobile v-if="!isFixturePlayed" :fixture="fixture" />
       <fixture-team-mobile
         :team="fixture.homeTeam"
         :score="fixture.homeTeamScore"
@@ -38,13 +39,19 @@ import FixtureTeam from './FixtureTeam.vue';
 import FixtureScore from './FixtureScore.vue';
 import FixtureTeamMobile from './FixtureTeamMobile.vue';
 import { FixtureInterface } from '@/interfaces/interfaces';
+import { isFixturePlayed } from '@/services/FixtureService';
+import FixtureDetailsMobile from './FixtureDetailsMobile.vue';
 
 @Component({
-  components: { FixtureTeam, FixtureScore, FixtureTeamMobile }
+  components: { FixtureTeam, FixtureScore, FixtureTeamMobile, FixtureDetailsMobile }
 })
 export default class ScoreCard extends Vue {
   @Prop() public fixtureLink!: string;
   @Prop() public fixture!: FixtureInterface;
+
+  get isFixturePlayed() {
+    return isFixturePlayed(this.fixture);
+  }
 
   get isHomeTeamWinner() {
     return this.fixture.status.toLowerCase() === 'played'

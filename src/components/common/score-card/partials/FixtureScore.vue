@@ -24,7 +24,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import { FixtureInterface } from '@/interfaces/interfaces';
-import { getFixtureDate } from '@/services/FixtureService';
+import { getFixtureDate, isFixturePlayed, isFixtureCancelled } from '@/services/FixtureService';
 
 @Component
 export default class FixtureScore extends Vue {
@@ -48,11 +48,11 @@ export default class FixtureScore extends Vue {
   }
 
   get isFixtureCancelled() {
-    return this.fixture.status.toLowerCase() === 'cancelled';
+    return isFixtureCancelled(this.fixture);
   }
 
   get isFixturePlayed() {
-    return this.fixture.status.toLowerCase() === 'played';
+    return isFixturePlayed(this.fixture);
   }
 }
 </script>
