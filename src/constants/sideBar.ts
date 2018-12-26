@@ -49,15 +49,15 @@ export default [
     seasons: [
       {
         name: 'Dota 2',
-        route: 'january-jatra/dota2'
+        route: '/january-jatra/dota2'
       },
       {
         name: 'FIFA 18',
-        route: 'january-jatra/fifa18'
+        route: '/january-jatra/fifa18'
       },
       {
         name: 'Counter Strike',
-        route: 'january-jatra/counter-strike'
+        route: '/january-jatra/counter-strike'
       }
     ]
   }

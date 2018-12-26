@@ -1,7 +1,7 @@
 <template>
   <div id="sport-header" class="sport-header-wrapper">
     <div class="sport-header">
-      <h2 class="sport-title">{{ title }}</h2>
+      <h2 class="sport-title">{{ title }} <span v-if="subTitle.length" class="sport-sub-title">{{ subTitle }}</span></h2>
       <div class="sport-categories-wrapper">
         <div v-if="categories.length > 1" class="select-wrapper sport-categories">
           <select>
@@ -35,6 +35,7 @@ export default class SportHeader extends Vue {
   @Prop() private rounds!: any;
   @Prop() private title!: string;
   @Prop() private selectedSport!: any;
+  @Prop({ default: '' }) private subTitle!: string;
   @Prop() private categories!: CategoryInterface[];
 
   public getRouteName(routeKey: string): string {
@@ -65,9 +66,22 @@ export default class SportHeader extends Vue {
   }
 
   public getRouteWithSeason(route: string) {
-    const season = this.selectedSport.sport && this.selectedSport.season;
+    const sport = this.selectedSport.sport;
+    const season = this.selectedSport.season;
 
-    return route.length && season.length ? route.replace(':season', season.toString()) : route;
+    let routePath = route;
+
+    if (route.length) {
+      if (sport.length) {
+        routePath = routePath.replace(':sport', sport.toString());
+      }
+
+      if (season.length) {
+        routePath = routePath.replace(':season', season.toString());
+      }
+    }
+
+    return routePath;
   }
 
   get subRoutes() {

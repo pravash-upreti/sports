@@ -6,7 +6,8 @@ import {
   FUTSAL_ROUTES,
   DASHAIN_CUP_ROUTES,
   TABLE_TENNIS_ROUTES,
-  CARROM_BOARD_ROUTES
+  CARROM_BOARD_ROUTES,
+  COUNTER_STRIKE_ROUTES
 } from './constants/routes';
 
 import Futsal from '@/views/futsal/Futsal.vue';
@@ -16,9 +17,11 @@ import Results from '@/views/common/results/Results.vue';
 import FutsalStats from '@/views/futsal/FutsalStats.vue';
 import FutsalPoints from '@/views/futsal/FutsalPoints.vue';
 import DashainCup from '@/views/dashain-cup/DashainCup.vue';
-import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
+import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
+import CounterStrike from '@/views/counter-strike/CounterStrike.vue';
+import CounterStrikePoints from '@/views/counter-strike/CounterStrikePoints.vue';
 
 const DEFAULT_PAGE_TITLE = 'LF Sports';
 
@@ -245,6 +248,61 @@ const router = new Router({
         {
           path: '*',
           redirect: CARROM_BOARD_ROUTES.HOME
+        }
+      ]
+    },
+    {
+      path: BASE_ROUTES.COUNTER_STRIKE,
+      component: CounterStrike,
+      meta: {
+        title: 'Counter Strike'
+      },
+      children: [
+        {
+          path: COUNTER_STRIKE_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Counter Strike - Home'
+          }
+        },
+        {
+          path: COUNTER_STRIKE_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Counter Strike - Fixtures'
+          }
+        },
+        {
+          path: COUNTER_STRIKE_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Counter Strike - Results'
+          }
+        },
+        {
+          path: COUNTER_STRIKE_ROUTES.POINTS,
+          component: CounterStrikePoints,
+          meta: {
+            title: 'Counter Strike - Points'
+          }
+        },
+        {
+          path: COUNTER_STRIKE_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Counter Strike - Teams'
+          }
+        },
+      //   /* {
+      //     path: COUNTER_STRIKE_ROUTES.FIXTURE,
+      //     component: TableTennisScoreModal,
+      //     meta: {
+      //       title: 'Counter Strike - Fixture'
+      //     }
+      //   }, */
+        {
+          path: '*',
+          redirect: COUNTER_STRIKE_ROUTES.HOME
         }
       ]
     }

@@ -10,10 +10,24 @@
     font-weight: 700;
     letter-spacing: -2px;
     padding: $space $space--2;
+    text-transform: capitalize;
 
     @include mq(md) {
       display: inline-block;
       font-size: $font-size--48;
+    }
+
+    .sport-sub-title {
+      font-size: $font-size--16;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+      opacity: 0.5;
+      text-transform: lowercase;
+
+      @include mq(md) {
+        font-size: $font-size--24;
+      }
     }
   }
 

@@ -4,6 +4,7 @@ const FUTSAL = '/futsal/:season';
 const DASHAIN_CUP = '/dashain-cup/:season';
 const CARROM_BOARD = '/carrom-board/:season';
 const TABLE_TENNIS = '/table-tennis/:season';
+const COUNTER_STRIKE = '/:sport/counter-strike';
 
 
 export const BASE_ROUTES = {
@@ -12,7 +13,8 @@ export const BASE_ROUTES = {
   FUTSAL,
   DASHAIN_CUP,
   CARROM_BOARD,
-  TABLE_TENNIS
+  TABLE_TENNIS,
+  COUNTER_STRIKE
 };
 
 // Order of route declaration appears on the UI.
@@ -53,4 +55,14 @@ export const DASHAIN_CUP_ROUTES = {
   STATS: `${DASHAIN_CUP}/stats`,
   TEAMS: `${DASHAIN_CUP}/teams`,
   FIXTURE: `${DASHAIN_CUP}/fixture/:fixtureId`,
+};
+
+// Order of route declaration appears on the UI.
+export const COUNTER_STRIKE_ROUTES = {
+  HOME: `${COUNTER_STRIKE}/`,
+  RESULTS: `${COUNTER_STRIKE}/results`,
+  FIXTURES: `${COUNTER_STRIKE}/fixtures`,
+  POINTS: `${COUNTER_STRIKE}/points`,
+  TEAMS: `${COUNTER_STRIKE}/teams`,
+  FIXTURE: `${COUNTER_STRIKE}/fixture/:fixtureId`,
 };
