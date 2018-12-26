@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import {
   BASE_ROUTES,
+  FIFA_ROUTES,
   FUTSAL_ROUTES,
   DASHAIN_CUP_ROUTES,
   TABLE_TENNIS_ROUTES,
@@ -10,6 +11,7 @@ import {
   COUNTER_STRIKE_ROUTES
 } from './constants/routes';
 
+import Fifa from '@/views/fifa/Fifa.vue';
 import Futsal from '@/views/futsal/Futsal.vue';
 import Teams from '@/views/common/teams/Teams.vue';
 import Recent from '@/views/common/recent/Recent.vue';
@@ -303,6 +305,54 @@ const router = new Router({
         {
           path: '*',
           redirect: COUNTER_STRIKE_ROUTES.HOME
+        }
+      ]
+    },
+    {
+      path: BASE_ROUTES.FIFA,
+      component: Fifa,
+      meta: {
+        title: 'FIFA'
+      },
+      children: [
+        {
+          path: FIFA_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'FIFA - Home'
+          }
+        },
+        {
+          path: FIFA_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'FIFA - Fixtures'
+          }
+        },
+        {
+          path: FIFA_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'FIFA - Results'
+          }
+        },
+        {
+          path: FIFA_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'FIFA - Teams'
+          }
+        },
+      //   /* {
+      //     path: FIFA_ROUTES.FIXTURE,
+      //     component: TableTennisScoreModal,
+      //     meta: {
+      //       title: 'FIFA - Fixture'
+      //     }
+      //   }, */
+        {
+          path: '*',
+          redirect: FIFA_ROUTES.HOME
         }
       ]
     }

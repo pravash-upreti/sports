@@ -1,7 +1,8 @@
 export default {
-  CARROM_BOARD: 'carrom-board',
+  FIFA: 'fifa18',
   FUTSAL: 'futsal',
-  TABLE_TENNIS: 'table-tennis',
   DASHAIN_CUP: 'dashain-cup',
+  CARROM_BOARD: 'carrom-board',
+  TABLE_TENNIS: 'table-tennis',
   COUNTER_STRIKE: 'counter-strike'
 };
