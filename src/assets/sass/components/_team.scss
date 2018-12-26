@@ -43,6 +43,11 @@
         &:last-child {
           border-bottom: 0;
         }
+
+        .team-player-captain {
+          font-size: $font-size--14;
+          text-transform: lowercase;
+        }
       }
     }
   }

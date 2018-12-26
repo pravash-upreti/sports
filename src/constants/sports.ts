@@ -1,4 +1,5 @@
 export default {
+  DOTA: 'dota2',
   FIFA: 'fifa18',
   FUTSAL: 'futsal',
   DASHAIN_CUP: 'dashain-cup',

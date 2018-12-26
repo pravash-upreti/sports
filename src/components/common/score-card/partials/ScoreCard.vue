@@ -54,15 +54,27 @@ export default class ScoreCard extends Vue {
   }
 
   get isHomeTeamWinner() {
-    return this.fixture.status.toLowerCase() === 'played'
-        ? this.fixture.homeTeamScore > this.fixture.awayTeamScore
-        : false;
+    if (isFixturePlayed(this.fixture)) {
+      if (this.fixture.homeTeamScore && this.fixture.awayTeamScore) {
+        return this.fixture.homeTeamScore > this.fixture.awayTeamScore;
+      } else if (this.fixture.winnerTeam) {
+        return this.fixture.winnerTeam.id === this.fixture.homeTeam.id;
+      }
+    }
+
+    return false;
   }
 
   get isAwayTeamWinner() {
-    return this.fixture.status.toLowerCase() === 'played'
-        ? this.fixture.awayTeamScore > this.fixture.homeTeamScore
-        : false;
+    if (isFixturePlayed(this.fixture)) {
+      if (this.fixture.homeTeamScore && this.fixture.awayTeamScore) {
+        return this.fixture.awayTeamScore > this.fixture.homeTeamScore;
+      } else if (this.fixture.winnerTeam) {
+        return this.fixture.winnerTeam.id === this.fixture.awayTeam.id;
+      }
+    }
+
+    return false;
   }
 
   get homeTeamClassObject(): object {

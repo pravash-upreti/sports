@@ -96,6 +96,7 @@ export interface FixtureInterface {
   activities?: ActivityInterface[];
   categoryType: string;
   round: string;
+  winnerTeam?: TeamInterface;
 }
 
 export interface RecentsInterface {

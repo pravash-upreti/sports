@@ -1,6 +1,6 @@
 <template>
   <div class="fixture-details">
-    <div v-if="fixture.round" class="fixture-details-round">{{ fixture.round }} - {{ fixture.categoryType }}</div>
+    <div v-if="fixture.round" class="fixture-details-round">{{ fixture.round }}<span v-if="fixture.categoryType"> - {{ fixture.categoryType }}</span></div>
     <div class="fixture-details-date">{{ fixtureDate.date }}, {{ fixtureDate.time }}</div>
   </div>
 </template>

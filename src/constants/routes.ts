@@ -1,4 +1,5 @@
 const HOME = '/';
+const DOTA = '/:sport/dota2';
 const FIFA = '/:sport/fifa18';
 const CHESS = '/chess/:season';
 const FUTSAL = '/futsal/:season';
@@ -10,6 +11,7 @@ const COUNTER_STRIKE = '/:sport/counter-strike';
 
 export const BASE_ROUTES = {
   HOME,
+  DOTA,
   FIFA,
   CHESS,
   FUTSAL,
@@ -76,4 +78,13 @@ export const FIFA_ROUTES = {
   FIXTURES: `${FIFA}/fixtures`,
   TEAMS: `${FIFA}/teams`,
   FIXTURE: `${FIFA}/fixture/:fixtureId`,
+};
+
+// Order of route declaration appears on the UI.
+export const DOTA_ROUTES = {
+  HOME: `${DOTA}/`,
+  RESULTS: `${DOTA}/results`,
+  FIXTURES: `${DOTA}/fixtures`,
+  POINTS: `${DOTA}/points`,
+  TEAMS: `${DOTA}/teams`,
 };

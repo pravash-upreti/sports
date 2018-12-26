@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import {
   BASE_ROUTES,
+  DOTA_ROUTES,
   FIFA_ROUTES,
   FUTSAL_ROUTES,
   DASHAIN_CUP_ROUTES,
@@ -11,9 +12,11 @@ import {
   COUNTER_STRIKE_ROUTES
 } from './constants/routes';
 
+import Dota from '@/views/dota/Dota.vue';
 import Fifa from '@/views/fifa/Fifa.vue';
 import Futsal from '@/views/futsal/Futsal.vue';
 import Teams from '@/views/common/teams/Teams.vue';
+import DotaPoints from '@/views/dota/DotaPoints.vue';
 import Recent from '@/views/common/recent/Recent.vue';
 import Results from '@/views/common/results/Results.vue';
 import FutsalStats from '@/views/futsal/FutsalStats.vue';
@@ -353,6 +356,54 @@ const router = new Router({
         {
           path: '*',
           redirect: FIFA_ROUTES.HOME
+        }
+      ]
+    },
+    {
+      path: BASE_ROUTES.DOTA,
+      component: Dota,
+      meta: {
+        title: 'Dota'
+      },
+      children: [
+        {
+          path: DOTA_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Dota - Home'
+          }
+        },
+        {
+          path: DOTA_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Dota - Fixtures'
+          }
+        },
+        {
+          path: DOTA_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Dota - Results'
+          }
+        },
+        {
+          path: DOTA_ROUTES.POINTS,
+          component: DotaPoints,
+          meta: {
+            title: 'Dota - Points'
+          }
+        },
+        {
+          path: DOTA_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Dota - Teams'
+          }
+        },
+        {
+          path: '*',
+          redirect: DOTA_ROUTES.HOME
         }
       ]
     }

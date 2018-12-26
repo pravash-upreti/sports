@@ -17,7 +17,7 @@
           :participant="player"
           :custom-styles="customStyles"
         />
-        {{ player.name }}
+        {{ player.name }}<span v-if="player.isCaptain" class="team-player-captain">&nbsp;(c)</span>
       </li>
     </ul>
   </div>

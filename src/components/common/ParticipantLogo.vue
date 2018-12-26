@@ -6,6 +6,12 @@
       :alt="participant.name"
       :class="imageClassObject"
     >
+    <img
+      v-else-if="participant.logo && participant.logo.image && shouldShowImage"
+      :src="participant.logo.image"
+      :alt="participant.name"
+      :class="imageClassObject"
+    >
     <span 
       v-else-if="participant.logo" 
       :style="logoStyleObject"
