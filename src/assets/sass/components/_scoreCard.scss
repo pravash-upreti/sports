@@ -13,6 +13,39 @@
   }
 }
 
+.score-card-list-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+
+  @include m(single) {
+    justify-content: center;
+
+    > .score-card-wrapper,
+    .score-card-link-wrapper {
+      @include mq(md) {
+        width: 100% !important;
+      }
+    }
+  }
+
+  > .score-card-wrapper,
+  .score-card-link-wrapper {
+    margin: $space;
+    width: 100%;
+
+    @include mq(md) {
+      width: 49%;
+    }
+  }
+
+  .score-card-link-wrapper {
+    cursor: pointer;
+  }
+}
+
 .score-card-wrapper {
   display: block;
   margin: $space 0;
@@ -138,10 +171,6 @@
       flex-direction: column;
       font-size: $font-size--18;
       padding: $space--3;
-
-      @include mq(md) {
-        display: none;
-      }
 
       .fixture-team-name-wrapper {
         align-items: center;

@@ -27,10 +27,6 @@
 
     &:not(:first-child) {
       margin-left: -$space;
-
-      @include mq(md) {
-        margin-left: -$space--3;
-      }
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="score-card-wrapper">
     <div class="score-card score-card--mobile">
-      <fixture-details-mobile v-if="!isFixturePlayed" :fixture="fixture" />
+      <fixture-details-mobile :fixture="fixture" />
       <fixture-team-mobile
         :team="fixture.homeTeam"
         :score="fixture.homeTeamScore"
@@ -13,7 +13,7 @@
         :is-winner="isAwayTeamWinner"
       />
     </div>
-    <div class="score-card score-card--desktop">
+    <!-- <div class="score-card score-card--desktop">
       <fixture-team
         :team="fixture.homeTeam"
         :class-names="homeTeamClassObject"
@@ -28,7 +28,7 @@
         :is-home-team-winner="isHomeTeamWinner"
         :is-away-team-winner="isAwayTeamWinner"
       />
-    </div>
+    </div> -->
   </div>
 </template>
 
