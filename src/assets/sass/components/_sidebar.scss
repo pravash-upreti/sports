@@ -1,6 +1,6 @@
 .sidebar-wrapper {
   font-size: $font-size--sidebar-menu;
-  height: 100%;
+  height: calc(100% - 64px);
   position: absolute;
   top: $top-navbar-height;
   transform: translateX(-100%);
@@ -8,6 +8,9 @@
   z-index: 1;
 
   @include mq(md) {
+    bottom: 0;
+    height: 100%;
+    left: 0;
     position: fixed;
     top: 0;
     transform: none;
