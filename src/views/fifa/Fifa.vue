@@ -86,7 +86,7 @@ export default class Fifa extends Vue {
   }
 
   get subTitle(): string {
-    return `#${this.$route.params.sport}`;
+    return this.$route.params.sport;
   }
 }
 </script>

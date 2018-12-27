@@ -1,7 +1,7 @@
 <template>
   <div id="sport-header" class="sport-header-wrapper">
     <div class="sport-header">
-      <h2 class="sport-title">{{ title }} <span v-if="subTitle.length" class="sport-sub-title">{{ subTitle }}</span></h2>
+      <h2 class="sport-title"><span v-if="subTitle.length" class="sport-sub-title">{{ subTitle }} - </span>{{ title }}</h2>
       <div class="sport-categories-wrapper">
         <div v-if="categories.length > 1" class="select-wrapper sport-categories">
           <select>

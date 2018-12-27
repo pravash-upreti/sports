@@ -41,7 +41,7 @@ export default class FixtureTeamMobile extends Vue {
   }
 
   get isGrouped(): boolean {
-    return !!(this.team && this.team.players);
+    return !!(this.team && this.team.players && this.team.players.length > 1);
   }
 
   get teamCustomStyles(): object {
