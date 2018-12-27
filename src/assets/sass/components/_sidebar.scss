@@ -20,7 +20,7 @@
   }
 
   .sidebar {
-    // background: $color-body;
+    background: $color-body;
     box-shadow: 0 20px 40px rgba($color: $color-black, $alpha: 0.6);
     height: calc(100vh - #{$top-navbar-height});
     overflow-y: auto;
@@ -59,7 +59,7 @@
 
             &.active,
             &:hover {
-              // color: $color-link--active;
+              color: $color-link--active;
               @include themify($themes) {
                 color: theme-property(color-link--active);
               }
