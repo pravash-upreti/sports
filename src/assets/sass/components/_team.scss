@@ -32,13 +32,17 @@
 
       .team-player {
         align-items: center;
-        border-bottom: 1px solid rgba($color-green, 0.2);
+        // border-bottom: 1px solid rgba($color-green, 0.2);
         color: $color-text--score-card;
         display: flex;
         font-size: $font-size--18;
         padding: $space--2 $space;
         text-transform: capitalize;
         width: 100%;
+
+        @include themify($themes) {
+          border-bottom: 1px solid rgba(theme-property(color-theme), 0.2);
+        }
 
         &:last-child {
           border-bottom: 0;

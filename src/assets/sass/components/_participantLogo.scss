@@ -4,7 +4,7 @@
 
   .participant-logo {
     align-items: center;
-    background-color: $color-green;
+    // background-color: $color-green;
     border-radius: 50%;
     color: $color-white;
     display: flex;
@@ -15,6 +15,10 @@
     object-fit: cover;
     text-transform: uppercase;
     width: $profile-logo-width;
+
+    @include themify($themes) {
+      background: theme-property(color-theme);
+    }
   }
 }
 

@@ -76,10 +76,16 @@
     }
 
     .sport-menu-wrapper {
-      border-bottom: 1px solid $sub-header-border-color;
-      border-top: 1px solid $sub-header-border-color;
+      // border-bottom: 1px solid $sub-header-border-color;
+      // border-top: 1px solid $sub-header-border-color;
+      border-bottom: 1px solid transparent;
+      border-top: 1px solid transparent;
       padding: $space 0;
       width: 100%;
+
+      @include themify($themes) {
+        border-color: theme-property(sub-header-border-color);
+      }
 
       @include m(menu) {
         ul {
@@ -102,18 +108,26 @@
             }
 
             a {
-              color: $color-link--active;
+              // color: $color-link--active;
               display: inline-block;
               font-size: $font-size-medium;
               padding: $space $space--4;
               text-transform: uppercase;
 
+              @include themify($themes) {
+                color: theme-property(color-link);
+              }
+
               &.active,
               &:hover {
                 background-color: #18084d;
                 border-radius: 18px;
-                color: $color-white;
+                // color: $color-white;
                 font-weight: 700;
+
+                @include themify($themes) {
+                  color: theme-property(color-link--active);
+                }
               }
             }
           }

@@ -3,13 +3,17 @@
   width: 100%;
 
   .score-card-list-title {
-    color: $color-green;
+    // color: $color-green;
     display: inline-block;
     font-size: $font-size--22;
     padding: $space--2;
     text-align: center;
     text-transform: uppercase;
     z-index: 1;
+
+    @include themify($themes) {
+      color: theme-property(color-theme);
+    }
   }
 }
 
@@ -139,7 +143,10 @@
 
           .result-score-wrapper {
             .result-score {
-              color: $color-score-result;
+              // color: $color-score-result;
+              @include themify($themes) {
+                color: theme-property(color-score-result);
+              }
             }
           }
 
@@ -202,10 +209,14 @@
 
         .fixture-team-score {
           align-items: center;
-          color: $color-score-result;
+          // color: $color-score-result;
           display: flex;
           font-size: $font-size--22;
           font-weight: 700;
+
+          @include themify($themes) {
+            color: theme-property(color-score-result);
+          }
 
           .fa-trophy {
             color: $color-trophy;

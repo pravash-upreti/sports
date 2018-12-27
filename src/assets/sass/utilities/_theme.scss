@@ -1,0 +1,52 @@
+$themes: (
+  table-tennis: (
+    color-content: linear-gradient(135deg, #481faa 0%, #18084d 100%),
+    color-body: #18084d,
+    color-score-result: #481faa,
+    sub-header-border-color: rgba(#70c5f9, 0.2),
+    color-link: #ddd,
+    color-link--active: #70c5f9,
+    color-theme: #00d166
+  ),
+  futsal: (
+    color-content: linear-gradient(-135deg, #11998e 0%, #17ad50 100%),
+    color-body: #0a5048,
+    color-score-result: #1f673f,
+    sub-header-border-color: rgba(#7bffb6, 0.2),
+    color-link: #333,
+    color-link--active: #7bffb6,
+    color-theme: #7bffb6
+  ),
+  carrom-board: (
+    color-content: linear-gradient(135deg, #afa390 0%, #6c6438 100%),
+    color-body: #322c0e,
+    color-score-result: #5a532c,
+    sub-header-border-color: rgba(#ddd, 0.6),
+    color-link: #ddd,
+    color-link--active: #ddd1b1,
+    color-theme: #ddd1b1
+  )
+);
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $value in $map {
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
+      }
+
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function theme-property($key) {
+  @return map-get($theme-map, $key);
+}
