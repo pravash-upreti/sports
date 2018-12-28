@@ -26,6 +26,15 @@ $themes: (
     color-link--active: #ddd1b1,
     color-theme: #ddd1b1
   ),
+  dashain-cup: (
+    color-content: linear-gradient(-135deg, #11998e 0%, #17ad50 100%),
+    color-body: #0a5048,
+    color-score-result: #1f673f,
+    sub-header-border-color: rgba(#7bffb6, 0.2),
+    color-link: #333,
+    color-link--active: #7bffb6,
+    color-theme: #7bffb6
+  ),
   dota2: (
     color-content: linear-gradient(135deg, #31432d 0%, #0a0b0d 100%),
     color-body: #0e2432,
@@ -35,14 +44,23 @@ $themes: (
     color-link--active: #9beefe,
     color-theme: #8c9a42
   ),
-  dashain-cup: (
-    color-content: linear-gradient(-135deg, #11998e 0%, #17ad50 100%),
-    color-body: #0a5048,
-    color-score-result: #1f673f,
-    sub-header-border-color: rgba(#7bffb6, 0.2),
-    color-link: #333,
-    color-link--active: #7bffb6,
-    color-theme: #7bffb6
+  fifa18: (
+    color-content: linear-gradient(135deg, #1c47b2 0%, #03040b 100%),
+    color-body: #111a53,
+    color-score-result: #551f13,
+    sub-header-border-color: rgba(#b9aec7, 0.2),
+    color-link: #b9aec7,
+    color-link--active: #ffdc58,
+    color-theme: #ffbf05
+  ),
+  counter-strike: (
+    color-content: linear-gradient(135deg, #1b1c17 0%, #0a180c 100%),
+    color-body: #2f2e36,
+    color-score-result: #ef7912,
+    sub-header-border-color: rgba(#8a94a5, 0.2),
+    color-link: #8a94a5,
+    color-link--active: #ffa353,
+    color-theme: #b0a81a
   )
 );
 
