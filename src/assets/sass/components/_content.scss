@@ -10,7 +10,7 @@
   height: 100%;
   position: relative;
 
-  @include mq(md) {
+  @include mq(lg) {
     flex-direction: row;
   }
 }
@@ -23,7 +23,7 @@
     background: theme-property(color-content);
   }
 
-  @include mq(md) {
+  @include mq(lg) {
     height: 100%;
     margin-left: $sidebar-width--desktop;
     width: calc(100% - #{$sidebar-width--desktop});

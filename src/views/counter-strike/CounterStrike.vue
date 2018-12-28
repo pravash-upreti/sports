@@ -69,7 +69,9 @@ export default class CounterStrike extends Vue {
   }
 
   public fetchData() {
-    const tournamentData = this.getTournamentData();
+    const sport = this.$route.params.sport;
+    const season = sports.COUNTER_STRIKE;
+    const tournamentData = this.getTournamentData(sport, season);
 
     if (tournamentData && tournamentData.status) {
       this.error = false;

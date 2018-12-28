@@ -18,16 +18,10 @@
     }
 
     .sport-sub-title {
-      font-size: $font-size--16;
-      font-style: italic;
       font-weight: 400;
       letter-spacing: 0;
-      opacity: 0.5;
-      text-transform: lowercase;
-
-      @include mq(md) {
-        font-size: $font-size--24;
-      }
+      opacity: 0.6;
+      text-transform: capitalize;
     }
   }
 

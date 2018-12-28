@@ -26,7 +26,7 @@ $themes: (
     color-link--active: #ddd1b1,
     color-theme: #ddd1b1
   ),
-  january-jatra: (
+  dota2: (
     color-content: linear-gradient(135deg, #205537 0%, #214673 100%),
     color-body: #091f22,
     color-score-result: #1f673f,
@@ -34,6 +34,15 @@ $themes: (
     color-link: #c4f1ff,
     color-link--active: #9cefc7,
     color-theme: #4ebbde
+  ),
+  dashain-cup: (
+    color-content: linear-gradient(-135deg, #11998e 0%, #17ad50 100%),
+    color-body: #0a5048,
+    color-score-result: #1f673f,
+    sub-header-border-color: rgba(#7bffb6, 0.2),
+    color-link: #333,
+    color-link--active: #7bffb6,
+    color-theme: #7bffb6
   )
 );
 
@@ -49,13 +58,11 @@ $themes: (
           )
         ) !global;
       }
-
       @content;
       $theme-map: null !global;
     }
   }
 }
-
 @function theme-property($key) {
   @return map-get($theme-map, $key);
 }

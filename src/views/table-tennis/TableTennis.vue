@@ -13,6 +13,7 @@
         :rounds="data.rounds"
         :routes="routes"
         :selected-sport="selectedSport"
+        :update-data-by-category-id="updateDataByCategoryId"
       />
       <div class="tournament-content-wrapper">
         <router-view :data="data" :fixture-link="fixtureLink"/>
@@ -22,10 +23,13 @@
 </template>
 
 <script lang="ts">
+import { cloneDeep } from 'lodash';
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
 import sports from '@/constants/sports';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
+import { getFilteredData } from '@/services/FixtureService';
+import { getCategoryById } from '@/services/CategoryService';
 import { getSanitizedData } from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
@@ -40,6 +44,7 @@ export default class TableTennis extends Vue {
   @Prop() public getTournamentData!: any;
 
   public data: any = {};
+  public fixedData: any = {};
   public error: boolean = false;
   public routes: object = TABLE_TENNIS_ROUTES;
   public fixtureLink: string = TABLE_TENNIS_ROUTES.FIXTURE;
@@ -67,16 +72,25 @@ export default class TableTennis extends Vue {
   }
 
   public fetchData() {
-    const tournamentData = this.getTournamentData();
+    const sport = sports.TABLE_TENNIS;
+    const season = this.$route.params.season;
+    const tournamentData = this.getTournamentData(sport, season);
 
     if (tournamentData && tournamentData.status) {
       this.error = false;
       this.data = getSanitizedData(tournamentData.data);
+      this.fixedData = cloneDeep(this.data);
 
       return;
     }
 
     this.error = true;
+  }
+
+  public updateDataByCategoryId(categoryId: number) {
+    const category = getCategoryById(this.fixedData.categories, categoryId);
+
+    this.data = getFilteredData(cloneDeep(this.fixedData), { category });
   }
 
   get title(): string {
