@@ -37,11 +37,10 @@
 
   > .score-card-wrapper,
   .score-card-link-wrapper {
-    margin: $space--2;
     width: 100%;
 
     @include mq(lg) {
-      width: 45%;
+      width: 50%;
     }
   }
 
@@ -52,6 +51,7 @@
 
 .score-card-wrapper {
   display: block;
+  padding: $space--2;
   width: 100%;
 
   .score-card {

@@ -69,7 +69,9 @@ export default class Dota extends Vue {
   }
 
   public fetchData() {
-    const tournamentData = this.getTournamentData();
+    const sport = this.$route.params.sport;
+    const season = sports.DOTA;
+    const tournamentData = this.getTournamentData(sport, season);
 
     if (tournamentData && tournamentData.status) {
       this.error = false;

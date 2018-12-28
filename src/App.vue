@@ -5,15 +5,13 @@
       <top-nav-bar :showSideBar="showSideBar" :showHideSideBar="showHideSideBar"/>
       <side-bar :classes="sideBarClassObject" :showHideSideBar="showHideSideBar"/>
       <div class="content-wrapper">
-        <keep-alive>
-          <router-view
-            :loading-data="loading"
-            :selected-sport="selectedSport"
-            :update-actives="updateActives"
-            :get-tournament-data="getTournamentData"
-            :fetch-tournament-data="fetchTournamentData"
-          />
-        </keep-alive>
+        <router-view
+          :loading-data="loading"
+          :selected-sport="selectedSport"
+          :update-actives="updateActives"
+          :get-tournament-data="getTournamentData"
+          :fetch-tournament-data="fetchTournamentData"
+        />
       </div>
     </div>
   </div>
@@ -60,8 +58,8 @@ export default class App extends Vue {
     }
   }
 
-  public getTournamentData() {
-    return this.tournamentData[`${this.activeSport}-${this.activeSeason}`];
+  public getTournamentData(activeSport: string = this.activeSport, activeSeason: string | number = this.activeSeason) {
+    return this.tournamentData[`${activeSport}-${activeSeason}`];
   }
 
   public setTournamentData(sport: string, season: string | number, data: any) {

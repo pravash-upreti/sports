@@ -68,7 +68,9 @@ export default class Futsal extends Vue {
   }
 
   public fetchData() {
-    const tournamentData = this.getTournamentData();
+    const sport = sports.FUTSAL;
+    const season = this.$route.params.season;
+    const tournamentData = this.getTournamentData(sport, season);
 
     if (tournamentData && tournamentData.status) {
       this.error = false;

@@ -1,10 +1,13 @@
 <template>
   <div id="sport-header" class="sport-header-wrapper">
     <div class="sport-header">
-      <h2 class="sport-title"><span v-if="subTitle.length" class="sport-sub-title">{{ subTitle }} - </span>{{ title }}</h2>
+      <h2 class="sport-title">
+        <span v-if="subTitle.length" class="sport-sub-title">{{ subTitle }} - </span>
+        {{ title }}
+      </h2>
       <div class="sport-categories-wrapper">
         <div v-if="categories.length > 1" class="select-wrapper sport-categories">
-          <select>
+          <select v-model="activeCategoryId" @change="handleActiveCategoryChange">
             <option
               v-for="(category, index) in categories"
               :key="index"
@@ -35,8 +38,11 @@ export default class SportHeader extends Vue {
   @Prop() private rounds!: any;
   @Prop() private title!: string;
   @Prop() private selectedSport!: any;
+  @Prop() private updateDataByCategoryId!: any;
   @Prop({ default: '' }) private subTitle!: string;
   @Prop() private categories!: CategoryInterface[];
+
+  private activeCategoryId: number = 0;
 
   public getRouteName(routeKey: string): string {
     let routeName = '';
@@ -82,6 +88,10 @@ export default class SportHeader extends Vue {
     }
 
     return routePath;
+  }
+
+  public handleActiveCategoryChange() {
+    this.updateDataByCategoryId(this.activeCategoryId);
   }
 
   get subRoutes() {

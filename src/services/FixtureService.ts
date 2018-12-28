@@ -1,9 +1,16 @@
 import dateFns from 'date-fns';
-import { isNull, isUndefined } from 'lodash';
+import { isNull, sortBy, cloneDeep, isUndefined } from 'lodash';
 
+import {
+  TeamInterface,
+  RoundInterface,
+  FixtureInterface,
+  RecentsInterface,
+  CategoryInterface,
+  TournamentDataInterface,
+  TournamentDataResponseInterface,
+} from '../interfaces/interfaces';
 import { checkIfPlayerIsInTeam } from './PlayerService';
-import { CategoryInterface, RoundInterface, TournamentDataInterface } from './../interfaces/interfaces';
-import { FixtureInterface, RecentsInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 export function getFixtures(fixturesList: FixtureInterface[], limit: number = 0): FixtureInterface[] {
   let fixtures = fixturesList
@@ -176,12 +183,27 @@ export function getSanitizedData(data: any, limit: number = 0): TournamentDataIn
   };
 }
 
-export function filterFixturesByCategory(allFixtures: FixtureInterface[], category: CategoryInterface) {
-  if (category.id !== 0) {
-    return allFixtures.filter((fixture) => fixture.categoryType.toLowerCase() === category.description.toLowerCase());
+/**
+ * Filter data by different params.
+ *
+ * @export
+ * @param {*} data
+ * @param {*} params
+ * @returns {*}
+ */
+export function getFilteredData(data: any, params: any) {
+  const filteredData = data;
+
+  // Filter by category
+  if (params.category && params.category.id >= 0) {
+    filteredData.allFixtures = filterFixturesByCategory(filteredData.allFixtures, params.category);
+    filteredData.fixtures = filterFixturesByCategory(filteredData.fixtures, params.category);
+    filteredData.results = filterFixturesByCategory(filteredData.results, params.category);
+    filteredData.teams = filterTeamsByCategory(filteredData.teams, params.category);
+    filteredData.recents = filterRecentsByCategory(filteredData.recents, params.category);
   }
 
-  return allFixtures;
+  return filteredData;
 }
 
 /**
@@ -204,4 +226,72 @@ export function isFixturePlayed(fixture: FixtureInterface) {
  */
 export function isFixtureCancelled(fixture: FixtureInterface) {
   return fixture.status.toLowerCase() === 'cancelled';
+}
+
+/**
+ * Filter fixtures by category.
+ *
+ * @export
+ * @param {FixtureInterface[]} fixtures
+ * @param {CategoryInterface} category
+ * @returns {FixtureInterface[]}
+ */
+function filterFixturesByCategory(fixtures: FixtureInterface[], category: CategoryInterface) {
+  if (category.id !== 0) {
+    return fixtures.filter((fixture) => fixture.categoryType.toLowerCase() === category.description.toLowerCase());
+  }
+
+  return fixtures;
+}
+
+/**
+ * Filter teams by category.
+ *
+ * @export
+ * @param {TeamInterface[]} teams
+ * @param {CategoryInterface} category
+ * @returns {TeamInterface[]}
+ */
+function filterTeamsByCategory(teams: TeamInterface[], category: CategoryInterface) {
+  let teamsList = cloneDeep(teams);
+
+  if (category && category.id !== 0) {
+    teamsList = teams.filter((team) => team.category.toLowerCase() === category.description.toLowerCase());
+  }
+
+  return sortBy(teamsList, ['category', 'name']);
+}
+
+/**
+ * Fetch winners list by category.
+ *
+ * @param {any[]} winners
+ * @param {CategoryInterface} category
+ * @returns {*}
+ */
+function filterWinnersByCategory(winners: any[], category: CategoryInterface) {
+  if (category && category.id !== 0) {
+    return winners.filter((winner) => winner.category.toLowerCase() === category.description.toLowerCase());
+  }
+
+  return winners;
+}
+
+/**
+ * Filter recents info by category.
+ *
+ * @param {RecentsInterface} recents
+ * @param {CategoryInterface} category
+ * @returns {RecentsInterface}
+ */
+function filterRecentsByCategory(recents: RecentsInterface, category: CategoryInterface) {
+  const updatedRecents = cloneDeep(recents);
+
+  if (category && category.id !== 0) {
+    updatedRecents.winners = filterWinnersByCategory(recents.winners, category);
+    updatedRecents.results = filterFixturesByCategory(recents.results, category);
+    updatedRecents.fixtures = filterFixturesByCategory(recents.fixtures, category);
+  }
+
+  return updatedRecents;
 }
