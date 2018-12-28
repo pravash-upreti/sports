@@ -1,36 +1,39 @@
 <template>
-  <div class="team">
-    <h4 v-if="team.logo" class="team-title">
-      <participant-logo 
-        :participant="team"
-        :custom-styles="customStyles"
-      />
-      {{ team.name }}
-    </h4>
-    <ul class="team-players-wrapper">
-      <li
-        v-for="(player, index) in team.players"
-        :key="`team-player-${index}`"
-        class="team-player"
-      >
+  <div class="team-wrapper">
+    <div class="team">
+      <h4 v-if="team.logo" class="team-title">
         <participant-logo
-          :participant="player"
+          :participant="team"
           :custom-styles="customStyles"
         />
-        {{ player.name }}<span v-if="player.isCaptain" class="team-player-captain">&nbsp;(c)</span>
-      </li>
-    </ul>
+        {{ team.name }}
+      </h4>
+      <ul class="team-players-wrapper">
+        <li
+          v-for="(player, index) in team.players"
+          :key="`team-player-${index}`"
+          class="team-player"
+        >
+          <participant-logo
+            :participant="player"
+            :custom-styles="customStyles"
+          />
+          {{ player.name }}<team-captain v-if="player.isCaptain" />
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 import { TeamInterface } from '@/interfaces/interfaces';
+import TeamCaptain from '@/components/common/TeamCaptain.vue';
+import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 
 @Component({
-  components: { ParticipantLogo }
+  components: { TeamCaptain, ParticipantLogo }
 })
 export default class Team extends Vue {
   @Prop() public team!: TeamInterface;

@@ -1,19 +1,16 @@
-.score-card-list-title-wrapper {
+.score-card-list-title {
+  align-items: center;
+  color: $color-green;
+  display: flex;
+  font-size: $font-size--22;
+  justify-content: center;
+  padding: $space--2;
   text-align: center;
+  text-transform: uppercase;
   width: 100%;
 
-  .score-card-list-title {
-    color: $color-green;
-    display: inline-block;
-    font-size: $font-size--22;
-    padding: $space--2;
-    text-align: center;
-    text-transform: uppercase;
-    z-index: 1;
-
-    @include themify($themes) {
-      color: theme-property(color-theme);
-    }
+  @include themify($themes) {
+    color: theme-property(color-theme);
   }
 }
 

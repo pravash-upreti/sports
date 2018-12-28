@@ -1,7 +1,8 @@
 <template>
-  <div v-if="stat" class="stats-col">
+<div v-if="stat" class="stats-wrapper">
+  <div class="stats-col">
     <h4 class="stats-title">
-      <img 
+      <img
         v-if="stat.icon"
         :src="stat.icon"
         class="stat-image-logo"
@@ -12,19 +13,20 @@
     <table class="table table--striped">
       <tbody>
         <tr v-for="(player, index) in stat.players" :key="`player-stat-${index}`">
-          <td>{{ player.name }}</td>
-          <td>{{ player.count }}</td>
+          <td class="stats-player-name-wrapper"><participant-logo :participant="player" />{{ player.name }}</td>
+          <td class="stats-player-score-wrapper">{{ player.count }}</td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 import { StatInterface } from '@/interfaces/interfaces';
+import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 
 @Component({
   components: { ParticipantLogo }

@@ -1,26 +1,30 @@
-.teams-wrapper {
+.teams-list-wrapper {
   align-items: flex-start;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: -$space--2;
   width: 100%;
+}
+
+.team-wrapper {
+  padding: $space--2;
+  width: 100%;
+
+  @include mq(md) {
+    width: 350px;
+  }
 
   .team {
     background-color: $color-white;
     border-radius: $space--2;
     color: $color-text--score-card;
-    margin: 0 0 $space--2 0;
     padding: $space--2 $space;
     width: 100%;
 
-    @include mq(md) {
-      margin: $space--2 $space;
-      width: 350px;
-    }
-
     .team-title {
+      align-items: center;
+      display: flex;
       font-size: $font-size--24;
       padding: $space--2 $space;
       width: 100%;
@@ -46,11 +50,6 @@
 
         &:last-child {
           border-bottom: 0;
-        }
-
-        .team-player-captain {
-          font-size: $font-size--14;
-          text-transform: lowercase;
         }
       }
     }

@@ -1,8 +1,6 @@
 <template>
   <div v-if="fixtures.length" :class="scoreCardListWrapperClass">
-    <div class="score-card-list-title-wrapper">
-      <h5 v-if="title && title.length" class="score-card-list-title">{{ title }}</h5>
-    </div>
+    <h2 v-if="title && title.length" class="score-card-list-title">{{ title }}</h2>
     <ScoreCardWrapper
       v-for="(fixture, index) in fixtures"
       :fixture="fixture"

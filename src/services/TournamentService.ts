@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-import sports from '../constants/sports';
-
 /**
  * Fetch sport data for sport type and season.
  *

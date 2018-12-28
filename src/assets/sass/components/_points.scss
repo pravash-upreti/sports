@@ -1,5 +1,21 @@
+.points-table-wrapper {
+  padding: $space--2;
+  width: 100%;
+}
+
 .points-wrapper {
   background-color: $color-white;
   border-radius: $space--2;
   color: $color-text--score-card;
+}
+
+.points-team-name-wrapper {
+  align-items: center;
+  display: flex;
+
+  .participant-logo {
+    height: $profile-logo-width--small;
+    margin: 0 $space 0 0;
+    width: $profile-logo-width--small;
+  }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="stats-wrapper">
+    <div class="stats-list-wrapper">
       <stat
         v-if="goalsStats.players.length"
         :stat="goalsStats"

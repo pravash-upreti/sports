@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="points-table-wrapper">
     <table class="table table--striped points-wrapper">
       <thead>
         <tr>
@@ -18,7 +18,7 @@
           :key="index"
         >
           <td>{{ point.id }}</td>
-          <td>{{ point.team.name }}</td>
+          <td class="points-team-name-wrapper"><participant-logo :participant="point.team" /> {{ point.team.name }}</td>
           <td>{{ point.played }}</td>
           <td>{{ point.won }}</td>
           <td>{{ point.drawn }}</td>
@@ -33,7 +33,11 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-@Component
+import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+
+@Component({
+  components: { ParticipantLogo }
+})
 export default class CounterStrikePoints extends Vue {
   @Prop() private data!: any;
 }

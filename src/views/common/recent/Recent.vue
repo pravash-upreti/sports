@@ -1,13 +1,7 @@
 <template>
-  <div class="container">
-    <div class="recent-wrapper">
-      <div v-if="data.recents.showWinners">
-        <Winners :winners="data.recents.winners" />
-      </div>
-      <div v-else>
-        <RecentFixtures :recents="data.recents" :fixture-link="fixtureLink" />
-      </div>
-    </div>
+  <div class="recent-wrapper">
+    <winners v-if="data.recents.showWinners" :winners="data.recents.winners" />
+    <recent-fixtures v-else :recents="data.recents" :fixture-link="fixtureLink" />
   </div>
 </template>
 

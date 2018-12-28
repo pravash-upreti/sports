@@ -26,7 +26,6 @@ import { isNumber } from 'lodash';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Component, Vue, Watch } from 'vue-property-decorator';
 
-import sports from '@/constants/sports';
 import SideBar from '@/components/navigations/SideBar.vue';
 import { fetchSportData } from '@/services/TournamentService';
 import TopNavBar from '@/components/navigations/TopNavBar.vue';

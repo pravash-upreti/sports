@@ -1,7 +1,7 @@
 .recent-wrapper {
   .winners,
   .runner-up {
-    margin: $space--4 0;
+    padding: $space 0 $space--8;
     text-align: center;
     text-transform: uppercase;
   }
@@ -48,7 +48,11 @@
     font-size: $font-size-base;
   }
 
-  .score-card-list-title-wrapper {
+  .score-card-list-title {
     padding: $space--4 0 $space;
+
+    &:first-child {
+      padding-top: $space;
+    }
   }
 }

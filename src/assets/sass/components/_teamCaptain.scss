@@ -1,0 +1,23 @@
+.team-captain-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0 $space;
+}
+
+.team-captain {
+  align-items: center;
+  background: $color-body;
+  border-radius: 50%;
+  color: $color-white;
+  display: flex;
+  font-size: $font-size--14;
+  height: $font-size--22;
+  justify-content: center;
+  text-transform: uppercase;
+  width: $font-size--22;
+
+  @include themify($themes) {
+    background: theme-property(color-body);
+  }
+}

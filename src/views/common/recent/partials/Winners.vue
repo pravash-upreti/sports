@@ -1,9 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="score-card-list-title-wrapper">
-        <h5 class="score-card-list-title">WINNER</h5>
-      </div>
+      <h2 class="score-card-list-title">WINNER</h2>
       <h1
         v-for="(winner, index) in winners"
         :key="index"
@@ -14,9 +12,7 @@
       </h1>
     </div>
     <div>
-      <div class="score-card-list-title-wrapper">
-        <h5 class="score-card-list-title">RUNNER-UP</h5>
-      </div>
+      <h2 class="score-card-list-title">RUNNER-UP</h2>
       <h1
         v-for="(winner, index) in winners"
         :key="index"
