@@ -25,6 +25,15 @@ $themes: (
     color-link: #ddd,
     color-link--active: #ddd1b1,
     color-theme: #ddd1b1
+  ),
+  january-jatra: (
+    color-content: linear-gradient(135deg, #205537 0%, #214673 100%),
+    color-body: #091f22,
+    color-score-result: #1f673f,
+    sub-header-border-color: rgba(#c4f1ff, 0.2),
+    color-link: #c4f1ff,
+    color-link--active: #9cefc7,
+    color-theme: #4ebbde
   )
 );
 
