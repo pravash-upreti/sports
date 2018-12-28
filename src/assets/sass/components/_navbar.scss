@@ -7,6 +7,10 @@
   text-align: center;
   width: 100%;
 
+  @include themify($themes) {
+    background-color: theme-property(color-body);
+  }
+
   @include mq(md) {
     display: none;
   }
