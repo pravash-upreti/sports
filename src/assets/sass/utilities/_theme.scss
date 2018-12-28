@@ -25,6 +25,15 @@ $themes: (
     color-link: #ddd,
     color-link--active: #ddd1b1,
     color-theme: #ddd1b1
+  ),
+  dashain-cup: (
+    color-content: linear-gradient(-135deg, #11998e 0%, #17ad50 100%),
+    color-body: #0a5048,
+    color-score-result: #1f673f,
+    sub-header-border-color: rgba(#7bffb6, 0.2),
+    color-link: #333,
+    color-link--active: #7bffb6,
+    color-theme: #7bffb6
   )
 );
 
