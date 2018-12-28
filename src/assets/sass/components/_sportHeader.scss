@@ -77,9 +77,7 @@
 
     .sport-menu-wrapper {
       border-bottom: 1px solid $sub-header-border-color;
-      border-bottom: 1px solid transparent;
       border-top: 1px solid $sub-header-border-color;
-      border-top: 1px solid transparent;
       padding: $space 0;
       width: 100%;
 
@@ -126,6 +124,7 @@
                 font-weight: 700;
 
                 @include themify($themes) {
+                  background-color: theme-property(color-body);
                   color: theme-property(color-link--active);
                 }
               }
