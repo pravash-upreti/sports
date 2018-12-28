@@ -1,6 +1,6 @@
 <template>
   <div class="team-captain-wrapper">
-    <span class="team-captain">C</span>
+    <i class="fas fa-copyright team-captain"></i>
   </div>
 </template>
 

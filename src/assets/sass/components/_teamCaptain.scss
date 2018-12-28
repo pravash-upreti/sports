@@ -6,18 +6,10 @@
 }
 
 .team-captain {
-  align-items: center;
-  background: $color-body;
-  border-radius: 50%;
-  color: $color-white;
-  display: flex;
+  color: $color-body;
   font-size: $font-size--14;
-  height: $font-size--22;
-  justify-content: center;
-  text-transform: uppercase;
-  width: $font-size--22;
 
   @include themify($themes) {
-    background: theme-property(color-body);
+    color: theme-property(color-body);
   }
 }
