@@ -78,7 +78,7 @@ export function getFixtureDate(fixture: FixtureInterface) {
   let fTime = 'TBD';
 
   if (fixture.date) {
-    fDate = dateFns.format(fixture.date, 'MMM D');
+    fDate = dateFns.format(fixture.date, 'ddd, MMM D');
     fTime = dateFns.format(fixture.date, 'h:mm A');
   }
 

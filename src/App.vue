@@ -86,27 +86,27 @@ export default class App extends Vue {
     }
 
     this.loading = true;
-    let data: any = this.getTournamentData();
+    const data: any = this.getTournamentData();
 
     // Check if data already exists.
-    if (data && data.status && Object.keys(data.data).length) {
-      this.loading = false;
-      this.setTournamentData(activeSport, activeSeason, data);
+    // if (data && data.status && Object.keys(data.data).length) {
+    //   this.loading = false;
+    //   this.setTournamentData(activeSport, activeSeason, data);
 
-      return;
-    }
+    //   return;
+    // }
 
-    fetchSportData(activeSport, activeSeason)
-      .then((response: any) => {
-        if (response && response.data && response.data.status) {
-          data = response.data;
-        }
-      })
-      .catch()
-      .then(() => {
-        this.loading = false;
-        this.setTournamentData(activeSport, activeSeason, data);
-      });
+    // fetchSportData(activeSport, activeSeason)
+    //   .then((response: any) => {
+    //     if (response && response.data && response.data.status) {
+    //       data = response.data;
+    //     }
+    //   })
+    //   .catch()
+    //   .then(() => {
+    //     this.loading = false;
+    //     this.setTournamentData(activeSport, activeSeason, data);
+    //   });
   }
 
   get sideBarClassObject() {

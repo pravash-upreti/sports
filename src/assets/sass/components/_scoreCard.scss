@@ -231,8 +231,9 @@
 
         .fixture-details-date {
           flex-grow: 1;
+          max-width: 155px;
+          min-width: 160px;
           text-align: right;
-          width: 120px;
         }
 
         .fixture-details-round {

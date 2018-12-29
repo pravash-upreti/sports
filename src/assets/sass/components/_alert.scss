@@ -1,0 +1,18 @@
+.alert {
+  border: 1px solid $color-white;
+  border-radius: 5px;
+  color: $color-white;
+  font-size: $font-size--16;
+  margin: $space 0;
+  padding: $space--2;
+
+  &.alert-error {
+    border-color: $color-red;
+    color: $color-red;
+  }
+
+  &.alert-success {
+    border-color: $color-green;
+    color: $color-green;
+  }
+}

@@ -406,6 +406,10 @@ const router = new Router({
           redirect: DOTA_ROUTES.HOME
         }
       ]
+    },
+    {
+      path: '*',
+      redirect: '/table-tennis/2018'
     }
   ]
 });

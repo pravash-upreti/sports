@@ -12,6 +12,12 @@ git clone git@gitlab.lftechnology.com:sports/web.git
 cd web/
 ```
 
+### Copy environment file
+
+```bash
+cp `.env.example` `.env.development.local`
+```
+
 ### Setup with docker
 
 Install dependencies and run the application locally.

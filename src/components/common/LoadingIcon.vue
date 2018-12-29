@@ -8,8 +8,8 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         x="0px"
         y="0px"
-        width="50px"
-        height="50px"
+        width="80px"
+        height="80px"
         viewBox="0 0 40 40"
         enable-background="new 0 0 40 40"
         xml:space="preserve"
@@ -40,27 +40,6 @@
     <p>Work hard, play harder!</p>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.loader-wrapper {
-  text-align: center;
-
-  .loader {
-    display: block;
-    height: 100px;
-    margin: 0 0 2em;
-    margin: 0 auto 1em;
-    padding: 1em;
-    text-align: center;
-    width: 20%;
-  }
-
-  svg path,
-  svg rect {
-    fill: #2ecc71;
-  }
-}
-</style>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
