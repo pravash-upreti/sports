@@ -1,0 +1,26 @@
+select {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 3px;
+  color: #beb1de;
+  outline: none;
+  padding: 8px 16px 8px 8px;
+}
+
+.select-wrapper {
+  display: inline-block;
+
+  &::after {
+    border: 1px solid $color-white;
+    border-width: 0 2px 2px 0;
+    content: '';
+    display: inline-block;
+    height: 6px;
+    left: -8px;
+    position: relative;
+    top: -3px;
+    transform: rotate(45deg);
+    width: 6px;
+  }
+}

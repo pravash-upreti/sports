@@ -1,0 +1,15 @@
+.team-captain-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 0 $space;
+}
+
+.team-captain {
+  color: $color-body;
+  font-size: $font-size--14;
+
+  @include themify($themes) {
+    color: theme-property(color-body);
+  }
+}

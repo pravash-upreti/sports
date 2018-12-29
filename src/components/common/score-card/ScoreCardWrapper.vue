@@ -1,10 +1,11 @@
 <template>
-  <router-link 
+  <router-link
     v-if="fixtureLink.length"
-    :key="fixture.id"
+    :key="`fixture-${fixture.id}`"
     :to="fixtureURL"
+    class="score-card-link-wrapper"
   >
-    <ScoreCard :fixture="fixture" :fixture-link="fixtureLink" />
+    <ScoreCard :fixture="fixture" :fixture-link="fixtureLink"/>
   </router-link>
   <ScoreCard v-else :fixture="fixture" :fixture-link="fixtureLink" />
 </template>
@@ -19,11 +20,17 @@ import { FixtureInterface } from '@/interfaces/interfaces';
   components: { ScoreCard }
 })
 export default class ScoreCardWrapper extends Vue {
-  @Prop() public fixture!: FixtureInterface;
   @Prop() public fixtureLink!: string;
+  @Prop() public fixture!: FixtureInterface;
 
   get fixtureURL(): string {
-    return this.fixtureLink.length ? this.fixtureLink.replace(':fixtureId', this.fixture.id.toString()) : '';
+    if (!this.fixtureLink.length || !this.$route.params.season) {
+      return '';
+    }
+
+    return this.fixtureLink
+      .replace(':season', this.$route.params.season)
+      .replace(':fixtureId', this.fixture.id.toString());
   }
 }
 </script>

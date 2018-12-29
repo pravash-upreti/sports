@@ -1,28 +1,24 @@
 <template>
-  <div class="team">
-    <div 
-      v-if="team.logo"
-      class="team-title"
-    >
-      <h4>
-        <participant-logo 
+  <div class="team-wrapper">
+    <div class="team">
+      <h4 v-if="team.logo" class="team-title">
+        <participant-logo
           :participant="team"
           :custom-styles="customStyles"
         />
         {{ team.name }}
       </h4>
-    </div>
-    <div class="team-players-wrapper">
-      <ul>
+      <ul class="team-players-wrapper">
         <li
           v-for="(player, index) in team.players"
-          :key="index"
+          :key="`team-player-${index}`"
+          class="team-player"
         >
           <participant-logo
             :participant="player"
             :custom-styles="customStyles"
           />
-          {{ player.name }}
+          {{ player.name }}<team-captain v-if="player.isCaptain" />
         </li>
       </ul>
     </div>
@@ -32,11 +28,12 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 import { TeamInterface } from '@/interfaces/interfaces';
+import TeamCaptain from '@/components/common/TeamCaptain.vue';
+import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 
 @Component({
-  components: { ParticipantLogo }
+  components: { TeamCaptain, ParticipantLogo }
 })
 export default class Team extends Vue {
   @Prop() public team!: TeamInterface;

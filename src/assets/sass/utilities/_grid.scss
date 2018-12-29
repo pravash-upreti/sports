@@ -19,18 +19,16 @@ $container-max-widths: (
   lg: 960px,
   xl: 1140px
 ) !default;
-$grid-container: "container";
-$grid-container-fluid: "container-fluid";
-$row-name: "row";
-$grid-type: float; //type of grid (either 'float' or 'flex' only)
-
+$grid-container: 'container';
+$grid-container-fluid: 'container-fluid';
+$row-name: 'row';
+$grid-type: float; // type of grid (either 'float' or 'flex' only)
 // Common properties for container class
 %common-container {
   margin-left: auto;
   margin-right: auto;
 }
-
-//Common properties of floated grid columns
+// Common properties of floated grid columns
 %grid-column-float {
   float: left;
   min-height: 1px; // Prevent columns from collapsing when empty
@@ -38,8 +36,7 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
   padding-right: ($gutter-width / 2);
   position: relative;
 }
-
-//Common properties of flexed grid columns
+// Common properties of flexed grid columns
 %grid-column-flex {
   min-height: 1px; // Prevent columns from collapsing when empty
   padding-left: ($gutter-width / 2);
@@ -47,7 +44,6 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
   position: relative;
   width: 100%;
 }
-
 // Container mixin
 // $container-name - class name of container
 @mixin make-container($container-name: $grid-container-fluid) {
@@ -56,7 +52,6 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
     width: 100%;
   }
 }
-
 // Container mixin - for defining container widths in each breakpoints
 // $breakpoints    - map with respective breakpoint names and values
 // $max-width      - map with respective breakpoint names and values for container maxwidths
@@ -77,21 +72,18 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
     }
   }
 }
-
 // Row mixin
 // $row-name    - class name for row
 @mixin make-row($row-name: $row-name) {
   .#{$row-name} {
     margin-left: ($gutter-width / -2);
-
     margin-right: ($gutter-width / -2);
-    @if $grid-type== "flex" {
+    @if $grid-type== 'flex' {
       display: flex;
       flex-wrap: wrap;
     }
   }
 }
-
 // Flex column mixin
 // Ported from bootstrap
 // $columns    - total number of columns
@@ -100,14 +92,12 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
   flex: 0 0 percentage($size / $columns);
   max-width: percentage($size / $columns);
 }
-
 // Float column mixin
 // $columns    - total number of columns
 // $size       - Size of column (Eg. 1,2,6,...)
 @mixin make-col-float($size, $columns: $grid-columns) {
   width: percentage($size / $columns);
 }
-
 // Grid classes mixin
 // $columns     - total number of columns
 // $gutter      - spacing between the grid columns
@@ -122,22 +112,19 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
   $grid-type: $grid-type
 ) {
   @each $name, $breakpoint in $breakpoints {
-    //Generates common styles for grid classes
+    // Generates common styles for grid classes
     @for $i from 1 through $columns {
       .#{$grid-class}-#{$name}-#{$i} {
-        @if $grid-type== "flex" {
+        @if $grid-type== 'flex' {
           @extend %grid-column-flex;
-        } @else if $grid-type== "float" {
+        } @else if $grid-type== 'float' {
           @extend %grid-column-float;
         }
       }
-    }
-    //Generates breakpoint wise grid classes
-
+    } // Generates breakpoint wise grid classes
     @include mq($name) {
-      @if $grid-type== "flex" {
-        // Provides basic `.col-{bp}` classes for equal-width flexbox columns
-        // Ported from bootstrap 4
+      @if $grid-type== 'flex' {
+        // Provides basic `.col-{bp}` classes for equal-width flexbox columns // Ported from bootstrap 4
         .#{$grid-class}-#{$name} {
           flex-basis: 0;
           flex-grow: 1;
@@ -150,12 +137,11 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
           width: auto;
         }
       }
-
       @for $i from 1 through $columns {
         .#{$grid-class}-#{$name}-#{$i} {
-          @if $grid-type== "flex" {
+          @if $grid-type== 'flex' {
             @include make-col-flex($i, $columns);
-          } @else if $grid-type== "float" {
+          } @else if $grid-type== 'float' {
             @include make-col-float($i, $columns);
           }
         }
@@ -163,12 +149,10 @@ $grid-type: float; //type of grid (either 'float' or 'flex' only)
     }
   }
 }
-
 @include make-container;
 @include make-container-fixed-width;
 @include make-row;
-
-@if ($grid-type== "flex" or $grid-type== "float") {
+@if ($grid-type== 'flex' or $grid-type== 'float') {
   @include make-grid;
 } @else {
   @error "$grid-type should be 'flex' or 'float'";

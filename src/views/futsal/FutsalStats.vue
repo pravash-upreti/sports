@@ -1,6 +1,6 @@
 <template>
-  <div class="container tournament-content">
-    <div class="stats-wrapper">
+  <div class="container">
+    <div class="stats-list-wrapper">
       <stat
         v-if="goalsStats.players.length"
         :stat="goalsStats"
@@ -18,23 +18,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import Stat from './partials/Stat.vue';
-import { StatsInterface } from '@/interfaces/interfaces';
 import { footballIcon, redCardIcon, yellowCardIcon } from '@/assets/images';
 
 @Component({
   components: { Stat }
 })
 export default class FutsalStats extends Vue {
-  public stats: StatsInterface = this.$parent.$data.data.stats;
+  @Prop() private data!: any;
 
   get goalsStats() {
     return {
       title: 'Goals',
       icon: footballIcon,
-      players: this.stats.goals
+      players: this.data.stats.goals
     };
   }
 
@@ -42,7 +41,7 @@ export default class FutsalStats extends Vue {
     return {
       title: 'Yellow Cards',
       icon: yellowCardIcon,
-      players: this.stats.yellowCards
+      players: this.data.stats.yellowCards
     };
   }
 
@@ -50,7 +49,7 @@ export default class FutsalStats extends Vue {
     return {
       title: 'Red Cards',
       icon: redCardIcon,
-      players: this.stats.redCards
+      players: this.data.stats.redCards
     };
   }
 }

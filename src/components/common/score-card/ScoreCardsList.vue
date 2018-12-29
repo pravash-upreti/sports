@@ -1,11 +1,11 @@
 <template>
-  <div v-if="fixtures.length">
-    <h5 v-if="title.length" class="group-heading">{{ title }}</h5>
+  <div v-if="fixtures.length" :class="scoreCardListWrapperClass">
+    <h2 v-if="title && title.length" class="score-card-list-title">{{ title }}</h2>
     <ScoreCardWrapper
       v-for="(fixture, index) in fixtures"
       :fixture="fixture"
       :fixture-link="fixtureLink"
-      :key="index"
+      :key="`score-card-wrapper-${index}`"
     />
   </div>
 </template>
@@ -20,11 +20,18 @@ import ScoreCardWrapper from '@/components/common/score-card/ScoreCardWrapper.vu
   components: { ScoreCardWrapper }
 })
 export default class ScoreCardList extends Vue {
-  @Prop({ default: '' })
+  @Prop()
   public title!: string;
   @Prop()
   public fixtureLink!: string;
   @Prop()
   public fixtures!: FixtureInterface[];
+
+  get scoreCardListWrapperClass() {
+    return {
+      'score-card-list-wrapper': true,
+      'score-card-list-wrapper--single': (this.fixtures.length === 1)
+    };
+  }
 }
 </script>

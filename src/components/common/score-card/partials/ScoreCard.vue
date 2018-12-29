@@ -1,19 +1,34 @@
 <template>
   <div class="score-card-wrapper">
-    <div class="score-card">
-      <div class="score-brief">
-        <fixture-team
-          :team="fixture.homeTeam"
-          :class-names="homeTeamClassObject"
-        />
-        <fixture-score :fixture="fixture" />
-        <fixture-team
-          :team="fixture.awayTeam"
-          :is-away-team="true"
-          :class-names="awayTeamClassObject"
-        />
-      </div>
+    <div class="score-card score-card--mobile">
+      <fixture-details-mobile :fixture="fixture" />
+      <fixture-team-mobile
+        :team="fixture.homeTeam"
+        :score="fixture.homeTeamScore"
+        :is-winner="isHomeTeamWinner"
+      />
+      <fixture-team-mobile
+        :team="fixture.awayTeam"
+        :score="fixture.awayTeamScore"
+        :is-winner="isAwayTeamWinner"
+      />
     </div>
+    <!-- <div class="score-card score-card--desktop">
+      <fixture-team
+        :team="fixture.homeTeam"
+        :class-names="homeTeamClassObject"
+        :is-home-team-winner="isHomeTeamWinner"
+        :is-away-team-winner="isAwayTeamWinner"
+      />
+      <fixture-score :fixture="fixture" />
+      <fixture-team
+        :team="fixture.awayTeam"
+        :is-away-team="true"
+        :class-names="awayTeamClassObject"
+        :is-home-team-winner="isHomeTeamWinner"
+        :is-away-team-winner="isAwayTeamWinner"
+      />
+    </div> -->
   </div>
 </template>
 
@@ -22,14 +37,45 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import FixtureTeam from './FixtureTeam.vue';
 import FixtureScore from './FixtureScore.vue';
+import FixtureTeamMobile from './FixtureTeamMobile.vue';
 import { FixtureInterface } from '@/interfaces/interfaces';
+import { isFixturePlayed } from '@/services/FixtureService';
+import FixtureDetailsMobile from './FixtureDetailsMobile.vue';
 
 @Component({
-  components: { FixtureTeam, FixtureScore }
+  components: { FixtureTeam, FixtureScore, FixtureTeamMobile, FixtureDetailsMobile }
 })
 export default class ScoreCard extends Vue {
   @Prop() public fixtureLink!: string;
   @Prop() public fixture!: FixtureInterface;
+
+  get isFixturePlayed() {
+    return isFixturePlayed(this.fixture);
+  }
+
+  get isHomeTeamWinner() {
+    if (isFixturePlayed(this.fixture)) {
+      if (this.fixture.homeTeamScore && this.fixture.awayTeamScore) {
+        return this.fixture.homeTeamScore > this.fixture.awayTeamScore;
+      } else if (this.fixture.winnerTeam) {
+        return this.fixture.winnerTeam.id === this.fixture.homeTeam.id;
+      }
+    }
+
+    return false;
+  }
+
+  get isAwayTeamWinner() {
+    if (isFixturePlayed(this.fixture)) {
+      if (this.fixture.homeTeamScore && this.fixture.awayTeamScore) {
+        return this.fixture.awayTeamScore > this.fixture.homeTeamScore;
+      } else if (this.fixture.winnerTeam) {
+        return this.fixture.winnerTeam.id === this.fixture.awayTeam.id;
+      }
+    }
+
+    return false;
+  }
 
   get homeTeamClassObject(): object {
     const isHomeTeamWinner =
@@ -39,7 +85,6 @@ export default class ScoreCard extends Vue {
 
     return {
       'home-team': true,
-      'text-right': true,
       'winner': isHomeTeamWinner
     };
   }
@@ -52,7 +97,6 @@ export default class ScoreCard extends Vue {
 
     return {
       'away-team': true,
-      'text-right': true,
       'winner': isAwayTeamWinner
     };
   }

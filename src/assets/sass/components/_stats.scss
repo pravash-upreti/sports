@@ -1,72 +1,61 @@
+.stats-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include mq(md) {
+    flex-direction: row;
+  }
+}
+
 .stats-wrapper {
-  text-align: center;
+  padding: $space--2;
+  width: 100%;
+
+  @include mq(md) {
+    width: 50%;
+  }
 
   .stats-col {
-    background: $white;
-    box-shadow: 0 10px 25px $color-grey-cool-2;
-    color: $color-grey;
-    display: inline-block;
-    margin: 5px 0;
-    padding: 5px;
-    text-align: left;
-    vertical-align: top;
+    background-color: $color-white;
+    border-radius: $space--2;
+    color: $color-text--score-card;
+    font-size: $font-size--16;
     width: 100%;
 
     @include mq(md) {
-      margin: 10px;
-      padding: 10px;
-      width: 500px;
+      font-size: $font-size--18;
     }
 
     .stats-title {
-      border-bottom: 3px solid $color-border;
-      font-size: $font-size-medium;
-      padding: 5px;
+      align-items: center;
+      background: rgba($color-black, 0.1);
+      display: flex;
+      padding: $space;
 
       @include mq(md) {
-        font-size: $font-size-large;
-        padding: 10px;
-      }
-
-      .stat-image-logo {
-        padding: 0 8px 0 0;
-        width: 32px;
+        padding: $space--2;
       }
     }
 
-    ul {
-      font-size: $font-size-base;
-      list-style: none;
+    .stat-image-logo {
+      height: $space--8;
+      margin-right: $space--2;
+      width: $space--8;
+    }
 
-      @include mq(md) {
-        font-size: $font-size-base;
-      }
+    .stats-player-score-wrapper {
+      text-align: right;
+    }
 
-      li {
-        padding: 10px;
+    .stats-player-name-wrapper {
+      align-items: center;
+      display: flex;
 
-        .stat-player-name,
-        .stat-player-stat {
-          display: inline-block;
-        }
-
-        .stat-player-name {
-          text-align: left;
-          width: 80%;
-        }
-
-        .stat-player-stat {
-          text-align: right;
-          width: 20%;
-        }
-
-        &:last-child {
-          border-bottom: 0;
-        }
-
-        &:nth-child(even) {
-          background-color: $color-background-main-wrapper;
-        }
+      .participant-logo {
+        height: $profile-logo-width;
+        margin: 0 $space 0 0;
+        width: $profile-logo-width;
       }
     }
   }

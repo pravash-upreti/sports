@@ -1,0 +1,166 @@
+.sport-header-wrapper {
+  width: 100%;
+
+  @include mq(md) {
+    padding-top: $space--12;
+  }
+
+  .sport-title {
+    font-size: $font-size--36;
+    font-weight: 700;
+    letter-spacing: -2px;
+    padding: $space $space--2;
+    text-transform: capitalize;
+
+    @include mq(md) {
+      display: inline-block;
+      font-size: $font-size--48;
+    }
+
+    .sport-sub-title {
+      font-weight: 400;
+      letter-spacing: 0;
+      opacity: 0.6;
+      text-transform: capitalize;
+    }
+  }
+
+  .sport-categories-wrapper {
+    width: 100%;
+
+    @include mq(md) {
+      display: inline-block;
+      width: auto;
+    }
+
+    .sport-categories {
+      @include mq(lg) {
+        padding-left: $space--4;
+      }
+
+      select {
+        color: #beb1de;
+        font-size: $font-size--24;
+
+        @include mq(md) {
+          font-size: $font-size--36;
+        }
+      }
+
+      &.select-wrapper::after {
+        border-color: #beb1de;
+        top: -8px;
+      }
+    }
+  }
+
+  .sport-sub-header-wrapper {
+    display: inline-block;
+
+    @include m(drop-down) {
+      display: block;
+
+      @include mq(md) {
+        display: none;
+      }
+    }
+
+    @include m(button-group) {
+      display: block;
+    }
+
+    .sport-menu-wrapper {
+      border-bottom: 1px solid $sub-header-border-color;
+      border-top: 1px solid $sub-header-border-color;
+      padding: $space 0;
+      width: 100%;
+
+      @include themify($themes) {
+        border-color: theme-property(sub-header-border-color);
+      }
+
+      @include m(menu) {
+        ul {
+          list-style: none;
+          overflow-x: auto;
+          padding: $space 0;
+          text-align: center;
+          white-space: nowrap;
+
+          li {
+            display: inline-block;
+            margin: 0 $space--2;
+
+            @include mq(md) {
+              margin: 0 $space--4;
+            }
+
+            &:first-child {
+              margin-left: 0;
+            }
+
+            a {
+              color: $color-link--active;
+              display: inline-block;
+              font-size: $font-size-medium;
+              padding: $space $space--4;
+              text-transform: uppercase;
+
+              @include themify($themes) {
+                color: theme-property(color-link);
+              }
+
+              &.active,
+              &:hover {
+                background-color: #18084d;
+                border-radius: 18px;
+                color: $color-white;
+                font-weight: 700;
+
+                @include themify($themes) {
+                  background-color: theme-property(color-body);
+                  color: theme-property(color-link--active);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      @include m(round) {
+        border: 0;
+
+        ul {
+          list-style: none;
+          padding: $space--3 0;
+          text-align: center;
+
+          li {
+            background-color: #18084d;
+            border-radius: 50%;
+            display: inline-block;
+            height: $space--12;
+            line-height: $space--12;
+            margin: 0 16px;
+            width: $space--12;
+
+            &.active,
+            &:hover {
+              background-color: #70c5f9;
+              cursor: pointer;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+
+    select {
+      color: $color-white;
+      font-size: $font-size-medium;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+    }
+  }
+}

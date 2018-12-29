@@ -1,28 +1,29 @@
 const HOME = '/';
-const CHESS = '/chess';
-const FUTSAL = '/futsal';
-const OTHERS = '/others';
-const CARROM_BOARD = '/carrom-board';
-const TABLE_TENNIS = '/table-tennis';
+const DOTA = '/:sport/dota2';
+const FIFA = '/:sport/fifa18';
+const CHESS = '/chess/:season';
+const FUTSAL = '/futsal/:season';
+const DASHAIN_CUP = '/dashain-cup/:season';
+const CARROM_BOARD = '/carrom-board/:season';
+const TABLE_TENNIS = '/table-tennis/:season';
+const COUNTER_STRIKE = '/:sport/counter-strike';
 
-/* Other games routes */
-const OTHER_GAMES_BASE_ROUTES = {
-  DASHAIN_CUP: `${OTHERS}/dashain-cup`
-};
 
 export const BASE_ROUTES = {
   HOME,
+  DOTA,
+  FIFA,
   CHESS,
   FUTSAL,
-  OTHERS,
+  DASHAIN_CUP,
   CARROM_BOARD,
   TABLE_TENNIS,
-  OTHER_GAMES_BASE_ROUTES
+  COUNTER_STRIKE
 };
 
 // Order of route declaration appears on the UI.
 export const FUTSAL_ROUTES = {
-  HOME: `${FUTSAL}/recent`,
+  HOME: `${FUTSAL}/`,
   RESULTS: `${FUTSAL}/results`,
   FIXTURES: `${FUTSAL}/fixtures`,
   POINTS: `${FUTSAL}/points`,
@@ -33,7 +34,7 @@ export const FUTSAL_ROUTES = {
 
 // Order of route declaration appears on the UI.
 export const CARROM_BOARD_ROUTES = {
-  HOME: `${CARROM_BOARD}/recent`,
+  HOME: `${CARROM_BOARD}/`,
   RESULTS: `${CARROM_BOARD}/results`,
   FIXTURES: `${CARROM_BOARD}/fixtures`,
   TEAMS: `${CARROM_BOARD}/teams`,
@@ -42,7 +43,7 @@ export const CARROM_BOARD_ROUTES = {
 
 // Order of route declaration appears on the UI.
 export const TABLE_TENNIS_ROUTES = {
-  HOME: `${TABLE_TENNIS}/recent`,
+  HOME: `${TABLE_TENNIS}/`,
   RESULTS: `${TABLE_TENNIS}/results`,
   FIXTURES: `${TABLE_TENNIS}/fixtures`,
   TEAMS: `${TABLE_TENNIS}/teams`,
@@ -50,14 +51,40 @@ export const TABLE_TENNIS_ROUTES = {
 };
 
 // Order of route declaration appears on the UI.
-export const OTHER_GAMES_ROUTES = {
-  DASHAIN_CUP: {
-    HOME: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/recent`,
-    RESULTS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/results`,
-    FIXTURES: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/fixtures`,
-    POINTS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/points`,
-    STATS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/stats`,
-    TEAMS: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/teams`,
-    FIXTURE: `${OTHER_GAMES_BASE_ROUTES.DASHAIN_CUP}/fixture/:fixtureId`
-  }
+export const DASHAIN_CUP_ROUTES = {
+  HOME: `${DASHAIN_CUP}/`,
+  RESULTS: `${DASHAIN_CUP}/results`,
+  FIXTURES: `${DASHAIN_CUP}/fixtures`,
+  POINTS: `${DASHAIN_CUP}/points`,
+  STATS: `${DASHAIN_CUP}/stats`,
+  TEAMS: `${DASHAIN_CUP}/teams`,
+  FIXTURE: `${DASHAIN_CUP}/fixture/:fixtureId`,
+};
+
+// Order of route declaration appears on the UI.
+export const COUNTER_STRIKE_ROUTES = {
+  HOME: `${COUNTER_STRIKE}/`,
+  RESULTS: `${COUNTER_STRIKE}/results`,
+  FIXTURES: `${COUNTER_STRIKE}/fixtures`,
+  POINTS: `${COUNTER_STRIKE}/points`,
+  TEAMS: `${COUNTER_STRIKE}/teams`,
+  FIXTURE: `${COUNTER_STRIKE}/fixture/:fixtureId`,
+};
+
+// Order of route declaration appears on the UI.
+export const FIFA_ROUTES = {
+  HOME: `${FIFA}/`,
+  RESULTS: `${FIFA}/results`,
+  FIXTURES: `${FIFA}/fixtures`,
+  TEAMS: `${FIFA}/teams`,
+  FIXTURE: `${FIFA}/fixture/:fixtureId`,
+};
+
+// Order of route declaration appears on the UI.
+export const DOTA_ROUTES = {
+  HOME: `${DOTA}/`,
+  RESULTS: `${DOTA}/results`,
+  FIXTURES: `${DOTA}/fixtures`,
+  POINTS: `${DOTA}/points`,
+  TEAMS: `${DOTA}/teams`,
 };
