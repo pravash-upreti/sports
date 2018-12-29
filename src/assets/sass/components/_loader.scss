@@ -10,5 +10,11 @@
     display: block;
     padding: 20px;
     text-align: center;
+
+    svg {
+      path {
+        fill: $color-white;
+      }
+    }
   }
 }
