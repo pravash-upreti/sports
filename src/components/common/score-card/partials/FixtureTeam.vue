@@ -1,44 +1,46 @@
 <template>
-  <div :class="classObject">
-    <div class="team-name-wrapper">
-      <div v-if="isAwayTeam" :class="teamClassObject">
-        <span v-if="isGrouped">
-          <participant-logo
-            v-for="(player, index) in teamInfo.players"
-            :key="index"
-            :hide-image="true"
-            :participant="player"
-            :custom-styles="teamCustomStyles"
-          />
-        </span>
-        <span v-else>
-          <participant-logo
-            :hide-image="true"
-            :participant="teamInfo"
-            :custom-styles="teamCustomStyles"
-          />
-        </span>
-        {{ teamInfo.name }}
-      </div>
-      <div v-else :class="teamClassObject">
-        {{ teamInfo.name }}
-        <span v-if="isGrouped">
-          <participant-logo
-            v-for="(player, index) in teamInfo.players"
-            :key="index"
-            :hide-image="true"
-            :participant="player"
-            :custom-styles="teamCustomStyles"
-          />
-        </span>
-        <span v-else>
-          <participant-logo
-            :hide-image="true"
-            :participant="teamInfo"
-            :custom-styles="teamCustomStyles"
-          />
-        </span>
-      </div>
+  <div class="fixture-team-name-wrapper">
+    <div v-if="isAwayTeam" :class="[teamClassObject, isAwayTeamWinner ? 'winner' : '']">
+      <span :class="['fixture-team-name', classNames]">
+        {{ teamInfo.name }} <i v-if="isAwayTeamWinner" class="fas fa-trophy"></i>
+      </span>
+      <span v-if="isGrouped" class="fixture-team-symbol">
+        <participant-logo
+          v-for="(player, index) in teamInfo.players"
+          :key="index"
+          :hide-image="hideImage"
+          :participant="player"
+          :custom-styles="teamCustomStyles"
+        />
+      </span>
+      <span v-else class="fixture-team-symbol">
+        <participant-logo
+          :hide-image="hideImage"
+          :participant="teamInfo"
+          :custom-styles="teamCustomStyles"
+        />
+      </span>
+    </div>
+    <div v-else :class="[teamClassObject, isHomeTeamWinner ? 'winner' : '']">
+      <span v-if="isGrouped" class="fixture-team-symbol">
+        <participant-logo
+          v-for="(player, index) in teamInfo.players"
+          :key="index"
+          :hide-image="hideImage"
+          :participant="player"
+          :custom-styles="teamCustomStyles"
+        />
+      </span>
+      <span v-else class="fixture-team-symbol">
+        <participant-logo
+          :hide-image="hideImage"
+          :participant="teamInfo"
+          :custom-styles="teamCustomStyles"
+        />
+      </span>
+      <span :class="['fixture-team-name', classNames]">
+        <i v-if="isHomeTeamWinner" class="fas fa-trophy"></i> {{ teamInfo.name }}
+      </span>
     </div>
   </div>
 </template>
@@ -59,6 +61,12 @@ export default class FixtureTeam extends Vue {
   public classNames!: object;
   @Prop()
   public isAwayTeam!: boolean;
+  @Prop()
+  public isHomeTeamWinner!: boolean;
+  @Prop()
+  public isAwayTeamWinner!: boolean;
+
+  public hideImage: boolean = false;
 
   private isTeamTBD() {
     return !Object.keys(this.team).length;
@@ -68,18 +76,9 @@ export default class FixtureTeam extends Vue {
     return !!(this.team && this.team.players);
   }
 
-  get classObject(): object {
-    return Object.assign(
-      {
-        'team-info': true
-      },
-      this.classNames
-    );
-  }
-
   get teamClassObject(): object {
     return {
-      'team-name': true,
+      'fixture-team-name-wrapper': true,
       'team-grouped': this.isGrouped
     };
   }

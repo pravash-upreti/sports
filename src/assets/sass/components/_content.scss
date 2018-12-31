@@ -1,0 +1,35 @@
+#app {
+  height: 100%;
+}
+
+.main-wrapper {
+  background: $color-content;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+
+  @include mq(lg) {
+    flex-direction: row;
+  }
+}
+
+.content-wrapper {
+  height: calc(100% - 64px);
+  overflow-y: auto;
+
+  @include themify($themes) {
+    background: theme-property(color-content);
+  }
+
+  @include mq(lg) {
+    height: 100%;
+    margin-left: $sidebar-width--desktop;
+    width: calc(100% - #{$sidebar-width--desktop});
+  }
+}
+
+.tournament-content-wrapper {
+  padding: $space--6 0;
+}

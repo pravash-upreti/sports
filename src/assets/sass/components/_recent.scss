@@ -1,68 +1,58 @@
 .recent-wrapper {
-  .score-card-wrapper {
-    .score-card {
-      margin: 0 0 3px;
+  .winners,
+  .runner-up {
+    padding: $space 0 $space--8;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .winners {
+    font-size: $font-size--28;
+
+    @include mq(md) {
+      font-size: $font-size--48;
+    }
+
+    @include mq(xl) {
+      font-size: $font-size--56;
     }
   }
-}
 
-.fixture-title {
-  color: $color-green;
-  font-size: $font-size-large;
-  font-weight: normal;
-  padding: 10px 0;
-  text-align: center;
+  .runner-up {
+    font-size: $font-size--24;
 
-  @include mq(md) {
-    padding: 30px 0 10px;
-  }
-}
+    @include mq(md) {
+      font-size: $font-size--36;
+    }
 
-.winners,
-.runner-up {
-  margin: 30px 0;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-.winners {
-  font-size: $font-size--xlarge;
-
-  @include mq(md) {
-    font-size: $font-size--xxxlarge;
+    @include mq(xl) {
+      font-size: $font-size--48;
+    }
   }
 
-  @include mq(xl) {
-    font-size: $font-size--xxxxlarge;
-  }
-}
-
-.runner-up {
-  font-size: $font-size-large;
-
-  @include mq(md) {
-    font-size: $font-size--xlarge;
+  .winner-trophy,
+  .runner-up-trophy {
+    margin: 0 10px;
   }
 
-  @include mq(xl) {
-    font-size: $font-size--xxlarge;
+  .winner-trophy {
+    color: $color-trophy;
   }
-}
 
-.winner-trophy,
-.runner-up-trophy {
-  margin: 0 10px;
-}
+  .runner-up-trophy {
+    color: $color-trophy;
+  }
 
-.winner-trophy {
-  color: $gold;
-}
+  .winner-category {
+    display: block;
+    font-size: $font-size-base;
+  }
 
-.runner-up-trophy {
-  color: $silver;
-}
+  .score-card-list-title {
+    padding: $space--4 0 $space;
 
-.winner-category {
-  display: block;
-  font-size: $font-size-base;
+    &:first-child {
+      padding-top: $space;
+    }
+  }
 }

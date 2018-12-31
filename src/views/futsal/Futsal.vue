@@ -1,85 +1,85 @@
 <template>
-  <div>
-    <div 
-      v-if="loading"
-      class="container" 
-    >
-      <loading-icon />
-    </div>
-    <div 
-      v-else-if="error"
-      class="container" 
-    >
-      <div class="alert alert-error">Unable to load data. Please try again later.</div>
-    </div>
-    <div 
-      v-else
-      class="futsal"
-    >
-      <div class="container-fluid">
-        <sub-header :routes="routes" />
-        <router-view />
-      </div>
+  <loading-icon v-if="loadingData" />
+  <div v-else-if="error" class="container">
+    <div class="alert alert-error">Unable to load data. Please try again later.</div>
+  </div>
+  <div v-else class="container">
+    <sport-header
+      :title="title"
+      :categories="data.categories"
+      :rounds="data.rounds"
+      :routes="routes"
+      :selected-sport="selectedSport"
+    />
+    <div class="tournament-content-wrapper">
+      <router-view :data="data" :fixture-link="fixtureLink"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import axios from 'axios';
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
-import EventBus from '@/events/eventBus';
+import sports from '@/constants/sports';
 import { FUTSAL_ROUTES } from '@/constants/routes';
-import SubHeader from '@/components/common/SubHeader.vue';
-import * as FixtureService from '@/services/FixtureService';
+import { getSanitizedData } from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
-import { TournamentDataInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
+import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 
 @Component({
-  components: { SubHeader, LoadingIcon }
+  components: { SportHeader, LoadingIcon }
 })
 export default class Futsal extends Vue {
+  @Prop() public updateActives!: any;
+  @Prop() public selectedSport!: any;
+  @Prop() public loadingData!: boolean;
+  @Prop() public getTournamentData!: any;
+
+  public data: any = {};
   public error: boolean = false;
-  public loading: boolean = true;
   public routes: object = FUTSAL_ROUTES;
   public fixtureLink: string = FUTSAL_ROUTES.FIXTURE;
-  public data: TournamentDataInterface | null = null;
+
+  @Watch('loadingData', { immediate: true, deep: true })
+  public onLoadingDataChanged(newVal: boolean, oldVal: boolean) {
+    if (newVal !== oldVal) {
+      this.fetchData();
+    }
+  }
 
   public created() {
-    EventBus.$emit('change-logo-title', 'Futsal');
+    this.updateActiveSport();
+  }
 
-    this.fetchData();
+  public updated() {
+    this.updateActiveSport();
+  }
+
+  public updateActiveSport() {
+    const sport = sports.FUTSAL;
+    const season = this.$route.params.season;
+
+    this.updateActives(sport, season);
   }
 
   public fetchData() {
-    axios
-      .get(process.env.VUE_APP_API_FUTSAL)
-      .then((response) => {
-        this.data = this.getSanitizedData(response.data.data);
+    const sport = sports.FUTSAL;
+    const season = this.$route.params.season;
+    const tournamentData = this.getTournamentData(sport, season);
 
-        EventBus.$emit('change-logo-title', this.data.details.title, this.data.details.year);
-      })
-      .catch(() => {
-        this.error = true;
-      })
-      .then(() => {
-        this.loading = false;
-      });
+    if (tournamentData && tournamentData.status) {
+      this.error = false;
+      this.data = getSanitizedData(tournamentData.data);
+
+      return;
+    }
+
+    this.error = true;
   }
 
-  public getSanitizedData(rawData: TournamentDataResponseInterface): TournamentDataInterface {
-    const data = {
-      teams: rawData.teams,
-      points: rawData.table,
-      details: rawData.details,
-      stats: rawData.stats || [],
-      allFixtures: rawData.fixtures,
-      recents: FixtureService.getRecentFixtures(rawData),
-      results: FixtureService.getResults(rawData.fixtures),
-      fixtures: FixtureService.getFixtures(rawData.fixtures)
-    };
-
-    return data;
+  get title(): string {
+    return `Futsal ${this.$route.params.season}`;
   }
 }
 </script>

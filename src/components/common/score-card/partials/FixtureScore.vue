@@ -1,27 +1,21 @@
 <template>
-  <div v-if="fixture" class="score">
-    <div 
-      v-if="fixture.status.toLowerCase() === 'cancelled'"
-      class="result"
-    >
-      <span class="versus">Cancelled</span>
+  <div v-if="fixture" class="fixture-score-wrapper">
+    <div v-if="isFixtureCancelled" class="result result--cancelled">Cancelled</div>
+    <div v-else-if="isFixturePlayed" class="result">
+      <p class="result-score-wrapper">
+        <span :class="['result-score', getWinnerClassObject('home')]">{{ fixture.homeTeamScore }}</span>
+        <span class="result-score">:</span>
+        <span :class="['result-score', getWinnerClassObject('away')]">{{ fixture.awayTeamScore }}</span>
+      </p>
+      <p
+        v-if="fixture.round && fixture.categoryType"
+        class="fixture-round"
+      >{{ fixture.round }} - {{ fixture.categoryType }}</p>
     </div>
-    <div
-      v-else-if="fixture.status.toLowerCase() === 'played'"
-      class="result"
-    >
-      <span :class="getWinnerClassObject('home')">{{ fixture.homeTeamScore }}</span> <span class="result-dash">-</span> <span :class="getWinnerClassObject('away')">{{ fixture.awayTeamScore }}</span>
-      <p v-if="fixture.round && fixture.categoryType" class="game-round">{{ fixture.round }} - {{ fixture.categoryType }}</p>
-    </div>
-    <div 
-      v-else 
-      class="result"
-    >
-      <div class="versus">
-        <p class="game-date">{{ fixtureDate.date }}</p>
-        <p class="game-time">{{ fixtureDate.time }}</p>
-        <p class="game-round">{{ fixture.round }} - {{ fixture.categoryType }}</p>
-      </div>
+    <div v-else class="result result--versus">
+      <p class="fixture-time"><i class="fas fa-clock"></i> {{ fixtureDate.time }}</p>
+      <p class="fixture-date">{{ fixtureDate.date }}</p>
+      <p class="fixture-round">{{ fixture.round }} - {{ fixture.categoryType }}</p>
     </div>
   </div>
 </template>
@@ -30,7 +24,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import { FixtureInterface } from '@/interfaces/interfaces';
-import { getFixtureDate } from '@/services/FixtureService';
+import { getFixtureDate, isFixturePlayed, isFixtureCancelled } from '@/services/FixtureService';
 
 @Component
 export default class FixtureScore extends Vue {
@@ -51,6 +45,14 @@ export default class FixtureScore extends Vue {
 
   get fixtureDate() {
     return getFixtureDate(this.fixture);
+  }
+
+  get isFixtureCancelled() {
+    return isFixtureCancelled(this.fixture);
+  }
+
+  get isFixturePlayed() {
+    return isFixturePlayed(this.fixture);
   }
 }
 </script>

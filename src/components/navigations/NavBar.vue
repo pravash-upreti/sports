@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <div>
     <div class="logo-wrapper">
       <img 
         :src="logo" 
@@ -55,7 +55,7 @@
         </router-link>
       </li>
     </ul>
-  </header>
+  </div>
 </template>
 
 <script lang="ts">

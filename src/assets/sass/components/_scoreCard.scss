@@ -1,0 +1,247 @@
+.score-card-list-title {
+  align-items: center;
+  color: $color-green;
+  display: flex;
+  font-size: $font-size--22;
+  justify-content: center;
+  padding: $space--2;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+
+  @include themify($themes) {
+    color: theme-property(color-theme);
+  }
+}
+
+.score-card-list-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+
+  @include m(single) {
+    justify-content: center;
+
+    > .score-card-wrapper,
+    .score-card-link-wrapper {
+      @include mq(md) {
+        width: 100% !important;
+      }
+    }
+  }
+
+  > .score-card-wrapper,
+  .score-card-link-wrapper {
+    width: 100%;
+
+    @include mq(lg) {
+      width: 50%;
+    }
+  }
+
+  .score-card-link-wrapper {
+    cursor: pointer;
+  }
+}
+
+.score-card-wrapper {
+  display: block;
+  padding: $space--2;
+  width: 100%;
+
+  .score-card {
+    align-items: center;
+    background-color: $color-white;
+    border-radius: $space--2;
+    box-shadow: 0 $space--2 $space--4 0 rgba($color-black, 0.2);
+    color: $color-text--score-card;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: $font-size--18;
+    justify-content: center;
+    padding: $space--4 $space--2;
+    transition: all 0.25s linear;
+
+    @include m(desktop) {
+      display: none;
+
+      @include mq(md) {
+        display: flex;
+        font-size: $font-size--24;
+
+        &:hover {
+          box-shadow: 0 $space--4 $space--8 0 rgba($color-black, 0.2);
+          position: relative;
+          transform: scale(1.01);
+        }
+
+        .fixture-team-name-wrapper {
+          align-items: center;
+          display: flex;
+          flex: 1;
+          padding: 0 $space--2;
+
+          .fixture-team-name {
+            flex: 1;
+            text-transform: capitalize;
+          }
+
+          .fixture-team-symbol {
+            display: flex;
+            padding: 0 $space;
+          }
+
+          .home-team {
+            text-align: right;
+          }
+
+          .away-team {
+            text-align: left;
+          }
+
+          .winner {
+            font-weight: 600;
+
+            .participant-logo {
+              border: 4px solid $color-trophy;
+            }
+          }
+
+          .fa-trophy {
+            color: $color-trophy;
+            font-size: $font-size--18;
+          }
+        }
+
+        .fixture-score-wrapper {
+          flex-basis: 250px;
+          font-weight: 700;
+          padding: 0 $space--2;
+          text-align: center;
+
+          .result {
+            font-size: $font-size--56;
+
+            @include m(versus) {
+              font-size: $font-size--36;
+              padding-top: 0;
+            }
+
+            @include m(cancelled) {
+              font-size: $font-size--24;
+              font-weight: 300;
+              padding-top: 0;
+              text-transform: uppercase;
+            }
+          }
+
+          .result-score-wrapper {
+            .result-score {
+              color: $color-score-result;
+              @include themify($themes) {
+                color: theme-property(color-score-result);
+              }
+            }
+          }
+
+          .fixture-round,
+          .fixture-time,
+          .fixture-date {
+            font-weight: 400;
+          }
+
+          .fixture-round,
+          .fixture-time {
+            font-size: $font-size--16;
+            line-height: 95%;
+          }
+
+          .fixture-time {
+            opacity: 0.8;
+          }
+        }
+
+        .participant-logo {
+          height: $profile-logo-width--large;
+          width: $profile-logo-width--large;
+        }
+      }
+    }
+
+    @include m(mobile) {
+      flex-direction: column;
+      font-size: $font-size--18;
+      padding: $space--3;
+
+      .fixture-team-name-wrapper {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        padding: $space;
+        width: 100%;
+
+        &.winner {
+          .participant-logo {
+            border: 2px solid $color-trophy;
+          }
+        }
+
+        .fixture-team-symbol {
+          display: flex;
+        }
+
+        .participant-logo {
+          height: $profile-logo-width;
+          width: $profile-logo-width;
+        }
+
+        .fixture-team-name {
+          flex: 1;
+          padding: 0 $space--2;
+          text-transform: capitalize;
+        }
+
+        .fixture-team-score {
+          align-items: center;
+          color: $color-score-result;
+          display: flex;
+          font-size: $font-size--22;
+          font-weight: 700;
+
+          @include themify($themes) {
+            color: theme-property(color-score-result);
+          }
+
+          .fa-trophy {
+            color: $color-trophy;
+            font-size: $font-size--16;
+            padding: 0 $space;
+          }
+        }
+      }
+
+      .fixture-details {
+        display: flex;
+        flex-flow: row nowrap;
+        font-size: $font-size--14;
+        padding: $space;
+        width: 100%;
+
+        .fixture-details-date {
+          flex-grow: 1;
+          max-width: 155px;
+          min-width: 160px;
+          text-align: right;
+        }
+
+        .fixture-details-round {
+          flex-grow: 1;
+          font-weight: 600;
+          text-align: left;
+        }
+      }
+    }
+  }
+}

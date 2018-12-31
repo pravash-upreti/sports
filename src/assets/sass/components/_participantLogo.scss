@@ -1,0 +1,36 @@
+.participant-logo-wrapper {
+  display: inline-flex;
+  text-align: center;
+
+  .participant-logo {
+    align-items: center;
+    background-color: $color-green;
+    border-radius: 50%;
+    color: $color-white;
+    display: flex;
+    font-weight: normal;
+    height: $profile-logo-width;
+    justify-content: center;
+    margin: 0 $space--2;
+    object-fit: cover;
+    text-transform: uppercase;
+    width: $profile-logo-width;
+
+    @include themify($themes) {
+      background: theme-property(color-theme);
+    }
+  }
+}
+
+.team-grouped {
+  .participant-logo-wrapper {
+    .participant-logo {
+      border: 1px solid $color-white;
+      margin: 0;
+    }
+
+    &:not(:first-child) {
+      margin-left: -$space;
+    }
+  }
+}

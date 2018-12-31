@@ -8,7 +8,7 @@ deploy_dev:
   script:
     - docker build -t registry.lftechnology.com/sports:latest -f ./docker/Dockerfile .
     - docker push registry.lftechnology.com/sports:latest
-    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com
+    - curl -X POST --user $username:$password https://registry.lftechnology.com/deploy/dev.sports.lftechnology.com -vv
 deploy_production:
   tags:
     - shell

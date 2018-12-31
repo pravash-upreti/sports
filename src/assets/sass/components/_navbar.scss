@@ -1,0 +1,32 @@
+.top-navbar {
+  align-items: center;
+  background-color: $color-body;
+  box-sizing: border-box;
+  display: flex;
+  height: $top-navbar-height;
+  text-align: center;
+  width: 100%;
+
+  @include themify($themes) {
+    background-color: theme-property(color-body);
+  }
+
+  @include mq(md) {
+    display: none;
+  }
+
+  .menu-bar {
+    font-size: $font-size--24;
+    width: 50px;
+
+    @include m(right) {
+      width: 50px;
+    }
+  }
+
+  .logo-wrapper {
+    flex-grow: 1;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}

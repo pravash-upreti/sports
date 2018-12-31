@@ -1,9 +1,16 @@
 import dateFns from 'date-fns';
-import { isNull, isUndefined } from 'lodash';
+import { isNull, sortBy, cloneDeep, isUndefined } from 'lodash';
 
+import {
+  TeamInterface,
+  RoundInterface,
+  FixtureInterface,
+  RecentsInterface,
+  CategoryInterface,
+  TournamentDataInterface,
+  TournamentDataResponseInterface,
+} from '../interfaces/interfaces';
 import { checkIfPlayerIsInTeam } from './PlayerService';
-import { CategoryInterface, RoundInterface } from './../interfaces/interfaces';
-import { FixtureInterface, RecentsInterface, TournamentDataResponseInterface } from '@/interfaces/interfaces';
 
 export function getFixtures(fixturesList: FixtureInterface[], limit: number = 0): FixtureInterface[] {
   let fixtures = fixturesList
@@ -71,7 +78,7 @@ export function getFixtureDate(fixture: FixtureInterface) {
   let fTime = 'TBD';
 
   if (fixture.date) {
-    fDate = dateFns.format(fixture.date, 'MMM D');
+    fDate = dateFns.format(fixture.date, 'ddd, MMM D');
     fTime = dateFns.format(fixture.date, 'h:mm A');
   }
 
@@ -150,4 +157,141 @@ export function getRounds(rounds: RoundInterface[] = []) {
   }
 
   return roundsList;
+}
+
+/**
+ * Get formatted tournament data.
+ *
+ * @export
+ * @param {*} data
+ * @param {number} [limit=0]
+ * @returns {TournamentDataInterface}
+ */
+export function getSanitizedData(data: any, limit: number = 0): TournamentDataInterface {
+  return {
+    teams: data.teams,
+    points: data.table || [],
+    stats: data.stats || [],
+    details: data.details,
+    allFixtures: data.fixtures,
+    statuses: data.statuses || [],
+    results: getResults(data.fixtures),
+    recents: getRecentFixtures(data, limit),
+    fixtures: getFixtures(data.fixtures),
+    rounds: getRounds(data.rounds) || [],
+    categories: getCategories(data.categories) || []
+  };
+}
+
+/**
+ * Filter data by different params.
+ *
+ * @export
+ * @param {*} data
+ * @param {*} params
+ * @returns {*}
+ */
+export function getFilteredData(data: any, params: any) {
+  const filteredData = data;
+
+  // Filter by category
+  if (params.category && params.category.id >= 0) {
+    filteredData.allFixtures = filterFixturesByCategory(filteredData.allFixtures, params.category);
+    filteredData.fixtures = filterFixturesByCategory(filteredData.fixtures, params.category);
+    filteredData.results = filterFixturesByCategory(filteredData.results, params.category);
+    filteredData.teams = filterTeamsByCategory(filteredData.teams, params.category);
+    filteredData.recents = filterRecentsByCategory(filteredData.recents, params.category);
+  }
+
+  return filteredData;
+}
+
+/**
+ * Check if fixture is played.
+ *
+ * @export
+ * @param {FixtureInterface} fixture
+ * @returns {boolean}
+ */
+export function isFixturePlayed(fixture: FixtureInterface) {
+  return fixture.status.toLowerCase() === 'played';
+}
+
+/**
+ * Check if fixture is cancelled.
+ *
+ * @export
+ * @param {FixtureInterface} fixture
+ * @returns {boolean}
+ */
+export function isFixtureCancelled(fixture: FixtureInterface) {
+  return fixture.status.toLowerCase() === 'cancelled';
+}
+
+/**
+ * Filter fixtures by category.
+ *
+ * @export
+ * @param {FixtureInterface[]} fixtures
+ * @param {CategoryInterface} category
+ * @returns {FixtureInterface[]}
+ */
+function filterFixturesByCategory(fixtures: FixtureInterface[], category: CategoryInterface) {
+  if (category.id !== 0) {
+    return fixtures.filter((fixture) => fixture.categoryType.toLowerCase() === category.description.toLowerCase());
+  }
+
+  return fixtures;
+}
+
+/**
+ * Filter teams by category.
+ *
+ * @export
+ * @param {TeamInterface[]} teams
+ * @param {CategoryInterface} category
+ * @returns {TeamInterface[]}
+ */
+function filterTeamsByCategory(teams: TeamInterface[], category: CategoryInterface) {
+  let teamsList = cloneDeep(teams);
+
+  if (category && category.id !== 0) {
+    teamsList = teams.filter((team) => team.category.toLowerCase() === category.description.toLowerCase());
+  }
+
+  return sortBy(teamsList, ['category', 'name']);
+}
+
+/**
+ * Fetch winners list by category.
+ *
+ * @param {any[]} winners
+ * @param {CategoryInterface} category
+ * @returns {*}
+ */
+function filterWinnersByCategory(winners: any[], category: CategoryInterface) {
+  if (category && category.id !== 0) {
+    return winners.filter((winner) => winner.category.toLowerCase() === category.description.toLowerCase());
+  }
+
+  return winners;
+}
+
+/**
+ * Filter recents info by category.
+ *
+ * @param {RecentsInterface} recents
+ * @param {CategoryInterface} category
+ * @returns {RecentsInterface}
+ */
+function filterRecentsByCategory(recents: RecentsInterface, category: CategoryInterface) {
+  const updatedRecents = cloneDeep(recents);
+
+  if (category && category.id !== 0) {
+    updatedRecents.winners = filterWinnersByCategory(recents.winners, category);
+    updatedRecents.results = filterFixturesByCategory(recents.results, category);
+    updatedRecents.fixtures = filterFixturesByCategory(recents.fixtures, category);
+  }
+
+  return updatedRecents;
 }

@@ -1,28 +1,21 @@
 // Variables
 // ==========================================================================
 
-$font-family-primary: "IBM Plex Sans Condensed", sans-serif;
-$color-body: #fafafa;
-$color-text: #4f4f4f;
+$font-family-primary: 'Titillium Web', sans-serif;
+
+// Colors
+$color-text: #fff;
+$color-black: #000;
+$color-body: #18084d;
 $color-link: #0645ad;
-$color-title: #737373;
-$color-background-body: #fff;
-$color-background-gray: #fbfbfb;
-$color-background-header: #e5e5e5;
-$color-background-sub-header1: #eee;
-$color-background-sub-header2: #f5f5f5;
-$color-background-main-wrapper: #f9f9f9;
-$color-nav-link-text: #737373;
-$color-green: #2ecc71;
-$color-blue: #102b7b;
-$color-grey: #808080;
-$color-border: #e8e8e8;
-$color-text-dark: #666;
-$color-text-darker: #555;
-$color-light-grey: #efefef;
-$color-lighter-grey: #aaa;
-$color-grey-cool: #eceef5;
-$color-grey-cool-2: #d4d9e8;
+$color-white: #fff;
+$color-red: #d24d57;
+$color-green: #00d166;
+$color-trophy: #ffc82c;
+$color-score-result: #8c269f;
+$color-link--active: #70c5f9;
+$color-text--score-card: #717171;
+$color-content: linear-gradient(135deg, #481faa 0%, #18084d 100%); //
 
 // Typography
 $font-size-base: 14px;
@@ -37,30 +30,44 @@ $font-size-h4: ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-h5: $font-size-base;
 $font-size-h6: ceil(($font-size-base * 0.85)) !default; // ~12px
 
-$font-size--title: 22px;
-$font-size--xlarge: 24px;
-$font-size--xxlarge: 36px;
-$font-size--xxxlarge: 48px;
-$font-size--xxxxlarge: 56px;
+$font-size--12: 12px;
+$font-size--14: 14px;
+$font-size--16: 16px;
+$font-size--18: 18px;
+$font-size--22: 22px;
+$font-size--24: 24px;
+$font-size--28: 28px;
+$font-size--36: 36px;
+$font-size--48: 48px;
+$font-size--56: 56px;
 
-// Colors
-$red: #d24d57;
-$gray: #c7c7c7;
-$blue: #3a539b;
-$white: #fff;
-$black: #000;
-$green: #2ecc71;
-$yellow: #f7ca18;
-$gold: #ffd700;
-$silver: #c0c0c0;
+// Sidebar
+$sidebar-width--mobile: 260px;
+$sidebar-width--desktop: 300px;
+$font-size--sidebar-menu: 20px;
+$font-size--sidebar-submenu: 18px;
 
-//theme-colors
-$theme-red: #ff9393;
-$theme-blue: #93d8ff;
+// Top navbar
+$top-navbar-height: 64px;
 
-// Header and Footer
-$color-nav-link: #102b7b;
-$color-nav-link-secondary: #2ecc71;
+// Sub header
+$sub-header-border-color: rgba(112, 197, 249, 0.6);
+
+// Spacing
+$space: 4px;
+$space--2: 2 * $space;
+$space--3: 3 * $space;
+$space--4: 4 * $space;
+$space--6: 6 * $space;
+$space--8: 8 * $space;
+$space--9: 9 * $space;
+$space--12: 12 * $space;
+
+// Participant Logo
+$profile-logo-width: 24px;
+$profile-logo-width--small: $font-size--18;
+$profile-logo-width--medium: $font-size--48;
+$profile-logo-width--large: $font-size--56;
 
 //Breakpoints
 $sm-device: 576px;
