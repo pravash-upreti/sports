@@ -30,6 +30,20 @@ export default [
       {
         name: 2018,
         route: '/table-tennis/2018'
+      },
+      {
+        name: 2017,
+        route: '/table-tennis/2017'
+      }
+    ]
+  },
+  {
+    name: 'Chess',
+    icon: 'fas fa-chess',
+    seasons: [
+      {
+        name: 2018,
+        route: '/chess/2018'
       }
     ]
   },

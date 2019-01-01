@@ -51,6 +51,14 @@ export const TABLE_TENNIS_ROUTES = {
 };
 
 // Order of route declaration appears on the UI.
+export const CHESS_ROUTES = {
+  HOME: `${CHESS}/`,
+  RESULTS: `${CHESS}/results`,
+  FIXTURES: `${CHESS}/fixtures`,
+  TEAMS: `${CHESS}/teams`
+};
+
+// Order of route declaration appears on the UI.
 export const DASHAIN_CUP_ROUTES = {
   HOME: `${DASHAIN_CUP}/`,
   RESULTS: `${DASHAIN_CUP}/results`,
