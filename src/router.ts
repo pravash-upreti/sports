@@ -5,6 +5,7 @@ import {
   BASE_ROUTES,
   DOTA_ROUTES,
   FIFA_ROUTES,
+  CHESS_ROUTES,
   FUTSAL_ROUTES,
   DASHAIN_CUP_ROUTES,
   TABLE_TENNIS_ROUTES,
@@ -14,6 +15,7 @@ import {
 
 import Dota from '@/views/dota/Dota.vue';
 import Fifa from '@/views/fifa/Fifa.vue';
+import Chess from '@/views/chess/Chess.vue';
 import Futsal from '@/views/futsal/Futsal.vue';
 import Teams from '@/views/common/teams/Teams.vue';
 import DotaPoints from '@/views/dota/DotaPoints.vue';
@@ -81,6 +83,47 @@ const router = new Router({
         {
           path: '*',
           redirect: TABLE_TENNIS_ROUTES.HOME
+        }
+      ]
+    },
+    {
+      path: BASE_ROUTES.CHESS,
+      component: Chess,
+      meta: {
+        title: 'Chess'
+      },
+      children: [
+        {
+          path: CHESS_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Chess - Home'
+          }
+        },
+        {
+          path: CHESS_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Chess - Fixtures'
+          }
+        },
+        {
+          path: CHESS_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Chess - Results'
+          }
+        },
+        {
+          path: CHESS_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Chess - Teams'
+          }
+        },
+        {
+          path: '*',
+          redirect: CHESS_ROUTES.HOME
         }
       ]
     },
