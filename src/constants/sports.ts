@@ -1,6 +1,7 @@
 export default {
   DOTA: 'dota2',
   FIFA: 'fifa18',
+  CHESS: 'chess',
   FUTSAL: 'futsal',
   DASHAIN_CUP: 'dashain-cup',
   CARROM_BOARD: 'carrom-board',

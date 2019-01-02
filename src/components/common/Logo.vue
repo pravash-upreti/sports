@@ -1,6 +1,6 @@
 <template>
   <div class="logo-wrapper">
-    <img :src="logo" class="logo" alt="sports">
+    <a href="/"><img :src="logo" class="logo" alt="sports"></a>
   </div>
 </template>
 

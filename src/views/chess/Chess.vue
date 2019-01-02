@@ -1,19 +1,88 @@
 <template>
-  <div class="container text-center">
-    <h1>Chess</h1>
-    <p>Under construction...</p>
+  <loading-icon v-if="loadingData" />
+  <div v-else-if="error" class="container">
+    <div class="alert alert-error">Unable to load data. Please try again later.</div>
+  </div>
+  <div v-else class="container">
+    <sport-header
+      :title="title"
+      :categories="data.categories"
+      :rounds="data.rounds"
+      :routes="routes"
+      :selected-sport="selectedSport"
+    />
+    <div class="tournament-content-wrapper">
+      <router-view :data="data" />
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import { cloneDeep } from 'lodash';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 
-import EventBus from '@/events/eventBus';
+import sports from '@/constants/sports';
+import { CHESS_ROUTES } from '@/constants/routes';
+import { getFilteredData } from '@/services/FixtureService';
+import { getCategoryById } from '@/services/CategoryService';
+import { getSanitizedData } from '@/services/FixtureService';
+import LoadingIcon from '@/components/common/LoadingIcon.vue';
+import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 
-@Component
+@Component({
+  components: { SportHeader, LoadingIcon }
+})
 export default class Chess extends Vue {
+  @Prop() public updateActives!: any;
+  @Prop() public selectedSport!: any;
+  @Prop() public loadingData!: boolean;
+  @Prop() public getTournamentData!: any;
+
+  public data: any = {};
+  public fixedData: any = {};
+  public error: boolean = false;
+  public routes: object = CHESS_ROUTES;
+
+  @Watch('loadingData', { immediate: true, deep: true })
+  public onLoadingDataChanged(newVal: boolean, oldVal: boolean) {
+    if (newVal !== oldVal) {
+      this.fetchData();
+    }
+  }
+
   public created() {
-    EventBus.$emit('change-logo-title', 'Chess');
+    this.updateActiveSport();
+  }
+
+  public updated() {
+    this.updateActiveSport();
+  }
+
+  public updateActiveSport() {
+    const sport = sports.CHESS;
+    const season = this.$route.params.season;
+
+    this.updateActives(sport, season);
+  }
+
+  public fetchData() {
+    const sport = sports.CHESS;
+    const season = this.$route.params.season;
+    const tournamentData = this.getTournamentData(sport, season);
+
+    if (tournamentData && tournamentData.status) {
+      this.error = false;
+      this.data = getSanitizedData(tournamentData.data);
+      this.fixedData = cloneDeep(this.data);
+
+      return;
+    }
+
+    this.error = true;
+  }
+
+  get title(): string {
+    return `Chess ${this.$route.params.season}`;
   }
 }
 </script>
