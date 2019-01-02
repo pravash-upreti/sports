@@ -10,10 +10,9 @@
       :rounds="data.rounds"
       :routes="routes"
       :selected-sport="selectedSport"
-      :update-data-by-category-id="updateDataByCategoryId"
     />
     <div class="tournament-content-wrapper">
-      <router-view :data="data" :fixture-link="fixtureLink"/>
+      <router-view :data="data" />
     </div>
   </div>
 </template>
