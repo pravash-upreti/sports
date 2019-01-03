@@ -39,6 +39,12 @@
       padding: $space--9;
       width: $sidebar-width--desktop;
     }
+
+    &::-webkit-scrollbar {
+      background: rgba($color-black, 0.3);
+      border-radius: $space--2;
+      width: $space;
+    }
   }
 
   .sidebar-menu {
