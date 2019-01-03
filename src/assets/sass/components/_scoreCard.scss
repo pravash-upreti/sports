@@ -183,8 +183,13 @@
         width: 100%;
 
         &.winner {
+          .fixture-team-symbol {
+            margin-left: -2px;
+          }
+
           .participant-logo {
             border: 2px solid $color-trophy;
+            box-sizing: content-box;
           }
         }
 
@@ -199,7 +204,7 @@
 
         .fixture-team-name {
           flex: 1;
-          padding: 0 $space--2;
+          padding: $space--2;
           text-transform: capitalize;
         }
 

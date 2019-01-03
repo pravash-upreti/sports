@@ -55,10 +55,10 @@ export default class ScoreCard extends Vue {
 
   get isHomeTeamWinner() {
     if (isFixturePlayed(this.fixture)) {
-      if (this.fixture.homeTeamScore && this.fixture.awayTeamScore) {
-        return this.fixture.homeTeamScore > this.fixture.awayTeamScore;
-      } else if (this.fixture.winnerTeam) {
+      if (this.fixture.winnerTeam) {
         return this.fixture.winnerTeam.id === this.fixture.homeTeam.id;
+      } else {
+        return this.fixture.homeTeamScore > this.fixture.awayTeamScore;
       }
     }
 
@@ -67,10 +67,10 @@ export default class ScoreCard extends Vue {
 
   get isAwayTeamWinner() {
     if (isFixturePlayed(this.fixture)) {
-      if (this.fixture.homeTeamScore && this.fixture.awayTeamScore) {
-        return this.fixture.awayTeamScore > this.fixture.homeTeamScore;
-      } else if (this.fixture.winnerTeam) {
+      if (this.fixture.winnerTeam) {
         return this.fixture.winnerTeam.id === this.fixture.awayTeam.id;
+      } else {
+        return this.fixture.awayTeamScore > this.fixture.homeTeamScore;
       }
     }
 
