@@ -46,10 +46,12 @@
 
       .participant-logo {
         flex-direction: row;
+        font-size: $profile-logo-width--large;
         height: $profile-logo-width--large;
         width: $profile-logo-width--large;
 
         @include mq(xl) {
+          font-size: $profile-logo-width--large-desktop;
           height: $profile-logo-width--large-desktop;
           width: $profile-logo-width--large-desktop;
         }
