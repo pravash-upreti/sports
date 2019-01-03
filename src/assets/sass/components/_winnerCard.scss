@@ -1,0 +1,58 @@
+.winner-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include mq(md) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.winner-card {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: $space--2;
+
+  @include mq(lg) {
+    padding: $space--4;
+  }
+
+  @include mq(xl) {
+    padding: $space--8;
+  }
+
+  .winner-card-category-name {
+    font-size: $font-size--12;
+    padding: $space--2;
+  }
+
+  .winner-card-name {
+    font-size: $font-size--24;
+    padding: $space--4;
+  }
+
+  .winner-card-participant-logo-wrapper {
+    .participant-logo-wrapper {
+      &:not(:first-child) {
+        margin-left: -$space--2;
+
+        @include mq(xl) {
+          margin-left: -$space--4;
+        }
+      }
+
+      .participant-logo {
+        flex-direction: row;
+        height: $profile-logo-width--large;
+        width: $profile-logo-width--large;
+
+        @include mq(xl) {
+          height: $profile-logo-width--large-desktop;
+          width: $profile-logo-width--large-desktop;
+        }
+      }
+    }
+  }
+}

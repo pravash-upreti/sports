@@ -12,6 +12,7 @@ $color-white: #fff;
 $color-red: #d24d57;
 $color-green: #00d166;
 $color-trophy: #ffc82c;
+$color-trophy--silver: #ecf0f1;
 $color-score-result: #8c269f;
 $color-link--active: #70c5f9;
 $color-text--score-card: #717171;
@@ -67,7 +68,8 @@ $space--12: 12 * $space;
 $profile-logo-width: 28px;
 $profile-logo-width--small: $font-size--18;
 $profile-logo-width--medium: $font-size--48;
-$profile-logo-width--large: $font-size--56;
+$profile-logo-width--large: 100px;
+$profile-logo-width--large-desktop: 200px;
 
 //Breakpoints
 $sm-device: 576px;

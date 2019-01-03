@@ -1,0 +1,30 @@
+<template>
+  <div v-if="winner.name" class="winner-card">
+    <h3 class="winner-card-category-name">{{ winner.category }}</h3>
+    <div :class="['winner-card-participant-logo-wrapper', isGrouped ? 'team-grouped' : '']">
+      <participant-logo
+        v-for="(player, index) in winner.players"
+        :key="index"
+        :participant="player"
+      />
+    </div>
+    <h2 class="winner-card-name">{{ winner.name }}</h2>
+  </div>
+</template>
+
+<script lang="ts">
+import { Vue, Prop, Component } from 'vue-property-decorator';
+
+import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+
+@Component({
+  components: { ParticipantLogo }
+})
+export default class WinnerCard extends Vue {
+  @Prop({ default: { name: '' } }) private winner!: any;
+
+  get isGrouped(): boolean {
+    return !!(this.winner && this.winner.players && this.winner.players.length);
+  }
+}
+</script>
