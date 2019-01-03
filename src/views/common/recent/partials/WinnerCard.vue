@@ -1,6 +1,6 @@
 <template>
   <div v-if="winner.name" class="winner-card">
-    <h3 class="winner-card-category-name">{{ winner.category }}</h3>
+    <h3 v-if="showCategory" class="winner-card-category-name">{{ winner.category }}</h3>
     <div :class="['winner-card-participant-logo-wrapper', isGrouped ? 'team-grouped' : '']">
       <participant-logo
         v-for="(player, index) in winner.players"
@@ -22,6 +22,7 @@ import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 })
 export default class WinnerCard extends Vue {
   @Prop({ default: { name: '' } }) private winner!: any;
+  @Prop({ default: false }) private showCategory!: boolean;
 
   get isGrouped(): boolean {
     return !!(this.winner && this.winner.players && this.winner.players.length);
