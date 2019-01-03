@@ -33,10 +33,10 @@ import { TeamInterface, PlayerInterface } from '@/interfaces/interfaces';
 
 @Component
 export default class ParticipantLogo extends Vue {
-  @Prop() private participant!: PlayerInterface|TeamInterface;
-  @Prop() private customStyles!: object;
-  @Prop() private hideImage!: boolean;
   @Prop() private showLarge!: boolean;
+  @Prop() private customStyles!: object;
+  @Prop({ default: false }) private hideImage!: boolean;
+  @Prop() private participant!: PlayerInterface|TeamInterface;
 
   get classObject() {
     return Object.assign(
