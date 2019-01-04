@@ -7,6 +7,7 @@
           v-for="(winner, index) in winners"
           :key="`winner-${index}`"
           :winner="winner.winner"
+          :is-winner="true"
           :show-category="twoOrMoreWnners"
         />
       </div>
@@ -18,6 +19,7 @@
           v-for="(winner, index) in winners"
           :key="`runner-up-${index}`"
           :winner="winner.runnerUp"
+          :is-winner="false"
           :show-category="twoOrMoreWnners"
         />
       </div>

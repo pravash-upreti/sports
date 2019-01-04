@@ -51,6 +51,25 @@
 
   .winner-card-participant-logo-wrapper {
     padding: $space;
+    position: relative;
+
+    &.team-winner {
+      .winner-card-medal {
+        color: $color-trophy;
+      }
+    }
+
+    .winner-card-medal {
+      bottom: $space--2;
+      color: $color-trophy--silver;
+      font-size: $font-size--22;
+      position: absolute;
+      right: 0;
+
+      @include mq(lg) {
+        font-size: $font-size--28;
+      }
+    }
 
     .participant-logo-wrapper {
       &:not(:first-child) {
