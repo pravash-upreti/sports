@@ -1,10 +1,8 @@
 <template>
   <div>
     <div>
-      <h2 class="score-card-list-title">
-        <i class="fa fa-trophy winner-trophy" />WINNER{{ twoOrMoreWnners ? 'S' : ''}}<i class="fa fa-trophy winner-trophy" />
-      </h2>
-      <div class="winner-card-wrapper">
+      <h2 class="score-card-list-title">WINNER{{ twoOrMoreWnners ? 'S' : ''}}</h2>
+      <div class="winner-card-list-wrapper">
         <winner-card
           v-for="(winner, index) in winners"
           :key="`winner-${index}`"
@@ -14,10 +12,8 @@
       </div>
     </div>
     <div>
-      <h2 class="score-card-list-title runner-up-title">
-        <i class="fa fa-trophy runner-up-trophy" />RUNNER-UP{{ twoOrMoreWnners ? 'S' : '' }}<i class="fa fa-trophy runner-up-trophy" />
-      </h2>
-      <div class="winner-card-wrapper">
+      <h2 class="score-card-list-title runner-up-title">RUNNER-UP{{ twoOrMoreWnners ? 'S' : '' }}</h2>
+      <div class="winner-card-list-wrapper">
         <winner-card
           v-for="(winner, index) in winners"
           :key="`runner-up-${index}`"
