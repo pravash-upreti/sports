@@ -40,7 +40,7 @@
   }
 
   .runner-up-trophy {
-    color: $color-trophy;
+    color: $color-trophy--silver;
   }
 
   .winner-category {
@@ -49,10 +49,10 @@
   }
 
   .score-card-list-title {
-    padding: $space--4 0 $space;
+    padding: $space;
 
-    &:first-child {
-      padding-top: $space;
+    &.runner-up-title {
+      padding-top: $space--12;
     }
   }
 }
