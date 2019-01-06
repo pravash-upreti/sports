@@ -26,7 +26,7 @@ export default class Fixtures extends Vue {
   @Prop() private fixtureLink!: string;
 
   get fixtures(): FixtureInterface[] {
-    return this.data && this.data.fixtures && sortFixturesByDate(this.data.fixtures, 'DESC') || [];
+    return this.data && this.data.fixtures && sortFixturesByDate(this.data.fixtures) || [];
   }
 }
 </script>
