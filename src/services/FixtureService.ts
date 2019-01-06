@@ -295,3 +295,24 @@ function filterRecentsByCategory(recents: RecentsInterface, category: CategoryIn
 
   return updatedRecents;
 }
+
+/**
+ * Sort fixtures by date.
+ *
+ * @exports
+ * @param fixtures
+ */
+export function sortFixturesByDate(fixtures: FixtureInterface[], order: string = 'ASC') {
+  const sortedFixtures = fixtures.sort((a, b) => {
+    const dateA: any = new Date(a.date);
+    const dateB: any = new Date(b.date);
+
+    return dateA - dateB;
+  });
+
+  if (order.toLowerCase() === 'desc') {
+    return sortedFixtures.reverse();
+  }
+
+  return sortedFixtures;
+}

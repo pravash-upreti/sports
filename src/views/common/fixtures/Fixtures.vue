@@ -1,18 +1,21 @@
 <template>
   <div class="container">
-    <div v-if="!data.fixtures.length">
+    <div v-if="!fixtures.length">
       <p class="alert">All fixtures have been played. Please checkout the results section.</p>
     </div>
     <div v-else>
-      <p v-if="!data.fixtures.length" class="alert">No fixtures found.</p>
-      <score-cards-list :fixtures="data.fixtures" :fixture-link="fixtureLink"/>
+      <p v-if="!fixtures.length" class="alert">No fixtures found.</p>
+      <score-cards-list :fixtures="fixtures" :fixture-link="fixtureLink"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { sortBy } from 'lodash';
 import { Vue, Prop, Component } from 'vue-property-decorator';
 
+import { FixtureInterface } from '@/interfaces/interfaces';
+import { sortFixturesByDate } from '@/services/FixtureService';
 import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
 
 @Component({
@@ -21,5 +24,9 @@ import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
 export default class Fixtures extends Vue {
   @Prop() private data!: any;
   @Prop() private fixtureLink!: string;
+
+  get fixtures(): FixtureInterface[] {
+    return this.data && this.data.fixtures && sortFixturesByDate(this.data.fixtures, 'DESC') || [];
+  }
 }
 </script>
