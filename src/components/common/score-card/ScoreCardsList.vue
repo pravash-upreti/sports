@@ -1,7 +1,7 @@
 <template>
   <div v-if="fixtures.length" :class="scoreCardListWrapperClass">
     <rounds-filter
-      v-if="rounds.length > 1"
+      v-if="rounds && rounds.length"
       :rounds="rounds"
       :selected-round="selectedRound"
       :change-selected-round="changeSelectedRound"
@@ -33,12 +33,12 @@ export default class ScoreCardList extends Vue {
   public title!: string;
   @Prop()
   public fixtureLink!: string;
-  @Prop({ default: [] })
+  @Prop({ default: () => [] })
   public rounds!: RoundInterface[];
-  @Prop({ default: [] })
+  @Prop({ default: () => [] })
   public fixtures!: FixtureInterface[];
 
-  public selectedRound: RoundInterface = this.rounds[0];
+  public selectedRound: RoundInterface | null = (this.rounds && this.rounds.length && this.rounds[0]) || null;
 
   public changeSelectedRound(round: RoundInterface) {
     this.selectedRound = round;
@@ -46,14 +46,16 @@ export default class ScoreCardList extends Vue {
 
   get fixturesList(): FixtureInterface[] {
     // For all rounds, return all fixtures.
-    if (this.selectedRound.id === 0) {
-      return this.fixtures;
+    if (this.selectedRound && this.selectedRound.id !== 0) {
+      return filter(
+        cloneDeep(this.fixtures),
+        (fixture) => (
+          fixture.round.toLowerCase() === (this.selectedRound && this.selectedRound.description.toLowerCase())
+        )
+      );
     }
 
-    return filter(
-      cloneDeep(this.fixtures),
-      (fixture) => fixture.round.toLowerCase() === this.selectedRound.description.toLowerCase()
-    );
+    return this.fixtures;
   }
 
   get scoreCardListWrapperClass() {
