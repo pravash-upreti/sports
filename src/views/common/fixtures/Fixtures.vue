@@ -14,9 +14,9 @@
 import { sortBy } from 'lodash';
 import { Vue, Prop, Component } from 'vue-property-decorator';
 
-import { sortFixturesByDate } from '@/services/FixtureService';
 import { FixtureInterface, RoundInterface } from '@/interfaces/interfaces';
 import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
+import { sortFixturesByDate, getFixturesRounds } from '@/services/FixtureService';
 
 @Component({
   components: { ScoreCardsList }
@@ -30,7 +30,7 @@ export default class Fixtures extends Vue {
   }
 
   get rounds(): RoundInterface[] {
-    return (this.data && this.data.rounds) || [];
+    return (this.data && this.data.rounds && getFixturesRounds(this.fixtures, this.data.rounds)) || [];
   }
 }
 </script>
