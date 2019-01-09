@@ -41,7 +41,7 @@ export default class FixtureTeamMobile extends Vue {
   }
 
   get isGrouped(): boolean {
-    return !!(this.team && this.team.players && this.team.players.length);
+    return !!(this.teamInfo && this.teamInfo.players && this.teamInfo.players.length);
   }
 
   get teamCustomStyles(): object {
@@ -63,7 +63,13 @@ export default class FixtureTeamMobile extends Vue {
       return {
         id: 0,
         name: 'TBD',
-        category: ''
+        category: '',
+        players: [
+          {
+            id: 0,
+            name: 'TBD'
+          }
+        ]
       };
     }
 

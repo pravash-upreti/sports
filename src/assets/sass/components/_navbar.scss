@@ -11,7 +11,7 @@
     background-color: theme-property(color-body);
   }
 
-  @include mq(md) {
+  @include mq(lg) {
     display: none;
   }
 

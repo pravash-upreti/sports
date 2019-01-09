@@ -4,12 +4,10 @@
       <li
         v-for="(round, index) in rounds"
         :key="index"
+        :title="round.description"
         :class="activeClassObject(round)"
         @click="handleChangeSelectedRound(round)"
-      >
-        <span class="rounds-filter-label">{{ round.shortName }}</span>
-        <span class="rounds-filter-label--desktop">{{ round.description }}</span>
-      </li>
+      >{{ round.shortName }}</li>
     </ul>
   </div>
 </template>
@@ -20,9 +18,12 @@ import { Prop, Component, Vue } from 'vue-property-decorator';
 
 @Component
 export default class RoundsFilter extends Vue {
-  @Prop() public rounds!: RoundInterface[];
-  @Prop() public changeSelectedRound!: any;
-  @Prop() public selectedRound!: RoundInterface;
+  @Prop()
+  public rounds!: RoundInterface[];
+  @Prop()
+  public changeSelectedRound!: any;
+  @Prop()
+  public selectedRound!: RoundInterface;
 
   private handleChangeSelectedRound(round: RoundInterface) {
     this.changeSelectedRound(round);
@@ -30,7 +31,8 @@ export default class RoundsFilter extends Vue {
 
   private activeClassObject(round: RoundInterface) {
     return {
-      active: round.id === this.selectedRound.id
+      'rounds-filter': true,
+      'active': round.id === this.selectedRound.id
     };
   }
 }
