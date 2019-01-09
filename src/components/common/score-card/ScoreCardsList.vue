@@ -61,7 +61,7 @@ export default class ScoreCardList extends Vue {
   get scoreCardListWrapperClass() {
     return {
       'score-card-list-wrapper': true,
-      'score-card-list-wrapper--single': this.fixtures.length === 1
+      'score-card-list-wrapper--single': this.fixturesList.length === 1
     };
   }
 }
