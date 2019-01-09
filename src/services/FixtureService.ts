@@ -232,10 +232,12 @@ export function isFixtureCancelled(fixture: FixtureInterface) {
 /**
  * Sort fixtures by date.
  *
- * @exports
- * @param fixtures
+ * @export
+ * @param {FixtureInterface[]} fixtures
+ * @param {string} [order='ASC']
+ * @returns {FixtureInterface[]}
  */
-export function sortFixturesByDate(fixtures: FixtureInterface[], order: string = 'ASC') {
+export function sortFixturesByDate(fixtures: FixtureInterface[], order: string = 'ASC'): FixtureInterface[] {
   const sortedFixtures = fixtures.sort((a, b) => {
     const dateA: any = new Date(a.date);
     const dateB: any = new Date(b.date);
