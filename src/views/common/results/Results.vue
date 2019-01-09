@@ -5,7 +5,7 @@
     </div>
     <div v-else>
       <p v-if="!fixtures.length" class="alert">No results found.</p>
-      <score-cards-list v-else :fixtures="fixtures" :fixture-link="fixtureLink"/>
+      <score-cards-list v-else :fixtures="fixtures" :rounds="rounds" :fixture-link="fixtureLink"/>
     </div>
   </div>
 </template>
@@ -14,19 +14,25 @@
 import { sortBy } from 'lodash';
 import { Vue, Prop, Component } from 'vue-property-decorator';
 
-import { FixtureInterface } from '@/interfaces/interfaces';
 import { sortFixturesByDate } from '@/services/FixtureService';
+import { FixtureInterface, RoundInterface } from '@/interfaces/interfaces';
 import ScoreCardsList from '@/components/common/score-card/ScoreCardsList.vue';
 
 @Component({
   components: { ScoreCardsList }
 })
 export default class Results extends Vue {
-  @Prop() private data!: any;
-  @Prop() private fixtureLink!: string;
+  @Prop()
+  private data!: any;
+  @Prop()
+  private fixtureLink!: string;
 
   get fixtures(): FixtureInterface[] {
-    return this.data && this.data.results && sortFixturesByDate(this.data.results, 'DESC') || [];
+    return (this.data && this.data.results && sortFixturesByDate(this.data.results, 'DESC')) || [];
+  }
+
+  get rounds(): RoundInterface[] {
+    return (this.data && this.data.rounds) || [];
   }
 }
 </script>
