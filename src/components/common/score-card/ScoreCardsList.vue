@@ -8,7 +8,7 @@
     />
     <h2 v-if="title && title.length" class="score-card-list-title">{{ title }}</h2>
     <ScoreCardWrapper
-      v-for="(fixture, index) in fixtures"
+      v-for="(fixture, index) in fixturesList"
       :fixture="fixture"
       :fixture-link="fixtureLink"
       :key="`score-card-wrapper-${index}`"
@@ -17,6 +17,7 @@
 </template>
 
 <script lang="ts">
+import { filter, cloneDeep } from 'lodash';
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import { getFixturesRounds } from '@/services/FixtureService';
@@ -34,13 +35,25 @@ export default class ScoreCardList extends Vue {
   public fixtureLink!: string;
   @Prop({ default: [] })
   public rounds!: RoundInterface[];
-  @Prop()
+  @Prop({ default: [] })
   public fixtures!: FixtureInterface[];
 
   public selectedRound: RoundInterface = this.rounds[0];
 
   public changeSelectedRound(round: RoundInterface) {
     this.selectedRound = round;
+  }
+
+  get fixturesList(): FixtureInterface[] {
+    // For all rounds, return all fixtures.
+    if (this.selectedRound.id === 0) {
+      return this.fixtures;
+    }
+
+    return filter(
+      cloneDeep(this.fixtures),
+      (fixture) => fixture.round.toLowerCase() === this.selectedRound.description.toLowerCase()
+    );
   }
 
   get scoreCardListWrapperClass() {
