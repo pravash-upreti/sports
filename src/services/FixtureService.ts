@@ -269,6 +269,18 @@ export function getFixturesRounds(fixtures: FixtureInterface[], rounds: RoundInt
     }
   });
 
+  if (distinctRounds.length > 1) {
+    const allRound: RoundInterface = {
+      id: 0,
+      description: 'All Rounds',
+      sortOrder: 0,
+      shortName: 'All'
+    };
+
+    distinctRounds.push(allRound);
+  }
+
+
   return sortBy(distinctRounds, ['sortOrder']);
 }
 
