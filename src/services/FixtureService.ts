@@ -1,5 +1,5 @@
 import dateFns from 'date-fns';
-import { isNull, sortBy, cloneDeep, isUndefined } from 'lodash';
+import { some, find, isNull, sortBy, forEach, cloneDeep, isUndefined } from 'lodash';
 
 import {
   TeamInterface,
@@ -228,6 +228,64 @@ export function isFixtureCancelled(fixture: FixtureInterface) {
   return fixture.status.toLowerCase() === 'cancelled';
 }
 
+
+/**
+ * Sort fixtures by date.
+ *
+ * @export
+ * @param {FixtureInterface[]} fixtures
+ * @param {string} [order='ASC']
+ * @returns {FixtureInterface[]}
+ */
+export function sortFixturesByDate(fixtures: FixtureInterface[], order: string = 'ASC'): FixtureInterface[] {
+  const sortedFixtures = fixtures.sort((a, b) => {
+    const dateA: any = new Date(a.date);
+    const dateB: any = new Date(b.date);
+
+    return dateA - dateB;
+  });
+
+  if (order.toLowerCase() === 'desc') {
+    return sortedFixtures.reverse();
+  }
+
+  return sortedFixtures;
+}
+
+/**
+ * Get list of rounds in fixtures.
+ *
+ * @export
+ * @param {FixtureInterface[]} fixtures
+ * @param {RoundInterface[]} rounds
+ * @returns {RoundInterface[]}
+ */
+export function getFixturesRounds(fixtures: FixtureInterface[], rounds: RoundInterface[]): RoundInterface[] {
+  const distinctRounds: RoundInterface[] = [];
+
+  forEach(fixtures, (fixture) => {
+    const round = findRoundByName(rounds, fixture.round);
+
+    if (round && !some(distinctRounds, round)) {
+      distinctRounds.push(round);
+    }
+  });
+
+  if (distinctRounds.length > 1) {
+    const allRound: RoundInterface = {
+      id: 0,
+      description: 'All Rounds',
+      sortOrder: 0,
+      shortName: 'All'
+    };
+
+    distinctRounds.push(allRound);
+  }
+
+
+  return sortBy(distinctRounds, ['sortOrder']);
+}
+
 /**
  * Filter fixtures by category.
  *
@@ -297,22 +355,12 @@ function filterRecentsByCategory(recents: RecentsInterface, category: CategoryIn
 }
 
 /**
- * Sort fixtures by date.
+ * Find round by name
  *
- * @exports
- * @param fixtures
+ * @param {RoundInterface[]} rounds
+ * @param {string} roundName
+ * @returns {(RoundInterface|null)}
  */
-export function sortFixturesByDate(fixtures: FixtureInterface[], order: string = 'ASC') {
-  const sortedFixtures = fixtures.sort((a, b) => {
-    const dateA: any = new Date(a.date);
-    const dateB: any = new Date(b.date);
-
-    return dateA - dateB;
-  });
-
-  if (order.toLowerCase() === 'desc') {
-    return sortedFixtures.reverse();
-  }
-
-  return sortedFixtures;
+function findRoundByName(rounds: RoundInterface[], roundName: string): RoundInterface|null {
+  return find(rounds, (round) => round.description === roundName) || null;
 }

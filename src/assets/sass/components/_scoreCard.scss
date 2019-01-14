@@ -48,8 +48,12 @@
 
 .score-card-wrapper {
   display: block;
-  padding: $space--2;
+  padding: $space--2 $space--4;
   width: 100%;
+
+  @include mq(lg) {
+    padding: $space--2;
+  }
 
   .score-card {
     align-items: center;
