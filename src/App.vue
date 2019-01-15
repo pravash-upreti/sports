@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <div :class="['main-wrapper container-fluid']">
+    <div :class="['main-wrapper container-fluid', selectedSport]">
       <!-- Only on mobile -->
       <TopNavBar :showSideBar="showSideBar" :showHideSideBar="showHideSideBar"/>
       <!--Only on desktop-->
       <SideBar :classes="sideBarClassObject" :showHideSideBar="showHideSideBar"/>
       <div class="content-wrapper">
-        <router-view></router-view>
+        <router-view :updateSelectedSport="updateSelectedSport"></router-view>
       </div>
     </div>
   </div>
@@ -28,10 +28,15 @@ import TopNavBar from '@/components/navigations/TopNavBar.vue';
   components: { SideBar, TopNavBar }
 })
 export default class App extends Vue {
+  public selectedSport: string|null = null;
   public showSideBar: boolean = false;
 
   public showHideSideBar(show: boolean = false) {
     this.showSideBar = show;
+  }
+
+  public updateSelectedSport(sport: string) {
+    this.selectedSport = sport && sport.length ? sport : '';
   }
 
   get sideBarClassObject() {

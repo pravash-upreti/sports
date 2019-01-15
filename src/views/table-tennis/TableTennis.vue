@@ -9,8 +9,8 @@
       :categories="data.categories"
       :rounds="data.rounds"
       :routes="routes"
-      :selected-sport="selectedSport"
-      :update-data-by-category-id="updateDataByCategoryId"
+      :selectedSportSeason="selectedSportSeason"
+      :updateDataByCategoryId="updateDataByCategoryId"
     />
     <div class="tournament-content-wrapper">
       <router-view :data="data" :fixture-link="fixtureLink"></router-view>
@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { cloneDeep } from 'lodash';
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import SPORTS from '@/constants/sports';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
@@ -35,6 +35,8 @@ import SportHeader from '@/components/common/sport-header/SportHeader.vue';
   components: { SportHeader, LoadingIcon }
 })
 export default class TableTennis extends Vue {
+  @Prop() public updateSelectedSport: any;
+
   public data: any = {};
   public fixedData: any = {};
   public error: boolean = false;
@@ -60,9 +62,11 @@ export default class TableTennis extends Vue {
 
     this.error = false;
     this.loading = true;
-    this.season = this.$route.params.season;
 
     try {
+      this.season = this.$route.params.season;
+      this.updateSelectedSport(SPORTS.TABLE_TENNIS);
+
       const response = await fetchSportData(SPORTS.TABLE_TENNIS, this.season);
 
       if (response && response.status) {
@@ -88,10 +92,10 @@ export default class TableTennis extends Vue {
   }
 
   get title(): string {
-    return `Table Tennis ${this.$route.params.season}`;
+    return `Table Tennis ${this.season}`;
   }
 
-  get selectedSport(): object {
+  get selectedSportSeason(): object {
     return {
       sport: SPORTS.TABLE_TENNIS,
       season: this.season

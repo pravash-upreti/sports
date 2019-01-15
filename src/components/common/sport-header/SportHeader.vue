@@ -37,7 +37,7 @@ export default class SportHeader extends Vue {
   @Prop() private routes!: any;
   @Prop() private rounds!: any;
   @Prop() private title!: string;
-  @Prop() private selectedSport!: any;
+  @Prop() private selectedSportSeason!: any;
   @Prop() private updateDataByCategoryId!: any;
   @Prop({ default: '' }) private subTitle!: string;
   @Prop() private categories!: CategoryInterface[];
@@ -72,8 +72,8 @@ export default class SportHeader extends Vue {
   }
 
   public getRouteWithSeason(route: string) {
-    const sport = this.selectedSport.sport;
-    const season = this.selectedSport.season;
+    const sport = this.selectedSportSeason.sport;
+    const season = this.selectedSportSeason.season;
 
     let routePath = route;
 
