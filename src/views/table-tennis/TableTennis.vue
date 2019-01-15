@@ -71,7 +71,7 @@ export default class TableTennis extends Vue {
 
       if (response && response.status) {
         this.data = getSanitizedData(response.data);
-        this.fixedData = Object.freeze(this.data);
+        this.fixedData = cloneDeep(this.data);
 
         return;
       }
