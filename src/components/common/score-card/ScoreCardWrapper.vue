@@ -8,7 +8,7 @@
     <ScoreCard :fixture="fixture" :fixture-link="fixtureLink"/>
   </router-link>
   <ScoreCard v-else :fixture="fixture" :fixture-link="fixtureLink" /> -->
-  <ScoreCard :fixture="fixture" :fixture-link="fixtureLink"/>
+  <ScoreCard :fixture="fixture" :fixtureLink="fixtureLink"/>
 </template>
 
 <script lang="ts">

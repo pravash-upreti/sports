@@ -3,24 +3,24 @@
     <div v-if="checkIfThereAreWinners('winner')">
       <h2 class="score-card-list-title">WINNER{{ twoOrMoreWnners ? 'S' : ''}}</h2>
       <div class="winner-card-list-wrapper">
-        <winner-card
+        <WinnerCard
           v-for="(winner, index) in winners"
           :key="`winner-${index}`"
           :winner="winner.winner"
-          :is-winner="true"
-          :show-category="twoOrMoreWnners"
+          :isWinner="true"
+          :showCategory="twoOrMoreWnners"
         />
       </div>
     </div>
     <div v-if="checkIfThereAreWinners('runnerUp')">
       <h2 class="score-card-list-title runner-up-title">RUNNER-UP{{ twoOrMoreWnners ? 'S' : '' }}</h2>
       <div class="winner-card-list-wrapper">
-        <winner-card
+        <WinnerCard
           v-for="(winner, index) in winners"
           :key="`runner-up-${index}`"
           :winner="winner.runnerUp"
-          :is-winner="false"
-          :show-category="twoOrMoreWnners"
+          :isWinner="false"
+          :showCategory="twoOrMoreWnners"
         />
       </div>
     </div>

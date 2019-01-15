@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <div class="stats-list-wrapper">
-      <stat
+      <Stat
         v-if="goalsStats.players.length"
         :stat="goalsStats"
       />
-      <stat
+      <Stat
         v-if="yellowCardsStats.players.length"
         :stat="yellowCardsStats"
       />
-      <stat
+      <Stat
         v-if="redCardsStats.players.length"
         :stat="redCardsStats"
       />

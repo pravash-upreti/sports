@@ -1,17 +1,14 @@
 <template>
-  <div class="container">
-    <div v-if="!fixtures.length">
-      <p class="alert">All fixtures have been played. Please checkout the results section.</p>
-    </div>
-    <div v-else>
-      <p v-if="!fixtures.length" class="alert">No fixtures found.</p>
-      <score-cards-list v-else :fixtures="fixtures" :rounds="rounds" :fixture-link="fixtureLink"/>
-    </div>
+  <div v-if="!fixtures.length" class="container">
+    <p class="alert">All fixtures have been played. Please checkout the results section.</p>
+  </div>
+  <div v-else class="container">
+    <p v-if="!fixtures.length" class="alert">No fixtures found.</p>
+    <ScoreCardsList v-else :fixtures="fixtures" :rounds="rounds" :fixtureLink="fixtureLink"/>
   </div>
 </template>
 
 <script lang="ts">
-import { sortBy } from 'lodash';
 import { Vue, Prop, Component } from 'vue-property-decorator';
 
 import { FixtureInterface, RoundInterface } from '@/interfaces/interfaces';

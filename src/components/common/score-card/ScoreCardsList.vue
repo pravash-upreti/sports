@@ -1,16 +1,16 @@
 <template>
   <div v-if="fixtures.length" :class="scoreCardListWrapperClass">
-    <rounds-filter
+    <RoundsFilter
       v-if="rounds && rounds.length"
       :rounds="rounds"
-      :selected-round="selectedRound"
-      :change-selected-round="changeSelectedRound"
+      :selectedRound="selectedRound"
+      :changeSelectedRound="changeSelectedRound"
     />
     <h2 v-if="title && title.length" class="score-card-list-title">{{ title }}</h2>
     <ScoreCardWrapper
       v-for="(fixture, index) in fixturesList"
       :fixture="fixture"
-      :fixture-link="fixtureLink"
+      :fixtureLink="fixtureLink"
       :key="`score-card-wrapper-${index}`"
     />
   </div>

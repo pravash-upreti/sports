@@ -1,17 +1,17 @@
 <template>
   <div :class="['fixture-team-name-wrapper', isWinner ? 'winner' : '', isGrouped ? 'team-grouped' : '']">
     <span v-if="isGrouped" class="fixture-team-symbol">
-      <participant-logo
+      <ParticipantLogo
         v-for="(player, index) in teamInfo.players"
         :key="index"
         :participant="player"
-        :custom-styles="teamCustomStyles"
+        :customStyles="teamCustomStyles"
       />
     </span>
     <span v-else class="fixture-team-symbol">
-      <participant-logo
+      <ParticipantLogo
         :participant="teamInfo"
-        :custom-styles="teamCustomStyles"
+        :customStyles="teamCustomStyles"
       />
     </span>
     <span class="fixture-team-name">{{ teamInfo.name }}</span>
