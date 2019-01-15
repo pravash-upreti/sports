@@ -9,15 +9,23 @@ import axios from 'axios';
  * @returns {Promise<any>}
  */
 export async function fetchSportData(sport: string, season: string | number): Promise<any> {
+  let responseData = null;
+
   try {
     const apiUrl = getTournamentApiUrl(sport, season);
 
     if (apiUrl) {
-      return await axios.get(apiUrl);
+      const response = await axios(apiUrl);
+
+      if (response && response.data && response.data.status) {
+        responseData = response.data;
+      }
     }
   } catch (e) {
-    return null;
+    responseData = null;
   }
+
+  return responseData;
 }
 
 /**

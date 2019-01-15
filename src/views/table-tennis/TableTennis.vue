@@ -1,10 +1,10 @@
 <template>
-  <loading-icon v-if="loadingData" />
+  <loading-icon v-if="loading" />
   <div v-else-if="error" class="container">
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
   <div v-else class="container">
-    <sport-header
+    <SportHeader
       :title="title"
       :categories="data.categories"
       :rounds="data.rounds"
@@ -13,74 +13,72 @@
       :update-data-by-category-id="updateDataByCategoryId"
     />
     <div class="tournament-content-wrapper">
-      <router-view :data="data" :fixture-link="fixtureLink"/>
+      <router-view :data="data" :fixture-link="fixtureLink"></router-view>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { cloneDeep } from 'lodash';
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
-import sports from '@/constants/sports';
+import SPORTS from '@/constants/sports';
 import { TABLE_TENNIS_ROUTES } from '@/constants/routes';
 import { getFilteredData } from '@/services/FixtureService';
 import { getCategoryById } from '@/services/CategoryService';
 import { getSanitizedData } from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
+import { fetchSportData } from '@/services/TournamentService';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 
 @Component({
   components: { SportHeader, LoadingIcon }
 })
 export default class TableTennis extends Vue {
-  @Prop() public updateActives!: any;
-  @Prop() public selectedSport!: any;
-  @Prop() public loadingData!: boolean;
-  @Prop() public getTournamentData!: any;
-
   public data: any = {};
   public fixedData: any = {};
   public error: boolean = false;
+  public loading: boolean = false;
+  public season: string|number = '';
   public routes: object = TABLE_TENNIS_ROUTES;
   public fixtureLink: string = TABLE_TENNIS_ROUTES.FIXTURE;
 
-  @Watch('loadingData', { immediate: true, deep: true })
-  public onLoadingDataChanged(newVal: boolean, oldVal: boolean) {
-    if (newVal !== oldVal) {
-      this.fetchData();
+  public async created() {
+    await this.fetchData();
+  }
+
+  public async beforeUpdate() {
+    if (this.season.toString() !== this.$route.params.season.toString()) {
+      await this.fetchData();
     }
   }
 
-  public created() {
-    this.updateActiveSport();
-  }
-
-  public updated() {
-    this.updateActiveSport();
-  }
-
-  public updateActiveSport() {
-    const sport = sports.TABLE_TENNIS;
-    const season = this.$route.params.season;
-
-    this.updateActives(sport, season);
-  }
-
-  public fetchData() {
-    const sport = sports.TABLE_TENNIS;
-    const season = this.$route.params.season;
-    const tournamentData = this.getTournamentData(sport, season);
-
-    if (tournamentData && tournamentData.status) {
-      this.error = false;
-      this.data = getSanitizedData(tournamentData.data);
-      this.fixedData = cloneDeep(this.data);
-
+  public async fetchData() {
+    if (this.loading) {
       return;
     }
 
-    this.error = true;
+    this.error = false;
+    this.loading = true;
+    this.season = this.$route.params.season;
+
+    try {
+      const response = await fetchSportData(SPORTS.TABLE_TENNIS, this.season);
+
+      if (response && response.status) {
+        this.data = getSanitizedData(response.data);
+        this.fixedData = Object.freeze(this.data);
+
+        return;
+      }
+
+      this.data = null;
+      this.error = true;
+    } catch (e) {
+      this.error = true;
+    } finally {
+      this.loading = false;
+    }
   }
 
   public updateDataByCategoryId(categoryId: number) {
@@ -91,6 +89,13 @@ export default class TableTennis extends Vue {
 
   get title(): string {
     return `Table Tennis ${this.$route.params.season}`;
+  }
+
+  get selectedSport(): object {
+    return {
+      sport: SPORTS.TABLE_TENNIS,
+      season: this.season
+    };
   }
 }
 </script>
