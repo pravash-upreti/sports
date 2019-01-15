@@ -27,6 +27,7 @@ import _ from 'lodash';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import DropDownMenu from './partials/DropDownMenu.vue';
+import { RoundInterface } from '@/interfaces/interfaces';
 import { CategoryInterface } from '@/interfaces/interfaces';
 import ButtonGroupMenu from './partials/ButtonGroupMenu.vue';
 
@@ -35,12 +36,12 @@ import ButtonGroupMenu from './partials/ButtonGroupMenu.vue';
 })
 export default class SportHeader extends Vue {
   @Prop() private routes!: any;
-  @Prop() private rounds!: any;
-  @Prop() private title!: string;
   @Prop() private selectedSportSeason!: any;
   @Prop() private updateDataByCategoryId!: any;
   @Prop({ default: '' }) private subTitle!: string;
-  @Prop() private categories!: CategoryInterface[];
+  @Prop({ default: () => [] }) private title!: string;
+  @Prop({ default: () => [] }) private rounds!: RoundInterface[];
+  @Prop({ default: () => [] }) private categories!: CategoryInterface[];
 
   private activeCategoryId: number = 0;
 
