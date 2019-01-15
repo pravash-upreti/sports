@@ -1,34 +1,18 @@
 <template>
   <div class="score-card-wrapper">
     <div class="score-card score-card--mobile">
-      <fixture-details-mobile :fixture="fixture" />
-      <fixture-team-mobile
+      <FixtureDetailsMobile :fixture="fixture" />
+      <FixtureTeamMobile
         :team="fixture.homeTeam"
         :score="fixture.homeTeamScore"
-        :is-winner="isHomeTeamWinner"
+        :isWinner="isHomeTeamWinner"
       />
-      <fixture-team-mobile
+      <FixtureTeamMobile
         :team="fixture.awayTeam"
         :score="fixture.awayTeamScore"
-        :is-winner="isAwayTeamWinner"
+        :isWinner="isAwayTeamWinner"
       />
     </div>
-    <!-- <div class="score-card score-card--desktop">
-      <fixture-team
-        :team="fixture.homeTeam"
-        :class-names="homeTeamClassObject"
-        :is-home-team-winner="isHomeTeamWinner"
-        :is-away-team-winner="isAwayTeamWinner"
-      />
-      <fixture-score :fixture="fixture" />
-      <fixture-team
-        :team="fixture.awayTeam"
-        :is-away-team="true"
-        :class-names="awayTeamClassObject"
-        :is-home-team-winner="isHomeTeamWinner"
-        :is-away-team-winner="isAwayTeamWinner"
-      />
-    </div> -->
   </div>
 </template>
 

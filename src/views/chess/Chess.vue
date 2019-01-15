@@ -1,88 +1,92 @@
 <template>
-  <loading-icon v-if="loadingData" />
+  <LoadingIcon v-if="loading" />
   <div v-else-if="error" class="container">
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
   <div v-else class="container">
-    <sport-header
+    <SportHeader
       :title="title"
       :categories="data.categories"
       :rounds="data.rounds"
       :routes="routes"
-      :selected-sport="selectedSport"
+      :selectedSportSeason="selectedSportSeason"
     />
     <div class="tournament-content-wrapper">
-      <router-view :data="data" />
+      <router-view :data="data"></router-view>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { cloneDeep } from 'lodash';
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop} from 'vue-property-decorator';
 
-import sports from '@/constants/sports';
+import SPORTS from '@/constants/sports';
 import { CHESS_ROUTES } from '@/constants/routes';
-import { getFilteredData } from '@/services/FixtureService';
-import { getCategoryById } from '@/services/CategoryService';
 import { getSanitizedData } from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
+import { fetchSportData } from '@/services/TournamentService';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 
 @Component({
   components: { SportHeader, LoadingIcon }
 })
 export default class Chess extends Vue {
-  @Prop() public updateActives!: any;
-  @Prop() public selectedSport!: any;
-  @Prop() public loadingData!: boolean;
-  @Prop() public getTournamentData!: any;
+
+  get title(): string {
+    return `Chess ${this.season}`;
+  }
+
+  get selectedSportSeason(): object {
+    return {
+      sport: SPORTS.CHESS,
+      season: this.season
+    };
+  }
 
   public data: any = {};
-  public fixedData: any = {};
   public error: boolean = false;
+  public loading: boolean = false;
+  public season: string|number = '';
   public routes: object = CHESS_ROUTES;
+  @Prop() private updateSelectedSport: any;
 
-  @Watch('loadingData', { immediate: true, deep: true })
-  public onLoadingDataChanged(newVal: boolean, oldVal: boolean) {
-    if (newVal !== oldVal) {
-      this.fetchData();
+  public async created() {
+    await this.fetchData();
+  }
+
+  public async beforeUpdate() {
+    if (this.season.toString() !== this.$route.params.season.toString()) {
+      await this.fetchData();
     }
   }
 
-  public created() {
-    this.updateActiveSport();
-  }
-
-  public updated() {
-    this.updateActiveSport();
-  }
-
-  public updateActiveSport() {
-    const sport = sports.CHESS;
-    const season = this.$route.params.season;
-
-    this.updateActives(sport, season);
-  }
-
-  public fetchData() {
-    const sport = sports.CHESS;
-    const season = this.$route.params.season;
-    const tournamentData = this.getTournamentData(sport, season);
-
-    if (tournamentData && tournamentData.status) {
-      this.error = false;
-      this.data = getSanitizedData(tournamentData.data);
-      this.fixedData = cloneDeep(this.data);
-
+  public async fetchData() {
+    if (this.loading) {
       return;
     }
 
-    this.error = true;
-  }
+    this.error = false;
+    this.loading = true;
 
-  get title(): string {
-    return `Chess ${this.$route.params.season}`;
+    try {
+      this.season = this.$route.params.season;
+      this.updateSelectedSport(SPORTS.CHESS);
+
+      const response = await fetchSportData(SPORTS.CHESS, this.season);
+
+      if (response && response.status) {
+        this.data = getSanitizedData(response.data);
+
+        return;
+      }
+
+      this.data = null;
+      this.error = true;
+    } catch (e) {
+      this.error = true;
+    } finally {
+      this.loading = false;
+    }
   }
 }
 </script>

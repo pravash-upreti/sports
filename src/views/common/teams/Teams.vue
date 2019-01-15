@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="teams-list-wrapper">
-      <team
+      <Team
         v-for="(team, index) in data.teams"
         :key="`team-${index}`"
         :team="team"

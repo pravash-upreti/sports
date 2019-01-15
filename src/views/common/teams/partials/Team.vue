@@ -2,10 +2,7 @@
   <div class="team-wrapper">
     <div class="team">
       <h4 v-if="team.logo" class="team-title">
-        <participant-logo
-          :participant="team"
-          :custom-styles="customStyles"
-        />
+        <ParticipantLogo :participant="team" :customStyles="customStyles"/>
         {{ team.name }}
       </h4>
       <ul class="team-players-wrapper">
@@ -14,11 +11,9 @@
           :key="`team-player-${index}`"
           class="team-player"
         >
-          <participant-logo
-            :participant="player"
-            :custom-styles="customStyles"
-          />
-          {{ player.name }}<team-captain v-if="player.isCaptain" />
+          <ParticipantLogo :participant="player" :customStyles="customStyles"/>
+          {{ player.name }}
+          <TeamCaptain v-if="player.isCaptain"/>
         </li>
       </ul>
     </div>
