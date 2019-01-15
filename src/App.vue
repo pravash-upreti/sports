@@ -22,7 +22,6 @@
 </style>
 
 <script lang="ts">
-import { isNumber } from 'lodash';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Component, Vue, Watch } from 'vue-property-decorator';
 

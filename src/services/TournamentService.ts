@@ -8,26 +8,29 @@ import axios from 'axios';
  * @param {(string|number)} season
  * @returns {Promise<any>}
  */
-export async function fetchSportData(sport: string, season: string|number): Promise<any> {
-  const apiUrl = getTournamentApiUrl(sport, season);
-  const response = await axios.get(apiUrl);
+export async function fetchSportData(sport: string, season: string | number): Promise<any> {
+  try {
+    const apiUrl = getTournamentApiUrl(sport, season);
 
-  return response;
+    if (apiUrl) {
+      return await axios.get(apiUrl);
+    }
+  } catch (e) {
+    return null;
+  }
 }
 
 /**
- * Get API URL for tournament.
+ * Get API URL for a specific tournament.
  *
  * @param {string} sport
  * @param {(string|number)} season
- * @returns {string}
+ * @returns {string | null}
  */
-function getTournamentApiUrl(sport: string, season: string|number): string {
-  if (!sport.length) {
-    return '';
+function getTournamentApiUrl(sport: string, season: string | number): string | null {
+  if (!sport.length || !season.toString().length) {
+    return null;
   }
 
-  const apiUrl = `${process.env.VUE_APP_API_BASE_URL}?sport=${sport}`;
-
-  return `${apiUrl}&season=${season}`;
+  return `${process.env.VUE_APP_API_BASE_URL}/${sport}-${season}`;
 }
