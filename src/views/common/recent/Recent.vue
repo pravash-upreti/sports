@@ -1,7 +1,7 @@
 <template>
   <div class="recent-wrapper">
-    <winners v-if="data.recents.showWinners" :winners="data.recents.winners" />
-    <recent-fixtures v-else :recents="data.recents" :fixture-link="fixtureLink" />
+    <Winners v-if="data.recents.showWinners" :winners="data.recents.winners" />
+    <RecentFixtures v-else :recents="data.recents" :fixtureLink="fixtureLink" />
   </div>
 </template>
 

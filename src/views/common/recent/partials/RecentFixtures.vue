@@ -3,47 +3,47 @@
     <p class="alert alert-success">Nothing to see here. Trying other sections.</p>
   </div>
   <div v-else>
-    <score-cards-list
+    <ScoreCardsList
       v-if="recentFixtures.todayFixtures.length"
-      :title="'Today'"
+      title="Today"
       :fixtures="recentFixtures.todayFixtures"
-      :fixture-link="fixtureLink"
+      :fixtureLink="fixtureLink"
     />
-    <score-cards-list
+    <ScoreCardsList
       v-if="recentFixtures.tomorrowFixtures.length"
-      :title="'Tomorrow'"
+      title="Tomorrow"
       :fixtures="recentFixtures.tomorrowFixtures"
-      :fixture-link="fixtureLink"
+      :fixtureLink="fixtureLink"
     />
-    <score-cards-list
+    <ScoreCardsList
       v-if="recentFixtures.twRemainingFixtures.length"
-      :title="'Later this week'"
+      title="Later this week"
       :fixtures="recentFixtures.twRemainingFixtures"
-      :fixture-link="fixtureLink"
+      :fixtureLink="fixtureLink"
     />
-    <score-cards-list
+    <ScoreCardsList
       v-if="recentFixtures.nwFixtures.length"
-      :title="'Next week'"
+      title="Next week"
       :fixtures="recentFixtures.nwFixtures"
-      :fixture-link="fixtureLink"
+      :fixtureLink="fixtureLink"
     />
-    <score-cards-list
+    <ScoreCardsList
       v-if="recentFixtures.twPlayedFixtures.length"
-      :title="'Earlier this week'"
+      title="Earlier this week"
       :fixtures="recentFixtures.twPlayedFixtures"
-      :fixture-link="fixtureLink"
+      :fixtureLink="fixtureLink"
     />
-    <score-cards-list
+    <ScoreCardsList
       v-if="recentFixtures.lwFixtures.length"
-      :title="'Last week'"
+      title="Last week"
       :fixtures="recentFixtures.lwFixtures"
-      :fixture-link="fixtureLink"
+      :fixtureLink="fixtureLink"
     />
-    <score-cards-list
+    <ScoreCardsList
       v-if="recentFixtures.upComingFixtures.length"
-      :title="'Upcoming'"
+      title="Upcoming"
       :fixtures="recentFixtures.upComingFixtures"
-      :fixture-link="fixtureLink"
+      :fixtureLink="fixtureLink"
     />
   </div>
 </template>
@@ -60,7 +60,7 @@ import { isFixturePlayed, isFixtureCancelled } from '@/services/FixtureService';
 @Component({
   components: { ScoreCardsList }
 })
-export default class RecentFxtures extends Vue {
+export default class RecentFixtures extends Vue {
   @Prop() public fixtureLink!: string;
   @Prop() public recents!: RecentsInterface;
 

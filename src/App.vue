@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
 import SideBar from '@/components/navigations/SideBar.vue';
 import { fetchSportData } from '@/services/TournamentService';
@@ -28,8 +28,8 @@ import TopNavBar from '@/components/navigations/TopNavBar.vue';
   components: { SideBar, TopNavBar }
 })
 export default class App extends Vue {
-  public selectedSport: string|null = null;
   public showSideBar: boolean = false;
+  public selectedSport: string|null = null;
 
   public showHideSideBar(show: boolean = false) {
     this.showSideBar = show;

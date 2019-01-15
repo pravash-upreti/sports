@@ -6,15 +6,15 @@
         v-if="isGrouped"
         :class="['winner-card-participant-logo-wrapper team-grouped', isWinner ? 'team-winner' : '']"
       >
-        <participant-logo
+        <ParticipantLogo
           v-for="(player, index) in winner.players"
           :key="index"
           :participant="player"
         />
-        <i class="fa fa-trophy winner-card-medal" />
+        <i class="fa fa-trophy winner-card-medal"></i>
       </div>
       <div v-else class="winner-card-participant-logo-wrapper">
-        <participant-logo :participant="winner" />
+        <ParticipantLogo :participant="winner" />
       </div>
       <h2 class="winner-card-name">{{ winner.name }}</h2>
     </div>

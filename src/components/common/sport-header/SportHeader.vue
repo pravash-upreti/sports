@@ -17,7 +17,7 @@
         </div>
       </div>
       <!-- <drop-down-menu :subRoutes="subRoutes" :rounds="matchRounds"/> -->
-      <button-group-menu :subRoutes="subRoutes" :rounds="matchRounds"/>
+      <ButtonGroupMenu :subRoutes="subRoutes" :rounds="matchRounds"/>
     </div>
   </div>
 </template>
