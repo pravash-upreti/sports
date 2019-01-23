@@ -55,7 +55,7 @@
         </div>
         <div class="modal-footer">
           <p v-if="!isFixturePlayed" class="text-center">This fixture is yet to be played.</p>
-          <p v-else-if="!fixture.activities.length" class="text-center">No info available.</p>
+          <p v-else-if="!fixture.activities.length" class="text-center">No extra information available.</p>
           <div v-else class="modal-fixture-activities-wrapper">
             <div
               v-for="(activity, index) in fixture.activities"
