@@ -1,0 +1,173 @@
+.modal-wrapper {
+  align-items: center;
+  background: rgba($color-body, 0.7);
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  padding: $space--4;
+  position: fixed;
+  top: 0;
+  transition: 0.25s;
+  width: 100%;
+  z-index: 9999;
+}
+
+.modal {
+  background: $color-white;
+  border-radius: $space--2;
+  color: $color-text--score-card;
+  font-size: $font-size--16;
+  height: auto;
+  padding: $space--2;
+  position: relative;
+  width: 100%;
+
+  @include mq(lg) {
+    min-width: 50%;
+    width: auto;
+  }
+
+  @include mq(xl) {
+    min-width: 40%;
+  }
+
+  .modal-close {
+    align-items: center;
+    background: $color-red;
+    border-radius: 50%;
+    color: $color-white;
+    font-size: $font-size--24;
+    height: $font-size--36;
+    justify-content: flex-center;
+    position: absolute;
+    right: -$font-size--36/2;
+    text-align: center;
+    top: -$font-size--36/2;
+    width: $font-size--36;
+  }
+
+  .modal-title,
+  .modal-body,
+  .modal-footer {
+    padding: $space--2 0;
+  }
+
+  .modal-body,
+  .modal-footer {
+    border-top: 1px solid rgba($color-text--score-card, 0.1);
+  }
+
+  .modal-fixture-round {
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .modal-fixture-date {
+    font-size: $font-size--14;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  .modal-teams-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+    .modal-team {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: center;
+
+      &.winner-team {
+        .participant-logo {
+          border: $space/2 solid $color-trophy;
+          box-sizing: content-box;
+        }
+      }
+
+      .modal-team-players {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .modal-score {
+      color: $color-score-result;
+      font-size: $font-size--24;
+
+      @include themify($themes) {
+        color: theme-property(color-score-result);
+      }
+
+      @include mq(md) {
+        font-size: $font-size--36;
+      }
+    }
+  }
+
+  .winner-team {
+    font-weight: 600;
+  }
+
+  .modal-fixture-activities-wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 100%;
+
+    .modal-fixture-activity {
+      align-items: center;
+      display: flex;
+      flex-direction: row nowrap;
+      justify-content: center;
+      padding: $space;
+      width: 100%;
+
+      &:nth-child(odd) {
+        background-color: rgba($color-black, 0.05);
+      }
+
+      .modal-fixture-activity-column {
+        flex-grow: 1;
+        font-weight: 600;
+        min-width: 50px;
+        padding: $space $space--4;
+        text-align: center;
+
+        @include m(set) {
+          flex-grow: 0;
+          font-weight: 400;
+          text-transform: uppercase;
+        }
+
+        @include m(home-team) {
+          text-align: right;
+        }
+
+        @include m(away-team) {
+          text-align: left;
+        }
+      }
+
+      .set-winner {
+        display: inline-block;
+        position: relative;
+
+        &::before {
+          bottom: -$space;
+          content: '.';
+          display: inline-block;
+          font-weight: 700;
+          left: 0;
+          position: absolute;
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-  <!-- <router-link
+  <router-link
     v-if="fixtureLink.length"
     :key="`fixture-${fixture.id}`"
     :to="fixtureURL"
@@ -7,8 +7,8 @@
   >
     <ScoreCard :fixture="fixture" :fixture-link="fixtureLink"/>
   </router-link>
-  <ScoreCard v-else :fixture="fixture" :fixture-link="fixtureLink" /> -->
-  <ScoreCard :fixture="fixture" :fixtureLink="fixtureLink"/>
+  <ScoreCard v-else :fixture="fixture" :fixture-link="fixtureLink"/>
+  <!-- <ScoreCard :fixture="fixture" :fixtureLink="fixtureLink"/> -->
 </template>
 
 <script lang="ts">

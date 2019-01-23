@@ -29,6 +29,7 @@ import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 import CounterStrike from '@/views/counter-strike/CounterStrike.vue';
 import CounterStrikePoints from '@/views/counter-strike/CounterStrikePoints.vue';
+import TableTennisScoreModal from '@/views/table-tennis/TableTennisScoreModal.vue';
 
 const DEFAULT_PAGE_TITLE = 'LF Sports';
 
@@ -73,13 +74,13 @@ const router = new Router({
             title: 'Table Tennis - Teams'
           }
         },
-      //   /* {
-      //     path: TABLE_TENNIS_ROUTES.FIXTURE,
-      //     component: TableTennisScoreModal,
-      //     meta: {
-      //       title: 'Table Tennis - Fixture'
-      //     }
-      //   }, */
+        {
+          path: TABLE_TENNIS_ROUTES.FIXTURE,
+          component: TableTennisScoreModal,
+          meta: {
+            title: 'Table Tennis - Fixture'
+          }
+        },
         {
           path: '*',
           redirect: TABLE_TENNIS_ROUTES.HOME
