@@ -1,10 +1,10 @@
 <template>
-  <div class="modal-wrapper" @click="close">
+  <div v-if="showModal" class="modal-wrapper" @click="close">
     <div class="modal" @click="doNothing">
       <div class="modal-close" @click="close">
         <i class="fa fa-times"/>
       </div>
-      <div v-if="error">
+      <div v-if="!fixture">
         <div class="modal-title">Fixture not found.</div>
       </div>
       <div v-else>
@@ -80,10 +80,12 @@
 </template>
 
 <script lang="ts">
-import _ from 'lodash';
 import dateFns from 'date-fns';
-import { Component, Vue } from 'vue-property-decorator';
+import { sortBy } from 'lodash';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
+import FIXTURE_STATUSES from '@/constants/fixtureStatuses';
+import { SCORE_MODAL_DATE_TIME_FORMAT } from '@/constants/utils';
 import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 import { TeamInterface, FixtureInterface, ActivityInterface } from '@/interfaces/interfaces';
 
@@ -91,38 +93,18 @@ import { TeamInterface, FixtureInterface, ActivityInterface } from '@/interfaces
   components: { ParticipantLogo }
 })
 export default class TableTennisScoreModal extends Vue {
-  public error: boolean = false;
-  public fixture: FixtureInterface | null = null;
+  @Prop() public triggerShowModal!: any;
 
-  public created() {
-    const fixtureId = parseInt(this.$route.params.fixtureId, 10);
-    const allFixtures = this.$parent.$data.data.allFixtures;
+  @Prop({ default: false }) private showModal!: boolean;
+  @Prop({ default: null }) private fixture!: FixtureInterface;
 
-    this.setFixture(allFixtures, fixtureId);
-  }
 
   public close() {
-    if (window.history.length > 2) {
-      this.$router.go(-1);
-    } else {
-      this.$router.push(this.$route.matched[0]);
-    }
+    this.triggerShowModal(false);
   }
 
   public doNothing(e: any) {
     e.stopPropagation();
-  }
-
-  public setFixture(fixtures: FixtureInterface[], fixtureId: number) {
-    const fixture = fixtures.find((f) => f.id === fixtureId);
-
-    if (!fixture) {
-      this.error = true;
-
-      return;
-    }
-
-    this.fixture = fixture;
   }
 
   public isTeamWinner(team: TeamInterface) {
@@ -161,18 +143,18 @@ export default class TableTennisScoreModal extends Vue {
   }
 
   get isFixturePlayed() {
-    return this.fixture && this.fixture.status.toLowerCase() === 'played';
+    return this.fixture && this.fixture.status.toLowerCase() === FIXTURE_STATUSES.PLAYED;
   }
 
   get fixtureDate() {
-    return this.fixture && dateFns.format(new Date(this.fixture.date), 'hh:mm A dddd MMM D, YYYY');
+    return this.fixture && dateFns.format(new Date(this.fixture.date), SCORE_MODAL_DATE_TIME_FORMAT);
   }
 
   get fixtureActivities() {
     const fixtureActivities = (this.fixture && this.fixture.activities) || [];
 
     if (fixtureActivities.length) {
-      return _.sortBy(fixtureActivities, ['set']);
+      return sortBy(fixtureActivities, ['set']);
     }
 
     return [];

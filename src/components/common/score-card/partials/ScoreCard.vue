@@ -1,6 +1,6 @@
 <template>
   <div class="score-card-wrapper">
-    <div class="score-card score-card--mobile">
+    <div class="score-card score-card--mobile" @click="showFixtureModal">
       <FixtureDetailsMobile :fixture="fixture" />
       <FixtureTeamMobile
         :team="fixture.homeTeam"
@@ -30,8 +30,12 @@ import FixtureDetailsMobile from './FixtureDetailsMobile.vue';
   components: { FixtureTeam, FixtureScore, FixtureTeamMobile, FixtureDetailsMobile }
 })
 export default class ScoreCard extends Vue {
-  @Prop() public fixtureLink!: string;
+  @Prop() public triggerShowModal!: any;
   @Prop() public fixture!: FixtureInterface;
+
+  public showFixtureModal() {
+    this.triggerShowModal(true, this.fixture);
+  }
 
   get isFixturePlayed() {
     return isFixturePlayed(this.fixture);
