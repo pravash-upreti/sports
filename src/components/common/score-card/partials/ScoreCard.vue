@@ -34,7 +34,9 @@ export default class ScoreCard extends Vue {
   @Prop() public fixture!: FixtureInterface;
 
   public showFixtureModal() {
-    this.triggerShowModal(true, this.fixture);
+    if (this.triggerShowModal) {
+      this.triggerShowModal(true, this.fixture);
+    }
   }
 
   get isFixturePlayed() {

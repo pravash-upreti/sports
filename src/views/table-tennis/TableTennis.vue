@@ -1,5 +1,5 @@
 <template>
-  <loading-icon v-if="loading" />
+  <loading-icon v-if="loading"/>
   <div v-else-if="error" class="container">
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
@@ -13,12 +13,13 @@
       :updateDataByCategoryId="updateDataByCategoryId"
     />
     <div class="tournament-content-wrapper">
-      <router-view
-        :data="data"
-        :triggerShowModal="triggerShowModal"
-      />
+      <router-view :data="data" :triggerShowModal="triggerShowModal"/>
     </div>
-    <TableTennisScoreModal :showModal="showModal" :triggerShowModal="triggerShowModal" :fixture="modalFixture" />
+    <TableTennisScoreModal
+      :showModal="showModal"
+      :triggerShowModal="triggerShowModal"
+      :fixture="modalFixture"
+    />
   </div>
 </template>
 
@@ -47,7 +48,7 @@ export default class TableTennis extends Vue {
   public fixedData: any = {};
   public error: boolean = false;
   public loading: boolean = false;
-  public season: string|number = '';
+  public season: string | number = '';
   public showModal: boolean = false;
   public routes: object = TABLE_TENNIS_ROUTES;
   public modalFixture: FixtureInterface | null = null;
