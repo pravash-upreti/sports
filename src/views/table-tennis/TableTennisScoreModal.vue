@@ -84,7 +84,7 @@ import dateFns from 'date-fns';
 import { sortBy } from 'lodash';
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-import FIXTURE_STATUSES from '@/constants/fixtureStatuses';
+import { isFixturePlayed } from '@/services/FixtureService';
 import { SCORE_MODAL_DATE_TIME_FORMAT } from '@/constants/utils';
 import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 import { TeamInterface, FixtureInterface, ActivityInterface } from '@/interfaces/interfaces';
@@ -143,7 +143,7 @@ export default class TableTennisScoreModal extends Vue {
   }
 
   get isFixturePlayed() {
-    return this.fixture && this.fixture.status.toLowerCase() === FIXTURE_STATUSES.PLAYED;
+    return isFixturePlayed(this.fixture);
   }
 
   get fixtureDate() {

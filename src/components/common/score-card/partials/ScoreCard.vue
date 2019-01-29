@@ -66,29 +66,5 @@ export default class ScoreCard extends Vue {
 
     return false;
   }
-
-  get homeTeamClassObject(): object {
-    const isHomeTeamWinner =
-      this.fixture.status.toLowerCase() === 'played'
-        ? this.fixture.homeTeamScore > this.fixture.awayTeamScore
-        : false;
-
-    return {
-      'home-team': true,
-      'winner': isHomeTeamWinner
-    };
-  }
-
-  get awayTeamClassObject(): object {
-    const isAwayTeamWinner =
-      this.fixture.status.toLowerCase() === 'played'
-        ? this.fixture.awayTeamScore > this.fixture.homeTeamScore
-        : false;
-
-    return {
-      'away-team': true,
-      'winner': isAwayTeamWinner
-    };
-  }
 }
 </script>

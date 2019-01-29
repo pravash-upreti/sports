@@ -11,6 +11,7 @@ import {
   TournamentDataResponseInterface,
 } from '../interfaces/interfaces';
 import { checkIfPlayerIsInTeam } from './PlayerService';
+import FIXTURE_STATUSES from '../constants/fixtureStatuses';
 
 export function getFixtures(fixturesList: FixtureInterface[], limit: number = 0): FixtureInterface[] {
   let fixtures = fixturesList
@@ -214,7 +215,7 @@ export function getFilteredData(data: any, params: any) {
  * @returns {boolean}
  */
 export function isFixturePlayed(fixture: FixtureInterface) {
-  return fixture.status.toLowerCase() === 'played';
+  return fixture.status.toLowerCase() === FIXTURE_STATUSES.PLAYED;
 }
 
 /**
