@@ -37,8 +37,8 @@ export default class Futsal extends Vue {
   public data: any = {};
   public error: boolean = false;
   public loading: boolean = false;
-  public season: string | number = '';
   public showModal: boolean = false;
+  public season: string | number = '';
   public routes: object = FUTSAL_ROUTES;
   public modalFixture: FixtureInterface | null = null;
 
