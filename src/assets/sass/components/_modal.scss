@@ -6,7 +6,6 @@
   justify-content: center;
   left: 0;
   overflow: auto;
-  padding: $space--4;
   position: fixed;
   top: 0;
   transition: 0.25s;
@@ -20,6 +19,7 @@
   color: $color-text--score-card;
   font-size: $font-size--16;
   height: auto;
+  margin: $space--6;
   padding: $space--2;
   position: relative;
   width: 100%;
