@@ -10,7 +10,8 @@ import {
   DASHAIN_CUP_ROUTES,
   TABLE_TENNIS_ROUTES,
   CARROM_BOARD_ROUTES,
-  COUNTER_STRIKE_ROUTES
+  COUNTER_STRIKE_ROUTES,
+  VALENTINES_CUP_ROUTES
 } from './constants/routes';
 
 import Dota from '@/views/dota/Dota.vue';
@@ -27,6 +28,7 @@ import DashainCup from '@/views/dashain-cup/DashainCup.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
+import ValentinesCup from '@/views/valentines-cup/ValentinesCup.vue';
 import CounterStrike from '@/views/counter-strike/CounterStrike.vue';
 import CounterStrikePoints from '@/views/counter-strike/CounterStrikePoints.vue';
 
@@ -433,6 +435,61 @@ const router = new Router({
         {
           path: '*',
           redirect: DOTA_ROUTES.HOME
+        }
+      ]
+    },
+    {
+      path: BASE_ROUTES.VALENTINES_CUP,
+      component: ValentinesCup,
+      meta: {
+        title: 'Valentines Cup'
+      },
+      children: [
+        {
+          path: VALENTINES_CUP_ROUTES.HOME,
+          component: Recent,
+          meta: {
+            title: 'Valentines Cup - Home'
+          }
+        },
+        {
+          path: VALENTINES_CUP_ROUTES.FIXTURES,
+          component: Fixtures,
+          meta: {
+            title: 'Valentines Cup - Fixtures'
+          }
+        },
+        {
+          path: VALENTINES_CUP_ROUTES.RESULTS,
+          component: Results,
+          meta: {
+            title: 'Valentines Cup - Results'
+          }
+        },
+        {
+          path: VALENTINES_CUP_ROUTES.POINTS,
+          component: FutsalPoints,
+          meta: {
+            title: 'Valentines Cup - Points'
+          }
+        },
+        {
+          path: VALENTINES_CUP_ROUTES.STATS,
+          component: FutsalStats,
+          meta: {
+            title: 'Valentines Cup - Stats'
+          }
+        },
+        {
+          path: VALENTINES_CUP_ROUTES.TEAMS,
+          component: Teams,
+          meta: {
+            title: 'Valentines Cup - Teams'
+          }
+        },
+        {
+          path: '*',
+          redirect: VALENTINES_CUP_ROUTES.HOME
         }
       ]
     },
