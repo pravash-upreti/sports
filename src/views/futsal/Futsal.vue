@@ -1,17 +1,18 @@
 <template>
-  <loading-icon v-if="loading" />
+  <loading-icon v-if="loading"/>
   <div v-else-if="error" class="container">
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
   <div v-else class="container">
-    <SportHeader
-      :title="title"
-      :routes="routes"
-      :selectedSportSeason="selectedSportSeason"
-    />
+    <SportHeader :title="title" :routes="routes" :selectedSportSeason="selectedSportSeason"/>
     <div class="tournament-content-wrapper">
-      <router-view :data="data" :fixture-link="fixtureLink"></router-view>
+      <router-view :data="data" :triggerShowModal="triggerShowModal"/>
     </div>
+    <FutsalScoreModal
+      :showModal="showModal"
+      :triggerShowModal="triggerShowModal"
+      :fixture="modalFixture"
+    />
   </div>
 </template>
 
@@ -20,13 +21,15 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import SPORTS from '@/constants/sports';
 import { FUTSAL_ROUTES } from '@/constants/routes';
+import FutsalScoreModal from './FutsalScoreModal.vue';
+import { FixtureInterface } from '@/interfaces/interfaces';
 import { getSanitizedData } from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { fetchSportData } from '@/services/TournamentService';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 
 @Component({
-  components: { SportHeader, LoadingIcon }
+  components: { SportHeader, LoadingIcon, FutsalScoreModal }
 })
 export default class Futsal extends Vue {
   @Prop() public updateSelectedSport: any;
@@ -34,9 +37,10 @@ export default class Futsal extends Vue {
   public data: any = {};
   public error: boolean = false;
   public loading: boolean = false;
-  public season: string|number = '';
+  public season: string | number = '';
+  public showModal: boolean = false;
   public routes: object = FUTSAL_ROUTES;
-  public fixtureLink: string = FUTSAL_ROUTES.FIXTURE;
+  public modalFixture: FixtureInterface | null = null;
 
   public async created() {
     await this.fetchData();
@@ -75,6 +79,11 @@ export default class Futsal extends Vue {
     } finally {
       this.loading = false;
     }
+  }
+
+  public triggerShowModal(status: boolean = false, fixture: FixtureInterface | null = null) {
+    this.showModal = status;
+    this.modalFixture = fixture;
   }
 
   get title(): string {

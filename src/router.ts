@@ -169,13 +169,6 @@ const router = new Router({
             title: 'Futsal - Teams'
           }
         },
-        //   /* {
-        //     path: FUTSAL_ROUTES.FIXTURE,
-        //     component: TableTennisScoreModal,
-        //     meta: {
-        //       title: 'Futsal - Fixture'
-        //     }
-        //   }, */
         {
           path: '*',
           redirect: FUTSAL_ROUTES.HOME

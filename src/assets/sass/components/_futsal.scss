@@ -1,3 +1,100 @@
-// .futsal {
-//   background: $color-futsal;
-// }
+.futsal {
+  .futsal-score-details-wrapper {
+    display: flex;
+    font-weight: 500;
+    width: 100%;
+  }
+
+  .futsal-score-details {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .futsal-activity-row {
+    column-count: 3;
+    column-fill: balance;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding: $space;
+    width: 100%;
+
+    .activity-home-team,
+    .activity-away-team,
+    .activity-score-time {
+      align-items: center;
+      display: flex;
+      padding: $space;
+    }
+
+    .activity-home-team,
+    .activity-away-team {
+      width: 50%;
+    }
+
+    .activity-home-team {
+      .futsal-activist-wrapper {
+        justify-content: flex-end;
+
+        .activist-name {
+          text-align: right;
+        }
+      }
+    }
+
+    .activity-away-team {
+      .futsal-activist-wrapper {
+        justify-content: flex-start;
+
+        .activist-name {
+          text-align: left;
+        }
+      }
+    }
+
+    .activity-score-time {
+      flex-grow: 0;
+      min-width: 50px;
+      text-align: center;
+      width: calc(#{$space--9} + $space);
+
+      @include mq(md) {
+        width: calc(#{$space--12} + $space);
+      }
+    }
+  }
+
+  .futsal-activist-wrapper {
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    .activist-name {
+      padding: $space $space--2;
+    }
+
+    .activity-symbol-wrapper {
+      align-items: center;
+      display: inline-flex;
+      height: $space--4;
+      width: $space--4;
+    }
+  }
+
+  .activity-score-time-wrapper {
+    align-items: center;
+    background-color: rgba($color-black, 0.05);
+    border-radius: 50%;
+    display: flex;
+    font-size: $font-size--12;
+    height: $font-size--36;
+    justify-content: center;
+    width: 100%;
+    width: $font-size--36;
+  }
+}
