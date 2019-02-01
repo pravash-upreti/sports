@@ -2,7 +2,19 @@
   .futsal-score-details-wrapper {
     display: flex;
     font-weight: 500;
+    position: relative;
     width: 100%;
+
+    &::before {
+      border-left: 1px solid rgba($color-black, 1);
+      bottom: 0;
+      content: '';
+      height: calc(100% - #{$space--4});
+      left: 50%;
+      position: absolute;
+      top: $space--2;
+      z-index: 0;
+    }
   }
 
   .futsal-score-details {
@@ -59,12 +71,6 @@
     .activity-score-time {
       flex-grow: 0;
       min-width: 50px;
-      text-align: center;
-      width: calc(#{$space--9} + $space);
-
-      @include mq(md) {
-        width: calc(#{$space--12} + $space);
-      }
     }
   }
 
@@ -96,5 +102,6 @@
     justify-content: center;
     width: 100%;
     width: $font-size--36;
+    z-index: 1;
   }
 }

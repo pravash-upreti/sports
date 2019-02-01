@@ -16,7 +16,6 @@
         </div>
       </div>
     </div>
-    <div class="activity-score-time-line"/>
   </div>
 </template>
 
