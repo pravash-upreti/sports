@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <div class="stats-list-wrapper">
+    <div v-if="!goalsStats.players.length && !yellowCardsStats.players.length && !redCardsStats.players.length">
+      <p class="alert">No stats available.</p>
+    </div>
+    <div v-else class="stats-list-wrapper">
       <Stat
         v-if="goalsStats.players.length"
         :stat="goalsStats"
