@@ -12,7 +12,6 @@
     "object-literal-sort-keys": false,
     "no-consecutive-blank-lines": false,
     "trailing-comma": [false, { "multiline": "always", "singleline": "never" }],
-    "no-unused-variable": true,
-    "no-unused-expression": true
+    "no-unused-variable": true
   }
 }
