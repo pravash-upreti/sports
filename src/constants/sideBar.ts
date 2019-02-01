@@ -74,5 +74,19 @@ export default [
         route: '/january-jatra/counter-strike'
       }
     ]
+  },
+  {
+    name: 'Valentine\'s Cup',
+    icon: 'fas fa-trophy',
+    seasons: [
+      {
+        name: 'Mens',
+        route: '/valentines-cup/mens'
+      },
+      {
+        name: 'Womens',
+        route: '/valentines-cup/womens'
+      }
+    ]
   }
 ];
