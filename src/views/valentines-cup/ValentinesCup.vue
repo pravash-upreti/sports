@@ -10,8 +10,13 @@
       :selectedSportSeason="selectedSportSeason"
     />
     <div class="tournament-content-wrapper">
-      <router-view :data="data" :fixtureLink="fixtureLink"></router-view>
+      <router-view :data="data"  :triggerShowModal="triggerShowModal"/>
     </div>
+    <FutsalScoreModal
+      :showModal="showModal"
+      :triggerShowModal="triggerShowModal"
+      :fixture="modalFixture"
+    />
   </div>
 </template>
 
@@ -20,13 +25,15 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import SPORTS from '@/constants/sports';
 import { VALENTINES_CUP_ROUTES } from '@/constants/routes';
+import { FixtureInterface } from '@/interfaces/interfaces';
 import { getSanitizedData } from '@/services/FixtureService';
 import LoadingIcon from '@/components/common/LoadingIcon.vue';
 import { fetchSportData } from '@/services/TournamentService';
+import FutsalScoreModal from '@/views/futsal/FutsalScoreModal.vue';
 import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 
 @Component({
-  components: { SportHeader, LoadingIcon }
+  components: { SportHeader, LoadingIcon, FutsalScoreModal }
 })
 export default class ValentinesCup extends Vue {
   @Prop() public updateSelectedSport: any;
@@ -35,8 +42,9 @@ export default class ValentinesCup extends Vue {
   public error: boolean = false;
   public loading: boolean = false;
   public season: string|number = '';
+  public showModal: boolean = false;
   public routes: object = VALENTINES_CUP_ROUTES;
-  public fixtureLink: string = VALENTINES_CUP_ROUTES.FIXTURE;
+  public modalFixture: FixtureInterface | null = null;
 
   public async created() {
     await this.fetchData();
@@ -75,6 +83,11 @@ export default class ValentinesCup extends Vue {
     } finally {
       this.loading = false;
     }
+  }
+
+  public triggerShowModal(status: boolean = false, fixture: FixtureInterface | null = null) {
+    this.showModal = status;
+    this.modalFixture = fixture;
   }
 
   get title(): string {
