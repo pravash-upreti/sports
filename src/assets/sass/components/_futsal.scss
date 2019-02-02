@@ -6,17 +6,17 @@
     position: relative;
     width: 100%;
 
-    &::before {
-      background-color: rgba($color-black, 0.05);
-      bottom: 0;
-      content: '';
-      height: calc(100% - #{$space--4});
-      left: 50%;
-      position: absolute;
-      top: $space--2;
-      width: 1px;
-      z-index: 0;
-    }
+    // &::before {
+    //   background-color: rgba($color-black, 0.05);
+    //   bottom: 0;
+    //   content: '';
+    //   height: calc(100% - #{$space--4});
+    //   left: 50%;
+    //   position: absolute;
+    //   top: $space--2;
+    //   width: 1px;
+    //   z-index: 0;
+    // }
   }
 
   .futsal-score-details {
