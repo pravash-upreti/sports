@@ -7,8 +7,11 @@
   >
     <ScoreCard :fixture="fixture" :fixture-link="fixtureLink"/>
   </router-link>
-  <ScoreCard v-else :fixture="fixture" :fixture-link="fixtureLink" /> -->
-  <ScoreCard :fixture="fixture" :fixtureLink="fixtureLink"/>
+  <ScoreCard v-else :fixture="fixture" :fixture-link="fixtureLink"/> -->
+  <ScoreCard
+    :fixture="fixture"
+    :triggerShowModal="triggerShowModal"
+  />
 </template>
 
 <script lang="ts">
@@ -21,9 +24,11 @@ import { FixtureInterface } from '@/interfaces/interfaces';
   components: { ScoreCard }
 })
 export default class ScoreCardWrapper extends Vue {
-  @Prop() public fixtureLink!: string;
+  @Prop() public triggerShowModal!: any;
   @Prop() public fixture!: FixtureInterface;
 
+  /*
+  // TODO: May be later.
   get fixtureURL(): string {
     if (!this.fixtureLink.length || !this.$route.params.season) {
       return '';
@@ -32,7 +37,7 @@ export default class ScoreCardWrapper extends Vue {
     return this.fixtureLink
       .replace(':season', this.$route.params.season)
       .replace(':fixtureId', this.fixture.id.toString());
-  }
+  } */
 }
 </script>
 

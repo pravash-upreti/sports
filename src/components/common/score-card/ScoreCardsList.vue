@@ -9,9 +9,9 @@
     <h2 v-if="title && title.length" class="score-card-list-title">{{ title }}</h2>
     <ScoreCardWrapper
       v-for="(fixture, index) in fixturesList"
-      :fixture="fixture"
-      :fixtureLink="fixtureLink"
       :key="`score-card-wrapper-${index}`"
+      :fixture="fixture"
+      :triggerShowModal="triggerShowModal"
     />
   </div>
 </template>
@@ -29,14 +29,10 @@ import ScoreCardWrapper from '@/components/common/score-card/ScoreCardWrapper.vu
   components: { RoundsFilter, ScoreCardWrapper }
 })
 export default class ScoreCardList extends Vue {
-  @Prop()
-  public title!: string;
-  @Prop()
-  public fixtureLink!: string;
-  @Prop({ default: () => [] })
-  public rounds!: RoundInterface[];
-  @Prop({ default: () => [] })
-  public fixtures!: FixtureInterface[];
+  @Prop() public title!: string;
+  @Prop() public triggerShowModal!: any;
+  @Prop({ default: () => [] }) public rounds!: RoundInterface[];
+  @Prop({ default: () => [] }) public fixtures!: FixtureInterface[];
 
   public selectedRound: RoundInterface | null = (this.rounds && this.rounds.length && this.rounds[0]) || null;
 
@@ -49,9 +45,7 @@ export default class ScoreCardList extends Vue {
     if (this.selectedRound && this.selectedRound.id !== 0) {
       return filter(
         cloneDeep(this.fixtures),
-        (fixture) => (
-          fixture.round.toLowerCase() === (this.selectedRound && this.selectedRound.description.toLowerCase())
-        )
+        (fx) => fx.round.toLowerCase() === (this.selectedRound && this.selectedRound.description.toLowerCase())
       );
     }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="recent-wrapper">
     <Winners v-if="data.recents.showWinners" :winners="data.recents.winners" />
-    <RecentFixtures v-else :recents="data.recents" :fixtureLink="fixtureLink" />
+    <RecentFixtures v-else :recents="data.recents" :triggerShowModal="triggerShowModal" />
   </div>
 </template>
 
@@ -15,7 +15,8 @@ import RecentFixtures from './partials/RecentFixtures.vue';
   components: { Winners, RecentFixtures }
 })
 export default class Recent extends Vue {
+  @Prop() public triggerShowModal!: any;
+
   @Prop() private data!: any;
-  @Prop() private fixtureLink!: string;
 }
 </script>

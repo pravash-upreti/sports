@@ -55,22 +55,25 @@
         </div>
         <div class="modal-footer">
           <p v-if="!isFixturePlayed" class="text-center">This fixture is yet to be played.</p>
-          <p v-else-if="!fixture.activities.length" class="text-center">No extra information available.</p>
+          <p
+            v-else-if="!fixture.activities.length"
+            class="text-center"
+          >No extra information available.</p>
           <div v-else class="modal-fixture-activities-wrapper">
             <div
               v-for="(activity, index) in fixture.activities"
               :key="`modal-fixture-activity-${index}`"
               class="modal-fixture-activity"
             >
-              <span :class="['modal-fixture-activity-column', getSetWinnerClassObject(activity, 'home')]">
-                {{ getTeamActivityScore(activity.homeTeamPoints) }}
-              </span>
-              <span class="modal-fixture-activity-column modal-fixture-activity-column--set">
-                SET-{{ index + 1 }}
-              </span>
-              <span :class="['modal-fixture-activity-column', getSetWinnerClassObject(activity, 'away')]">
-                {{ getTeamActivityScore(activity.awayTeamPoints) }}
-              </span>
+              <span
+                :class="['modal-fixture-activity-column', getSetWinnerClassObject(activity, 'home')]"
+              >{{ getTeamActivityScore(activity, 'home') }}</span>
+              <span
+                class="modal-fixture-activity-column modal-fixture-activity-column--set"
+              >ROUND-{{ index + 1 }}</span>
+              <span
+                :class="['modal-fixture-activity-column', getSetWinnerClassObject(activity, 'away')]"
+              >{{ getTeamActivityScore(activity, 'away') }}</span>
             </div>
           </div>
         </div>
@@ -92,12 +95,11 @@ import { TeamInterface, FixtureInterface, ActivityInterface } from '@/interfaces
 @Component({
   components: { ParticipantLogo }
 })
-export default class TableTennisScoreModal extends Vue {
+export default class CarromBoardScoreModal extends Vue {
   @Prop() public triggerShowModal!: any;
 
   @Prop({ default: false }) private showModal!: boolean;
   @Prop({ default: null }) private fixture!: FixtureInterface;
-
 
   public close() {
     this.triggerShowModal(false);
@@ -116,12 +118,12 @@ export default class TableTennisScoreModal extends Vue {
     return winnerTeam && team.id === winnerTeam.id;
   }
 
-  public isSetWinner(activity: ActivityInterface, team: string) {
-    if (team.toLowerCase() === 'home' && activity.homeTeamPoints > activity.awayTeamPoints) {
+  public isRoundWinner(activity: ActivityInterface, team: string) {
+    if (team.toLowerCase() === 'home' && (activity.team.name  === this.fixture.homeTeam.name)) {
       return true;
     }
 
-    if (team.toLowerCase() === 'away' && activity.awayTeamPoints > activity.homeTeamPoints) {
+    if (team.toLowerCase() === 'away' && (activity.team.name  === this.fixture.awayTeam.name)) {
       return true;
     }
 
@@ -133,13 +135,15 @@ export default class TableTennisScoreModal extends Vue {
   }
 
   public getSetWinnerClassObject(activity: ActivityInterface, team: string) {
-    return this.isSetWinner(activity, team) ? {
-      'set-winner': true
-    } : {};
+    return this.isRoundWinner(activity, team)
+      ? {
+          'set-winner': true
+        }
+      : {};
   }
 
-  public getTeamActivityScore(points: number) {
-    return Number.isInteger(points) ? points : '-';
+  public getTeamActivityScore(activity: ActivityInterface, teamType: string) {
+    return this.isRoundWinner(activity, teamType) ? activity.points : '-';
   }
 
   get isFixturePlayed() {

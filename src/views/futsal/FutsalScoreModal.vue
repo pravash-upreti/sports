@@ -1,57 +1,49 @@
 <template>
-  <div 
-    class="modal-wrapper"
-    @click="close"
-  >
-    <div 
-      class="modal container"
-      @click="doNothing"
-    >
-      <div 
-        class="modal-close"
-        @click="close"
-      ><i class="fa fa-times" /></div>
-      <div v-if="error">
+  <div v-if="showModal" class="modal-wrapper" @click="close">
+    <div class="modal container" @click="doNothing">
+      <div class="modal-close" @click="close">
+        <i class="fa fa-times"/>
+      </div>
+      <div v-if="!fixture">
         <div class="modal-title">Fixture not found.</div>
       </div>
       <div v-else>
         <div class="modal-title">
-          <div class="modal-fixture-date"><span class="fixture-date">{{ fixtureDate }}</span></div>
-          <div class="modal-row">
-            <table class="score-wrapper">
-              <tbody>
-                <tr>
-                  <td class="team">
-                    <participant-logo
-                      :show-large="true"
-                      :participant="fixture.homeTeam"
-                    />
-                    <p :class="['team-name', getWinnerClassObject(fixture.homeTeam)]">{{ fixture.homeTeam.name }}</p>
-                  </td>
-                  <td class="score">
-                    <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
-                  </td>
-                  <td class="team away-team team-grouped">
-                    <participant-logo
-                      :show-large="true"
-                      :participant="fixture.awayTeam"
-                    />
-                    <p :class="['team-name', getWinnerClassObject(fixture.awayTeam)]">{{ fixture.awayTeam.name }}</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="modal-fixture-date">
+            <span class="fixture-date">{{ fixtureDate }}</span>
           </div>
         </div>
         <div class="modal-body">
-          <div v-if="!isFixturePlayed">
-            <div class="modal-row">This fixture is yet to be played.</div>
+          <div class="modal-teams-wrapper">
+            <div :class="['modal-team', getWinnerClassObject(fixture.homeTeam)]">
+              <div class="modal-team-players">
+                <ParticipantLogo :showLarge="true" :participant="fixture.homeTeam"/>
+              </div>
+              <p class="text-center">{{ fixture.homeTeam.name }}</p>
+            </div>
+            <div class="modal-score">
+              <span v-if="isFixturePlayed">
+                <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> :
+                <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
+              </span>
+              <span v-else>VS</span>
+            </div>
+            <div :class="['modal-team', getWinnerClassObject(fixture.awayTeam)]">
+              <div class="modal-team-players">
+                <ParticipantLogo :showLarge="true" :participant="fixture.awayTeam"/>
+              </div>
+              <p class="text-center">{{ fixture.awayTeam.name }}</p>
+            </div>
           </div>
-          <div v-else-if="!fixture.activities.length">
-            <div class="modal-row">No info available.</div>
-          </div>
-          <div v-else>
-            <futsal-activities :activities="fixture.activities" />
+        </div>
+        <div class="modal-footer">
+          <p v-if="!isFixturePlayed" class="text-center">This fixture is yet to be played.</p>
+          <p
+            v-else-if="!fixture.activities.length"
+            class="text-center"
+          >No extra information available.</p>
+          <div v-else class="modal-fixture-activities-wrapper">
+            <FutsalActivities :activities="fixture.activities"/>
           </div>
         </div>
       </div>
@@ -61,8 +53,9 @@
 
 <script lang="ts">
 import dateFns from 'date-fns';
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 
+import { isFixturePlayed } from '@/services/FixtureService';
 import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
 import FutsalActivities from '@/components/futsal/FutsalActivities.vue';
 import { FixtureInterface, TeamInterface, ActivityInterface } from '@/interfaces/interfaces';
@@ -71,38 +64,17 @@ import { FixtureInterface, TeamInterface, ActivityInterface } from '@/interfaces
   components: { ParticipantLogo, FutsalActivities }
 })
 export default class FutsalScoreModal extends Vue {
-  public error: boolean =  false;
-  public fixture: FixtureInterface | null = null;
+  @Prop() public triggerShowModal!: any;
 
-  public created() {
-    const fixtureId = parseInt(this.$route.params.fixtureId, 10);
-    const allFixtures = this.$parent.$data.data.allFixtures;
-
-    this.setFixture(allFixtures, fixtureId);
-  }
+  @Prop({ default: false }) private showModal!: boolean;
+  @Prop({ default: null }) private fixture!: FixtureInterface;
 
   public close() {
-    if (window.history.length > 2) {
-      this.$router.go(-1);
-    } else {
-      this.$router.push(this.$route.matched[0]);
-    }
+    this.triggerShowModal(false);
   }
 
   public doNothing(e: any) {
     e.stopPropagation();
-  }
-
-  public setFixture(fixtures: FixtureInterface[], fixtureId: number) {
-    const fixture = fixtures.find((f) => (f.id === fixtureId));
-
-    if (!fixture) {
-      this.error = true;
-
-      return;
-    }
-
-    this.fixture = fixture;
   }
 
   public isTeamWinner(team: TeamInterface) {
@@ -119,7 +91,7 @@ export default class FutsalScoreModal extends Vue {
   }
 
   get isFixturePlayed() {
-    return this.fixture && this.fixture.status.toLowerCase() === 'played';
+    return isFixturePlayed(this.fixture);
   }
 
   get fixtureDate() {
