@@ -1,0 +1,23 @@
+.filters-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include mq(md) {
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    .rounds-filter-wrapper {
+      flex-grow: 1;
+    }
+
+    .search-bar-wrapper {
+      width: 100%;
+
+      &.with-rounds {
+        width: 400px;
+      }
+    }
+  }
+}
