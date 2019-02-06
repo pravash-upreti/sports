@@ -99,16 +99,15 @@ export function getFixtureDate(fixture: FixtureInterface) {
  */
 export function searchFixturesByKeyword(allFixtures: FixtureInterface[], keyword: string): FixtureInterface[] {
   let searchResults: FixtureInterface[] = [];
+  keyword = keyword.trim().toLowerCase();
 
   searchResults = allFixtures.filter((fixture) => {
-    const homeTeamName =
-      isUndefined(fixture.awayTeam.name) || isNull(fixture.awayTeam.name) ? '' : fixture.awayTeam.name;
-    const awayTeamName =
-      isUndefined(fixture.awayTeam.name) || isNull(fixture.awayTeam.name) ? '' : fixture.awayTeam.name;
+    const homeTeamName = fixture.homeTeam.name.trim().toLowerCase();
+    const awayTeamName = fixture.awayTeam.name.trim().toLowerCase();
 
     return (
-      homeTeamName.toLowerCase().indexOf(keyword) >= 0 ||
-      awayTeamName.toLowerCase().indexOf(keyword) >= 0 ||
+      homeTeamName.indexOf(keyword) >= 0 ||
+      awayTeamName.indexOf(keyword) >= 0 ||
       checkIfPlayerIsInTeam(fixture.homeTeam, keyword) ||
       checkIfPlayerIsInTeam(fixture.awayTeam, keyword)
     );

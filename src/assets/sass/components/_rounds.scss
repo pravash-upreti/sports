@@ -6,6 +6,10 @@
   padding: $space--4 0;
   width: 100%;
 
+  @include mq(md) {
+    justify-content: flex-start;
+  }
+
   .rounds-filter {
     align-items: center;
     background-color: $color-body;
