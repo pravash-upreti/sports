@@ -7,8 +7,9 @@
       <p v-if="!fixtures.length" class="alert">No results found.</p>
       <ScoreCardsList
         v-else
-        :fixtures="fixtures"
         :rounds="rounds"
+        :fixtures="fixtures"
+        :showSearchField="true"
         :triggerShowModal="triggerShowModal"
       />
     </div>
