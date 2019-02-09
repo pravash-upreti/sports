@@ -17,5 +17,9 @@
     color: $color-text--score-card;
     font-size: $font-size--16;
     width: 100%;
+
+    @include mq(md) {
+      min-width: 180px;
+    }
   }
 }
