@@ -1,33 +1,19 @@
 <template>
   <div class="score-card-wrapper">
-    <div class="score-card score-card--mobile" @click="showFixtureModal">
-      <FixtureDetailsMobile :fixture="fixture" />
-      <FixtureTeamMobile
-        :team="fixture.homeTeam"
-        :score="fixture.homeTeamScore"
-        :isWinner="isHomeTeamWinner"
-      />
-      <FixtureTeamMobile
-        :team="fixture.awayTeam"
-        :score="fixture.awayTeamScore"
-        :isWinner="isAwayTeamWinner"
-      />
-    </div>
+    <ScoreCardMobile :fixture="fixture" :showFixtureModal="showFixtureModal"/>
+    <ScoreCardDesktop :fixture="fixture" :showFixtureModal="showFixtureModal"/>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-import FixtureTeam from './FixtureTeam.vue';
-import FixtureScore from './FixtureScore.vue';
-import FixtureTeamMobile from './FixtureTeamMobile.vue';
+import ScoreCardMobile from './ScoreCardMobile.vue';
+import ScoreCardDesktop from './ScoreCardDesktop.vue';
 import { FixtureInterface } from '@/interfaces/interfaces';
-import { isFixturePlayed } from '@/services/FixtureService';
-import FixtureDetailsMobile from './FixtureDetailsMobile.vue';
 
 @Component({
-  components: { FixtureTeam, FixtureScore, FixtureTeamMobile, FixtureDetailsMobile }
+  components: { ScoreCardMobile, ScoreCardDesktop }
 })
 export default class ScoreCard extends Vue {
   @Prop() public triggerShowModal!: any;
@@ -37,34 +23,6 @@ export default class ScoreCard extends Vue {
     if (this.triggerShowModal) {
       this.triggerShowModal(true, this.fixture);
     }
-  }
-
-  get isFixturePlayed() {
-    return isFixturePlayed(this.fixture);
-  }
-
-  get isHomeTeamWinner() {
-    if (isFixturePlayed(this.fixture)) {
-      if (this.fixture.winnerTeam) {
-        return this.fixture.winnerTeam.id === this.fixture.homeTeam.id;
-      } else {
-        return this.fixture.homeTeamScore > this.fixture.awayTeamScore;
-      }
-    }
-
-    return false;
-  }
-
-  get isAwayTeamWinner() {
-    if (isFixturePlayed(this.fixture)) {
-      if (this.fixture.winnerTeam) {
-        return this.fixture.winnerTeam.id === this.fixture.awayTeam.id;
-      } else {
-        return this.fixture.awayTeamScore > this.fixture.homeTeamScore;
-      }
-    }
-
-    return false;
   }
 }
 </script>

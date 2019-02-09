@@ -21,7 +21,7 @@
             <table class="score-wrapper">
               <tbody>
                 <tr>
-                  <td class="team home-team team-grouped">
+                  <td class="team home-team team-double">
                     <participant-logo
                       v-for="(player, index) in fixture.homeTeam.players"
                       :show-large="true"
@@ -33,7 +33,7 @@
                   <td class="score">
                     <span :class="getWinnerClassObject(fixture.homeTeam)">{{ fixture.homeTeamScore }}</span> - <span :class="getWinnerClassObject(fixture.awayTeam)">{{ fixture.awayTeamScore }}</span>
                   </td>
-                  <td class="team away-team team-grouped">
+                  <td class="team away-team team-double">
                     <participant-logo
                       v-for="(player, index) in fixture.awayTeam.players"
                       :show-large="true"
@@ -109,11 +109,11 @@
 import dateFns from 'date-fns';
 import { Component, Vue } from 'vue-property-decorator';
 
-import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import TeamLogo from '@/components/common/team-logo/TeamLogo.vue';
 import { FixtureInterface, TeamInterface, ActivityInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { ParticipantLogo }
+  components: { TeamLogo }
 })
 export default class TabularScoreModal extends Vue {
   public error: boolean =  false;

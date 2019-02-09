@@ -14,14 +14,9 @@
         </div>
         <div class="modal-body">
           <div class="modal-teams-wrapper">
-            <div :class="['modal-team team-grouped', getWinnerClassObject(fixture.homeTeam)]">
+            <div :class="['modal-team team-double', getWinnerClassObject(fixture.homeTeam)]">
               <div class="modal-team-players">
-                <ParticipantLogo
-                  v-for="(player, index) in fixture.homeTeam.players"
-                  :key="`modal-team-player-${index}`"
-                  :showLarge="true"
-                  :participant="player"
-                />
+                <TeamLogo :team="fixture.homeTeam" showLarge="true"/>
               </div>
               <p
                 v-for="(player, index) in fixture.homeTeam.players"
@@ -36,14 +31,9 @@
               </span>
               <span v-else>VS</span>
             </div>
-            <div :class="['modal-team team-grouped', getWinnerClassObject(fixture.awayTeam)]">
+            <div :class="['modal-team team-double', getWinnerClassObject(fixture.awayTeam)]">
               <div class="modal-team-players">
-                <ParticipantLogo
-                  v-for="(player, index) in fixture.awayTeam.players"
-                  :key="`modal-team-player-${index}`"
-                  :showLarge="true"
-                  :participant="player"
-                />
+                <TeamLogo :team="fixture.awayTeam" showLarge="true"/>
               </div>
               <p
                 v-for="(player, index) in fixture.awayTeam.players"
@@ -89,11 +79,11 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import { isFixturePlayed } from '@/services/FixtureService';
 import { SCORE_MODAL_DATE_TIME_FORMAT } from '@/constants/utils';
-import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import TeamLogo from '@/components/common/team-logo/TeamLogo.vue';
 import { TeamInterface, FixtureInterface, ActivityInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { ParticipantLogo }
+  components: { TeamLogo }
 })
 export default class CarromBoardScoreModal extends Vue {
   @Prop() public triggerShowModal!: any;
@@ -119,11 +109,11 @@ export default class CarromBoardScoreModal extends Vue {
   }
 
   public isRoundWinner(activity: ActivityInterface, team: string) {
-    if (team.toLowerCase() === 'home' && (activity.team.name  === this.fixture.homeTeam.name)) {
+    if (team.toLowerCase() === 'home' && activity.team.name === this.fixture.homeTeam.name) {
       return true;
     }
 
-    if (team.toLowerCase() === 'away' && (activity.team.name  === this.fixture.awayTeam.name)) {
+    if (team.toLowerCase() === 'away' && activity.team.name === this.fixture.awayTeam.name) {
       return true;
     }
 
