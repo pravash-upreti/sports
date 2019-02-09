@@ -4,7 +4,13 @@
   </div>
   <div v-else class="container">
     <p v-if="!fixtures.length" class="alert">No fixtures found.</p>
-    <ScoreCardsList v-else :fixtures="fixtures" :rounds="rounds" :fixtureLink="fixtureLink"/>
+    <ScoreCardsList
+      v-else
+      :rounds="rounds"
+      :fixtures="fixtures"
+      :showFilterOptions="true"
+      :triggerShowModal="triggerShowModal"
+    />
   </div>
 </template>
 
@@ -19,8 +25,8 @@ import { sortFixturesByDate, getFixturesRounds } from '@/services/FixtureService
   components: { ScoreCardsList }
 })
 export default class Fixtures extends Vue {
-  @Prop() private data!: any;
-  @Prop() private fixtureLink!: string;
+  @Prop() public data!: any;
+  @Prop() public triggerShowModal!: any;
 
   get fixtures(): FixtureInterface[] {
     return this.data && this.data.fixtures && sortFixturesByDate(this.data.fixtures) || [];

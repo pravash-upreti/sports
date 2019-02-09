@@ -1,5 +1,5 @@
 .participant-logo-wrapper {
-  display: inline-flex;
+  display: flex;
   text-align: center;
 
   .participant-logo {
@@ -8,6 +8,7 @@
     border-radius: 50%;
     color: $color-white;
     display: flex;
+    font-size: calc(#{$profile-logo-width} - #{$space});
     font-weight: normal;
     height: $profile-logo-width;
     justify-content: center;
@@ -19,10 +20,19 @@
     @include themify($themes) {
       background: theme-property(color-theme);
     }
+
+    @include m(large) {
+      font-size: calc(#{$profile-logo-width--medium} - #{$space});
+      height: $profile-logo-width--medium;
+      width: $profile-logo-width--medium;
+    }
   }
 }
 
-.team-grouped {
+.team-double {
+  display: flex;
+  margin: 0 $space--2;
+
   .participant-logo-wrapper {
     .participant-logo {
       border: 1px solid $color-white;

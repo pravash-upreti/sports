@@ -11,6 +11,7 @@ import {
   TournamentDataResponseInterface,
 } from '../interfaces/interfaces';
 import { checkIfPlayerIsInTeam } from './PlayerService';
+import FIXTURE_STATUSES from '../constants/fixtureStatuses';
 
 export function getFixtures(fixturesList: FixtureInterface[], limit: number = 0): FixtureInterface[] {
   let fixtures = fixturesList
@@ -74,18 +75,15 @@ export function getRecentFixtures(
 }
 
 export function getFixtureDate(fixture: FixtureInterface) {
-  let fDate = 'TBD';
-  let fTime = 'TBD';
-
   if (fixture.date) {
-    fDate = dateFns.format(fixture.date, 'ddd, MMM D');
-    fTime = dateFns.format(fixture.date, 'h:mm A');
+    return {
+      date: dateFns.format(fixture.date, 'D MMM'),
+      day: dateFns.format(fixture.date, 'dddd'),
+      time: dateFns.format(fixture.date, 'h:mm A')
+    };
   }
 
-  return {
-    date: fDate,
-    time: fTime
-  };
+  return null;
 }
 
 /**
@@ -98,16 +96,15 @@ export function getFixtureDate(fixture: FixtureInterface) {
  */
 export function searchFixturesByKeyword(allFixtures: FixtureInterface[], keyword: string): FixtureInterface[] {
   let searchResults: FixtureInterface[] = [];
+  keyword = keyword.trim().toLowerCase();
 
   searchResults = allFixtures.filter((fixture) => {
-    const homeTeamName =
-      isUndefined(fixture.awayTeam.name) || isNull(fixture.awayTeam.name) ? '' : fixture.awayTeam.name;
-    const awayTeamName =
-      isUndefined(fixture.awayTeam.name) || isNull(fixture.awayTeam.name) ? '' : fixture.awayTeam.name;
+    const homeTeamName = fixture.homeTeam.name.trim().toLowerCase();
+    const awayTeamName = fixture.awayTeam.name.trim().toLowerCase();
 
     return (
-      homeTeamName.toLowerCase().indexOf(keyword) >= 0 ||
-      awayTeamName.toLowerCase().indexOf(keyword) >= 0 ||
+      homeTeamName.indexOf(keyword) >= 0 ||
+      awayTeamName.indexOf(keyword) >= 0 ||
       checkIfPlayerIsInTeam(fixture.homeTeam, keyword) ||
       checkIfPlayerIsInTeam(fixture.awayTeam, keyword)
     );
@@ -214,7 +211,7 @@ export function getFilteredData(data: any, params: any) {
  * @returns {boolean}
  */
 export function isFixturePlayed(fixture: FixtureInterface) {
-  return fixture.status.toLowerCase() === 'played';
+  return fixture.status.toLowerCase() === FIXTURE_STATUSES.PLAYED;
 }
 
 /**

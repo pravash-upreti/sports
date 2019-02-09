@@ -75,13 +75,6 @@ const router = new Router({
             title: 'Table Tennis - Teams'
           }
         },
-      //   /* {
-      //     path: TABLE_TENNIS_ROUTES.FIXTURE,
-      //     component: TableTennisScoreModal,
-      //     meta: {
-      //       title: 'Table Tennis - Fixture'
-      //     }
-      //   }, */
         {
           path: '*',
           redirect: TABLE_TENNIS_ROUTES.HOME
@@ -178,13 +171,6 @@ const router = new Router({
             title: 'Futsal - Teams'
           }
         },
-      //   /* {
-      //     path: FUTSAL_ROUTES.FIXTURE,
-      //     component: TableTennisScoreModal,
-      //     meta: {
-      //       title: 'Futsal - Fixture'
-      //     }
-      //   }, */
         {
           path: '*',
           redirect: FUTSAL_ROUTES.HOME
@@ -240,13 +226,13 @@ const router = new Router({
             title: 'Dashain Cup - Teams'
           }
         },
-      //   /* {
-      //     path: DASHAIN_CUP_ROUTES.FIXTURE,
-      //     component: TableTennisScoreModal,
-      //     meta: {
-      //       title: 'Dashain Cup - Fixture'
-      //     }
-      //   }, */
+        //   /* {
+        //     path: DASHAIN_CUP_ROUTES.FIXTURE,
+        //     component: TableTennisScoreModal,
+        //     meta: {
+        //       title: 'Dashain Cup - Fixture'
+        //     }
+        //   }, */
         {
           path: '*',
           redirect: DASHAIN_CUP_ROUTES.HOME
@@ -288,13 +274,13 @@ const router = new Router({
             title: 'Carrom Board - Teams'
           }
         },
-      //   /* {
-      //     path: CARROM_BOARD_ROUTES.FIXTURE,
-      //     component: TableTennisScoreModal,
-      //     meta: {
-      //       title: 'Carrom Board - Fixture'
-      //     }
-      //   }, */
+        //   /* {
+        //     path: CARROM_BOARD_ROUTES.FIXTURE,
+        //     component: TableTennisScoreModal,
+        //     meta: {
+        //       title: 'Carrom Board - Fixture'
+        //     }
+        //   }, */
         {
           path: '*',
           redirect: CARROM_BOARD_ROUTES.HOME
@@ -343,13 +329,13 @@ const router = new Router({
             title: 'Counter Strike - Teams'
           }
         },
-      //   /* {
-      //     path: COUNTER_STRIKE_ROUTES.FIXTURE,
-      //     component: TableTennisScoreModal,
-      //     meta: {
-      //       title: 'Counter Strike - Fixture'
-      //     }
-      //   }, */
+        //   /* {
+        //     path: COUNTER_STRIKE_ROUTES.FIXTURE,
+        //     component: TableTennisScoreModal,
+        //     meta: {
+        //       title: 'Counter Strike - Fixture'
+        //     }
+        //   }, */
         {
           path: '*',
           redirect: COUNTER_STRIKE_ROUTES.HOME
@@ -391,13 +377,13 @@ const router = new Router({
             title: 'FIFA - Teams'
           }
         },
-      //   /* {
-      //     path: FIFA_ROUTES.FIXTURE,
-      //     component: TableTennisScoreModal,
-      //     meta: {
-      //       title: 'FIFA - Fixture'
-      //     }
-      //   }, */
+        //   /* {
+        //     path: FIFA_ROUTES.FIXTURE,
+        //     component: TableTennisScoreModal,
+        //     meta: {
+        //       title: 'FIFA - Fixture'
+        //     }
+        //   }, */
         {
           path: '*',
           redirect: FIFA_ROUTES.HOME

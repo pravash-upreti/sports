@@ -1,32 +1,28 @@
 <template>
-  <div class="search-bar-wrapper container">
+  <div class="search-bar-wrapper">
     <input
-      v-model.trim="searchKeyword"
-      @input="submitSearch"
+      v-model.trim="keyword"
+      @input="handleSearch"
       type="search"
       class="search-bar"
-      :placeholder="searchPlaceHolder"
+      placeholder="Search fixtures by teams/players"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Prop, Component, Watch } from 'vue-property-decorator';
+import { Vue, Prop, Component } from 'vue-property-decorator';
 
 @Component
 export default class SearchBar extends Vue {
-  @Prop() public setSearchKeyword!: any;
-  @Prop() public placeHolder!: string;
-  private searchKeyword: string = '';
+  @Prop() public changeSearchKeyword!: any;
 
-  private submitSearch(e: any) {
+  private keyword: string = '';
+
+  private handleSearch(e: any) {
     e.preventDefault();
 
-    this.setSearchKeyword(this.searchKeyword);
-  }
-
-  get searchPlaceHolder(): string {
-    return this.placeHolder || 'Search by teams/players';
+    this.changeSearchKeyword(this.keyword);
   }
 }
 </script>

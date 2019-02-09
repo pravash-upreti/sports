@@ -7,43 +7,49 @@
       v-if="recentFixtures.todayFixtures.length"
       title="Today"
       :fixtures="recentFixtures.todayFixtures"
-      :fixtureLink="fixtureLink"
+      :triggerShowModal="triggerShowModal"
     />
     <ScoreCardsList
       v-if="recentFixtures.tomorrowFixtures.length"
       title="Tomorrow"
       :fixtures="recentFixtures.tomorrowFixtures"
-      :fixtureLink="fixtureLink"
+      :triggerShowModal="triggerShowModal"
     />
     <ScoreCardsList
       v-if="recentFixtures.twRemainingFixtures.length"
       title="Later this week"
       :fixtures="recentFixtures.twRemainingFixtures"
-      :fixtureLink="fixtureLink"
+      :triggerShowModal="triggerShowModal"
     />
     <ScoreCardsList
       v-if="recentFixtures.nwFixtures.length"
       title="Next week"
       :fixtures="recentFixtures.nwFixtures"
-      :fixtureLink="fixtureLink"
+      :triggerShowModal="triggerShowModal"
     />
     <ScoreCardsList
       v-if="recentFixtures.twPlayedFixtures.length"
       title="Earlier this week"
       :fixtures="recentFixtures.twPlayedFixtures"
-      :fixtureLink="fixtureLink"
+      :triggerShowModal="triggerShowModal"
     />
     <ScoreCardsList
       v-if="recentFixtures.lwFixtures.length"
       title="Last week"
       :fixtures="recentFixtures.lwFixtures"
-      :fixtureLink="fixtureLink"
+      :triggerShowModal="triggerShowModal"
     />
     <ScoreCardsList
       v-if="recentFixtures.upComingFixtures.length"
       title="Upcoming"
       :fixtures="recentFixtures.upComingFixtures"
-      :fixtureLink="fixtureLink"
+      :triggerShowModal="triggerShowModal"
+    />
+    <ScoreCardsList
+      v-if="recents.results.length"
+      title="All"
+      :fixtures="recents.results.slice(0,4)"
+      :triggerShowModal="triggerShowModal"
     />
   </div>
 </template>
@@ -62,6 +68,7 @@ import { isFixturePlayed, isFixtureCancelled } from '@/services/FixtureService';
 })
 export default class RecentFixtures extends Vue {
   @Prop() public fixtureLink!: string;
+  @Prop() public triggerShowModal!: any;
   @Prop() public recents!: RecentsInterface;
 
   public noRecentFixtures: boolean = false;
