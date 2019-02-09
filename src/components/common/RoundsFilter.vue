@@ -1,14 +1,12 @@
 <template>
-  <div class="rounds-filter-wrapper">
-    <ul>
-      <li
+  <div class="rounds-filter-wrapper select-wrapper">
+    <select class="rounds-filter" @change="handleChangeSelectedRound" v-model="selectedRound">
+      <option
         v-for="(round, index) in rounds"
-        :key="index"
-        :title="round.description"
-        :class="activeClassObject(round)"
-        @click="handleChangeSelectedRound(round)"
-      >{{ round.shortName }}</li>
-    </ul>
+        :key="`round-${index}`"
+        :value="round"
+      >{{ round.description }}</option>
+    </select>
   </div>
 </template>
 
@@ -22,18 +20,17 @@ export default class RoundsFilter extends Vue {
   public rounds!: RoundInterface[];
   @Prop()
   public changeSelectedRound!: any;
-  @Prop()
-  public selectedRound!: RoundInterface;
 
-  private handleChangeSelectedRound(round: RoundInterface) {
-    this.changeSelectedRound(round);
+  public selectedRound: RoundInterface | null = null;
+
+  public created() {
+    this.selectedRound = this.rounds[0];
   }
 
-  private activeClassObject(round: RoundInterface) {
-    return {
-      'rounds-filter': true,
-      'active': round.id === this.selectedRound.id
-    };
+  private handleChangeSelectedRound(e: any) {
+    e.preventDefault();
+
+    this.changeSelectedRound(this.selectedRound);
   }
 }
 </script>

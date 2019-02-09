@@ -4,7 +4,6 @@
       <RoundsFilter
         v-if="rounds && rounds.length"
         :rounds="rounds"
-        :selectedRound="selectedRound"
         :changeSelectedRound="changeSelectedRound"
       />
       <SearchBar

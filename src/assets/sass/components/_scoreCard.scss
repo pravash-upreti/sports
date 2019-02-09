@@ -103,15 +103,27 @@
           text-transform: uppercase;
           width: 150px;
 
+          @include themify($themes) {
+            color: theme-property(color-score-result);
+          }
+
           @include m(versus) {
             color: rgba($color-score-result, 0.75);
             font-weight: 300;
+
+            @include themify($themes) {
+              color: theme-property(color-score-result);
+            }
           }
 
           @include m(cancelled) {
             color: rgba($color-score-result, 0.75);
             font-size: $font-size--16;
             font-weight: 300;
+
+            @include themify($themes) {
+              color: theme-property(color-score-result);
+            }
           }
 
           @include e(home) {
