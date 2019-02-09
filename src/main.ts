@@ -7,7 +7,7 @@ import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
-Vue.component('v-select', VueSelect);
+Vue.component('v-select', VueSelect as any);
 
 new Vue({
   router,

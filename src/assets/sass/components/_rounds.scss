@@ -17,15 +17,5 @@
     color: $color-text--score-card;
     font-size: $font-size--16;
     width: 100%;
-
-    @include mq(md) {
-      width: 180px;
-    }
-  }
-
-  .teams-filter {
-    @include mq(md) {
-      width: 200px;
-    }
   }
 }
