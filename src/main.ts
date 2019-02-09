@@ -1,9 +1,13 @@
 import Vue from 'vue';
+import { VueSelect } from 'vue-select';
+
 import App from './App.vue';
 import router from './router';
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;
+
+Vue.component('v-select', VueSelect);
 
 new Vue({
   router,

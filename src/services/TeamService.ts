@@ -1,5 +1,7 @@
+import _ from 'lodash';
+
 import { checkIfPlayerIsInTeam } from './PlayerService';
-import { TeamInterface } from './../interfaces/interfaces';
+import { TeamInterface, FixtureInterface } from './../interfaces/interfaces';
 
 /**
  * Get search results from a list of team using keyword.
@@ -89,4 +91,35 @@ export function getTeamCustomStyles(team: TeamInterface): object {
   }
 
   return customStyles;
+}
+
+/**
+ * Get list of teams from list of fixtures.
+ *
+ * @export
+ * @param {FixtureInterface[]} fixtures
+ * @returns {TeamInterface[]}
+ */
+export function getTeamsFromFixtures(fixtures: FixtureInterface[]): TeamInterface[] {
+  const homeTeams = _.chain(fixtures)
+    .map((fixture) => fixture.homeTeam)
+    .value();
+
+  const awayTeams = _.chain(fixtures)
+    .map((fixture) => fixture.awayTeam)
+    .value();
+
+  const bothTeams = homeTeams.concat(awayTeams);
+  const teams = _.chain(bothTeams)
+    .uniqBy('id')
+    .sortBy('name')
+    .value();
+
+  teams.unshift({
+    id: 0,
+    name: 'All teams',
+    category: ''
+  });
+
+  return teams;
 }

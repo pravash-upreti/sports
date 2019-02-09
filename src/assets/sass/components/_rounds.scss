@@ -1,34 +1,31 @@
+.teams-filter-wrapper,
 .rounds-filter-wrapper {
   align-items: center;
   display: flex;
-  flex-direction: row wrap;
-  justify-content: center;
   padding: $space--2 $space--4;
   width: 100%;
 
   @include mq(md) {
-    justify-content: flex-start;
     padding: $space--2;
+    width: auto;
   }
 
-  &.select-wrapper {
-    &::after {
-      border: 1px solid $color-body;
-      border-width: 0 1px 1px 0;
-      left: -$space--3;
-    }
-  }
-
+  .teams-filter,
   .rounds-filter {
     background: $color-white;
     border-radius: $space;
     color: $color-text--score-card;
     font-size: $font-size--16;
-    padding: $space $space--2;
     width: 100%;
 
     @include mq(md) {
       width: 180px;
+    }
+  }
+
+  .teams-filter {
+    @include mq(md) {
+      width: 200px;
     }
   }
 }
