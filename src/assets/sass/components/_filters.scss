@@ -7,17 +7,5 @@
   @include mq(md) {
     flex-direction: row;
     flex-wrap: nowrap;
-
-    .rounds-filter-wrapper {
-      flex-grow: 1;
-    }
-
-    .search-bar-wrapper {
-      width: 100%;
-
-      &.with-rounds {
-        width: 400px;
-      }
-    }
   }
 }

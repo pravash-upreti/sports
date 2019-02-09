@@ -17,7 +17,7 @@
           <div class="modal-teams-wrapper">
             <div :class="['modal-team', getWinnerClassObject(fixture.homeTeam)]">
               <div class="modal-team-players">
-                <ParticipantLogo :showLarge="true" :participant="fixture.homeTeam"/>
+                <TeamLogo :team="fixture.homeTeam" :showLarge="true"/>
               </div>
               <p class="text-center">{{ fixture.homeTeam.name }}</p>
             </div>
@@ -30,14 +30,15 @@
             </div>
             <div :class="['modal-team', getWinnerClassObject(fixture.awayTeam)]">
               <div class="modal-team-players">
-                <ParticipantLogo :showLarge="true" :participant="fixture.awayTeam"/>
+                <TeamLogo :team="fixture.awayTeam" :showLarge="true"/>
               </div>
               <p class="text-center">{{ fixture.awayTeam.name }}</p>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <p v-if="!isFixturePlayed" class="text-center">This fixture is yet to be played.</p>
+          <p v-if="isFixtureCancelled" class="text-center">This fixture has been cancelled.</p>
+          <p v-else-if="!isFixturePlayed" class="text-center">This fixture is yet to be played.</p>
           <p
             v-else-if="!fixture.activities.length"
             class="text-center"
@@ -55,13 +56,13 @@
 import dateFns from 'date-fns';
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-import { isFixturePlayed } from '@/services/FixtureService';
-import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import TeamLogo from '@/components/common/team-logo/TeamLogo.vue';
 import FutsalActivities from '@/components/futsal/FutsalActivities.vue';
+import { isFixturePlayed, isFixtureCancelled } from '@/services/FixtureService';
 import { FixtureInterface, TeamInterface, ActivityInterface } from '@/interfaces/interfaces';
 
 @Component({
-  components: { ParticipantLogo, FutsalActivities }
+  components: { TeamLogo, FutsalActivities }
 })
 export default class FutsalScoreModal extends Vue {
   @Prop() public triggerShowModal!: any;
@@ -92,6 +93,10 @@ export default class FutsalScoreModal extends Vue {
 
   get isFixturePlayed() {
     return isFixturePlayed(this.fixture);
+  }
+
+  get isFixtureCancelled() {
+    return isFixtureCancelled(this.fixture);
   }
 
   get fixtureDate() {

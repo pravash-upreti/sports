@@ -1,21 +1,11 @@
 <template>
-  <div :class="['fixture-team-name-wrapper', isWinner ? 'winner' : '', isGrouped ? 'team-grouped' : '']">
-    <span v-if="isGrouped" class="fixture-team-symbol">
-      <ParticipantLogo
-        v-for="(player, index) in teamInfo.players"
-        :key="index"
-        :participant="player"
-        :customStyles="teamCustomStyles"
-      />
-    </span>
-    <span v-else class="fixture-team-symbol">
-      <ParticipantLogo
-        :participant="teamInfo"
-        :customStyles="teamCustomStyles"
-      />
-    </span>
+  <div :class="{ 'fixture-team-name-wrapper': true, 'winner' : isWinner }">
+    <TeamLogo :team="team"/>
     <span class="fixture-team-name">{{ teamInfo.name }}</span>
-    <span class="fixture-team-score"><i v-if="isWinner" class="fas fa-trophy" /> {{ score }}</span>
+    <span class="fixture-team-score">
+      <i v-if="isWinner" class="fas fa-trophy"/>
+      {{ score }}
+    </span>
   </div>
 </template>
 
@@ -23,57 +13,19 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import { TeamInterface } from '@/interfaces/interfaces';
-import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import TeamLogo from '@/components/common/team-logo/TeamLogo.vue';
+import { getTeamInfo } from '@/services/TeamService';
 
 @Component({
-  components: { ParticipantLogo }
+  components: { TeamLogo }
 })
 export default class FixtureTeamMobile extends Vue {
-  @Prop()
-  public team!: TeamInterface;
-  @Prop()
-  public isWinner!: boolean;
-  @Prop()
-  public score!: number;
-
-  private isTeamTBD() {
-    return !Object.keys(this.team).length;
-  }
-
-  get isGrouped(): boolean {
-    return !!(this.teamInfo && this.teamInfo.players && this.teamInfo.players.length);
-  }
-
-  get teamCustomStyles(): object {
-    let customStyles = {};
-
-    if (this.team.logo) {
-      customStyles = Object.assign(customStyles, {
-        color: this.team.logo.color,
-        backgroundColor: this.team.logo.backgroundColor
-      });
-    }
-
-    return customStyles;
-  }
+  @Prop() public team!: TeamInterface;
+  @Prop() public isWinner!: boolean;
+  @Prop() public score!: number;
 
   get teamInfo(): TeamInterface {
-    // Check if team is TBD. Set a default TBD team.
-    if (this.isTeamTBD()) {
-      return {
-        id: 0,
-        name: 'TBD',
-        category: '',
-        players: [
-          {
-            id: 0,
-            name: 'TBD'
-          }
-        ]
-      };
-    }
-
-    return this.team;
+    return getTeamInfo(this.team);
   }
 }
 </script>

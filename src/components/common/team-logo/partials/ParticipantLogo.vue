@@ -1,13 +1,13 @@
 <template>
   <span class="participant-logo-wrapper">
     <img 
-      v-if="participant.profileImage && shouldShowImage"
+      v-if="participant.profileImage"
       :src="participant.profileImage"
       :alt="participant.name"
       :class="imageClassObject"
     >
     <img
-      v-else-if="participant.logo && participant.logo.image && shouldShowImage"
+      v-else-if="participant.logo && participant.logo.image"
       :src="participant.logo.image"
       :alt="participant.name"
       :class="imageClassObject"
@@ -33,9 +33,8 @@ import { TeamInterface, PlayerInterface } from '@/interfaces/interfaces';
 
 @Component
 export default class ParticipantLogo extends Vue {
-  @Prop() private showLarge!: boolean;
   @Prop() private customStyles!: object;
-  @Prop({ default: false }) private hideImage!: boolean;
+  @Prop({ default: false }) private showLarge!: boolean;
   @Prop() private participant!: PlayerInterface|TeamInterface;
 
   get classObject() {
@@ -61,10 +60,6 @@ export default class ParticipantLogo extends Vue {
     }
 
     return this.customStyles;
-  }
-
-  get shouldShowImage() {
-    return !this.hideImage;
   }
 
   get imageClassObject() {

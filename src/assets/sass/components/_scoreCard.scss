@@ -20,30 +20,6 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-
-  @include m(single) {
-    justify-content: center;
-
-    > .score-card-wrapper,
-    .score-card-link-wrapper {
-      @include mq(md) {
-        width: 100% !important;
-      }
-    }
-  }
-
-  > .score-card-wrapper,
-  .score-card-link-wrapper {
-    width: 100%;
-
-    @include mq(lg) {
-      width: 50%;
-    }
-  }
-
-  .score-card-link-wrapper {
-    cursor: pointer;
-  }
 }
 
 .score-card-wrapper {
@@ -64,8 +40,9 @@
     display: flex;
     flex-flow: row nowrap;
     font-size: $font-size--18;
+    height: 100%;
     justify-content: center;
-    padding: $space--4 $space--2;
+    padding: $space;
     transition: all 0.25s linear;
 
     @include m(desktop) {
@@ -73,103 +50,145 @@
 
       @include mq(md) {
         display: flex;
-        font-size: $font-size--24;
+        width: 100%;
 
-        &:hover {
-          box-shadow: 0 $space--4 $space--8 0 rgba($color-black, 0.2);
-          position: relative;
-          transform: scale(1.01);
-        }
-
-        .fixture-team-name-wrapper {
+        .team-wrapper,
+        .score-wrapper,
+        .other-info-wrapper {
           align-items: center;
           display: flex;
-          flex: 1;
-          padding: 0 $space--2;
+          height: 100%;
+          padding: $space $space--2;
+        }
+
+        .team-wrapper {
+          display: flex;
+          flex-direction: row;
+          flex-grow: 1;
+          flex-wrap: nowrap;
+          font-size: $font-size--20;
+          justify-content: flex-start;
+          text-transform: capitalize;
+
+          @include m(home) {
+            justify-content: left;
+
+            .fixture-team-name {
+              text-align: right;
+            }
+          }
+
+          @include m(away) {
+            justify-content: right;
+
+            .fixture-team-name {
+              text-align: left;
+            }
+          }
 
           .fixture-team-name {
-            flex: 1;
-            text-transform: capitalize;
+            flex-grow: 1;
           }
 
-          .fixture-team-symbol {
-            display: flex;
-            padding: 0 $space;
-          }
-
-          .home-team {
-            text-align: right;
-          }
-
-          .away-team {
-            text-align: left;
-          }
-
-          .winner {
-            font-weight: 600;
-
-            .participant-logo {
-              border: 4px solid $color-trophy;
-            }
-          }
-
-          .fa-trophy {
-            color: $color-trophy;
-            font-size: $font-size--18;
+          .fixture-team-logo {
+            flex-grow: 0;
           }
         }
 
-        .fixture-score-wrapper {
-          flex-basis: 250px;
-          font-weight: 700;
-          padding: 0 $space--2;
-          text-align: center;
+        .score-wrapper {
+          color: $color-score-result;
+          font-size: $font-size--36;
+          font-weight: 600;
+          justify-content: center;
+          text-transform: uppercase;
+          width: 150px;
 
-          .result {
-            font-size: $font-size--56;
-
-            @include m(versus) {
-              font-size: $font-size--36;
-              padding-top: 0;
-            }
-
-            @include m(cancelled) {
-              font-size: $font-size--24;
-              font-weight: 300;
-              padding-top: 0;
-              text-transform: uppercase;
-            }
+          @include themify($themes) {
+            color: theme-property(color-score-result);
           }
 
-          .result-score-wrapper {
-            .result-score {
-              color: $color-score-result;
-              @include themify($themes) {
-                color: theme-property(color-score-result);
-              }
+          @include m(versus) {
+            color: rgba($color-score-result, 0.75);
+            font-weight: 300;
+
+            @include themify($themes) {
+              color: theme-property(color-score-result);
             }
           }
 
-          .fixture-round,
-          .fixture-time,
-          .fixture-date {
-            font-weight: 400;
-          }
-
-          .fixture-round,
-          .fixture-time {
+          @include m(cancelled) {
+            color: rgba($color-score-result, 0.75);
             font-size: $font-size--16;
-            line-height: 95%;
+            font-weight: 300;
+
+            @include themify($themes) {
+              color: theme-property(color-score-result);
+            }
           }
 
-          .fixture-time {
-            opacity: 0.8;
+          @include e(home) {
+            flex-grow: 1;
+            text-align: right;
+            width: 50%;
+          }
+
+          @include e(away) {
+            flex-grow: 1;
+            text-align: left;
+            width: 50%;
+          }
+
+          @include e(dot) {
+            padding: 0 $space--2;
+            text-align: center;
           }
         }
 
-        .participant-logo {
-          height: $profile-logo-width--large;
-          width: $profile-logo-width--large;
+        .other-info-wrapper {
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          font-size: $font-size--14;
+          justify-content: center;
+          text-align: center;
+          text-transform: uppercase;
+          width: 120px;
+
+          @include m(left) {
+            border-right: 1px solid rgba($color-text--score-card, 0.25);
+          }
+
+          @include m(right) {
+            border-left: 1px solid rgba($color-text--score-card, 0.25);
+          }
+
+          @include e(day) {
+            font-weight: 600;
+            width: 100%;
+          }
+
+          @include e(date) {
+            width: 100%;
+          }
+
+          @include e(time) {
+            font-weight: 600;
+            width: 100%;
+          }
+
+          @include e(round) {
+            width: 100%;
+          }
+
+          @include e(category) {
+            font-weight: 600;
+            width: 100%;
+          }
+
+          @include e(match) {
+            font-size: $font-size--12;
+            width: 100%;
+          }
         }
       }
     }
@@ -178,6 +197,10 @@
       flex-direction: column;
       font-size: $font-size--18;
       padding: $space--3;
+
+      @include mq(md) {
+        display: none;
+      }
 
       .fixture-team-name-wrapper {
         align-items: center;
@@ -251,6 +274,10 @@
           text-align: left;
         }
       }
+    }
+
+    @include m(cancelled) {
+      background-color: rgba($color-white, 0.8);
     }
 
     &:hover {

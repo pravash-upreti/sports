@@ -16,12 +16,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="(point, index) in data.points"
-          :key="index"
-        >
+        <tr v-for="(point, index) in data.points" :key="index">
           <td>{{ point.id }}</td>
-          <td class="points-team-name-wrapper"><participant-logo :participant="point.team" /> {{ point.team.name }}</td>
+          <td class="points-team-name-wrapper">
+            <TeamLogo :team="point.team"/>
+            {{ point.team.name }}
+          </td>
           <td>{{ point.played }}</td>
           <td>{{ point.won }}</td>
           <td>{{ point.drawn }}</td>
@@ -39,10 +39,10 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
-import ParticipantLogo from '@/components/common/ParticipantLogo.vue';
+import TeamLogo from '@/components/common/team-logo/TeamLogo.vue';
 
 @Component({
-  components: { ParticipantLogo }
+  components: { TeamLogo }
 })
 export default class FutsalPoints extends Vue {
   @Prop() private data!: any;

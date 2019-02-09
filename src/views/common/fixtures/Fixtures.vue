@@ -8,7 +8,7 @@
       v-else
       :rounds="rounds"
       :fixtures="fixtures"
-      :showSearchField="true"
+      :showFilterOptions="true"
       :triggerShowModal="triggerShowModal"
     />
   </div>
