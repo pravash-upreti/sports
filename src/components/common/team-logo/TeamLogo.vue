@@ -4,10 +4,16 @@
       v-for="(player, index) in teamInfo.players"
       :key="index"
       :participant="player"
+      :showLarge="showLarge"
       :customStyles="teamCustomStyles"
     />
   </div>
-  <ParticipantLogo v-else :participant="teamInfo" :customStyles="teamCustomStyles"/>
+  <ParticipantLogo
+    v-else
+    :participant="teamInfo"
+    :customStyles="teamCustomStyles"
+    :showLarge="showLarge"
+  />
 </template>
 
 <script lang="ts">

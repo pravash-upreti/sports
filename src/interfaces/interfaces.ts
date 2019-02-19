@@ -52,6 +52,7 @@ export interface ActivityInterface {
   points?: number;
   teamType: string;
   type: string;
+  assistBy?: string;
   homeTeamPoints: number;
   awayTeamPoints: number;
 }
