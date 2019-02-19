@@ -9,6 +9,10 @@
         :stat="goalsStats"
       />
       <Stat
+        v-if="assistsStats.players.length"
+        :stat="assistsStats"
+      />
+      <Stat
         v-if="yellowCardsStats.players.length"
         :stat="yellowCardsStats"
       />
@@ -24,7 +28,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 
 import Stat from './partials/Stat.vue';
-import { footballIcon, redCardIcon, yellowCardIcon } from '@/assets/images';
+import { footballIcon, redCardIcon, yellowCardIcon, footballAssistIcon } from '@/assets/images';
 
 @Component({
   components: { Stat }
@@ -37,6 +41,14 @@ export default class FutsalStats extends Vue {
       title: 'Goals',
       icon: footballIcon,
       players: this.data.stats.goals
+    };
+  }
+
+  get assistsStats() {
+    return {
+      title: 'Assists',
+      icon: footballAssistIcon,
+      players: this.data.stats.assists
     };
   }
 

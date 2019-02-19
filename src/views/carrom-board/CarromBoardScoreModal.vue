@@ -16,7 +16,7 @@
           <div class="modal-teams-wrapper">
             <div :class="['modal-team team-double', getWinnerClassObject(fixture.homeTeam)]">
               <div class="modal-team-players">
-                <TeamLogo :team="fixture.homeTeam" showLarge="true"/>
+                <TeamLogo :team="fixture.homeTeam" :showLarge="true"/>
               </div>
               <p
                 v-for="(player, index) in fixture.homeTeam.players"
@@ -33,7 +33,7 @@
             </div>
             <div :class="['modal-team team-double', getWinnerClassObject(fixture.awayTeam)]">
               <div class="modal-team-players">
-                <TeamLogo :team="fixture.awayTeam" showLarge="true"/>
+                <TeamLogo :team="fixture.awayTeam" :showLarge="true"/>
               </div>
               <p
                 v-for="(player, index) in fixture.awayTeam.players"

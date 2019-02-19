@@ -1,6 +1,6 @@
 <template>
   <span class="participant-logo-wrapper">
-    <img 
+    <img
       v-if="participant.profileImage"
       :src="participant.profileImage"
       :alt="participant.name"
@@ -12,15 +12,15 @@
       :alt="participant.name"
       :class="imageClassObject"
     >
-    <span 
-      v-else-if="participant.logo" 
+    <span
+      v-else-if="participant.logo"
       :style="logoStyleObject"
       :class="imageClassObject"
     >{{ participant.logo.text }}</span>
     <span
       v-else
       :style="classObject"
-      :class="imageClassObject" 
+      :class="imageClassObject"
     >{{ nameFirstLetter }}</span>
   </span>
 </template>
