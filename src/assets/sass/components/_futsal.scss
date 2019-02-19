@@ -52,6 +52,8 @@
     }
 
     .activity-home-team {
+      justify-content: flex-end;
+
       .futsal-activist-wrapper {
         justify-content: flex-end;
 
@@ -62,6 +64,8 @@
     }
 
     .activity-away-team {
+      justify-content: flex-start;
+
       .futsal-activist-wrapper {
         justify-content: flex-start;
 
@@ -83,7 +87,19 @@
     overflow: hidden;
     width: 100%;
 
+    &.futsal-activist-assist {
+      font-size: $font-size--14;
+      opacity: 0.5;
+
+      .activist-name {
+        padding: 0 $space--2;
+      }
+    }
+
     .activist-name {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
       padding: $space $space--2;
     }
 
