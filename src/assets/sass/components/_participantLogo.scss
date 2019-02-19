@@ -17,14 +17,14 @@
     text-transform: uppercase;
     width: $profile-logo-width;
 
-    @include themify($themes) {
-      background: theme-property(color-theme);
-    }
-
     @include m(large) {
       font-size: calc(#{$profile-logo-width--medium} - #{$space});
       height: $profile-logo-width--medium;
       width: $profile-logo-width--medium;
+    }
+
+    @include themify($themes) {
+      background: theme-property(color-theme);
     }
   }
 }
