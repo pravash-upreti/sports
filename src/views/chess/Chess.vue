@@ -1,11 +1,12 @@
 <template>
-  <LoadingIcon v-if="loading" />
+  <LoadingIcon v-if="loading"/>
   <div v-else-if="error" class="container">
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
   <div v-else class="container">
     <SportHeader
       :title="title"
+      :subTitle="subTitle"
       :categories="data.categories"
       :rounds="data.rounds"
       :routes="routes"
@@ -18,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop} from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
 import SPORTS from '@/constants/sports';
 import { CHESS_ROUTES } from '@/constants/routes';
@@ -31,9 +32,12 @@ import SportHeader from '@/components/common/sport-header/SportHeader.vue';
   components: { SportHeader, LoadingIcon }
 })
 export default class Chess extends Vue {
-
   get title(): string {
-    return `Chess ${this.season}`;
+    return `Chess`;
+  }
+
+  get subTitle(): string | number {
+    return this.season;
   }
 
   get selectedSportSeason(): object {
@@ -46,7 +50,7 @@ export default class Chess extends Vue {
   public data: any = {};
   public error: boolean = false;
   public loading: boolean = false;
-  public season: string|number = '';
+  public season: string | number = '';
   public routes: object = CHESS_ROUTES;
   @Prop() private updateSelectedSport: any;
 

@@ -6,6 +6,7 @@
   <div v-else class="container">
     <SportHeader
       :title="title"
+      :subTitle="subTitle"
       :categories="data.categories"
       :rounds="data.rounds"
       :routes="routes"
@@ -105,7 +106,11 @@ export default class TableTennis extends Vue {
   }
 
   get title(): string {
-    return `Table Tennis ${this.season}`;
+    return `Table Tennis`;
+  }
+
+  get subTitle(): string | number {
+    return this.season;
   }
 
   get selectedSportSeason(): object {

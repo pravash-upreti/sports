@@ -4,7 +4,7 @@
     <div class="alert alert-error">Unable to load data. Please try again later.</div>
   </div>
   <div v-else class="container">
-    <SportHeader :title="title" :routes="routes" :selectedSportSeason="selectedSportSeason"/>
+    <SportHeader :title="title" :subTitle="subTitle" :routes="routes" :selectedSportSeason="selectedSportSeason"/>
     <div class="tournament-content-wrapper">
       <router-view :data="data" :triggerShowModal="triggerShowModal"/>
     </div>
@@ -87,7 +87,11 @@ export default class Futsal extends Vue {
   }
 
   get title(): string {
-    return `Futsal ${this.season}`;
+    return `Futsal`;
+  }
+
+  get subTitle(): string | number {
+    return this.season;
   }
 
   get selectedSportSeason(): object {

@@ -16,11 +16,9 @@ export const BASE_ROUTES = {
   FIFA,
   CHESS,
   FUTSAL,
-  DASHAIN_CUP,
   CARROM_BOARD,
   TABLE_TENNIS,
-  COUNTER_STRIKE,
-  VALENTINES_CUP
+  COUNTER_STRIKE
 };
 
 // Order of route declaration appears on the UI.
@@ -58,28 +56,6 @@ export const CHESS_ROUTES = {
   RESULTS: `${CHESS}/results`,
   FIXTURES: `${CHESS}/fixtures`,
   TEAMS: `${CHESS}/teams`
-};
-
-// Order of route declaration appears on the UI.
-export const DASHAIN_CUP_ROUTES = {
-  HOME: `${DASHAIN_CUP}/`,
-  RESULTS: `${DASHAIN_CUP}/results`,
-  FIXTURES: `${DASHAIN_CUP}/fixtures`,
-  POINTS: `${DASHAIN_CUP}/points`,
-  STATS: `${DASHAIN_CUP}/stats`,
-  TEAMS: `${DASHAIN_CUP}/teams`,
-  FIXTURE: `${DASHAIN_CUP}/fixture/:fixtureId`,
-};
-
-// Order of route declaration appears on the UI.
-export const VALENTINES_CUP_ROUTES = {
-  HOME: `${VALENTINES_CUP}/`,
-  RESULTS: `${VALENTINES_CUP}/results`,
-  FIXTURES: `${VALENTINES_CUP}/fixtures`,
-  POINTS: `${VALENTINES_CUP}/points`,
-  STATS: `${VALENTINES_CUP}/stats`,
-  TEAMS: `${VALENTINES_CUP}/teams`,
-  FIXTURE: `${VALENTINES_CUP}/fixture/:fixtureId`,
 };
 
 // Order of route declaration appears on the UI.
