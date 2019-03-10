@@ -7,11 +7,9 @@ import {
   FIFA_ROUTES,
   CHESS_ROUTES,
   FUTSAL_ROUTES,
-  DASHAIN_CUP_ROUTES,
   TABLE_TENNIS_ROUTES,
   CARROM_BOARD_ROUTES,
-  COUNTER_STRIKE_ROUTES,
-  VALENTINES_CUP_ROUTES
+  COUNTER_STRIKE_ROUTES
 } from './constants/routes';
 
 import Dota from '@/views/dota/Dota.vue';
@@ -24,11 +22,9 @@ import Recent from '@/views/common/recent/Recent.vue';
 import Results from '@/views/common/results/Results.vue';
 import FutsalStats from '@/views/futsal/FutsalStats.vue';
 import FutsalPoints from '@/views/futsal/FutsalPoints.vue';
-import DashainCup from '@/views/dashain-cup/DashainCup.vue';
 import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
-import ValentinesCup from '@/views/valentines-cup/ValentinesCup.vue';
 import CounterStrike from '@/views/counter-strike/CounterStrike.vue';
 import CounterStrikePoints from '@/views/counter-strike/CounterStrikePoints.vue';
 
@@ -174,68 +170,6 @@ const router = new Router({
         {
           path: '*',
           redirect: FUTSAL_ROUTES.HOME
-        }
-      ]
-    },
-    {
-      path: BASE_ROUTES.DASHAIN_CUP,
-      component: DashainCup,
-      meta: {
-        title: 'Dashain Cup'
-      },
-      children: [
-        {
-          path: DASHAIN_CUP_ROUTES.HOME,
-          component: Recent,
-          meta: {
-            title: 'Dashain Cup - Home'
-          }
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.FIXTURES,
-          component: Fixtures,
-          meta: {
-            title: 'Dashain Cup - Fixtures'
-          }
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.RESULTS,
-          component: Results,
-          meta: {
-            title: 'Dashain Cup - Results'
-          }
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.POINTS,
-          component: FutsalPoints,
-          meta: {
-            title: 'Dashain Cup - Points'
-          }
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.STATS,
-          component: FutsalStats,
-          meta: {
-            title: 'Dashain Cup - Stats'
-          }
-        },
-        {
-          path: DASHAIN_CUP_ROUTES.TEAMS,
-          component: Teams,
-          meta: {
-            title: 'Dashain Cup - Teams'
-          }
-        },
-        //   /* {
-        //     path: DASHAIN_CUP_ROUTES.FIXTURE,
-        //     component: TableTennisScoreModal,
-        //     meta: {
-        //       title: 'Dashain Cup - Fixture'
-        //     }
-        //   }, */
-        {
-          path: '*',
-          redirect: DASHAIN_CUP_ROUTES.HOME
         }
       ]
     },
@@ -435,61 +369,6 @@ const router = new Router({
         {
           path: '*',
           redirect: DOTA_ROUTES.HOME
-        }
-      ]
-    },
-    {
-      path: BASE_ROUTES.VALENTINES_CUP,
-      component: ValentinesCup,
-      meta: {
-        title: 'Valentines Cup'
-      },
-      children: [
-        {
-          path: VALENTINES_CUP_ROUTES.HOME,
-          component: Recent,
-          meta: {
-            title: 'Valentines Cup - Home'
-          }
-        },
-        {
-          path: VALENTINES_CUP_ROUTES.FIXTURES,
-          component: Fixtures,
-          meta: {
-            title: 'Valentines Cup - Fixtures'
-          }
-        },
-        {
-          path: VALENTINES_CUP_ROUTES.RESULTS,
-          component: Results,
-          meta: {
-            title: 'Valentines Cup - Results'
-          }
-        },
-        {
-          path: VALENTINES_CUP_ROUTES.POINTS,
-          component: FutsalPoints,
-          meta: {
-            title: 'Valentines Cup - Points'
-          }
-        },
-        {
-          path: VALENTINES_CUP_ROUTES.STATS,
-          component: FutsalStats,
-          meta: {
-            title: 'Valentines Cup - Stats'
-          }
-        },
-        {
-          path: VALENTINES_CUP_ROUTES.TEAMS,
-          component: Teams,
-          meta: {
-            title: 'Valentines Cup - Teams'
-          }
-        },
-        {
-          path: '*',
-          redirect: VALENTINES_CUP_ROUTES.HOME
         }
       ]
     },

@@ -5,15 +5,15 @@ export default [
     seasons: [
       {
         name: 'Valentine\'s Cup Mens',
-        route: '/valentines-cup/mens'
+        route: '/futsal/valentines-cup-mens'
       },
       {
         name: 'Valentine\'s Cup Womens',
-        route: '/valentines-cup/womens'
+        route: '/futsal/valentines-cup-womens'
       },
       {
         name: 'Dashain Cup',
-        route: '/dashain-cup/2018'
+        route: '/futsal/dashain-cup-2018'
       },
       {
         name: 2018,
