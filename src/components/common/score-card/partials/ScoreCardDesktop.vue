@@ -24,7 +24,7 @@
         <i v-if="isHomeTeamWinnerForNoScore" class="fas fa-trophy"/>
         {{ fixture.homeTeamScore }}
       </span>
-      <span class="score-wrapper__dot">:</span>
+      <span v-if="!this.fixture.winnerTeam" class="score-wrapper__dot">:</span>
       <span class="score-wrapper__away">
         {{ fixture.awayTeamScore }}
         <i v-if="isAwayTeamWinnerForNoScore" class="fas fa-trophy"/>
