@@ -4,6 +4,18 @@ export default [
     icon: 'far fa-futbol',
     seasons: [
       {
+        name: 'Valentine\'s Cup Mens',
+        route: '/valentines-cup/mens'
+      },
+      {
+        name: 'Valentine\'s Cup Womens',
+        route: '/valentines-cup/womens'
+      },
+      {
+        name: 'Dashain Cup',
+        route: '/dashain-cup/2018'
+      },
+      {
         name: 2018,
         route: '/futsal/2018'
       },
@@ -58,49 +70,32 @@ export default [
       {
         name: '2019 Q1',
         route: '/counter-strike/2019-q1'
-      }
-    ]
-  },
-  {
-    name: 'Dashain Cup',
-    icon: 'fas fa-trophy',
-    seasons: [
+      },
       {
-        name: 2018,
-        route: '/dashain-cup/2018'
+        name: 'January Jatra',
+        route: '/counter-strike/january-jatra'
       }
     ]
   },
   {
-    name: 'January Jatra',
+    name: 'FIFA',
     icon: 'fas fa-gamepad',
     seasons: [
       {
-        name: 'Dota 2',
-        route: '/january-jatra/dota2'
-      },
-      {
-        name: 'FIFA 18',
-        route: '/january-jatra/fifa18'
-      },
-      {
-        name: 'Counter Strike',
-        route: '/january-jatra/counter-strike'
+        name: 'January Jatra',
+        route: '/fifa18/january-jatra'
       }
     ]
   },
   {
-    name: 'Valentine\'s Cup',
-    icon: 'fas fa-trophy',
+    name: 'Dota 2',
+    icon: 'fas fa-gamepad',
     seasons: [
       {
-        name: 'Mens',
-        route: '/valentines-cup/mens'
+        name: 'January Jatra',
+        route: '/dota2/january-jatra'
       },
-      {
-        name: 'Womens',
-        route: '/valentines-cup/womens'
-      }
+
     ]
   }
 ];

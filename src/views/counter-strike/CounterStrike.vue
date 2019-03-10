@@ -87,11 +87,11 @@ export default class CounterStrike extends Vue {
   }
 
   get title(): string {
-    return `${SPORTS.COUNTER_STRIKE.toUpperCase()}`;
+    return SPORTS.COUNTER_STRIKE.toUpperCase();
   }
 
   get subTitle(): string {
-    return this.$route.params.season ? `${this.$route.params.season}` : ``;
+    return this.$route.params.season || '';
   }
 }
 </script>
