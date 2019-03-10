@@ -44,6 +44,10 @@ export default [
       {
         name: 2018,
         route: '/chess/2018'
+      },
+      {
+        name: 2019,
+        route: '/chess/2019'
       }
     ]
   },

@@ -1,6 +1,6 @@
 <template>
   <div v-if="!fixtures.length" class="container">
-    <p class="alert">All fixtures have been played. Please checkout the results section.</p>
+    <p class="alert">Nothing to show here here at the moment.</p>
   </div>
   <div v-else class="container">
     <p v-if="!fixtures.length" class="alert">No fixtures found.</p>

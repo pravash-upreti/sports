@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div v-if="!fixtures.length">
-      <p class="alert">No fixtures have been played. Please checkout the fixtures section.</p>
+      <p class="alert">Nothing to show here at the moment.</p>
     </div>
     <div v-else>
       <p v-if="!fixtures.length" class="alert">No results found.</p>
