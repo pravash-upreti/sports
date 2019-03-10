@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <div class="teams-list-wrapper">
+    <p v-if="!data.points.length" class="alert">Nothing to show here at the moment.</p>
+    <div v-else class="teams-list-wrapper">
       <Team
         v-for="(team, index) in data.teams"
         :key="`team-${index}`"

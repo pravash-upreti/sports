@@ -35,7 +35,7 @@ export default class CounterStrike extends Vue {
   @Prop() public updateSelectedSport: any;
 
   public data: any = {};
-  public sport: string = '';
+  public season: string = '';
   public error: boolean = false;
   public loading: boolean = false;
   public routes: object = COUNTER_STRIKE_ROUTES;
@@ -45,7 +45,7 @@ export default class CounterStrike extends Vue {
   }
 
   public async beforeUpdate() {
-    if (this.sport.toString() !== this.$route.params.sport.toString()) {
+    if (this.season.toString() !== this.$route.params.season.toString()) {
       await this.fetchData();
     }
   }
@@ -59,10 +59,10 @@ export default class CounterStrike extends Vue {
     this.loading = true;
 
     try {
-      this.sport = this.$route.params.sport;
+      this.season = this.$route.params.season;
       this.updateSelectedSport(SPORTS.COUNTER_STRIKE);
 
-      const response = await fetchSportData(this.sport, SPORTS.COUNTER_STRIKE);
+      const response = await fetchSportData(SPORTS.COUNTER_STRIKE, this.season);
 
       if (response && response.status) {
         this.data = getSanitizedData(response.data);
@@ -81,8 +81,8 @@ export default class CounterStrike extends Vue {
 
   get selectedSportSeason(): object {
     return {
-      sport: this.sport,
-      season: SPORTS.COUNTER_STRIKE
+      sport: SPORTS.COUNTER_STRIKE,
+      season: this.season
     };
   }
 
@@ -91,7 +91,7 @@ export default class CounterStrike extends Vue {
   }
 
   get subTitle(): string {
-    return this.$route.params.sport ? `#${this.$route.params.sport}` : ``;
+    return this.$route.params.season || '';
   }
 }
 </script>

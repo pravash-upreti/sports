@@ -1,0 +1,17 @@
+.registration-info-wrapper {
+  width: 100%;
+
+  .registration-title,
+  .registration-date {
+    text-align: center;
+    width: 100%;
+  }
+
+  .registration-title {
+    font-size: $font-size--28;
+  }
+
+  .registration-date {
+    font-size: $font-size--24;
+  }
+}

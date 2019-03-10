@@ -40,7 +40,7 @@ export default class Fifa extends Vue {
 
   public data: any = {};
   public fixedData: any = {};
-  public sport: string = '';
+  public season: string = '';
   public error: boolean = false;
   public loading: boolean = false;
   public routes: object = FIFA_ROUTES;
@@ -50,7 +50,7 @@ export default class Fifa extends Vue {
   }
 
   public async beforeUpdate() {
-    if (this.sport.toString() !== this.$route.params.sport.toString()) {
+    if (this.season.toString() !== this.$route.params.season.toString()) {
       await this.fetchData();
     }
   }
@@ -64,10 +64,10 @@ export default class Fifa extends Vue {
     this.loading = true;
 
     try {
-      this.sport = this.$route.params.sport;
+      this.season = this.$route.params.season;
       this.updateSelectedSport(SPORTS.FIFA);
 
-      const response = await fetchSportData(this.sport, SPORTS.FIFA);
+      const response = await fetchSportData(SPORTS.FIFA, this.season);
 
       if (response && response.status) {
         this.data = getSanitizedData(response.data);
@@ -93,8 +93,8 @@ export default class Fifa extends Vue {
 
   get selectedSportSeason(): object {
     return {
-      sport: this.sport,
-      season: SPORTS.FIFA
+      sport: SPORTS.FIFA,
+      season: this.season,
     };
   }
 
@@ -103,7 +103,7 @@ export default class Fifa extends Vue {
   }
 
   get subTitle(): string {
-    return this.$route.params.sport ? `#${this.$route.params.sport}` : ``;
+    return this.$route.params.season || '';
   }
 }
 </script>
