@@ -6,7 +6,7 @@ const FUTSAL = '/futsal/:season';
 const DASHAIN_CUP = '/dashain-cup/:season';
 const CARROM_BOARD = '/carrom-board/:season';
 const TABLE_TENNIS = '/table-tennis/:season';
-const COUNTER_STRIKE = '/:sport/counter-strike';
+const COUNTER_STRIKE = '/counter-strike/:season';
 const VALENTINES_CUP = '/valentines-cup/:season';
 
 

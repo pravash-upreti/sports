@@ -48,6 +48,16 @@ export default [
     ]
   },
   {
+    name: 'Counter Strike',
+    icon: 'fas fa-gamepad',
+    seasons: [
+      {
+        name: '2019 Q1',
+        route: '/counter-strike/2019-q1'
+      }
+    ]
+  },
+  {
     name: 'Dashain Cup',
     icon: 'fas fa-trophy',
     seasons: [
