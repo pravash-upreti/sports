@@ -3,11 +3,9 @@ const DOTA = '/dota2/:season';
 const FIFA = '/fifa18/:season';
 const CHESS = '/chess/:season';
 const FUTSAL = '/futsal/:season';
-const DASHAIN_CUP = '/dashain-cup/:season';
 const CARROM_BOARD = '/carrom-board/:season';
 const TABLE_TENNIS = '/table-tennis/:season';
 const COUNTER_STRIKE = '/counter-strike/:season';
-const VALENTINES_CUP = '/valentines-cup/:season';
 
 
 export const BASE_ROUTES = {
