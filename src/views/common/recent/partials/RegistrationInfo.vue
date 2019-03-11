@@ -1,6 +1,6 @@
 <template>
   <div class="registration-info-wrapper">
-    <p class="registration-title">Registraion Open</p>
+    <p class="registration-title">Registration Open</p>
     <p class="registration-date">Starting from {{ startDate() }}</p>
   </div>
 </template>
