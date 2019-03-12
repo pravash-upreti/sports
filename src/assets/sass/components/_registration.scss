@@ -1,11 +1,10 @@
 .registration-info-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: $space--12;
   width: 100%;
-
-  .registration-title,
-  .registration-date {
-    text-align: center;
-    width: 100%;
-  }
 
   .registration-title {
     font-size: $font-size--28;
@@ -13,5 +12,29 @@
 
   .registration-date {
     font-size: $font-size--24;
+  }
+
+  .registration-button {
+    background-color: $color-score-result;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    color: $color-score-result;
+    font-size: $font-size--22;
+    font-weight: 600;
+    margin: $space--4 0;
+    padding: $space--4 $space--8;
+    text-transform: uppercase;
+
+    @include themify($themes) {
+      background-color: theme-property(color-score-result);
+      color: theme-property(color-body);
+    }
+
+    &:hover {
+      @include themify($themes) {
+        background-color: theme-property(color-body);
+        color: theme-property(color-score-result);
+      }
+    }
   }
 }
