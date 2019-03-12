@@ -12,6 +12,7 @@ import {
   COUNTER_STRIKE_ROUTES
 } from './constants/routes';
 
+import Home from '@/views/home/Home.vue';
 import Dota from '@/views/dota/Dota.vue';
 import Fifa from '@/views/fifa/Fifa.vue';
 import Chess from '@/views/chess/Chess.vue';
@@ -36,6 +37,10 @@ const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: BASE_ROUTES.HOME,
+      component: Home
+    },
     {
       path: BASE_ROUTES.TABLE_TENNIS,
       component: TableTennis,
@@ -374,7 +379,7 @@ const router = new Router({
     },
     {
       path: '*',
-      redirect: '/table-tennis/2018'
+      redirect: BASE_ROUTES.HOME
     }
   ]
 });

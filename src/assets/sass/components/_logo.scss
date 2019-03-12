@@ -12,5 +12,9 @@
     @include mq(md) {
       width: 120px;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

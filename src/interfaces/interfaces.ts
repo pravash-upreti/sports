@@ -131,3 +131,33 @@ export interface TournamentDataInterface {
   points?: PointInterface[];
   stats?: StatsInterface[];
 }
+
+
+export interface SeasonInterface {
+  id: number;
+  name: string;
+  season: string | number;
+  shortName?: string;
+  startDate: string;
+  endDate?: string;
+  fileUrl?: string;
+  competition?: string;
+  parentTournament?: {
+    id: number;
+    name: string;
+    shortName: string;
+  };
+}
+
+export interface TournamentInterface {
+  id: number;
+  name: string;
+  shortName: string;
+  seasons: SeasonInterface[];
+}
+
+export interface RecentTournamentsInterface {
+  current: SeasonInterface[];
+  upcoming: SeasonInterface[];
+  past: SeasonInterface[];
+}

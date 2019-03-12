@@ -1,0 +1,69 @@
+.home-wrapper {
+  padding: $space--4 0;
+  width: 100%;
+}
+
+.home-title,
+.home-sub-title {
+  color: $color-green;
+  text-align: center;
+}
+
+.home-title {
+  font-size: $font-size--28;
+  padding: $space--2 0;
+}
+
+.home-sub-title {
+  font-size: $font-size--22;
+  padding: $space--2 0;
+}
+
+.home-content-wrapper {
+  padding: $space--3 0;
+}
+
+.recent-tournaments-wrapper {
+  margin-bottom: $space--2;
+  padding: 0 $space--4;
+
+  @include mq(lg) {
+    padding: 0 $space--2;
+  }
+
+  .recent-tournaments-content {
+    background-color: $color-white;
+    border-radius: $space;
+    color: $color-body;
+    padding: $space--2;
+  }
+
+  .recent-tournament {
+    border-bottom: 1px solid rgba($color-black, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-size: $font-size--18;
+    padding: $space--4 $space--2;
+    width: 100%;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &:hover {
+      background-color: $color-body;
+      color: $color-white;
+      cursor: pointer;
+    }
+  }
+
+  .rt-icon {
+    width: $space--8;
+  }
+
+  .recent-days-to-go {
+    font-size: $font-size--14;
+    font-style: italic;
+    font-weight: 300;
+  }
+}
