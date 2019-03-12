@@ -1,7 +1,13 @@
 <template>
   <div class="registration-info-wrapper">
     <p class="registration-title">Registration Open</p>
-    <p class="registration-date">Starting from {{ startDate() }}</p>
+    <p class="registration-date">Starting from {{ startDate }}</p>
+    <a
+      type="button"
+      class="registration-button"
+      target="_blank"
+      :href="details.registrationForm"
+    >Register now</a>
   </div>
 </template>
 
@@ -15,7 +21,7 @@ import { DetailsInterface } from '@/interfaces/interfaces';
 export default class RegistrationInfo extends Vue {
   @Prop() private details!: DetailsInterface;
 
-  public startDate() {
+  get startDate() {
     return formatDate(this.details.startDate, 'ddd, MMMM DD YYYY');
   }
 }
