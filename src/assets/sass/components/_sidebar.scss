@@ -69,6 +69,7 @@
             &.active,
             &:hover {
               color: $color-link--active;
+
               @include themify($themes) {
                 color: theme-property(color-link--active);
               }
