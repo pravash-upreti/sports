@@ -8,20 +8,23 @@
         @click.prevent="handleClick(competition)"
         class="recent-tournament"
       >
-        <p>
-          <i :class="getIcon(competition)"/>
-          {{ competition.name }}: {{ competition.season }}
-        </p>
-        <p
-          v-if="getDaysToGo(competition) > 0"
-          class="recent-days-to-go"
-        >{{ getDaysToGo(competition) }} day(s) to go.</p>
+        <i :class="getIcon(competition)"/>
+        <div class="recent-tournament--info">
+          <p>
+            {{ competition.name }}: {{ competition.season }}
+          </p>
+          <p
+            v-if="getDaysToGo(competition) >= 0"
+            class="recent-days-to-go"
+          >Starting from <span class="recent-days-to-go--date">{{ getStartDate(competition) }}</span></p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
+import { format as formatDate } from 'date-fns';
 import { differenceInDays, isBefore } from 'date-fns';
 import { Vue, Prop, Component } from 'vue-property-decorator';
 
@@ -49,6 +52,10 @@ export default class TournamentsShort extends Vue {
 
   public getDaysToGo(competition: SeasonInterface): number {
     return differenceInDays(competition.startDate, new Date());
+  }
+
+  public getStartDate(competition: SeasonInterface): string {
+    return formatDate(new Date(competition.startDate), 'dddd, MMM DD, YYYY');
   }
 
   public getIcon(competition: SeasonInterface): string {
