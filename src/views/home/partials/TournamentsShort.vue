@@ -69,7 +69,7 @@ export default class TournamentsShort extends Vue {
         break;
       case 'counter-strike':
       case 'fifa':
-      case 'dota':
+      case 'dota2':
         icon += 'fas fa-gamepad';
         break;
     }

@@ -1,6 +1,6 @@
 const HOME = '/';
 const DOTA = '/dota2/:season';
-const FIFA = '/fifa18/:season';
+const FIFA = '/fifa/:season';
 const CHESS = '/chess/:season';
 const FUTSAL = '/futsal/:season';
 const CARROM_BOARD = '/carrom-board/:season';

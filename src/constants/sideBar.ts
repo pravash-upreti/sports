@@ -83,7 +83,7 @@ export default [
     seasons: [
       {
         name: 'January Jatra',
-        route: '/fifa18/january-jatra'
+        route: '/fifa/january-jatra'
       }
     ]
   },
