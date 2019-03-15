@@ -1,7 +1,7 @@
 <template>
   <div class="recent-wrapper">
     <Winners v-if="data.recents.showWinners" :winners="data.recents.winners" />
-    <RecentFixtures v-else-if="data.recents.length" :recents="data.recents" :triggerShowModal="triggerShowModal" />
+    <RecentFixtures v-else-if="hasRecentFixtures" :recents="data.recents" :triggerShowModal="triggerShowModal" />
     <RegistrationInfo v-else :details="data.details" />
   </div>
 </template>
@@ -18,7 +18,10 @@ import RegistrationInfo from './partials/RegistrationInfo.vue';
 })
 export default class Recent extends Vue {
   @Prop() public triggerShowModal!: any;
-
   @Prop() private data!: any;
+
+  get hasRecentFixtures(): boolean {
+    return !!this.data.recents && !!(this.data.recents.fixtures.length || this.data.recents.results.length);
+  }
 }
 </script>
