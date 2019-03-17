@@ -52,6 +52,9 @@ export default class SportHeader extends Vue {
       case 'home':
         routeName = 'Home';
         break;
+      case 'knockout':
+        routeName = 'Knockout';
+        break;
       case 'fixtures':
         routeName = 'Fixtures';
         break;

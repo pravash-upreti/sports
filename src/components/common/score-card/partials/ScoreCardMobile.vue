@@ -4,13 +4,15 @@
     :class="{ 'score-card--cancelled': isFixtureCancelled }"
     @click="showFixtureModal"
   >
-    <FixtureDetailsMobile :fixture="fixture"/>
+    <FixtureDetailsMobile v-if="showDetails" :fixture="fixture"/>
     <FixtureTeamMobile
+      :showFullName="showFullName"
       :team="fixture.homeTeam"
       :score="fixture.homeTeamScore"
       :isWinner="isHomeTeamWinner"
     />
     <FixtureTeamMobile
+      :showFullName="showFullName"
       :team="fixture.awayTeam"
       :score="fixture.awayTeamScore"
       :isWinner="isAwayTeamWinner"
@@ -30,8 +32,10 @@ import { isFixturePlayed, isFixtureCancelled } from '@/services/FixtureService';
   components: { FixtureTeamMobile, FixtureDetailsMobile }
 })
 export default class ScoreCardMobile extends Vue {
-  @Prop() private showFixtureModal!: any;
-  @Prop() private fixture!: FixtureInterface;
+  @Prop() public showFixtureModal!: any;
+  @Prop() public fixture!: FixtureInterface;
+  @Prop({ default: true }) public showDetails!: boolean;
+  @Prop({ default: true }) public showFullName!: boolean;
 
   get isFixtureCancelled() {
     return isFixtureCancelled(this.fixture);

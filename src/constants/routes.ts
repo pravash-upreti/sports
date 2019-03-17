@@ -51,6 +51,7 @@ export const TABLE_TENNIS_ROUTES = {
 // Order of route declaration appears on the UI.
 export const CHESS_ROUTES = {
   HOME: `${CHESS}/`,
+  KNOCKOUT: `${CHESS}/knockout`,
   RESULTS: `${CHESS}/results`,
   FIXTURES: `${CHESS}/fixtures`,
   TEAMS: `${CHESS}/teams`

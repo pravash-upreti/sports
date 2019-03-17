@@ -27,6 +27,7 @@ import Fixtures from '@/views/common/fixtures/Fixtures.vue';
 import CarromBoard from '@/views/carrom-board/CarromBoard.vue';
 import TableTennis from '@/views/table-tennis/TableTennis.vue';
 import CounterStrike from '@/views/counter-strike/CounterStrike.vue';
+import FixturesKnockout from '@/views/common/knockout/FixturesKnockout.vue';
 import CounterStrikePoints from '@/views/counter-strike/CounterStrikePoints.vue';
 
 const DEFAULT_PAGE_TITLE = 'LF Sports';
@@ -94,6 +95,13 @@ const router = new Router({
           component: Recent,
           meta: {
             title: 'Chess - Home'
+          }
+        },
+        {
+          path: CHESS_ROUTES.KNOCKOUT,
+          component: FixturesKnockout,
+          meta: {
+            title: 'Chess - Knockout Fixtures'
           }
         },
         {

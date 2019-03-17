@@ -1,0 +1,31 @@
+.knockout-wrapper {
+  align-items: top;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    background: rgba($color-black, 0.3);
+    border-radius: $space--2;
+    width: $space;
+  }
+
+  .score-card-list-title {
+    font-size: $font-size--16;
+  }
+
+  .score-card-wrapper {
+    .score-card--mobile {
+      display: flex;
+      min-width: 200px;
+      padding: $space;
+
+      .fixture-team-name {
+        padding-left: $space;
+        padding-right: $space;
+      }
+    }
+  }
+}
