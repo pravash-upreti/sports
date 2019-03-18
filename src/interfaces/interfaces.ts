@@ -98,7 +98,6 @@ export interface FixtureInterface {
   categoryType: string;
   round: string;
   winnerTeam?: TeamInterface;
-  roundInfo?: RoundInterface | null;
 }
 
 export interface RecentsInterface {
@@ -132,6 +131,7 @@ export interface TournamentDataInterface {
   points?: PointInterface[];
   stats?: StatsInterface[];
 }
+
 
 export interface SeasonInterface {
   id: number;
