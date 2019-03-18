@@ -41,7 +41,7 @@ import SportHeader from '@/components/common/sport-header/SportHeader.vue';
 @Component({
   components: { SportHeader, LoadingIcon, CarromBoardScoreModal }
 })
-export default class TableTennis extends Vue {
+export default class CarromBoard extends Vue {
   @Prop() public updateSelectedSport: any;
 
   public data: any = {};

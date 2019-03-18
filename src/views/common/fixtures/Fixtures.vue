@@ -6,6 +6,7 @@
     <p v-if="!fixtures.length" class="alert">No fixtures found.</p>
     <ScoreCardsList
       v-else
+      groupBy="round"
       :rounds="rounds"
       :fixtures="fixtures"
       :showFilterOptions="true"
