@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="home-wrapper">
-      <p class="home-title">Welcome to Sports!</p>
       <div v-if="error" class="home-content-wrapper">
         <p class="home-sub-title">Oops...something went wrong. Try again later!</p>
       </div>

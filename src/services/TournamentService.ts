@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { sortBy } from 'lodash';
 import { isAfter, isBefore, differenceInDays } from 'date-fns';
 import { TournamentInterface, SeasonInterface, RecentTournamentsInterface } from '@/interfaces/interfaces';
 
@@ -96,6 +97,9 @@ export function getRecentTournaments(tournaments: TournamentInterface[]): Recent
       recentTournaments.past.push(season);
     }
   });
+
+  recentTournaments.current = sortBy(recentTournaments.current, 'startDate');
+  recentTournaments.upcoming = sortBy(recentTournaments.upcoming, 'startDate');
 
   return recentTournaments;
 }
