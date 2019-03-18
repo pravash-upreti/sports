@@ -5,7 +5,7 @@
         <p class="home-sub-title">Oops...something went wrong. Try again later!</p>
       </div>
       <div v-else-if="loading" class="home-content-wrapper">
-        <p class="home-sub-title">Hangon...fetching...</p>
+        <p class="home-sub-title">Hang on...fetching...</p>
         <LoadingIcon />
       </div>
       <div v-else class="home-content-wrapper">
