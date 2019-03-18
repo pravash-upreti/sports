@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <p v-if="!data.points.length" class="alert">Nothing to show here at the moment.</p>
+    <p v-if="!data.teams.length" class="alert">Nothing to show here at the moment.</p>
     <div v-else class="teams-list-wrapper">
       <Team
         v-for="(team, index) in data.teams"

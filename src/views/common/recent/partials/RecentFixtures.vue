@@ -46,9 +46,9 @@
       :triggerShowModal="triggerShowModal"
     />
     <ScoreCardsList
-      v-if="recents.results.length"
-      title="All"
-      :fixtures="recents.results.slice(0,4)"
+      v-if="noRecentFixtures && recents.results.length"
+      title="Results"
+      :fixtures="recents.results"
       :triggerShowModal="triggerShowModal"
     />
   </div>
