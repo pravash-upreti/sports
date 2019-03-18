@@ -20,12 +20,12 @@
     <!-- Result -->
     <div v-if="isFixtureCancelled" class="score-wrapper score-wrapper--cancelled">CANCELLED</div>
     <div v-else-if="isFixturePlayed" class="score-wrapper">
-      <span class="score-wrapper__home">
+      <span :class="['score-wrapper__home', isHomeTeamWinnerForNoScore ? 'score-wrapper__home__trophy' : '']">
         <i v-if="isHomeTeamWinnerForNoScore" class="fas fa-trophy"/>
         {{ fixture.homeTeamScore }}
       </span>
       <span v-if="!this.fixture.winnerTeam" class="score-wrapper__dot">:</span>
-      <span class="score-wrapper__away">
+      <span :class="['score-wrapper__away', isAwayTeamWinnerForNoScore ? 'score-wrapper__away__trophy' : '']">
         {{ fixture.awayTeamScore }}
         <i v-if="isAwayTeamWinnerForNoScore" class="fas fa-trophy"/>
       </span>
