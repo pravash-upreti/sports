@@ -12,7 +12,7 @@
         :changeSelectedTeam="changeSelectedTeam"
       />
     </div>
-    <div v-if="!!groupBy && !!rounds.length">
+    <slot v-if="!!groupBy && !!rounds.length">
       <div v-for="(group, index) in groupedFixturesList" :key="`grouped-fixtures-${index}`">
         <h2 class="score-card-list-title">{{ group.round.description }}</h2>
         <ScoreCardWrapper
@@ -22,8 +22,8 @@
           :triggerShowModal="triggerShowModal"
         />
       </div>
-    </div>
-    <div v-else>
+    </slot>
+    <slot v-else>
       <h2 v-if="title && title.length" class="score-card-list-title">{{ title }}</h2>
       <p v-if="!fixturesList.length" class="alert">No fixtures found.</p>
       <ScoreCardWrapper
@@ -33,7 +33,7 @@
         :fixture="fixture"
         :triggerShowModal="triggerShowModal"
       />
-    </div>
+    </slot>
   </div>
 </template>
 

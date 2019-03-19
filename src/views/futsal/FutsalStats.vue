@@ -48,7 +48,7 @@ export default class FutsalStats extends Vue {
     return {
       title: 'Assists',
       icon: footballAssistIcon,
-      players: this.data.stats.assists
+      players: this.data.stats.assists || []
     };
   }
 
