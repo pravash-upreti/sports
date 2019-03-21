@@ -61,12 +61,12 @@
     }
 
     &:hover {
-      background-color: $color-body;
+      background-color: $color-score-result;
       color: $color-white;
       cursor: pointer;
 
       @include themify($themes) {
-        background-color: theme-property(color-body);
+        background-color: theme-property(color-score-result);
       }
     }
   }
