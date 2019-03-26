@@ -74,6 +74,10 @@ export default [
       {
         name: 'January Jatra',
         route: '/counter-strike/january-jatra'
+      },
+      {
+        name: '2016',
+        route: '/counter-strike/2016'
       }
     ]
   },
