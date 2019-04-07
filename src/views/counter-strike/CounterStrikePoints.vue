@@ -30,7 +30,7 @@
             <td>{{ point.lost }}</td>
             <td>{{ point.roundsWon }}</td>
             <td>{{ point.roundsLost }}</td>
-            <td>{{ point.roundsDifference }}</td>
+            <td>{{ getRoundsDifference(point) }}</td>
             <td>{{ point.points }}</td>
           </tr>
         </tbody>
@@ -49,5 +49,11 @@ import TeamLogo from '@/components/common/team-logo/TeamLogo.vue';
 })
 export default class CounterStrikePoints extends Vue {
   @Prop() private data!: any;
+
+  public getRoundsDifference(point): string {
+    const prefix = !!point.roundsDifference && point.roundsDifference > 0 ? `+` : ``;
+
+    return `${prefix}${point.roundsDifference}`;
+  }
 }
 </script>
