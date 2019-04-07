@@ -50,7 +50,7 @@ import TeamLogo from '@/components/common/team-logo/TeamLogo.vue';
 export default class CounterStrikePoints extends Vue {
   @Prop() private data!: any;
 
-  public getRoundsDifference(point): string {
+  public getRoundsDifference(point: any): string {
     const prefix = !!point.roundsDifference && point.roundsDifference > 0 ? `+` : ``;
 
     return `${prefix}${point.roundsDifference}`;
