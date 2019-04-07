@@ -11,6 +11,9 @@
             <th>W</th>
             <th>D</th>
             <th>L</th>
+            <th>RW</th>
+            <th>RL</th>
+            <th>RD</th>
             <th>Pts</th>
           </tr>
         </thead>
@@ -25,6 +28,9 @@
             <td>{{ point.won }}</td>
             <td>{{ point.drawn }}</td>
             <td>{{ point.lost }}</td>
+            <td>{{ point.roundsWon }}</td>
+            <td>{{ point.roundsLost }}</td>
+            <td>{{ point.roundsDifference }}</td>
             <td>{{ point.points }}</td>
           </tr>
         </tbody>
