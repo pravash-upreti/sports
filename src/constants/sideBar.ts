@@ -4,6 +4,10 @@ export default [
     icon: 'far fa-futbol',
     seasons: [
       {
+        name: 2019,
+        route: '/futsal/2019'
+      },
+      {
         name: 'Valentine\'s Cup Mens',
         route: '/futsal/valentines-cup-mens'
       },
