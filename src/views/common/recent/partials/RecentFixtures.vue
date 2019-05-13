@@ -139,7 +139,7 @@ export default class RecentFixtures extends Vue {
     const tomorrowFixtures = this.getFixturesForRangeOfDays(recentFixtures, tomorrow, tomorrow);
     // Display this week played fixtures from Tuesday till end of the week.
     const twPlayedFixtures =
-      todayWeekDay >= 2 ? this.getFixturesForRangeOfDays(recentFixtures, twStartDay, yesterday) : [];
+      todayWeekDay >= 1 ? this.getFixturesForRangeOfDays(recentFixtures, twStartDay, yesterday) : [];
     // Display this week remaining fixtures from Monday till Thursday.
     const twRemainingFixtures =
       todayWeekDay >= 1 && todayWeekDay <= 4
@@ -147,8 +147,11 @@ export default class RecentFixtures extends Vue {
         : [];
     // Display last week fixtures from Sunday till Monday.
     const lwFixtures = todayWeekDay <= 1 ? this.getFixturesForRangeOfDays(recentFixtures, lwStartDay, lwEndDay) : [];
-    // Display next week fixtures from Friday till end of the week.
-    const nwFixtures = todayWeekDay >= 5 ? this.getFixturesForRangeOfDays(recentFixtures, nwStartDay, nwEndDay) : [];
+    // Display next week fixtures from Friday till end of the week or if there are no current week remaining fixtures.
+    const nwFixtures =
+      todayWeekDay >= 5 || !twRemainingFixtures.length
+        ? this.getFixturesForRangeOfDays(recentFixtures, nwStartDay, nwEndDay)
+        : [];
 
     let recentFixturesList = {
       todayFixtures,
