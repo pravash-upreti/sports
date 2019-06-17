@@ -1,0 +1,12 @@
+endpoint: http://localhost:4466
+secret: ${env:PRISMA_SERVICE_SECRET}
+datamodel: ./datamodel.prisma
+generate:
+  - generator: typescript-client
+    output: ../src/generated/prisma-client/
+hooks:
+  post-deploy:
+    - prisma generate
+    - npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma # Runs the codegen tool from nexus-prisma.
+seed:
+  run: yarn ts-node ./prisma/seed.ts

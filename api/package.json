@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "deploy": "./node_modules/.bin/prisma deploy",
+    "seed": "prisma seed --reset",
+    "dev": "ts-node-dev --no-notify --respawn --transpileOnly ./src",
+    "lint": "tslint 'src/**/*.{ts,js}'",
+    "lint:fix": "tslint --fix src/**/*.{ts,js} test/**/*.{ts,js}",
+    "prettify": "prettier --single-quote --parser typescript --print-width 120 --write src/**/*.{ts,js,json} test/**/*.{ts,js}"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{ts, js}": [
+        "tslint --fix src/**/*.{ts,js} test/**/*.{ts,js}",
+        "prettier --single-quote --parser typescript --print-width 120 --write src/**/*.{ts,js,json} test/**/*.{ts,js}'",
+        "git add"
+      ]
+    }
+  },
+  "dependencies": {
+    "graphql": "^14.1.1",
+    "graphql-yoga": "^1.17.4",
+    "nexus": "^0.11.7",
+    "nexus-prisma": "^0.3.4",
+    "nexus-prisma-generate": "^0.3.4",
+    "prisma-client-lib": "^1.27.4"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.0.7",
+    "prettier": "^1.16.4",
+    "prisma": "^1.28.0",
+    "ts-node": "^8.0.2",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  }
+}

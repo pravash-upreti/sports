@@ -1,0 +1,31 @@
+version: '3'
+services:
+  prisma:
+    image: prismagraphql/prisma:1.27
+    ports:
+    - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        managementApiSecret: ${PRISMA_MANAGEMENT_API_SECRET}
+        port: 4466
+        databases:
+          default:
+            connector: ${DB_CLIENT}
+            host: ${DB_HOST}
+            port: ${DB_PORT}
+            user: ${DB_USERNAME}
+            password: ${DB_PASSWORD}
+            database: ${DB_NAME}
+            schema: ${DB_SCHEMA}
+            migrations: true
+  postgres:
+    image: postgres:10.3
+    ports:
+    - "${EXPOSED_DB_PORT}:${DB_PORT}"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+volumes:
+  postgres:
