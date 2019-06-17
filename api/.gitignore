@@ -1,22 +1,35 @@
-# IntelliJ IDE
-.idea
-
-# Visual Studio Code
-.vscode
-
-# Build directory
-dist
-
-# Dependency directories
-node_modules
-
-# Dotenv configuration
-.env
-
 # Logs
 logs
 *.log
 npm-debug.log*
 
-# NPM lock file
-package-lock.json
+# Dependency directories
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn integrity file
+.yarn-integrity
+
+# IntelliJ IDE
+.idea
+
+# Build directory
+dist
+
+# Dotenv configuration
+.env
+
+# Visual Studio Code
+.vscode
+
+# Tests
+coverage
+.nyc_output
+
+# Vim swp files
+*.swp
