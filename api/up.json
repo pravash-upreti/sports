@@ -1,0 +1,21 @@
+{
+  "name": "sports-api",
+  "profile": "anura-sam-developer",
+  "regions": [
+    "ap-south-1"
+  ],
+  "stages": {
+    "dev": {
+      "domain": "dev.api.sports.lftechnology.com",
+      "hooks": {
+        "build": "envault list -secret=sports/api/dev > .env && yarn build"
+      }
+    },
+    "production": {
+      "domain": "api-v2.sports.lftechnology.com",
+      "hooks": {
+        "build": "envault list -secret=sports/api/prod > .env && yarn build"
+      }
+    }
+  }
+}
