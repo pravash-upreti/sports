@@ -1,4 +1,7 @@
 --- 
+sudo: false
+dist: xenial
+
 
 addons:
   apt:
@@ -14,7 +17,8 @@ before_script:
   - "pip3 install envault"
   - "envault --version"
   - "curl -sf https://up.apex.sh/install | sh"
-dist: xenial
+
+
 env: 
   global: 
     - "PATH=$HOME/.local/bin:$PATH"
