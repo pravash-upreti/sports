@@ -1,6 +1,8 @@
 import Knex from 'knex';
 
-export interface Context {
+interface Context {
   jwt?: String;
   db: Knex;
 }
+
+export default Context;
