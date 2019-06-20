@@ -14,7 +14,6 @@ addons:
 
 before_script: 
   - "pip install --user awscli"
-  - "aws configure"
   - "pip3 install envault"
   - "envault --version"
   - "curl -sf https://up.apex.sh/install | sudo sh"
