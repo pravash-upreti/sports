@@ -41,4 +41,4 @@ jobs:
           echo "Deploying the api"
           cd api
           envault list -secret=sports/api/dev > .env
-          up stage dev
+          up deploy dev
