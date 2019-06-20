@@ -1,20 +1,18 @@
 {
   "name": "sports-api",
   "profile": "default",
-  "regions": [
-    "ap-south-1"
-  ],
+  "regions": ["ap-south-1"],
   "stages": {
     "dev": {
       "domain": "dev.api.sports.lftechnology.com",
       "hooks": {
-        "build": "envault list -secret=sports/api/dev > .env && yarn build"
+        "build": "envault list -secret=sports/api/dev > .env && yarn && yarn build"
       }
     },
     "production": {
       "domain": "api-v2.sports.lftechnology.com",
       "hooks": {
-        "build": "envault list -secret=sports/api/prod > .env && yarn build"
+        "build": "envault list -secret=sports/api/prod > .env && yarn && yarn  build"
       }
     }
   }
