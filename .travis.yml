@@ -16,7 +16,7 @@ before_script:
   - "pip install --user awscli"
   - "pip3 install envault"
   - "envault --version"
-  - "sudo curl -sf https://up.apex.sh/install | sh"
+  - "curl -sf https://up.apex.sh/install | sudo sh"
 
 
 env: 
