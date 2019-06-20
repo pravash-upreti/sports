@@ -1,40 +1,28 @@
-
-# linux distribution to be used in VM
+--- 
+before_script: 
+  - "pip install --user awscli"
+  - "pip install envault"
+  - "envault --version"
+  - "curl -sf https://up.apex.sh/install | sh"
 dist: xenial
-
-env:
-  global:
-    # include $HOME/.local/bin for `aws`
-    - PATH=$HOME/.local/bin:$PATH
-    
-before_script:
-  # set up awscli packages
-  - pip install --user awscli
-  # setup envault packages
-  - pip install envault
-  - envault --version
-  # install apex up
-  -  curl -sf https://up.apex.sh/install | sh
-  
-jobs:
-  include:    
-    - stage: deploy
+env: 
+  global: 
+    - "PATH=$HOME/.local/bin:$PATH"
+jobs: 
+  include: 
+    - 
       language: node_js
-      node_js: "8.10"            
-    
-      name: "Deploy APP"  
-      script: |
-                echo "Deploying app"
-      
-    - script: |
-                echo "Deploying the admin-app"
-
+      name: "Deploy APP"
+      node_js: "8.10"
+      script: "echo \"Deploying app\"\n"
+      stage: deploy
+    - 
       name: "Deploy ADMIN_APP"
-
-    - script: |
-                echo "Deploying the api"
-                cd api
-                envault list -secret=sports/api/dev > .env
-                up stage dev
-
-      name: "Deploy API
+      script: "echo \"Deploying the admin-app\"\n"
+    - 
+      name: "Deploy API"
+      script: |
+          echo "Deploying the api"
+          cd api
+          envault list -secret=sports/api/dev > .env
+          up stage dev
