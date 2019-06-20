@@ -14,6 +14,8 @@ addons:
 
 before_script: 
   - "pip install --user awscli"
+  - "mkdir ~/.aws/config"
+  - "echo '[default]\noutput=json' > ~/.aws/config"
   - "pip3 install envault"
   - "envault --version"
   - "curl -sf https://up.apex.sh/install | sudo sh"
