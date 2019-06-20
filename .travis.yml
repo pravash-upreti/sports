@@ -1,0 +1,82 @@
+
+# linux distribution to be used in VM
+dist: xenial
+
+env:
+  global:
+    # include $HOME/.local/bin for `aws`
+    - PATH=$HOME/.local/bin:$PATH
+    
+before_script:
+  # set up awscli packages
+  - pip install --user awscli
+  # setup envault packages
+  - pip install envault
+  - envault --version
+  - mkdir -p ~/$TRAVIS_BUILD_NUMBER
+  - aws s3 sync s3://lf-travis-shared-storage/$TRAVIS_BUILD_NUMBER/$ROOT_DIR ~/$TRAVIS_BUILD_NUMBER/$ROOT_DIR
+  - unzip -qo ~/$TRAVIS_BUILD_NUMBER/$ROOT_DIR/$ROOT_DIR.zip -d ./$ROOT_DIR/ || true
+
+cache:
+  directories:
+    - ~/api/node_modules
+    - ~/app/node_modules
+
+jobs:
+  include:
+    - stage: build
+      language: node_js
+      node_js: "8.10"
+      
+      name: "Build API"  
+      script: |
+                cd $ROOT_DIR
+                npm install
+      env: ROOT_DIR=api
+                      
+    - script: |
+                cd $ROOT_DIR
+                npm install
+      
+      name: "Build ADMIN_APP"  
+      env: ROOT_DIR=admin-app
+    
+    - script: |
+                cd $ROOT_DIR
+                npm install
+      
+      name: "Build API"  
+      env: ROOT_DIR=api
+      
+    - stage: deploy
+      language: node_js
+      node_js: "8.10"            
+    
+      name: "Deploy APP"  
+      script: |
+                echo "Deploying app"
+
+      env: ROOT_DIR=app
+      
+    - script: |
+                echo "Deploying the admin-app"
+
+      name: "Deploy ADMIN_APP"
+      env: ROOT_DIR=admin-app
+    
+    - script: |
+                echo "Deploying the API"
+
+      name: "Deploy API"
+      env: ROOT_DIR=api
+    
+    
+
+#       after_success:
+#               - aws s3 rm --recursive s3://lf-travis-shared-storage/$TRAVIS_BUILD_NUMBER # clean up after ourselves
+        
+after_success:
+  - cd /home/travis/build/pravash-upreti/serverless-pipeline/$ROOT_DIR
+  - zip -r -q ~/$TRAVIS_BUILD_NUMBER/$ROOT_DIR/$ROOT_DIR.zip *
+  - aws s3 sync ~/$TRAVIS_BUILD_NUMBER/$ROOT_DIR s3://lf-travis-shared-storage/$TRAVIS_BUILD_NUMBER/$ROOT_DIR
+
