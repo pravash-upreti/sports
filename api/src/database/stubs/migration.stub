@@ -1,0 +1,23 @@
+import Knex from 'knex';
+
+/**
+ * Add <table_name> table.
+ *
+ * @param {Knex} knex
+ */
+export function up(knex: Knex) {
+  return knex.schema.createTable('table_name', (table: Knex.CreateTableBuilder) => {
+    table.increments('id').primary();
+
+    table.timestamps(true, true);
+  });
+}
+
+/**
+ * Drop <table_name> table.
+ *
+ * @param {Knex} knex
+ */
+export function down(knex: Knex) {
+  return knex.schema.dropTable('table_name');
+}

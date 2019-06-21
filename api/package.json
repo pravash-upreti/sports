@@ -4,10 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node 'dist/server.js'",
+    "serve": "node 'dist/server.js'",
     "build": "tsc -p . && ncp src/schema dist/schema",
     "start:dev": "npm run build:dev",
-    "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql"
+    "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
+    "migrate": "knex --knexfile knexfile.ts migrate:latest",
+    "migrate:make": "knex --knexfile knexfile.ts -x ts migrate:make",
+    "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback"
   },
   "dependencies": {
     "apollo-server-express": "^2.6.3",

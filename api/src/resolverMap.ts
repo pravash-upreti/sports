@@ -1,7 +1,7 @@
 import { IResolvers } from 'graphql-tools';
 
 import Context from './models/Context';
-import User from './models/User';
+import User from './models/UserAccount';
 
 const resolverMap: IResolvers = {
   Query: {

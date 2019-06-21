@@ -1,18 +1,18 @@
 import BookShelf from '../config/bookshelf';
 
-import User from './User';
+import UserAccount from './UserAccount';
 
 /**
  * Base bookshelf model that provides columns that is common in all tables used in app.
  * All bookshelf models should extend this class.
  */
 abstract class BaseModel<T extends BaseModel<any>> extends BookShelf.Model<T> {
-  createdBy(): User {
-    return this.belongsTo(User);
+  createdBy(): UserAccount {
+    return this.belongsTo(UserAccount);
   }
 
-  updatedBy(): User {
-    return this.belongsTo(User);
+  updatedBy(): UserAccount {
+    return this.belongsTo(UserAccount);
   }
 
   timestamp() {
