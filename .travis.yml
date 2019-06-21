@@ -59,9 +59,7 @@ jobs:
       script: |
           echo "Deploying the api"
           cd api
-          envault list -secret=sports/api/${STAGE} > .env
-          cat .env
+          envault list -secret=sports/api/${STAGE} > .env          
           source .env
-          sed -i 's#'${STAGE}'_DOMAIN_NAME#'${DOMAIN_NAME}'#g' up.json
-          cat up.json
+          sed -i 's#'${STAGE}'_DOMAIN_NAME#'${DOMAIN_NAME}'#g' up.json          
           up deploy $STAGE
