@@ -69,9 +69,10 @@ app.use(Sentry.Handlers.errorHandler());
 app.use(errorHandler.genericErrorHandler);
 app.use(errorHandler.methodNotAllowed);
 
-app.listen(app.get('port'), app.get('host'), () => {
-  logger.info(`Server started at http://${app.get('host')}:${app.get('port')}/api`);
-});
+// Make Apex compatible
+const { PORT = 3000 } = process.env;
+
+app.listen(PORT);
 
 // Catch unhandled rejections
 process.on('unhandledRejection', err => {

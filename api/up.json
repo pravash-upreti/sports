@@ -10,9 +10,9 @@
       }
     },
     "production": {
-      "domain": "api-v2.sports.lftechnology.com",
+      "domain": "api-v2.api.sports.lftechnology.com",
       "hooks": {
-        "build": "envault list -secret=sports/api/prod > .env && yarn && yarn  build"
+        "build": "envault list -secret=sports/api/dev > .env && yarn && yarn build"
       }
     }
   }
