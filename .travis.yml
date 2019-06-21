@@ -46,7 +46,7 @@ jobs:
 
       stage: Deploy
     - 
-      name: "Deploy ADMIN_APP"Ci config
+      name: "Deploy ADMIN_APP"
       script: |
                 echo "Deploying the admin app"
                 cd admin-app
