@@ -1,0 +1,10 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint-config-leapfrog", "tslint-config-prettier"],
+  "jsRules": {},
+  "rules": {},
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["**/*.d.ts"]
+  }
+}
