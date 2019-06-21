@@ -30,15 +30,60 @@ jobs:
       language: node_js
       name: "Deploy APP"
       node_js: "8.10"
-      script: "echo \"Deploying app\"\n"
-      stage: deploy
+      script: |
+                echo "Deploying the web app"
+                cd web-app
+                yarn && yarn build
+
+                # branch to stage mapping          
+                if [ $TRAVIS_BRANCH == "dev" ] || [ $TRAVIS_BRANCH == "ci-config" ]
+                then
+                  STAGE=dev
+                elif [ $CI_COMMIT_REF_SLUG == "master" ]
+                then
+                  STAGE=production
+                else
+                  echo "Undefine stage"
+                fi
+                
+                aws s3 sync ./dist  s3://$STAGE.admin.sports.lftechnology.com/
+
+      stage: Deploy
     - 
       name: "Deploy ADMIN_APP"
-      script: "echo \"Deploying the admin-app\"\n"
+      script: |
+                echo "Deploying the admin app"
+                cd admin-app
+                yarn && yarn build
+                
+                # branch to stage mapping          
+                if [ $TRAVIS_BRANCH == "dev" ] || [ $TRAVIS_BRANCH == "ci-config" ]
+                then
+                  STAGE=dev
+                elif [ $CI_COMMIT_REF_SLUG == "master" ]
+                then
+                  STAGE=production
+                else
+                  echo "Undefine stage"
+                fi
+                aws s3 sync ./dist  s3://$STAGE.admin.sports.lftechnology.com/
+
     - 
       name: "Deploy API"
       script: |
           echo "Deploying the api"
           cd api
-          envault list -secret=sports/api/dev > .env
-          up deploy dev
+          envault list -secret=sports/api/${TRAVIS_BRANCH} > .env
+          
+          # branch to stage mapping          
+          if [ $TRAVIS_BRANCH == "dev" ] || [ $TRAVIS_BRANCH == "ci-config" ]
+          then
+            STAGE=dev
+          elif [ $CI_COMMIT_REF_SLUG == "master" ]
+          then
+            STAGE=production
+          else
+            echo "Undefine stage"
+          fi
+          
+          up deploy $STAGE
