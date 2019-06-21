@@ -1,22 +1,18 @@
 <template>
-  <div id="components-layout-demo-basic">
-    <a-layout>
-      <a-layout-header>
-        <Logo/>
-      </a-layout-header>
-      <a-layout-content>Content</a-layout-content>
-      <a-layout-footer>Footer</a-layout-footer>
-    </a-layout>
+  <div class="home">
+    <HelloWorld msg="Sports Admin Dashboard"/>
   </div>
 </template>
 
-<script>
-import Logo from '@/components/Logo.vue';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 
-export default {
-  name: 'Home',
+import HelloWorld from '@/components/HelloWorld.vue';
+
+@Component({
   components: {
-    Logo
+    HelloWorld
   }
-};
+})
+export default class Home extends Vue {}
 </script>
