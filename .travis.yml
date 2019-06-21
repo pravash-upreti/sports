@@ -14,7 +14,7 @@ addons:
 
 before_script: 
   - "pip install --user awscli"
-  - "mkdir ~/.aws && echo '[default]\noutput=json\nregion=us-west-2' > ~/.aws/config"
+  - "mkdir ~/.aws && echo '[default]\noutput=json\nregion=ap-south-1' > ~/.aws/config"
   - "pip3 install envault"
   - "envault --version"
   - "curl -sf https://up.apex.sh/install | sudo sh"
@@ -45,7 +45,7 @@ jobs:
                 else
                   echo "Undefine stage"
                 fi
-                
+                cat /home/travis/.aws/config
                 aws s3 sync ./dist  s3://$STAGE.admin.sports.lftechnology.com/
 
       stage: Deploy
