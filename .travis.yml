@@ -1,0 +1,65 @@
+--- 
+sudo: false
+dist: xenial
+
+addons:
+  apt:
+    packages:
+      - "python3"
+      - "python3-pip"
+      - "python3-setuptools"
+
+before_script: 
+  - "pip install --user awscli"
+  - "mkdir ~/.aws && echo '[default]\n' > ~/.aws/config && echo 'output=json' >> ~/.aws/config"
+  - "pip3 install envault"
+  - "envault --version"
+  - "curl -sf https://up.apex.sh/install | sudo sh"
+  - | 
+      # branch to stage mapping          
+      if [ $TRAVIS_BRANCH == "dev" ] || [ $TRAVIS_BRANCH == "ci-config" ]
+      then
+        STAGE=dev
+      elif [ $TRAVIS_BRANCH == "master" ]
+      then
+        STAGE=production
+      else
+        echo "Undefine stage"
+      fi
+
+env: 
+  global: 
+    - "PATH=$HOME/.local/bin:$PATH"
+    
+jobs: 
+  include: 
+    - 
+      language: node_js
+      name: "Deploy APP"
+      node_js: "8.10"
+      script: |
+                echo "Deploying the web app"
+                cd web-app
+                envault list -secret=sports/web-app/${STAGE} > .env
+                yarn && yarn build
+                envault run 'aws s3 sync ./dist  $BUCKET_NAME' -secret=sports/web-app/${STAGE}         
+
+      stage: Deploy
+    - 
+      name: "Deploy ADMIN_APP"
+      script: |
+                echo "Deploying the admin app"
+                cd admin-app
+                envault list -secret=sports/admin-app/${STAGE} > .env
+                yarn && yarn build
+                envault run 'aws s3 sync ./dist  $BUCKET_NAME' -secret=sports/admin-app/${STAGE}
+
+    - 
+      name: "Deploy API"
+      script: |
+          echo "Deploying the api"
+          cd api
+          envault list -secret=sports/api/${STAGE} > .env          
+          source .env
+          sed -i 's#'${STAGE}'_DOMAIN_NAME#'${DOMAIN_NAME}'#g' up.json          
+          up deploy $STAGE
