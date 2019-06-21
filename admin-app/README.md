@@ -1,29 +1,36 @@
-# admin
+# Sports Web App
 
-## Project setup
-```
-yarn install
-```
+## Techs
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+* VueJS
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## Requirements
 
-### Run your tests
-```
-yarn run test
-```
+* NodeJS: 8+
+* Yarn
 
-### Lints and fixes files
-```
-yarn run lint
-```
+## Setup Instructions
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* Copy environment file
+
+  ```bash
+  cp `.env.example` `.env.development.local`
+  ```
+
+* Install dependencies.
+
+  ```bash
+  yarn
+  ```
+
+* Start application in development mode.
+
+  ```bash
+  yarn serve
+  ```
+
+* For production build:
+
+  ```bash
+  yarn build
+  ```
