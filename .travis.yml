@@ -42,17 +42,17 @@ jobs:
                 cd web-app
                 envault list -secret=sports/web-app/${STAGE} > .env
                 yarn && yarn build
-                aws s3 sync ./dist  s3://$STAGE.sports.lftechnology.com/
+                envault run 'aws s3 sync ./dist  $BUCKET_NAME' -secret=sports/web-app/${STAGE}         
 
       stage: Deploy
     - 
-      name: "Deploy ADMIN_APP"
+      name: "Deploy ADMIN_APP"Ci config
       script: |
                 echo "Deploying the admin app"
                 cd admin-app
                 envault list -secret=sports/admin-app/${STAGE} > .env
                 yarn && yarn build
-                aws s3 sync ./dist  s3://$STAGE.admin.sports.lftechnology.com/
+                envault run 'aws s3 sync ./dist  $BUCKET_NAME' -secret=sports/admin-app/${STAGE}
 
     - 
       name: "Deploy API"
