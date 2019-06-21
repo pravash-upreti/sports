@@ -1,7 +1,6 @@
 import Knex from 'knex';
 
 interface Context {
-  jwt?: String;
   db: Knex;
 }
 

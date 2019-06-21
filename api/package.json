@@ -12,7 +12,24 @@
     "migrate:make": "knex --knexfile knexfile.ts -x ts migrate:make",
     "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback",
     "seed": "knex --knexfile knexfile.ts seed:run",
-    "seed:make": "knex --knexfile knexfile.ts -x ts seed:make"
+    "seed:make": "knex --knexfile knexfile.ts -x ts seed:make",
+    "lint": "tslint src/**/*.{ts,js}",
+    "lint:fix": "tslint --fix src/**/*.{ts,js}",
+    "prettify": "prettier --config ./.prettierrc --write src/**/*.{ts,js,json}"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{ts, js}": [
+        "tslint --fix src/**/*.{ts,js}",
+        "prettier --config ./.prettierrc --write src/**/*.{ts,js,json}",
+        "git add"
+      ]
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "dependencies": {
     "apollo-server-express": "^2.6.3",
@@ -37,8 +54,14 @@
     "graphql-depth-limit": "^1.1.0",
     "graphql-import": "^0.7.1",
     "graphql-import-node": "^0.0.4",
+    "husky": "^2.4.1",
+    "lint-staged": "^8.2.1",
     "nodemon": "^1.19.1",
+    "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
+    "tslint": "^5.17.0",
+    "tslint-config-leapfrog": "^1.0.3",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.2"
   }
 }

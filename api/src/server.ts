@@ -21,4 +21,5 @@ app.use('*', cors());
 app.use(compression());
 server.applyMiddleware({ app, path: '/graphql' });
 
+//tslint:disable
 app.listen({ port: 3000 }, (): void => console.log(`\n🚀    GraphQL is now running on http://localhost:3000/graphql`));
