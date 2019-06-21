@@ -22,6 +22,10 @@ module.exports = {
       tableName: 'migrations',
       stub: 'src/database/stubs/migration.stub',
       directory: 'src/database/migrations'
+    },
+    seeds: {
+      stub: 'src/database/stubs/seed.stub',
+      directory: 'src/database/seeds'
     }
   },
 

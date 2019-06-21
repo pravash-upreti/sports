@@ -7,16 +7,11 @@ import TABLES from '../../constants/tables';
  *
  * @param {Knex} knex
  */
-export function up(knex: Knex) {
+export async function up(knex: Knex): Promise<any> {
   return knex.schema.createTable(TABLES.CHESS_WINNING_METHODS, (table: Knex.CreateTableBuilder) => {
     table.increments('id').primary();
 
     table.string('name').notNullable();
-    table
-      .integer('updated_by')
-      .notNullable()
-      .references('id')
-      .inTable(TABLES.USER_ACCOUNTS);
 
     table.timestamps(true, true);
   });
@@ -27,6 +22,6 @@ export function up(knex: Knex) {
  *
  * @param {Knex} knex
  */
-export function down(knex: Knex) {
+export async function down(knex: Knex): Promise<any> {
   return knex.schema.dropTable(TABLES.CHESS_WINNING_METHODS);
 }

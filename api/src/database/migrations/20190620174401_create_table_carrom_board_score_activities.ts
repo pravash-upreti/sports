@@ -7,7 +7,7 @@ import TABLES from '../../constants/tables';
  *
  * @param {Knex} knex
  */
-export function up(knex: Knex) {
+export async function up(knex: Knex): Promise<any> {
   return knex.schema.createTable(TABLES.CARROM_BOARD_SCORE_ACTIVITIES, (table: Knex.CreateTableBuilder) => {
     table.increments('id').primary();
 
@@ -38,6 +38,6 @@ export function up(knex: Knex) {
  *
  * @param {Knex} knex
  */
-export function down(knex: Knex) {
+export async function down(knex: Knex): Promise<any> {
   return knex.schema.dropTable(TABLES.CARROM_BOARD_SCORE_ACTIVITIES);
 }

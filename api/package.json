@@ -10,7 +10,9 @@
     "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
     "migrate": "knex --knexfile knexfile.ts migrate:latest",
     "migrate:make": "knex --knexfile knexfile.ts -x ts migrate:make",
-    "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback"
+    "migrate:rollback": "knex --knexfile knexfile.ts migrate:rollback",
+    "seed": "knex --knexfile knexfile.ts seed:run",
+    "seed:make": "knex --knexfile knexfile.ts -x ts seed:make"
   },
   "dependencies": {
     "apollo-server-express": "^2.6.3",
