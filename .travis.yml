@@ -45,7 +45,7 @@ jobs:
                 cd web-app
                 yarn && yarn build
                 cat /home/travis/.aws/config
-                aws s3 sync ./dist  s3://$STAGE.admin.sports.lftechnology.com/
+                aws s3 sync ./dist  s3://$STAGE.sports.lftechnology.com/
 
       stage: Deploy
     - 
