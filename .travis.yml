@@ -2,14 +2,12 @@
 sudo: false
 dist: xenial
 
-
 addons:
   apt:
     packages:
       - "python3"
       - "python3-pip"
       - "python3-setuptools"
-
 
 before_script: 
   - "pip install --user awscli"
@@ -32,7 +30,6 @@ before_script:
 env: 
   global: 
     - "PATH=$HOME/.local/bin:$PATH"
-
     
 jobs: 
   include: 
@@ -44,7 +41,6 @@ jobs:
                 echo "Deploying the web app"
                 cd web-app
                 yarn && yarn build
-                cat /home/travis/.aws/config
                 aws s3 sync ./dist  s3://$STAGE.sports.lftechnology.com/
 
       stage: Deploy
