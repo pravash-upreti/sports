@@ -61,6 +61,7 @@ jobs:
           cd api
           envault list -secret=sports/api/${STAGE} > .env
           cat .env
-          envault run "DOMAIN_NAME=$DOMAIN_NAME && sed -i 's#'${STAGE}'_DOMAIN_NAME#'${DOMAIN_NAME}'#g' up.json" -secret=sports/api/$STAGE
+          source .env
+          sed -i 's#'${STAGE}'_DOMAIN_NAME#'${DOMAIN_NAME}'#g' up.json
           cat up.json
           up deploy $STAGE
