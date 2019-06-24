@@ -1,65 +1,36 @@
 # Sports Web App
 
+## Techs
+
+* VueJS
+
+## Requirements
+
+* NodeJS: 8+
+* Yarn
+
 ## Setup Instructions
 
-### Clone
+* Copy environment file
 
-Clone this repository and change directory to `web`.
+  ```bash
+  cp `.env.example` `.env.development.local`
+  ```
 
-```bash
-git clone git@gitlab.lftechnology.com:sports/web.git
+* Install dependencies.
 
-cd web/
-```
+  ```bash
+  yarn
+  ```
 
-### Copy environment file
+* Start application in development mode.
 
-```bash
-cp `.env.example` `.env.development.local`
-```
+  ```bash
+  yarn serve
+  ```
 
-### Setup with docker
+* For production build:
 
-Install dependencies and run the application locally.
-
-```bash
-docker-compose up -d web
-```
-
-To view logs of the container:
-
-```bash
-docker-compose logs -f web
-```
-
-For production build:
-
-```bash
-docker-compose up web_build
-```
-
-### Setup w/o docker
-
-Install dependencies.
-
-```bash
-yarn install
-```
-
-Start application in development mode.
-
-```bash
-yarn run serve
-```
-
-For production build:
-
-```bash
-yarn run build
-```
-
-Lints and fixes files
-
-```bash
-yarn run lint
-```
+  ```bash
+  yarn build
+  ```
